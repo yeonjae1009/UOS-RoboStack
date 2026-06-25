@@ -49,6 +49,32 @@ def _load_boxes(path: str | Path, limit: int) -> list[dict]:
     return boxes
 
 
+def _generate_random_boxes(
+    n: int,
+    seed: int,
+    wl_range: tuple[float, float],
+    h_range: tuple[float, float],
+    mass_range: tuple[float, float],
+) -> list[dict]:
+    """Spec-compliant continuous-random boxes (CJ palletizing rules).
+
+    W,L ~ U(0.17, 0.32) m, H ~ U(0.13, 0.26) m, mass ~ U(0.5, 6.0) kg — sampled
+    continuously, NOT drawn from a fixed type set. Mirrors Online-3D-BPP-PCT
+    bin3D.gen_next_box (sample_from_distribution) + givenData bounds. Sizes are
+    rounded to 3 decimals (mm) as in the original; z is always the vertical height
+    so the competition's {0,90} rotation is an x<->y swap.
+    """
+    rng = np.random.default_rng(seed)
+    boxes: list[dict] = []
+    for i in range(n):
+        w = round(float(rng.uniform(*wl_range)), 3)
+        l = round(float(rng.uniform(*wl_range)), 3)
+        h = round(float(rng.uniform(*h_range)), 3)
+        mass = round(float(rng.uniform(*mass_range)), 3)
+        boxes.append({"id": i, "size": [w, l, h], "mass": mass})
+    return boxes
+
+
 def _yaw_quat_wxyz(degrees: float) -> tuple[float, float, float, float]:
     rad = math.radians(degrees)
     return (math.cos(rad / 2.0), 0.0, 0.0, math.sin(rad / 2.0))
@@ -106,6 +132,16 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     box_sequence_path: str = str(DEFAULT_BOX_SEQUENCE)
     pct_config_path: str = str(DEFAULT_PCT_CONFIG)
     max_boxes: int = 8
+
+    # Box source. random_boxes=True (default) generates spec-compliant continuous
+    # random boxes; the committed box_sequence_*.json files are a FIXED 5-type set
+    # (item_size_set) and are kept only for reproducible CPU tests, not training.
+    # Ranges mirror givenData / the CJ rules: W,L 0.17-0.32, H 0.13-0.26, mass 0.5-6.0.
+    random_boxes: bool = True
+    box_seed: int = 0
+    box_wl_range: tuple[float, float] = (0.17, 0.32)
+    box_h_range: tuple[float, float] = (0.13, 0.26)
+    box_mass_range: tuple[float, float] = (0.5, 6.0)
     pallet_size: tuple[float, float, float] = (1.2, 1.0, 1.25)
     pallet_thickness: float = 0.15
     hidden_x: float = -100.0
@@ -151,7 +187,12 @@ class PalletPackingEnv(DirectRLEnv):
 
     def __init__(self, cfg: PalletPackingEnvCfg, render_mode: str | None = None, **kwargs):
         self.pct_cfg = _load_yaml(cfg.pct_config_path)
-        self.boxes = _load_boxes(cfg.box_sequence_path, cfg.max_boxes)
+        if cfg.random_boxes:
+            self.boxes = _generate_random_boxes(
+                cfg.max_boxes, cfg.box_seed, cfg.box_wl_range, cfg.box_h_range, cfg.box_mass_range
+            )
+        else:
+            self.boxes = _load_boxes(cfg.box_sequence_path, cfg.max_boxes)
         self.pct_setting = int(self.pct_cfg["setting"])
         self.density_max = float(self.pct_cfg.get("density_max", 1.0))
         self.internal_node_holder = int(self.pct_cfg["internal_node_holder"])
