@@ -10,7 +10,8 @@
 - [ ] CPU layer 동일성: `python3 isaaclab_pallet/scripts/test_equivalence.py --max-boxes 250 --policy cycle`
       → 원본 PCT vs 이식 reward/metric **0.000e+00** (bit-exact) 확인.
 - [ ] 병렬 packer 정확성/속도: `python3 isaaclab_pallet/scripts/test_packer_pool.py --num-envs 16 --workers 4`
-      → 직렬 vs 병렬 **0 불일치**, 속도 향상 확인.
+      → 직렬 vs 병렬 **0 불일치**, 속도 향상(약 3x) 확인.
+- [ ] 박스 연속 생성: 생성기가 W,L∈[0.17,0.32], H∈[0.13,0.26], 질량∈[0.5,6.0] **연속**(고정 5종 아님) 확인.
 
 ---
 
@@ -26,6 +27,12 @@
 - [ ] **done_reason 코드 동작**: 1=무효/leaf없음, 2=drift, 3=tilt, 4=oob, 5=완료, 6=높이, 7=drop, **8=스택붕괴**.
 - [ ] **settle(A1) 확인**: `settle_max_steps`>0일 때 안착 후 속도 수렴. 너무 길면 느리고 너무 짧으면 drift 과측정 → `settle_vel_threshold` 튜닝.
 - [ ] 시각화로 박스가 실제로 팔레트 위에 안정적으로 쌓이는지 육안 확인.
+
+## Stage 1.5 — 박스 분포 & 순서 다양성 (규정 정합)
+- [ ] `random_boxes=True`(기본)로 학습 박스가 **규정 연속 랜덤**인지(고정 5종 JSON 아님).
+- [ ] `shuffle_each_episode=True`(기본): reset마다 공급 **순서**가 바뀌는지(env·에피소드별 상이, 시드 재현).
+      → 규정 "박스 랜덤 순서 제공"과 부합. 크기 자체의 에피소드별 재샘플은 prim rescale 필요(아래 보류 항목).
+- [ ] 크기 다양성 더 필요하면 `max_boxes`↑(풀 샘플 확대) 또는 `box_seed` 바꿔 재시작.
 
 ## Stage 2 — 누적 안정성(A2) 임계값 튜닝
 - [ ] 일부러 불안정하게 쌓아 `stack_drift_fail_threshold`(기본 0.12 m)가 **이전 박스 붕괴**를 done_reason 8로 잡는지.
@@ -55,10 +62,30 @@
       `packer.observe(size)` 를 `observe(size, density=mass/vol/DENSITY_MAX)` 로 맞춰야 train/deploy 일치.
 - [ ] Isaac 물리 채점 vs 베이스라인(92.3점) 비교로 회귀 없는지.
 
+## Stage 6 — 제출 제약 (확인 완료 + 마무리)
+- [x] **패키지**: 추론은 `requirements.txt`의 numpy+onnxruntime+pyyaml(+matplotlib)만. torch/skrl은 학습용 → 제출 미포함. GAT→ONNX면 충족.
+- [ ] **numpy 2.x 정합**: 제출 환경 `numpy==2.4.3`. 원본 `convex_hull.py`의 `np.float`(1.24 제거)는 2.x에서 터짐
+      → 제출엔 **`np.float64`로 고친 `templete code` 버전** packer/convex_hull 포함 확인.
+- [ ] **시간 ≤ 90초/데이터셋**: 250박스 추론(observe=EMS+convex-hull 매 박스)이 90초 안인지 실측. 병목이면 packer 최적화/병렬.
+- [ ] **구조**: ZIP 최상위 `main.py` + `algorithm.py` + `config/*.yaml`. (`submission_UOS-robostack`가 이미 이 구조)
+- [ ] **출력 포맷**: Box ID, position=centroid(x,y,z), rotation∈{0,90}, 팔레트 좌하단=(0,0,0). 제공 코드가 생성하므로 임의 변경 금지.
+
 ---
+
+## 규정 정합 (확정 사항)
+- ✅ **팔레트 축**: 제공 `algorithm_config.yaml` `length 1.2 / width 1.0 / height 1.25` = `container=[1.2,1.0,1.25]`.
+  이식본 `pallet_size=(1.2,1.0,1.25)`와 일치. (규정 본문 "가로/세로"보다 **제공 템플릿이 권위 기준**.)
+  확인법: 출력 JSON을 `palletizing_simulator`에 넣어 OOB·낙하 없이 안착하는지.
+- ✅ **박스 스펙**: W,L 0.17–0.32 / H 0.13–0.26 m / 질량 0.5–6.0 kg **연속 랜덤** 생성. (고정 5종 JSON은 테스트용만)
+- ✅ **랜덤 순서**: 에피소드마다 공급 순서 셔플.
+- ❌ **버퍼/박스 선택**: 미구현(사용자 보류). 현재 순수 online. 규정의 버퍼 가산점(최대 +20)·선택 전략은 별도 설계 필요.
 
 ## 배포 호환성 메모 (확정 사항)
 - ✅ action = leaf 인덱스, **위치는 packer가 디코딩** (NN은 인덱스만). 이식본도 동일 packer.py.
 - ✅ **GAT 경로**는 순수 PCT 2709 관찰 사용 → ONNX 계약과 일치. 물리 피처는 reward/종료에만.
 - ⚠️ **skrl/MLP 경로는 2714(물리 포함)** → algorithm.py 계약과 불일치. **export는 GAT로만.**
 - ⚠️ `algorithm.py` 가 mass를 observe에 안 넘김(density=1.0). setting 3 학습과 어긋날 수 있음 → 대회 규정 확인.
+
+## 보류 (Isaac 머신 / 추후)
+- 에피소드별 **박스 크기 재샘플**(prim rescale) — 현재는 순서만 셔플, 크기 풀은 고정.
+- **버퍼/박스 선택** 전략 (점수 핵심, 큰 작업).
