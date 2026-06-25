@@ -11,6 +11,8 @@ parser.add_argument("--num-envs-list", type=str, default="1,2,4,8")
 parser.add_argument("--steps", type=int, default=16)
 parser.add_argument("--warmup-steps", type=int, default=2)
 parser.add_argument("--max-boxes", type=int, default=64)
+parser.add_argument("--num-packer-workers", type=int, default=0,
+                    help="CPU packer worker processes (0=serial).")
 parser.add_argument("--policy", choices=["first", "random"], default="first")
 AppLauncher.add_app_launcher_args(parser)
 args_cli = parser.parse_args()
@@ -47,6 +49,7 @@ def run_once(num_envs: int) -> None:
     cfg = PalletPackingEnvCfg()
     cfg.scene.num_envs = num_envs
     cfg.max_boxes = args_cli.max_boxes
+    cfg.num_packer_workers = args_cli.num_packer_workers
     cfg.sim.device = args_cli.device
 
     env = PalletPackingEnv(cfg)
