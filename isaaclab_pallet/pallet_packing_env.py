@@ -525,7 +525,8 @@ class PalletPackingEnv(DirectRLEnv):
             placed_idx = self.current_box_idx[env_id] - 1
             if placed_idx < 0 or placed_idx >= len(self.box_assets) or self.last_invalid[env_id]:
                 continue
-            box_asset = self.box_assets[self._asset_index(env_id, placed_idx)]
+            asset_idx = self._asset_index(env_id, placed_idx)
+            box_asset = self.box_assets[asset_idx]
             final_pos = box_asset.data.root_pos_w[env_id]
             final_quat = box_asset.data.root_quat_w[env_id]
             packed = self.packed_records[env_id][-1]
@@ -539,7 +540,15 @@ class PalletPackingEnv(DirectRLEnv):
             roll, pitch = _quat_wxyz_to_roll_pitch(final_quat)
             tilt = torch.sqrt(roll.square() + pitch.square())
             rotation_matrix = _quat_wxyz_to_matrix(final_quat)
-            half_size = torch.tensor([x / 2.0, y / 2.0, z / 2.0], dtype=torch.float32, device=self.device)
+            # Use the box's ORIGINAL (unrotated) size here: the prim is spawned at
+            # box["size"] and oriented by final_quat, so |R(quat)| @ original_half is
+            # the true world extent. Using packed (already-rotated) dims would apply
+            # the 90° twice and falsely trip OOB for rotated boxes.
+            orig_size = self.boxes[asset_idx]["size"]
+            half_size = torch.tensor(
+                [orig_size[0] / 2.0, orig_size[1] / 2.0, orig_size[2] / 2.0],
+                dtype=torch.float32, device=self.device,
+            )
             world_half_extent = torch.abs(rotation_matrix) @ half_size
 
             local_pos = final_pos - self.scene.env_origins[env_id]
