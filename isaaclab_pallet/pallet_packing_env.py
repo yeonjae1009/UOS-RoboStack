@@ -142,6 +142,13 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     box_wl_range: tuple[float, float] = (0.17, 0.32)
     box_h_range: tuple[float, float] = (0.13, 0.26)
     box_mass_range: tuple[float, float] = (0.5, 6.0)
+
+    # Per-episode diversity. The box POOL geometry is fixed at scene setup (Isaac
+    # clones share collision geometry across envs, so per-env/per-episode resizing
+    # is not batch-friendly). Instead each episode draws a fresh random ORDER over
+    # the pool — which is exactly the competition's "random order" supply and needs
+    # no prim rescaling. Disable for a fully deterministic single sequence.
+    shuffle_each_episode: bool = True
     pallet_size: tuple[float, float, float] = (1.2, 1.0, 1.25)
     pallet_thickness: float = 0.15
     hidden_x: float = -100.0
@@ -208,6 +215,12 @@ class PalletPackingEnv(DirectRLEnv):
         sys.path.insert(0, str(TEMPLATE_DIR))
 
         self.current_box_idx = [0 for _ in range(cfg.scene.num_envs)]
+        # Per-env supply order over the fixed box pool (identity until shuffled on
+        # reset). logical step s -> pool/asset index box_order[env][s].
+        self.box_order: list[np.ndarray] = [
+            np.arange(len(self.boxes), dtype=np.int64) for _ in range(cfg.scene.num_envs)
+        ]
+        self._episode_count = [0 for _ in range(cfg.scene.num_envs)]
         # Main-side caches mirroring what the (possibly remote) packers hold, so
         # _update_physics_metrics never has to reach into a worker's packer.
         self.packed_records: list[list[list[float]]] = [[] for _ in range(cfg.scene.num_envs)]
@@ -278,6 +291,11 @@ class PalletPackingEnv(DirectRLEnv):
             self.cfg.hidden_y,
             self.cfg.hidden_z,
         )
+
+    def _asset_index(self, env_id: int, logical_step: int) -> int:
+        """Map an env's logical placement step to a pool/box-asset index via its
+        per-episode supply order."""
+        return int(self.box_order[env_id][logical_step])
 
     def close(self):
         pool = getattr(self, "packer_pool", None)
@@ -366,7 +384,7 @@ class PalletPackingEnv(DirectRLEnv):
                 self.last_terminated[env_id] = True
                 self.last_done_reason[env_id] = 5
                 continue
-            box = self.boxes[self.current_box_idx[env_id]]
+            box = self.boxes[self._asset_index(env_id, self.current_box_idx[env_id])]
             requests[env_id] = (box, int(actions[env_id].item()))
 
         # All per-env CPU work (observe -> select -> place -> reward) happens here,
@@ -374,7 +392,7 @@ class PalletPackingEnv(DirectRLEnv):
         results = self.packer_pool.step(requests)
 
         for env_id, result in results.items():
-            box_idx = self.current_box_idx[env_id]
+            box_idx = self._asset_index(env_id, self.current_box_idx[env_id])
             status = result["status"]
 
             if status == "invalid":
@@ -412,7 +430,7 @@ class PalletPackingEnv(DirectRLEnv):
     def _get_observations(self) -> dict:
         pct_obs = torch.zeros((self.num_envs, self.pct_obs_dim), dtype=torch.float32, device=self.device)
         obs_req = {
-            env_id: self.boxes[self.current_box_idx[env_id]]
+            env_id: self.boxes[self._asset_index(env_id, self.current_box_idx[env_id])]
             for env_id in range(self.num_envs)
             if self.current_box_idx[env_id] < len(self.boxes)
         }
@@ -487,7 +505,7 @@ class PalletPackingEnv(DirectRLEnv):
             placed_idx = self.current_box_idx[env_id] - 1
             if placed_idx < 0 or placed_idx >= len(self.box_assets) or self.last_invalid[env_id]:
                 continue
-            box_asset = self.box_assets[placed_idx]
+            box_asset = self.box_assets[self._asset_index(env_id, placed_idx)]
             final_pos = box_asset.data.root_pos_w[env_id]
             final_quat = box_asset.data.root_quat_w[env_id]
             packed = self.packed_records[env_id][-1]
@@ -551,7 +569,7 @@ class PalletPackingEnv(DirectRLEnv):
                 if k >= len(self.box_assets):
                     break
                 intended_k = self._intended_world(self.packed_records[env_id][k], env_id)
-                pos_k = self.box_assets[k].data.root_pos_w[env_id]
+                pos_k = self.box_assets[self._asset_index(env_id, k)].data.root_pos_w[env_id]
                 drift_k = float(torch.linalg.norm(pos_k - intended_k).item())
                 max_stack_drift = max(max_stack_drift, drift_k)
             self.last_stack_drift[env_id] = max_stack_drift
@@ -619,6 +637,14 @@ class PalletPackingEnv(DirectRLEnv):
             self.last_obs_np[env_id][:] = 0.0
             self.packed_records[env_id] = []
             self.last_ratio[env_id] = 0.0
+            # Fresh random supply order for this episode (competition feeds boxes in
+            # random order). Seeded by (box_seed, env_id, episode) for reproducibility.
+            if self.cfg.shuffle_each_episode:
+                self._episode_count[env_id] += 1
+                rng = np.random.default_rng(
+                    (self.cfg.box_seed, env_id, self._episode_count[env_id])
+                )
+                self.box_order[env_id] = rng.permutation(len(self.boxes))
 
         env_ids_tensor = torch.tensor(env_ids, dtype=torch.long, device=self.device)
         hidden_vel = torch.zeros((len(env_ids), 6), dtype=torch.float32, device=self.device)
