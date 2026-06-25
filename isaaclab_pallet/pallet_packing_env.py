@@ -188,6 +188,11 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     physics_fail_penalty: float = -10.0
     invalid_action_penalty: float = -10.0
     no_feasible_leaf_reward: float = 0.0
+    # Competition scoring: a FAILED pallet (out-of-bounds / height / drop / collapse,
+    # i.e. done reasons 2,3,4,6,7,8) is worth 0 — all its stacked volume is lost. So
+    # on a physical fail we zero the WHOLE episode's accumulated reward instead of a
+    # flat -10. (physics_fail_penalty is then unused; set this False to restore -10.)
+    fail_zeroes_pallet: bool = True
 
 
 class PalletPackingEnv(DirectRLEnv):
@@ -231,6 +236,7 @@ class PalletPackingEnv(DirectRLEnv):
         self.action_mask: torch.Tensor | None = None
         self.physics_features: torch.Tensor | None = None
         self.last_reward: torch.Tensor | None = None
+        self.episode_reward_sum: torch.Tensor | None = None
         self.last_terminated: torch.Tensor | None = None
         self.last_drift: torch.Tensor | None = None
         self.last_tilt: torch.Tensor | None = None
@@ -274,6 +280,7 @@ class PalletPackingEnv(DirectRLEnv):
             self.num_envs, self.physics_feature_dim, dtype=torch.float32, device=self.device
         )
         self.last_reward = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
+        self.episode_reward_sum = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
         self.last_terminated = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
         self.last_drift = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
         self.last_tilt = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
@@ -464,7 +471,18 @@ class PalletPackingEnv(DirectRLEnv):
         self.extras["pct_obs"] = pct_obs
         return {"policy": torch.cat((pct_obs, physics_features), dim=1)}
 
+    # done reasons that count as a competition FAIL (pallet -> 0 points).
+    _FAIL_REASONS = (2, 3, 4, 6, 7, 8)
+
     def _get_rewards(self) -> torch.Tensor:
+        if self.cfg.fail_zeroes_pallet:
+            fail = torch.zeros_like(self.last_terminated)
+            for reason in self._FAIL_REASONS:
+                fail |= self.last_done_reason == reason
+            # Cancel everything earned this episode so the failed pallet nets 0
+            # (the failing step's shaped reward is dropped too).
+            self.last_reward = torch.where(fail, -self.episode_reward_sum, self.last_reward)
+        self.episode_reward_sum = self.episode_reward_sum + self.last_reward
         return self.last_reward.clone()
 
     def _settle_boxes(self) -> None:
@@ -545,7 +563,7 @@ class PalletPackingEnv(DirectRLEnv):
                 or bool(height_oob.item())
                 or bool(dropped.item())
             )
-            if physics_failed:
+            if physics_failed and not self.cfg.fail_zeroes_pallet:
                 self.last_reward[env_id] += self.cfg.physics_fail_penalty
             if drift > self.cfg.drift_fail_threshold:
                 self.last_terminated[env_id] = True
@@ -576,7 +594,8 @@ class PalletPackingEnv(DirectRLEnv):
                 max_stack_drift = max(max_stack_drift, drift_k)
             self.last_stack_drift[env_id] = max_stack_drift
             if max_stack_drift > self.cfg.stack_drift_fail_threshold and not self.last_terminated[env_id]:
-                self.last_reward[env_id] += self.cfg.physics_fail_penalty
+                if not self.cfg.fail_zeroes_pallet:
+                    self.last_reward[env_id] += self.cfg.physics_fail_penalty
                 self.last_terminated[env_id] = True
                 self.last_done_reason[env_id] = 8
 
@@ -663,6 +682,7 @@ class PalletPackingEnv(DirectRLEnv):
 
         if self.last_reward is not None:
             self.last_reward[env_ids_tensor] = 0.0
+            self.episode_reward_sum[env_ids_tensor] = 0.0
             self.last_terminated[env_ids_tensor] = False
             self.last_drift[env_ids_tensor] = 0.0
             self.last_tilt[env_ids_tensor] = 0.0
