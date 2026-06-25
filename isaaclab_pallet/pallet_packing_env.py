@@ -227,10 +227,12 @@ class PalletPackingEnv(DirectRLEnv):
             np.arange(len(self.boxes), dtype=np.int64) for _ in range(cfg.scene.num_envs)
         ]
         self._episode_count = [0 for _ in range(cfg.scene.num_envs)]
-        # Main-side caches mirroring what the (possibly remote) packers hold, so
-        # _update_physics_metrics never has to reach into a worker's packer.
-        self.packed_records: list[list[list[float]]] = [[] for _ in range(cfg.scene.num_envs)]
-        self.last_ratio: list[float] = [0.0 for _ in range(cfg.scene.num_envs)]
+        # GPU-batched per-(env, logical step) buffers so _update_physics_metrics is
+        # fully vectorized (no per-env Python loop / .item() syncs).
+        self.intended_buf: torch.Tensor | None = None   # [ne, nb, 3] world center of placed box
+        self.orig_size_buf: torch.Tensor | None = None  # [ne, nb, 3] original (unrotated) box size
+        self.box_order_t: torch.Tensor | None = None    # [ne, nb] asset index placed at each step
+        self.last_ratio_t: torch.Tensor | None = None   # [ne] packer occupancy ratio
         self.last_obs_np = [np.zeros((self.obs_node_count, 9), dtype=np.float32) for _ in range(cfg.scene.num_envs)]
         self.pending_actions: torch.Tensor | None = None
         self.action_mask: torch.Tensor | None = None
@@ -293,6 +295,11 @@ class PalletPackingEnv(DirectRLEnv):
         self.terminal_tilt = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
         self.terminal_height_ratio = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
         self.terminal_stack_drift = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
+        nb = len(self.boxes)
+        self.intended_buf = torch.zeros(self.num_envs, nb, 3, dtype=torch.float32, device=self.device)
+        self.orig_size_buf = torch.ones(self.num_envs, nb, 3, dtype=torch.float32, device=self.device)
+        self.last_ratio_t = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
+        self.box_order_t = torch.arange(nb, device=self.device).unsqueeze(0).repeat(self.num_envs, 1)
 
     def _hidden_local_position(self, box_idx: int) -> tuple[float, float, float]:
         return (
@@ -305,6 +312,10 @@ class PalletPackingEnv(DirectRLEnv):
         """Map an env's logical placement step to a pool/box-asset index via its
         per-episode supply order."""
         return int(self.box_order[env_id][logical_step])
+
+    def _quat_matrix_batched(self, quat: torch.Tensor) -> torch.Tensor:
+        """wxyz quats [..., 4] -> rotation matrices [..., 3, 3]."""
+        return _quat_wxyz_to_matrix(quat).permute(2, 0, 1)
 
     def close(self):
         pool = getattr(self, "packer_pool", None)
@@ -423,10 +434,17 @@ class PalletPackingEnv(DirectRLEnv):
             # ok: spawn at the packer-RESOLVED resting pose (packed lx,ly,lz), not
             # the raw EMS leaf z (issue ④). The worker returns the same packer
             # record the drift reference uses, so spawn intent == drift reference.
-            self.packed_records[env_id] = result["packed_all"]
-            self.last_ratio[env_id] = float(result["ratio"])
+            step = self.current_box_idx[env_id]
             intended_world = self._intended_world(result["packed"], env_id)
             quat = torch.tensor(_yaw_quat_wxyz(result["rotation"]), dtype=torch.float32, device=self.device)
+
+            # Record into the GPU-batched buffers for vectorized metrics.
+            self.intended_buf[env_id, step] = intended_world
+            osz = self.boxes[box_idx]["size"]
+            self.orig_size_buf[env_id, step] = torch.tensor(
+                [float(osz[0]), float(osz[1]), float(osz[2])], dtype=torch.float32, device=self.device
+            )
+            self.last_ratio_t[env_id] = float(result["ratio"])
 
             root_pose = torch.cat((intended_world, quat), dim=0).reshape(1, 7)
             root_vel = torch.zeros((1, 6), dtype=torch.float32, device=self.device)
@@ -501,12 +519,14 @@ class PalletPackingEnv(DirectRLEnv):
             self.scene.write_data_to_sim()
             self.sim.step(render=False)
             self.scene.update(dt)
-            max_speed = 0.0
-            for box_asset in self.box_assets:
-                lin = float(torch.linalg.norm(box_asset.data.root_lin_vel_w, dim=-1).max().item())
-                ang = float(torch.linalg.norm(box_asset.data.root_ang_vel_w, dim=-1).max().item())
-                max_speed = max(max_speed, lin, ang)
-            if max_speed < vel_thr:
+            # Vectorized rest check: stack all boxes' velocities and reduce on GPU,
+            # so it costs ONE host sync per substep instead of 2 per box.
+            lin = torch.stack([ba.data.root_lin_vel_w for ba in self.box_assets])  # [nb, ne, 3]
+            ang = torch.stack([ba.data.root_ang_vel_w for ba in self.box_assets])
+            max_speed = torch.maximum(
+                torch.linalg.norm(lin, dim=-1).max(), torch.linalg.norm(ang, dim=-1).max()
+            )
+            if float(max_speed.item()) < vel_thr:
                 break
 
     def _intended_world(self, packed, env_id: int) -> torch.Tensor:
@@ -519,108 +539,99 @@ class PalletPackingEnv(DirectRLEnv):
         ) + self.scene.env_origins[env_id]
 
     def _update_physics_metrics(self) -> None:
+        """Fully vectorized (GPU-batched) — no per-env Python loop or .item() syncs.
+
+        Mirrors the original per-env logic: drift/tilt/oob/height/drop checks on the
+        last placed box, cumulative stack-drift over earlier boxes, done-reason
+        priority (drop>height>oob>tilt>drift, then collapse), and physics features.
+        """
         self._settle_boxes()
         self.last_stack_drift.zero_()
-        for env_id in range(self.num_envs):
-            placed_idx = self.current_box_idx[env_id] - 1
-            if placed_idx < 0 or placed_idx >= len(self.box_assets) or self.last_invalid[env_id]:
-                continue
-            asset_idx = self._asset_index(env_id, placed_idx)
-            box_asset = self.box_assets[asset_idx]
-            final_pos = box_asset.data.root_pos_w[env_id]
-            final_quat = box_asset.data.root_quat_w[env_id]
-            packed = self.packed_records[env_id][-1]
-            x, y, z, lx, ly, lz, _ = [float(v) for v in packed]
-            intended = torch.tensor(
-                [lx + x / 2.0, ly + y / 2.0, lz + z / 2.0 + self.cfg.pallet_thickness],
-                dtype=torch.float32,
-                device=self.device,
-            ) + self.scene.env_origins[env_id]
-            drift = torch.linalg.norm(final_pos - intended)
-            roll, pitch = _quat_wxyz_to_roll_pitch(final_quat)
-            tilt = torch.sqrt(roll.square() + pitch.square())
-            rotation_matrix = _quat_wxyz_to_matrix(final_quat)
-            # Use the box's ORIGINAL (unrotated) size here: the prim is spawned at
-            # box["size"] and oriented by final_quat, so |R(quat)| @ original_half is
-            # the true world extent. Using packed (already-rotated) dims would apply
-            # the 90° twice and falsely trip OOB for rotated boxes.
-            orig_size = self.boxes[asset_idx]["size"]
-            half_size = torch.tensor(
-                [orig_size[0] / 2.0, orig_size[1] / 2.0, orig_size[2] / 2.0],
-                dtype=torch.float32, device=self.device,
-            )
-            world_half_extent = torch.abs(rotation_matrix) @ half_size
+        if not self.box_assets:
+            return
 
-            local_pos = final_pos - self.scene.env_origins[env_id]
-            oob = (
-                (local_pos[0] - world_half_extent[0] < -self.cfg.out_of_bounds_margin)
-                | (local_pos[1] - world_half_extent[1] < -self.cfg.out_of_bounds_margin)
-                | (local_pos[0] + world_half_extent[0] > self.cfg.pallet_size[0] + self.cfg.out_of_bounds_margin)
-                | (local_pos[1] + world_half_extent[1] > self.cfg.pallet_size[1] + self.cfg.out_of_bounds_margin)
-            )
-            top_height = local_pos[2] + world_half_extent[2] - self.cfg.pallet_thickness
-            height_oob = top_height > self.cfg.pallet_size[2] + self.cfg.height_fail_margin
-            dropped = intended[2] - final_pos[2] > self.cfg.drop_fail_threshold
+        ne, dev, cfg = self.num_envs, self.device, self.cfg
+        arange = torch.arange(ne, device=dev)
+        origins = self.scene.env_origins  # [ne, 3]
+        cur = torch.tensor(self.current_box_idx, dtype=torch.long, device=dev)
+        placed_idx = cur - 1                                  # [ne]
+        valid = (placed_idx >= 0) & (~self.last_invalid)      # [ne]
+        zeros = torch.zeros(ne, device=dev)
 
-            self.last_drift[env_id] = drift
-            self.last_tilt[env_id] = tilt
-            self.last_out_of_bounds[env_id] = oob
-            physics_failed = (
-                drift > self.cfg.drift_fail_threshold
-                or tilt > self.cfg.tilt_fail_threshold
-                or bool(oob.item())
-                or bool(height_oob.item())
-                or bool(dropped.item())
-            )
-            if physics_failed and not self.cfg.fail_zeroes_pallet:
-                self.last_reward[env_id] += self.cfg.physics_fail_penalty
-            if drift > self.cfg.drift_fail_threshold:
-                self.last_terminated[env_id] = True
-                self.last_done_reason[env_id] = 2
-            if tilt > self.cfg.tilt_fail_threshold:
-                self.last_terminated[env_id] = True
-                self.last_done_reason[env_id] = 3
-            if bool(oob.item()):
-                self.last_terminated[env_id] = True
-                self.last_done_reason[env_id] = 4
-            if bool(height_oob.item()):
-                self.last_terminated[env_id] = True
-                self.last_done_reason[env_id] = 6
-            if bool(dropped.item()):
-                self.last_terminated[env_id] = True
-                self.last_done_reason[env_id] = 7
+        all_pos = torch.stack([ba.data.root_pos_w for ba in self.box_assets])    # [nb, ne, 3]
+        all_quat = torch.stack([ba.data.root_quat_w for ba in self.box_assets])  # [nb, ne, 4]
 
-            # A2: cumulative stack stability — did placing this box disturb any
-            # EARLIER box? The current box's own drift is already covered above
-            # (reason 2), so here we scan only the boxes settled before it.
-            max_stack_drift = 0.0
-            for k in range(placed_idx):
-                if k >= len(self.box_assets):
-                    break
-                intended_k = self._intended_world(self.packed_records[env_id][k], env_id)
-                pos_k = self.box_assets[self._asset_index(env_id, k)].data.root_pos_w[env_id]
-                drift_k = float(torch.linalg.norm(pos_k - intended_k).item())
-                max_stack_drift = max(max_stack_drift, drift_k)
-            self.last_stack_drift[env_id] = max_stack_drift
-            if max_stack_drift > self.cfg.stack_drift_fail_threshold and not self.last_terminated[env_id]:
-                if not self.cfg.fail_zeroes_pallet:
-                    self.last_reward[env_id] += self.cfg.physics_fail_penalty
-                self.last_terminated[env_id] = True
-                self.last_done_reason[env_id] = 8
+        # --- Last placed box per env (gather through the supply order) ---
+        last_step = placed_idx.clamp(min=0)
+        last_asset = self.box_order_t[arange, last_step]
+        final_pos = all_pos[last_asset, arange]               # [ne, 3]
+        final_quat = all_quat[last_asset, arange]             # [ne, 4]
+        intended = self.intended_buf[arange, last_step]       # [ne, 3]
 
-            ratio = float(self.last_ratio[env_id])
-            height_ratio = min(max(float(top_height.item()), 0.0) / max(self.cfg.pallet_size[2], 1e-6), 1.0)
-            self.physics_features[env_id] = torch.tensor(
-                [
-                    min(float(drift.item()) / max(self.cfg.drift_fail_threshold, 1e-6), 10.0),
-                    min(abs(float(roll.item())) / math.pi, 1.0),
-                    min(abs(float(pitch.item())) / math.pi, 1.0),
-                    ratio,
-                    height_ratio,
-                ],
-                dtype=torch.float32,
-                device=self.device,
-            )
+        drift = torch.linalg.norm(final_pos - intended, dim=-1)
+        roll, pitch = _quat_wxyz_to_roll_pitch(final_quat)
+        tilt = torch.sqrt(roll.square() + pitch.square())
+        # Original (unrotated) half-size rotated into world by the settled quat.
+        Rabs = self._quat_matrix_batched(final_quat).abs()    # [ne, 3, 3]
+        half = self.orig_size_buf[arange, last_step] * 0.5    # [ne, 3]
+        world_half = torch.bmm(Rabs, half.unsqueeze(-1)).squeeze(-1)  # [ne, 3]
+
+        local_pos = final_pos - origins
+        m = cfg.out_of_bounds_margin
+        oob = (
+            (local_pos[:, 0] - world_half[:, 0] < -m)
+            | (local_pos[:, 1] - world_half[:, 1] < -m)
+            | (local_pos[:, 0] + world_half[:, 0] > cfg.pallet_size[0] + m)
+            | (local_pos[:, 1] + world_half[:, 1] > cfg.pallet_size[1] + m)
+        )
+        top_height = local_pos[:, 2] + world_half[:, 2] - cfg.pallet_thickness
+        height_oob = top_height > cfg.pallet_size[2] + cfg.height_fail_margin
+        dropped = intended[:, 2] - final_pos[:, 2] > cfg.drop_fail_threshold
+
+        self.last_drift = torch.where(valid, drift, zeros)
+        self.last_tilt = torch.where(valid, tilt, zeros)
+        self.last_out_of_bounds = valid & oob
+
+        fail_drift = valid & (drift > cfg.drift_fail_threshold)
+        fail_tilt = valid & (tilt > cfg.tilt_fail_threshold)
+        fail_oob = valid & oob
+        fail_height = valid & height_oob
+        fail_drop = valid & dropped
+        any_fail = fail_drift | fail_tilt | fail_oob | fail_height | fail_drop
+
+        reason = self.last_done_reason
+        for cond, code in ((fail_drift, 2), (fail_tilt, 3), (fail_oob, 4), (fail_height, 6), (fail_drop, 7)):
+            reason = torch.where(cond, torch.full_like(reason, code), reason)
+        self.last_done_reason = reason
+        self.last_terminated = self.last_terminated | any_fail
+        if not cfg.fail_zeroes_pallet:
+            self.last_reward = self.last_reward + any_fail.float() * cfg.physics_fail_penalty
+
+        # --- Cumulative stack stability: earlier boxes only (step < placed_idx) ---
+        steps = torch.arange(self.box_order_t.shape[1], device=dev)
+        step_mask = (steps.unsqueeze(0) < placed_idx.unsqueeze(1)) & valid.unsqueeze(1)  # [ne, nb]
+        pos_per_step = all_pos[self.box_order_t, arange.unsqueeze(1)]                     # [ne, nb, 3]
+        drift_ps = torch.linalg.norm(pos_per_step - self.intended_buf, dim=-1)           # [ne, nb]
+        drift_ps = torch.where(step_mask, drift_ps, torch.zeros_like(drift_ps))
+        max_stack = drift_ps.max(dim=1).values
+        self.last_stack_drift = torch.where(valid, max_stack, zeros)
+
+        collapse = valid & (max_stack > cfg.stack_drift_fail_threshold) & (~self.last_terminated)
+        if not cfg.fail_zeroes_pallet:
+            self.last_reward = self.last_reward + collapse.float() * cfg.physics_fail_penalty
+        self.last_terminated = self.last_terminated | collapse
+        self.last_done_reason = torch.where(collapse, torch.full_like(self.last_done_reason, 8), self.last_done_reason)
+
+        # --- Physics features (update valid envs only) ---
+        height_ratio = (top_height.clamp(min=0.0) / max(cfg.pallet_size[2], 1e-6)).clamp(max=1.0)
+        feat = torch.stack([
+            (drift / max(cfg.drift_fail_threshold, 1e-6)).clamp(max=10.0),
+            (roll.abs() / math.pi).clamp(max=1.0),
+            (pitch.abs() / math.pi).clamp(max=1.0),
+            self.last_ratio_t,
+            height_ratio,
+        ], dim=1)
+        self.physics_features = torch.where(valid.unsqueeze(1), feat, self.physics_features)
 
     # done_reason codes: 1=invalid/no-feasible-leaf, 2=drift, 3=tilt, 4=out-of-bounds,
     # 5=sequence completed, 6=height exceeded, 7=dropped, 8=stack collapse (A2).
@@ -665,8 +676,6 @@ class PalletPackingEnv(DirectRLEnv):
         for env_id in env_ids:
             self.current_box_idx[env_id] = 0
             self.last_obs_np[env_id][:] = 0.0
-            self.packed_records[env_id] = []
-            self.last_ratio[env_id] = 0.0
             # Fresh random supply order for this episode (competition feeds boxes in
             # random order). Seeded by (box_seed, env_id, episode) for reproducibility.
             if self.cfg.shuffle_each_episode:
@@ -675,6 +684,10 @@ class PalletPackingEnv(DirectRLEnv):
                     (self.cfg.box_seed, env_id, self._episode_count[env_id])
                 )
                 self.box_order[env_id] = rng.permutation(len(self.boxes))
+            if self.box_order_t is not None:
+                self.box_order_t[env_id] = torch.from_numpy(
+                    np.ascontiguousarray(self.box_order[env_id])
+                ).to(self.device)
 
         env_ids_tensor = torch.tensor(env_ids, dtype=torch.long, device=self.device)
         hidden_vel = torch.zeros((len(env_ids), 6), dtype=torch.float32, device=self.device)
@@ -700,3 +713,6 @@ class PalletPackingEnv(DirectRLEnv):
             self.last_invalid[env_ids_tensor] = False
             self.last_done_reason[env_ids_tensor] = 0
             self.last_stack_drift[env_ids_tensor] = 0.0
+            self.intended_buf[env_ids_tensor] = 0.0
+            self.orig_size_buf[env_ids_tensor] = 1.0
+            self.last_ratio_t[env_ids_tensor] = 0.0
