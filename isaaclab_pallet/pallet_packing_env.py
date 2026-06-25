@@ -184,6 +184,7 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     support_reward_scale: float = 0.05
     weak_support_penalty_scale: float = 0.05
     weak_support_threshold: float = 0.85
+    elevation_penalty_scale: float = 0.0  # #4 density knob (fill-bottom-first); 0=off, tune on Isaac
     physics_fail_penalty: float = -10.0
     invalid_action_penalty: float = -10.0
     no_feasible_leaf_reward: float = 0.0
@@ -251,6 +252,7 @@ class PalletPackingEnv(DirectRLEnv):
             support=cfg.support_reward_scale,
             weak_support=cfg.weak_support_penalty_scale,
             weak_support_threshold=cfg.weak_support_threshold,
+            elevation_penalty=cfg.elevation_penalty_scale,
         )
         self._packer_config = packer_pool.PackerConfig(
             pallet_size=tuple(cfg.pallet_size),

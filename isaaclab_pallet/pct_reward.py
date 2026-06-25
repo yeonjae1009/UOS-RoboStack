@@ -34,6 +34,11 @@ class RewardScales:
     support: float = 0.05
     weak_support: float = 0.05
     weak_support_threshold: float = 0.85
+    # Density-shaping knob (#4). Penalizes placing a box high up (large lz), which
+    # nudges the policy to fill the bottom first -> denser, less empty space.
+    # Default 0.0 = OFF (no behaviour change vs original PCT; equivalence preserved).
+    # Tune on the Isaac machine where utilization can actually be measured.
+    elevation_penalty: float = 0.0
 
 
 def density_for_box(box: dict, setting: int, density_max: float) -> float:
@@ -194,6 +199,8 @@ def compute_online3dbpp_reward(
     weak_support_penalty = (
         scales.weak_support * max(0.0, scales.weak_support_threshold - ratio) if packed_box.lz > 1e-6 else 0.0
     )
+    # #4 density knob: penalize elevation (off by default -> reward unchanged).
+    elevation_penalty = scales.elevation_penalty * max(0.0, float(packed_box.lz))
 
     reward = float(
         volume_reward
@@ -203,6 +210,7 @@ def compute_online3dbpp_reward(
         + height_smoothness_reward
         + support_reward
         - weak_support_penalty
+        - elevation_penalty
     )
     terms = {
         "volume_reward": float(volume_reward),
@@ -212,6 +220,7 @@ def compute_online3dbpp_reward(
         "height_smoothness_reward": float(height_smoothness_reward),
         "support_reward": float(support_reward),
         "weak_support_penalty": float(weak_support_penalty),
+        "elevation_penalty": float(elevation_penalty),
         "support_ratio": float(ratio),
         "reward": reward,
     }
