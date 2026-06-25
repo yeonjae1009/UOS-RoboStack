@@ -18,7 +18,7 @@ LOG="${RUN_DIR}/train.log"
 STOP="${RUN_DIR}/STOP"
 
 NUM_ENVS="${NUM_ENVS:-32}"
-MAX_BOXES="${MAX_BOXES:-64}"
+MAX_BOXES="${MAX_BOXES:-100}"
 UPDATES="${UPDATES:-1000000}"
 SAVE_INTERVAL="${SAVE_INTERVAL:-250}"
 LR="${LR:-1e-6}"          # gentle fine-tune from the baseline; raise (e.g. 1e-5) for faster adaptation
