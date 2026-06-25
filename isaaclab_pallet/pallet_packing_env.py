@@ -19,6 +19,7 @@ from isaaclab.sim.spawners.from_files import GroundPlaneCfg, spawn_ground_plane
 from isaaclab.utils import configclass
 
 from . import pct_reward
+from . import packer_pool
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -53,13 +54,9 @@ def _yaw_quat_wxyz(degrees: float) -> tuple[float, float, float, float]:
     return (math.cos(rad / 2.0), 0.0, 0.0, math.sin(rad / 2.0))
 
 
-# The deterministic CPU layer now lives in pct_reward.py so the equivalence test
-# can drive the exact same code without booting Isaac Sim.
-_density_for_box = pct_reward.density_for_box
-_select_leaf = pct_reward.select_leaf
-_leaf_to_center_size_rotation = pct_reward.leaf_to_center_size_rotation
-
-
+# The deterministic CPU layer lives in pct_reward.py (shared with the equivalence
+# test) and is driven per-env by packer_pool.py. The env keeps only the torch-side
+# observation decode below.
 def _pct_decode_observation(observation: torch.Tensor, internal_node_holder: int, leaf_node_holder: int):
     """Mirror Online-3D-BPP-PCT/tools.py::observation_decode_leaf_node."""
     internal_nodes = observation[:, 0:internal_node_holder, 0:PCT_INTERNAL_NODE_LENGTH]
@@ -100,6 +97,11 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
 
     sim: SimulationCfg = SimulationCfg(dt=1 / 120, render_interval=decimation)
     scene: InteractiveSceneCfg = InteractiveSceneCfg(num_envs=1, env_spacing=3.0, replicate_physics=False)
+
+    # ① Stage-3 throughput: CPU packer worker processes. 0 = serial (default, in
+    # main process). >0 routes per-env observe/place/reward through a sharded
+    # process pool (packer_pool.py). Tune to ~physical cores on the Isaac machine.
+    num_packer_workers: int = 0
 
     box_sequence_path: str = str(DEFAULT_BOX_SEQUENCE)
     pct_config_path: str = str(DEFAULT_PCT_CONFIG)
@@ -160,12 +162,15 @@ class PalletPackingEnv(DirectRLEnv):
         cfg.observation_space = self.pct_obs_dim + self.physics_feature_dim
         cfg.action_space = self.leaf_node_holder
 
+        # Ensure the packer driver is importable here and (via spawn-inherited
+        # sys.path) in worker processes.
         sys.path.insert(0, str(TEMPLATE_DIR))
-        from src.pct.packer import Packer  # noqa: PLC0415
 
-        self._packer_cls = Packer
-        self.packers = [self._make_packer(cfg) for _ in range(cfg.scene.num_envs)]
         self.current_box_idx = [0 for _ in range(cfg.scene.num_envs)]
+        # Main-side caches mirroring what the (possibly remote) packers hold, so
+        # _update_physics_metrics never has to reach into a worker's packer.
+        self.packed_records: list[list[list[float]]] = [[] for _ in range(cfg.scene.num_envs)]
+        self.last_ratio: list[float] = [0.0 for _ in range(cfg.scene.num_envs)]
         self.last_obs_np = [np.zeros((self.obs_node_count, 9), dtype=np.float32) for _ in range(cfg.scene.num_envs)]
         self.pending_actions: torch.Tensor | None = None
         self.action_mask: torch.Tensor | None = None
@@ -193,6 +198,18 @@ class PalletPackingEnv(DirectRLEnv):
             weak_support=cfg.weak_support_penalty_scale,
             weak_support_threshold=cfg.weak_support_threshold,
         )
+        self._packer_config = packer_pool.PackerConfig(
+            pallet_size=tuple(cfg.pallet_size),
+            size_minimum=float(self.pct_cfg["size_minimum"]),
+            internal_node_holder=self.internal_node_holder,
+            leaf_node_holder=self.leaf_node_holder,
+            setting=self.pct_setting,
+            density_max=self.density_max,
+            scales=self._reward_scales,
+        )
+        self.packer_pool = packer_pool.make_packer_pool(
+            cfg.scene.num_envs, self._packer_config, cfg.num_packer_workers
+        )
 
         super().__init__(cfg, render_mode, **kwargs)
 
@@ -214,18 +231,6 @@ class PalletPackingEnv(DirectRLEnv):
         self.terminal_height_ratio = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
         self.terminal_stack_drift = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
 
-    def _make_packer(self, cfg: PalletPackingEnvCfg | None = None):
-        cfg = cfg or self.cfg
-        packer = self._packer_cls(
-            container_size=list(cfg.pallet_size),
-            size_minimum=float(self.pct_cfg["size_minimum"]),
-            internal_node_holder=self.internal_node_holder,
-            leaf_node_holder=self.leaf_node_holder,
-            setting=self.pct_setting,
-        )
-        packer.reset()
-        return packer
-
     def _hidden_local_position(self, box_idx: int) -> tuple[float, float, float]:
         return (
             self.cfg.hidden_x - self.cfg.hidden_spacing * float(box_idx),
@@ -233,20 +238,11 @@ class PalletPackingEnv(DirectRLEnv):
             self.cfg.hidden_z,
         )
 
-    def _layout_metrics(self, packer, grid: float = 0.025) -> dict[str, float]:
-        return pct_reward.layout_metrics(packer.space.boxes, self.cfg.pallet_size, grid)
-
-    def _compute_online3dbpp_reward(
-        self,
-        box_ratio: float,
-        packed_box,
-        before: dict[str, float],
-        after: dict[str, float],
-    ) -> float:
-        reward, _terms = pct_reward.compute_online3dbpp_reward(
-            box_ratio, packed_box, before, after, self._reward_scales
-        )
-        return reward
+    def close(self):
+        pool = getattr(self, "packer_pool", None)
+        if pool is not None:
+            pool.close()
+        return super().close()
 
     def _setup_scene(self):
         spawn_ground_plane(prim_path="/World/ground", cfg=GroundPlaneCfg())
@@ -322,50 +318,47 @@ class PalletPackingEnv(DirectRLEnv):
         self.last_invalid.zero_()
         self.last_done_reason.zero_()
 
+        # Build per-env CPU requests; envs past the sequence are terminal.
+        requests: dict[int, tuple] = {}
         for env_id in range(self.num_envs):
             if self.current_box_idx[env_id] >= len(self.boxes):
                 self.last_terminated[env_id] = True
                 self.last_done_reason[env_id] = 5
                 continue
+            box = self.boxes[self.current_box_idx[env_id]]
+            requests[env_id] = (box, int(actions[env_id].item()))
 
-            packer = self.packers[env_id]
+        # All per-env CPU work (observe -> select -> place -> reward) happens here,
+        # serially or across worker processes depending on num_packer_workers.
+        results = self.packer_pool.step(requests)
+
+        for env_id, result in results.items():
             box_idx = self.current_box_idx[env_id]
-            box = self.boxes[box_idx]
-            density = _density_for_box(box, self.pct_setting, self.density_max)
-            obs = packer.observe(box["size"], density=density)
-            obs_arr = obs.reshape(self.obs_node_count, 9)
-            leaf_nodes = obs_arr[self.internal_node_holder:self.internal_node_holder + self.leaf_node_holder]
-            leaf = _select_leaf(leaf_nodes, int(actions[env_id].item()))
+            status = result["status"]
 
-            if leaf is None:
+            if status == "invalid":
                 self.last_invalid[env_id] = True
                 self.last_terminated[env_id] = True
                 self.last_done_reason[env_id] = 1
-                no_feasible_leaf = float(leaf_nodes[:, 8].sum()) <= 0.0
+                no_feasible_leaf = int(result["valid_count"]) <= 0
                 self.last_reward[env_id] = (
                     self.cfg.no_feasible_leaf_reward if no_feasible_leaf else self.cfg.invalid_action_penalty
                 )
                 continue
-
-            _, _, rotation = _leaf_to_center_size_rotation(leaf, box["size"])
-            before_metrics = self._layout_metrics(packer)
-            box_ratio = float(np.prod(box["size"]) / np.prod(self.cfg.pallet_size))
-            if not packer.place(leaf[:6]):
+            if status == "place_failed":
                 self.last_invalid[env_id] = True
                 self.last_terminated[env_id] = True
                 self.last_done_reason[env_id] = 1
                 self.last_reward[env_id] = self.cfg.invalid_action_penalty
                 continue
-            packed_box = packer.space.boxes[-1]
-            after_metrics = self._layout_metrics(packer)
 
-            # ④ fix: spawn at the packer-RESOLVED resting pose (packed lx,ly,lz),
-            # not the raw EMS leaf z. leaf[2] is the candidate space floor and can
-            # sit up to ~0.6 m below where the box actually rests, which would drop
-            # the box from the wrong height. Using packed[-1] makes the spawn intent
-            # identical to the drift reference in _update_physics_metrics.
-            intended_world = self._intended_world(packer.packed[-1], env_id)
-            quat = torch.tensor(_yaw_quat_wxyz(rotation), dtype=torch.float32, device=self.device)
+            # ok: spawn at the packer-RESOLVED resting pose (packed lx,ly,lz), not
+            # the raw EMS leaf z (issue ④). The worker returns the same packer
+            # record the drift reference uses, so spawn intent == drift reference.
+            self.packed_records[env_id] = result["packed_all"]
+            self.last_ratio[env_id] = float(result["ratio"])
+            intended_world = self._intended_world(result["packed"], env_id)
+            quat = torch.tensor(_yaw_quat_wxyz(result["rotation"]), dtype=torch.float32, device=self.device)
 
             root_pose = torch.cat((intended_world, quat), dim=0).reshape(1, 7)
             root_vel = torch.zeros((1, 6), dtype=torch.float32, device=self.device)
@@ -373,22 +366,20 @@ class PalletPackingEnv(DirectRLEnv):
             self.box_assets[box_idx].write_root_velocity_to_sim(root_vel, env_ids=torch.tensor([env_id], device=self.device))
 
             self.current_box_idx[env_id] += 1
-            self.last_reward[env_id] = self._compute_online3dbpp_reward(
-                box_ratio,
-                packed_box,
-                before_metrics,
-                after_metrics,
-            )
+            self.last_reward[env_id] = float(result["reward"])
 
     def _get_observations(self) -> dict:
         pct_obs = torch.zeros((self.num_envs, self.pct_obs_dim), dtype=torch.float32, device=self.device)
+        obs_req = {
+            env_id: self.boxes[self.current_box_idx[env_id]]
+            for env_id in range(self.num_envs)
+            if self.current_box_idx[env_id] < len(self.boxes)
+        }
+        obs_out = self.packer_pool.observe(obs_req) if obs_req else {}
         for env_id in range(self.num_envs):
-            if self.current_box_idx[env_id] >= len(self.boxes):
+            obs_np = obs_out.get(env_id)
+            if obs_np is None:
                 obs_np = np.zeros((self.obs_node_count, 9), dtype=np.float32)
-            else:
-                box = self.boxes[self.current_box_idx[env_id]]
-                density = _density_for_box(box, self.pct_setting, self.density_max)
-                obs_np = self.packers[env_id].observe(box["size"], density=density).reshape(self.obs_node_count, 9)
             self.last_obs_np[env_id] = obs_np.astype(np.float32, copy=True)
             pct_obs[env_id] = torch.from_numpy(self.last_obs_np[env_id].reshape(-1)).to(self.device)
 
@@ -458,7 +449,7 @@ class PalletPackingEnv(DirectRLEnv):
             box_asset = self.box_assets[placed_idx]
             final_pos = box_asset.data.root_pos_w[env_id]
             final_quat = box_asset.data.root_quat_w[env_id]
-            packed = self.packers[env_id].packed[-1]
+            packed = self.packed_records[env_id][-1]
             x, y, z, lx, ly, lz, _ = [float(v) for v in packed]
             intended = torch.tensor(
                 [lx + x / 2.0, ly + y / 2.0, lz + z / 2.0 + self.cfg.pallet_thickness],
@@ -518,7 +509,7 @@ class PalletPackingEnv(DirectRLEnv):
             for k in range(placed_idx):
                 if k >= len(self.box_assets):
                     break
-                intended_k = self._intended_world(self.packers[env_id].packed[k], env_id)
+                intended_k = self._intended_world(self.packed_records[env_id][k], env_id)
                 pos_k = self.box_assets[k].data.root_pos_w[env_id]
                 drift_k = float(torch.linalg.norm(pos_k - intended_k).item())
                 max_stack_drift = max(max_stack_drift, drift_k)
@@ -528,7 +519,7 @@ class PalletPackingEnv(DirectRLEnv):
                 self.last_terminated[env_id] = True
                 self.last_done_reason[env_id] = 8
 
-            ratio = float(self.packers[env_id].get_ratio())
+            ratio = float(self.last_ratio[env_id])
             height_ratio = min(max(float(top_height.item()), 0.0) / max(self.cfg.pallet_size[2], 1e-6), 1.0)
             self.physics_features[env_id] = torch.tensor(
                 [
@@ -581,10 +572,12 @@ class PalletPackingEnv(DirectRLEnv):
         env_ids = list(int(i) for i in env_ids)
         super()._reset_idx(env_ids)
 
+        self.packer_pool.reset(env_ids)
         for env_id in env_ids:
-            self.packers[env_id] = self._make_packer()
             self.current_box_idx[env_id] = 0
             self.last_obs_np[env_id][:] = 0.0
+            self.packed_records[env_id] = []
+            self.last_ratio[env_id] = 0.0
 
         env_ids_tensor = torch.tensor(env_ids, dtype=torch.long, device=self.device)
         hidden_vel = torch.zeros((len(env_ids), 6), dtype=torch.float32, device=self.device)

@@ -29,7 +29,10 @@ from dataclasses import dataclass
 
 import numpy as np
 
-import pct_reward
+try:  # works both as a package submodule (env) and as a top-level module (tests/workers)
+    from . import pct_reward
+except ImportError:  # pragma: no cover
+    import pct_reward
 
 
 @dataclass

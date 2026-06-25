@@ -21,6 +21,8 @@ from isaaclab.app import AppLauncher
 
 parser = argparse.ArgumentParser(description="skrl PPO training for the Isaac pallet env.")
 parser.add_argument("--num-envs", type=int, default=64)
+parser.add_argument("--num-packer-workers", type=int, default=0,
+                    help="CPU packer worker processes (0=serial). Tune to ~physical cores.")
 parser.add_argument("--max-boxes", type=int, default=64)
 parser.add_argument("--timesteps", type=int, default=100_000)
 parser.add_argument("--rollouts", type=int, default=24)
@@ -62,6 +64,7 @@ def main() -> None:
     cfg = PalletPackingEnvCfg()
     cfg.scene.num_envs = args_cli.num_envs
     cfg.max_boxes = args_cli.max_boxes
+    cfg.num_packer_workers = args_cli.num_packer_workers
     cfg.sim.device = args_cli.device
 
     env = PalletPackingEnv(cfg)
