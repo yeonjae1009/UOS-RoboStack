@@ -4,10 +4,5 @@ __pycache__/
 *.egg-info/
 .ipynb_checkpoints/
 
-# Large checkpoints & training logs (regenerable, excluded from git)
-*.pt
-isaaclab_pallet/runs/
-Online-3D-BPP-PCT/logs/
-
 # OS
 .DS_Store
