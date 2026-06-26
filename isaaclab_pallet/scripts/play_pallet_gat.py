@@ -17,6 +17,7 @@ parser.add_argument("--steps", type=int, default=32)
 parser.add_argument("--step-delay", type=float, default=0.5)
 parser.add_argument("--hold-seconds", type=float, default=20.0)
 parser.add_argument("--sample-action", action="store_true", help="Sample from the policy instead of deterministic argmax.")
+parser.add_argument("--box-seed", type=int, default=0, help="Seed for the spec-random box set; change it to see a different dataset.")
 parser.add_argument("--drift-fail-threshold", type=float, default=0.40)
 parser.add_argument("--tilt-fail-threshold", type=float, default=0.35)
 parser.add_argument("--out-of-bounds-margin", type=float, default=0.02)
@@ -96,6 +97,7 @@ def main() -> None:
     cfg = PalletPackingEnvCfg()
     cfg.scene.num_envs = args_cli.num_envs
     cfg.max_boxes = args_cli.max_boxes
+    cfg.box_seed = args_cli.box_seed
     cfg.sim.device = args_cli.device
     cfg.drift_fail_threshold = args_cli.drift_fail_threshold
     cfg.tilt_fail_threshold = args_cli.tilt_fail_threshold
