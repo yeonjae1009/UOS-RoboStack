@@ -31,6 +31,7 @@ parser.add_argument("--output-dir", type=str, default="isaaclab_pallet/runs")
 parser.add_argument("--load-model", type=str, default="")
 parser.add_argument("--resume", type=str, default="")
 parser.add_argument("--seed", type=int, default=4)
+parser.add_argument("--box-seed", type=int, default=0, help="Seed for the spec-random box pool; cycle it across runs for full size coverage.")
 parser.add_argument("--drift-fail-threshold", type=float, default=0.40)
 parser.add_argument("--tilt-fail-threshold", type=float, default=0.35)
 parser.add_argument("--out-of-bounds-margin", type=float, default=0.02)
@@ -130,6 +131,7 @@ def main() -> None:
     cfg = PalletPackingEnvCfg()
     cfg.scene.num_envs = args_cli.num_envs
     cfg.max_boxes = args_cli.max_boxes
+    cfg.box_seed = args_cli.box_seed
     cfg.sim.device = args_cli.device
     cfg.drift_fail_threshold = args_cli.drift_fail_threshold
     cfg.tilt_fail_threshold = args_cli.tilt_fail_threshold
