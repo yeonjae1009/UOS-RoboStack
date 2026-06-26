@@ -136,6 +136,8 @@ assignment2_project/  (= GitHub: yeonjae1009/UOS-RoboStack)
 ### 4.1 학습 / 평가용 (Isaac 필요)
 - **하드웨어:** NVIDIA RTX GPU (개발 환경: RTX PRO 6000 Blackwell 96GB)
 - **소프트웨어:** Isaac Sim 5.1, **Isaac Lab 0.54.4**, conda 환경 `env_isaaclab` (Python 3.11)
+- 서버에서 user 계정으로 사용
+- 가상환경으로 들어가서 실행해야함
 
 ```bash
 conda activate env_isaaclab
@@ -195,7 +197,6 @@ for box in boxes:
 ## 6. 실행 방법
 
 > 아래 학습/시각화/평가 명령은 모두 `conda activate env_isaaclab` 후 프로젝트 루트에서 실행합니다.
-> **GUI는 반드시 본인 터미널에서** 실행하세요 (백그라운드로 띄우면 멈춤).
 
 ### 6.1 학습 (GAT, Isaac 물리)
 빠른 단발 학습:
