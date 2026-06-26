@@ -36,6 +36,8 @@ echo "[overnight] start $(date) run_dir=$RUN_DIR num_envs=$NUM_ENVS pool=$MAX_BO
 while [ ! -f "$STOP" ]; do
   if [ -f "$RESUME" ]; then
     INIT=(--resume "$RESUME"); echo "[overnight] resume (box_seed=$BOX_SEED) $(date)" | tee -a "$LOG"
+  elif [ "${SCRATCH:-0}" = "1" ]; then
+    INIT=(); echo "[overnight] SCRATCH random-init (box_seed=$BOX_SEED) $(date)" | tee -a "$LOG"
   else
     INIT=(--load-model "$BEST"); echo "[overnight] warm-start (box_seed=$BOX_SEED) $(date)" | tee -a "$LOG"
   fi
