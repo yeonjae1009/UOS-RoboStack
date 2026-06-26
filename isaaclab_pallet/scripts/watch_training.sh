@@ -3,10 +3,10 @@
 # Live refresh:  watch -n 30 bash isaaclab_pallet/scripts/watch_training.sh
 set -u
 cd "$(dirname "$0")/../.."
-RUN_DIR="${1:-isaaclab_pallet/runs/overnight_gat}"
+RUN_DIR="${1:-isaaclab_pallet/runs/overnight_full}"
 LOG="$RUN_DIR/train.log"
 
-echo "===== overnight_gat 학습 현황  $(date '+%m-%d %H:%M:%S') ====="
+echo "===== [$(basename "$RUN_DIR")] 학습 현황  $(date '+%m-%d %H:%M:%S') ====="
 if [ ! -f "$LOG" ]; then
   echo "아직 로그 없음: $LOG  (학습이 시작됐는지 확인하세요)"; exit 0
 fi
