@@ -1,0 +1,78 @@
+{
+  "results": {
+    "avg_score": 92.3,
+    "episodes": [
+      {
+        "source": "box_sequence_0.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.248,
+        "buffer_size": 0,
+        "score": 92.3
+      },
+      {
+        "source": "box_sequence_1.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.247,
+        "buffer_size": 0,
+        "score": 92.3
+      }
+    ]
+  },
+  "generated_at": "2026-06-25T00:15:38.193914+00:00",
+  "files": [
+    {
+      "source": "box_sequence_0.json",
+      "episode": "success",
+      "height_overflow": false,
+      "stacking_rate_pct": 72.3,
+      "stacking_rate_pct_raw": 72.3,
+      "success_count": 99,
+      "failure_count": 0,
+      "collapse_count": 0,
+      "out_of_bounds_count": 0,
+      "drop_count": 0,
+      "total_boxes": 99,
+      "max_height_m": 1.248,
+      "buffer_size": 0,
+      "episode_score": 72.3,
+      "buffer_bonus": 20,
+      "total_score": 92.3
+    },
+    {
+      "source": "box_sequence_1.json",
+      "episode": "success",
+      "height_overflow": false,
+      "stacking_rate_pct": 72.3,
+      "stacking_rate_pct_raw": 72.3,
+      "success_count": 84,
+      "failure_count": 0,
+      "collapse_count": 0,
+      "out_of_bounds_count": 0,
+      "drop_count": 0,
+      "total_boxes": 84,
+      "max_height_m": 1.247,
+      "buffer_size": 0,
+      "episode_score": 72.3,
+      "buffer_bonus": 20,
+      "total_score": 92.3
+    }
+  ],
+  "summary": {
+    "total_episodes": 2,
+    "success_episodes": 2,
+    "failure_episodes": 0,
+    "height_overflow_episodes": 0,
+    "total_boxes": 183,
+    "total_success_boxes": 183,
+    "total_failure_boxes": 0,
+    "total_collapse": 0,
+    "total_out_of_bounds": 0,
+    "total_drop": 0,
+    "avg_success_rate_pct": 100.0,
+    "avg_stacking_rate_pct": 72.3,
+    "avg_stacking_rate_pct_raw": 72.3,
+    "total_processing_time_sec": 111.263
+  }
+}

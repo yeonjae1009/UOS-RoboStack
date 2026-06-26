@@ -1,0 +1,437 @@
+nohup: ignoring input
+Please input the experiment name
+/home/robotics/Documents/assignment2/Online-3D-BPP-PCT/.venv-pct/lib/python3.9/site-packages/torch/nn/modules/module.py:1025: UserWarning: Using a non-full backward hook when the forward contains multiple autograd Nodes is deprecated and will be removed in future versions. This hook will be missing some grad_input. Please use register_full_backward_hook to get the documented behavior.
+  warnings.warn("Using a non-full backward hook when the forward contains multiple autograd Nodes "
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 40, num timesteps 3280, FPS 118
+Last 3 training episodes: mean/median reward 5.0/5.1, min/max reward 4.7/5.3
+The dist entropy 3.90556, the value loss 6.87881, the action loss -2.57155
+The mean space ratio is 0.5024931431843174, the ratio threshold is0.52660661830008
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 60, num timesteps 4880, FPS 109
+Last 7 training episodes: mean/median reward 5.1/5.1, min/max reward 4.7/5.8
+The dist entropy 3.98365, the value loss 0.15755, the action loss 0.59991
+The mean space ratio is 0.5090309380803788, the ratio threshold is0.5813597558091083
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 80, num timesteps 6480, FPS 106
+Last 8 training episodes: mean/median reward 5.2/5.1, min/max reward 4.7/5.9
+The dist entropy 4.00076, the value loss 0.72192, the action loss -0.49561
+The mean space ratio is 0.5191069461368023, the ratio threshold is0.5896390025317668
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 100, num timesteps 8080, FPS 103
+Last 10 training episodes: mean/median reward 5.3/5.2, min/max reward 4.7/6.1
+The dist entropy 3.76942, the value loss 3.11215, the action loss -1.86604
+The mean space ratio is 0.5300170459498961, the ratio threshold is0.6138577813953159
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 120, num timesteps 9680, FPS 102
+Last 10 training episodes: mean/median reward 5.4/5.3, min/max reward 4.7/6.1
+The dist entropy 3.73686, the value loss 56.50873, the action loss 7.08984
+The mean space ratio is 0.5383653448676069, the ratio threshold is0.6138577813953159
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 140, num timesteps 11280, FPS 100
+Last 10 training episodes: mean/median reward 5.3/5.3, min/max reward 4.5/6.1
+The dist entropy 3.68034, the value loss 76.81356, the action loss 5.03018
+The mean space ratio is 0.5269772438724833, the ratio threshold is0.6138577813953159
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 160, num timesteps 12880, FPS 99
+Last 10 training episodes: mean/median reward 5.3/5.3, min/max reward 4.4/6.0
+The dist entropy 3.62064, the value loss 63.41940, the action loss 7.61449
+The mean space ratio is 0.5316897729535897, the ratio threshold is0.6138577813953159
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 180, num timesteps 14480, FPS 98
+Last 10 training episodes: mean/median reward 5.1/5.5, min/max reward 1.9/6.3
+The dist entropy 3.93774, the value loss 151.13870, the action loss -13.74088
+The mean space ratio is 0.5116231253509719, the ratio threshold is0.6261959001620608
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 200, num timesteps 16080, FPS 98
+Last 10 training episodes: mean/median reward 5.1/5.5, min/max reward 1.9/6.3
+The dist entropy 4.11072, the value loss 22.87728, the action loss -10.32662
+The mean space ratio is 0.5132164411808052, the ratio threshold is0.6261959001620608
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 220, num timesteps 17680, FPS 97
+Last 10 training episodes: mean/median reward 5.3/5.2, min/max reward 4.7/6.3
+The dist entropy 3.82163, the value loss 163.03906, the action loss -1.84522
+The mean space ratio is 0.5318941404650608, the ratio threshold is0.6261959001620608
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 240, num timesteps 19280, FPS 96
+Last 10 training episodes: mean/median reward 5.3/5.2, min/max reward 4.7/5.8
+The dist entropy 3.79571, the value loss 226.18175, the action loss 7.10942
+The mean space ratio is 0.5252814923713605, the ratio threshold is0.6261959001620608
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 260, num timesteps 20880, FPS 95
+Last 10 training episodes: mean/median reward 5.3/5.3, min/max reward 5.0/5.7
+The dist entropy 3.74489, the value loss 5.85720, the action loss 4.25234
+The mean space ratio is 0.5319347869748869, the ratio threshold is0.6261959001620608
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 280, num timesteps 22480, FPS 95
+Last 10 training episodes: mean/median reward 5.4/5.4, min/max reward 4.7/6.3
+The dist entropy 3.57233, the value loss 153.42542, the action loss -9.11353
+The mean space ratio is 0.5426111927236118, the ratio threshold is0.6327914430250721
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 300, num timesteps 24080, FPS 95
+Last 10 training episodes: mean/median reward 5.4/5.4, min/max reward 4.7/6.3
+The dist entropy 3.35845, the value loss 71.67379, the action loss -3.37393
+The mean space ratio is 0.5418692127689718, the ratio threshold is0.6327914430250721
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 320, num timesteps 25680, FPS 95
+Last 10 training episodes: mean/median reward 5.4/5.4, min/max reward 4.6/6.4
+The dist entropy 3.55693, the value loss 87.29955, the action loss -9.91424
+The mean space ratio is 0.5422092498193185, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 340, num timesteps 27280, FPS 95
+Last 10 training episodes: mean/median reward 5.4/5.4, min/max reward 4.6/6.4
+The dist entropy 3.64293, the value loss 3.13828, the action loss -2.10437
+The mean space ratio is 0.5354786685834327, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 360, num timesteps 28880, FPS 96
+Last 10 training episodes: mean/median reward 5.2/5.4, min/max reward 4.5/5.7
+The dist entropy 3.83986, the value loss 5.61750, the action loss -2.81142
+The mean space ratio is 0.5237050574834148, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 380, num timesteps 30480, FPS 96
+Last 10 training episodes: mean/median reward 5.1/5.2, min/max reward 4.4/5.8
+The dist entropy 3.66206, the value loss 9.74062, the action loss -1.67060
+The mean space ratio is 0.5126896571641166, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 400, num timesteps 32080, FPS 95
+Last 10 training episodes: mean/median reward 5.3/5.4, min/max reward 4.4/6.0
+The dist entropy 3.72605, the value loss 3.15927, the action loss 1.00777
+The mean space ratio is 0.5288388763621448, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 420, num timesteps 33680, FPS 95
+Last 10 training episodes: mean/median reward 5.2/5.2, min/max reward 4.4/6.0
+The dist entropy 3.86907, the value loss 1.28938, the action loss 0.29059
+The mean space ratio is 0.5220762802114087, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 440, num timesteps 35280, FPS 95
+Last 10 training episodes: mean/median reward 5.4/5.3, min/max reward 5.0/6.0
+The dist entropy 3.80739, the value loss 1.01428, the action loss 0.68800
+The mean space ratio is 0.5405506456623472, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 460, num timesteps 36880, FPS 95
+Last 10 training episodes: mean/median reward 5.4/5.3, min/max reward 5.0/6.0
+The dist entropy 3.78470, the value loss 1.43934, the action loss 0.75897
+The mean space ratio is 0.5419665864939489, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 480, num timesteps 38480, FPS 95
+Last 10 training episodes: mean/median reward 5.5/5.5, min/max reward 5.0/6.1
+The dist entropy 3.93847, the value loss 0.13427, the action loss 0.00097
+The mean space ratio is 0.5536172918170689, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 500, num timesteps 40080, FPS 95
+Last 10 training episodes: mean/median reward 5.5/5.5, min/max reward 4.7/6.1
+The dist entropy 3.32123, the value loss 0.30296, the action loss -0.42277
+The mean space ratio is 0.5477770756766198, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 520, num timesteps 41680, FPS 95
+Last 10 training episodes: mean/median reward 5.4/5.4, min/max reward 4.7/6.0
+The dist entropy 3.63435, the value loss 1.10652, the action loss -0.73290
+The mean space ratio is 0.5374896308988332, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 540, num timesteps 43280, FPS 95
+Last 10 training episodes: mean/median reward 5.3/5.4, min/max reward 4.7/6.0
+The dist entropy 4.07087, the value loss 0.13195, the action loss -0.62329
+The mean space ratio is 0.5304331805204352, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 560, num timesteps 44880, FPS 95
+Last 10 training episodes: mean/median reward 5.3/5.4, min/max reward 4.7/5.8
+The dist entropy 3.69945, the value loss 0.50381, the action loss 0.64299
+The mean space ratio is 0.531216955504318, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 580, num timesteps 46480, FPS 95
+Last 10 training episodes: mean/median reward 5.4/5.3, min/max reward 4.6/6.1
+The dist entropy 3.82303, the value loss 0.06905, the action loss 0.32757
+The mean space ratio is 0.5363437742143868, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 600, num timesteps 48080, FPS 95
+Last 10 training episodes: mean/median reward 5.4/5.4, min/max reward 4.5/6.1
+The dist entropy 3.93065, the value loss 0.25297, the action loss 0.23461
+The mean space ratio is 0.5362391692082087, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 620, num timesteps 49680, FPS 94
+Last 10 training episodes: mean/median reward 5.5/5.6, min/max reward 4.5/6.0
+The dist entropy 3.78644, the value loss 0.42068, the action loss -0.40695
+The mean space ratio is 0.5496623840605218, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 640, num timesteps 51280, FPS 94
+Last 10 training episodes: mean/median reward 5.6/5.7, min/max reward 5.0/6.2
+The dist entropy 3.78688, the value loss 0.17459, the action loss -0.38871
+The mean space ratio is 0.5642298248569169, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 660, num timesteps 52880, FPS 94
+Last 10 training episodes: mean/median reward 5.6/5.7, min/max reward 5.0/6.2
+The dist entropy 4.01089, the value loss 0.07489, the action loss -0.12185
+The mean space ratio is 0.56496170463562, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 680, num timesteps 54480, FPS 94
+Last 10 training episodes: mean/median reward 5.5/5.5, min/max reward 5.0/6.2
+The dist entropy 3.70959, the value loss 0.13182, the action loss -0.85761
+The mean space ratio is 0.5502739145085214, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 700, num timesteps 56080, FPS 94
+Last 10 training episodes: mean/median reward 5.3/5.2, min/max reward 5.0/5.7
+The dist entropy 3.99290, the value loss 0.02902, the action loss -0.23580
+The mean space ratio is 0.5276595588828126, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 720, num timesteps 57680, FPS 93
+Last 10 training episodes: mean/median reward 5.2/5.2, min/max reward 4.7/5.7
+The dist entropy 3.72473, the value loss 0.04661, the action loss -0.00167
+The mean space ratio is 0.521705519666771, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 740, num timesteps 59280, FPS 93
+Last 10 training episodes: mean/median reward 5.4/5.5, min/max reward 4.7/6.3
+The dist entropy 3.63052, the value loss 0.06094, the action loss 0.09339
+The mean space ratio is 0.5425853315283854, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 760, num timesteps 60880, FPS 92
+Last 10 training episodes: mean/median reward 5.5/5.6, min/max reward 4.7/6.3
+The dist entropy 3.91687, the value loss 0.03048, the action loss 0.11775
+The mean space ratio is 0.5507615749781329, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 780, num timesteps 62480, FPS 91
+Last 10 training episodes: mean/median reward 5.4/5.6, min/max reward 4.7/6.0
+The dist entropy 3.74445, the value loss 0.06518, the action loss -0.01186
+The mean space ratio is 0.5441943087552983, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 800, num timesteps 64080, FPS 91
+Last 10 training episodes: mean/median reward 5.4/5.5, min/max reward 4.7/6.0
+The dist entropy 3.76686, the value loss 0.07233, the action loss -0.23061
+The mean space ratio is 0.539841942544778, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 820, num timesteps 65680, FPS 90
+Last 10 training episodes: mean/median reward 5.4/5.5, min/max reward 4.7/6.0
+The dist entropy 3.77567, the value loss 0.09827, the action loss 0.32933
+The mean space ratio is 0.539841942544778, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 840, num timesteps 67280, FPS 90
+Last 10 training episodes: mean/median reward 5.5/5.8, min/max reward 4.8/6.1
+The dist entropy 3.67983, the value loss 0.11953, the action loss 0.16055
+The mean space ratio is 0.5510968029598395, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 860, num timesteps 68880, FPS 90
+Last 10 training episodes: mean/median reward 5.3/5.2, min/max reward 4.8/6.1
+The dist entropy 4.01352, the value loss 0.02234, the action loss 0.00284
+The mean space ratio is 0.5343065194879968, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 880, num timesteps 70480, FPS 90
+Last 10 training episodes: mean/median reward 5.4/5.5, min/max reward 4.6/5.8
+The dist entropy 3.70272, the value loss 0.03635, the action loss -0.03411
+The mean space ratio is 0.5385772432461379, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 900, num timesteps 72080, FPS 90
+Last 10 training episodes: mean/median reward 5.4/5.5, min/max reward 4.6/5.9
+The dist entropy 3.63689, the value loss 0.06094, the action loss -0.00259
+The mean space ratio is 0.5419543211326001, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 920, num timesteps 73680, FPS 90
+Last 10 training episodes: mean/median reward 5.5/5.7, min/max reward 4.6/6.0
+The dist entropy 4.02548, the value loss 0.01338, the action loss -0.04590
+The mean space ratio is 0.5510748082076509, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 940, num timesteps 75280, FPS 90
+Last 10 training episodes: mean/median reward 5.6/5.7, min/max reward 5.2/6.0
+The dist entropy 3.76511, the value loss 0.01704, the action loss -0.13902
+The mean space ratio is 0.5640252797737717, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 960, num timesteps 76880, FPS 90
+Last 10 training episodes: mean/median reward 5.5/5.6, min/max reward 4.6/6.2
+The dist entropy 3.55697, the value loss 0.06109, the action loss 0.19445
+The mean space ratio is 0.5521564599518973, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 980, num timesteps 78480, FPS 90
+Last 10 training episodes: mean/median reward 5.4/5.3, min/max reward 4.6/6.2
+The dist entropy 3.68580, the value loss 0.02433, the action loss 0.00909
+The mean space ratio is 0.5433341452474394, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1000, num timesteps 80080, FPS 90
+Last 10 training episodes: mean/median reward 5.4/5.3, min/max reward 4.6/6.2
+The dist entropy 3.73867, the value loss 0.02534, the action loss -0.02699
+The mean space ratio is 0.5403076581602295, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1020, num timesteps 81680, FPS 90
+Last 10 training episodes: mean/median reward 5.4/5.5, min/max reward 4.7/5.8
+The dist entropy 3.52066, the value loss 0.01945, the action loss -0.09213
+The mean space ratio is 0.5437535293027758, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1040, num timesteps 83280, FPS 90
+Last 10 training episodes: mean/median reward 5.4/5.5, min/max reward 4.9/5.9
+The dist entropy 3.69177, the value loss 0.01646, the action loss 0.07046
+The mean space ratio is 0.5431263935138781, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1060, num timesteps 84880, FPS 90
+Last 10 training episodes: mean/median reward 5.6/5.6, min/max reward 5.1/6.3
+The dist entropy 3.83539, the value loss 0.01265, the action loss 0.03507
+The mean space ratio is 0.5604426534275213, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1080, num timesteps 86480, FPS 90
+Last 10 training episodes: mean/median reward 5.6/5.6, min/max reward 5.0/6.3
+The dist entropy 3.68479, the value loss 0.00997, the action loss -0.04323
+The mean space ratio is 0.5642854381735126, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1100, num timesteps 88080, FPS 90
+Last 10 training episodes: mean/median reward 5.5/5.5, min/max reward 4.5/6.2
+The dist entropy 3.77427, the value loss 0.02046, the action loss 0.08684
+The mean space ratio is 0.5511958222121001, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1120, num timesteps 89680, FPS 90
+Last 10 training episodes: mean/median reward 5.5/5.5, min/max reward 4.5/6.2
+The dist entropy 3.66349, the value loss 0.01394, the action loss -0.09514
+The mean space ratio is 0.5454098722249269, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1140, num timesteps 91280, FPS 90
+Last 10 training episodes: mean/median reward 5.3/5.4, min/max reward 4.5/5.8
+The dist entropy 3.50905, the value loss 0.01624, the action loss -0.11851
+The mean space ratio is 0.5307977333833773, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1160, num timesteps 92880, FPS 90
+Last 10 training episodes: mean/median reward 5.3/5.3, min/max reward 4.7/5.9
+The dist entropy 3.68170, the value loss 0.00634, the action loss -0.00160
+The mean space ratio is 0.5321004392633835, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1180, num timesteps 94480, FPS 90
+Last 10 training episodes: mean/median reward 5.5/5.6, min/max reward 4.7/6.2
+The dist entropy 3.66111, the value loss 0.04885, the action loss -0.06899
+The mean space ratio is 0.5512440227041641, the ratio threshold is0.6370301088392732
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1200, num timesteps 96080, FPS 90
+Last 10 training episodes: mean/median reward 5.7/5.7, min/max reward 4.7/6.6
+The dist entropy 3.46375, the value loss 0.06569, the action loss 0.00346
+The mean space ratio is 0.56533212386022, the ratio threshold is0.6580993407368658
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1220, num timesteps 97680, FPS 90
+Last 10 training episodes: mean/median reward 5.8/5.9, min/max reward 5.0/6.6
+The dist entropy 3.48171, the value loss 0.03260, the action loss -0.03839
+The mean space ratio is 0.5849414353306094, the ratio threshold is0.6580993407368658
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1240, num timesteps 99280, FPS 90
+Last 10 training episodes: mean/median reward 5.9/5.8, min/max reward 5.2/6.6
+The dist entropy 3.25316, the value loss 0.02783, the action loss -0.02446
+The mean space ratio is 0.5856558042580883, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1260, num timesteps 100880, FPS 90
+Last 10 training episodes: mean/median reward 5.8/5.7, min/max reward 5.2/6.6
+The dist entropy 3.40724, the value loss 0.00763, the action loss -0.06014
+The mean space ratio is 0.5757373827298481, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1280, num timesteps 102480, FPS 91
+Last 10 training episodes: mean/median reward 5.8/5.7, min/max reward 5.2/6.6
+The dist entropy 3.62650, the value loss 0.00999, the action loss 0.13821
+The mean space ratio is 0.5757373827298481, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1300, num timesteps 104080, FPS 91
+Last 10 training episodes: mean/median reward 5.8/5.8, min/max reward 5.3/6.2
+The dist entropy 3.40681, the value loss 0.02602, the action loss 0.16054
+The mean space ratio is 0.5815249597688514, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1320, num timesteps 105680, FPS 91
+Last 10 training episodes: mean/median reward 5.9/5.9, min/max reward 5.3/6.2
+The dist entropy 3.38468, the value loss 0.04070, the action loss -0.05973
+The mean space ratio is 0.5883855730101465, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1340, num timesteps 107280, FPS 91
+Last 10 training episodes: mean/median reward 5.9/6.0, min/max reward 5.3/6.2
+The dist entropy 3.39925, the value loss 0.01465, the action loss -0.08402
+The mean space ratio is 0.5910898633976777, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1360, num timesteps 108880, FPS 91
+Last 10 training episodes: mean/median reward 5.6/5.6, min/max reward 5.2/6.0
+The dist entropy 3.48281, the value loss 0.01670, the action loss -0.02113
+The mean space ratio is 0.56167836698244, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1380, num timesteps 110480, FPS 91
+Last 10 training episodes: mean/median reward 5.5/5.4, min/max reward 5.1/6.3
+The dist entropy 3.35715, the value loss 0.01093, the action loss 0.14423
+The mean space ratio is 0.5504885094513494, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1400, num timesteps 112080, FPS 91
+Last 10 training episodes: mean/median reward 5.5/5.3, min/max reward 4.9/6.3
+The dist entropy 3.51294, the value loss 0.01114, the action loss 0.08766
+The mean space ratio is 0.5487713323563336, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1420, num timesteps 113680, FPS 91
+Last 10 training episodes: mean/median reward 5.6/5.6, min/max reward 4.9/6.4
+The dist entropy 3.56097, the value loss 0.00819, the action loss -0.02244
+The mean space ratio is 0.5599092654421923, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1440, num timesteps 115280, FPS 91
+Last 10 training episodes: mean/median reward 5.7/5.8, min/max reward 4.9/6.4
+The dist entropy 3.51347, the value loss 0.06047, the action loss -0.18140
+The mean space ratio is 0.5674718426808714, the ratio threshold is0.6586391664991774
+
+Time version: cj3_v1-2026.06.23-16-02-18 is training
+Updates 1460, num timesteps 116880, FPS 91
+Last 10 training episodes: mean/median reward 6.0/5.9, min/max reward 5.6/6.4
+The dist entropy 3.53730, the value loss 0.00915, the action loss -0.12098
+The mean space ratio is 0.5982423705841103, the ratio threshold is0.6586391664991774
+
+Terminated

@@ -1,0 +1,60 @@
+============================================================
+ PCT (Online-3D-BPP-PCT) 재현 명령 모음
+ 위치: ~/Documents/assignment2/Online-3D-BPP-PCT
+ venv: .venv-pct  (uv, Python3.9, torch1.10+cu113, gym0.13)
+============================================================
+
+# 먼저 레포 폴더로 이동
+cd ~/Documents/assignment2/Online-3D-BPP-PCT
+
+
+------------------------------------------------------------
+[1] 평가 (이산 setting1, 저자 사전학습 모델 사용)
+    => "레포가 도는가" 가장 빠른 확인. 학습 불필요.
+------------------------------------------------------------
+echo eval | .venv-pct/bin/python evaluation.py --evaluate --load-model \
+  --model-path pretrained_models/setting1_discrete.pt \
+  --load-dataset --dataset-path dataset/setting123_discrete.pt \
+  --setting 1 --internal-node-holder 80 --leaf-node-holder 50 \
+  --evaluation-episodes 10
+
+
+------------------------------------------------------------
+[2] 학습 (이산 setting1)
+    => 학습 루프 동작 확인. num-processes는 머신에 맞게(기본 64=무거움).
+       끝까지 수렴시키려면 오래 걸림. 중단: Ctrl+C
+------------------------------------------------------------
+echo train | .venv-pct/bin/python main.py \
+  --setting 1 --internal-node-holder 80 --leaf-node-holder 50 \
+  --num-processes 8
+
+
+------------------------------------------------------------
+[3] 학습 (연속 도메인, 대회와 더 가까움)
+    => 주의: holder를 크게 잡아야 IndexError 안 남 (작은 박스가 많이 들어감).
+------------------------------------------------------------
+echo conttrain | .venv-pct/bin/python main.py \
+  --continuous --sample-from-distribution \
+  --setting 1 --internal-node-holder 200 --leaf-node-holder 100 \
+  --num-processes 8
+
+
+------------------------------------------------------------
+[4] 내가 학습한 모델로 평가하기 (학습 후)
+    => 학습 결과 체크포인트는 logs/experiment/ 아래 저장됨.
+       그 .pt 경로를 --model-path 에 넣으면 됨.
+------------------------------------------------------------
+ls logs/experiment/            # 저장된 모델(.pt) 확인
+# 예:
+# echo eval | .venv-pct/bin/python evaluation.py --evaluate --load-model \
+#   --model-path logs/experiment/<내모델>.pt \
+#   --load-dataset --dataset-path dataset/setting123_discrete.pt \
+#   --setting 1 --internal-node-holder 80 --leaf-node-holder 50 --evaluation-episodes 10
+
+
+============================================================
+ 메모
+ - main.py / evaluation.py 는 실험명을 input() 으로 물어봐서,
+   앞에 "echo 이름 |" 를 붙여 자동 입력함.
+ - 이 환경(torch)은 *학습 전용*. 대회 제출(py3.12/onnx)과는 별개.
+============================================================

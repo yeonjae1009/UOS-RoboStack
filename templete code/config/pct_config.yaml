@@ -1,0 +1,21 @@
+# PCT(DRL) 추론 설정 — algorithm.py 가 직접 읽는다.
+# (모든 하이퍼파라미터/경로를 코드 하드코딩 대신 여기서 관리)
+
+# 학습된 GAT 정책의 ONNX 모델 경로 (algorithm.py 기준 상대경로)
+model_path: models/pct_model.onnx
+
+# 노드 홀더 크기 — 반드시 학습/ONNX export 때와 동일해야 함(입력 크기 일치)
+internal_node_holder: 200
+leaf_node_holder: 100
+
+# 정규화 계수 = 1 / max(container dims). ONNX 안에 baked-in 되어 있으나 참고용 기록.
+norm_factor: 0.8
+
+# EMS 가지치기 등에 쓰이는 최소 박스 치수 (대회 스펙 H 하한 = 0.13)
+size_minimum: 0.13
+
+# 실험 설정 (3 = 회전 2가지 0deg/Z90deg + density(질량) 입력 사용. cjspec_v2 학습과 일치)
+setting: 3
+
+# density 정규화 상수 = 최대질량/최소부피 = 6.0 / (0.17·0.17·0.13). 학습(givenData.DENSITY_MAX)과 동일해야 함.
+density_max: 1597.01889805696

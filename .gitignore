@@ -4,15 +4,10 @@ __pycache__/
 *.egg-info/
 .ipynb_checkpoints/
 
-# Training artifacts / checkpoints (large, regenerable)
-isaaclab_pallet/runs/
+# Large checkpoints & training logs (regenerable, excluded from git)
 *.pt
-*.onnx
+isaaclab_pallet/runs/
+Online-3D-BPP-PCT/logs/
 
 # OS
 .DS_Store
-
-# Note: sibling projects (Online-3D-BPP-PCT, templete code, palletizing_simulator,
-# submission_*, UOS_robostack_1) are intentionally NOT committed here — this repo
-# tracks the Isaac Lab port (isaaclab_pallet) and its porting docs only.
-# `templete code/src/pct` and `Online-3D-BPP-PCT` remain runtime dependencies.
