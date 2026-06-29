@@ -14,11 +14,13 @@ class PackingContinuous(gym.Env):
                  sample_from_distribution = True,
                  sample_left_bound = 0.1,
                  sample_right_bound = 0.5,
+                 cj_reward_profile = 'base',
                  **kwags):
 
         self.internal_node_holder = internal_node_holder
         self.leaf_node_holder = leaf_node_holder
         self.next_holder = next_holder
+        self.cj_reward_profile = cj_reward_profile
 
         self.shuffle = shuffle
         self.bin_size = container_size
@@ -189,23 +191,73 @@ class PackingContinuous(gym.Env):
         return float(np.clip(support_area / base_area, 0.0, 1.0))
 
     def _compute_shaped_reward(self, box_ratio, packed_box, before, after):
+        # [CJ] Reward profiles for overnight sweeps.
+        # base: current shaped reward.
+        # floor_low: strongly prefers filling low/floor area before climbing.
+        # smooth_low: strongly prefers a flatter height map and well-supported placements.
+        # terminal_ratio: keeps step reward close to base; terminal reward is amplified in step().
+        profiles = {
+            'base': {
+                'floor': 1.0,
+                'boundary': 0.8,
+                'corner': 0.6,
+                'height_smooth': 0.5,
+                'height_penalty': 0.0,
+                'support': 0.05,
+                'weak_support': 0.05,
+            },
+            'floor_low': {
+                'floor': 2.5,
+                'boundary': 0.8,
+                'corner': 0.5,
+                'height_smooth': 0.8,
+                'height_penalty': 0.4,
+                'support': 0.08,
+                'weak_support': 0.08,
+            },
+            'smooth_low': {
+                'floor': 1.8,
+                'boundary': 0.8,
+                'corner': 0.5,
+                'height_smooth': 1.8,
+                'height_penalty': 0.3,
+                'support': 0.12,
+                'weak_support': 0.12,
+            },
+            'terminal_ratio': {
+                'floor': 1.2,
+                'boundary': 0.8,
+                'corner': 0.6,
+                'height_smooth': 0.8,
+                'height_penalty': 0.2,
+                'support': 0.08,
+                'weak_support': 0.08,
+            },
+        }
+        weights = profiles.get(self.cj_reward_profile, profiles['base'])
+
         volume_reward = box_ratio * 10.0
 
         delta_floor = after['floor_coverage'] - before['floor_coverage']
         delta_boundary = after['boundary_floor_coverage'] - before['boundary_floor_coverage']
         delta_corner = after['corner_floor_coverage'] - before['corner_floor_coverage']
 
-        floor_coverage_reward = 1.0 * delta_floor
-        boundary_floor_reward = 0.8 * delta_boundary
-        corner_floor_reward = 0.6 * delta_corner
+        floor_coverage_reward = weights['floor'] * delta_floor
+        boundary_floor_reward = weights['boundary'] * delta_boundary
+        corner_floor_reward = weights['corner'] * delta_corner
 
         height_delta = before['height_roughness'] - after['height_roughness']
-        height_smoothness_reward = 0.5 * float(np.clip(height_delta, -0.05, 0.05))
+        height_smoothness_reward = weights['height_smooth'] * float(np.clip(height_delta, -0.05, 0.05))
+
+        top_height = float(packed_box.lz + packed_box.z)
+        height_penalty = weights['height_penalty'] * (
+            top_height / max(float(self.space.height), 1e-9)
+        )
 
         support_ratio = self._support_ratio(packed_box)
-        support_reward = 0.05 * support_ratio
+        support_reward = weights['support'] * support_ratio
         if packed_box.lz > 1e-6:
-            weak_support_penalty = 0.05 * max(0.0, 0.85 - support_ratio)
+            weak_support_penalty = weights['weak_support'] * max(0.0, 0.85 - support_ratio)
         else:
             weak_support_penalty = 0.0
 
@@ -217,14 +269,17 @@ class PackingContinuous(gym.Env):
             + height_smoothness_reward
             + support_reward
             - weak_support_penalty
+            - height_penalty
         )
 
         self.last_reward_terms = {
+            'reward_profile': self.cj_reward_profile,
             'volume_reward': float(volume_reward),
             'floor_coverage_reward': float(floor_coverage_reward),
             'boundary_floor_reward': float(boundary_floor_reward),
             'corner_floor_reward': float(corner_floor_reward),
             'height_smoothness_reward': float(height_smoothness_reward),
+            'height_penalty': float(height_penalty),
             'support_reward': float(support_reward),
             'weak_support_penalty': float(weak_support_penalty),
             'support_ratio': float(support_ratio),
@@ -349,12 +404,14 @@ class PackingContinuous(gym.Env):
             reward = 0.0 if no_feasible_leaf else -10.0
             done = True
             ratio = self.space.get_ratio()
+            terminal_scale = 25.0 if self.cj_reward_profile == 'terminal_ratio' else 10.0
             termination = 'no_feasible_leaf' if no_feasible_leaf else 'hard_fail'
             info = {
                 'counter': len(self.space.boxes),
                 'ratio': ratio,
-                'reward': ratio * 10 if no_feasible_leaf else 0.0,
+                'reward': ratio * terminal_scale if no_feasible_leaf else 0.0,
                 'termination': termination,
+                'reward_profile': self.cj_reward_profile,
             }
             return self.cur_observation(), reward, done, info
 

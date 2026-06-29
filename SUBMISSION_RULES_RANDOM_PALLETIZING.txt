@@ -1,0 +1,56 @@
+CJ Future Technology Challenge 2026 - Task 2 Random Palletizing Submission Rules
+
+Last updated from user-provided notice: 2026-06-29
+
+Purpose
+- The task is a real-time random palletizing algorithm under a limited buffer.
+- The algorithm must decide order and placement using only the boxes currently available in the buffer.
+- If buffer size is 0, only the current incoming box may be used.
+- Using or previewing the full input sequence for decisions is not allowed and may invalidate the submission.
+
+Evaluation Server Fixed Areas
+- algorithm.py run() function: official execution loop is fixed by the evaluation server.
+- main.py: fixed by the evaluation server.
+- buffer_manager.py: fixed by the evaluation server.
+
+Participant Implementation Areas
+- algorithm.py _find_position()
+- algorithm.py should_finish()
+- Additional helper classes/functions are allowed.
+
+Important Implementation Notes
+- Do not rely on modifying run(), main.py, or buffer_manager.py for scoring behavior.
+- Do not implement logic that uses the full boxes input sequence ahead of time.
+- The participant algorithm should work from current_buffer only, as passed by the official run loop.
+- Avoid packaging generated result JSON, screenshots, or local evaluation outputs.
+- Learned models are not explicitly banned by the notice, but they must not be used to bypass the current-buffer rule.
+- If packaging a model artifact such as ONNX, keep it under src/ (for example src/models/model.onnx) and read its path from config/*.yaml.
+- Do not package training checkpoints, training logs, result JSON, screenshots, or local evaluation outputs.
+
+ZIP Structure Required
+- ZIP root must contain main.py directly.
+- ZIP root must not wrap files inside an extra top-level project directory.
+- Required root files/folders:
+  - main.py
+  - buffer_manager.py
+  - algorithm.py
+  - visualize.py
+  - config/
+  - README.md
+- Optional root folder:
+  - src/
+- config/ must include algorithm_config.yaml and any extra YAML settings used by the code.
+
+Execution Rule
+- The evaluation server extracts the ZIP and runs:
+  python main.py
+
+Input/Output Rule
+- No separate result JSON or technical document is submitted.
+- Running the code should automatically produce algorithm_results.
+- Private evaluation input data will be supplied by the evaluation server.
+
+Current Codex Caution
+- PCT/ONNX can be compatible if inference is called only inside _find_position() using the current box/current buffer state.
+- A custom run() loop that consumes or reasons over the full input sequence is incompatible with the notice.
+- Prefer a submission based on the official _find_position()/should_finish() interface, with any model artifact under src/ and configured through YAML.

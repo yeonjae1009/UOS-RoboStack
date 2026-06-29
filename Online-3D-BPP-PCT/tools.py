@@ -172,6 +172,13 @@ def get_args():
     parser.add_argument('--sample-from-distribution', action='store_true', help='Sample continuous item size from a uniform distribution U(a,b), otherwise sample items from \'item_size_set\' in \'givenData.py\'')
     parser.add_argument('--sample-left-bound', type=float, metavar='a', help='The parametre a of distribution U(a,b)')
     parser.add_argument('--sample-right-bound', type=float, metavar='b', help='The parametre b of distribution U(a,b)')
+    parser.add_argument(
+        '--cj-reward-profile',
+        type=str,
+        default='base',
+        choices=['base', 'floor_low', 'smooth_low', 'terminal_ratio'],
+        help='[CJ] Reward shaping profile for palletizing experiments',
+    )
 
     args = parser.parse_args()
 
