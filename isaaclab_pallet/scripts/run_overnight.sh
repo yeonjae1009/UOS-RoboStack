@@ -28,10 +28,11 @@ SAVE_INTERVAL="${SAVE_INTERVAL:-250}"
 LR="${LR:-1e-6}"                   # gentle fine-tune; raise (e.g. 1e-5) for faster adaptation
 BOX_SEED="${BOX_SEED:-0}"          # starting pool seed (incremented each cycle)
 MAX_FAILS="${MAX_FAILS:-20}"
+REWARD_PROFILE="${REWARD_PROFILE:-base}"
 
 mkdir -p "$RUN_DIR"
 fails=0
-echo "[overnight] start $(date) run_dir=$RUN_DIR num_envs=$NUM_ENVS pool=$MAX_BOXES cycle=$CYCLE_UPDATES" | tee -a "$LOG"
+echo "[overnight] start $(date) run_dir=$RUN_DIR num_envs=$NUM_ENVS pool=$MAX_BOXES cycle=$CYCLE_UPDATES reward_profile=$REWARD_PROFILE" | tee -a "$LOG"
 
 while [ ! -f "$STOP" ]; do
   if [ -f "$RESUME" ]; then
@@ -45,7 +46,7 @@ while [ ! -f "$STOP" ]; do
   python3 isaaclab_pallet/scripts/train_pallet_gat.py \
     --run-name "$RUN_NAME" --num-envs "$NUM_ENVS" --max-boxes "$MAX_BOXES" \
     --box-seed "$BOX_SEED" --updates "$CYCLE_UPDATES" --save-interval "$SAVE_INTERVAL" \
-    --learning-rate "$LR" --seed 0 --headless "${INIT[@]}" >> "$LOG" 2>&1
+    --learning-rate "$LR" --reward-profile "$REWARD_PROFILE" --seed 0 --headless "${INIT[@]}" >> "$LOG" 2>&1
   code=$?
 
   echo "[overnight] cycle exited code=$code $(date)" | tee -a "$LOG"

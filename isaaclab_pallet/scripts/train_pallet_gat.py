@@ -37,6 +37,12 @@ parser.add_argument("--tilt-fail-threshold", type=float, default=0.35)
 parser.add_argument("--out-of-bounds-margin", type=float, default=0.02)
 parser.add_argument("--height-fail-margin", type=float, default=0.005)
 parser.add_argument("--drop-fail-threshold", type=float, default=0.08)
+parser.add_argument(
+    "--reward-profile",
+    choices=["base", "floor_low", "smooth_low", "terminal_ratio", "finish_ratio"],
+    default="base",
+    help="Reward-scale preset. Keeps the Isaac Lab GAT pipeline unchanged.",
+)
 # ★2 entropy bonus (escape plateau). dist_entropy is added to the loss to encourage exploration.
 parser.add_argument("--entropy-coef", type=float, default=0.01)
 # ★1 eval-in-loop + best-checkpoint: every N updates, score the policy on the real
@@ -71,6 +77,54 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import eval_competition_generate as _cg  # noqa: E402
 
 _PALLET_VOLUME = 1.2 * 1.0 * 1.25
+
+
+def apply_reward_profile(cfg: PalletPackingEnvCfg, profile: str) -> None:
+    """Apply reward-scale presets to the existing Isaac Lab environment config."""
+    profiles = {
+        "base": {},
+        "floor_low": {
+            "floor_coverage_reward_scale": 2.5,
+            "boundary_floor_reward_scale": 0.8,
+            "corner_floor_reward_scale": 0.5,
+            "height_smoothness_reward_scale": 0.8,
+            "support_reward_scale": 0.08,
+            "weak_support_penalty_scale": 0.08,
+            "elevation_penalty_scale": 0.4,
+        },
+        "smooth_low": {
+            "floor_coverage_reward_scale": 1.8,
+            "boundary_floor_reward_scale": 0.8,
+            "corner_floor_reward_scale": 0.5,
+            "height_smoothness_reward_scale": 1.8,
+            "support_reward_scale": 0.12,
+            "weak_support_penalty_scale": 0.12,
+            "elevation_penalty_scale": 0.3,
+        },
+        "terminal_ratio": {
+            "floor_coverage_reward_scale": 1.2,
+            "boundary_floor_reward_scale": 0.8,
+            "corner_floor_reward_scale": 0.6,
+            "height_smoothness_reward_scale": 0.8,
+            "support_reward_scale": 0.08,
+            "weak_support_penalty_scale": 0.08,
+            "elevation_penalty_scale": 0.2,
+            "terminal_ratio_reward_scale": 15.0,
+        },
+        "finish_ratio": {
+            "floor_coverage_reward_scale": 1.2,
+            "boundary_floor_reward_scale": 0.8,
+            "corner_floor_reward_scale": 0.6,
+            "height_smoothness_reward_scale": 0.8,
+            "support_reward_scale": 0.08,
+            "weak_support_penalty_scale": 0.08,
+            "elevation_penalty_scale": 0.2,
+            "terminal_ratio_reward_scale": 18.0,
+            "auto_finish_ratio": 0.72,
+        },
+    }
+    for name, value in profiles[profile].items():
+        setattr(cfg, name, value)
 
 
 def evaluate_competition_score(policy, pct_args, pct_cfg, seq_paths, device) -> float:
@@ -173,6 +227,7 @@ def main() -> None:
     cfg.out_of_bounds_margin = args_cli.out_of_bounds_margin
     cfg.height_fail_margin = args_cli.height_fail_margin
     cfg.drop_fail_threshold = args_cli.drop_fail_threshold
+    apply_reward_profile(cfg, args_cli.reward_profile)
 
     env = PalletPackingEnv(cfg)
     obs_dict, _ = env.reset(seed=args_cli.seed)
@@ -215,7 +270,8 @@ def main() -> None:
         f"run_dir={run_dir} device={env.device} num_envs={env.num_envs} "
         f"obs_shape={tuple(all_nodes.shape)} leaf_shape={tuple(leaf_nodes.shape)} "
         f"num_steps={args_cli.num_steps} normFactor={pct_args.normFactor} "
-        f"drift_fail_threshold={cfg.drift_fail_threshold}",
+        f"drift_fail_threshold={cfg.drift_fail_threshold} "
+        f"reward_profile={args_cli.reward_profile}",
         flush=True,
     )
 

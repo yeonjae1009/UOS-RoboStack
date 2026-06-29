@@ -185,6 +185,8 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     weak_support_penalty_scale: float = 0.05
     weak_support_threshold: float = 0.85
     elevation_penalty_scale: float = 0.0  # #4 density knob (fill-bottom-first); 0=off, tune on Isaac
+    terminal_ratio_reward_scale: float = 0.0  # success/no-feasible terminal fill bonus; 0=off
+    auto_finish_ratio: float = 0.0  # stop successfully after this utilization ratio; 0=off
     physics_fail_penalty: float = -10.0
     invalid_action_penalty: float = -10.0
     no_feasible_leaf_reward: float = 0.0
@@ -493,10 +495,15 @@ class PalletPackingEnv(DirectRLEnv):
     _FAIL_REASONS = (2, 3, 4, 6, 7, 8)
 
     def _get_rewards(self) -> torch.Tensor:
+        fail = torch.zeros_like(self.last_terminated)
+        for reason in self._FAIL_REASONS:
+            fail |= self.last_done_reason == reason
+        terminal_success = self.last_terminated & (~fail)
+        if self.cfg.terminal_ratio_reward_scale > 0.0:
+            self.last_reward = self.last_reward + (
+                terminal_success.float() * self.last_ratio_t * self.cfg.terminal_ratio_reward_scale
+            )
         if self.cfg.fail_zeroes_pallet:
-            fail = torch.zeros_like(self.last_terminated)
-            for reason in self._FAIL_REASONS:
-                fail |= self.last_done_reason == reason
             # Cancel everything earned this episode so the failed pallet nets 0
             # (the failing step's shaped reward is dropped too).
             self.last_reward = torch.where(fail, -self.episode_reward_sum, self.last_reward)
@@ -634,7 +641,8 @@ class PalletPackingEnv(DirectRLEnv):
         self.physics_features = torch.where(valid.unsqueeze(1), feat, self.physics_features)
 
     # done_reason codes: 1=invalid/no-feasible-leaf, 2=drift, 3=tilt, 4=out-of-bounds,
-    # 5=sequence completed, 6=height exceeded, 7=dropped, 8=stack collapse (A2).
+    # 5=sequence completed, 6=height exceeded, 7=dropped, 8=stack collapse (A2),
+    # 9=auto finish by target utilization.
     def _get_dones(self) -> tuple[torch.Tensor, torch.Tensor]:
         self._update_physics_metrics()
         completed = torch.tensor(
@@ -644,6 +652,12 @@ class PalletPackingEnv(DirectRLEnv):
         )
         if self.last_done_reason is not None:
             self.last_done_reason[completed] = 5
+        if self.cfg.auto_finish_ratio > 0.0:
+            auto_finish = (
+                torch.as_tensor(self.current_box_idx, dtype=torch.long, device=self.device) > 0
+            ) & (self.last_ratio_t >= self.cfg.auto_finish_ratio) & (~self.last_terminated)
+            self.last_done_reason[auto_finish] = 9
+            self.last_terminated = self.last_terminated | auto_finish
         time_out = self.episode_length_buf >= self.max_episode_length - 1
         terminated = self.last_terminated | completed
         reset_mask = terminated | time_out
