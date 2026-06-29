@@ -39,7 +39,7 @@ def sortPoints(point_list):
 def ConvexHull(point_list):
     # initalize two empty lists for upper
     # and lower hulls.
-    point_list = np.array(point_list).astype(np.float)
+    point_list = np.array(point_list).astype(np.float64)
     point_list[:,0] += point_list[:,1] * 1e-6
     point_list = point_list.tolist()
     upperHull = []
