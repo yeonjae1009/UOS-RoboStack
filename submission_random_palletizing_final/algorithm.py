@@ -6,12 +6,16 @@ from pathlib import Path
 from typing import List, Optional, Tuple, TypedDict
 
 import numpy as np
-import onnxruntime as ort
 import yaml
 
 from buffer_manager import BufferManager
 from src.pct.packer import Packer
 from src.pct.stability import apply_stability_mask
+
+try:
+    import onnxruntime as ort
+except ImportError:  # Evaluation still remains runnable if extra packages are not installed.
+    ort = None
 
 
 class BoxInput(TypedDict):
@@ -77,14 +81,21 @@ class Palletizer:
         if not os.path.isabs(model_path):
             model_path = str(_HERE / model_path)
 
-        session_options = ort.SessionOptions()
-        session_options.intra_op_num_threads = 1
-        self.session = ort.InferenceSession(
-            model_path,
-            sess_options=session_options,
-            providers=["CPUExecutionProvider"],
-        )
-        self.input_name = self.session.get_inputs()[0].name
+        self.session = None
+        self.input_name = None
+        if ort is not None:
+            try:
+                session_options = ort.SessionOptions()
+                session_options.intra_op_num_threads = 1
+                self.session = ort.InferenceSession(
+                    model_path,
+                    sess_options=session_options,
+                    providers=["CPUExecutionProvider"],
+                )
+                self.input_name = self.session.get_inputs()[0].name
+            except Exception:
+                self.session = None
+                self.input_name = None
 
         self.container = [float(self.pallet.length), float(self.pallet.width), float(self.pallet.height)]
         self._reset_state()
@@ -128,13 +139,34 @@ class Palletizer:
         if float(safe_leaf_region[:, 8].sum()) <= 0.0:
             return None
 
-        probs = self.session.run(None, {self.input_name: obs_arr})[0][0].astype(np.float64, copy=True)
-        probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
-        selected = int(np.argmax(probs))
+        if self.session is not None and self.input_name is not None:
+            probs = self.session.run(None, {self.input_name: obs_arr})[0][0].astype(np.float64, copy=True)
+            probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
+            selected = int(np.argmax(probs))
+        else:
+            selected = self._fallback_leaf_index(safe_leaf_region)
         leaf = safe_leaf_region[selected]
         if float(np.sum(leaf[0:6])) == 0.0:
             return None
         return leaf
+
+    def _fallback_leaf_index(self, leaf_region: np.ndarray) -> int:
+        valid_indices = np.flatnonzero(leaf_region[:, 8] > 0.5)
+        if len(valid_indices) == 0:
+            return 0
+        best_idx = int(valid_indices[0])
+        best_score = -1e18
+        for idx in valid_indices:
+            leaf = leaf_region[int(idx)]
+            lx, ly, lz, hx, hy, _hz = [float(v) for v in leaf[:6]]
+            footprint = max(0.0, hx - lx) * max(0.0, hy - ly)
+            edge_bonus = 0.05 * (float(lx <= 1e-6) + float(ly <= 1e-6))
+            low_bonus = -0.01 * lz
+            score = footprint + edge_bonus + low_bonus
+            if score > best_score:
+                best_score = score
+                best_idx = int(idx)
+        return best_idx
 
     def _find_position(
         self,

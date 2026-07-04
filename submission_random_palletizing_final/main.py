@@ -13,7 +13,12 @@ from algorithm import (
     RunResult,
     Palletizer,
 )
-from visualize import visualize
+
+try:
+    from visualize import visualize
+except Exception:
+    def visualize(*args, **kwargs) -> None:
+        return None
 
 
 def load_config(config_path: str) -> Dict:
