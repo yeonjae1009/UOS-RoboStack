@@ -33,6 +33,7 @@ try:  # works both as a package submodule (env) and as a top-level module (tests
     from . import pct_reward
 except ImportError:  # pragma: no cover
     import pct_reward
+from src.pct.stability import apply_stability_mask
 
 
 @dataclass
@@ -64,7 +65,17 @@ def _make_packer(cfg: PackerConfig):
 def _observe(packer, box, cfg: PackerConfig) -> np.ndarray:
     density = pct_reward.density_for_box(box, cfg.setting, cfg.density_max)
     node_count = cfg.internal_node_holder + cfg.leaf_node_holder + 1
-    return packer.observe(box["size"], density=density).reshape(node_count, 9).astype(np.float32)
+    obs = packer.observe(box["size"], density=density).reshape(node_count, 9).astype(np.float32)
+    leaf_start = cfg.internal_node_holder
+    leaf_end = leaf_start + cfg.leaf_node_holder
+    obs[leaf_start:leaf_end], _ = apply_stability_mask(
+        obs[leaf_start:leaf_end],
+        packer.space.boxes,
+        box["size"],
+        float(box["mass"]),
+        cfg.pallet_size,
+    )
+    return obs
 
 
 def _packer_step(packer, box, action_idx: int, cfg: PackerConfig) -> dict:
@@ -79,6 +90,14 @@ def _packer_step(packer, box, action_idx: int, cfg: PackerConfig) -> dict:
     node_count = cfg.internal_node_holder + cfg.leaf_node_holder + 1
     obs = packer.observe(box["size"], density=density).reshape(node_count, 9).astype(np.float32)
     leaf_nodes = obs[cfg.internal_node_holder:cfg.internal_node_holder + cfg.leaf_node_holder]
+    leaf_nodes, _stability = apply_stability_mask(
+        leaf_nodes,
+        packer.space.boxes,
+        box["size"],
+        float(box["mass"]),
+        cfg.pallet_size,
+    )
+    obs[cfg.internal_node_holder:cfg.internal_node_holder + cfg.leaf_node_holder] = leaf_nodes
     valid_count = int((leaf_nodes[:, 8] > 0.5).sum())
 
     leaf = pct_reward.select_leaf(leaf_nodes, action_idx)

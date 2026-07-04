@@ -27,6 +27,7 @@ sys.path.insert(0, str(TEMPLATE_DIR))          # for `src.pct.packer`
 sys.path.insert(0, str(ONLINE_PCT_DIR))        # for `model`, `tools`
 
 from src.pct.packer import Packer  # noqa: E402  (templete packer = training packer)
+from src.pct.stability import apply_stability_mask  # noqa: E402
 import tools as pct_tools  # noqa: E402
 from model import DRL_GAT  # noqa: E402
 
@@ -92,7 +93,14 @@ def run_sequence(boxes: list[dict], policy: DRL_GAT, pct_args: SimpleNamespace, 
         obs_arr = obs.reshape(node_count, 9).astype(np.float32)
 
         leaf_region = obs_arr[INH:INH + LNH, :]
-        if float(leaf_region[:, 8].sum()) <= 0.0:
+        safe_leaf_region, _stability = apply_stability_mask(
+            leaf_region,
+            packer.space.boxes,
+            size,
+            float(box["mass"]),
+            container,
+        )
+        if float(safe_leaf_region[:, 8].sum()) <= 0.0:
             terminated, terminated_step = True, int(box["step"])
             break
 
@@ -100,12 +108,24 @@ def run_sequence(boxes: list[dict], policy: DRL_GAT, pct_args: SimpleNamespace, 
         all_nodes, _leaf_nodes = pct_tools.get_leaf_nodes(pct_obs, INH, LNH)
         all_nodes = all_nodes.to(device)
         with torch.no_grad():
-            _, selected_idx, _, _ = policy(
-                all_nodes, deterministic=not sample, normFactor=pct_args.normFactor
+            _action_log_prob, _selected_idx, _entropy, _hidden, dist = policy.actor(
+                all_nodes,
+                deterministic=not sample,
+                evaluate_action=True,
+                normFactor=pct_args.normFactor,
             )
-        sel = int(selected_idx.flatten()[0].item())
+        probs = dist.probs[0].detach().cpu().numpy().astype(np.float64, copy=True)
+        probs[safe_leaf_region[:, 8] <= 0.5] = 0.0
+        if float(probs.sum()) <= 0.0:
+            terminated, terminated_step = True, int(box["step"])
+            break
+        if sample:
+            probs = probs / probs.sum()
+            sel = int(np.random.choice(np.arange(len(probs)), p=probs))
+        else:
+            sel = int(np.argmax(probs))
 
-        leaf = leaf_region[sel]
+        leaf = safe_leaf_region[sel]
         if float(np.sum(leaf[0:6])) == 0.0:
             terminated, terminated_step = True, int(box["step"])
             break

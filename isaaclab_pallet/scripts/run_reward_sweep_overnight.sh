@@ -44,6 +44,7 @@ SAVE_INTERVAL="${SAVE_INTERVAL:-250}"
 EVAL_INTERVAL="${EVAL_INTERVAL:-50}"
 LR="${LR:-1e-6}"
 BOX_SEED="${BOX_SEED:-0}"
+ISAAC_SELECT_BEST="${ISAAC_SELECT_BEST:-0}"
 
 if [ "$#" -gt 0 ]; then
   PROFILES=("$@")
@@ -99,6 +100,18 @@ for i in "${!PROFILES[@]}"; do
   if [ "$code" -ne 0 ]; then
     echo "[reward-sweep] stopping after failed profile=$profile; inspect $log"
     exit "$code"
+  fi
+
+  if [ "$ISAAC_SELECT_BEST" = "1" ]; then
+    echo "[reward-sweep] Isaac best selection profile=$profile $(date)" | tee -a "$log"
+    python3 isaaclab_pallet/scripts/select_best_by_isaac.py \
+      --run-dir "$run_dir" >> "$log" 2>&1
+    code=$?
+    echo "[reward-sweep] Isaac best selection profile=$profile exited code=$code $(date)" | tee -a "$log"
+    if [ "$code" -ne 0 ]; then
+      echo "[reward-sweep] stopping after Isaac best selection failed profile=$profile; inspect $log"
+      exit "$code"
+    fi
   fi
 done
 

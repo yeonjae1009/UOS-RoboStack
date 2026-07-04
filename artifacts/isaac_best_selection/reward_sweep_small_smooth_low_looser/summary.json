@@ -1,0 +1,80 @@
+{
+  "best": {
+    "checkpoint": "/home/user/Documents/assignment2_project/isaaclab_pallet/runs/reward_sweep_small_smooth_low/PCT-best.pt",
+    "avg_score": 90.0,
+    "success": true,
+    "episodes": [
+      {
+        "source": "box_sequence_0.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.246,
+        "buffer_size": 0,
+        "score": 90.9
+      },
+      {
+        "source": "box_sequence_1.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.247,
+        "buffer_size": 0,
+        "score": 89.1
+      }
+    ],
+    "result_json": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/reward_sweep_small_smooth_low_looser/PCT-best/sim_results/result.json",
+    "log": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/reward_sweep_small_smooth_low_looser/PCT-best/eval.log"
+  },
+  "copied_to": "/home/user/Documents/assignment2_project/isaaclab_pallet/runs/reward_sweep_small_smooth_low/PCT-best-isaac.pt",
+  "records": [
+    {
+      "checkpoint": "/home/user/Documents/assignment2_project/isaaclab_pallet/runs/reward_sweep_small_smooth_low/PCT-best.pt",
+      "avg_score": 90.0,
+      "success": true,
+      "episodes": [
+        {
+          "source": "box_sequence_0.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.246,
+          "buffer_size": 0,
+          "score": 90.9
+        },
+        {
+          "source": "box_sequence_1.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.247,
+          "buffer_size": 0,
+          "score": 89.1
+        }
+      ],
+      "result_json": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/reward_sweep_small_smooth_low_looser/PCT-best/sim_results/result.json",
+      "log": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/reward_sweep_small_smooth_low_looser/PCT-best/eval.log"
+    },
+    {
+      "checkpoint": "/home/user/Documents/assignment2_project/isaaclab_pallet/runs/reward_sweep_small_smooth_low/PCT-latest.pt",
+      "avg_score": 76.65,
+      "success": true,
+      "episodes": [
+        {
+          "source": "box_sequence_0.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.097,
+          "buffer_size": 0,
+          "score": 65.7
+        },
+        {
+          "source": "box_sequence_1.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.203,
+          "buffer_size": 0,
+          "score": 87.6
+        }
+      ],
+      "result_json": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/reward_sweep_small_smooth_low_looser/PCT-latest/sim_results/result.json",
+      "log": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/reward_sweep_small_smooth_low_looser/PCT-latest/eval.log"
+    }
+  ]
+}

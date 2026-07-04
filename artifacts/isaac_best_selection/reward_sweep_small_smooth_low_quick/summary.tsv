@@ -1,0 +1,3 @@
+checkpoint	avg_score	success	result_json
+PCT-best.pt	76.50	True	/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/reward_sweep_small_smooth_low_quick/PCT-best/sim_results/result.json
+PCT-latest.pt	79.45	True	/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/reward_sweep_small_smooth_low_quick/PCT-latest/sim_results/result.json
