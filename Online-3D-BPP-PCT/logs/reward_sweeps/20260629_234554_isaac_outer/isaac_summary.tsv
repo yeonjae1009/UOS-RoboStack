@@ -1,0 +1,4 @@
+round	profile	status	avg_score	failures	collapse	drop	oob	ckpt	result_json
+1	floor_low	failed	0.00	999999	999999	999999	999999		
+1	smooth_low	failed	0.00	999999	999999	999999	999999		
+1	terminal_ratio	failed	0.00	999999	999999	999999	999999		

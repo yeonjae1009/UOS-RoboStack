@@ -239,8 +239,24 @@ def main() -> None:
     pct_args = make_pct_args(env)
     policy = DRL_GAT(pct_args).to(env.device)
     if args_cli.load_model:
-        policy = pct_tools.load_policy(args_cli.load_model, policy).to(env.device)
-        print(f"[gat-train] loaded original PCT weights: {args_cli.load_model}", flush=True)
+        # The warm-start checkpoint can be either (a) a GAT-native state_dict saved
+        # by THIS script (clean keys; critic.bias has shape [1]) or (b) an original
+        # Online-3D-BPP-PCT checkpoint (module./add_bias keys). pct_tools.load_policy
+        # remaps keys and squeeze(-1)s every tensor for format (b); applied to (a)
+        # it squeezes critic.bias [1] -> [] and the strict load_state_dict raises.
+        # Try the native load first, fall back to load_policy for the PCT format.
+        sd = torch.load(args_cli.load_model, map_location="cpu")
+        if isinstance(sd, (list, tuple)) and len(sd) == 2:
+            sd = sd[0]
+        if isinstance(sd, dict) and "model" in sd:
+            sd = sd["model"]
+        try:
+            policy.load_state_dict(sd, strict=True)
+            print(f"[gat-train] loaded GAT checkpoint: {args_cli.load_model}", flush=True)
+        except RuntimeError:
+            policy = pct_tools.load_policy(args_cli.load_model, policy)
+            print(f"[gat-train] loaded original PCT weights: {args_cli.load_model}", flush=True)
+        policy = policy.to(env.device)
     optimizer = torch.optim.Adam(policy.parameters(), lr=args_cli.learning_rate)
 
     start_update = 0
@@ -390,7 +406,18 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    import os
+    import traceback
     try:
         main()
-    finally:
-        simulation_app.close()
+    except BaseException:
+        # Print the REAL error first: on the error path Isaac's
+        # simulation_app.close() shutdown callback can busy-loop forever, which
+        # otherwise swallows the propagating traceback and looks like a silent
+        # 100%-CPU hang. Hard-exit non-zero so the failure is fast and visible
+        # (and the sweep wrapper's `code=$?` stops the pipeline instead of hanging).
+        traceback.print_exc()
+        sys.stdout.flush()
+        sys.stderr.flush()
+        os._exit(1)
+    simulation_app.close()

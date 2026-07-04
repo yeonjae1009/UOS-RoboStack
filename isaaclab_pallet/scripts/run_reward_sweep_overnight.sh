@@ -17,6 +17,21 @@
 set -u
 cd "$(dirname "$0")/../.."   # -> project root
 
+# --- robustness: make torch find its bundled CUDA libs (e.g. libcusparseLt.so.0).
+# Past sweep runs died at `import torch` with
+#   ImportError: libcusparseLt.so.0: cannot open shared object file
+# whenever launched from a shell whose LD_LIBRARY_PATH lacked the nvidia/*/lib dirs.
+# Prepend every nvidia/*/lib under the active python's site-packages so a fresh
+# shell works the same as an env-activated one.
+NV_LIB_DIRS="$(python3 -c 'import site,glob,os
+paths=[]
+for sp in (site.getsitepackages() if hasattr(site,"getsitepackages") else []):
+    paths += glob.glob(os.path.join(sp, "nvidia", "*", "lib"))
+print(os.pathsep.join(paths))' 2>/dev/null)"
+if [ -n "$NV_LIB_DIRS" ]; then
+  export LD_LIBRARY_PATH="${NV_LIB_DIRS}${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+fi
+
 RUN_PREFIX="${RUN_PREFIX:-reward_sweep}"
 BEST="${BEST:-isaaclab_pallet/runs/overnight_full/PCT-latest.pt}"
 FALLBACK_BEST="Online-3D-BPP-PCT/logs/experiment/cjspec_v2-2026.06.24-23-29-47/PCT-best.pt"
