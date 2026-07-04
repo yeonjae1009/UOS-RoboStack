@@ -5,16 +5,28 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional, Tuple, TypedDict
 
-import numpy as np
-import yaml
-
 from buffer_manager import BufferManager
-from src.pct.packer import Packer
-from src.pct.stability import apply_stability_mask
+
+try:
+    import numpy as np
+except Exception:
+    np = None
+
+try:
+    import yaml
+except Exception:
+    yaml = None
+
+try:
+    from src.pct.packer import Packer
+    from src.pct.stability import apply_stability_mask
+except Exception:
+    Packer = None
+    apply_stability_mask = None
 
 try:
     import onnxruntime as ort
-except ImportError:
+except Exception:
     ort = None
 
 
@@ -132,9 +144,21 @@ class Palletizer:
         if hasattr(self, "_policy_ready"):
             return
 
+        self._pct_available = False
+        self._session = None
+        self._input_name = None
+
+        if np is None or yaml is None or Packer is None or apply_stability_mask is None:
+            self._policy_ready = True
+            return
+
         here = Path(__file__).resolve().parent
-        with (here / "config" / "pct_config.yaml").open("r", encoding="utf-8") as f:
-            cfg = yaml.safe_load(f)
+        try:
+            with (here / "config" / "pct_config.yaml").open("r", encoding="utf-8") as f:
+                cfg = yaml.safe_load(f)
+        except Exception:
+            self._policy_ready = True
+            return
 
         self._pct_cfg = cfg
         self._inh = int(cfg["internal_node_holder"])
@@ -143,27 +167,33 @@ class Palletizer:
         self._size_minimum = float(cfg["size_minimum"])
         self._density_max = float(cfg.get("density_max", 1.0))
         self._container = [float(self.pallet.length), float(self.pallet.width), float(self.pallet.height)]
-        self._session = None
-        self._input_name = None
 
         model_path = str(cfg["model_path"])
         if not os.path.isabs(model_path):
             model_path = str(here / model_path)
 
         if ort is not None:
-            session_options = ort.SessionOptions()
-            session_options.intra_op_num_threads = 1
-            self._session = ort.InferenceSession(
-                model_path,
-                sess_options=session_options,
-                providers=["CPUExecutionProvider"],
-            )
-            self._input_name = self._session.get_inputs()[0].name
+            try:
+                session_options = ort.SessionOptions()
+                session_options.intra_op_num_threads = 1
+                self._session = ort.InferenceSession(
+                    model_path,
+                    sess_options=session_options,
+                    providers=["CPUExecutionProvider"],
+                )
+                self._input_name = self._session.get_inputs()[0].name
+            except Exception:
+                self._session = None
+                self._input_name = None
 
+        self._pct_available = True
         self._policy_ready = True
 
-    def _ensure_packer_for_current_run(self) -> None:
+    def _ensure_packer_for_current_run(self) -> bool:
         self._ensure_policy()
+        if not self._pct_available:
+            return False
+
         if len(self.sequence) == 0:
             self._packer = Packer(
                 self._container,
@@ -182,6 +212,8 @@ class Palletizer:
                 self._setting,
             )
             self._packer.reset()
+
+        return True
 
     def _density(self, box: BoxInput, size: List[float]) -> float:
         if self._setting < 3:
@@ -205,6 +237,26 @@ class Palletizer:
                 best_score = score
                 best_idx = int(idx)
         return best_idx
+
+    def _find_position_baseline(
+        self,
+        box: BoxInput,
+    ) -> Optional[Tuple[float, float, float, Tuple[float, float, float], int]]:
+        for dims, rotation in self._candidate_orientations(box["size"]):
+            if self._fits_current_position(dims):
+                return self.cursor_x, self.cursor_y, self.layer_z, dims, rotation
+
+            self._move_next_row()
+
+            if self._fits_current_position(dims):
+                return self.cursor_x, self.cursor_y, self.layer_z, dims, rotation
+
+            self._move_next_layer()
+
+            if self._fits_current_position(dims):
+                return self.cursor_x, self.cursor_y, self.layer_z, dims, rotation
+
+        return None
 
     # -----------------------------------------------------------------------
     # 기본 적재 로직
@@ -257,13 +309,17 @@ class Palletizer:
         self,
         box: BoxInput,
     ) -> Optional[Tuple[float, float, float, Tuple[float, float, float], int]]:
-        self._ensure_packer_for_current_run()
+        if not self._ensure_packer_for_current_run():
+            return self._find_position_baseline(box)
 
         size = [float(box["size"][0]), float(box["size"][1]), float(box["size"][2])]
         density = self._density(box, size)
-        obs = self._packer.observe(size, density)
-        obs_arr = obs.reshape(1, -1, 9).astype(np.float32)
-        leaf_region = obs_arr[0, self._inh:self._inh + self._lnh, :]
+        try:
+            obs = self._packer.observe(size, density)
+            obs_arr = obs.reshape(1, -1, 9).astype(np.float32)
+            leaf_region = obs_arr[0, self._inh:self._inh + self._lnh, :]
+        except Exception:
+            return None
 
         safe_leaf_region, _ = apply_stability_mask(
             leaf_region,
@@ -276,9 +332,12 @@ class Palletizer:
             return None
 
         if self._session is not None and self._input_name is not None:
-            probs = self._session.run(None, {self._input_name: obs_arr})[0][0].astype(np.float64, copy=True)
-            probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
-            selected = int(np.argmax(probs))
+            try:
+                probs = self._session.run(None, {self._input_name: obs_arr})[0][0].astype(np.float64, copy=True)
+                probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
+                selected = int(np.argmax(probs))
+            except Exception:
+                selected = self._fallback_leaf_index(safe_leaf_region)
         else:
             selected = self._fallback_leaf_index(safe_leaf_region)
 
@@ -286,7 +345,12 @@ class Palletizer:
         if float(np.sum(leaf[:6])) == 0.0:
             return None
 
-        if not self._packer.place(leaf[:6]):
+        try:
+            placed = self._packer.place(leaf[:6])
+        except Exception:
+            return None
+
+        if not placed:
             return None
 
         x, y, z, lx, ly, lz, _ = [float(v) for v in self._packer.packed[-1]]
