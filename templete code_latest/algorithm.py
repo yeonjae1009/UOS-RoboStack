@@ -167,102 +167,21 @@ class Palletizer:
         self,
         box: BoxInput,
     ) -> Optional[Tuple[float, float, float, Tuple[float, float, float], int]]:
-        import os
-        from pathlib import Path
+        for dims, rotation in self._candidate_orientations(box["size"]):
+            if self._fits_current_position(dims):
+                return self.cursor_x, self.cursor_y, self.layer_z, dims, rotation
 
-        import numpy as np
-        import onnxruntime as ort
-        import yaml
+            self._move_next_row()
 
-        runtime = getattr(self, "_pct_runtime", None)
+            if self._fits_current_position(dims):
+                return self.cursor_x, self.cursor_y, self.layer_z, dims, rotation
 
-        if runtime is None:
-            here = Path(__file__).resolve().parent
+            self._move_next_layer()
 
-            with open(here / "config" / "pct_config.yaml", "r", encoding="utf-8") as f:
-                cfg = yaml.safe_load(f)
+            if self._fits_current_position(dims):
+                return self.cursor_x, self.cursor_y, self.layer_z, dims, rotation
 
-            model_path = str(cfg["model_path"])
-
-            if not os.path.isabs(model_path):
-                model_path = str(here / model_path)
-
-            session_options = ort.SessionOptions()
-            session_options.intra_op_num_threads = 1
-            session = ort.InferenceSession(
-                model_path,
-                sess_options=session_options,
-                providers=["CPUExecutionProvider"],
-            )
-
-            runtime = {
-                "internal_node_holder": int(cfg["internal_node_holder"]),
-                "leaf_node_holder": int(cfg["leaf_node_holder"]),
-                "setting": int(cfg["setting"]),
-                "size_minimum": float(cfg["size_minimum"]),
-                "density_max": float(cfg.get("density_max", 1.0)),
-                "session": session,
-                "input_name": session.get_inputs()[0].name,
-            }
-            self._pct_runtime = runtime
-
-        if getattr(self, "_pct_sequence_ref", None) is not self.sequence:
-            from src.pct.packer import Packer
-
-            container = [
-                float(self.pallet.length),
-                float(self.pallet.width),
-                float(self.pallet.height),
-            ]
-            packer = Packer(
-                container,
-                runtime["size_minimum"],
-                runtime["internal_node_holder"],
-                runtime["leaf_node_holder"],
-                runtime["setting"],
-            )
-            packer.reset()
-            self._pct_packer = packer
-            self._pct_sequence_ref = self.sequence
-
-        packer = self._pct_packer
-
-        size = [
-            float(box["size"][0]),
-            float(box["size"][1]),
-            float(box["size"][2]),
-        ]
-
-        if runtime["setting"] >= 3:
-            volume = max(size[0] * size[1] * size[2], 1e-9)
-            density = (float(box["mass"]) / volume) / runtime["density_max"]
-        else:
-            density = 1.0
-
-        obs = packer.observe(size, density=density)
-        obs_arr = obs.reshape(1, -1, 9).astype(np.float32)
-
-        leaf_start = runtime["internal_node_holder"]
-        leaf_end = leaf_start + runtime["leaf_node_holder"]
-        leaf_region = obs_arr[0, leaf_start:leaf_end, :]
-
-        if float(leaf_region[:, 8].sum()) <= 0.0:
-            return None
-
-        probs = runtime["session"].run(None, {runtime["input_name"]: obs_arr})[0]
-        selected = int(np.argmax(probs[0]))
-        leaf = leaf_region[selected]
-
-        if float(np.sum(leaf[0:6])) == 0.0:
-            return None
-
-        if not packer.place(leaf[0:6]):
-            return None
-
-        dx, dy, dz, x, y, z, _bin_id = [float(v) for v in packer.packed[-1]]
-        rotation = 0 if abs(dx - size[0]) < 1e-3 and abs(dy - size[1]) < 1e-3 else 90
-
-        return x, y, z, (dx, dy, dz), rotation
+        return None
 
     def _append_placed(
         self,
@@ -308,7 +227,7 @@ class Palletizer:
             else:
                 current = buf.get_buffer()
 
-            if len(self.sequence) >= 150:
+            if len(self.sequence) >= 20:
                 self.finished_by_user = True
                 break
 
