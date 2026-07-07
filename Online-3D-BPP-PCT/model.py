@@ -14,6 +14,7 @@ class DRL_GAT(nn.Module):
                                     internal_node_holder = args.internal_node_holder,
                                     internal_node_length = args.internal_node_length,
                                     leaf_node_holder = args.leaf_node_holder,
+                                    learn_finish_action = getattr(args, "learn_finish_action", False),
                                     )
         init_ = lambda m: init(m, nn.init.orthogonal_, lambda x: nn.init.constant_(x, 0), sqrt(2))
         self.critic = init_(nn.Linear(args.embedding_size, 1))

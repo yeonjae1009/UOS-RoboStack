@@ -37,6 +37,7 @@ class AttentionModel(nn.Module):
                  internal_node_holder = None,
                  internal_node_length = None,
                  leaf_node_holder = None,
+                 learn_finish_action = False,
                  ):
         super(AttentionModel, self).__init__()
 
@@ -55,6 +56,7 @@ class AttentionModel(nn.Module):
         self.internal_node_length = internal_node_length
         self.next_holder = 1
         self.leaf_node_holder = leaf_node_holder
+        self.learn_finish_action = bool(learn_finish_action)
 
         graph_size = internal_node_holder + leaf_node_holder + self.next_holder
 
@@ -86,6 +88,8 @@ class AttentionModel(nn.Module):
 
         self.project_node_embeddings = nn.Linear(embedding_dim, 3 * embedding_dim, bias=False)
         self.project_fixed_context = nn.Linear(embedding_dim, embedding_dim, bias=False)
+        if self.learn_finish_action:
+            self.finish_head = nn.Linear(embedding_dim, 1)
         assert embedding_dim % n_heads == 0
 
     def forward(self, input, deterministic = False, evaluate_action = False, normFactor = 1, evaluate = False):
@@ -134,6 +138,9 @@ class AttentionModel(nn.Module):
         fixed = self._precompute(embeddings, shape = shape, full_mask = full_mask, valid_length = valid_length)
         # Calculate probabilities of selecting leaf nodes
         log_p, mask = self._get_log_p(fixed, mask)
+        if self.learn_finish_action:
+            finish_mask = torch.zeros(mask.size(0), 1, dtype=mask.dtype, device=mask.device)
+            mask = torch.cat((mask, finish_mask), dim=1)
 
         # The leaf node which is not feasible will be masked in a soft way.
         if deterministic:
@@ -215,6 +222,12 @@ class AttentionModel(nn.Module):
             logits = torch.tanh(logits) * self.tanh_clipping
 
         logits = logits[:, 0, self.internal_node_holder: self.internal_node_holder + self.leaf_node_holder]
+        if self.learn_finish_action:
+            finish_logit = self.finish_head(query.squeeze(1))
+            logits = torch.cat((logits, finish_logit), dim=1)
+            if mask is not None:
+                finish_mask = torch.zeros(mask.size(0), 1, dtype=mask.dtype, device=mask.device)
+                mask = torch.cat((mask, finish_mask), dim=1)
         if self.mask_logits:
             logits[mask.bool()] = -math.inf
 

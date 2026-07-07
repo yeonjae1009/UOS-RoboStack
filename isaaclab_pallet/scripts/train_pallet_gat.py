@@ -37,6 +37,8 @@ parser.add_argument("--tilt-fail-threshold", type=float, default=0.35)
 parser.add_argument("--out-of-bounds-margin", type=float, default=0.02)
 parser.add_argument("--height-fail-margin", type=float, default=0.005)
 parser.add_argument("--drop-fail-threshold", type=float, default=0.08)
+parser.add_argument("--candidate-rerank-k", type=int, default=0, help=">1: test diverse policy top-k leaves with Isaac before committing.")
+parser.add_argument("--candidate-diversity-center-m", type=float, default=0.05)
 parser.add_argument(
     "--reward-profile",
     choices=["base", "floor_low", "smooth_low", "terminal_ratio", "finish_ratio"],
@@ -120,7 +122,7 @@ def apply_reward_profile(cfg: PalletPackingEnvCfg, profile: str) -> None:
             "weak_support_penalty_scale": 0.08,
             "elevation_penalty_scale": 0.2,
             "terminal_ratio_reward_scale": 18.0,
-            "auto_finish_ratio": 0.72,
+            "learn_finish_action": True,
         },
     }
     for name, value in profiles[profile].items():
@@ -171,6 +173,7 @@ def make_pct_args(env: PalletPackingEnv) -> SimpleNamespace:
         hidden_size=args_cli.hidden_size,
         gat_layer_num=args_cli.gat_layer_num,
         normFactor=norm_factor,
+        learn_finish_action=bool(env.cfg.learn_finish_action),
     )
 
 
@@ -194,6 +197,10 @@ def save_checkpoint(
             "hidden_size": pct_args.hidden_size,
             "gat_layer_num": pct_args.gat_layer_num,
             "normFactor": pct_args.normFactor,
+            "learn_finish_action": pct_args.learn_finish_action,
+            "action_space": pct_args.leaf_node_holder + (1 if pct_args.learn_finish_action else 0),
+            "candidate_rerank_k": args_cli.candidate_rerank_k,
+            "candidate_diversity_center_m": args_cli.candidate_diversity_center_m,
         },
         path,
     )
@@ -202,10 +209,79 @@ def save_checkpoint(
 def load_resume(path: str, policy: DRL_GAT, optimizer: torch.optim.Optimizer, device: str) -> int:
     ckpt = torch.load(path, map_location=device)
     state_dict = ckpt["model"] if isinstance(ckpt, dict) and "model" in ckpt else ckpt
-    policy.load_state_dict(state_dict)
-    if isinstance(ckpt, dict) and "optimizer" in ckpt:
+    loaded_strict = True
+    try:
+        policy.load_state_dict(state_dict)
+    except RuntimeError:
+        missing, unexpected = policy.load_state_dict(state_dict, strict=False)
+        allowed_missing = all(name.startswith("actor.finish_head.") for name in missing)
+        if unexpected or not allowed_missing:
+            raise
+        loaded_strict = False
+        print(
+            f"[gat-train] resumed compatible weights from {path}; initialized learned finish head",
+            flush=True,
+        )
+    if loaded_strict and isinstance(ckpt, dict) and "optimizer" in ckpt:
         optimizer.load_state_dict(ckpt["optimizer"])
+    elif isinstance(ckpt, dict) and "optimizer" in ckpt:
+        print("[gat-train] skipped optimizer state because model architecture changed", flush=True)
     return int(ckpt.get("update", 0)) if isinstance(ckpt, dict) else 0
+
+
+def load_warm_start(path: str, policy: DRL_GAT) -> DRL_GAT:
+    # Existing checkpoints do not have the learned finish head. For finish_ratio,
+    # keep all compatible PCT weights and leave only actor.finish_head initialized.
+    sd = torch.load(path, map_location="cpu")
+    if isinstance(sd, (list, tuple)) and len(sd) == 2:
+        sd = sd[0]
+    if isinstance(sd, dict) and "model" in sd:
+        sd = sd["model"]
+    try:
+        policy.load_state_dict(sd, strict=True)
+        print(f"[gat-train] loaded GAT checkpoint: {path}", flush=True)
+        return policy
+    except RuntimeError:
+        try:
+            missing, unexpected = policy.load_state_dict(sd, strict=False)
+            allowed_missing = all(name.startswith("actor.finish_head.") for name in missing)
+            if unexpected or not allowed_missing:
+                raise RuntimeError(f"missing={missing} unexpected={unexpected}")
+            print(
+                f"[gat-train] loaded GAT checkpoint with learned finish head initialized: {path}",
+                flush=True,
+            )
+            return policy
+        except RuntimeError:
+            if getattr(policy.actor, "learn_finish_action", False):
+                load_dict = {}
+                raw = torch.load(path, map_location="cpu")
+                if isinstance(raw, (list, tuple)) and len(raw) == 2:
+                    raw = raw[0]
+                if isinstance(raw, dict) and "model" in raw:
+                    raw = raw["model"]
+                for k, v in raw.items():
+                    if "actor.embedder.layers" in k:
+                        load_dict[k.replace("module.weight", "weight")] = v
+                    else:
+                        load_dict[k.replace("module.", "")] = v
+                load_dict = {k.replace("add_bias.", ""): v for k, v in load_dict.items()}
+                load_dict = {k.replace("_bias", "bias"): v for k, v in load_dict.items()}
+                for k, v in list(load_dict.items()):
+                    if hasattr(v, "size") and len(v.size()) <= 3:
+                        load_dict[k] = v.squeeze(dim=-1)
+                missing, unexpected = policy.load_state_dict(load_dict, strict=False)
+                allowed_missing = all(name.startswith("actor.finish_head.") for name in missing)
+                if unexpected or not allowed_missing:
+                    raise RuntimeError(f"missing={missing} unexpected={unexpected}")
+                print(
+                    f"[gat-train] loaded original PCT weights with learned finish head initialized: {path}",
+                    flush=True,
+                )
+            else:
+                policy = pct_tools.load_policy(path, policy)
+                print(f"[gat-train] loaded original PCT weights: {path}", flush=True)
+            return policy
 
 
 def main() -> None:
@@ -227,6 +303,8 @@ def main() -> None:
     cfg.out_of_bounds_margin = args_cli.out_of_bounds_margin
     cfg.height_fail_margin = args_cli.height_fail_margin
     cfg.drop_fail_threshold = args_cli.drop_fail_threshold
+    cfg.candidate_rerank_k = args_cli.candidate_rerank_k
+    cfg.candidate_diversity_center_m = args_cli.candidate_diversity_center_m
     apply_reward_profile(cfg, args_cli.reward_profile)
 
     env = PalletPackingEnv(cfg)
@@ -239,23 +317,7 @@ def main() -> None:
     pct_args = make_pct_args(env)
     policy = DRL_GAT(pct_args).to(env.device)
     if args_cli.load_model:
-        # The warm-start checkpoint can be either (a) a GAT-native state_dict saved
-        # by THIS script (clean keys; critic.bias has shape [1]) or (b) an original
-        # Online-3D-BPP-PCT checkpoint (module./add_bias keys). pct_tools.load_policy
-        # remaps keys and squeeze(-1)s every tensor for format (b); applied to (a)
-        # it squeezes critic.bias [1] -> [] and the strict load_state_dict raises.
-        # Try the native load first, fall back to load_policy for the PCT format.
-        sd = torch.load(args_cli.load_model, map_location="cpu")
-        if isinstance(sd, (list, tuple)) and len(sd) == 2:
-            sd = sd[0]
-        if isinstance(sd, dict) and "model" in sd:
-            sd = sd["model"]
-        try:
-            policy.load_state_dict(sd, strict=True)
-            print(f"[gat-train] loaded GAT checkpoint: {args_cli.load_model}", flush=True)
-        except RuntimeError:
-            policy = pct_tools.load_policy(args_cli.load_model, policy)
-            print(f"[gat-train] loaded original PCT weights: {args_cli.load_model}", flush=True)
+        policy = load_warm_start(args_cli.load_model, policy)
         policy = policy.to(env.device)
     optimizer = torch.optim.Adam(policy.parameters(), lr=args_cli.learning_rate)
 
@@ -287,7 +349,10 @@ def main() -> None:
         f"obs_shape={tuple(all_nodes.shape)} leaf_shape={tuple(leaf_nodes.shape)} "
         f"num_steps={args_cli.num_steps} normFactor={pct_args.normFactor} "
         f"drift_fail_threshold={cfg.drift_fail_threshold} "
-        f"reward_profile={args_cli.reward_profile}",
+        f"reward_profile={args_cli.reward_profile} "
+        f"learn_finish_action={pct_args.learn_finish_action} action_space={cfg.action_space} "
+        f"candidate_rerank_k={cfg.candidate_rerank_k} "
+        f"candidate_diversity_center_m={cfg.candidate_diversity_center_m}",
         flush=True,
     )
 
@@ -306,13 +371,25 @@ def main() -> None:
 
         for _ in range(args_cli.num_steps):
             with torch.no_grad():
-                selected_log_prob, selected_idx, dist_entropy, _ = policy(all_nodes, normFactor=pct_args.normFactor)
+                selected_log_prob, selected_idx, dist_entropy, hidden, dist = policy.actor(
+                    all_nodes, normFactor=pct_args.normFactor
+                )
+                _value = policy.critic(hidden)
 
             # Original Online-3D-BPP selected the leaf node here:
             # selected_leaf_node = leaf_nodes[batch_indices, selected_idx.squeeze()]
             # Isaac Lab env keeps the same index semantics, so env.step receives selected_idx directly.
-            _selected_leaf_node = leaf_nodes[batch_indices, selected_idx.squeeze()]
-            obs_dict, reward, terminated, truncated, extras = env.step(selected_idx)
+            _selected_leaf_node = None
+            leaf_actions = selected_idx.squeeze(-1) < env.leaf_node_holder
+            if bool(leaf_actions.any().item()):
+                _selected_leaf_node = leaf_nodes[batch_indices[leaf_actions], selected_idx.squeeze(-1)[leaf_actions]]
+            if args_cli.candidate_rerank_k > 1:
+                obs_dict, reward, terminated, truncated, extras = env.step(dist.probs.detach())
+                chosen_action = extras["chosen_action"].to(env.device)
+                selected_log_prob = dist.log_probs(chosen_action)
+                selected_idx = chosen_action
+            else:
+                obs_dict, reward, terminated, truncated, extras = env.step(selected_idx)
             done = terminated | truncated
 
             pct_obs = extras["pct_obs"]

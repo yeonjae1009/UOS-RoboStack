@@ -45,11 +45,13 @@ EVAL_INTERVAL="${EVAL_INTERVAL:-50}"
 LR="${LR:-1e-6}"
 BOX_SEED="${BOX_SEED:-0}"
 ISAAC_SELECT_BEST="${ISAAC_SELECT_BEST:-0}"
+CANDIDATE_RERANK_K="${CANDIDATE_RERANK_K:-5}"
+CANDIDATE_DIVERSITY_CENTER_M="${CANDIDATE_DIVERSITY_CENTER_M:-0.05}"
 
 if [ "$#" -gt 0 ]; then
   PROFILES=("$@")
 else
-  PROFILES=(floor_low smooth_low terminal_ratio finish_ratio)
+  PROFILES=(smooth_low finish_ratio)
 fi
 
 if [ ! -s "$BEST" ]; then
@@ -60,7 +62,7 @@ fi
 
 echo "[reward-sweep] start $(date)"
 echo "[reward-sweep] profiles=${PROFILES[*]}"
-echo "[reward-sweep] best=$BEST num_envs=$NUM_ENVS max_boxes=$MAX_BOXES updates/profile=$UPDATES_PER_PROFILE lr=$LR"
+echo "[reward-sweep] best=$BEST num_envs=$NUM_ENVS max_boxes=$MAX_BOXES updates/profile=$UPDATES_PER_PROFILE lr=$LR candidate_k=$CANDIDATE_RERANK_K"
 
 for i in "${!PROFILES[@]}"; do
   [ -f "$STOP_ALL" ] && break
@@ -91,6 +93,8 @@ for i in "${!PROFILES[@]}"; do
     --save-interval "$SAVE_INTERVAL" \
     --eval-interval "$EVAL_INTERVAL" \
     --learning-rate "$LR" \
+    --candidate-rerank-k "$CANDIDATE_RERANK_K" \
+    --candidate-diversity-center-m "$CANDIDATE_DIVERSITY_CENTER_M" \
     --seed 0 \
     --headless \
     "${init[@]}" >> "$log" 2>&1

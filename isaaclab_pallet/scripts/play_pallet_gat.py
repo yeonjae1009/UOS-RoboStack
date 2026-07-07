@@ -74,6 +74,7 @@ def make_pct_args(env: PalletPackingEnv, ckpt: dict | None = None) -> SimpleName
         hidden_size=int(ckpt.get("hidden_size", 128)) if ckpt else 128,
         gat_layer_num=int(ckpt.get("gat_layer_num", 1)) if ckpt else 1,
         normFactor=norm_factor,
+        learn_finish_action=bool(ckpt.get("learn_finish_action", False)) if ckpt else False,
     )
 
 
@@ -99,10 +100,17 @@ def load_policy_weights(path: str, policy: DRL_GAT, device: str) -> None:
 
 
 def main() -> None:
+    state_dict, ckpt = load_checkpoint(args_cli.checkpoint, args_cli.device)
+    learn_finish_action = bool(ckpt.get("learn_finish_action", False)) if ckpt else False
+    if isinstance(state_dict, dict):
+        learn_finish_action = learn_finish_action or any(k.startswith("actor.finish_head.") for k in state_dict)
+    ckpt_meta = ckpt or {"learn_finish_action": learn_finish_action}
+
     cfg = PalletPackingEnvCfg()
     cfg.scene.num_envs = args_cli.num_envs
     cfg.max_boxes = args_cli.max_boxes
     cfg.box_seed = args_cli.box_seed
+    cfg.learn_finish_action = learn_finish_action
     if args_cli.box_source == "file":
         # Feed the EXACT competition stream, in order (no per-episode shuffle).
         cfg.random_boxes = False
@@ -121,8 +129,7 @@ def main() -> None:
     all_nodes, _ = pct_tools.get_leaf_nodes(pct_obs, env.internal_node_holder, env.leaf_node_holder)
     all_nodes = all_nodes.to(env.device)
 
-    _, ckpt = load_checkpoint(args_cli.checkpoint, env.device)
-    pct_args = make_pct_args(env, ckpt)
+    pct_args = make_pct_args(env, ckpt_meta)
     policy = DRL_GAT(pct_args).to(env.device)
     load_policy_weights(args_cli.checkpoint, policy, env.device)
     policy.eval()

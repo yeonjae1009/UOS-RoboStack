@@ -187,6 +187,9 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     elevation_penalty_scale: float = 0.0  # #4 density knob (fill-bottom-first); 0=off, tune on Isaac
     terminal_ratio_reward_scale: float = 0.0  # success/no-feasible terminal fill bonus; 0=off
     auto_finish_ratio: float = 0.0  # stop successfully after this utilization ratio; 0=off
+    learn_finish_action: bool = False  # add a policy-selected finish action after leaf actions
+    candidate_rerank_k: int = 0  # >1: test diverse policy top-k leaves with Isaac before committing
+    candidate_diversity_center_m: float = 0.05
     physics_fail_penalty: float = -10.0
     invalid_action_penalty: float = -10.0
     no_feasible_leaf_reward: float = 0.0
@@ -216,7 +219,7 @@ class PalletPackingEnv(DirectRLEnv):
         self.pct_obs_dim = self.obs_node_count * 9
         self.physics_feature_dim = int(cfg.physics_feature_dim)
         cfg.observation_space = self.pct_obs_dim + self.physics_feature_dim
-        cfg.action_space = self.leaf_node_holder
+        cfg.action_space = self.leaf_node_holder + (1 if cfg.learn_finish_action else 0)
 
         # Ensure the packer driver is importable here and (via spawn-inherited
         # sys.path) in worker processes.
@@ -237,6 +240,7 @@ class PalletPackingEnv(DirectRLEnv):
         self.last_ratio_t: torch.Tensor | None = None   # [ne] packer occupancy ratio
         self.last_obs_np = [np.zeros((self.obs_node_count, 9), dtype=np.float32) for _ in range(cfg.scene.num_envs)]
         self.pending_actions: torch.Tensor | None = None
+        self.pending_action_probs: torch.Tensor | None = None
         self.action_mask: torch.Tensor | None = None
         self.physics_features: torch.Tensor | None = None
         self.last_reward: torch.Tensor | None = None
@@ -253,6 +257,9 @@ class PalletPackingEnv(DirectRLEnv):
         self.terminal_tilt: torch.Tensor | None = None
         self.terminal_height_ratio: torch.Tensor | None = None
         self.terminal_stack_drift: torch.Tensor | None = None
+        self.last_chosen_action: torch.Tensor | None = None
+        self.last_candidate_count: torch.Tensor | None = None
+        self.last_candidate_pass_count: torch.Tensor | None = None
         self.box_assets: list[RigidObject] = []
         self._reward_scales = pct_reward.RewardScales(
             floor_coverage=cfg.floor_coverage_reward_scale,
@@ -279,7 +286,7 @@ class PalletPackingEnv(DirectRLEnv):
 
         super().__init__(cfg, render_mode, **kwargs)
 
-        self.action_mask = torch.zeros(self.num_envs, self.leaf_node_holder, dtype=torch.bool, device=self.device)
+        self.action_mask = torch.zeros(self.num_envs, cfg.action_space, dtype=torch.bool, device=self.device)
         self.physics_features = torch.zeros(
             self.num_envs, self.physics_feature_dim, dtype=torch.float32, device=self.device
         )
@@ -297,6 +304,9 @@ class PalletPackingEnv(DirectRLEnv):
         self.terminal_tilt = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
         self.terminal_height_ratio = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
         self.terminal_stack_drift = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
+        self.last_chosen_action = torch.full((self.num_envs,), -1, dtype=torch.long, device=self.device)
+        self.last_candidate_count = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+        self.last_candidate_pass_count = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
         nb = len(self.boxes)
         self.intended_buf = torch.zeros(self.num_envs, nb, 3, dtype=torch.float32, device=self.device)
         self.orig_size_buf = torch.ones(self.num_envs, nb, 3, dtype=torch.float32, device=self.device)
@@ -383,14 +393,144 @@ class PalletPackingEnv(DirectRLEnv):
             self.scene.rigid_objects[f"box_{idx:03d}"] = box_asset
 
     def _pre_physics_step(self, actions: torch.Tensor):
-        self.pending_actions = actions.clone().reshape(self.num_envs, -1)[:, 0].to(torch.long)
+        action_tensor = actions.clone()
+        self.pending_action_probs = None
+        rerank = int(self.cfg.candidate_rerank_k) > 1
+        if rerank and action_tensor.ndim >= 2 and action_tensor.shape[-1] >= self.leaf_node_holder:
+            self.pending_action_probs = action_tensor.reshape(self.num_envs, -1).to(torch.float32)
+            self.pending_actions = torch.argmax(self.pending_action_probs, dim=1).to(torch.long)
+        else:
+            self.pending_actions = action_tensor.reshape(self.num_envs, -1)[:, 0].to(torch.long)
+
+    def _leaf_center(self, leaf: np.ndarray) -> np.ndarray:
+        return np.array(
+            [
+                (float(leaf[0]) + float(leaf[3])) * 0.5,
+                (float(leaf[1]) + float(leaf[4])) * 0.5,
+                float(leaf[2]),
+            ],
+            dtype=np.float32,
+        )
+
+    def _select_candidate_actions(self, env_id: int, probs: torch.Tensor) -> list[int]:
+        k = max(1, int(self.cfg.candidate_rerank_k))
+        leaf_probs = probs[: self.leaf_node_holder].detach().clone()
+        mask = self.action_mask[env_id, : self.leaf_node_holder].bool()
+        leaf_probs = torch.where(mask, leaf_probs, torch.full_like(leaf_probs, -1.0))
+        order = torch.argsort(leaf_probs, descending=True).detach().cpu().tolist()
+        leaves = self.last_obs_np[env_id].reshape(self.obs_node_count, 9)[
+            self.internal_node_holder : self.internal_node_holder + self.leaf_node_holder
+        ]
+        min_dist = float(self.cfg.candidate_diversity_center_m)
+        centers: list[np.ndarray] = []
+        selected: list[int] = []
+        for action_idx in order:
+            if len(selected) >= k:
+                break
+            if action_idx < 0 or action_idx >= self.leaf_node_holder:
+                continue
+            if float(leaf_probs[action_idx].item()) < 0.0:
+                continue
+            center = self._leaf_center(leaves[action_idx])
+            if any(float(np.linalg.norm(center - prev)) < min_dist for prev in centers):
+                continue
+            selected.append(int(action_idx))
+            centers.append(center)
+        if not selected:
+            valid = torch.nonzero(mask, as_tuple=False).flatten()
+            if valid.numel() > 0:
+                selected.append(int(valid[0].item()))
+        return selected
+
+    def _snapshot_scene_state(self):
+        return [
+            (
+                box_asset.data.root_pos_w.detach().clone(),
+                box_asset.data.root_quat_w.detach().clone(),
+                box_asset.data.root_lin_vel_w.detach().clone(),
+                box_asset.data.root_ang_vel_w.detach().clone(),
+            )
+            for box_asset in self.box_assets
+        ]
+
+    def _restore_scene_state(self, snapshot) -> None:
+        for box_asset, (pos, quat, lin, ang) in zip(self.box_assets, snapshot):
+            pose = torch.cat((pos, quat), dim=1)
+            vel = torch.cat((lin, ang), dim=1)
+            box_asset.write_root_pose_to_sim(pose)
+            box_asset.write_root_velocity_to_sim(vel)
+
+    def _candidate_physics_check(self, env_id: int, result: dict, box_idx: int, step: int) -> dict:
+        snapshot = self._snapshot_scene_state()
+        env_ids = torch.tensor([env_id], dtype=torch.long, device=self.device)
+        intended_world = self._intended_world(result["packed"], env_id)
+        quat = torch.tensor(_yaw_quat_wxyz(result["rotation"]), dtype=torch.float32, device=self.device)
+        osz = self.boxes[box_idx]["size"]
+        orig_size = torch.tensor([float(osz[0]), float(osz[1]), float(osz[2])], dtype=torch.float32, device=self.device)
+        try:
+            root_pose = torch.cat((intended_world, quat), dim=0).reshape(1, 7)
+            root_vel = torch.zeros((1, 6), dtype=torch.float32, device=self.device)
+            self.box_assets[box_idx].write_root_pose_to_sim(root_pose, env_ids=env_ids)
+            self.box_assets[box_idx].write_root_velocity_to_sim(root_vel, env_ids=env_ids)
+            self._settle_boxes()
+
+            final_pos = self.box_assets[box_idx].data.root_pos_w[env_id]
+            final_quat = self.box_assets[box_idx].data.root_quat_w[env_id]
+            drift = torch.linalg.norm(final_pos - intended_world)
+            roll, pitch = _quat_wxyz_to_roll_pitch(final_quat.reshape(1, 4))
+            tilt = torch.sqrt(roll[0].square() + pitch[0].square())
+            Rabs = self._quat_matrix_batched(final_quat.reshape(1, 4)).abs()[0]
+            world_half = torch.mv(Rabs, orig_size * 0.5)
+            local_pos = final_pos - self.scene.env_origins[env_id]
+            cfg = self.cfg
+            m = cfg.out_of_bounds_margin
+            oob = bool(
+                (local_pos[0] - world_half[0] < -m).item()
+                or (local_pos[1] - world_half[1] < -m).item()
+                or (local_pos[0] + world_half[0] > cfg.pallet_size[0] + m).item()
+                or (local_pos[1] + world_half[1] > cfg.pallet_size[1] + m).item()
+            )
+            top_height = local_pos[2] + world_half[2] - cfg.pallet_thickness
+            height_oob = bool((top_height > cfg.pallet_size[2] + cfg.height_fail_margin).item())
+            dropped = bool((intended_world[2] - final_pos[2] > cfg.drop_fail_threshold).item())
+            fail_drift = bool((drift > cfg.drift_fail_threshold).item())
+            fail_tilt = bool((tilt > cfg.tilt_fail_threshold).item())
+
+            max_stack = torch.tensor(0.0, dtype=torch.float32, device=self.device)
+            if step > 0:
+                pos_all = torch.stack([ba.data.root_pos_w[env_id] for ba in self.box_assets])
+                prior_assets = self.box_order_t[env_id, :step]
+                prior_pos = pos_all[prior_assets]
+                prior_intended = self.intended_buf[env_id, :step]
+                max_stack = torch.linalg.norm(prior_pos - prior_intended, dim=-1).max()
+            collapse = bool((max_stack > cfg.stack_drift_fail_threshold).item())
+            failed = fail_drift or fail_tilt or oob or height_oob or dropped or collapse
+            violation = max(
+                float(drift.item()) / max(float(cfg.drift_fail_threshold), 1e-6),
+                float(tilt.item()) / max(float(cfg.tilt_fail_threshold), 1e-6),
+                1.0 if oob else 0.0,
+                1.0 if height_oob else 0.0,
+                1.0 if dropped else 0.0,
+                float(max_stack.item()) / max(float(cfg.stack_drift_fail_threshold), 1e-6),
+            )
+            return {
+                "passed": not failed,
+                "violation": violation,
+                "drift": float(drift.item()),
+                "tilt": float(tilt.item()),
+                "stack_drift": float(max_stack.item()),
+            }
+        finally:
+            self._restore_scene_state(snapshot)
 
     def _apply_action(self):
         if self.pending_actions is None:
             return
 
         actions = self.pending_actions
+        action_probs = self.pending_action_probs
         self.pending_actions = None
+        self.pending_action_probs = None
         self.last_reward.zero_()
         self.last_terminated.zero_()
         self.last_drift.zero_()
@@ -398,16 +538,71 @@ class PalletPackingEnv(DirectRLEnv):
         self.last_out_of_bounds.zero_()
         self.last_invalid.zero_()
         self.last_done_reason.zero_()
+        self.last_chosen_action.copy_(actions.clamp(0, self.cfg.action_space - 1))
+        self.last_candidate_count.zero_()
+        self.last_candidate_pass_count.zero_()
 
         # Build per-env CPU requests; envs past the sequence are terminal.
+        rerank = int(self.cfg.candidate_rerank_k) > 1 and action_probs is not None
+        candidate_requests: dict[int, tuple] = {}
         requests: dict[int, tuple] = {}
         for env_id in range(self.num_envs):
             if self.current_box_idx[env_id] >= len(self.boxes):
                 self.last_terminated[env_id] = True
                 self.last_done_reason[env_id] = 5
                 continue
+            selected_action = int(actions[env_id].item())
+            if self.cfg.learn_finish_action and selected_action >= self.leaf_node_holder:
+                self.last_terminated[env_id] = True
+                self.last_done_reason[env_id] = 9
+                self.last_chosen_action[env_id] = selected_action
+                continue
             box = self.boxes[self._asset_index(env_id, self.current_box_idx[env_id])]
-            requests[env_id] = (box, int(actions[env_id].item()))
+            if rerank:
+                candidate_actions = self._select_candidate_actions(env_id, action_probs[env_id])
+                if candidate_actions:
+                    candidate_requests[env_id] = (box, candidate_actions)
+                    self.last_candidate_count[env_id] = len(candidate_actions)
+                    continue
+            requests[env_id] = (box, selected_action)
+            self.last_chosen_action[env_id] = selected_action
+
+        if candidate_requests:
+            candidate_results = self.packer_pool.candidate_steps(candidate_requests)
+            for env_id, candidates in candidate_results.items():
+                step = self.current_box_idx[env_id]
+                box_idx = self._asset_index(env_id, step)
+                passed: list[dict] = []
+                fallbacks: list[dict] = []
+                for candidate in candidates:
+                    if candidate.get("status") != "ok":
+                        continue
+                    physics = self._candidate_physics_check(env_id, candidate, box_idx, step)
+                    candidate.update(physics)
+                    if physics["passed"]:
+                        passed.append(candidate)
+                    else:
+                        fallbacks.append(candidate)
+                self.last_candidate_pass_count[env_id] = len(passed)
+                if passed:
+                    winner = max(passed, key=lambda c: float(c.get("reward", 0.0)))
+                elif fallbacks:
+                    winner = min(fallbacks, key=lambda c: float(c.get("violation", float("inf"))))
+                else:
+                    winner = None
+
+                if winner is None:
+                    self.last_invalid[env_id] = True
+                    self.last_terminated[env_id] = True
+                    self.last_done_reason[env_id] = 1
+                    self.last_reward[env_id] = self.cfg.invalid_action_penalty
+                    continue
+                action_idx = int(winner["action_idx"])
+                requests[env_id] = (
+                    self.boxes[self._asset_index(env_id, self.current_box_idx[env_id])],
+                    action_idx,
+                )
+                self.last_chosen_action[env_id] = action_idx
 
         # All per-env CPU work (observe -> select -> place -> reward) happens here,
         # serially or across worker processes depending on num_packer_workers.
@@ -476,12 +671,18 @@ class PalletPackingEnv(DirectRLEnv):
             obs_nodes, self.internal_node_holder, self.leaf_node_holder
         )
         action_mask = valid_flag.bool()
+        if self.cfg.learn_finish_action:
+            finish_mask = torch.ones((self.num_envs, 1), dtype=torch.bool, device=self.device)
+            action_mask = torch.cat((action_mask, finish_mask), dim=1)
         leaf_node_mask = 1 - valid_flag
         self.action_mask = action_mask
         self.extras["action_mask"] = action_mask
         self.extras["pct_valid_flag"] = valid_flag
         self.extras["pct_leaf_node_mask"] = leaf_node_mask
         self.extras["pct_full_mask"] = full_mask
+        self.extras["chosen_action"] = self.last_chosen_action.reshape(self.num_envs, 1)
+        self.extras["candidate_count"] = self.last_candidate_count
+        self.extras["candidate_pass_count"] = self.last_candidate_pass_count
         physics_features = self.physics_features
         if physics_features is None:
             physics_features = torch.zeros(
@@ -719,6 +920,10 @@ class PalletPackingEnv(DirectRLEnv):
         if self.last_reward is not None:
             self.last_reward[env_ids_tensor] = 0.0
             self.episode_reward_sum[env_ids_tensor] = 0.0
+        if self.last_chosen_action is not None:
+            self.last_chosen_action[env_ids_tensor] = -1
+            self.last_candidate_count[env_ids_tensor] = 0
+            self.last_candidate_pass_count[env_ids_tensor] = 0
             self.last_terminated[env_ids_tensor] = False
             self.last_drift[env_ids_tensor] = 0.0
             self.last_tilt[env_ids_tensor] = 0.0

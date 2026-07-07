@@ -43,6 +43,11 @@ def load_boxes(path: Path) -> list[dict]:
 
 
 def build_policy(ckpt_path: Path, cfg: dict, device: str) -> tuple[DRL_GAT, SimpleNamespace]:
+    sd = torch.load(ckpt_path, map_location=device)
+    state_dict = sd["model"] if isinstance(sd, dict) and "model" in sd else sd
+    learn_finish_action = bool(sd.get("learn_finish_action", False)) if isinstance(sd, dict) else False
+    if isinstance(state_dict, dict):
+        learn_finish_action = learn_finish_action or any(k.startswith("actor.finish_head.") for k in state_dict)
     setting = int(cfg["setting"])
     pct_args = SimpleNamespace(
         setting=setting,
@@ -53,13 +58,11 @@ def build_policy(ckpt_path: Path, cfg: dict, device: str) -> tuple[DRL_GAT, Simp
         hidden_size=128,
         gat_layer_num=1,
         normFactor=float(cfg.get("norm_factor", 0.8)),
+        learn_finish_action=learn_finish_action,
     )
     policy = DRL_GAT(pct_args)
-    sd = torch.load(ckpt_path, map_location=device)
-    if isinstance(sd, dict) and "model" in sd:
-        sd = sd["model"]
     try:
-        policy.load_state_dict(sd)
+        policy.load_state_dict(state_dict)
     except RuntimeError:
         pct_tools.load_policy(str(ckpt_path), policy)
     policy.to(device).eval()
@@ -81,6 +84,7 @@ def run_sequence(boxes: list[dict], policy: DRL_GAT, pct_args: SimpleNamespace, 
     sequence: list[dict] = []
     terminated = False
     terminated_step = None
+    finished_by_user = False
 
     for box in boxes:
         size = [float(box["size"][0]), float(box["size"][1]), float(box["size"][2])]
@@ -115,7 +119,10 @@ def run_sequence(boxes: list[dict], policy: DRL_GAT, pct_args: SimpleNamespace, 
                 normFactor=pct_args.normFactor,
             )
         probs = dist.probs[0].detach().cpu().numpy().astype(np.float64, copy=True)
-        probs[safe_leaf_region[:, 8] <= 0.5] = 0.0
+        has_finish_action = len(probs) > LNH
+        leaf_probs = probs[:LNH]
+        leaf_probs[safe_leaf_region[:, 8] <= 0.5] = 0.0
+        probs[:LNH] = leaf_probs
         if float(probs.sum()) <= 0.0:
             terminated, terminated_step = True, int(box["step"])
             break
@@ -124,6 +131,9 @@ def run_sequence(boxes: list[dict], policy: DRL_GAT, pct_args: SimpleNamespace, 
             sel = int(np.random.choice(np.arange(len(probs)), p=probs))
         else:
             sel = int(np.argmax(probs))
+        if has_finish_action and sel >= LNH:
+            finished_by_user = True
+            break
 
         leaf = safe_leaf_region[sel]
         if float(np.sum(leaf[0:6])) == 0.0:
@@ -150,7 +160,7 @@ def run_sequence(boxes: list[dict], policy: DRL_GAT, pct_args: SimpleNamespace, 
         "sequence": sequence,
         "terminated": terminated,
         "terminated_step": terminated_step,
-        "finished_by_user": False,
+        "finished_by_user": finished_by_user,
     }
 
 

@@ -24,6 +24,7 @@ pose come back as plain data.
 """
 from __future__ import annotations
 
+import copy
 import multiprocessing as mp
 from dataclasses import dataclass
 
@@ -125,6 +126,17 @@ def _packer_step(packer, box, action_idx: int, cfg: PackerConfig) -> dict:
     }
 
 
+def _candidate_steps(packer, box, action_indices: list[int], cfg: PackerConfig) -> list[dict]:
+    """Evaluate candidate actions on cloned packers without mutating ``packer``."""
+    out = []
+    for action_idx in action_indices:
+        candidate = copy.deepcopy(packer)
+        result = _packer_step(candidate, box, int(action_idx), cfg)
+        result["action_idx"] = int(action_idx)
+        out.append(result)
+    return out
+
+
 # --------------------------------------------------------------------------- #
 # Serial backend
 # --------------------------------------------------------------------------- #
@@ -144,6 +156,12 @@ class SerialPackerPool:
     def step(self, requests: dict) -> dict:
         return {eid: _packer_step(self._packers[eid], box, aidx, self.cfg)
                 for eid, (box, aidx) in requests.items()}
+
+    def candidate_steps(self, requests: dict) -> dict:
+        return {
+            eid: _candidate_steps(self._packers[eid], box, list(action_indices), self.cfg)
+            for eid, (box, action_indices) in requests.items()
+        }
 
     def close(self):
         pass
@@ -172,6 +190,10 @@ def _worker_loop(conn, env_ids, cfg: PackerConfig):
                 reqs = cmd[1]
                 conn.send({eid: _packer_step(packers[eid], box, aidx, cfg)
                            for eid, (box, aidx) in reqs.items()})
+            elif op == "candidate_steps":
+                reqs = cmd[1]
+                conn.send({eid: _candidate_steps(packers[eid], box, list(action_indices), cfg)
+                           for eid, (box, action_indices) in reqs.items()})
             else:
                 conn.send(RuntimeError(f"unknown op {op}"))
     finally:
@@ -224,6 +246,9 @@ class ParallelPackerPool:
 
     def step(self, requests: dict) -> dict:
         return self._dispatch("step", requests)
+
+    def candidate_steps(self, requests: dict) -> dict:
+        return self._dispatch("candidate_steps", requests)
 
     def close(self):
         for conn in self._conns:
