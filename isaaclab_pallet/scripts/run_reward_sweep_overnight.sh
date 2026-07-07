@@ -42,11 +42,19 @@ MAX_BOXES="${MAX_BOXES:-256}"
 UPDATES_PER_PROFILE="${UPDATES_PER_PROFILE:-2500}"
 SAVE_INTERVAL="${SAVE_INTERVAL:-250}"
 EVAL_INTERVAL="${EVAL_INTERVAL:-50}"
+SAVE_UPDATE_CHECKPOINTS="${SAVE_UPDATE_CHECKPOINTS:-1}"
 LR="${LR:-1e-6}"
 BOX_SEED="${BOX_SEED:-0}"
 ISAAC_SELECT_BEST="${ISAAC_SELECT_BEST:-0}"
 CANDIDATE_RERANK_K="${CANDIDATE_RERANK_K:-5}"
 CANDIDATE_DIVERSITY_CENTER_M="${CANDIDATE_DIVERSITY_CENTER_M:-0.05}"
+WANDB_ENABLE="${WANDB_ENABLE:-0}"
+WANDB_PROJECT="${WANDB_PROJECT:-assignment2-pallet}"
+WANDB_ENTITY="${WANDB_ENTITY:-}"
+WANDB_GROUP="${WANDB_GROUP:-$RUN_PREFIX}"
+WANDB_MODE="${WANDB_MODE:-}"
+WANDB_DIR="${WANDB_DIR:-}"
+WANDB_TAGS="${WANDB_TAGS:-}"
 
 if [ "$#" -gt 0 ]; then
   PROFILES=("$@")
@@ -83,6 +91,31 @@ for i in "${!PROFILES[@]}"; do
     echo "[reward-sweep] warm-start profile=$profile run=$run_name seed=$seed $(date)" | tee -a "$log"
   fi
 
+  wandb_args=()
+  if [ "$WANDB_ENABLE" = "1" ]; then
+    wandb_args=(--wandb --wandb-project "$WANDB_PROJECT" --wandb-name "$run_name" --wandb-group "$WANDB_GROUP")
+    if [ -n "$WANDB_ENTITY" ]; then
+      wandb_args+=(--wandb-entity "$WANDB_ENTITY")
+    fi
+    if [ -n "$WANDB_MODE" ]; then
+      wandb_args+=(--wandb-mode "$WANDB_MODE")
+    fi
+    if [ -n "$WANDB_DIR" ]; then
+      wandb_args+=(--wandb-dir "$WANDB_DIR")
+    fi
+    if [ -n "$WANDB_TAGS" ]; then
+      # shellcheck disable=SC2206
+      wandb_tags_array=($WANDB_TAGS)
+      wandb_args+=(--wandb-tags "${wandb_tags_array[@]}")
+    fi
+  fi
+
+  checkpoint_args=()
+  if [ "$SAVE_UPDATE_CHECKPOINTS" = "0" ]; then
+    checkpoint_args=(--no-save-update-checkpoints)
+  fi
+
+  start_line="$(wc -l < "$log" 2>/dev/null || echo 0)"
   python3 isaaclab_pallet/scripts/train_pallet_gat.py \
     --run-name "$run_name" \
     --reward-profile "$profile" \
@@ -97,8 +130,16 @@ for i in "${!PROFILES[@]}"; do
     --candidate-diversity-center-m "$CANDIDATE_DIVERSITY_CENTER_M" \
     --seed 0 \
     --headless \
+    "${checkpoint_args[@]}" \
+    "${wandb_args[@]}" \
     "${init[@]}" >> "$log" 2>&1
   code=$?
+  recent_log="$(mktemp)"
+  tail -n +"$((start_line + 1))" "$log" > "$recent_log"
+  if grep -Eq "Traceback \\(most recent call last\\)|ModuleNotFoundError|ImportError|Failed to startup python extension" "$recent_log"; then
+    code=1
+  fi
+  rm -f "$recent_log"
 
   echo "[reward-sweep] profile=$profile exited code=$code $(date)" | tee -a "$log"
   if [ "$code" -ne 0 ]; then

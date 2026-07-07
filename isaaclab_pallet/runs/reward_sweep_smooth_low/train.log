@@ -629,3 +629,286 @@ ImportError: libcusparseLt.so.0: cannot open shared object file: No such file or
 2026-06-30T02:32:47Z [1,325ms] [Warning] [omni.physx.plugin] USD stage detach not called, holding a loose ptr to a stage!
 2026-06-30T02:32:48Z [1,452ms] [Warning] [carb] Recursive unloadAllPlugins() detected!
 [reward-sweep] profile=smooth_low exited code=0 Tue Jun 30 11:32:48 AM KST 2026
+[reward-sweep] warm-start profile=smooth_low run=reward_sweep_smooth_low seed=0 Tue Jul  7 11:34:01 AM KST 2026
+Traceback (most recent call last):
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/scripts/train_pallet_gat.py", line 11, in <module>
+    from isaaclab.app import AppLauncher
+ModuleNotFoundError: No module named 'isaaclab'
+[reward-sweep] profile=smooth_low exited code=1 Tue Jul  7 11:34:01 AM KST 2026
+[reward-sweep] warm-start profile=smooth_low run=reward_sweep_smooth_low seed=0 Tue Jul  7 11:34:30 AM KST 2026
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260707_113430.log
+2026-07-07T02:34:31Z [337ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-07T02:34:31Z [340ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-07T02:34:31Z [761ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-07T02:34:31Z [865ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-07T02:34:33Z [3,006ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-07T02:34:33Z [3,006ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126429 | Free Memory: 120070
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 842
+|---------------------------------------------------------------------------------------------|
+Traceback (most recent call last):
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/scripts/train_pallet_gat.py", line 66, in <module>
+    from isaaclab_pallet import PalletPackingEnv, PalletPackingEnvCfg  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/__init__.py", line 1, in <module>
+    from .pallet_packing_env import PalletPackingEnv, PalletPackingEnvCfg
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/pallet_packing_env.py", line 22, in <module>
+    from . import packer_pool
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 37, in <module>
+    from src.pct.stability import apply_stability_mask
+ModuleNotFoundError: No module named 'src'
+2026-07-07T02:34:34Z [3,430ms] [Warning] [omni.physx.plugin] USD stage detach not called, holding a loose ptr to a stage!
+2026-07-07T02:34:34Z [3,607ms] [Warning] [carb] Recursive unloadAllPlugins() detected!
+[reward-sweep] profile=smooth_low exited code=0 Tue Jul  7 11:34:34 AM KST 2026
+[reward-sweep] warm-start profile=smooth_low run=reward_sweep_smooth_low seed=0 Tue Jul  7 11:38:32 AM KST 2026
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-07_11-38-35.log[0m
+[36m======================================================================================[0m
+
+[33m11:38:35 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m11:38:40 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 5.546155 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 1.592556 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/overnight_full/PCT-latest.pt
+[gat-train] run_dir=isaaclab_pallet/runs/reward_sweep_smooth_low device=cuda:0 num_envs=32 obs_shape=(32, 301, 9) leaf_shape=(32, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=smooth_low learn_finish_action=False action_space=100 candidate_rerank_k=5 candidate_diversity_center_m=0.05
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial competition score = 87.50  -> PCT-best.pt
+[gat-train] update=1 samples=160 fps=0.7 loss=0.5366 actor=0.4419 value=0.1049 entropy=1.0271 mean_return=0.000 mean_len=0.0
+[gat-train] update=2 samples=320 fps=0.7 loss=1.9955 actor=1.8160 value=0.1908 entropy=1.1268 mean_return=0.000 mean_len=0.0
+[gat-train] update=3 samples=480 fps=0.7 loss=1.2275 actor=1.1711 value=0.0689 entropy=1.2418 mean_return=0.000 mean_len=0.0
+[gat-train] update=4 samples=640 fps=0.7 loss=0.0009 actor=-0.0125 value=0.0292 entropy=1.5774 mean_return=0.000 mean_len=0.0
+[gat-train] update=5 samples=800 fps=0.6 loss=0.0799 actor=0.0830 value=0.0135 entropy=1.6640 mean_return=0.000 mean_len=0.0
+[gat-train] update=6 samples=960 fps=0.6 loss=-0.0967 actor=-0.0922 value=0.0150 entropy=1.9465 mean_return=0.000 mean_len=0.0
+[gat-train] update=7 samples=1120 fps=0.6 loss=-0.4327 actor=-0.4376 value=0.0237 entropy=1.8841 mean_return=0.000 mean_len=0.0
+[gat-train] update=8 samples=1280 fps=0.6 loss=-0.7473 actor=-0.7873 value=0.0580 entropy=1.8049 mean_return=0.000 mean_len=0.0
+[gat-train] update=9 samples=1440 fps=0.6 loss=-0.8457 actor=-0.9032 value=0.0746 entropy=1.7067 mean_return=0.000 mean_len=0.0
+[gat-train] update=10 samples=1600 fps=0.6 loss=-1.0022 actor=-1.0861 value=0.1012 entropy=1.7252 mean_return=0.000 mean_len=0.0
+[gat-train] update=11 samples=1760 fps=0.6 loss=-1.2255 actor=-1.3761 value=0.1662 entropy=1.5513 mean_return=0.000 mean_len=0.0
+[gat-train] update=12 samples=1920 fps=0.6 loss=-1.7133 actor=-1.9330 value=0.2339 entropy=1.4217 mean_return=0.000 mean_len=0.0
+[gat-train] update=13 samples=2080 fps=0.6 loss=-2.4847 actor=-2.7913 value=0.3198 entropy=1.3245 mean_return=0.000 mean_len=0.0
+Traceback (most recent call last):
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/scripts/train_pallet_gat.py", line 490, in <module>
+    main()
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/scripts/train_pallet_gat.py", line 390, in main
+    selected_log_prob = dist.log_probs(chosen_action)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/Online-3D-BPP-PCT/distributions.py", line 14, in <lambda>
+    FixedCategorical.log_probs = lambda self, actions: log_prob_cat(
+                                                       ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/distributions/categorical.py", line 140, in log_prob
+    self._validate_sample(value)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/distributions/distribution.py", line 317, in _validate_sample
+    raise ValueError(
+ValueError: Expected value argument (Tensor of shape (32,)) to be within the support (IntegerInterval(lower_bound=0, upper_bound=99)) of the distribution Categorical(probs: torch.Size([32, 100]), logits: torch.Size([32, 100])), but found invalid values:
+tensor([21,  0, 45,  6,  4, 13, 74, 38, -1, 33, 68, 64, 61,  6,  9, 38, 25, 80,
+        47, 11, 47, 25, 32, 10,  0, 29, 30, 96, 19, 26, 16, 30],
+       device='cuda:0')
+[reward-sweep] profile=smooth_low exited code=1 Tue Jul  7 12:39:01 PM KST 2026
+[reward-sweep] warm-start profile=smooth_low run=reward_sweep_smooth_low seed=0 Tue Jul  7 12:56:49 PM KST 2026
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-07_12-56-53.log[0m
+[36m======================================================================================[0m
+
+[33m12:56:53 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m12:57:03 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 9.846781 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 3.366944 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/overnight_full/PCT-latest.pt
+[gat-train] run_dir=isaaclab_pallet/runs/reward_sweep_smooth_low device=cuda:0 num_envs=32 obs_shape=(32, 301, 9) leaf_shape=(32, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=smooth_low learn_finish_action=False action_space=100 candidate_rerank_k=5 candidate_diversity_center_m=0.05
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial competition score = 87.50  -> PCT-best.pt
+[gat-train] update=1 samples=160 fps=0.2 loss=0.5366 actor=0.4419 value=0.1049 entropy=1.0271 mean_return=0.000 mean_len=0.0
+[gat-train] update=2 samples=320 fps=0.2 loss=1.9955 actor=1.8160 value=0.1908 entropy=1.1268 mean_return=0.000 mean_len=0.0
+[gat-train] update=3 samples=480 fps=0.3 loss=1.2275 actor=1.1711 value=0.0689 entropy=1.2418 mean_return=0.000 mean_len=0.0
+[gat-train] update=4 samples=640 fps=0.3 loss=0.0009 actor=-0.0125 value=0.0292 entropy=1.5774 mean_return=0.000 mean_len=0.0
+[gat-train] update=5 samples=800 fps=0.3 loss=0.0799 actor=0.0830 value=0.0135 entropy=1.6640 mean_return=0.000 mean_len=0.0
+[gat-train] update=6 samples=960 fps=0.3 loss=-0.0967 actor=-0.0922 value=0.0150 entropy=1.9465 mean_return=0.000 mean_len=0.0
+[gat-train] update=7 samples=1120 fps=0.3 loss=-0.4327 actor=-0.4376 value=0.0237 entropy=1.8841 mean_return=0.000 mean_len=0.0
+[gat-train] update=8 samples=1280 fps=0.3 loss=-0.7473 actor=-0.7873 value=0.0580 entropy=1.8049 mean_return=0.000 mean_len=0.0
+[gat-train] update=9 samples=1440 fps=0.3 loss=-0.8457 actor=-0.9032 value=0.0746 entropy=1.7067 mean_return=0.000 mean_len=0.0
+[gat-train] update=10 samples=1600 fps=0.4 loss=-1.0022 actor=-1.0861 value=0.1012 entropy=1.7252 mean_return=0.000 mean_len=0.0
+[gat-train] update=11 samples=1760 fps=0.4 loss=-1.2255 actor=-1.3761 value=0.1662 entropy=1.5513 mean_return=0.000 mean_len=0.0
+[gat-train] update=12 samples=1920 fps=0.4 loss=-1.7133 actor=-1.9330 value=0.2339 entropy=1.4217 mean_return=0.000 mean_len=0.0
+[gat-train] update=13 samples=2080 fps=0.4 loss=-2.4847 actor=-2.7913 value=0.3198 entropy=1.3245 mean_return=0.000 mean_len=0.0
+[gat-train] update=14 samples=2240 fps=0.4 loss=-3.0789 actor=-3.5530 value=0.4856 entropy=1.1458 mean_return=7.051 mean_len=69.0
+[gat-train] update=15 samples=2400 fps=0.4 loss=-3.0090 actor=-3.5555 value=0.5597 entropy=1.3218 mean_return=7.185 mean_len=72.3
+[gat-train] update=16 samples=2560 fps=0.4 loss=-1.4745 actor=-1.8896 value=0.4298 entropy=1.4722 mean_return=7.033 mean_len=75.1
+[gat-train] update=17 samples=2720 fps=0.4 loss=0.0098 actor=-0.3896 value=0.4162 entropy=1.6710 mean_return=6.946 mean_len=78.6
+[gat-train] update=18 samples=2880 fps=0.4 loss=0.5992 actor=0.4438 value=0.1762 entropy=2.0788 mean_return=6.899 mean_len=80.5
+[gat-train] update=19 samples=3040 fps=0.4 loss=0.7489 actor=0.6771 value=0.0948 entropy=2.3030 mean_return=6.899 mean_len=80.5
+[gat-train] update=20 samples=3200 fps=0.4 loss=0.5521 actor=0.5128 value=0.0620 entropy=2.2637 mean_return=6.899 mean_len=80.5
+[gat-train] update=21 samples=3360 fps=0.4 loss=-0.0101 actor=-0.0162 value=0.0261 entropy=1.9999 mean_return=6.899 mean_len=80.5
+[gat-train] update=22 samples=3520 fps=0.4 loss=-0.3460 actor=-0.3456 value=0.0200 entropy=2.0373 mean_return=6.899 mean_len=80.5
+[gat-train] update=23 samples=3680 fps=0.4 loss=-0.4314 actor=-0.4416 value=0.0351 entropy=2.4868 mean_return=6.899 mean_len=80.5
+[gat-train] update=24 samples=3840 fps=0.4 loss=-0.7154 actor=-0.7556 value=0.0642 entropy=2.3988 mean_return=6.899 mean_len=80.5
+[gat-train] update=25 samples=4000 fps=0.4 loss=-0.9974 actor=-1.0595 value=0.0878 entropy=2.5759 mean_return=6.899 mean_len=80.5
+[gat-train] update=26 samples=4160 fps=0.4 loss=-1.0814 actor=-1.2004 value=0.1456 entropy=2.6656 mean_return=6.899 mean_len=80.5
+[gat-train] update=27 samples=4320 fps=0.4 loss=-1.1163 actor=-1.2721 value=0.1806 entropy=2.4782 mean_return=6.899 mean_len=80.5
+[gat-train] update=28 samples=4480 fps=0.4 loss=-1.1560 actor=-1.3676 value=0.2354 entropy=2.3807 mean_return=6.899 mean_len=80.5
+[gat-train] update=29 samples=4640 fps=0.4 loss=-1.4800 actor=-1.7743 value=0.3179 entropy=2.3557 mean_return=6.899 mean_len=80.5
+[gat-train] update=30 samples=4800 fps=0.4 loss=-1.7773 actor=-2.2183 value=0.4602 entropy=1.9143 mean_return=6.911 mean_len=79.9
+[gat-train] update=31 samples=4960 fps=0.4 loss=-1.1858 actor=-1.5282 value=0.3622 entropy=1.9835 mean_return=6.901 mean_len=80.0
+[gat-train] update=32 samples=5120 fps=0.4 loss=-0.8558 actor=-1.2047 value=0.3707 entropy=2.1825 mean_return=6.856 mean_len=79.9
+[gat-train] update=33 samples=5280 fps=0.4 loss=-0.5422 actor=-0.8699 value=0.3516 entropy=2.3908 mean_return=6.845 mean_len=80.6
+[gat-train] update=34 samples=5440 fps=0.4 loss=0.2402 actor=0.0726 value=0.1911 entropy=2.3467 mean_return=6.831 mean_len=81.2
+[gat-train] update=35 samples=5600 fps=0.4 loss=0.4755 actor=0.3690 value=0.1289 entropy=2.2505 mean_return=6.789 mean_len=81.9
+[gat-train] update=36 samples=5760 fps=0.4 loss=0.3245 actor=0.2725 value=0.0719 entropy=1.9903 mean_return=6.774 mean_len=82.1
+[gat-train] update=37 samples=5920 fps=0.4 loss=0.3094 actor=0.2779 value=0.0508 entropy=1.9230 mean_return=6.774 mean_len=82.1
+[gat-train] update=38 samples=6080 fps=0.4 loss=-0.4288 actor=-0.4531 value=0.0385 entropy=1.4232 mean_return=6.774 mean_len=82.1
+[gat-train] update=39 samples=6240 fps=0.4 loss=-0.8272 actor=-0.8530 value=0.0398 entropy=1.4020 mean_return=6.774 mean_len=82.1
+[gat-train] update=40 samples=6400 fps=0.4 loss=-0.9904 actor=-1.0462 value=0.0691 entropy=1.3347 mean_return=6.774 mean_len=82.1
+[gat-train] update=41 samples=6560 fps=0.4 loss=-1.3472 actor=-1.4261 value=0.0923 entropy=1.3408 mean_return=6.774 mean_len=82.1
+[gat-train] update=42 samples=6720 fps=0.4 loss=-1.8862 actor=-2.0196 value=0.1449 entropy=1.1559 mean_return=6.774 mean_len=82.1
+[gat-train] update=43 samples=6880 fps=0.4 loss=-2.1133 actor=-2.3064 value=0.2052 entropy=1.2018 mean_return=6.774 mean_len=82.1
+[gat-train] update=44 samples=7040 fps=0.4 loss=-1.9861 actor=-2.2055 value=0.2313 entropy=1.1977 mean_return=6.774 mean_len=82.1
+[gat-train] update=45 samples=7200 fps=0.4 loss=-1.8243 actor=-2.0669 value=0.2556 entropy=1.2983 mean_return=6.771 mean_len=81.7
+[gat-train] update=46 samples=7360 fps=0.4 loss=-2.5962 actor=-2.9982 value=0.4161 entropy=1.4064 mean_return=6.771 mean_len=81.1
+[gat-train] update=47 samples=7520 fps=0.4 loss=-1.6341 actor=-1.9653 value=0.3449 entropy=1.3762 mean_return=6.784 mean_len=80.9
+[gat-train] update=48 samples=7680 fps=0.4 loss=-0.9536 actor=-1.2749 value=0.3351 entropy=1.3846 mean_return=6.786 mean_len=80.7
+[gat-train] update=49 samples=7840 fps=0.4 loss=-0.6641 actor=-0.9006 value=0.2523 entropy=1.5698 mean_return=6.808 mean_len=80.3
+[gat-train] update=50 samples=8000 fps=0.4 loss=-0.4839 actor=-0.6924 value=0.2242 entropy=1.5660 mean_return=6.843 mean_len=80.4
+[gat-train] eval update=50 comp_score=88.24 best=88.24  *NEW BEST -> PCT-best.pt*
+[gat-train] update=51 samples=8160 fps=0.4 loss=0.4317 actor=0.3193 value=0.1274 entropy=1.5001 mean_return=6.815 mean_len=80.7
+[gat-train] update=52 samples=8320 fps=0.4 loss=0.2264 actor=0.1718 value=0.0706 entropy=1.5952 mean_return=6.846 mean_len=81.0
+[gat-train] update=53 samples=8480 fps=0.4 loss=0.1922 actor=0.1645 value=0.0421 entropy=1.4425 mean_return=6.846 mean_len=81.0
+[gat-train] update=54 samples=8640 fps=0.4 loss=-0.3303 actor=-0.3460 value=0.0315 entropy=1.5817 mean_return=6.846 mean_len=81.0
+[gat-train] update=55 samples=8800 fps=0.4 loss=-0.6443 actor=-0.6787 value=0.0470 entropy=1.2629 mean_return=6.846 mean_len=81.0
+[gat-train] update=56 samples=8960 fps=0.4 loss=-1.1571 actor=-1.2256 value=0.0813 entropy=1.2858 mean_return=6.846 mean_len=81.0
+[gat-train] update=57 samples=9120 fps=0.4 loss=-1.1376 actor=-1.2320 value=0.1086 entropy=1.4171 mean_return=6.846 mean_len=81.0
+[gat-train] update=58 samples=9280 fps=0.4 loss=-1.8224 actor=-1.9771 value=0.1681 entropy=1.3270 mean_return=6.846 mean_len=81.0
+[gat-train] update=59 samples=9440 fps=0.4 loss=-1.8045 actor=-1.9778 value=0.1860 entropy=1.2649 mean_return=6.846 mean_len=81.0
+[gat-train] update=60 samples=9600 fps=0.4 loss=-2.0335 actor=-2.2401 value=0.2191 entropy=1.2444 mean_return=6.854 mean_len=80.8
+[gat-train] update=61 samples=9760 fps=0.4 loss=-2.1531 actor=-2.4106 value=0.2704 entropy=1.2905 mean_return=6.834 mean_len=80.6
+[gat-train] update=62 samples=9920 fps=0.4 loss=-1.8130 actor=-2.1298 value=0.3286 entropy=1.1762 mean_return=6.821 mean_len=80.5
+[gat-train] update=63 samples=10080 fps=0.4 loss=-1.9207 actor=-2.2145 value=0.3084 entropy=1.4656 mean_return=6.774 mean_len=80.5
+[gat-train] update=64 samples=10240 fps=0.4 loss=-1.2031 actor=-1.5134 value=0.3229 entropy=1.2604 mean_return=6.768 mean_len=80.3
+[gat-train] update=65 samples=10400 fps=0.4 loss=-1.4263 actor=-1.7130 value=0.3002 entropy=1.3548 mean_return=6.755 mean_len=80.1
+[gat-train] update=66 samples=10560 fps=0.4 loss=-0.1067 actor=-0.2664 value=0.1764 entropy=1.6697 mean_return=6.718 mean_len=81.2
+[gat-train] update=67 samples=10720 fps=0.4 loss=0.1034 actor=-0.0419 value=0.1607 entropy=1.5456 mean_return=6.669 mean_len=81.4
+[gat-train] update=68 samples=10880 fps=0.4 loss=0.5611 actor=0.4701 value=0.1079 entropy=1.6895 mean_return=6.707 mean_len=81.6
+[gat-train] update=69 samples=11040 fps=0.4 loss=0.1862 actor=0.1096 value=0.0922 entropy=1.5611 mean_return=6.707 mean_len=81.6
+[gat-train] update=70 samples=11200 fps=0.4 loss=-0.2287 actor=-0.2597 value=0.0463 entropy=1.5383 mean_return=6.707 mean_len=81.6
+[gat-train] update=71 samples=11360 fps=0.4 loss=-0.6088 actor=-0.6583 value=0.0626 entropy=1.3083 mean_return=6.707 mean_len=81.6
+[gat-train] update=72 samples=11520 fps=0.4 loss=-0.9150 actor=-0.9713 value=0.0674 entropy=1.1148 mean_return=6.707 mean_len=81.6
+[gat-train] update=73 samples=11680 fps=0.4 loss=-1.3177 actor=-1.4315 value=0.1265 entropy=1.2806 mean_return=6.707 mean_len=81.6
+[reward-sweep] resume profile=smooth_low run=reward_sweep_smooth_low seed=1 Tue Jul  7 08:51:08 PM KST 2026
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-07_20-51-11.log[0m
+[36m======================================================================================[0m
+
+[33m20:51:11 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m20:51:17 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 5.855419 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 1.672653 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] resumed from isaaclab_pallet/runs/reward_sweep_smooth_low/PCT-resume.pt at update=70
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/user/.netrc.
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+wandb: Currently logged in as: nkyeonjae1009 (nkyeonjae1009-university-of-seoul) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: setting up run tqfnu968
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: Tracking run with wandb version 0.28.0
+wandb: Run data is saved locally in isaaclab_pallet/runs/reward_sweep_smooth_low/wandb/wandb/run-20260707_205121-tqfnu968
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run reward_sweep_smooth_low
+wandb: ⭐️ View project at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet
+wandb: 🚀 View run at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/tqfnu968
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/tqfnu968
+[gat-train] run_dir=isaaclab_pallet/runs/reward_sweep_smooth_low device=cuda:0 num_envs=32 obs_shape=(32, 301, 9) leaf_shape=(32, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=smooth_low learn_finish_action=False action_space=100 candidate_rerank_k=5 candidate_diversity_center_m=0.05
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial competition score = 84.44  -> PCT-best.pt
+[gat-train] update=71 samples=160 fps=0.7 loss=0.4987 actor=0.4174 value=0.0994 entropy=1.8205 mean_return=0.000 mean_len=0.0
+[gat-train] update=72 samples=320 fps=0.4 loss=0.8191 actor=0.7122 value=0.1342 entropy=2.7260 mean_return=0.000 mean_len=0.0

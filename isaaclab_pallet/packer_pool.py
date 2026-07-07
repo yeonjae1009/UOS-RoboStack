@@ -27,8 +27,14 @@ from __future__ import annotations
 import copy
 import multiprocessing as mp
 from dataclasses import dataclass
+from pathlib import Path
+import sys
 
 import numpy as np
+
+TEMPLATE_DIR = Path(__file__).resolve().parents[1] / "templete code"
+if str(TEMPLATE_DIR) not in sys.path:
+    sys.path.insert(0, str(TEMPLATE_DIR))
 
 try:  # works both as a package submodule (env) and as a top-level module (tests/workers)
     from . import pct_reward

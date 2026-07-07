@@ -1,12 +1,19 @@
 from __future__ import annotations
 
 import argparse
+import os
 import random
 import sys
 import time
 from collections import deque
 from pathlib import Path
 from types import SimpleNamespace
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+TEMPLATE_DIR = PROJECT_ROOT / "templete code"
+ONLINE_PCT_DIR = PROJECT_ROOT / "Online-3D-BPP-PCT"
+sys.path.insert(0, str(TEMPLATE_DIR))
+sys.path.insert(0, str(ONLINE_PCT_DIR))
 
 from isaaclab.app import AppLauncher
 
@@ -52,6 +59,16 @@ parser.add_argument("--entropy-coef", type=float, default=0.01)
 parser.add_argument("--eval-interval", type=int, default=50, help="Updates between competition-score evals (0=off).")
 parser.add_argument("--box-seq-dir", type=str, default="palletizing_simulator/box_sequence")
 parser.add_argument("--eval-sequences", nargs="+", default=["box_sequence_0", "box_sequence_1"])
+parser.add_argument("--save-update-checkpoints", action="store_true", default=True)
+parser.add_argument("--no-save-update-checkpoints", dest="save_update_checkpoints", action="store_false")
+parser.add_argument("--wandb", action="store_true", help="Log training/eval metrics to Weights & Biases.")
+parser.add_argument("--wandb-project", type=str, default="", help="W&B project. Falls back to WANDB_PROJECT or assignment2-pallet.")
+parser.add_argument("--wandb-entity", type=str, default="", help="W&B entity/user/team. Falls back to WANDB_ENTITY.")
+parser.add_argument("--wandb-name", type=str, default="", help="W&B run display name. Defaults to --run-name.")
+parser.add_argument("--wandb-group", type=str, default="", help="W&B group for related runs.")
+parser.add_argument("--wandb-mode", choices=["online", "offline", "disabled"], default="", help="W&B mode. Falls back to WANDB_MODE.")
+parser.add_argument("--wandb-dir", type=str, default="", help="Directory for W&B local files. Falls back to WANDB_DIR or run_dir/wandb.")
+parser.add_argument("--wandb-tags", nargs="*", default=[], help="Space-separated W&B tags.")
 AppLauncher.add_app_launcher_args(parser)
 parser.set_defaults(headless=True)
 args_cli = parser.parse_args()
@@ -64,11 +81,6 @@ import numpy as np  # noqa: E402
 import torch  # noqa: E402
 
 from isaaclab_pallet import PalletPackingEnv, PalletPackingEnvCfg  # noqa: E402
-
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-ONLINE_PCT_DIR = PROJECT_ROOT / "Online-3D-BPP-PCT"
-sys.path.insert(0, str(ONLINE_PCT_DIR))
 
 import tools as pct_tools  # noqa: E402
 from model import DRL_GAT  # noqa: E402
@@ -206,6 +218,89 @@ def save_checkpoint(
     )
 
 
+def init_wandb_run(run_dir: Path, pct_args: SimpleNamespace, start_update: int):
+    if not args_cli.wandb:
+        return None
+    try:
+        import wandb
+    except ImportError as exc:
+        raise RuntimeError(
+            "W&B logging was requested with --wandb, but the `wandb` package is not installed. "
+            "Install it in env_isaaclab or run without --wandb."
+        ) from exc
+
+    wandb_dir = Path(args_cli.wandb_dir or os.environ.get("WANDB_DIR") or (run_dir / "wandb"))
+    wandb_dir.mkdir(parents=True, exist_ok=True)
+    run_id_path = run_dir / "wandb_run_id.txt"
+    if run_id_path.exists():
+        run_id = run_id_path.read_text().strip()
+    else:
+        run_id = wandb.util.generate_id()
+        run_id_path.write_text(run_id + "\n")
+
+    project = args_cli.wandb_project or os.environ.get("WANDB_PROJECT") or "assignment2-pallet"
+    entity = args_cli.wandb_entity or os.environ.get("WANDB_ENTITY") or None
+    mode = args_cli.wandb_mode or os.environ.get("WANDB_MODE") or None
+    group = args_cli.wandb_group or os.environ.get("WANDB_RUN_GROUP") or None
+    name = args_cli.wandb_name or args_cli.run_name or run_dir.name
+    tags = list(args_cli.wandb_tags)
+    if args_cli.reward_profile not in tags:
+        tags.append(args_cli.reward_profile)
+    if f"k{args_cli.candidate_rerank_k}" not in tags:
+        tags.append(f"k{args_cli.candidate_rerank_k}")
+
+    run = wandb.init(
+        project=project,
+        entity=entity,
+        name=name,
+        group=group,
+        id=run_id,
+        resume="allow",
+        mode=mode,
+        dir=str(wandb_dir),
+        tags=tags,
+        job_type="train",
+        config={
+            "run_name": args_cli.run_name,
+            "reward_profile": args_cli.reward_profile,
+            "num_envs": args_cli.num_envs,
+            "max_boxes": args_cli.max_boxes,
+            "updates": args_cli.updates,
+            "start_update": start_update,
+            "num_steps": args_cli.num_steps,
+            "save_interval": args_cli.save_interval,
+            "eval_interval": args_cli.eval_interval,
+            "learning_rate": args_cli.learning_rate,
+            "gamma": args_cli.gamma,
+            "actor_loss_coef": args_cli.actor_loss_coef,
+            "critic_loss_coef": args_cli.critic_loss_coef,
+            "entropy_coef": args_cli.entropy_coef,
+            "max_grad_norm": args_cli.max_grad_norm,
+            "candidate_rerank_k": args_cli.candidate_rerank_k,
+            "candidate_diversity_center_m": args_cli.candidate_diversity_center_m,
+            "save_update_checkpoints": args_cli.save_update_checkpoints,
+            "seed": args_cli.seed,
+            "box_seed": args_cli.box_seed,
+            "device": args_cli.device,
+            "load_model": args_cli.load_model,
+            "resume_checkpoint": args_cli.resume,
+            "internal_node_holder": pct_args.internal_node_holder,
+            "leaf_node_holder": pct_args.leaf_node_holder,
+            "embedding_size": pct_args.embedding_size,
+            "hidden_size": pct_args.hidden_size,
+            "gat_layer_num": pct_args.gat_layer_num,
+            "normFactor": pct_args.normFactor,
+            "learn_finish_action": pct_args.learn_finish_action,
+        },
+    )
+    run.define_metric("update")
+    run.define_metric("train/*", step_metric="update")
+    run.define_metric("eval/*", step_metric="update")
+    run.define_metric("checkpoint/*", step_metric="update")
+    print(f"[gat-train] wandb run url: {run.url}", flush=True)
+    return run
+
+
 def load_resume(path: str, policy: DRL_GAT, optimizer: torch.optim.Optimizer, device: str) -> int:
     ckpt = torch.load(path, map_location=device)
     state_dict = ckpt["model"] if isinstance(ckpt, dict) and "model" in ckpt else ckpt
@@ -327,6 +422,7 @@ def main() -> None:
         print(f"[gat-train] resumed from {args_cli.resume} at update={start_update}", flush=True)
 
     run_dir = make_run_dir()
+    wandb_run = init_wandb_run(run_dir, pct_args, start_update)
     storage = PCTRolloutStorage(
         args_cli.num_steps,
         env.num_envs,
@@ -364,6 +460,16 @@ def main() -> None:
         best_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
         torch.save(policy.state_dict(), run_dir / "PCT-best.pt")
         print(f"[gat-train] initial competition score = {best_score:.2f}  -> PCT-best.pt", flush=True)
+        if wandb_run is not None:
+            wandb_run.log(
+                {
+                    "update": start_update,
+                    "eval/competition_score": best_score,
+                    "eval/best_score": best_score,
+                    "eval/improved": 1,
+                },
+                step=start_update,
+            )
 
     for update in range(start_update + 1, start_update + args_cli.updates + 1):
         policy.train()
@@ -386,6 +492,7 @@ def main() -> None:
             if args_cli.candidate_rerank_k > 1:
                 obs_dict, reward, terminated, truncated, extras = env.step(dist.probs.detach())
                 chosen_action = extras["chosen_action"].to(env.device)
+                chosen_action = torch.where(chosen_action < 0, selected_idx, chosen_action)
                 selected_log_prob = dist.log_probs(chosen_action)
                 selected_idx = chosen_action
             else:
@@ -451,6 +558,22 @@ def main() -> None:
             fps = samples / elapsed
             mean_return = sum(recent_returns) / len(recent_returns) if recent_returns else 0.0
             mean_length = sum(recent_lengths) / len(recent_lengths) if recent_lengths else 0.0
+            if wandb_run is not None:
+                wandb_run.log(
+                    {
+                        "update": update,
+                        "train/samples": samples,
+                        "train/fps": fps,
+                        "train/loss": float(loss.item()),
+                        "train/actor_loss": float(actor_loss.item()),
+                        "train/critic_loss": float(critic_loss.item()),
+                        "train/entropy": float(dist_entropy.mean().item()),
+                        "train/mean_return": mean_return,
+                        "train/mean_length": mean_length,
+                        "train/learning_rate": args_cli.learning_rate,
+                    },
+                    step=update,
+                )
             print(
                 "[gat-train] "
                 f"update={update} samples={samples} fps={fps:.1f} "
@@ -463,7 +586,17 @@ def main() -> None:
         if update % args_cli.save_interval == 0 or update == start_update + args_cli.updates:
             save_checkpoint(run_dir / "PCT-resume.pt", policy, optimizer, update, pct_args)
             torch.save(policy.state_dict(), run_dir / "PCT-latest.pt")
-            torch.save(policy.state_dict(), run_dir / f"PCT-update-{update:06d}.pt")
+            if args_cli.save_update_checkpoints:
+                torch.save(policy.state_dict(), run_dir / f"PCT-update-{update:06d}.pt")
+            if wandb_run is not None:
+                wandb_run.log(
+                    {
+                        "update": update,
+                        "checkpoint/saved": 1,
+                        "checkpoint/latest_update": update,
+                    },
+                    step=update,
+                )
 
         # ★1: score on the real competition sequences; keep PCT-best.pt only when it improves.
         if args_cli.eval_interval > 0 and update % args_cli.eval_interval == 0:
@@ -473,6 +606,16 @@ def main() -> None:
                 best_score = score
                 torch.save(policy.state_dict(), run_dir / "PCT-best.pt")
                 save_checkpoint(run_dir / "PCT-best-resume.pt", policy, optimizer, update, pct_args)
+            if wandb_run is not None:
+                wandb_run.log(
+                    {
+                        "update": update,
+                        "eval/competition_score": score,
+                        "eval/best_score": best_score,
+                        "eval/improved": int(improved),
+                    },
+                    step=update,
+                )
             print(
                 f"[gat-train] eval update={update} comp_score={score:.2f} "
                 f"best={best_score:.2f}{'  *NEW BEST -> PCT-best.pt*' if improved else ''}",
@@ -480,10 +623,11 @@ def main() -> None:
             )
 
     env.close()
+    if wandb_run is not None:
+        wandb_run.finish()
 
 
 if __name__ == "__main__":
-    import os
     import traceback
     try:
         main()
