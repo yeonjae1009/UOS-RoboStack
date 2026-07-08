@@ -1,0 +1,80 @@
+# Palletizing Simulator Configuration for random_spec_000..049 validation.
+
+app:
+  experience: "/home/user/isaacsim/apps/isaacsim.exp.base.python.kit"
+  width: 1920
+  height: 1080
+  headless: true
+  hide_ui: false
+  renderer: "RayTracedLighting"
+  display_options: 3286
+  extensions: []
+
+runtime:
+  auto_start: true
+
+paths:
+  input_dir: "algorithm_results"
+  box_sequence_dir: "/home/user/Documents/assignment2_project/artifacts/random_spec_eval_50/box_sequence"
+  output_dir: "sim_results"
+
+pallet:
+  size: [1.2, 1.0, 1.25]
+
+settling:
+  max_steps: 10
+  min_frames: 5
+  velocity_threshold: 0.05
+  final_steps: 100
+  drop_offset: 0.02
+
+physics:
+  box:
+    static_friction: 0.6
+    dynamic_friction: 0.5
+    restitution: 0.0
+    linear_damping: 3.0
+    angular_damping: 6.0
+    contact_offset: 0.003
+    rest_offset: 0.0
+  ground:
+    static_friction: 0.7
+    dynamic_friction: 0.5
+    restitution: 0.0
+  pallet:
+    thickness: 0.15
+    color: [0.55, 0.35, 0.15]
+    static_friction: 0.7
+    dynamic_friction: 0.5
+    restitution: 0.0
+    contact_offset: 0.003
+    rest_offset: 0.0
+
+buffer:
+  gap_from_pallet: 0.30
+  slot_size: [0.55, 0.55]
+  slots_per_row: 5
+  platform_thickness: 0.05
+  color: [0.40, 0.40, 0.65]
+
+colors:
+  layer_height: 0.25
+  layers:
+    - [0.20, 0.80, 0.20]
+    - [0.20, 0.50, 0.90]
+    - [0.90, 0.45, 0.10]
+    - [0.85, 0.20, 0.20]
+
+evaluation:
+  drift_threshold_m: 0.40
+  bounds_tolerance_m: 0.02
+  episode_success_min_rate: 1.00
+
+screenshot:
+  enabled: false
+  width: 1920
+  height: 1080
+  camera_offset: [-3.0, -3.0, 3.5]
+  look_at_z: 0.5
+  rt_subframes: 8
+  flush_frames: 4

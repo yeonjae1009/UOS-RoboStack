@@ -244,35 +244,38 @@ def wait_for_timeline_play(auto_start: bool) -> None:
 
 def save_screenshot(img_path: str, pallet_lx: float, pallet_ly: float) -> None:
     """오프스크린 카메라로 PNG를 저장한다."""
+    ss = cfg.get("screenshot", {})
+    if not ss.get("enabled", True):
+        return
+
     try:
         from PIL import Image
     except ImportError:
         print("[simulator] Warning: Pillow not found, skipping screenshot.", flush=True)
         return
 
-    ss = cfg["screenshot"]
     cx, cy = pallet_lx / 2.0, pallet_ly / 2.0
     ox, oy, oz = ss["camera_offset"]
 
-    # annotator는 싱글턴 – 새 render_product attach 전에 이전 연결을 끊는다.
-    annotator = rep.AnnotatorRegistry.get_annotator("rgb")
     try:
-        annotator.detach()
-    except Exception:
-        pass
+        # annotator는 싱글턴 – 새 render_product attach 전에 이전 연결을 끊는다.
+        annotator = rep.AnnotatorRegistry.get_annotator("rgb")
+        try:
+            annotator.detach()
+        except Exception:
+            pass
 
-    camera = rep.create.camera(
-        position=(cx + ox, cy + oy, oz),
-        look_at=(cx, cy, ss["look_at_z"]),
-    )
-    render_product = rep.create.render_product(camera, (ss["width"], ss["height"]))
-    annotator.attach([render_product])
+        camera = rep.create.camera(
+            position=(cx + ox, cy + oy, oz),
+            look_at=(cx, cy, ss["look_at_z"]),
+        )
+        render_product = rep.create.render_product(camera, (ss["width"], ss["height"]))
+        annotator.attach([render_product])
 
-    rep.orchestrator.step(rt_subframes=ss["rt_subframes"], pause_timeline=False)
-    for _ in range(ss["flush_frames"]):
-        simulation_app.update()
+        rep.orchestrator.step(rt_subframes=ss["rt_subframes"], pause_timeline=False)
+        for _ in range(ss["flush_frames"]):
+            simulation_app.update()
 
-    try:
         rgba = annotator.get_data()
         if rgba is not None and rgba.size > 0:
             Image.fromarray(rgba[:, :, :3]).save(img_path)

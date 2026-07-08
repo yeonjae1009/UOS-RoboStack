@@ -1,0 +1,54 @@
+[
+  {
+    "run": "reward_sweep_small_terminal_ratio",
+    "checkpoint": "isaaclab_pallet/runs/reward_sweep_small_terminal_ratio/PCT-best.pt",
+    "n": 50,
+    "avg_score": 84.7970746946667,
+    "median_score": 85.62105476666667,
+    "std_score": 4.611766637715798,
+    "min_score": 70.4881668,
+    "max_score": 93.29940773333337,
+    "avg_fill_pct": 64.79707469466669,
+    "avg_placed": 83.82,
+    "zero_scores": 0
+  },
+  {
+    "run": "reward_sweep_small_finish_ratio",
+    "checkpoint": "isaaclab_pallet/runs/reward_sweep_small_finish_ratio/PCT-best.pt",
+    "n": 50,
+    "avg_score": 84.7576130586667,
+    "median_score": 84.96837919999999,
+    "std_score": 4.163629167819019,
+    "min_score": 73.10133793333334,
+    "max_score": 94.23476186666666,
+    "avg_fill_pct": 64.75761305866668,
+    "avg_placed": 83.7,
+    "zero_scores": 0
+  },
+  {
+    "run": "reward_sweep_small_floor_low",
+    "checkpoint": "isaaclab_pallet/runs/reward_sweep_small_floor_low/PCT-best.pt",
+    "n": 50,
+    "avg_score": 82.69393045999999,
+    "median_score": 85.81013626666666,
+    "std_score": 13.063779584071746,
+    "min_score": 0.0,
+    "max_score": 94.23476186666666,
+    "avg_fill_pct": 64.43761246266668,
+    "avg_placed": 83.28,
+    "zero_scores": 1
+  },
+  {
+    "run": "reward_sweep_small_smooth_low",
+    "checkpoint": "isaaclab_pallet/runs/reward_sweep_small_smooth_low/PCT-best.pt",
+    "n": 50,
+    "avg_score": 81.436543192,
+    "median_score": 85.13240033333335,
+    "std_score": 16.94711427160211,
+    "min_score": 0.0,
+    "max_score": 91.78437906666669,
+    "avg_fill_pct": 64.82172512000002,
+    "avg_placed": 83.9,
+    "zero_scores": 2
+  }
+]

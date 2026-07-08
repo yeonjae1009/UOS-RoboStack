@@ -1,0 +1,1 @@
+[terminal18-finish15] warm-start profile=terminal_ratio_t18 run=terminal_ratio_t18_from_terminal_best seed=0 warm_start=isaaclab_pallet/runs/reward_terminal18_finish15/previous/reward_sweep_small_terminal_ratio/PCT-best.pt Wed Jul  8 10:39:02 PM KST 2026

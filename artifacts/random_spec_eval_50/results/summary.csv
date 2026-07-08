@@ -1,0 +1,5 @@
+run,checkpoint,n,avg_score,median_score,std_score,min_score,max_score,avg_fill_pct,avg_placed,zero_scores
+reward_sweep_small_terminal_ratio,isaaclab_pallet/runs/reward_sweep_small_terminal_ratio/PCT-best.pt,50,84.797075,85.621055,4.611767,70.488167,93.299408,64.797075,83.820000,0
+reward_sweep_small_finish_ratio,isaaclab_pallet/runs/reward_sweep_small_finish_ratio/PCT-best.pt,50,84.757613,84.968379,4.163629,73.101338,94.234762,64.757613,83.700000,0
+reward_sweep_small_floor_low,isaaclab_pallet/runs/reward_sweep_small_floor_low/PCT-best.pt,50,82.693930,85.810136,13.063780,0.000000,94.234762,64.437612,83.280000,1
+reward_sweep_small_smooth_low,isaaclab_pallet/runs/reward_sweep_small_smooth_low/PCT-best.pt,50,81.436543,85.132400,16.947114,0.000000,91.784379,64.821725,83.900000,2

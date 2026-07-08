@@ -48,7 +48,15 @@ parser.add_argument("--candidate-rerank-k", type=int, default=0, help=">1: test 
 parser.add_argument("--candidate-diversity-center-m", type=float, default=0.05)
 parser.add_argument(
     "--reward-profile",
-    choices=["base", "floor_low", "smooth_low", "terminal_ratio", "finish_ratio"],
+    choices=[
+        "base",
+        "floor_low",
+        "smooth_low",
+        "terminal_ratio",
+        "finish_ratio",
+        "terminal_ratio_t18",
+        "finish_ratio_t15",
+    ],
     default="base",
     help="Reward-scale preset. Keeps the Isaac Lab GAT pipeline unchanged.",
 )
@@ -134,6 +142,27 @@ def apply_reward_profile(cfg: PalletPackingEnvCfg, profile: str) -> None:
             "weak_support_penalty_scale": 0.08,
             "elevation_penalty_scale": 0.2,
             "terminal_ratio_reward_scale": 18.0,
+            "learn_finish_action": True,
+        },
+        "terminal_ratio_t18": {
+            "floor_coverage_reward_scale": 1.2,
+            "boundary_floor_reward_scale": 0.8,
+            "corner_floor_reward_scale": 0.6,
+            "height_smoothness_reward_scale": 0.8,
+            "support_reward_scale": 0.08,
+            "weak_support_penalty_scale": 0.08,
+            "elevation_penalty_scale": 0.2,
+            "terminal_ratio_reward_scale": 18.0,
+        },
+        "finish_ratio_t15": {
+            "floor_coverage_reward_scale": 1.2,
+            "boundary_floor_reward_scale": 0.8,
+            "corner_floor_reward_scale": 0.6,
+            "height_smoothness_reward_scale": 0.8,
+            "support_reward_scale": 0.08,
+            "weak_support_penalty_scale": 0.08,
+            "elevation_penalty_scale": 0.2,
+            "terminal_ratio_reward_scale": 15.0,
             "learn_finish_action": True,
         },
     }
@@ -455,6 +484,13 @@ def main() -> None:
     # ★1 eval-in-loop setup: resolve the real competition sequences and seed the best
     # score with the (warm-started) model so we can NEVER end up worse than the start.
     eval_seq_paths = [str(PROJECT_ROOT / args_cli.box_seq_dir / f"{n}.json") for n in args_cli.eval_sequences]
+    print(
+        "[gat-train] "
+        f"eval_seq_count={len(eval_seq_paths)} "
+        f"box_seq_dir={args_cli.box_seq_dir} "
+        f"eval_sequences={','.join(args_cli.eval_sequences)}",
+        flush=True,
+    )
     best_score = -1.0
     if args_cli.eval_interval > 0:
         best_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
