@@ -1,0 +1,14 @@
+# PCT(DRL) 추론/학습 설정 - sub36 후보 생성 실험용.
+# 기본 pct_config.yaml과 입력 shape는 동일하고, leaf 후보 생성 방식만 바꾼다.
+
+model_path: models/pct_model.onnx
+
+internal_node_holder: 200
+leaf_node_holder: 100
+
+candidate_generator: sub36
+
+norm_factor: 0.8
+size_minimum: 0.13
+setting: 3
+density_max: 1597.01889805696
