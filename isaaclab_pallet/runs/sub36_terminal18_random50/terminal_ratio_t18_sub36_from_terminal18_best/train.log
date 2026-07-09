@@ -1,0 +1,51 @@
+[sub36-terminal18] start Thu Jul  9 02:30:24 PM KST 2026
+[sub36-terminal18] out_dir=isaaclab_pallet/runs/sub36_terminal18_random50 run_name=terminal_ratio_t18_sub36_from_terminal18_best pct_config=templete code/config/pct_config_sub36.yaml warm_start=isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[sub36-terminal18] num_envs=32 max_boxes=256 updates=2500 lr=5e-7 candidate_k=0
+[sub36-terminal18] eval_box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_count=50 eval_sequences=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-09_14-30-27.log[0m
+[36m======================================================================================[0m
+
+[33m14:30:27 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m14:30:32 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 5.345119 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 1.545187 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[gat-train] run_dir=isaaclab_pallet/runs/sub36_terminal18_random50/terminal_ratio_t18_sub36_from_terminal18_best device=cuda:0 num_envs=32 obs_shape=(32, 301, 9) leaf_shape=(32, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=terminal_ratio_t18 learn_finish_action=False action_space=100 candidate_generator=sub36 candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=50 box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,random_spec_010,random_spec_011,random_spec_012,random_spec_013,random_spec_014,random_spec_015,random_spec_016,random_spec_017,random_spec_018,random_spec_019,random_spec_020,random_spec_021,random_spec_022,random_spec_023,random_spec_024,random_spec_025,random_spec_026,random_spec_027,random_spec_028,random_spec_029,random_spec_030,random_spec_031,random_spec_032,random_spec_033,random_spec_034,random_spec_035,random_spec_036,random_spec_037,random_spec_038,random_spec_039,random_spec_040,random_spec_041,random_spec_042,random_spec_043,random_spec_044,random_spec_045,random_spec_046,random_spec_047,random_spec_048,random_spec_049
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial competition score = 79.70  -> PCT-best.pt
+[gat-train] update=1 samples=160 fps=0.3 loss=-0.0098 actor=-0.1494 value=0.1508 entropy=1.1271 mean_return=0.000 mean_len=0.0
+[gat-train] update=2 samples=320 fps=0.5 loss=0.1949 actor=0.1508 value=0.0606 entropy=1.6582 mean_return=0.000 mean_len=0.0
+[gat-train] update=3 samples=480 fps=0.8 loss=0.3754 actor=0.3029 value=0.0950 entropy=2.2592 mean_return=0.000 mean_len=0.0
+[gat-train] update=4 samples=640 fps=1.0 loss=-0.0004 actor=-0.0272 value=0.0496 entropy=2.2725 mean_return=0.000 mean_len=0.0
+[gat-train] update=5 samples=800 fps=1.3 loss=-0.1751 actor=-0.1943 value=0.0441 entropy=2.4893 mean_return=0.000 mean_len=0.0
+[gat-train] update=6 samples=960 fps=1.5 loss=-0.0796 actor=-0.0954 value=0.0436 entropy=2.7878 mean_return=0.000 mean_len=0.0
+[gat-train] update=7 samples=1120 fps=1.6 loss=0.0967 actor=0.0517 value=0.0722 entropy=2.7158 mean_return=0.000 mean_len=0.0
+[gat-train] update=8 samples=1280 fps=1.8 loss=-0.3340 actor=-0.3684 value=0.0633 entropy=2.8759 mean_return=0.000 mean_len=0.0
+[gat-train] update=9 samples=1440 fps=1.9 loss=-0.3202 actor=-0.3881 value=0.0995 entropy=3.1611 mean_return=0.000 mean_len=0.0
+[gat-train] update=10 samples=1600 fps=2.0 loss=-0.2688 actor=-0.3742 value=0.1383 entropy=3.2941 mean_return=0.000 mean_len=0.0
+[gat-train] update=11 samples=1760 fps=2.0 loss=-0.4594 actor=-0.5687 value=0.1427 entropy=3.3519 mean_return=0.000 mean_len=0.0
+[gat-train] update=12 samples=1920 fps=2.0 loss=0.7773 actor=0.3309 value=0.4812 entropy=3.4711 mean_return=0.000 mean_len=0.0
+[sub36-terminal18] exited code=137 Thu Jul  9 02:47:17 PM KST 2026
