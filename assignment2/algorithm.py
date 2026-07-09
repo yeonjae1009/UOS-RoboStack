@@ -373,15 +373,15 @@ class Palletizer:
             "step": int(box["step"]),
             "id": int(box["id"]),
             "size": [
-                round(dx, 6),
-                round(dy, 6),
-                round(dz, 6),
+                round(dx, 3),
+                round(dy, 3),
+                round(dz, 3),
             ],
             "mass": float(box["mass"]),
             "position": [
-                round(x + dx / 2.0, 6),
-                round(y + dy / 2.0, 6),
-                round(z + dz / 2.0, 6),
+                round(x + dx / 2.0, 3),
+                round(y + dy / 2.0, 3),
+                round(z + dz / 2.0, 3),
             ],
             "rotation": int(rotation),
         })
