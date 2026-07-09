@@ -204,6 +204,7 @@ class Palletizer:
                 self._setting,
             )
             self._packer.reset()
+            self._raw_sequence = []
         elif not hasattr(self, "_packer"):
             self._packer = Packer(
                 self._container,
@@ -213,6 +214,7 @@ class Palletizer:
                 self._setting,
             )
             self._packer.reset()
+            self._raw_sequence = []
 
         return True
 
@@ -363,12 +365,26 @@ class Palletizer:
         ):
             return None
 
-        for placed in self.sequence:
+        for placed in getattr(self, "_raw_sequence", self.sequence):
             old = self._aabb_from_size_position(placed["size"], placed["position"])
             if self._overlap_3d(candidate, old):
                 return None
 
-        return lx, ly, lz, dims, rotation
+        self._pending_raw_placed = {
+            "step": int(box["step"]),
+            "id": int(box["id"]),
+            "size": rounded_size,
+            "mass": float(box["mass"]),
+            "position": rounded_position,
+            "rotation": int(rotation),
+        }
+
+        margin = 0.002
+        output_lx = min(max(lx, margin), float(self.pallet.length) - dx - margin)
+        output_ly = min(max(ly, margin), float(self.pallet.width) - dy - margin)
+        output_lz = max(lz, 0.0)
+
+        return output_lx, output_ly, output_lz, dims, rotation
 
     # -----------------------------------------------------------------------
     # 기본 적재 로직
@@ -504,6 +520,11 @@ class Palletizer:
             ],
             "rotation": int(rotation),
         })
+        if hasattr(self, "_pending_raw_placed"):
+            if not hasattr(self, "_raw_sequence"):
+                self._raw_sequence = []
+            self._raw_sequence.append(self._pending_raw_placed)
+            del self._pending_raw_placed
 
         self.cursor_x += dx
         self.row_depth = max(self.row_depth, dy)
