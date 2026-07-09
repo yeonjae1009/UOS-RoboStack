@@ -22,6 +22,7 @@ LOG="${RUN_DIR}/train.log"
 STOP="${RUN_DIR}/STOP"
 
 NUM_ENVS="${NUM_ENVS:-32}"
+NUM_PACKER_WORKERS="${NUM_PACKER_WORKERS:-8}"
 MAX_BOXES="${MAX_BOXES:-256}"      # box POOL size; each episode uses a random subset (~pallet capacity)
 CYCLE_UPDATES="${CYCLE_UPDATES:-5000}"   # updates per pool before cycling to a fresh random pool
 SAVE_INTERVAL="${SAVE_INTERVAL:-250}"
@@ -32,7 +33,7 @@ REWARD_PROFILE="${REWARD_PROFILE:-base}"
 
 mkdir -p "$RUN_DIR"
 fails=0
-echo "[overnight] start $(date) run_dir=$RUN_DIR num_envs=$NUM_ENVS pool=$MAX_BOXES cycle=$CYCLE_UPDATES reward_profile=$REWARD_PROFILE" | tee -a "$LOG"
+echo "[overnight] start $(date) run_dir=$RUN_DIR num_envs=$NUM_ENVS packer_workers=$NUM_PACKER_WORKERS pool=$MAX_BOXES cycle=$CYCLE_UPDATES reward_profile=$REWARD_PROFILE" | tee -a "$LOG"
 
 while [ ! -f "$STOP" ]; do
   if [ -f "$RESUME" ]; then
@@ -44,7 +45,7 @@ while [ ! -f "$STOP" ]; do
   fi
 
   python3 isaaclab_pallet/scripts/train_pallet_gat.py \
-    --run-name "$RUN_NAME" --num-envs "$NUM_ENVS" --max-boxes "$MAX_BOXES" \
+    --run-name "$RUN_NAME" --num-envs "$NUM_ENVS" --num-packer-workers "$NUM_PACKER_WORKERS" --max-boxes "$MAX_BOXES" \
     --box-seed "$BOX_SEED" --updates "$CYCLE_UPDATES" --save-interval "$SAVE_INTERVAL" \
     --learning-rate "$LR" --reward-profile "$REWARD_PROFILE" --seed 0 --headless "${INIT[@]}" >> "$LOG" 2>&1
   code=$?

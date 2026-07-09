@@ -25,6 +25,7 @@ python3 isaaclab_pallet/scripts/train_pallet_gat.py \
   --run-name run_warm5 \
   --load-model "$LOAD" \
   --num-envs 32 \
+  --num-packer-workers "${NUM_PACKER_WORKERS:-8}" \
   --max-boxes 100 \
   --box-seed 0 \
   --updates 1200 \

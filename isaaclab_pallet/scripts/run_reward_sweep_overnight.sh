@@ -38,6 +38,7 @@ FALLBACK_BEST="Online-3D-BPP-PCT/logs/experiment/cjspec_v2-2026.06.24-23-29-47/P
 STOP_ALL="isaaclab_pallet/runs/reward_sweep_STOP"
 
 NUM_ENVS="${NUM_ENVS:-32}"
+NUM_PACKER_WORKERS="${NUM_PACKER_WORKERS:-8}"
 MAX_BOXES="${MAX_BOXES:-256}"
 UPDATES_PER_PROFILE="${UPDATES_PER_PROFILE:-2500}"
 SAVE_INTERVAL="${SAVE_INTERVAL:-250}"
@@ -70,7 +71,7 @@ fi
 
 echo "[reward-sweep] start $(date)"
 echo "[reward-sweep] profiles=${PROFILES[*]}"
-echo "[reward-sweep] best=$BEST num_envs=$NUM_ENVS max_boxes=$MAX_BOXES updates/profile=$UPDATES_PER_PROFILE lr=$LR candidate_k=$CANDIDATE_RERANK_K"
+echo "[reward-sweep] best=$BEST num_envs=$NUM_ENVS packer_workers=$NUM_PACKER_WORKERS max_boxes=$MAX_BOXES updates/profile=$UPDATES_PER_PROFILE lr=$LR candidate_k=$CANDIDATE_RERANK_K"
 
 for i in "${!PROFILES[@]}"; do
   [ -f "$STOP_ALL" ] && break
@@ -120,6 +121,7 @@ for i in "${!PROFILES[@]}"; do
     --run-name "$run_name" \
     --reward-profile "$profile" \
     --num-envs "$NUM_ENVS" \
+    --num-packer-workers "$NUM_PACKER_WORKERS" \
     --max-boxes "$MAX_BOXES" \
     --box-seed "$seed" \
     --updates "$UPDATES_PER_PROFILE" \

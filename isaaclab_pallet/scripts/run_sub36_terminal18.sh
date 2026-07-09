@@ -27,6 +27,7 @@ WARM_START="${WARM_START:-isaaclab_pallet/runs/reward_terminal18_finish15/termin
 RESUME="${RESUME:-}"
 
 NUM_ENVS="${NUM_ENVS:-32}"
+NUM_PACKER_WORKERS="${NUM_PACKER_WORKERS:-8}"
 MAX_BOXES="${MAX_BOXES:-256}"
 UPDATES="${UPDATES:-2500}"
 SAVE_INTERVAL="${SAVE_INTERVAL:-250}"
@@ -90,7 +91,7 @@ fi
 
 echo "[sub36-terminal18] start $(date)" | tee -a "$log"
 echo "[sub36-terminal18] out_dir=$OUT_DIR run_name=$RUN_NAME pct_config=$PCT_CONFIG_PATH warm_start=$WARM_START" | tee -a "$log"
-echo "[sub36-terminal18] num_envs=$NUM_ENVS max_boxes=$MAX_BOXES updates=$UPDATES lr=$LR candidate_k=$CANDIDATE_RERANK_K" | tee -a "$log"
+echo "[sub36-terminal18] num_envs=$NUM_ENVS packer_workers=$NUM_PACKER_WORKERS max_boxes=$MAX_BOXES updates=$UPDATES lr=$LR candidate_k=$CANDIDATE_RERANK_K" | tee -a "$log"
 echo "[sub36-terminal18] eval_box_seq_dir=$EVAL_BOX_SEQ_DIR eval_count=${#eval_sequences_array[@]} eval_sequences=${eval_sequences_array[*]}" | tee -a "$log"
 
 start_line="$(wc -l < "$log" 2>/dev/null || echo 0)"
@@ -100,6 +101,7 @@ python3 isaaclab_pallet/scripts/train_pallet_gat.py \
   --run-name "$RUN_NAME" \
   --reward-profile terminal_ratio_t18 \
   --num-envs "$NUM_ENVS" \
+  --num-packer-workers "$NUM_PACKER_WORKERS" \
   --max-boxes "$MAX_BOXES" \
   --box-seed "$BOX_SEED" \
   --updates "$UPDATES" \

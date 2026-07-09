@@ -24,6 +24,7 @@ OUT_DIR="${OUT_DIR:-isaaclab_pallet/runs/reward_terminal18_finish15}"
 STOP_ALL="${OUT_DIR}/STOP"
 
 NUM_ENVS="${NUM_ENVS:-32}"
+NUM_PACKER_WORKERS="${NUM_PACKER_WORKERS:-8}"
 MAX_BOXES="${MAX_BOXES:-256}"
 UPDATES_PER_PROFILE="${UPDATES_PER_PROFILE:-2500}"
 SAVE_INTERVAL="${SAVE_INTERVAL:-250}"
@@ -54,7 +55,7 @@ warm_starts=(
 )
 
 echo "[terminal18-finish15] start $(date)"
-echo "[terminal18-finish15] out_dir=$OUT_DIR num_envs=$NUM_ENVS max_boxes=$MAX_BOXES updates/profile=$UPDATES_PER_PROFILE lr=$LR candidate_k=$CANDIDATE_RERANK_K"
+echo "[terminal18-finish15] out_dir=$OUT_DIR num_envs=$NUM_ENVS packer_workers=$NUM_PACKER_WORKERS max_boxes=$MAX_BOXES updates/profile=$UPDATES_PER_PROFILE lr=$LR candidate_k=$CANDIDATE_RERANK_K"
 echo "[terminal18-finish15] eval_box_seq_dir=$EVAL_BOX_SEQ_DIR eval_sequences=${eval_sequences_array[*]}"
 
 for i in "${!profiles[@]}"; do
@@ -104,6 +105,7 @@ for i in "${!profiles[@]}"; do
     --run-name "$run_name" \
     --reward-profile "$profile" \
     --num-envs "$NUM_ENVS" \
+    --num-packer-workers "$NUM_PACKER_WORKERS" \
     --max-boxes "$MAX_BOXES" \
     --box-seed "$seed" \
     --updates "$UPDATES_PER_PROFILE" \

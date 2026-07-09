@@ -1,0 +1,50 @@
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/m7t24a3t
+[gat-train] run_dir=isaaclab_pallet/runs/sub36_terminal18_random50/terminal_ratio_t18_sub36_from_terminal_best_eval10 device=cuda:0 num_envs=32 num_packer_workers=8 obs_shape=(32, 301, 9) leaf_shape=(32, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=terminal_ratio_t18 learn_finish_action=False action_space=100 candidate_generator=sub36 candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=10 box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial competition score = 75.39  -> PCT-best.pt
+[gat-train] update=251 samples=160 fps=1.3 loss=-0.0204 actor=-0.1654 value=0.1568 entropy=1.1930 mean_return=0.000 mean_len=0.0
+[gat-train] update=252 samples=320 fps=2.6 loss=0.1314 actor=0.0740 value=0.0765 entropy=1.9031 mean_return=0.000 mean_len=0.0
+[gat-train] update=253 samples=480 fps=3.8 loss=0.4637 actor=0.3686 value=0.1190 entropy=2.3875 mean_return=0.000 mean_len=0.0
+[gat-train] update=254 samples=640 fps=4.9 loss=0.0239 actor=-0.0227 value=0.0709 entropy=2.4268 mean_return=0.000 mean_len=0.0
+[gat-train] update=255 samples=800 fps=6.0 loss=-0.0761 actor=-0.1313 value=0.0809 entropy=2.5689 mean_return=0.000 mean_len=0.0
+[gat-train] update=256 samples=960 fps=6.9 loss=-0.1130 actor=-0.1215 value=0.0379 entropy=2.9407 mean_return=0.000 mean_len=0.0
+[gat-train] update=257 samples=1120 fps=7.8 loss=-0.0335 actor=-0.0767 value=0.0733 entropy=3.0101 mean_return=0.000 mean_len=0.0
+[gat-train] update=258 samples=1280 fps=8.5 loss=-0.2903 actor=-0.3156 value=0.0561 entropy=3.0666 mean_return=0.000 mean_len=0.0
+[gat-train] update=259 samples=1440 fps=9.1 loss=-0.2858 actor=-0.3519 value=0.0986 entropy=3.2397 mean_return=0.000 mean_len=0.0
+[gat-train] update=260 samples=1600 fps=9.5 loss=-0.2810 actor=-0.4301 value=0.1834 entropy=3.4251 mean_return=0.000 mean_len=0.0
+[gat-train] update=261 samples=1760 fps=9.8 loss=-0.3132 actor=-0.5191 value=0.2414 entropy=3.5577 mean_return=0.000 mean_len=0.0
+[gat-train] update=262 samples=1920 fps=10.1 loss=0.6779 actor=0.3022 value=0.4120 entropy=3.6282 mean_return=0.000 mean_len=0.0
+[gat-train] update=263 samples=2080 fps=10.2 loss=0.2295 actor=-0.2762 value=0.5407 entropy=3.5056 mean_return=0.000 mean_len=0.0
+[gat-train] update=264 samples=2240 fps=10.2 loss=1.5346 actor=0.5786 value=0.9895 entropy=3.3538 mean_return=16.925 mean_len=69.3
+[gat-train] update=265 samples=2400 fps=10.2 loss=4.0229 actor=2.2458 value=1.8044 entropy=2.7236 mean_return=17.206 mean_len=72.3
+[gat-train] update=266 samples=2560 fps=10.3 loss=4.3494 actor=2.4387 value=1.9294 entropy=1.8702 mean_return=17.650 mean_len=75.4
+[gat-train] update=267 samples=2720 fps=10.6 loss=1.6725 actor=0.8505 value=0.8367 entropy=1.4798 mean_return=17.769 mean_len=76.3
+[gat-train] update=268 samples=2880 fps=11.1 loss=0.2392 actor=0.1748 value=0.0827 entropy=1.8387 mean_return=17.769 mean_len=76.3
+[gat-train] update=269 samples=3040 fps=11.5 loss=0.1423 actor=0.0739 value=0.0905 entropy=2.2003 mean_return=17.769 mean_len=76.3
+[gat-train] update=270 samples=3200 fps=12.0 loss=0.1388 actor=0.0441 value=0.1185 entropy=2.3906 mean_return=17.769 mean_len=76.3
+[gat-train] update=271 samples=3360 fps=12.3 loss=-0.1766 actor=-0.2193 value=0.0694 entropy=2.6739 mean_return=17.769 mean_len=76.3
+[gat-train] update=272 samples=3520 fps=12.7 loss=0.0138 actor=-0.0391 value=0.0802 entropy=2.7260 mean_return=17.769 mean_len=76.3
+[gat-train] update=273 samples=3680 fps=12.9 loss=-0.1770 actor=-0.2158 value=0.0680 entropy=2.9229 mean_return=17.769 mean_len=76.3
+[gat-train] update=274 samples=3840 fps=13.1 loss=0.1057 actor=-0.0364 value=0.1729 entropy=3.0857 mean_return=17.769 mean_len=76.3
+[gat-train] update=275 samples=4000 fps=13.3 loss=-0.2740 actor=-0.4783 value=0.2377 entropy=3.3404 mean_return=17.769 mean_len=76.3
+[gat-train] update=276 samples=4160 fps=13.3 loss=-0.3818 actor=-0.6240 value=0.2769 entropy=3.4681 mean_return=17.678 mean_len=75.8
+[gat-train] update=277 samples=4320 fps=13.3 loss=-0.5912 actor=-0.8082 value=0.2529 entropy=3.5918 mean_return=17.678 mean_len=75.8
+[gat-train] update=278 samples=4480 fps=13.3 loss=-0.0906 actor=-0.5023 value=0.4482 entropy=3.6486 mean_return=17.678 mean_len=75.8
+[gat-train] update=279 samples=4640 fps=13.2 loss=1.4901 actor=0.5902 value=0.9337 entropy=3.3858 mean_return=17.622 mean_len=75.2
+[gat-train] update=280 samples=4800 fps=13.1 loss=2.4352 actor=1.0960 value=1.3690 entropy=2.9787 mean_return=17.603 mean_len=75.1
+[gat-train] update=281 samples=4960 fps=13.0 loss=2.9365 actor=1.6139 value=1.3478 entropy=2.5216 mean_return=17.626 mean_len=75.6
+[gat-train] update=282 samples=5120 fps=12.9 loss=4.2476 actor=2.1733 value=2.0968 entropy=2.2448 mean_return=17.878 mean_len=77.1
+[gat-train] update=283 samples=5280 fps=13.1 loss=1.2228 actor=0.5156 value=0.7267 entropy=1.9527 mean_return=17.934 mean_len=77.6
+[gat-train] update=284 samples=5440 fps=13.4 loss=0.2402 actor=0.1978 value=0.0662 entropy=2.3855 mean_return=17.934 mean_len=77.6
+[gat-train] update=285 samples=5600 fps=13.7 loss=0.1110 actor=-0.0062 value=0.1439 entropy=2.6652 mean_return=17.934 mean_len=77.6
+[gat-train] update=286 samples=5760 fps=13.9 loss=-0.0369 actor=-0.0980 value=0.0892 entropy=2.8173 mean_return=17.934 mean_len=77.6
+[gat-train] update=287 samples=5920 fps=14.1 loss=-0.1784 actor=-0.2358 value=0.0874 entropy=3.0035 mean_return=17.934 mean_len=77.6
+[gat-train] update=288 samples=6080 fps=14.2 loss=-0.1375 actor=-0.1546 value=0.0486 entropy=3.1542 mean_return=17.934 mean_len=77.6
+[gat-train] update=289 samples=6240 fps=14.4 loss=0.5668 actor=0.2891 value=0.3107 entropy=3.3049 mean_return=17.934 mean_len=77.6
+[gat-train] update=290 samples=6400 fps=14.4 loss=-0.2761 actor=-0.5023 value=0.2605 entropy=3.4358 mean_return=17.924 mean_len=77.5
+[gat-train] update=291 samples=6560 fps=14.5 loss=-0.1084 actor=-0.2118 value=0.1388 entropy=3.5418 mean_return=17.924 mean_len=77.5
+[gat-train] update=292 samples=6720 fps=14.4 loss=-0.1417 actor=-0.4779 value=0.3722 entropy=3.5893 mean_return=17.924 mean_len=77.5
+[gat-train] update=293 samples=6880 fps=14.4 loss=1.2003 actor=0.4524 value=0.7834 entropy=3.5527 mean_return=17.897 mean_len=77.4
+[gat-train] update=294 samples=7040 fps=14.3 loss=1.5835 actor=0.6117 value=1.0048 entropy=3.3013 mean_return=17.861 mean_len=77.1

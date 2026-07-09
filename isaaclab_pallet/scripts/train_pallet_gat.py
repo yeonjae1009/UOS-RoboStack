@@ -20,6 +20,12 @@ from isaaclab.app import AppLauncher
 
 parser = argparse.ArgumentParser(description="Headless Isaac Lab training using the original Online-3D-BPP-PCT GAT.")
 parser.add_argument("--num-envs", type=int, default=16)
+parser.add_argument(
+    "--num-packer-workers",
+    type=int,
+    default=0,
+    help="CPU packer worker processes (0=serial). Tune to the CPU/IPC sweet spot.",
+)
 parser.add_argument("--max-boxes", type=int, default=64)
 parser.add_argument("--updates", type=int, default=100)
 parser.add_argument("--num-steps", type=int, default=5)
@@ -296,6 +302,7 @@ def init_wandb_run(run_dir: Path, pct_args: SimpleNamespace, start_update: int):
             "run_name": args_cli.run_name,
             "reward_profile": args_cli.reward_profile,
             "num_envs": args_cli.num_envs,
+            "num_packer_workers": args_cli.num_packer_workers,
             "max_boxes": args_cli.max_boxes,
             "updates": args_cli.updates,
             "start_update": start_update,
@@ -425,6 +432,7 @@ def main() -> None:
     if args_cli.pct_config_path:
         cfg.pct_config_path = args_cli.pct_config_path
     cfg.scene.num_envs = args_cli.num_envs
+    cfg.num_packer_workers = args_cli.num_packer_workers
     cfg.max_boxes = args_cli.max_boxes
     cfg.box_seed = args_cli.box_seed
     cfg.sim.device = args_cli.device
@@ -477,6 +485,7 @@ def main() -> None:
     print(
         "[gat-train] "
         f"run_dir={run_dir} device={env.device} num_envs={env.num_envs} "
+        f"num_packer_workers={cfg.num_packer_workers} "
         f"obs_shape={tuple(all_nodes.shape)} leaf_shape={tuple(leaf_nodes.shape)} "
         f"num_steps={args_cli.num_steps} normFactor={pct_args.normFactor} "
         f"drift_fail_threshold={cfg.drift_fail_threshold} "
