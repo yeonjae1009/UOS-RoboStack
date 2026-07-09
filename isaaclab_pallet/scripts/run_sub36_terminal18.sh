@@ -24,6 +24,7 @@ OUT_DIR="${OUT_DIR:-isaaclab_pallet/runs/sub36_terminal18_random50}"
 RUN_NAME="${RUN_NAME:-terminal_ratio_t18_sub36_from_terminal18_best}"
 PCT_CONFIG_PATH="${PCT_CONFIG_PATH:-templete code/config/pct_config_sub36.yaml}"
 WARM_START="${WARM_START:-isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt}"
+RESUME="${RESUME:-}"
 
 NUM_ENVS="${NUM_ENVS:-32}"
 MAX_BOXES="${MAX_BOXES:-256}"
@@ -82,6 +83,11 @@ if [ "$SAVE_UPDATE_CHECKPOINTS" = "0" ]; then
   checkpoint_args=(--no-save-update-checkpoints)
 fi
 
+resume_args=()
+if [ -n "$RESUME" ]; then
+  resume_args=(--resume "$RESUME")
+fi
+
 echo "[sub36-terminal18] start $(date)" | tee -a "$log"
 echo "[sub36-terminal18] out_dir=$OUT_DIR run_name=$RUN_NAME pct_config=$PCT_CONFIG_PATH warm_start=$WARM_START" | tee -a "$log"
 echo "[sub36-terminal18] num_envs=$NUM_ENVS max_boxes=$MAX_BOXES updates=$UPDATES lr=$LR candidate_k=$CANDIDATE_RERANK_K" | tee -a "$log"
@@ -107,6 +113,7 @@ python3 isaaclab_pallet/scripts/train_pallet_gat.py \
   --seed 0 \
   --headless \
   "${checkpoint_args[@]}" \
+  "${resume_args[@]}" \
   "${wandb_args[@]}" \
   --load-model "$WARM_START" >> "$log" 2>&1
 code=$?
