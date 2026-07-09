@@ -32,7 +32,8 @@
   |---|---|---|
   | **학습 / 평가** | Isaac Lab 물리로 안정성 검증하며 정책 학습·채점 | ✅ Isaac |
   | **대회 제출** | ONNX 정책 + numpy 패커 (가볍게 추론만) | ❌ CPU only |
-- **제출물:** `submission_UOS-robostack_isaac.zip` — `python main.py` 한 번으로 결과 JSON 자동 산출.
+- **제출물:** `submit_terminal_t18_best_ae.zip` — `submit_baseline`의 안정화된 제출 코드를 기준으로,
+  최신 `PCT-best.pt`를 ONNX로 변환해 내장한 최종 제출 ZIP.
 
 ---
 
@@ -43,9 +44,10 @@ assignment2_project/  (= GitHub: yeonjae1009/UOS-RoboStack)
 ├── isaaclab_pallet/              ★ Isaac Lab 포팅 핵심 (학습/시각화/평가생성)
 ├── Online-3D-BPP-PCT/            ★ PCT/GAT 모델 라이브러리 (vendored) + ONNX 변환
 ├── palletizing_simulator/        ★ 공식 Isaac 물리 채점기 (정답지)
-├── submission_UOS-robostack/     ★ 대회 제출 패키지 소스 (ONNX/CPU, Isaac 불필요)
+├── submit_baseline/              ★ 현재 제출 코드 기준선 (ONNX/CPU, Isaac 불필요, AE clamp 포함)
+├── submit_terminal_t18_best_ae/  ★ 최신 terminal_ratio_t18 모델을 넣은 최종 제출 폴더
 ├── templete code/                ★ env가 읽는 config + packer (대회 제공 템플릿)
-├── submission_UOS-robostack_isaac.zip   ← 제출 ZIP (위 패키지에 우리 모델 ONNX 적용)
+├── submit_terminal_t18_best_ae.zip      ← 최종 제출 ZIP
 ├── ISAAC_LAB_PORTING_GUIDE.md    포팅 가이드 문서
 ├── IMPROVEMENT_PLAN.md           개선 계획 문서
 └── README.md                     (이 문서)
@@ -67,7 +69,7 @@ assignment2_project/  (= GitHub: yeonjae1009/UOS-RoboStack)
 | `scripts/watch_training.sh` | 학습 모니터 요약 |
 | `scripts/test_equivalence.py` | 원본 PackingContinuous == 포팅 패커 비트동일 검증 |
 | `scripts/test_packer_pool.py`, `test_pallet_env.py`, `benchmark_pallet_env.py` | 풀/환경 테스트·벤치마크 |
-| `runs/overnight_full/` | **학습 체크포인트 (Git LFS)** — [3장](#3-모델-체크포인트--최신-pt는-어디에) 참고 |
+| `runs/reward_terminal18_finish15/` | **최신 reward sweep 체크포인트** — [3장](#3-모델-체크포인트--최신-pt는-어디에) 참고 |
 
 ### 2.2 `Online-3D-BPP-PCT/` — 모델 라이브러리 (vendored)
 원본 [alexfrom0815/Online-3D-BPP-PCT](https://github.com/alexfrom0815/Online-3D-BPP-PCT)을 **대회용으로 커스터마이즈**하여 통째로 포함(vendor)한 폴더. **GAT 신경망 정의가 여기 있습니다.**
@@ -96,17 +98,20 @@ assignment2_project/  (= GitHub: yeonjae1009/UOS-RoboStack)
 | `box_sequence/box_sequence_{0,1}.json` | **공식 입력 박스 시퀀스** (각 250개, JSONL) |
 | `scene.py`, `buffer_manager.py`, `monitor.py` | 씬/버퍼/모니터 유틸 |
 
-### 2.4 `submission_UOS-robostack/` — 대회 제출 패키지 소스
+### 2.4 `submit_baseline/`, `submit_terminal_t18_best_ae/` — 대회 제출 패키지 소스
 `python main.py`로 실행되는 **온라인 추론 코드**. ONNX(onnxruntime, CPU)만 사용 → Isaac 불필요.
 
 | 파일 | 역할 |
 |---|---|
 | `main.py` | 실행 진입점 (box_sequence 읽고 → 배치 → 결과 JSON 저장) |
-| `algorithm.py` | **`Palletizer`** (핵심): packer.observe → ONNX argmax → leaf 선택 → place |
+| `algorithm.py` | **`Palletizer`** (핵심): packer.observe → ONNX argmax → leaf 선택 → place. `submit_baseline`부터는 raw PCT 좌표와 제출 JSON 좌표를 분리하고, JSON 출력 좌표만 2mm 안쪽으로 clamp |
 | `src/pct/packer.py` | EMS/안정성 패킹 기하 (순수 numpy) |
 | `config/pct_config.yaml` | setting/holder/density 등 추론 설정 |
 | `config/algorithm_config.yaml` | 팔레트 치수, 버퍼 크기 등 |
-| `models/pct_model.onnx` | 학습된 GAT 정책 (ONNX) |
+| `src/models/pct_model.onnx` | 학습된 GAT 정책 (ONNX) |
+
+`submit_baseline`은 검증된 제출 코드의 기준선이다. 이후 제출 ZIP을 만들 때는 이 폴더를 복사하고,
+`src/models/pct_model.onnx`만 새로 교체하는 방식으로 관리한다.
 
 ### 2.5 `templete code/` — env가 읽는 config + packer (대회 템플릿)
 대회 제공 템플릿. **Isaac env(`pallet_packing_env.py`)가 런타임에 이 폴더의 `config/pct_config.yaml`과
@@ -120,11 +125,12 @@ assignment2_project/  (= GitHub: yeonjae1009/UOS-RoboStack)
 
 | 구분 | 경로 | 설명 |
 |---|---|---|
-| **★ 최신 (현재 사용)** | `isaaclab_pallet/runs/overnight_full/PCT-latest.pt` | Isaac 물리 미세조정 최신본 (= `PCT-update-001250.pt`, update 1260) |
-| 이어하기용 | `isaaclab_pallet/runs/overnight_full/PCT-resume.pt` | weights+optimizer+update (재학습 재개용) |
-| 스냅샷 | `isaaclab_pallet/runs/overnight_full/PCT-update-{000250..001250}.pt` | 250 update마다 |
+| **★ 최신/최종 제출 사용** | `isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt` | terminal_ratio_t18 reward로 학습한 최고 random eval 모델. log best **87.48** |
+| 이어하기용 | `isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best-resume.pt` | best 모델의 weights+optimizer+update |
+| 최신 스냅샷 | `isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-latest.pt` | 해당 run의 마지막 모델 |
+| 비교 run | `isaaclab_pallet/runs/reward_terminal18_finish15/finish_ratio_t15_from_finish_best/PCT-best.pt` | finish action 학습 포함. log best **86.04** |
 | **Baseline (원본)** | `Online-3D-BPP-PCT/logs/experiment/cjspec_v2-2026.06.24-23-29-47/PCT-best.pt` | 수학 환경 학습 원본 (워밍스타트 출발점, 대회점수 92.3) |
-| **제출용 ONNX** | `submission_UOS-robostack/models/pct_model.onnx` | 위 `.pt`를 변환한 ONNX (제출 패키지에 내장) |
+| **제출용 ONNX** | `submit_terminal_t18_best_ae/src/models/pct_model.onnx` | 위 최신 `.pt`를 변환한 ONNX (제출 ZIP 내장) |
 
 아키텍처 공통: `setting=3`, `internal_node_holder=200`, `leaf_node_holder=100`,
 `embedding_size=64`, `normFactor=0.8`, `density_max=1597.01889805696`.
@@ -145,7 +151,7 @@ python3 -c "import isaaclab; print(isaaclab.__version__)"   # 0.54.4 확인
 ```
 
 ### 4.2 대회 제출 실행용 (Isaac 불필요, 가벼움)
-제출 패키지는 **numpy + onnxruntime + pyyaml** 만 있으면 됩니다 (`submission_UOS-robostack/requirements.txt`).
+제출 패키지는 **numpy + onnxruntime + pyyaml** 만 있으면 됩니다 (`submit_baseline/requirements.txt`).
 
 ```bash
 pip install numpy onnxruntime pyyaml
@@ -176,11 +182,11 @@ git lfs pull        # .pt 실제 파일 다운로드
 reset → (반복) 정책(obs)=leaf 선택 → env.step → packer가 위치 확정 → PhysX 안착
        → drift/tilt/oob/height/collapse 판정 → 보상 → A2C(actor+critic) 업데이트 → 체크포인트
 ```
-- env는 `templete code`의 packer + 자체 `pct_reward`를 사용.
+- env는 제출 코드와 동일 계열의 PCT packer + 자체 `pct_reward`를 사용.
 - 학습 스크립트는 `Online-3D-BPP-PCT`의 `model.DRL_GAT`/`tools`/`storage`를 사용.
 - 실패 종료코드: `1`=invalid, `2`=drift, `3`=tilt, `4`=oob, `5`=완료, `6`=height초과, `7`=drop, `8`=collapse.
 
-### 5.3 제출 추론 루프 (`submission_UOS-robostack/algorithm.py`)
+### 5.3 제출 추론 루프 (`submit_baseline/algorithm.py`)
 ```
 for box in boxes:
     obs = packer.observe(size, density)         # numpy
@@ -191,6 +197,14 @@ for box in boxes:
     결과기록(position[x,y,z 중심], rotation 0/90)
 ```
 **물리는 안 돌립니다.** "물리 인지"는 그 ONNX 모델이 Isaac 물리에서 학습/검증됐다는 의미입니다.
+
+중요: PCT 내부 좌표와 제출 JSON 좌표는 분리되어 있다.
+
+- `_raw_sequence`: PCT 내부 검증/다음 후보 판단용. 원본 PCT 좌표를 그대로 유지한다.
+- `sequence`: 제출 JSON용. 팔레트 경계 반올림 문제를 피하기 위해 `x/y`를 0.002m 안쪽으로 clamp한다.
+
+이 분리 덕분에 PCT가 고른 박스 순서/회전/개수는 유지하면서, Isaac spawn 시 `-0.0005`, `1.0005`
+같은 경계 초과 좌표로 채점 오류가 나는 문제를 피한다.
 
 ---
 
@@ -211,16 +225,48 @@ python3 isaaclab_pallet/scripts/train_pallet_gat.py \
 ```bash
 nohup bash isaaclab_pallet/scripts/run_overnight.sh > /tmp/overnight.out 2>&1 &
 bash isaaclab_pallet/scripts/watch_training.sh          # 진행 모니터
-touch isaaclab_pallet/runs/overnight_full/STOP          # 중지
 ```
 주요 인자: `--num-envs` 환경 수, `--max-boxes` 박스 풀 크기, `--updates` 업데이트 수,
 `--learning-rate`(1e-6=약한 미세조정, 1e-5=빠른 적응), `--load-model` 워밍스타트, `--resume` 재개.
+
+현재 최고 모델은 아래 reward profile로 학습한 run에서 나왔다.
+
+```bash
+python3 isaaclab_pallet/scripts/train_pallet_gat.py \
+  --reward-profile terminal_ratio_t18 \
+  --num-envs 32 \
+  --updates 2500 \
+  --load-model isaaclab_pallet/runs/reward_terminal18_finish15/previous/reward_sweep_small_terminal_ratio/PCT-best.pt \
+  --run-name terminal_ratio_t18_from_terminal_best \
+  --headless
+```
+
+reward scale 공통값:
+
+```text
+floor_coverage        = 1.2
+boundary_floor        = 0.8
+corner_floor          = 0.6
+height_smoothness     = 0.8
+support               = 0.08
+weak_support          = 0.08
+elevation_penalty     = 0.2
+```
+
+실험별 차이:
+
+| run | 핵심 차이 | random eval 점수 |
+|---|---|---|
+| `terminal_ratio_t18_from_terminal_best` | `terminal_ratio_reward=18`, finish action 없음 | log best **87.48** |
+| `finish_ratio_t15_from_finish_best` | `terminal_ratio_reward=15`, finish action 있음 | log best **86.04** |
+
+최종 제출은 점수가 더 높았던 `terminal_ratio_t18_from_terminal_best/PCT-best.pt`를 사용한다.
 
 ### 6.2 시각화 (GUI 롤아웃)
 대회 시퀀스를 순서대로 투입해서 직접 보기:
 ```bash
 python3 isaaclab_pallet/scripts/play_pallet_gat.py \
-  --checkpoint isaaclab_pallet/runs/overnight_full/PCT-latest.pt \
+  --checkpoint isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt \
   --box-source file \
   --box-sequence-path palletizing_simulator/box_sequence/box_sequence_0.json \
   --num-envs 1 --max-boxes 250 --steps 130 \
@@ -233,7 +279,7 @@ python3 isaaclab_pallet/scripts/play_pallet_gat.py \
 **1단계 — 정책으로 배치 JSON 생성 (Isaac 불필요):**
 ```bash
 python3 isaaclab_pallet/scripts/eval_competition_generate.py \
-  --checkpoint isaaclab_pallet/runs/overnight_full/PCT-latest.pt \
+  --checkpoint isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt \
   --out-dir /tmp/pct_results
 ```
 **2단계 — 공식 simulator로 물리 채점:**
@@ -249,39 +295,38 @@ python3 palletizing_simulator/simulator.py \
 ### 6.4 ONNX 변환 (.pt → .onnx)
 ```bash
 cd Online-3D-BPP-PCT
-python3 export_onnx_isaac.py \
-  --model-path ../isaaclab_pallet/runs/overnight_full/PCT-latest.pt \
-  --out pct_model_isaac.onnx \
-  --setting 3 --internal-node-holder 200 --leaf-node-holder 100 \
-  --box-sequence ../palletizing_simulator/box_sequence/box_sequence_0.json
-# onnxruntime argmax == torch argmax 일치까지 자동 검증
+python3 ../tools/export_pct_no_gym.py \
+  --model-path ../isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt \
+  --out /tmp/pct_terminal_t18_best.onnx \
+  --setting 3 --internal-node-holder 200 --leaf-node-holder 100
+# torch vs onnxruntime 출력 차이와 argmax를 검증
 ```
 
 ### 6.5 제출 패키지 실행 / 빌드
 **제출 코드 직접 실행 (채점관과 동일):**
 ```bash
-cd submission_UOS-robostack
+cd submit_terminal_t18_best_ae
 cp -r ../palletizing_simulator/box_sequence ./box_sequence   # 대회가 제공하는 입력
 python3 main.py        # → algorithm_results/*.json 자동 생성
 ```
-**제출 ZIP:** `submission_UOS-robostack_isaac.zip` (이미 빌드됨).
+**제출 ZIP:** `submit_terminal_t18_best_ae.zip` (이미 빌드됨).
 ZIP 최상위에 `main.py`가 있고, 압축 해제 후 `python main.py`로 실행되면 결과가 자동 산출됩니다.
 
 ---
 
 ## 7. 성능 / 결과
 
-공식 채점기(`simulator.py` + `evaluator.py`)로 `box_sequence_0`, `box_sequence_1` 평가:
+로컬 `main.py` 샘플 실행 결과(`assignment2/box_sequence` 기준):
 
-| 모델 | seq_0 | seq_1 | **평균 점수** | 물리 실패 |
+| 제출 폴더 | seq_0 output | seq_1 output | total output | 비고 |
 |---|---|---|---|---|
-| cjspec_v2 (수학 학습 원본) | 92.3 | 92.3 | **92.30** | 0 |
-| **PCT-latest (Isaac 미세조정)** | 92.3 | 86.2 | **89.25** | 0 |
+| `submit_baseline` | 96 | 72 | 168 | AE clamp 적용 기준선 |
+| **`submit_terminal_t18_best_ae`** | 96 | 73 | 169 | 최신 `terminal_ratio_t18` ONNX 적용 |
 
-- 점수 = `적재율(%) + 버퍼보너스(20 - 사용버퍼수)`. 두 모델 모두 버퍼 0 → +20, 물리 실패 0.
-- 참고: 현재 분포(seq 0/1)에서는 수학 정책이 이미 물리적으로 안정적이라, 약한 미세조정(lr 1e-6)은
-  적재율을 약간 떨어뜨렸습니다. 92.3 초과를 노리려면 **안정성이 아니라 적재율**을 직접 겨냥한
-  보상 설계 + 더 어려운 분포에서의 학습이 필요합니다.
+- `submit_terminal_t18_best_ae`는 경계 초과 AABB 검사에서 `bounds_bad=0`.
+- 변환 검증: `PCT-best.pt → pct_model.onnx` export 후 dummy 입력에서 `max_abs_diff=1.1324883e-06`,
+  `argmax_torch == argmax_onnx`.
+- 학습 로그 기준 random eval best는 `terminal_ratio_t18_from_terminal_best`가 **87.48**로 가장 높았다.
 
 ---
 
@@ -301,11 +346,16 @@ ZIP 최상위에 `main.py`가 있고, 압축 해제 후 `python main.py`로 실�
 
 - **체크포인트가 안 보여요:** Git LFS 미설치/미pull. `git lfs install && git lfs pull`.
 - **GUI가 안 떠요 / 멈춰요:** Isaac GUI는 본인 터미널에서 실행하세요 (백그라운드 무TTY는 멈춤).
-  체크포인트 경로 오타(`PCT-latest.pt`)도 흔한 원인입니다.
+  현재 최종 체크포인트는 `terminal_ratio_t18_from_terminal_best/PCT-best.pt`입니다.
 - **`simulator.py` 실행 실패:** `config/sim_config.yaml`의 `app.experience` 경로가 머신과 다를 수 있습니다.
   설치된 kit 경로(예: `/home/user/isaacsim/apps/isaacsim.exp.base.python.kit`)로 교정하세요.
 - **제출물은 Isaac을 쓰지 않습니다:** ZIP 안은 numpy+onnxruntime 패커뿐입니다. "Isaac 기반"은
   내부 ONNX 모델이 Isaac 물리에서 학습/검증되었음을 뜻합니다.
+- **reward scale은 제출 ZIP에 직접 들어가지 않습니다:** reward scale은 학습 중 `PCT-best.pt` 가중치를
+  만드는 데만 쓰입니다. 제출 시에는 해당 `.pt`를 ONNX로 변환한 `src/models/pct_model.onnx`만 실행됩니다.
+  따라서 새 reward 실험 결과를 제출에 반영하려면 `.pt → ONNX` 변환 후 `submit_baseline`의 ONNX를 교체합니다.
+- **새 제출 코드를 만들 때 기준 폴더:** `submit_baseline`을 복사한 뒤 `src/models/pct_model.onnx`만 교체합니다.
+  `algorithm.py`의 raw PCT 좌표/JSON clamp 분리 로직은 그대로 유지해야 합니다.
 - **GPU 비결정성:** play 스크립트는 GPU에서 run마다 미세하게 다를 수 있습니다. 제출/채점 경로(CPU/ONNX)는 결정적입니다.
 
 ---
