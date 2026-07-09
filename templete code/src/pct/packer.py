@@ -13,11 +13,13 @@ torch.seed / gym / box_creator 결합을 제거했다. 박스는 외부에서 �
 """
 import numpy as np
 from .space import Space
+from .sub36_candidates import Sub36CandidateGenerator
 
 
 class Packer:
     def __init__(self, container_size, size_minimum,
-                 internal_node_holder=200, leaf_node_holder=100, setting=1):
+                 internal_node_holder=200, leaf_node_holder=100, setting=1,
+                 candidate_generator="ems"):
         self.bin_size = list(container_size)
         self.internal_node_holder = internal_node_holder
         self.leaf_node_holder = leaf_node_holder
@@ -25,6 +27,12 @@ class Packer:
         self.setting = setting
         self.size_minimum = size_minimum
         self.space = Space(*self.bin_size, size_minimum, internal_node_holder)
+        self.candidate_generator = str(candidate_generator or "ems").lower()
+        if self.candidate_generator not in ("ems", "sub36"):
+            raise ValueError(f"unknown candidate_generator: {candidate_generator}")
+        self.sub36_generator = (
+            Sub36CandidateGenerator(self.bin_size) if self.candidate_generator == "sub36" else None
+        )
         self.next_box_vec = np.zeros((self.next_holder, 9))
         self.next_box = None
         self.next_den = 1
@@ -36,7 +44,16 @@ class Packer:
 
     # 현재 박스에 대한 잎 노드(배치 후보) 생성
     def get_possible_position(self):
-        allPosition = self.space.EMSPoint(self.next_box, self.setting)
+        if self.candidate_generator == "sub36":
+            allPosition = self.sub36_generator.generate(
+                self.space,
+                self.next_box,
+                self.next_den,
+                self.setting,
+                self.leaf_node_holder,
+            )
+        else:
+            allPosition = self.space.EMSPoint(self.next_box, self.setting)
         leaf_node_idx = 0
         leaf_node_vec = np.zeros((self.leaf_node_holder, 9))
         tmp_list = []

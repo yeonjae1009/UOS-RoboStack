@@ -52,6 +52,7 @@ class PackerConfig:
     setting: int
     density_max: float
     scales: pct_reward.RewardScales
+    candidate_generator: str = "ems"
 
 
 def _make_packer(cfg: PackerConfig):
@@ -64,6 +65,7 @@ def _make_packer(cfg: PackerConfig):
         internal_node_holder=cfg.internal_node_holder,
         leaf_node_holder=cfg.leaf_node_holder,
         setting=cfg.setting,
+        candidate_generator=cfg.candidate_generator,
     )
     packer.reset()
     return packer

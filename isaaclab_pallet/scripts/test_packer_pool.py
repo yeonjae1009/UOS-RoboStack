@@ -53,6 +53,7 @@ def make_cfg(yaml_cfg):
         setting=int(yaml_cfg["setting"]),
         density_max=float(yaml_cfg.get("density_max", 1.0)),
         scales=pct_reward.RewardScales(),
+        candidate_generator=str(yaml_cfg.get("candidate_generator", "ems")),
     )
 
 

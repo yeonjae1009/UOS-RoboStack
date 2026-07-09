@@ -93,6 +93,7 @@ class Palletizer:
         self.LNH = int(cfg["leaf_node_holder"])
         self.setting = int(cfg["setting"])
         self.size_minimum = float(cfg["size_minimum"])
+        self.candidate_generator = str(cfg.get("candidate_generator", "ems"))
         # setting 3: density(=mass/부피/density_max) 를 관찰 입력으로 사용. 학습과 동일 상수여야 함.
         self.density_max = float(cfg.get("density_max", 1.0))
 
@@ -121,7 +122,14 @@ class Palletizer:
 
     def run(self, boxes: List[BoxInput]) -> RunResult:
         container = [float(self.pallet.length), float(self.pallet.width), float(self.pallet.height)]
-        packer = Packer(container, self.size_minimum, self.INH, self.LNH, self.setting)
+        packer = Packer(
+            container,
+            self.size_minimum,
+            self.INH,
+            self.LNH,
+            self.setting,
+            candidate_generator=self.candidate_generator,
+        )
         packer.reset()
 
         sequence: List[PlacedBox] = []

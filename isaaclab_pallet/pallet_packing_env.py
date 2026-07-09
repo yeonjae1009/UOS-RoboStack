@@ -213,6 +213,7 @@ class PalletPackingEnv(DirectRLEnv):
             self.boxes = _load_boxes(cfg.box_sequence_path, cfg.max_boxes)
         self.pct_setting = int(self.pct_cfg["setting"])
         self.density_max = float(self.pct_cfg.get("density_max", 1.0))
+        self.candidate_generator = str(self.pct_cfg.get("candidate_generator", "ems")).lower()
         self.internal_node_holder = int(self.pct_cfg["internal_node_holder"])
         self.leaf_node_holder = int(self.pct_cfg["leaf_node_holder"])
         self.obs_node_count = self.internal_node_holder + self.leaf_node_holder + 1
@@ -279,6 +280,7 @@ class PalletPackingEnv(DirectRLEnv):
             setting=self.pct_setting,
             density_max=self.density_max,
             scales=self._reward_scales,
+            candidate_generator=self.candidate_generator,
         )
         self.packer_pool = packer_pool.make_packer_pool(
             cfg.scene.num_envs, self._packer_config, cfg.num_packer_workers

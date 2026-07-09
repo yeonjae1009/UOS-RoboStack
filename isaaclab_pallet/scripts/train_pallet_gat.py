@@ -215,6 +215,7 @@ def make_pct_args(env: PalletPackingEnv) -> SimpleNamespace:
         gat_layer_num=args_cli.gat_layer_num,
         normFactor=norm_factor,
         learn_finish_action=bool(env.cfg.learn_finish_action),
+        candidate_generator=getattr(env, "candidate_generator", "ems"),
     )
 
 
@@ -239,6 +240,7 @@ def save_checkpoint(
             "gat_layer_num": pct_args.gat_layer_num,
             "normFactor": pct_args.normFactor,
             "learn_finish_action": pct_args.learn_finish_action,
+            "candidate_generator": pct_args.candidate_generator,
             "action_space": pct_args.leaf_node_holder + (1 if pct_args.learn_finish_action else 0),
             "candidate_rerank_k": args_cli.candidate_rerank_k,
             "candidate_diversity_center_m": args_cli.candidate_diversity_center_m,
@@ -320,6 +322,7 @@ def init_wandb_run(run_dir: Path, pct_args: SimpleNamespace, start_update: int):
             "gat_layer_num": pct_args.gat_layer_num,
             "normFactor": pct_args.normFactor,
             "learn_finish_action": pct_args.learn_finish_action,
+            "candidate_generator": pct_args.candidate_generator,
         },
     )
     run.define_metric("update")
@@ -476,6 +479,7 @@ def main() -> None:
         f"drift_fail_threshold={cfg.drift_fail_threshold} "
         f"reward_profile={args_cli.reward_profile} "
         f"learn_finish_action={pct_args.learn_finish_action} action_space={cfg.action_space} "
+        f"candidate_generator={pct_args.candidate_generator} "
         f"candidate_rerank_k={cfg.candidate_rerank_k} "
         f"candidate_diversity_center_m={cfg.candidate_diversity_center_m}",
         flush=True,

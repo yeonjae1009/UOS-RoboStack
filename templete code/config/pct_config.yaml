@@ -8,6 +8,11 @@ model_path: models/pct_model.onnx
 internal_node_holder: 200
 leaf_node_holder: 100
 
+# Leaf 후보 생성 방식.
+# ems   = 기존 Online-3D-BPP-PCT EMS 후보
+# sub36 = sub_36.zip의 support-aware extreme-point 후보
+candidate_generator: ems
+
 # 정규화 계수 = 1 / max(container dims). ONNX 안에 baked-in 되어 있으나 참고용 기록.
 norm_factor: 0.8
 

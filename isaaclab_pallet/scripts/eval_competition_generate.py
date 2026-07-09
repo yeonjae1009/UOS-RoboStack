@@ -78,7 +78,14 @@ def run_sequence(boxes: list[dict], policy: DRL_GAT, pct_args: SimpleNamespace, 
     density_max = float(cfg.get("density_max", 1.0))
     node_count = INH + LNH + 1
 
-    packer = Packer(container, float(cfg["size_minimum"]), INH, LNH, setting)
+    packer = Packer(
+        container,
+        float(cfg["size_minimum"]),
+        INH,
+        LNH,
+        setting,
+        candidate_generator=str(cfg.get("candidate_generator", "ems")),
+    )
     packer.reset()
 
     sequence: list[dict] = []
