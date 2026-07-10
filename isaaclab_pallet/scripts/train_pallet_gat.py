@@ -15,9 +15,6 @@ ONLINE_PCT_DIR = PROJECT_ROOT / "Online-3D-BPP-PCT"
 sys.path.insert(0, str(TEMPLATE_DIR))
 sys.path.insert(0, str(ONLINE_PCT_DIR))
 
-from isaaclab.app import AppLauncher
-
-
 parser = argparse.ArgumentParser(description="Headless Isaac Lab training using the original Online-3D-BPP-PCT GAT.")
 parser.add_argument("--num-envs", type=int, default=16)
 parser.add_argument(
@@ -84,26 +81,53 @@ parser.add_argument("--wandb-group", type=str, default="", help="W&B group for r
 parser.add_argument("--wandb-mode", choices=["online", "offline", "disabled"], default="", help="W&B mode. Falls back to WANDB_MODE.")
 parser.add_argument("--wandb-dir", type=str, default="", help="Directory for W&B local files. Falls back to WANDB_DIR or run_dir/wandb.")
 parser.add_argument("--wandb-tags", nargs="*", default=[], help="Space-separated W&B tags.")
-AppLauncher.add_app_launcher_args(parser)
-parser.set_defaults(headless=True)
-args_cli = parser.parse_args()
 
-app_launcher = AppLauncher(args_cli)
-simulation_app = app_launcher.app
+args_cli = None
+simulation_app = None
+np = None
+torch = None
+PalletPackingEnv = None
+PalletPackingEnvCfg = None
+pct_tools = None
+DRL_GAT = None
+PCTRolloutStorage = None
+_cg = None
 
 
-import numpy as np  # noqa: E402
-import torch  # noqa: E402
+def _launch_app_and_import_runtime() -> None:
+    """Launch Isaac only in the real training process, not in packer workers."""
+    global args_cli, simulation_app, np, torch
+    global PalletPackingEnv, PalletPackingEnvCfg, pct_tools, DRL_GAT, PCTRolloutStorage, _cg
 
-from isaaclab_pallet import PalletPackingEnv, PalletPackingEnvCfg  # noqa: E402
+    from isaaclab.app import AppLauncher
 
-import tools as pct_tools  # noqa: E402
-from model import DRL_GAT  # noqa: E402
-from storage import PCTRolloutStorage  # noqa: E402
+    AppLauncher.add_app_launcher_args(parser)
+    parser.set_defaults(headless=True)
+    args_cli = parser.parse_args()
 
-# Reuse the (tested) competition rollout to score checkpoints mid-training.
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import eval_competition_generate as _cg  # noqa: E402
+    app_launcher = AppLauncher(args_cli)
+    simulation_app = app_launcher.app
+
+    import numpy as _np  # noqa: E402
+    import torch as _torch  # noqa: E402
+    from isaaclab_pallet import PalletPackingEnv as _PalletPackingEnv  # noqa: E402
+    from isaaclab_pallet import PalletPackingEnvCfg as _PalletPackingEnvCfg  # noqa: E402
+    import tools as _pct_tools  # noqa: E402
+    from model import DRL_GAT as _DRL_GAT  # noqa: E402
+    from storage import PCTRolloutStorage as _PCTRolloutStorage  # noqa: E402
+
+    # Reuse the (tested) competition rollout to score checkpoints mid-training.
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import eval_competition_generate as _eval_competition_generate  # noqa: E402
+
+    np = _np
+    torch = _torch
+    PalletPackingEnv = _PalletPackingEnv
+    PalletPackingEnvCfg = _PalletPackingEnvCfg
+    pct_tools = _pct_tools
+    DRL_GAT = _DRL_GAT
+    PCTRolloutStorage = _PCTRolloutStorage
+    _cg = _eval_competition_generate
 
 _PALLET_VOLUME = 1.2 * 1.0 * 1.25
 
@@ -681,6 +705,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     import traceback
+    _launch_app_and_import_runtime()
     try:
         main()
     except BaseException:
@@ -693,4 +718,5 @@ if __name__ == "__main__":
         sys.stdout.flush()
         sys.stderr.flush()
         os._exit(1)
-    simulation_app.close()
+    if simulation_app is not None:
+        simulation_app.close()

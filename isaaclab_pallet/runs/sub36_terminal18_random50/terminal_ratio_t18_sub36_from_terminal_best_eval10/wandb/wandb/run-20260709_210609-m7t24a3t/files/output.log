@@ -1,0 +1,5 @@
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/m7t24a3t
+[gat-train] run_dir=isaaclab_pallet/runs/sub36_terminal18_random50/terminal_ratio_t18_sub36_from_terminal_best_eval10 device=cuda:0 num_envs=32 num_packer_workers=4 obs_shape=(32, 301, 9) leaf_shape=(32, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=terminal_ratio_t18 learn_finish_action=False action_space=100 candidate_generator=sub36 candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=10 box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:

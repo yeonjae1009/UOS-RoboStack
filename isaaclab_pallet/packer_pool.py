@@ -213,7 +213,11 @@ class ParallelPackerPool:
         self.num_envs = num_envs
         self.cfg = cfg
         self.num_workers = max(1, min(num_workers, num_envs))
-        ctx = mp.get_context("spawn")
+        # Use forkserver instead of spawn, and explicitly avoid the default
+        # "__main__" preload. The training __main__ launches Isaac at import time;
+        # preloading it in CPU packer workers creates unnecessary GPU contexts.
+        mp.set_forkserver_preload(["isaaclab_pallet.packer_pool"])
+        ctx = mp.get_context("forkserver")
         shards = [list(range(i, num_envs, self.num_workers)) for i in range(self.num_workers)]
         self._shards = [s for s in shards if s]
         self._env_to_worker = {}

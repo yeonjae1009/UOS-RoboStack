@@ -48,3 +48,21 @@
 [gat-train] update=292 samples=6720 fps=14.4 loss=-0.1417 actor=-0.4779 value=0.3722 entropy=3.5893 mean_return=17.924 mean_len=77.5
 [gat-train] update=293 samples=6880 fps=14.4 loss=1.2003 actor=0.4524 value=0.7834 entropy=3.5527 mean_return=17.897 mean_len=77.4
 [gat-train] update=294 samples=7040 fps=14.3 loss=1.5835 actor=0.6117 value=1.0048 entropy=3.3013 mean_return=17.861 mean_len=77.1
+[gat-train] update=295 samples=7200 fps=14.2 loss=3.3635 actor=1.7771 value=1.6158 entropy=2.9370 mean_return=17.712 mean_len=75.9
+[gat-train] update=296 samples=7360 fps=14.2 loss=1.0493 actor=0.4623 value=0.6111 entropy=2.4031 mean_return=17.653 mean_len=75.5
+[gat-train] update=297 samples=7520 fps=14.2 loss=2.3312 actor=1.1501 value=1.2042 entropy=2.3008 mean_return=17.742 mean_len=76.0
+[gat-train] update=298 samples=7680 fps=14.3 loss=1.0114 actor=0.4810 value=0.5520 entropy=2.1607 mean_return=17.733 mean_len=76.0
+[gat-train] update=299 samples=7840 fps=14.4 loss=1.9614 actor=1.0111 value=0.9723 entropy=2.2006 mean_return=17.868 mean_len=76.6
+[gat-train] update=300 samples=8000 fps=14.5 loss=-0.0621 actor=-0.1237 value=0.0830 entropy=2.1397 mean_return=17.868 mean_len=76.6
+[gat-train] eval update=300 comp_score=83.30 best=83.30  *NEW BEST -> PCT-best.pt*
+[gat-train] update=301 samples=8160 fps=12.1 loss=0.1313 actor=0.0768 value=0.0789 entropy=2.4409 mean_return=17.868 mean_len=76.6
+[gat-train] update=302 samples=8320 fps=12.2 loss=0.1955 actor=0.0989 value=0.1226 entropy=2.5911 mean_return=17.868 mean_len=76.6
+[gat-train] update=303 samples=8480 fps=12.3 loss=-0.0881 actor=-0.1883 value=0.1281 entropy=2.7857 mean_return=17.868 mean_len=76.6
+[gat-train] update=304 samples=8640 fps=12.4 loss=0.3087 actor=0.0703 value=0.2679 entropy=2.9630 mean_return=17.837 mean_len=76.5
+[gat-train] update=305 samples=8800 fps=12.5 loss=-0.4112 actor=-0.5386 value=0.1584 entropy=3.0911 mean_return=17.837 mean_len=76.5
+[gat-train] update=306 samples=8960 fps=12.5 loss=-0.3586 actor=-0.4436 value=0.1174 entropy=3.2430 mean_return=17.837 mean_len=76.5
+[gat-train] update=307 samples=9120 fps=12.5 loss=-0.0521 actor=-0.2958 value=0.2781 entropy=3.4386 mean_return=17.837 mean_len=76.5
+[gat-train] update=308 samples=9280 fps=12.5 loss=0.7755 actor=0.0493 value=0.7609 entropy=3.4653 mean_return=17.837 mean_len=76.5
+[gat-train] update=309 samples=9440 fps=12.5 loss=1.6170 actor=0.6222 value=1.0274 entropy=3.2603 mean_return=17.829 mean_len=76.1
+[gat-train] update=310 samples=9600 fps=12.5 loss=1.6283 actor=0.5493 value=1.1078 entropy=2.8837 mean_return=17.758 mean_len=75.8
+[gat-train] update=311 samples=9760 fps=12.4 loss=3.3491 actor=1.6789 value=1.6962 entropy=2.5987 mean_return=17.590 mean_len=74.9

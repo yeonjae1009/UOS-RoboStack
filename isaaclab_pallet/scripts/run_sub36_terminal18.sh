@@ -95,6 +95,9 @@ echo "[sub36-terminal18] num_envs=$NUM_ENVS packer_workers=$NUM_PACKER_WORKERS m
 echo "[sub36-terminal18] eval_box_seq_dir=$EVAL_BOX_SEQ_DIR eval_count=${#eval_sequences_array[@]} eval_sequences=${eval_sequences_array[*]}" | tee -a "$log"
 
 start_line="$(wc -l < "$log" 2>/dev/null || echo 0)"
+# W&B also reads WANDB_TAGS from the environment and treats the whole string as
+# one tag in some versions. Keep tags on the CLI only, where we split them above.
+unset WANDB_TAGS
 python3 isaaclab_pallet/scripts/train_pallet_gat.py \
   --pct-config-path "$PCT_CONFIG_PATH" \
   --output-dir "$OUT_DIR" \
