@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 import json
+import multiprocessing as mp
 import shutil
 import sys
 import time
@@ -61,6 +63,63 @@ def collect_oracle_samples(
     seed: int,
     oracle_mode: str,
     oracle_top_k: int,
+    workers: int,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    if workers <= 1:
+        return _collect_oracle_samples_for_episodes(
+            submit_dir=submit_dir,
+            episode_ids=list(range(episodes)),
+            max_boxes=max_boxes,
+            seed=seed,
+            oracle_mode=oracle_mode,
+            oracle_top_k=oracle_top_k,
+        )
+
+    episode_shards = [list(range(i, episodes, workers)) for i in range(workers)]
+    episode_shards = [shard for shard in episode_shards if shard]
+    if len(episode_shards) == 1:
+        return _collect_oracle_samples_for_episodes(
+            submit_dir=submit_dir,
+            episode_ids=episode_shards[0],
+            max_boxes=max_boxes,
+            seed=seed,
+            oracle_mode=oracle_mode,
+            oracle_top_k=oracle_top_k,
+        )
+
+    ctx = mp.get_context("spawn")
+    results: list[tuple[np.ndarray, np.ndarray, np.ndarray]] = []
+    with concurrent.futures.ProcessPoolExecutor(max_workers=len(episode_shards), mp_context=ctx) as executor:
+        futures = [
+            executor.submit(
+                _collect_oracle_samples_for_episodes,
+                submit_dir,
+                shard,
+                max_boxes,
+                seed,
+                oracle_mode,
+                oracle_top_k,
+            )
+            for shard in episode_shards
+        ]
+        for future in concurrent.futures.as_completed(futures):
+            results.append(future.result())
+
+    features = np.concatenate([r[0] for r in results], axis=0)
+    masks = np.concatenate([r[1] for r in results], axis=0)
+    labels = np.concatenate([r[2] for r in results], axis=0)
+    if labels.size == 0:
+        raise RuntimeError("No selector samples were collected")
+    return features, masks, labels
+
+
+def _collect_oracle_samples_for_episodes(
+    submit_dir: Path,
+    episode_ids: list[int],
+    max_boxes: int,
+    seed: int,
+    oracle_mode: str,
+    oracle_top_k: int,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     AlgorithmConfig, PalletConfig, Palletizer, BufferManager = load_submit_classes(submit_dir)
     cfg = yaml.safe_load((submit_dir / "config" / "algorithm_config.yaml").read_text())
@@ -74,13 +133,13 @@ def collect_oracle_samples(
         buffer_size=BUFFER_SELECTOR_BUFFER_SIZE,
     )
 
-    rng = np.random.default_rng(seed)
     features: list[np.ndarray] = []
     masks: list[np.ndarray] = []
     labels: list[int] = []
 
-    for episode in range(episodes):
-        boxes = generate_random_boxes(max_boxes, rng)
+    for local_idx, episode in enumerate(episode_ids):
+        episode_rng = np.random.default_rng(seed + int(episode))
+        boxes = generate_random_boxes(max_boxes, episode_rng)
         palletizer = Palletizer(pallet_cfg, algo_cfg)
         palletizer._selector_enabled = False
         palletizer._search_enabled = True
@@ -129,9 +188,10 @@ def collect_oracle_samples(
             )
             buf.pop_selected(label)
 
-        if (episode + 1) % max(1, episodes // 10) == 0:
+        if (local_idx + 1) % max(1, len(episode_ids) // 5) == 0:
             print(
-                f"[selector-data] episode={episode + 1}/{episodes} samples={len(labels)}",
+                f"[selector-data] shard_episode={local_idx + 1}/{len(episode_ids)} "
+                f"global_episode={episode + 1} samples={len(labels)}",
                 flush=True,
             )
 
@@ -237,6 +297,7 @@ def main() -> None:
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--batch-size", type=int, default=256)
     parser.add_argument("--learning-rate", type=float, default=1e-3)
+    parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--output-dir", type=Path, default=PROJECT_ROOT / "isaaclab_pallet" / "runs" / "buffer_selector")
     parser.add_argument("--install-to-submit", action="store_true")
@@ -251,6 +312,7 @@ def main() -> None:
         args.seed,
         args.oracle_mode,
         args.oracle_top_k,
+        args.workers,
     )
     if features.shape[1] != BUFFER_SELECTOR_INPUT_DIM:
         raise RuntimeError(f"unexpected selector input dim {features.shape[1]} != {BUFFER_SELECTOR_INPUT_DIM}")

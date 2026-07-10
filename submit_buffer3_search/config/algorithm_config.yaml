@@ -24,6 +24,6 @@ search:
   depth: 2
 
 selector:
-  enabled: false                 # true면 buffer_selector.onnx로 박스 index만 선택
+  enabled: true                  # true면 buffer_selector.onnx로 박스 index만 선택
   model_path: src/models/buffer_selector.onnx
   buffer_size: 3
