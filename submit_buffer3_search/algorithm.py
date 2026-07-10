@@ -118,6 +118,7 @@ class Palletizer:
         self.terminated_step: Optional[int] = None
         self.finished_by_user = False
         self._search_plan = None
+        self._selector_plan = None
 
     # -----------------------------------------------------------------------
     # 참가자 수정 가능 함수
@@ -142,6 +143,14 @@ class Palletizer:
           - 더 쌓는 것보다 현재 상태로 종료하는 것이 유리한 경우
         """
         self._search_plan = None
+        self._selector_plan = None
+        if (
+            self._selector_enabled
+            and self.algo.buffer_size > 0
+            and len(current_buffer) > 1
+            and self._prepare_selector_plan(current_buffer)
+        ):
+            return False
         if self._search_enabled and self.algo.buffer_size > 0 and len(current_buffer) > 1:
             self._prepare_buffer_search(current_buffer)
         return False
@@ -152,6 +161,11 @@ class Palletizer:
         self._search_top_k_leaf = 5
         self._search_beam_width = 4
         self._search_depth = 2
+        self._selector_enabled = False
+        self._selector_model_path = "src/models/buffer_selector.onnx"
+        self._selector_buffer_size = 3
+        self._selector_session = None
+        self._selector_input_name = None
 
         if yaml is None:
             return
@@ -170,8 +184,32 @@ class Palletizer:
         self._search_beam_width = max(1, int(search_cfg.get("beam_width", self._search_beam_width)))
         self._search_depth = max(1, int(search_cfg.get("depth", self._search_depth)))
 
+        selector_cfg = cfg.get("selector", {}) or {}
+        self._selector_enabled = bool(selector_cfg.get("enabled", self._selector_enabled))
+        self._selector_model_path = str(selector_cfg.get("model_path", self._selector_model_path))
+        self._selector_buffer_size = max(1, int(selector_cfg.get("buffer_size", self._selector_buffer_size)))
+
     def _box_key(self, box: BoxInput) -> Tuple[int, int]:
         return int(box["step"]), int(box["id"])
+
+    def _selector_features(self, current_buffer: List[BoxInput]) -> Tuple[np.ndarray, np.ndarray]:
+        internal = np.asarray(self._packer.space.box_vec, dtype=np.float32).reshape(-1)
+        target_internal = self._inh * 9
+        if internal.size < target_internal:
+            internal = np.pad(internal, (0, target_internal - internal.size))
+        else:
+            internal = internal[:target_internal]
+
+        slot_features = np.zeros((self._selector_buffer_size, 5), dtype=np.float32)
+        valid_mask = np.zeros((self._selector_buffer_size,), dtype=bool)
+        for idx, box in enumerate(current_buffer[: self._selector_buffer_size]):
+            size = [float(box["size"][0]), float(box["size"][1]), float(box["size"][2])]
+            slot_features[idx, 0:3] = np.asarray(size, dtype=np.float32)
+            slot_features[idx, 3] = float(self._density(box, size))
+            slot_features[idx, 4] = 1.0
+            valid_mask[idx] = True
+
+        return np.concatenate([internal, slot_features.reshape(-1)]).astype(np.float32), valid_mask
 
     def _ensure_policy(self) -> None:
         if hasattr(self, "_policy_ready"):
@@ -180,6 +218,8 @@ class Palletizer:
         self._pct_available = False
         self._session = None
         self._input_name = None
+        self._selector_session = None
+        self._selector_input_name = None
 
         if np is None or yaml is None or Packer is None or apply_stability_mask is None:
             self._policy_ready = True
@@ -218,6 +258,27 @@ class Palletizer:
             except Exception:
                 self._session = None
                 self._input_name = None
+
+            if self._selector_enabled:
+                selector_path = self._selector_model_path
+                if not os.path.isabs(selector_path):
+                    selector_path = str(here / selector_path)
+                try:
+                    if os.path.exists(selector_path):
+                        selector_options = ort.SessionOptions()
+                        selector_options.intra_op_num_threads = 1
+                        self._selector_session = ort.InferenceSession(
+                            selector_path,
+                            sess_options=selector_options,
+                            providers=["CPUExecutionProvider"],
+                        )
+                        self._selector_input_name = self._selector_session.get_inputs()[0].name
+                    else:
+                        self._selector_enabled = False
+                except Exception:
+                    self._selector_session = None
+                    self._selector_input_name = None
+                    self._selector_enabled = False
 
         self._pct_available = True
         self._policy_ready = True
@@ -681,6 +742,46 @@ class Palletizer:
             "raw_placed": candidate["raw_placed"],
         }
 
+    def _prepare_selector_plan(self, current_buffer: List[BoxInput]) -> bool:
+        if self.algo.buffer_size != self._selector_buffer_size:
+            return False
+        if self._selector_session is None or self._selector_input_name is None:
+            if not self._ensure_packer_for_current_run():
+                return False
+            if self._selector_session is None or self._selector_input_name is None:
+                return False
+        elif not self._ensure_packer_for_current_run():
+            return False
+
+        features, valid_mask = self._selector_features(current_buffer)
+        if not bool(valid_mask.any()):
+            return False
+
+        try:
+            logits = self._selector_session.run(
+                None,
+                {self._selector_input_name: features.reshape(1, -1).astype(np.float32)},
+            )[0][0].astype(np.float64, copy=True)
+        except Exception:
+            return False
+
+        limit = min(len(logits), len(valid_mask))
+        if limit <= 0:
+            return False
+        masked = np.full((limit,), -np.inf, dtype=np.float64)
+        for idx in range(limit):
+            if valid_mask[idx]:
+                masked[idx] = logits[idx]
+        if not np.isfinite(masked).any():
+            return False
+
+        selected = int(np.argmax(masked))
+        self._selector_plan = {
+            "sequence_len": len(self.sequence),
+            "box_key": self._box_key(current_buffer[selected]),
+        }
+        return True
+
     # -----------------------------------------------------------------------
     # 기본 적재 로직
     # -----------------------------------------------------------------------
@@ -732,6 +833,14 @@ class Palletizer:
         self,
         box: BoxInput,
     ) -> Optional[Tuple[float, float, float, Tuple[float, float, float], int]]:
+        selector_plan = getattr(self, "_selector_plan", None)
+        if selector_plan is not None and selector_plan.get("sequence_len") == len(self.sequence):
+            if self._box_key(box) != selector_plan.get("box_key"):
+                return None
+            self._selector_plan = None
+        elif selector_plan is not None:
+            self._selector_plan = None
+
         if self._search_enabled and self.algo.buffer_size > 0:
             plan = getattr(self, "_search_plan", None)
             if plan is not None and plan.get("sequence_len") == len(self.sequence):
