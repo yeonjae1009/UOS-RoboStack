@@ -128,6 +128,8 @@ assignment2_project/  (= GitHub: yeonjae1009/UOS-RoboStack)
 | **★ 최신/최종 제출 사용** | `isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt` | terminal_ratio_t18 reward로 학습한 최고 random eval 모델. log best **87.48** |
 | 이어하기용 | `isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best-resume.pt` | best 모델의 weights+optimizer+update |
 | 최신 스냅샷 | `isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-latest.pt` | 해당 run의 마지막 모델 |
+| sub36 추가 미세조정 | `isaaclab_pallet/runs/sub36_terminal18_random50/terminal_ratio_t18_sub36_from_terminal_best_eval10/PCT-best.pt` | `run_sub36_terminal18.sh`로 이어학습한 sub36 후보 생성기 기반 run |
+| sub36 이어하기용 | `isaaclab_pallet/runs/sub36_terminal18_random50/terminal_ratio_t18_sub36_from_terminal_best_eval10/PCT-best-resume.pt` | 위 sub36 run의 resume 체크포인트 |
 | 비교 run | `isaaclab_pallet/runs/reward_terminal18_finish15/finish_ratio_t15_from_finish_best/PCT-best.pt` | finish action 학습 포함. log best **86.04** |
 | **Baseline (원본)** | `Online-3D-BPP-PCT/logs/experiment/cjspec_v2-2026.06.24-23-29-47/PCT-best.pt` | 수학 환경 학습 원본 (워밍스타트 출발점, 대회점수 92.3) |
 | **제출용 ONNX** | `submit_terminal_t18_best_ae/src/models/pct_model.onnx` | 위 최신 `.pt`를 변환한 ONNX (제출 ZIP 내장) |
@@ -213,23 +215,54 @@ for box in boxes:
 > 아래 학습/시각화/평가 명령은 모두 `conda activate env_isaaclab` 후 프로젝트 루트에서 실행합니다.
 
 ### 6.1 학습 (GAT, Isaac 물리)
-빠른 단발 학습:
-```bash
-python3 isaaclab_pallet/scripts/train_pallet_gat.py \
-  --num-envs 32 --max-boxes 256 --updates 1000 \
-  --learning-rate 1e-5 --save-interval 250 \
-  --load-model Online-3D-BPP-PCT/logs/experiment/cjspec_v2-2026.06.24-23-29-47/PCT-best.pt \
-  --run-name my_run --headless
-```
-밤샘 학습(자동 재시작 + 박스풀 시드 순환):
-```bash
-nohup bash isaaclab_pallet/scripts/run_overnight.sh > /tmp/overnight.out 2>&1 &
-bash isaaclab_pallet/scripts/watch_training.sh          # 진행 모니터
-```
-주요 인자: `--num-envs` 환경 수, `--max-boxes` 박스 풀 크기, `--updates` 업데이트 수,
-`--learning-rate`(1e-6=약한 미세조정, 1e-5=빠른 적응), `--load-model` 워밍스타트, `--resume` 재개.
+sub36 후보 생성기 기반 `terminal_ratio_t18` 미세조정은 아래 래퍼를 사용했다. 터미널을 닫아도 계속 돌도록
+`setsid`로 새 세션을 만들고, stdout/stderr는 `/tmp/...out`으로 보낸다.
 
-현재 최고 모델은 아래 reward profile로 학습한 run에서 나왔다.
+```bash
+setsid bash -lc '
+  export RUN_NAME=terminal_ratio_t18_sub36_from_terminal_best_eval10
+  export RESUME=isaaclab_pallet/runs/sub36_terminal18_random50/terminal_ratio_t18_sub36_from_terminal_best_eval10/PCT-best-resume.pt
+  export NUM_ENVS=128
+  export NUM_PACKER_WORKERS=4
+  export WANDB_ENABLE=1
+  export WANDB_PROJECT=assignment2-pallet
+  export WANDB_GROUP=sub36_terminal18_random50
+  export WANDB_TAGS="sub36 random50 terminal_ratio_t18 env128 workers4 forkserver wandb"
+  export EVAL_SEQUENCE_NAMES="random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009"
+  exec bash isaaclab_pallet/scripts/run_sub36_terminal18.sh
+' > /tmp/sub36_terminal18_env128_workers4_wandb.out 2>&1 < /dev/null & echo $!
+```
+
+진행 확인:
+
+```bash
+tail -f /tmp/sub36_terminal18_env128_workers4_wandb.out
+tail -f isaaclab_pallet/runs/sub36_terminal18_random50/terminal_ratio_t18_sub36_from_terminal_best_eval10/train.log
+```
+
+`run_sub36_terminal18.sh`는 환경변수로 대부분의 설정을 덮어쓸 수 있다. 즉 위 명령은 그대로 재현용으로 쓰고,
+새 실험을 만들 때는 필요한 변수만 바꾸면 된다.
+
+| 환경변수 | 의미 | 기본값/사용 예 |
+|---|---|---|
+| `RUN_NAME` | run 폴더 이름 및 W&B run 이름 | `terminal_ratio_t18_sub36_from_terminal_best_eval10` |
+| `OUT_DIR` | run 저장 루트 | 기본 `isaaclab_pallet/runs/sub36_terminal18_random50` |
+| `RESUME` | 이어학습할 resume 체크포인트 | 비우면 resume 없이 `WARM_START`에서 시작 |
+| `WARM_START` | resume이 없을 때 불러올 초기 `.pt` | 기본 `reward_terminal18_finish15/.../PCT-best.pt` |
+| `NUM_ENVS` | Isaac Lab 병렬 환경 수 | 사용 run: `128` |
+| `NUM_PACKER_WORKERS` | CPU packer worker 수 | 사용 run: `4` |
+| `MAX_BOXES` | 랜덤 박스 풀 크기 | 기본 `256` |
+| `UPDATES` | 학습 update 수 | 기본 `2500` |
+| `LR` | learning rate | 기본 `5e-7` |
+| `EVAL_BOX_SEQ_DIR` | 평가용 random spec JSON 폴더 | 기본 `artifacts/random_spec_eval_50/box_sequence` |
+| `EVAL_SEQUENCE_NAMES` | 평가에 사용할 시퀀스 이름 목록 | 사용 run은 `random_spec_000`~`009` |
+| `WANDB_ENABLE` | W&B 로깅 여부 | `1`이면 켬 |
+| `WANDB_PROJECT`, `WANDB_GROUP`, `WANDB_TAGS` | W&B 분류 정보 | 실험 구분용, 자유롭게 변경 가능 |
+
+주의: `RESUME` 경로는 한 줄이어야 한다. 쉘에서 중간 줄바꿈이 들어가면
+`terminal_ratio_t18_sub36_from_terminal_best_eval10/PCT-best-resume.pt`가 잘못된 명령으로 해석된다.
+
+기존 최고 모델은 아래 reward profile로 학습한 run에서 나왔다.
 
 ```bash
 python3 isaaclab_pallet/scripts/train_pallet_gat.py \
