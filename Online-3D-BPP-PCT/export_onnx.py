@@ -41,7 +41,20 @@ device = torch.device('cpu')   # export는 CPU로
 FACTOR = float(args.normFactor)
 
 policy = DRL_GAT(args)
-policy = load_policy(margs.model_path, policy).to(device)
+try:
+    policy = load_policy(margs.model_path, policy)
+except RuntimeError:
+    ckpt = torch.load(margs.model_path, map_location=device)
+    load_dict = ckpt["model"] if isinstance(ckpt, dict) and "model" in ckpt else ckpt
+    model_dict = policy.state_dict()
+    for k, v in list(load_dict.items()):
+        if k in model_dict and tuple(v.shape) != tuple(model_dict[k].shape):
+            if hasattr(v, "reshape") and v.numel() == model_dict[k].numel():
+                load_dict[k] = v.reshape(model_dict[k].shape)
+            elif hasattr(v, "squeeze") and len(v.size()) <= 3:
+                load_dict[k] = v.squeeze(dim=-1)
+    policy.load_state_dict(load_dict, strict=True)
+policy = policy.to(device)
 policy.eval()
 actor = policy.actor
 
