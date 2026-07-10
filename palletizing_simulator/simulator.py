@@ -30,7 +30,7 @@ from contextlib import contextmanager
 # Config 로드  (SimulationApp 보다 먼저)
 # ──────────────────────────────────────────────
 _HERE = os.path.dirname(__file__)
-_DEFAULT_CONFIG = os.path.join(_HERE, "config/sim_config.yaml")
+_DEFAULT_CONFIG = os.path.join(_HERE, "config/sim_config_gui.yaml")
 
 def resolve_path(path: str) -> str:
     if os.path.isabs(path):

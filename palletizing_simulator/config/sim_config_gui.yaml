@@ -20,13 +20,13 @@ runtime:
 # 경로 설정
 paths:
   # 참가자 알고리즘 실행 결과 JSON이 저장된 폴더 (simulator.py 기준 상대경로)
-  input_dir: "algorithm_results"
+  input_dir: "algorithm_results_eval10"
 
   # 알고리즘 실행에 사용한 입력 박스 시퀀스 폴더
-  box_sequence_dir: "box_sequence"
+  box_sequence_dir: "box_sequence_eval10"
 
   # Isaac Sim 시뮬레이션 결과가 저장될 폴더
-  output_dir: "sim_results"
+  output_dir: "sim_results_eval10"
 
 pallet:
   size: [1.2, 1.0, 1.25]
