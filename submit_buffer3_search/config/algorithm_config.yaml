@@ -1,6 +1,8 @@
-input_path: box_sequence
-output_dir: algorithm_results
+input_path: random_spec_eval_10/box_sequence
+output_dir: algorithm_results_eval10
 
+# input_path: box_sequence
+# output_dir: algorithm_results
 pallet:
   length: 1.2
   width: 1.0
@@ -18,12 +20,14 @@ buffer:
 
 search:
   enabled: true
-  mode: one_step                 # one_step 또는 beam
+  mode: beam                     # one_step 또는 beam
+  score_profile: geometry_v1     # legacy 또는 geometry_v1
   top_k_leaf: 8
   beam_width: 4
   depth: 2
 
 selector:
-  enabled: true                  # true면 buffer_selector.onnx로 박스 index만 선택
+  enabled: true                  # true면 search score에 selector 점수를 작은 bonus로 추가
   model_path: src/models/buffer_selector.onnx
   buffer_size: 3
+  bonus_weight: 0.10

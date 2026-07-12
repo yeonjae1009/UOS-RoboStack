@@ -20,6 +20,7 @@ from isaaclab.app import AppLauncher
 
 parser = argparse.ArgumentParser(description="Headless Isaac Lab training using the original Online-3D-BPP-PCT GAT.")
 parser.add_argument("--num-envs", type=int, default=16)
+parser.add_argument("--num-packer-workers", type=int, default=0, help="CPU packer worker processes for observe/place/reward.")
 parser.add_argument("--max-boxes", type=int, default=64)
 parser.add_argument("--updates", type=int, default=100)
 parser.add_argument("--num-steps", type=int, default=5)
@@ -56,6 +57,7 @@ parser.add_argument(
         "finish_ratio",
         "terminal_ratio_t18",
         "finish_ratio_t15",
+        "geometry_v1",
     ],
     default="base",
     help="Reward-scale preset. Keeps the Isaac Lab GAT pipeline unchanged.",
@@ -164,6 +166,21 @@ def apply_reward_profile(cfg: PalletPackingEnvCfg, profile: str) -> None:
             "elevation_penalty_scale": 0.2,
             "terminal_ratio_reward_scale": 15.0,
             "learn_finish_action": True,
+        },
+        "geometry_v1": {
+            "volume_reward_scale": 6.0,
+            "floor_coverage_reward_scale": 1.2,
+            "boundary_floor_reward_scale": 0.8,
+            "corner_floor_reward_scale": 0.6,
+            "height_smoothness_reward_scale": 1.0,
+            "support_reward_scale": 0.08,
+            "weak_support_penalty_scale": 0.10,
+            "elevation_penalty_scale": 0.20,
+            "corner_large_reward_scale": 0.55,
+            "wall_anchor_reward_scale": 0.25,
+            "tight_fit_reward_scale": 0.35,
+            "void_reduction_reward_scale": 0.25,
+            "support_margin_reward_scale": 0.25,
         },
     }
     for name, value in profiles[profile].items():
@@ -419,6 +436,7 @@ def main() -> None:
 
     cfg = PalletPackingEnvCfg()
     cfg.scene.num_envs = args_cli.num_envs
+    cfg.num_packer_workers = args_cli.num_packer_workers
     cfg.max_boxes = args_cli.max_boxes
     cfg.box_seed = args_cli.box_seed
     cfg.sim.device = args_cli.device
@@ -471,6 +489,7 @@ def main() -> None:
     print(
         "[gat-train] "
         f"run_dir={run_dir} device={env.device} num_envs={env.num_envs} "
+        f"num_packer_workers={cfg.num_packer_workers} "
         f"obs_shape={tuple(all_nodes.shape)} leaf_shape={tuple(leaf_nodes.shape)} "
         f"num_steps={args_cli.num_steps} normFactor={pct_args.normFactor} "
         f"drift_fail_threshold={cfg.drift_fail_threshold} "

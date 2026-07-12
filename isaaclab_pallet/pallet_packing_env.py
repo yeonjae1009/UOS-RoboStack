@@ -177,6 +177,7 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     stack_drift_fail_threshold: float = 0.12
 
     # Mirrors Online-3D-BPP-PCT/PctContinuous0 reward terms, with Isaac fail checks added after placement.
+    volume_reward_scale: float = 10.0
     floor_coverage_reward_scale: float = 1.0
     boundary_floor_reward_scale: float = 0.8
     corner_floor_reward_scale: float = 0.6
@@ -185,6 +186,11 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     weak_support_penalty_scale: float = 0.05
     weak_support_threshold: float = 0.85
     elevation_penalty_scale: float = 0.0  # #4 density knob (fill-bottom-first); 0=off, tune on Isaac
+    corner_large_reward_scale: float = 0.0
+    wall_anchor_reward_scale: float = 0.0
+    tight_fit_reward_scale: float = 0.0
+    void_reduction_reward_scale: float = 0.0
+    support_margin_reward_scale: float = 0.0
     terminal_ratio_reward_scale: float = 0.0  # success/no-feasible terminal fill bonus; 0=off
     auto_finish_ratio: float = 0.0  # stop successfully after this utilization ratio; 0=off
     learn_finish_action: bool = False  # add a policy-selected finish action after leaf actions
@@ -262,6 +268,7 @@ class PalletPackingEnv(DirectRLEnv):
         self.last_candidate_pass_count: torch.Tensor | None = None
         self.box_assets: list[RigidObject] = []
         self._reward_scales = pct_reward.RewardScales(
+            volume=cfg.volume_reward_scale,
             floor_coverage=cfg.floor_coverage_reward_scale,
             boundary_floor=cfg.boundary_floor_reward_scale,
             corner_floor=cfg.corner_floor_reward_scale,
@@ -270,6 +277,11 @@ class PalletPackingEnv(DirectRLEnv):
             weak_support=cfg.weak_support_penalty_scale,
             weak_support_threshold=cfg.weak_support_threshold,
             elevation_penalty=cfg.elevation_penalty_scale,
+            corner_large=cfg.corner_large_reward_scale,
+            wall_anchor=cfg.wall_anchor_reward_scale,
+            tight_fit=cfg.tight_fit_reward_scale,
+            void_reduction=cfg.void_reduction_reward_scale,
+            support_margin=cfg.support_margin_reward_scale,
         )
         self._packer_config = packer_pool.PackerConfig(
             pallet_size=tuple(cfg.pallet_size),

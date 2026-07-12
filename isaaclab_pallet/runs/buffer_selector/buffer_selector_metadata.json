@@ -1,12 +1,12 @@
 {
-  "samples": 17192,
-  "train_samples": 15472,
-  "val_samples": 1720,
+  "samples": 86025,
+  "train_samples": 77422,
+  "val_samples": 8603,
   "input_dim": 1815,
-  "episodes": 200,
+  "episodes": 1000,
   "max_boxes": 128,
-  "seed": 0,
+  "seed": 1,
   "oracle_mode": "one_step",
   "oracle_top_k": 8,
-  "elapsed_s": 6224.126
+  "elapsed_s": 6906.571
 }

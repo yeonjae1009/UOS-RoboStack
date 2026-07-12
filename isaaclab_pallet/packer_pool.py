@@ -113,13 +113,30 @@ def _packer_step(packer, box, action_idx: int, cfg: PackerConfig) -> dict:
 
     _, _, rotation = pct_reward.leaf_to_center_size_rotation(leaf, box["size"])
     before = pct_reward.layout_metrics(packer.space.boxes, cfg.pallet_size)
+    boxes_before = list(packer.space.boxes)
+    before_void = pct_reward.usable_void_volume(packer.space.EMS[:packer.space.NOEMS])
     box_ratio = float(np.prod([float(v) for v in box["size"]]) / np.prod(cfg.pallet_size))
     if not packer.place(leaf[:6]):
         return {"status": "place_failed", "obs": obs, "valid_count": valid_count}
 
     packed_box = packer.space.boxes[-1]
     after = pct_reward.layout_metrics(packer.space.boxes, cfg.pallet_size)
-    reward, _terms = pct_reward.compute_online3dbpp_reward(box_ratio, packed_box, before, after, cfg.scales)
+    after_void = pct_reward.usable_void_volume(packer.space.EMS[:packer.space.NOEMS])
+    geometry = pct_reward.placement_geometry_terms(
+        packed_box,
+        boxes_before,
+        cfg.pallet_size,
+        before_void_volume=before_void,
+        after_void_volume=after_void,
+    )
+    reward, _terms = pct_reward.compute_online3dbpp_reward(
+        box_ratio,
+        packed_box,
+        before,
+        after,
+        cfg.scales,
+        geometry=geometry,
+    )
     return {
         "status": "ok",
         "obs": obs,

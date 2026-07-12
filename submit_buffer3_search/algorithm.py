@@ -144,13 +144,6 @@ class Palletizer:
         """
         self._search_plan = None
         self._selector_plan = None
-        if (
-            self._selector_enabled
-            and self.algo.buffer_size > 0
-            and len(current_buffer) > 1
-            and self._prepare_selector_plan(current_buffer)
-        ):
-            return False
         if self._search_enabled and self.algo.buffer_size > 0 and len(current_buffer) > 1:
             self._prepare_buffer_search(current_buffer)
         return False
@@ -161,9 +154,11 @@ class Palletizer:
         self._search_top_k_leaf = 5
         self._search_beam_width = 4
         self._search_depth = 2
+        self._score_profile = "legacy"
         self._selector_enabled = False
         self._selector_model_path = "src/models/buffer_selector.onnx"
         self._selector_buffer_size = 3
+        self._selector_bonus_weight = 0.10
         self._selector_session = None
         self._selector_input_name = None
 
@@ -183,11 +178,13 @@ class Palletizer:
         self._search_top_k_leaf = max(1, int(search_cfg.get("top_k_leaf", self._search_top_k_leaf)))
         self._search_beam_width = max(1, int(search_cfg.get("beam_width", self._search_beam_width)))
         self._search_depth = max(1, int(search_cfg.get("depth", self._search_depth)))
+        self._score_profile = str(search_cfg.get("score_profile", self._score_profile))
 
         selector_cfg = cfg.get("selector", {}) or {}
         self._selector_enabled = bool(selector_cfg.get("enabled", self._selector_enabled))
         self._selector_model_path = str(selector_cfg.get("model_path", self._selector_model_path))
         self._selector_buffer_size = max(1, int(selector_cfg.get("buffer_size", self._selector_buffer_size)))
+        self._selector_bonus_weight = float(selector_cfg.get("bonus_weight", self._selector_bonus_weight))
 
     def _box_key(self, box: BoxInput) -> Tuple[int, int]:
         return int(box["step"]), int(box["id"])
@@ -543,13 +540,178 @@ class Palletizer:
         bonus += 0.02 if (lx <= eps or abs(hx - float(self.pallet.length)) <= eps) and (ly <= eps or abs(hy - float(self.pallet.width)) <= eps) else 0.0
         return bonus
 
+    def _usable_void_volume(self, packer) -> float:
+        ems = np.asarray(packer.space.EMS[: packer.space.NOEMS], dtype=np.float64)
+        if ems.size == 0:
+            return 0.0
+        ems = ems.reshape(-1, 6)
+        sizes = np.maximum(ems[:, 3:6] - ems[:, 0:3], 0.0)
+        volumes = sizes[:, 0] * sizes[:, 1] * sizes[:, 2]
+        sorted_sizes = np.sort(sizes, axis=1)
+        min_sorted = np.asarray([0.13, 0.17, 0.17], dtype=np.float64)
+        usable = (sorted_sizes >= min_sorted).all(axis=1) & (volumes >= 0.0035)
+        return float(volumes[usable].sum())
+
+    def _required_support(self, mass: float, bottom_z: float) -> float:
+        req = 0.20
+        if bottom_z >= 0.25:
+            req = 0.28
+        if bottom_z >= 0.55:
+            req = 0.42
+        if bottom_z >= 0.85:
+            req = 0.55
+        if mass >= 4.0 and bottom_z >= 0.55:
+            req = max(req, 0.62)
+        if mass >= 5.5 and bottom_z >= 0.75:
+            req = max(req, 0.72)
+        if bottom_z >= 1.00 and mass >= 4.0:
+            req = 0.80
+        return req
+
+    def _support_ratio_for_raw(self, raw_sequence: List[PlacedBox], raw_placed: PlacedBox) -> float:
+        dx, dy, dz = [float(v) for v in raw_placed["size"]]
+        cx, cy, cz = [float(v) for v in raw_placed["position"]]
+        lx, ly, lz = cx - dx / 2.0, cy - dy / 2.0, cz - dz / 2.0
+        if lz <= 1e-6:
+            return 1.0
+        hx, hy = lx + dx, ly + dy
+        base_area = max(dx * dy, 1e-9)
+        support_area = 0.0
+        for placed in raw_sequence:
+            px, py, pz = [float(v) for v in placed["size"]]
+            pcx, pcy, pcz = [float(v) for v in placed["position"]]
+            plx, ply, plz = pcx - px / 2.0, pcy - py / 2.0, pcz - pz / 2.0
+            if abs((plz + pz) - lz) > 0.006:
+                continue
+            ox = max(0.0, min(hx, plx + px) - max(lx, plx))
+            oy = max(0.0, min(hy, ply + py) - max(ly, ply))
+            support_area += ox * oy
+        return float(np.clip(support_area / base_area, 0.0, 1.0))
+
+    def _axis_tight_fit_raw(
+        self,
+        lo: float,
+        hi: float,
+        other_lo: float,
+        other_hi: float,
+        axis: int,
+        bottom_z: float,
+        raw_sequence: List[PlacedBox],
+        extent: float,
+        tol: float = 0.025,
+    ) -> float:
+        lower_gap = lo
+        upper_gap = extent - hi
+        for placed in raw_sequence:
+            sx, sy, sz = [float(v) for v in placed["size"]]
+            cx, cy, cz = [float(v) for v in placed["position"]]
+            px0, py0, pz0 = cx - sx / 2.0, cy - sy / 2.0, cz - sz / 2.0
+            px1, py1, pz1 = px0 + sx, py0 + sy, pz0 + sz
+            if abs(pz1 - bottom_z) > 0.006 and abs(pz0 - bottom_z) > 0.006:
+                continue
+            if axis == 0:
+                overlap = max(0.0, min(other_hi, py1) - max(other_lo, py0))
+                prev_lo, prev_hi = px0, px1
+            else:
+                overlap = max(0.0, min(other_hi, px1) - max(other_lo, px0))
+                prev_lo, prev_hi = py0, py1
+            if overlap <= 1e-6:
+                continue
+            if prev_hi <= lo + 1e-6:
+                lower_gap = min(lower_gap, lo - prev_hi)
+            if prev_lo >= hi - 1e-6:
+                upper_gap = min(upper_gap, prev_lo - hi)
+        if lower_gap > tol or upper_gap > tol:
+            return 0.0
+        return float(np.clip(1.0 - (lower_gap + upper_gap) / (2.0 * tol), 0.0, 1.0))
+
+    def _geometry_score_terms(
+        self,
+        raw_sequence: List[PlacedBox],
+        raw_placed: PlacedBox,
+        base_packer,
+        trial_packer,
+    ) -> Dict[str, float]:
+        dx, dy, dz = [float(v) for v in raw_placed["size"]]
+        cx, cy, cz = [float(v) for v in raw_placed["position"]]
+        lx, ly, lz = cx - dx / 2.0, cy - dy / 2.0, cz - dz / 2.0
+        hx, hy = lx + dx, ly + dy
+        pallet_x, pallet_y, pallet_z = float(self.pallet.length), float(self.pallet.width), float(self.pallet.height)
+        eps = 0.005
+
+        x_wall = lx <= eps or hx >= pallet_x - eps
+        y_wall = ly <= eps or hy >= pallet_y - eps
+        area_ratio = dx * dy / max(pallet_x * pallet_y, 1e-9)
+        large_factor = float(np.clip((area_ratio - 0.045) / 0.04, 0.0, 1.0))
+        corner_large_anchor = large_factor if x_wall and y_wall else 0.0
+
+        flush_contacts = 0
+        for placed in raw_sequence:
+            sx, sy, sz = [float(v) for v in placed["size"]]
+            pcx, pcy, pcz = [float(v) for v in placed["position"]]
+            px0, py0, pz0 = pcx - sx / 2.0, pcy - sy / 2.0, pcz - sz / 2.0
+            px1, py1, pz1 = px0 + sx, py0 + sy, pz0 + sz
+            if max(0.0, min(lz + dz, pz1) - max(lz, pz0)) <= 1e-6:
+                continue
+            if (abs(lx - px1) <= eps or abs(hx - px0) <= eps) and max(0.0, min(hy, py1) - max(ly, py0)) > 1e-6:
+                flush_contacts += 1
+            if (abs(ly - py1) <= eps or abs(hy - py0) <= eps) and max(0.0, min(hx, px1) - max(lx, px0)) > 1e-6:
+                flush_contacts += 1
+        wall_anchor = float(np.clip((float(x_wall) + float(y_wall) + 0.5 * flush_contacts) / 2.0, 0.0, 1.0))
+
+        tight_fit = max(
+            self._axis_tight_fit_raw(lx, hx, ly, hy, 0, lz, raw_sequence, pallet_x),
+            self._axis_tight_fit_raw(ly, hy, lx, hx, 1, lz, raw_sequence, pallet_y),
+        )
+        support_ratio = self._support_ratio_for_raw(raw_sequence, raw_placed)
+        required_support = 1.0 if lz <= 1e-6 else self._required_support(float(raw_placed["mass"]), lz)
+        support_quality = 1.0 if lz <= 1e-6 else float(np.clip(support_ratio / max(required_support, 1e-9), 0.0, 1.0))
+        unsupported_risk = 0.0 if lz <= 1e-6 else float(np.clip((required_support - support_ratio) / max(required_support, 1e-9), 0.0, 1.0))
+
+        before_void = self._usable_void_volume(base_packer)
+        after_void = self._usable_void_volume(trial_packer)
+        void_reduction = float(np.clip((before_void - after_void) / 0.05, 0.0, 1.0))
+
+        next_sequence = raw_sequence + [raw_placed]
+        tops = [float(p["position"][2]) + float(p["size"][2]) / 2.0 for p in next_sequence]
+        mean_top = sum(tops) / len(tops) if tops else 0.0
+        top_std = (sum((top - mean_top) ** 2 for top in tops) / len(tops)) ** 0.5 if tops else 0.0
+        return {
+            "corner_large_anchor": float(corner_large_anchor),
+            "wall_anchor": float(wall_anchor),
+            "tight_fit": float(tight_fit),
+            "support_quality": float(support_quality),
+            "void_reduction": float(void_reduction),
+            "unsupported_risk": float(unsupported_risk),
+            "high_placement": float(np.clip(lz / max(pallet_z, 1e-9), 0.0, 1.0)),
+            "rough_top": float(np.clip(top_std / max(pallet_z, 1e-9), 0.0, 1.0)),
+        }
+
     def _score_trial(
         self,
         raw_sequence: List[PlacedBox],
         raw_placed: PlacedBox,
         policy_score: float,
         leaf_rank: int,
+        base_packer=None,
+        trial_packer=None,
     ) -> float:
+        rank_bonus = 0.001 * max(0, self._search_top_k_leaf - leaf_rank)
+        if self._score_profile == "geometry_v1" and base_packer is not None and trial_packer is not None:
+            terms = self._geometry_score_terms(raw_sequence, raw_placed, base_packer, trial_packer)
+            return (
+                0.55 * terms["corner_large_anchor"]
+                + 0.35 * terms["wall_anchor"]
+                + 0.45 * terms["tight_fit"]
+                + 0.30 * terms["support_quality"]
+                + 0.25 * terms["void_reduction"]
+                - 0.35 * terms["unsupported_risk"]
+                - 0.25 * terms["high_placement"]
+                - 0.18 * terms["rough_top"]
+                + min(max(policy_score, 0.0), 1.0) * 0.03
+                + rank_bonus
+            )
+
         dx, dy, dz = [float(v) for v in raw_placed["size"]]
         cx, cy, cz = [float(v) for v in raw_placed["position"]]
         lz = cz - dz / 2.0
@@ -561,7 +723,6 @@ class Palletizer:
         top_std = (sum((top - mean_top) ** 2 for top in tops) / len(tops)) ** 0.5 if tops else 0.0
 
         volume = dx * dy * dz
-        rank_bonus = 0.001 * max(0, self._search_top_k_leaf - leaf_rank)
         return (
             volume * 100.0
             - max_top * 0.35
@@ -579,6 +740,7 @@ class Palletizer:
         raw_sequence: List[PlacedBox],
         buffer_index: int,
         top_k: int,
+        selector_bonus: float = 0.0,
     ) -> List[Dict]:
         size = [float(box["size"][0]), float(box["size"][1]), float(box["size"][2])]
         density = self._density(box, size)
@@ -628,7 +790,9 @@ class Palletizer:
                 raw_placed,
                 policy_scores.get(int(selected), 0.0),
                 leaf_rank,
-            )
+                base_packer,
+                trial_packer,
+            ) + float(selector_bonus)
             candidates.append({
                 "box": box,
                 "box_key": self._box_key(box),
@@ -646,6 +810,7 @@ class Palletizer:
     def _plan_one_step(self, current_buffer: List[BoxInput]) -> Optional[Dict]:
         raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
         candidates = []
+        selector_bonuses = self._selector_buffer_bonuses(current_buffer)
         for buffer_index, box in enumerate(current_buffer):
             candidates.extend(
                 self._trial_candidates(
@@ -654,6 +819,7 @@ class Palletizer:
                     raw_sequence,
                     buffer_index,
                     self._search_top_k_leaf,
+                    selector_bonuses.get(int(buffer_index), 0.0),
                 )
             )
 
@@ -666,6 +832,7 @@ class Palletizer:
     def _plan_beam(self, current_buffer: List[BoxInput]) -> Optional[Dict]:
         depth = min(self._search_depth, len(current_buffer))
         raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
+        selector_bonuses = self._selector_buffer_bonuses(current_buffer)
         beams = [{
             "packer": self._packer,
             "raw_sequence": raw_sequence,
@@ -684,6 +851,7 @@ class Palletizer:
                         beam["raw_sequence"],
                         buffer_index,
                         self._search_top_k_leaf,
+                        selector_bonuses.get(int(buffer_index), 0.0) if beam["first"] is None else 0.0,
                     )
                     for candidate in candidates:
                         remaining = [(idx, item) for idx, item in beam["remaining"] if idx != buffer_index]
@@ -740,6 +908,62 @@ class Palletizer:
             "packer": candidate["packer"],
             "validated": candidate["validated"],
             "raw_placed": candidate["raw_placed"],
+        }
+
+    def _selector_buffer_bonuses(self, current_buffer: List[BoxInput]) -> Dict[int, float]:
+        if not self._selector_enabled:
+            return {}
+        if self.algo.buffer_size != self._selector_buffer_size:
+            return {}
+        if self._selector_bonus_weight <= 0.0:
+            return {}
+        if self._selector_session is None or self._selector_input_name is None:
+            if not self._ensure_packer_for_current_run():
+                return {}
+            if self._selector_session is None or self._selector_input_name is None:
+                return {}
+
+        try:
+            features, valid_mask = self._selector_features(current_buffer)
+        except Exception:
+            return {}
+        if not bool(valid_mask.any()):
+            return {}
+
+        try:
+            logits = self._selector_session.run(
+                None,
+                {self._selector_input_name: features.reshape(1, -1).astype(np.float32)},
+            )[0][0].astype(np.float64, copy=True)
+        except Exception:
+            return {}
+
+        limit = min(len(logits), len(valid_mask), len(current_buffer))
+        if limit <= 0:
+            return {}
+
+        masked_logits = np.full((limit,), -np.inf, dtype=np.float64)
+        for idx in range(limit):
+            if valid_mask[idx]:
+                masked_logits[idx] = logits[idx]
+        if not np.isfinite(masked_logits).any():
+            return {}
+
+        finite = masked_logits[np.isfinite(masked_logits)]
+        max_logit = float(np.max(finite))
+        exp_logits = np.zeros((limit,), dtype=np.float64)
+        for idx in range(limit):
+            if np.isfinite(masked_logits[idx]):
+                exp_logits[idx] = np.exp(float(masked_logits[idx]) - max_logit)
+        denom = float(exp_logits.sum())
+        if denom <= 0.0:
+            return {}
+
+        probs = exp_logits / denom
+        return {
+            int(idx): float(self._selector_bonus_weight) * float(probs[idx])
+            for idx in range(limit)
+            if valid_mask[idx]
         }
 
     def _prepare_selector_plan(self, current_buffer: List[BoxInput]) -> bool:

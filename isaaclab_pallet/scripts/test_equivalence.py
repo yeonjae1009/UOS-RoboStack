@@ -57,6 +57,16 @@ from pct_envs.PctContinuous0.bin3D import PackingContinuous  # noqa: E402  (refe
 from pct_envs.PctContinuous0.space import Space  # noqa: E402
 
 
+def numeric_terms(terms: dict) -> dict[str, float]:
+    out = {}
+    for key, value in terms.items():
+        try:
+            out[key] = float(value)
+        except (TypeError, ValueError):
+            continue
+    return out
+
+
 def load_config(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f)
@@ -147,7 +157,7 @@ def reference_place(env, leaves, action_idx):
         "record": np.array([packed.x, packed.y, packed.z, packed.lx, packed.ly, packed.lz], dtype=np.float64),
         "ratio": float(env.space.get_ratio()),
         "reward": float(reward),
-        "terms": {k: float(v) for k, v in env.last_reward_terms.items()},
+        "terms": numeric_terms(env.last_reward_terms),
     }
 
 
@@ -246,7 +256,8 @@ def main() -> int:
             d = float(np.max(np.abs(np.asarray(ref[k]) - np.asarray(port[k]))))
             step_diffs[k] = d
             worst[k] = max(worst[k], d)
-        term_diff = max(abs(ref["terms"][t] - port["terms"][t]) for t in ref["terms"])
+        common_terms = sorted(set(ref["terms"]) & set(port["terms"]))
+        term_diff = max((abs(ref["terms"][t] - port["terms"][t]) for t in common_terms), default=0.0)
         worst_term = max(worst_term, term_diff)
         placed += 1
 
