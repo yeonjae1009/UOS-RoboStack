@@ -1,0 +1,16 @@
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/vzegihrq
+[gat-train] run_dir=isaaclab_pallet/runs/sun_terminal18_env128_workers4_sun_v2 device=cuda:0 num_envs=128 num_packer_workers=4 obs_shape=(128, 301, 9) leaf_shape=(128, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=sun_v2 learn_finish_action=False action_space=100 candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=2 box_seq_dir=palletizing_simulator/box_sequence eval_sequences=box_sequence_0,box_sequence_1
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial competition score = 88.52  -> PCT-best.pt
+[gat-train] update=1 samples=640 fps=101.6 loss=0.1016 actor=-0.2204 value=0.3283 entropy=0.6173 mean_return=0.000 mean_len=0.0
+[gat-train] update=2 samples=1280 fps=124.1 loss=0.2784 actor=0.1160 value=0.1734 entropy=1.0986 mean_return=0.000 mean_len=0.0
+[gat-train] update=3 samples=1920 fps=123.1 loss=1.1748 actor=0.8040 value=0.3906 entropy=1.9743 mean_return=0.000 mean_len=0.0
+[gat-train] update=4 samples=2560 fps=113.7 loss=3.0271 actor=2.0494 value=1.0021 entropy=2.4379 mean_return=0.000 mean_len=0.0
+[gat-train] update=5 samples=3200 fps=104.7 loss=3.6049 actor=2.4862 value=1.1466 entropy=2.7913 mean_return=0.000 mean_len=0.0
+[gat-train] update=6 samples=3840 fps=97.3 loss=4.1143 actor=2.8501 value=1.2945 entropy=3.0254 mean_return=0.000 mean_len=0.0
+[gat-train] update=7 samples=4480 fps=91.9 loss=3.8052 actor=2.6999 value=1.1355 entropy=3.0213 mean_return=0.000 mean_len=0.0
+[gat-train] update=8 samples=5120 fps=87.6 loss=3.9074 actor=2.7405 value=1.1976 entropy=3.0683 mean_return=0.000 mean_len=0.0
+[gat-train] update=9 samples=5760 fps=84.3 loss=3.5982 actor=2.5154 value=1.1125 entropy=2.9687 mean_return=0.000 mean_len=0.0
+[gat-train] update=10 samples=6400 fps=80.6 loss=3.3160 actor=2.2827 value=1.0624 entropy=2.9166 mean_return=0.000 mean_len=0.0
