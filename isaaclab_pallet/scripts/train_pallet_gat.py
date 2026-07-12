@@ -201,6 +201,24 @@ def apply_reward_profile(cfg: PalletPackingEnvCfg, profile: str) -> None:
             "center_of_mass_z_penalty_scale": 0.25,
             "terminal_ratio_reward_scale": 15.0,
         },
+        "sun_v2": {
+            "volume_reward_scale": 0.0,
+            "floor_coverage_reward_scale": 0.0,
+            "boundary_floor_reward_scale": 0.0,
+            "corner_floor_reward_scale": 0.0,
+            "height_smoothness_reward_scale": 1.0,
+            "support_reward_scale": 0.08,
+            "weak_support_penalty_scale": 0.10,
+            "elevation_penalty_scale": 0.20,
+            "corner_large_reward_scale": 0.55,
+            "wall_anchor_reward_scale": 0.0,
+            "tight_fit_reward_scale": 0.7,
+            "void_reduction_reward_scale": 0.25,
+            "support_margin_reward_scale": 0.25,
+            "active_layer_coverage_reward_scale": 1.2,
+            "center_of_mass_z_penalty_scale": 0.25,
+            "terminal_ratio_reward_scale": 18.0,
+        },
     }
     for name, value in profiles[profile].items():
         setattr(cfg, name, value)
