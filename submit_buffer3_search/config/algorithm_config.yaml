@@ -22,8 +22,8 @@ search:
   enabled: true
   mode: beam                     # one_step 또는 beam
   score_profile: geometry_v1     # legacy 또는 geometry_v1
-  top_k_leaf: 8
-  beam_width: 4
+  top_k_leaf: 4
+  beam_width: 2
   depth: 2
 
 selector:
