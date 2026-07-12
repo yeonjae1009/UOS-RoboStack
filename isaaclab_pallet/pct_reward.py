@@ -45,6 +45,8 @@ class RewardScales:
     tight_fit: float = 0.0
     void_reduction: float = 0.0
     support_margin: float = 0.0
+    active_layer_coverage: float = 0.0
+    center_of_mass_z_penalty: float = 0.0
 
 
 def density_for_box(box: dict, setting: int, density_max: float) -> float:
@@ -226,6 +228,34 @@ def usable_void_volume(ems: np.ndarray, min_sorted: Sequence[float] = (0.13, 0.1
     return float(volumes[usable].sum())
 
 
+def _layer_coverage(boxes, pallet_size, layer_z: float, grid: float = 0.025, tol: float = 0.006) -> float:
+    pallet_x, pallet_y, _ = pallet_size
+    nx = max(1, int(np.ceil(float(pallet_x) / grid)))
+    ny = max(1, int(np.ceil(float(pallet_y) / grid)))
+    layer_map = np.zeros((nx, ny), dtype=bool)
+    for box in boxes:
+        if abs(float(box.lz) - layer_z) > tol:
+            continue
+        ix0, ix1, iy0, iy1 = box_grid_slice(box, grid, nx, ny)
+        if ix1 <= ix0 or iy1 <= iy0:
+            continue
+        layer_map[ix0:ix1, iy0:iy1] = True
+    return float(np.mean(layer_map))
+
+
+def _stack_center_of_mass_z(boxes, pallet_z: float) -> float:
+    total_mass = 0.0
+    weighted_z = 0.0
+    for box in boxes:
+        mass = max(0.0, float(getattr(box, "mass", 1.0)))
+        center_z = float(box.lz + box.z / 2.0)
+        total_mass += mass
+        weighted_z += mass * center_z
+    if total_mass <= 1e-9:
+        return 0.0
+    return float(np.clip((weighted_z / total_mass) / max(float(pallet_z), 1e-9), 0.0, 1.0))
+
+
 def _axis_tight_fit(
     lo: float,
     hi: float,
@@ -300,6 +330,14 @@ def placement_geometry_terms(
     support_margin = float(np.clip((ratio - required) / max(1.0 - required, 1e-9), 0.0, 1.0))
     unsupported_risk = 0.0 if lz <= 1e-6 else float(np.clip((required - ratio) / max(required, 1e-9), 0.0, 1.0))
 
+    layer_before = _layer_coverage(boxes_before, pallet_size, lz)
+    layer_after = _layer_coverage([*boxes_before, packed_box], pallet_size, lz)
+    active_layer_coverage = float(np.clip(layer_after - layer_before, -1.0, 1.0))
+
+    com_before = _stack_center_of_mass_z(boxes_before, pallet_z)
+    com_after = _stack_center_of_mass_z([*boxes_before, packed_box], pallet_z)
+    center_of_mass_z_increase = float(np.clip(com_after - com_before, 0.0, 1.0))
+
     void_reduction = 0.0
     if before_void_volume is not None and after_void_volume is not None:
         void_reduction = float(np.clip((before_void_volume - after_void_volume) / 0.05, 0.0, 1.0))
@@ -312,6 +350,9 @@ def placement_geometry_terms(
         "support_margin": float(support_margin),
         "unsupported_risk": float(unsupported_risk),
         "void_reduction": float(void_reduction),
+        "active_layer_coverage": float(active_layer_coverage),
+        "center_of_mass_z": float(com_after),
+        "center_of_mass_z_increase": float(center_of_mass_z_increase),
     }
 
 
@@ -348,6 +389,12 @@ def compute_online3dbpp_reward(
     tight_fit_reward = scales.tight_fit * float(geometry.get("tight_fit", 0.0))
     void_reduction_reward = scales.void_reduction * float(geometry.get("void_reduction", 0.0))
     support_margin_reward = scales.support_margin * float(geometry.get("support_margin", 0.0))
+    active_layer_coverage_reward = scales.active_layer_coverage * float(
+        geometry.get("active_layer_coverage", 0.0)
+    )
+    center_of_mass_z_penalty = scales.center_of_mass_z_penalty * float(
+        geometry.get("center_of_mass_z_increase", 0.0)
+    )
 
     reward = float(
         volume_reward
@@ -361,8 +408,10 @@ def compute_online3dbpp_reward(
         + tight_fit_reward
         + void_reduction_reward
         + support_margin_reward
+        + active_layer_coverage_reward
         - weak_support_penalty
         - elevation_penalty
+        - center_of_mass_z_penalty
     )
     terms = {
         "volume_reward": float(volume_reward),
@@ -378,11 +427,16 @@ def compute_online3dbpp_reward(
         "tight_fit_reward": float(tight_fit_reward),
         "void_reduction_reward": float(void_reduction_reward),
         "support_margin_reward": float(support_margin_reward),
+        "active_layer_coverage_reward": float(active_layer_coverage_reward),
+        "center_of_mass_z_penalty": float(center_of_mass_z_penalty),
         "corner_large_anchor": float(geometry.get("corner_large_anchor", 0.0)),
         "wall_anchor": float(geometry.get("wall_anchor", 0.0)),
         "tight_fit": float(geometry.get("tight_fit", 0.0)),
         "void_reduction": float(geometry.get("void_reduction", 0.0)),
         "support_margin": float(geometry.get("support_margin", 0.0)),
+        "active_layer_coverage": float(geometry.get("active_layer_coverage", 0.0)),
+        "center_of_mass_z": float(geometry.get("center_of_mass_z", 0.0)),
+        "center_of_mass_z_increase": float(geometry.get("center_of_mass_z_increase", 0.0)),
         "support_ratio": float(ratio),
         "reward": reward,
     }
