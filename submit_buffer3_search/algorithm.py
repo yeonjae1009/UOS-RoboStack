@@ -1316,36 +1316,35 @@ class Palletizer:
         if self._session is not None and self._input_name is not None:
             try:
                 probs = self._session.run(None, {self._input_name: obs_arr})[0][0].astype(np.float64, copy=True)
-                probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
-                candidate_indices = [int(i) for i in np.argsort(probs)[::-1] if np.isfinite(probs[int(i)])]
+                leaf_probs = probs[:self._lnh]
+                leaf_probs[safe_leaf_region[:, 8] <= 0.5] = 0.0
+                if float(leaf_probs.sum()) <= 0.0:
+                    return None
+                selected = int(np.argmax(leaf_probs))
             except Exception:
-                candidate_indices = [self._fallback_leaf_index(safe_leaf_region)]
+                selected = self._fallback_leaf_index(safe_leaf_region)
         else:
-            valid_indices = np.flatnonzero(safe_leaf_region[:, 8] > 0.5)
-            candidate_indices = [int(i) for i in valid_indices]
+            selected = self._fallback_leaf_index(safe_leaf_region)
 
-        for selected in candidate_indices[:20]:
-            leaf = safe_leaf_region[selected]
-            if float(np.sum(leaf[:6])) == 0.0:
-                continue
+        leaf = safe_leaf_region[selected]
+        if float(np.sum(leaf[:6])) == 0.0:
+            return None
 
-            try:
-                trial_packer = copy.deepcopy(self._packer)
-                placed = trial_packer.place(leaf[:6])
-            except Exception:
-                continue
+        try:
+            trial_packer = copy.deepcopy(self._packer)
+            placed = trial_packer.place(leaf[:6])
+        except Exception:
+            return None
 
-            if not placed:
-                continue
+        if not placed:
+            return None
 
-            validated = self._validated_output_from_packed(box, trial_packer.packed[-1])
-            if validated is None:
-                continue
+        validated = self._validated_output_from_packed(box, trial_packer.packed[-1])
+        if validated is None:
+            return None
 
-            self._packer = trial_packer
-            return validated
-
-        return None
+        self._packer = trial_packer
+        return validated
 
     def _append_placed(
         self,
