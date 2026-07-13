@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import random
+import shutil
+import subprocess
 import sys
 import time
 from collections import deque
@@ -72,6 +75,11 @@ parser.add_argument("--entropy-coef", type=float, default=0.01)
 parser.add_argument("--eval-interval", type=int, default=50, help="Updates between competition-score evals (0=off).")
 parser.add_argument("--box-seq-dir", type=str, default="palletizing_simulator/box_sequence")
 parser.add_argument("--eval-sequences", nargs="+", default=["box_sequence_0", "box_sequence_1"])
+parser.add_argument("--deploy-eval-best", action="store_true", default=True, help="Confirm candidate best checkpoints through exported ONNX + submission main.py.")
+parser.add_argument("--no-deploy-eval-best", dest="deploy_eval_best", action="store_false")
+parser.add_argument("--deploy-eval-submit-dir", type=str, default="submit_buffer3_search")
+parser.add_argument("--deploy-eval-buffer-size", type=int, default=0, help="buffer.size used in the temporary submission config for deployment best selection.")
+parser.add_argument("--deploy-eval-timeout", type=float, default=300.0)
 parser.add_argument("--save-update-checkpoints", action="store_true", default=True)
 parser.add_argument("--no-save-update-checkpoints", dest="save_update_checkpoints", action="store_false")
 parser.add_argument("--wandb", action="store_true", help="Log training/eval metrics to Weights & Biases.")
@@ -264,6 +272,113 @@ def evaluate_competition_score(policy, pct_args, pct_cfg, seq_paths, device) -> 
     if was_training:
         policy.train()
     return (sum(scores) / len(scores)) if scores else 0.0
+
+
+def _copy_submission_for_deploy_eval(src: Path, dst: Path) -> None:
+    if dst.exists():
+        return
+
+    def ignore(_dir: str, names: list[str]) -> set[str]:
+        ignored = {"__pycache__", ".pytest_cache"}
+        ignored.update(name for name in names if name.startswith("algorithm_results"))
+        return ignored
+
+    shutil.copytree(src, dst, ignore=ignore)
+
+
+def _write_deploy_eval_config(submit_dir: Path, input_dir: Path, output_dir: Path, buffer_size: int) -> None:
+    cfg_path = submit_dir / "config" / "algorithm_config.yaml"
+    import yaml
+
+    cfg = yaml.safe_load(cfg_path.read_text()) or {}
+    cfg["input_path"] = str(input_dir.resolve())
+    cfg["output_dir"] = str(output_dir.resolve())
+    cfg.setdefault("buffer", {})["size"] = int(buffer_size)
+    if int(buffer_size) == 0:
+        cfg.setdefault("selector", {})["enabled"] = False
+    cfg_path.write_text(yaml.safe_dump(cfg, sort_keys=False, allow_unicode=True), encoding="utf-8")
+
+
+def _prepare_deploy_eval_inputs(seq_paths: list[str], dst: Path) -> None:
+    if dst.exists():
+        shutil.rmtree(dst)
+    dst.mkdir(parents=True, exist_ok=True)
+    for seq_path in seq_paths:
+        src = Path(seq_path)
+        shutil.copy2(src, dst / src.name)
+
+
+def _score_submission_results(output_dir: Path, buffer_size: int) -> float:
+    scores = []
+    for path in sorted(output_dir.glob("*.json")):
+        data = json.loads(path.read_text())
+        placed = data.get("sequence", [])
+        vol = sum(float(b["size"][0]) * float(b["size"][1]) * float(b["size"][2]) for b in placed)
+        fill = vol / _PALLET_VOLUME
+        max_top = max(
+            (float(b["position"][2]) + float(b["size"][2]) / 2.0 for b in placed),
+            default=0.0,
+        )
+        bonus = max(0.0, 20.0 - float(buffer_size))
+        scores.append(fill * 100.0 + bonus if max_top <= 1.25 + 1e-6 else 0.0)
+    return (sum(scores) / len(scores)) if scores else 0.0
+
+
+def evaluate_deployment_score(
+    policy,
+    run_dir: Path,
+    pct_args,
+    seq_paths: list[str],
+    update: int,
+) -> float:
+    deploy_root = run_dir / "deploy_eval"
+    submit_src = PROJECT_ROOT / args_cli.deploy_eval_submit_dir
+    submit_dir = deploy_root / "submission"
+    input_dir = deploy_root / "box_sequence"
+    output_dir = deploy_root / "algorithm_results"
+    candidate_pt = deploy_root / f"candidate-{update:06d}.pt"
+
+    deploy_root.mkdir(parents=True, exist_ok=True)
+    _copy_submission_for_deploy_eval(submit_src, submit_dir)
+    _prepare_deploy_eval_inputs(seq_paths, input_dir)
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
+    _write_deploy_eval_config(submit_dir, input_dir, output_dir, args_cli.deploy_eval_buffer_size)
+
+    torch.save(policy.state_dict(), candidate_pt)
+    export_cmd = [
+        sys.executable,
+        str(PROJECT_ROOT / "tools" / "export_pct_no_gym.py"),
+        "--model-path",
+        str(candidate_pt),
+        "--out",
+        str(submit_dir / "src" / "models" / "pct_model.onnx"),
+        "--internal-node-holder",
+        str(pct_args.internal_node_holder),
+        "--leaf-node-holder",
+        str(pct_args.leaf_node_holder),
+        "--setting",
+        str(pct_args.setting),
+    ]
+    subprocess.run(
+        export_cmd,
+        cwd=str(PROJECT_ROOT),
+        check=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=args_cli.deploy_eval_timeout,
+    )
+    subprocess.run(
+        [sys.executable, "main.py"],
+        cwd=str(submit_dir),
+        check=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=args_cli.deploy_eval_timeout,
+    )
+    return _score_submission_results(output_dir, args_cli.deploy_eval_buffer_size)
 
 
 def make_run_dir() -> Path:
@@ -568,15 +683,27 @@ def main() -> None:
         flush=True,
     )
     best_score = -1.0
+    best_torch_score = -1.0
     if args_cli.eval_interval > 0:
-        best_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
+        torch_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
+        best_torch_score = torch_score
+        if args_cli.deploy_eval_best:
+            best_score = evaluate_deployment_score(policy, run_dir, pct_args, eval_seq_paths, start_update)
+            print(
+                f"[gat-train] initial deployment score = {best_score:.2f} "
+                f"(torch_eval={torch_score:.2f})  -> PCT-best.pt",
+                flush=True,
+            )
+        else:
+            best_score = torch_score
+            print(f"[gat-train] initial competition score = {best_score:.2f}  -> PCT-best.pt", flush=True)
         torch.save(policy.state_dict(), run_dir / "PCT-best.pt")
-        print(f"[gat-train] initial competition score = {best_score:.2f}  -> PCT-best.pt", flush=True)
         if wandb_run is not None:
             wandb_run.log(
                 {
                     "update": start_update,
-                    "eval/competition_score": best_score,
+                    "eval/competition_score": torch_score,
+                    "eval/deployment_score": best_score,
                     "eval/best_score": best_score,
                     "eval/improved": 1,
                 },
@@ -712,7 +839,18 @@ def main() -> None:
 
         # ★1: score on the real competition sequences; keep PCT-best.pt only when it improves.
         if args_cli.eval_interval > 0 and update % args_cli.eval_interval == 0:
-            score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
+            torch_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
+            deploy_score = None
+            torch_candidate = torch_score > best_torch_score
+            if torch_candidate:
+                best_torch_score = torch_score
+            if args_cli.deploy_eval_best and torch_candidate:
+                deploy_score = evaluate_deployment_score(policy, run_dir, pct_args, eval_seq_paths, update)
+                score = deploy_score
+            elif args_cli.deploy_eval_best:
+                score = -1.0
+            else:
+                score = torch_score
             improved = score > best_score
             if improved:
                 best_score = score
@@ -722,15 +860,19 @@ def main() -> None:
                 wandb_run.log(
                     {
                         "update": update,
-                        "eval/competition_score": score,
+                        "eval/competition_score": torch_score,
+                        "eval/deployment_score": deploy_score if deploy_score is not None else -1.0,
                         "eval/best_score": best_score,
                         "eval/improved": int(improved),
+                        "eval/torch_candidate": int(torch_candidate),
                     },
                     step=update,
                 )
+            deploy_text = "" if deploy_score is None else f" deploy_score={deploy_score:.2f}"
             print(
-                f"[gat-train] eval update={update} comp_score={score:.2f} "
-                f"best={best_score:.2f}{'  *NEW BEST -> PCT-best.pt*' if improved else ''}",
+                f"[gat-train] eval update={update} torch_score={torch_score:.2f}"
+                f"{deploy_text} best={best_score:.2f}"
+                f"{'  *NEW BEST -> PCT-best.pt*' if improved else ''}",
                 flush=True,
             )
 

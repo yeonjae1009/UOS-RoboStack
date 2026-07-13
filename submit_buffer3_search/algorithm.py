@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import copy
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, TypedDict
@@ -119,6 +120,8 @@ class Palletizer:
         self.finished_by_user = False
         self._search_plan = None
         self._selector_plan = None
+        self._observed_boxes: List[BoxInput] = []
+        self._run_deadline: Optional[float] = None
 
     # -----------------------------------------------------------------------
     # 참가자 수정 가능 함수
@@ -161,6 +164,13 @@ class Palletizer:
         self._selector_bonus_weight = 0.10
         self._selector_session = None
         self._selector_input_name = None
+        self._non_buffer_enabled = False
+        self._non_buffer_rollout_depth = 2
+        self._non_buffer_pseudo_samples = 4
+        self._non_buffer_rollout_weight = 0.35
+        self._non_buffer_rollout_discount = 0.7
+        self._non_buffer_time_budget_sec = 80.0
+        self._non_buffer_random_seed = 0
 
         if yaml is None:
             return
@@ -179,6 +189,13 @@ class Palletizer:
         self._search_beam_width = max(1, int(search_cfg.get("beam_width", self._search_beam_width)))
         self._search_depth = max(1, int(search_cfg.get("depth", self._search_depth)))
         self._score_profile = str(search_cfg.get("score_profile", self._score_profile))
+        self._non_buffer_enabled = bool(search_cfg.get("non_buffer_enabled", self._non_buffer_enabled))
+        self._non_buffer_rollout_depth = max(1, int(search_cfg.get("rollout_depth", self._non_buffer_rollout_depth)))
+        self._non_buffer_pseudo_samples = max(1, int(search_cfg.get("pseudo_samples", self._non_buffer_pseudo_samples)))
+        self._non_buffer_rollout_weight = float(search_cfg.get("rollout_weight", self._non_buffer_rollout_weight))
+        self._non_buffer_rollout_discount = float(search_cfg.get("rollout_discount", self._non_buffer_rollout_discount))
+        self._non_buffer_time_budget_sec = float(search_cfg.get("time_budget_sec", self._non_buffer_time_budget_sec))
+        self._non_buffer_random_seed = int(search_cfg.get("random_seed", self._non_buffer_random_seed))
 
         selector_cfg = cfg.get("selector", {}) or {}
         self._selector_enabled = bool(selector_cfg.get("enabled", self._selector_enabled))
@@ -470,10 +487,31 @@ class Palletizer:
             "rotation": int(rotation),
         }
 
-        margin = 0.002
-        output_lx = min(max(lx, margin), float(self.pallet.length) - dx - margin)
-        output_ly = min(max(ly, margin), float(self.pallet.width) - dy - margin)
+        output_lx = min(max(lx, 0.0), float(self.pallet.length) - dx)
+        output_ly = min(max(ly, 0.0), float(self.pallet.width) - dy)
         output_lz = max(lz, 0.0)
+        output_size = [round(dx, 3), round(dy, 3), round(dz, 3)]
+        output_position = [
+            round(output_lx + dx / 2.0, 3),
+            round(output_ly + dy / 2.0, 3),
+            round(output_lz + dz / 2.0, 3),
+        ]
+        output_candidate = self._aabb_from_size_position(output_size, output_position)
+
+        if (
+            output_candidate[0] < -eps
+            or output_candidate[1] < -eps
+            or output_candidate[2] < -eps
+            or output_candidate[3] > float(self.pallet.length) + eps
+            or output_candidate[4] > float(self.pallet.width) + eps
+            or output_candidate[5] > float(self.pallet.height) + eps
+        ):
+            return None
+
+        for placed in raw_sequence:
+            old = self._aabb_from_size_position(placed["size"], placed["position"])
+            if self._overlap_3d(output_candidate, old):
+                return None
 
         return (output_lx, output_ly, output_lz, dims, rotation), raw_placed
 
@@ -890,6 +928,173 @@ class Palletizer:
         )
         return valid_beams[0]["first"]
 
+    def _non_buffer_time_exhausted(self) -> bool:
+        deadline = getattr(self, "_run_deadline", None)
+        return deadline is not None and time.monotonic() >= float(deadline)
+
+    def _pseudo_future_seed(self, current_box: BoxInput, sample_index: int) -> int:
+        seed = int(self._non_buffer_random_seed)
+        seed += int(current_box["step"]) * 1_000_003
+        seed += int(current_box["id"]) * 9_176
+        seed += int(len(self.sequence)) * 131_071
+        seed += int(sample_index) * 65_537
+        return seed & 0xFFFFFFFF
+
+    def _history_has_diversity(self, history: List[BoxInput]) -> bool:
+        if len(history) < 8:
+            return False
+        unique_sizes = {
+            tuple(round(float(v), 3) for v in box["size"])
+            for box in history
+        }
+        return len(unique_sizes) >= 4
+
+    def _sample_distribution_box(self, rng, step: int, box_id: int) -> BoxInput:
+        return {
+            "step": int(step),
+            "id": int(box_id),
+            "size": [
+                round(float(rng.uniform(0.17, 0.32)), 3),
+                round(float(rng.uniform(0.17, 0.32)), 3),
+                round(float(rng.uniform(0.13, 0.26)), 3),
+            ],
+            "mass": round(float(rng.uniform(0.5, 6.0)), 3),
+        }
+
+    def _sample_pseudo_future_boxes(
+        self,
+        current_box: BoxInput,
+        sample_index: int,
+        count: int,
+    ) -> List[BoxInput]:
+        if count <= 0 or np is None:
+            return []
+
+        rng = np.random.default_rng(self._pseudo_future_seed(current_box, sample_index))
+        history = list(getattr(self, "_observed_boxes", []))
+        use_history = self._history_has_diversity(history)
+        boxes: List[BoxInput] = []
+
+        for offset in range(count):
+            pseudo_step = int(current_box["step"]) + offset + 1
+            pseudo_id = -1_000_000 - int(sample_index) * 100 - int(offset)
+
+            if use_history and float(rng.random()) < 0.70:
+                source = history[int(rng.integers(0, len(history)))]
+                boxes.append({
+                    "step": pseudo_step,
+                    "id": pseudo_id,
+                    "size": [float(v) for v in source["size"]],
+                    "mass": float(source["mass"]),
+                })
+            else:
+                boxes.append(self._sample_distribution_box(rng, pseudo_step, pseudo_id))
+
+        return boxes
+
+    def _rollout_pseudo_sequence(
+        self,
+        start_packer,
+        start_raw_sequence: List[PlacedBox],
+        future_boxes: List[BoxInput],
+    ) -> Optional[float]:
+        beams = [{
+            "packer": start_packer,
+            "raw_sequence": start_raw_sequence,
+            "score": 0.0,
+        }]
+
+        for depth_index, future_box in enumerate(future_boxes):
+            if self._non_buffer_time_exhausted():
+                return None
+
+            expanded = []
+            discount = float(self._non_buffer_rollout_discount) ** int(depth_index)
+            for beam in beams:
+                if self._non_buffer_time_exhausted():
+                    return None
+                candidates = self._trial_candidates(
+                    future_box,
+                    beam["packer"],
+                    beam["raw_sequence"],
+                    0,
+                    self._search_top_k_leaf,
+                )
+                for candidate in candidates:
+                    expanded.append({
+                        "packer": candidate["packer"],
+                        "raw_sequence": beam["raw_sequence"] + [candidate["raw_placed"]],
+                        "score": float(beam["score"]) + discount * float(candidate["score"]),
+                    })
+
+            if not expanded:
+                break
+
+            expanded.sort(key=lambda b: b["score"], reverse=True)
+            beams = expanded[:self._search_beam_width]
+
+        if not beams:
+            return 0.0
+
+        return float(max(float(beam["score"]) for beam in beams))
+
+    def _plan_non_buffer_lookahead(self, current_box: BoxInput) -> Optional[Dict]:
+        if not self._non_buffer_enabled or self.algo.buffer_size != 0:
+            return None
+        if self._non_buffer_time_exhausted():
+            return None
+
+        raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
+        candidates = self._trial_candidates(
+            current_box,
+            self._packer,
+            raw_sequence,
+            0,
+            self._search_top_k_leaf,
+        )
+        if not candidates:
+            return None
+
+        future_count = max(0, int(self._non_buffer_rollout_depth) - 1)
+        if future_count == 0 or self._non_buffer_rollout_weight <= 0.0:
+            return candidates[0]
+
+        scored = []
+        for candidate in candidates:
+            if self._non_buffer_time_exhausted():
+                return None
+
+            rollout_scores = []
+            candidate_raw_sequence = raw_sequence + [candidate["raw_placed"]]
+            for sample_index in range(self._non_buffer_pseudo_samples):
+                if self._non_buffer_time_exhausted():
+                    return None
+                future_boxes = self._sample_pseudo_future_boxes(current_box, sample_index, future_count)
+                rollout_score = self._rollout_pseudo_sequence(
+                    candidate["packer"],
+                    candidate_raw_sequence,
+                    future_boxes,
+                )
+                if rollout_score is None:
+                    return None
+                rollout_scores.append(rollout_score)
+
+            mean_rollout = sum(rollout_scores) / len(rollout_scores) if rollout_scores else 0.0
+            total_score = float(candidate["score"]) + float(self._non_buffer_rollout_weight) * mean_rollout
+            scored.append((total_score, candidate))
+
+        if not scored:
+            return None
+
+        scored.sort(
+            key=lambda item: (
+                item[0],
+                -item[1]["leaf_rank"],
+            ),
+            reverse=True,
+        )
+        return scored[0][1]
+
     def _prepare_buffer_search(self, current_buffer: List[BoxInput]) -> None:
         if not self._ensure_packer_for_current_run():
             return
@@ -1082,6 +1287,13 @@ class Palletizer:
         if not self._ensure_packer_for_current_run():
             return self._find_position_baseline(box)
 
+        if self._search_enabled and self.algo.buffer_size == 0:
+            planned = self._plan_non_buffer_lookahead(box)
+            if planned is not None:
+                self._packer = planned["packer"]
+                self._pending_raw_placed = planned["raw_placed"]
+                return planned["validated"]
+
         size = [float(box["size"][0]), float(box["size"][1]), float(box["size"][2])]
         density = self._density(box, size)
         try:
@@ -1174,6 +1386,8 @@ class Palletizer:
 
     def run(self, boxes: List[BoxInput]) -> RunResult:
         self._reset_state()
+        if self.algo.buffer_size == 0 and self._non_buffer_time_budget_sec > 0.0:
+            self._run_deadline = time.monotonic() + float(self._non_buffer_time_budget_sec)
 
         buf = BufferManager(self.algo.buffer_size)
         buf.reset(boxes)
@@ -1181,6 +1395,8 @@ class Palletizer:
         while buf.has_pending():
             if self.algo.buffer_size == 0:
                 current = [buf.peek_next()]
+                if current[0] is not None:
+                    self._observed_boxes.append(current[0])
             else:
                 current = buf.get_buffer()
 
