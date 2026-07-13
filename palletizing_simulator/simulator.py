@@ -12,6 +12,7 @@ simulator.py – 팔레타이징 물리 시뮬레이터 진입점
     --settle-vel    안착 판정 속도 m/s   (config 값 override)
     --final-steps   전체 적재 후 추가 안정화 스텝 (config 값 override)
     --drop-offset   스폰 높이 오프셋 m   (config 값 override)
+    --step-delay    박스 1개 적재 후 GUI에서 유지할 시간 초 (config 값 override)
 """
 from __future__ import annotations
 
@@ -68,6 +69,7 @@ parser.add_argument("--settle-steps", type=int,   default=cfg["settling"]["max_s
 parser.add_argument("--settle-vel",   type=float, default=cfg["settling"]["velocity_threshold"])
 parser.add_argument("--final-steps",  type=int,   default=cfg["settling"]["final_steps"])
 parser.add_argument("--drop-offset",  type=float, default=cfg["settling"]["drop_offset"])
+parser.add_argument("--step-delay", type=float, default=cfg.get("runtime", {}).get("step_delay_sec", 0.0))
 args, _ = parser.parse_known_args()
 
 # ──────────────────────────────────────────────
@@ -235,9 +237,19 @@ def wait_for_timeline_play(auto_start: bool) -> None:
         if timeline.is_playing():
             print("[simulator] PLAY detected. Starting simulation.", flush=True)
             break
-        
 
-    
+
+def hold_render(world: World, seconds: float) -> None:
+    """GUI replay용으로 wall-clock 기준 대기하며 viewport를 계속 갱신한다."""
+    if seconds <= 0.0:
+        return
+
+    end_time = time.monotonic() + seconds
+    while simulation_app.is_running() and time.monotonic() < end_time:
+        world.step(render=True)
+        time.sleep(min(1.0 / 60.0, max(0.0, end_time - time.monotonic())))
+
+
 # ──────────────────────────────────────────────
 # Headless screenshot
 # ──────────────────────────────────────────────
@@ -413,6 +425,7 @@ def run_one_file(input_path: str, box_sequence_dir: str, out_dir: str) -> dict:
             )
 
             placed_pairs.append((cube, rot))
+            hold_render(world, args.step_delay)
             continue
 
         # =========================================================
@@ -484,6 +497,7 @@ def run_one_file(input_path: str, box_sequence_dir: str, out_dir: str) -> dict:
         #     f"({time.time()-t0:.1f}s)",
         #     flush=True,
         # )
+        hold_render(world, args.step_delay)
 
     # ── 전체 적재 후 추가 안정화 ─────────────────
     print(f"[simulator] Final settle {args.final_steps} steps …", flush=True)
@@ -591,7 +605,8 @@ def main() -> None:
         f"[simulator] drop_offset={args.drop_offset}m  "
         f"settle_steps(max)={args.settle_steps}  "
         f"settle_vel={args.settle_vel}m/s  "
-        f"final_steps={args.final_steps}",
+        f"final_steps={args.final_steps}  "
+        f"step_delay={args.step_delay}s",
         flush=True,
     )
 

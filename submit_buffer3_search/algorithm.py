@@ -735,7 +735,7 @@ class Palletizer:
         trial_packer=None,
     ) -> float:
         rank_bonus = 0.001 * max(0, self._search_top_k_leaf - leaf_rank)
-        if self._score_profile == "geometry_v1" and base_packer is not None and trial_packer is not None:
+        if self._score_profile in {"geometry_v1", "sun_v2"} and base_packer is not None and trial_packer is not None:
             terms = self._geometry_score_terms(raw_sequence, raw_placed, base_packer, trial_packer)
             return (
                 0.55 * terms["corner_large_anchor"]

@@ -21,7 +21,7 @@ buffer:
 search:
   enabled: true
   mode: beam                     # one_step 또는 beam
-  score_profile: sun_v2     # legacy 또는 geometry_v1
+  score_profile: sun_v2     # legacy, geometry_v1, sun_v2
   top_k_leaf: 4
   beam_width: 2
   depth: 2
