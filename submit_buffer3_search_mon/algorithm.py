@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import copy
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, TypedDict
@@ -119,6 +120,8 @@ class Palletizer:
         self.finished_by_user = False
         self._search_plan = None
         self._selector_plan = None
+        self._observed_boxes: List[BoxInput] = []
+        self._run_deadline: Optional[float] = None
 
     # -----------------------------------------------------------------------
     # 참가자 수정 가능 함수
@@ -144,13 +147,6 @@ class Palletizer:
         """
         self._search_plan = None
         self._selector_plan = None
-        if (
-            self._selector_enabled
-            and self.algo.buffer_size > 0
-            and len(current_buffer) > 1
-            and self._prepare_selector_plan(current_buffer)
-        ):
-            return False
         if self._search_enabled and self.algo.buffer_size > 0 and len(current_buffer) > 1:
             self._prepare_buffer_search(current_buffer)
         return False
@@ -161,11 +157,20 @@ class Palletizer:
         self._search_top_k_leaf = 5
         self._search_beam_width = 4
         self._search_depth = 2
+        self._score_profile = "legacy"
         self._selector_enabled = False
         self._selector_model_path = "src/models/buffer_selector.onnx"
         self._selector_buffer_size = 3
+        self._selector_bonus_weight = 0.10
         self._selector_session = None
         self._selector_input_name = None
+        self._non_buffer_enabled = False
+        self._non_buffer_rollout_depth = 2
+        self._non_buffer_pseudo_samples = 4
+        self._non_buffer_rollout_weight = 0.35
+        self._non_buffer_rollout_discount = 0.7
+        self._non_buffer_time_budget_sec = 80.0
+        self._non_buffer_random_seed = 0
 
         if yaml is None:
             return
@@ -183,11 +188,20 @@ class Palletizer:
         self._search_top_k_leaf = max(1, int(search_cfg.get("top_k_leaf", self._search_top_k_leaf)))
         self._search_beam_width = max(1, int(search_cfg.get("beam_width", self._search_beam_width)))
         self._search_depth = max(1, int(search_cfg.get("depth", self._search_depth)))
+        self._score_profile = str(search_cfg.get("score_profile", self._score_profile))
+        self._non_buffer_enabled = bool(search_cfg.get("non_buffer_enabled", self._non_buffer_enabled))
+        self._non_buffer_rollout_depth = max(1, int(search_cfg.get("rollout_depth", self._non_buffer_rollout_depth)))
+        self._non_buffer_pseudo_samples = max(1, int(search_cfg.get("pseudo_samples", self._non_buffer_pseudo_samples)))
+        self._non_buffer_rollout_weight = float(search_cfg.get("rollout_weight", self._non_buffer_rollout_weight))
+        self._non_buffer_rollout_discount = float(search_cfg.get("rollout_discount", self._non_buffer_rollout_discount))
+        self._non_buffer_time_budget_sec = float(search_cfg.get("time_budget_sec", self._non_buffer_time_budget_sec))
+        self._non_buffer_random_seed = int(search_cfg.get("random_seed", self._non_buffer_random_seed))
 
         selector_cfg = cfg.get("selector", {}) or {}
         self._selector_enabled = bool(selector_cfg.get("enabled", self._selector_enabled))
         self._selector_model_path = str(selector_cfg.get("model_path", self._selector_model_path))
         self._selector_buffer_size = max(1, int(selector_cfg.get("buffer_size", self._selector_buffer_size)))
+        self._selector_bonus_weight = float(selector_cfg.get("bonus_weight", self._selector_bonus_weight))
 
     def _box_key(self, box: BoxInput) -> Tuple[int, int]:
         return int(box["step"]), int(box["id"])
@@ -473,10 +487,31 @@ class Palletizer:
             "rotation": int(rotation),
         }
 
-        margin = 0.002
-        output_lx = min(max(lx, margin), float(self.pallet.length) - dx - margin)
-        output_ly = min(max(ly, margin), float(self.pallet.width) - dy - margin)
+        output_lx = min(max(lx, 0.0), float(self.pallet.length) - dx)
+        output_ly = min(max(ly, 0.0), float(self.pallet.width) - dy)
         output_lz = max(lz, 0.0)
+        output_size = [round(dx, 3), round(dy, 3), round(dz, 3)]
+        output_position = [
+            round(output_lx + dx / 2.0, 3),
+            round(output_ly + dy / 2.0, 3),
+            round(output_lz + dz / 2.0, 3),
+        ]
+        output_candidate = self._aabb_from_size_position(output_size, output_position)
+
+        if (
+            output_candidate[0] < -eps
+            or output_candidate[1] < -eps
+            or output_candidate[2] < -eps
+            or output_candidate[3] > float(self.pallet.length) + eps
+            or output_candidate[4] > float(self.pallet.width) + eps
+            or output_candidate[5] > float(self.pallet.height) + eps
+        ):
+            return None
+
+        for placed in raw_sequence:
+            old = self._aabb_from_size_position(placed["size"], placed["position"])
+            if self._overlap_3d(output_candidate, old):
+                return None
 
         return (output_lx, output_ly, output_lz, dims, rotation), raw_placed
 
@@ -543,13 +578,178 @@ class Palletizer:
         bonus += 0.02 if (lx <= eps or abs(hx - float(self.pallet.length)) <= eps) and (ly <= eps or abs(hy - float(self.pallet.width)) <= eps) else 0.0
         return bonus
 
+    def _usable_void_volume(self, packer) -> float:
+        ems = np.asarray(packer.space.EMS[: packer.space.NOEMS], dtype=np.float64)
+        if ems.size == 0:
+            return 0.0
+        ems = ems.reshape(-1, 6)
+        sizes = np.maximum(ems[:, 3:6] - ems[:, 0:3], 0.0)
+        volumes = sizes[:, 0] * sizes[:, 1] * sizes[:, 2]
+        sorted_sizes = np.sort(sizes, axis=1)
+        min_sorted = np.asarray([0.13, 0.17, 0.17], dtype=np.float64)
+        usable = (sorted_sizes >= min_sorted).all(axis=1) & (volumes >= 0.0035)
+        return float(volumes[usable].sum())
+
+    def _required_support(self, mass: float, bottom_z: float) -> float:
+        req = 0.20
+        if bottom_z >= 0.25:
+            req = 0.28
+        if bottom_z >= 0.55:
+            req = 0.42
+        if bottom_z >= 0.85:
+            req = 0.55
+        if mass >= 4.0 and bottom_z >= 0.55:
+            req = max(req, 0.62)
+        if mass >= 5.5 and bottom_z >= 0.75:
+            req = max(req, 0.72)
+        if bottom_z >= 1.00 and mass >= 4.0:
+            req = 0.80
+        return req
+
+    def _support_ratio_for_raw(self, raw_sequence: List[PlacedBox], raw_placed: PlacedBox) -> float:
+        dx, dy, dz = [float(v) for v in raw_placed["size"]]
+        cx, cy, cz = [float(v) for v in raw_placed["position"]]
+        lx, ly, lz = cx - dx / 2.0, cy - dy / 2.0, cz - dz / 2.0
+        if lz <= 1e-6:
+            return 1.0
+        hx, hy = lx + dx, ly + dy
+        base_area = max(dx * dy, 1e-9)
+        support_area = 0.0
+        for placed in raw_sequence:
+            px, py, pz = [float(v) for v in placed["size"]]
+            pcx, pcy, pcz = [float(v) for v in placed["position"]]
+            plx, ply, plz = pcx - px / 2.0, pcy - py / 2.0, pcz - pz / 2.0
+            if abs((plz + pz) - lz) > 0.006:
+                continue
+            ox = max(0.0, min(hx, plx + px) - max(lx, plx))
+            oy = max(0.0, min(hy, ply + py) - max(ly, ply))
+            support_area += ox * oy
+        return float(np.clip(support_area / base_area, 0.0, 1.0))
+
+    def _axis_tight_fit_raw(
+        self,
+        lo: float,
+        hi: float,
+        other_lo: float,
+        other_hi: float,
+        axis: int,
+        bottom_z: float,
+        raw_sequence: List[PlacedBox],
+        extent: float,
+        tol: float = 0.025,
+    ) -> float:
+        lower_gap = lo
+        upper_gap = extent - hi
+        for placed in raw_sequence:
+            sx, sy, sz = [float(v) for v in placed["size"]]
+            cx, cy, cz = [float(v) for v in placed["position"]]
+            px0, py0, pz0 = cx - sx / 2.0, cy - sy / 2.0, cz - sz / 2.0
+            px1, py1, pz1 = px0 + sx, py0 + sy, pz0 + sz
+            if abs(pz1 - bottom_z) > 0.006 and abs(pz0 - bottom_z) > 0.006:
+                continue
+            if axis == 0:
+                overlap = max(0.0, min(other_hi, py1) - max(other_lo, py0))
+                prev_lo, prev_hi = px0, px1
+            else:
+                overlap = max(0.0, min(other_hi, px1) - max(other_lo, px0))
+                prev_lo, prev_hi = py0, py1
+            if overlap <= 1e-6:
+                continue
+            if prev_hi <= lo + 1e-6:
+                lower_gap = min(lower_gap, lo - prev_hi)
+            if prev_lo >= hi - 1e-6:
+                upper_gap = min(upper_gap, prev_lo - hi)
+        if lower_gap > tol or upper_gap > tol:
+            return 0.0
+        return float(np.clip(1.0 - (lower_gap + upper_gap) / (2.0 * tol), 0.0, 1.0))
+
+    def _geometry_score_terms(
+        self,
+        raw_sequence: List[PlacedBox],
+        raw_placed: PlacedBox,
+        base_packer,
+        trial_packer,
+    ) -> Dict[str, float]:
+        dx, dy, dz = [float(v) for v in raw_placed["size"]]
+        cx, cy, cz = [float(v) for v in raw_placed["position"]]
+        lx, ly, lz = cx - dx / 2.0, cy - dy / 2.0, cz - dz / 2.0
+        hx, hy = lx + dx, ly + dy
+        pallet_x, pallet_y, pallet_z = float(self.pallet.length), float(self.pallet.width), float(self.pallet.height)
+        eps = 0.005
+
+        x_wall = lx <= eps or hx >= pallet_x - eps
+        y_wall = ly <= eps or hy >= pallet_y - eps
+        area_ratio = dx * dy / max(pallet_x * pallet_y, 1e-9)
+        large_factor = float(np.clip((area_ratio - 0.045) / 0.04, 0.0, 1.0))
+        corner_large_anchor = large_factor if x_wall and y_wall else 0.0
+
+        flush_contacts = 0
+        for placed in raw_sequence:
+            sx, sy, sz = [float(v) for v in placed["size"]]
+            pcx, pcy, pcz = [float(v) for v in placed["position"]]
+            px0, py0, pz0 = pcx - sx / 2.0, pcy - sy / 2.0, pcz - sz / 2.0
+            px1, py1, pz1 = px0 + sx, py0 + sy, pz0 + sz
+            if max(0.0, min(lz + dz, pz1) - max(lz, pz0)) <= 1e-6:
+                continue
+            if (abs(lx - px1) <= eps or abs(hx - px0) <= eps) and max(0.0, min(hy, py1) - max(ly, py0)) > 1e-6:
+                flush_contacts += 1
+            if (abs(ly - py1) <= eps or abs(hy - py0) <= eps) and max(0.0, min(hx, px1) - max(lx, px0)) > 1e-6:
+                flush_contacts += 1
+        wall_anchor = float(np.clip((float(x_wall) + float(y_wall) + 0.5 * flush_contacts) / 2.0, 0.0, 1.0))
+
+        tight_fit = max(
+            self._axis_tight_fit_raw(lx, hx, ly, hy, 0, lz, raw_sequence, pallet_x),
+            self._axis_tight_fit_raw(ly, hy, lx, hx, 1, lz, raw_sequence, pallet_y),
+        )
+        support_ratio = self._support_ratio_for_raw(raw_sequence, raw_placed)
+        required_support = 1.0 if lz <= 1e-6 else self._required_support(float(raw_placed["mass"]), lz)
+        support_quality = 1.0 if lz <= 1e-6 else float(np.clip(support_ratio / max(required_support, 1e-9), 0.0, 1.0))
+        unsupported_risk = 0.0 if lz <= 1e-6 else float(np.clip((required_support - support_ratio) / max(required_support, 1e-9), 0.0, 1.0))
+
+        before_void = self._usable_void_volume(base_packer)
+        after_void = self._usable_void_volume(trial_packer)
+        void_reduction = float(np.clip((before_void - after_void) / 0.05, 0.0, 1.0))
+
+        next_sequence = raw_sequence + [raw_placed]
+        tops = [float(p["position"][2]) + float(p["size"][2]) / 2.0 for p in next_sequence]
+        mean_top = sum(tops) / len(tops) if tops else 0.0
+        top_std = (sum((top - mean_top) ** 2 for top in tops) / len(tops)) ** 0.5 if tops else 0.0
+        return {
+            "corner_large_anchor": float(corner_large_anchor),
+            "wall_anchor": float(wall_anchor),
+            "tight_fit": float(tight_fit),
+            "support_quality": float(support_quality),
+            "void_reduction": float(void_reduction),
+            "unsupported_risk": float(unsupported_risk),
+            "high_placement": float(np.clip(lz / max(pallet_z, 1e-9), 0.0, 1.0)),
+            "rough_top": float(np.clip(top_std / max(pallet_z, 1e-9), 0.0, 1.0)),
+        }
+
     def _score_trial(
         self,
         raw_sequence: List[PlacedBox],
         raw_placed: PlacedBox,
         policy_score: float,
         leaf_rank: int,
+        base_packer=None,
+        trial_packer=None,
     ) -> float:
+        rank_bonus = 0.001 * max(0, self._search_top_k_leaf - leaf_rank)
+        if self._score_profile in {"geometry_v1", "sun_v2"} and base_packer is not None and trial_packer is not None:
+            terms = self._geometry_score_terms(raw_sequence, raw_placed, base_packer, trial_packer)
+            return (
+                0.55 * terms["corner_large_anchor"]
+                + 0.35 * terms["wall_anchor"]
+                + 0.45 * terms["tight_fit"]
+                + 0.30 * terms["support_quality"]
+                + 0.25 * terms["void_reduction"]
+                - 0.35 * terms["unsupported_risk"]
+                - 0.25 * terms["high_placement"]
+                - 0.18 * terms["rough_top"]
+                + min(max(policy_score, 0.0), 1.0) * 0.03
+                + rank_bonus
+            )
+
         dx, dy, dz = [float(v) for v in raw_placed["size"]]
         cx, cy, cz = [float(v) for v in raw_placed["position"]]
         lz = cz - dz / 2.0
@@ -561,7 +761,6 @@ class Palletizer:
         top_std = (sum((top - mean_top) ** 2 for top in tops) / len(tops)) ** 0.5 if tops else 0.0
 
         volume = dx * dy * dz
-        rank_bonus = 0.001 * max(0, self._search_top_k_leaf - leaf_rank)
         return (
             volume * 100.0
             - max_top * 0.35
@@ -579,6 +778,7 @@ class Palletizer:
         raw_sequence: List[PlacedBox],
         buffer_index: int,
         top_k: int,
+        selector_bonus: float = 0.0,
     ) -> List[Dict]:
         size = [float(box["size"][0]), float(box["size"][1]), float(box["size"][2])]
         density = self._density(box, size)
@@ -628,7 +828,9 @@ class Palletizer:
                 raw_placed,
                 policy_scores.get(int(selected), 0.0),
                 leaf_rank,
-            )
+                base_packer,
+                trial_packer,
+            ) + float(selector_bonus)
             candidates.append({
                 "box": box,
                 "box_key": self._box_key(box),
@@ -646,6 +848,7 @@ class Palletizer:
     def _plan_one_step(self, current_buffer: List[BoxInput]) -> Optional[Dict]:
         raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
         candidates = []
+        selector_bonuses = self._selector_buffer_bonuses(current_buffer)
         for buffer_index, box in enumerate(current_buffer):
             candidates.extend(
                 self._trial_candidates(
@@ -654,6 +857,7 @@ class Palletizer:
                     raw_sequence,
                     buffer_index,
                     self._search_top_k_leaf,
+                    selector_bonuses.get(int(buffer_index), 0.0),
                 )
             )
 
@@ -666,6 +870,7 @@ class Palletizer:
     def _plan_beam(self, current_buffer: List[BoxInput]) -> Optional[Dict]:
         depth = min(self._search_depth, len(current_buffer))
         raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
+        selector_bonuses = self._selector_buffer_bonuses(current_buffer)
         beams = [{
             "packer": self._packer,
             "raw_sequence": raw_sequence,
@@ -684,6 +889,7 @@ class Palletizer:
                         beam["raw_sequence"],
                         buffer_index,
                         self._search_top_k_leaf,
+                        selector_bonuses.get(int(buffer_index), 0.0) if beam["first"] is None else 0.0,
                     )
                     for candidate in candidates:
                         remaining = [(idx, item) for idx, item in beam["remaining"] if idx != buffer_index]
@@ -722,6 +928,173 @@ class Palletizer:
         )
         return valid_beams[0]["first"]
 
+    def _non_buffer_time_exhausted(self) -> bool:
+        deadline = getattr(self, "_run_deadline", None)
+        return deadline is not None and time.monotonic() >= float(deadline)
+
+    def _pseudo_future_seed(self, current_box: BoxInput, sample_index: int) -> int:
+        seed = int(self._non_buffer_random_seed)
+        seed += int(current_box["step"]) * 1_000_003
+        seed += int(current_box["id"]) * 9_176
+        seed += int(len(self.sequence)) * 131_071
+        seed += int(sample_index) * 65_537
+        return seed & 0xFFFFFFFF
+
+    def _history_has_diversity(self, history: List[BoxInput]) -> bool:
+        if len(history) < 8:
+            return False
+        unique_sizes = {
+            tuple(round(float(v), 3) for v in box["size"])
+            for box in history
+        }
+        return len(unique_sizes) >= 4
+
+    def _sample_distribution_box(self, rng, step: int, box_id: int) -> BoxInput:
+        return {
+            "step": int(step),
+            "id": int(box_id),
+            "size": [
+                round(float(rng.uniform(0.17, 0.32)), 3),
+                round(float(rng.uniform(0.17, 0.32)), 3),
+                round(float(rng.uniform(0.13, 0.26)), 3),
+            ],
+            "mass": round(float(rng.uniform(0.5, 6.0)), 3),
+        }
+
+    def _sample_pseudo_future_boxes(
+        self,
+        current_box: BoxInput,
+        sample_index: int,
+        count: int,
+    ) -> List[BoxInput]:
+        if count <= 0 or np is None:
+            return []
+
+        rng = np.random.default_rng(self._pseudo_future_seed(current_box, sample_index))
+        history = list(getattr(self, "_observed_boxes", []))
+        use_history = self._history_has_diversity(history)
+        boxes: List[BoxInput] = []
+
+        for offset in range(count):
+            pseudo_step = int(current_box["step"]) + offset + 1
+            pseudo_id = -1_000_000 - int(sample_index) * 100 - int(offset)
+
+            if use_history and float(rng.random()) < 0.70:
+                source = history[int(rng.integers(0, len(history)))]
+                boxes.append({
+                    "step": pseudo_step,
+                    "id": pseudo_id,
+                    "size": [float(v) for v in source["size"]],
+                    "mass": float(source["mass"]),
+                })
+            else:
+                boxes.append(self._sample_distribution_box(rng, pseudo_step, pseudo_id))
+
+        return boxes
+
+    def _rollout_pseudo_sequence(
+        self,
+        start_packer,
+        start_raw_sequence: List[PlacedBox],
+        future_boxes: List[BoxInput],
+    ) -> Optional[float]:
+        beams = [{
+            "packer": start_packer,
+            "raw_sequence": start_raw_sequence,
+            "score": 0.0,
+        }]
+
+        for depth_index, future_box in enumerate(future_boxes):
+            if self._non_buffer_time_exhausted():
+                return None
+
+            expanded = []
+            discount = float(self._non_buffer_rollout_discount) ** int(depth_index)
+            for beam in beams:
+                if self._non_buffer_time_exhausted():
+                    return None
+                candidates = self._trial_candidates(
+                    future_box,
+                    beam["packer"],
+                    beam["raw_sequence"],
+                    0,
+                    self._search_top_k_leaf,
+                )
+                for candidate in candidates:
+                    expanded.append({
+                        "packer": candidate["packer"],
+                        "raw_sequence": beam["raw_sequence"] + [candidate["raw_placed"]],
+                        "score": float(beam["score"]) + discount * float(candidate["score"]),
+                    })
+
+            if not expanded:
+                break
+
+            expanded.sort(key=lambda b: b["score"], reverse=True)
+            beams = expanded[:self._search_beam_width]
+
+        if not beams:
+            return 0.0
+
+        return float(max(float(beam["score"]) for beam in beams))
+
+    def _plan_non_buffer_lookahead(self, current_box: BoxInput) -> Optional[Dict]:
+        if not self._non_buffer_enabled or self.algo.buffer_size != 0:
+            return None
+        if self._non_buffer_time_exhausted():
+            return None
+
+        raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
+        candidates = self._trial_candidates(
+            current_box,
+            self._packer,
+            raw_sequence,
+            0,
+            self._search_top_k_leaf,
+        )
+        if not candidates:
+            return None
+
+        future_count = max(0, int(self._non_buffer_rollout_depth) - 1)
+        if future_count == 0 or self._non_buffer_rollout_weight <= 0.0:
+            return candidates[0]
+
+        scored = []
+        for candidate in candidates:
+            if self._non_buffer_time_exhausted():
+                return None
+
+            rollout_scores = []
+            candidate_raw_sequence = raw_sequence + [candidate["raw_placed"]]
+            for sample_index in range(self._non_buffer_pseudo_samples):
+                if self._non_buffer_time_exhausted():
+                    return None
+                future_boxes = self._sample_pseudo_future_boxes(current_box, sample_index, future_count)
+                rollout_score = self._rollout_pseudo_sequence(
+                    candidate["packer"],
+                    candidate_raw_sequence,
+                    future_boxes,
+                )
+                if rollout_score is None:
+                    return None
+                rollout_scores.append(rollout_score)
+
+            mean_rollout = sum(rollout_scores) / len(rollout_scores) if rollout_scores else 0.0
+            total_score = float(candidate["score"]) + float(self._non_buffer_rollout_weight) * mean_rollout
+            scored.append((total_score, candidate))
+
+        if not scored:
+            return None
+
+        scored.sort(
+            key=lambda item: (
+                item[0],
+                -item[1]["leaf_rank"],
+            ),
+            reverse=True,
+        )
+        return scored[0][1]
+
     def _prepare_buffer_search(self, current_buffer: List[BoxInput]) -> None:
         if not self._ensure_packer_for_current_run():
             return
@@ -740,6 +1113,62 @@ class Palletizer:
             "packer": candidate["packer"],
             "validated": candidate["validated"],
             "raw_placed": candidate["raw_placed"],
+        }
+
+    def _selector_buffer_bonuses(self, current_buffer: List[BoxInput]) -> Dict[int, float]:
+        if not self._selector_enabled:
+            return {}
+        if self.algo.buffer_size != self._selector_buffer_size:
+            return {}
+        if self._selector_bonus_weight <= 0.0:
+            return {}
+        if self._selector_session is None or self._selector_input_name is None:
+            if not self._ensure_packer_for_current_run():
+                return {}
+            if self._selector_session is None or self._selector_input_name is None:
+                return {}
+
+        try:
+            features, valid_mask = self._selector_features(current_buffer)
+        except Exception:
+            return {}
+        if not bool(valid_mask.any()):
+            return {}
+
+        try:
+            logits = self._selector_session.run(
+                None,
+                {self._selector_input_name: features.reshape(1, -1).astype(np.float32)},
+            )[0][0].astype(np.float64, copy=True)
+        except Exception:
+            return {}
+
+        limit = min(len(logits), len(valid_mask), len(current_buffer))
+        if limit <= 0:
+            return {}
+
+        masked_logits = np.full((limit,), -np.inf, dtype=np.float64)
+        for idx in range(limit):
+            if valid_mask[idx]:
+                masked_logits[idx] = logits[idx]
+        if not np.isfinite(masked_logits).any():
+            return {}
+
+        finite = masked_logits[np.isfinite(masked_logits)]
+        max_logit = float(np.max(finite))
+        exp_logits = np.zeros((limit,), dtype=np.float64)
+        for idx in range(limit):
+            if np.isfinite(masked_logits[idx]):
+                exp_logits[idx] = np.exp(float(masked_logits[idx]) - max_logit)
+        denom = float(exp_logits.sum())
+        if denom <= 0.0:
+            return {}
+
+        probs = exp_logits / denom
+        return {
+            int(idx): float(self._selector_bonus_weight) * float(probs[idx])
+            for idx in range(limit)
+            if valid_mask[idx]
         }
 
     def _prepare_selector_plan(self, current_buffer: List[BoxInput]) -> bool:
@@ -858,6 +1287,13 @@ class Palletizer:
         if not self._ensure_packer_for_current_run():
             return self._find_position_baseline(box)
 
+        if self._search_enabled and self.algo.buffer_size == 0:
+            planned = self._plan_non_buffer_lookahead(box)
+            if planned is not None:
+                self._packer = planned["packer"]
+                self._pending_raw_placed = planned["raw_placed"]
+                return planned["validated"]
+
         size = [float(box["size"][0]), float(box["size"][1]), float(box["size"][2])]
         density = self._density(box, size)
         try:
@@ -880,8 +1316,11 @@ class Palletizer:
         if self._session is not None and self._input_name is not None:
             try:
                 probs = self._session.run(None, {self._input_name: obs_arr})[0][0].astype(np.float64, copy=True)
-                probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
-                candidate_indices = [int(i) for i in np.argsort(probs)[::-1] if np.isfinite(probs[int(i)])]
+                leaf_probs = probs[:self._lnh]
+                leaf_probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
+                candidate_indices = [int(i) for i in np.argsort(leaf_probs)[::-1] if np.isfinite(leaf_probs[int(i)])]
+                if not candidate_indices:
+                    return None
             except Exception:
                 candidate_indices = [self._fallback_leaf_index(safe_leaf_region)]
         else:
@@ -950,6 +1389,8 @@ class Palletizer:
 
     def run(self, boxes: List[BoxInput]) -> RunResult:
         self._reset_state()
+        if self.algo.buffer_size == 0 and self._non_buffer_time_budget_sec > 0.0:
+            self._run_deadline = time.monotonic() + float(self._non_buffer_time_budget_sec)
 
         buf = BufferManager(self.algo.buffer_size)
         buf.reset(boxes)
@@ -957,6 +1398,8 @@ class Palletizer:
         while buf.has_pending():
             if self.algo.buffer_size == 0:
                 current = [buf.peek_next()]
+                if current[0] is not None:
+                    self._observed_boxes.append(current[0])
             else:
                 current = buf.get_buffer()
 
