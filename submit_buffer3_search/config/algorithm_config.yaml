@@ -1,8 +1,8 @@
-# input_path: random_spec_eval_10/box_sequence
-# output_dir: algorithm_results_eval10
+input_path: random_spec_eval_10/box_sequence
+output_dir: algorithm_results_eval10
 
-input_path: box_sequence
-output_dir: algorithm_results
+# input_path: box_sequence
+# output_dir: algorithm_results
 pallet:
   length: 1.2
   width: 1.0
@@ -21,7 +21,7 @@ buffer:
 search:
   enabled: true
   mode: beam                     # one_step 또는 beam
-  score_profile: sun_v2     # legacy, geometry_v1, sun_v2
+  score_profile: sun_v2     # legacy 또는 geometry_v1
   top_k_leaf: 4
   beam_width: 2
   depth: 2
