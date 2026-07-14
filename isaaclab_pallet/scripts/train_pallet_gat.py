@@ -45,6 +45,15 @@ parser.add_argument("--load-model", type=str, default="")
 parser.add_argument("--resume", type=str, default="")
 parser.add_argument("--seed", type=int, default=4)
 parser.add_argument("--box-seed", type=int, default=0, help="Seed for the spec-random box pool; cycle it across runs for full size coverage.")
+parser.add_argument(
+    "--box-source",
+    choices=["random", "sequence", "fixed_type_random"],
+    default="random",
+    help="Training box source: continuous random, one fixed sequence, or uniform random draw from fixed official types.",
+)
+parser.add_argument("--train-box-seq-dir", type=str, default="submit_buffer3_search/box_sequence")
+parser.add_argument("--train-type-sequences", nargs="+", default=["box_sequence_0", "box_sequence_1"])
+parser.add_argument("--candidate-generator", choices=["ems"], default="ems")
 parser.add_argument("--drift-fail-threshold", type=float, default=0.40)
 parser.add_argument("--tilt-fail-threshold", type=float, default=0.35)
 parser.add_argument("--out-of-bounds-margin", type=float, default=0.02)
@@ -616,6 +625,10 @@ def init_wandb_run(run_dir: Path, pct_args: SimpleNamespace, start_update: int):
             "save_update_checkpoints": args_cli.save_update_checkpoints,
             "seed": args_cli.seed,
             "box_seed": args_cli.box_seed,
+            "box_source": args_cli.box_source,
+            "train_box_seq_dir": args_cli.train_box_seq_dir,
+            "train_type_sequences": args_cli.train_type_sequences,
+            "candidate_generator": args_cli.candidate_generator,
             "device": args_cli.device,
             "load_model": args_cli.load_model,
             "resume_checkpoint": args_cli.resume,
@@ -728,6 +741,10 @@ def main() -> None:
     cfg.num_packer_workers = args_cli.num_packer_workers
     cfg.max_boxes = args_cli.max_boxes
     cfg.box_seed = args_cli.box_seed
+    cfg.box_source = args_cli.box_source
+    cfg.random_boxes = args_cli.box_source == "random"
+    cfg.train_box_seq_dir = str(PROJECT_ROOT / args_cli.train_box_seq_dir)
+    cfg.train_type_sequences = tuple(args_cli.train_type_sequences)
     cfg.sim.device = args_cli.device
     cfg.drift_fail_threshold = args_cli.drift_fail_threshold
     cfg.tilt_fail_threshold = args_cli.tilt_fail_threshold
@@ -782,8 +799,12 @@ def main() -> None:
         f"obs_shape={tuple(all_nodes.shape)} leaf_shape={tuple(leaf_nodes.shape)} "
         f"num_steps={args_cli.num_steps} normFactor={pct_args.normFactor} "
         f"drift_fail_threshold={cfg.drift_fail_threshold} "
+        f"box_source={cfg.box_source} box_seed={cfg.box_seed} "
+        f"train_box_seq_dir={args_cli.train_box_seq_dir} "
+        f"train_type_sequences={','.join(args_cli.train_type_sequences)} "
         f"reward_profile={args_cli.reward_profile} "
         f"learn_finish_action={pct_args.learn_finish_action} action_space={cfg.action_space} "
+        f"candidate_generator={args_cli.candidate_generator} "
         f"candidate_rerank_k={cfg.candidate_rerank_k} "
         f"candidate_diversity_center_m={cfg.candidate_diversity_center_m}",
         flush=True,

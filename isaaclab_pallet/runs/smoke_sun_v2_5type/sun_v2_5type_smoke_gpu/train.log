@@ -1,0 +1,70 @@
+[sun-v2-5type] start run=sun_v2_5type_smoke_gpu device=cuda:0 num_envs=2 workers=0 max_boxes=32 updates=2 box_seed=0 warm_start=isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest/PCT-best.pt Tue Jul 14 04:24:48 PM KST 2026
+[sun-v2-5type] train_box_seq_dir=submit_buffer3_search/box_sequence train_type_sequences=box_sequence_0 box_sequence_1 eval_box_seq_dir=submit_buffer3_search/box_sequence eval_sequences=box_sequence_0 box_sequence_1 deploy_buffer=0
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-14_16-24-50.log[0m
+[36m======================================================================================[0m
+
+[33m16:24:50 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m16:24:51 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 0.901120 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 2
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.270748 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest/PCT-best.pt
+[gat-train] run_dir=isaaclab_pallet/runs/smoke_sun_v2_5type/sun_v2_5type_smoke_gpu device=cuda:0 num_envs=2 num_packer_workers=0 obs_shape=(2, 301, 9) leaf_shape=(2, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 box_source=fixed_type_random box_seed=0 train_box_seq_dir=submit_buffer3_search/box_sequence train_type_sequences=box_sequence_0,box_sequence_1 reward_profile=sun_v2 learn_finish_action=False action_space=100 candidate_generator=ems candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=2 box_seq_dir=submit_buffer3_search/box_sequence eval_sequences=box_sequence_0,box_sequence_1
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] update=1 samples=10 fps=15.5 loss=10.0679 actor=0.9004 value=9.1781 entropy=1.0563 mean_return=0.000 mean_len=0.0
+[gat-train] update=2 samples=20 fps=17.9 loss=0.0259 actor=-0.4723 value=0.5113 entropy=1.3130 mean_return=0.000 mean_len=0.0
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260714_162448.log
+2026-07-14T07:24:48Z [161ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-14T07:24:48Z [162ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-14T07:24:48Z [397ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-14T07:24:48Z [492ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-14T07:24:50Z [2,068ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-14T07:24:50Z [2,069ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 116731
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-14T07:24:50Z [2,535ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+[sun-v2-5type] exited code=0 Tue Jul 14 04:24:54 PM KST 2026

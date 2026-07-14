@@ -26,6 +26,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE_DIR = PROJECT_ROOT / "templete code"
 DEFAULT_PCT_CONFIG = TEMPLATE_DIR / "config" / "pct_config.yaml"
 DEFAULT_BOX_SEQUENCE = PROJECT_ROOT / "palletizing_simulator" / "box_sequence" / "box_sequence_0.json"
+DEFAULT_TRAIN_BOX_SEQ_DIR = PROJECT_ROOT / "submit_buffer3_search" / "box_sequence"
 PCT_INTERNAL_NODE_LENGTH = 7
 
 
@@ -72,6 +73,57 @@ def _generate_random_boxes(
         h = round(float(rng.uniform(*h_range)), 3)
         mass = round(float(rng.uniform(*mass_range)), 3)
         boxes.append({"id": i, "size": [w, l, h], "mass": mass})
+    return boxes
+
+
+def _load_unique_box_types(seq_dir: str | Path, sequence_names: Sequence[str]) -> list[dict]:
+    unique: dict[tuple[int, tuple[float, float, float], float], dict] = {}
+    seq_dir = Path(seq_dir)
+    for name in sequence_names:
+        path = seq_dir / f"{name}.json"
+        with path.open("r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                box = json.loads(line)
+                size = tuple(float(v) for v in box["size"])
+                key = (int(box.get("type", len(unique))), size, float(box["mass"]))
+                if key not in unique:
+                    unique[key] = {
+                        "type": int(box.get("type", len(unique))),
+                        "type_name": str(box.get("type_name", box.get("type", len(unique)))),
+                        "size": list(size),
+                        "mass": float(box["mass"]),
+                    }
+    if not unique:
+        raise ValueError(f"No box types found in {seq_dir} for {sequence_names}")
+    return sorted(unique.values(), key=lambda b: (int(b["type"]), b["size"], float(b["mass"])))
+
+
+def _generate_fixed_type_random_boxes(
+    n: int,
+    seed: int,
+    seq_dir: str | Path,
+    sequence_names: Sequence[str],
+) -> list[dict]:
+    types = _load_unique_box_types(seq_dir, sequence_names)
+    rng = np.random.default_rng(seed)
+    type_indices = np.tile(np.arange(len(types), dtype=np.int64), int(math.ceil(n / len(types))))[:n]
+    rng.shuffle(type_indices)
+    boxes: list[dict] = []
+    for i, type_idx in enumerate(type_indices):
+        src = types[int(type_idx)]
+        boxes.append(
+            {
+                "step": i,
+                "id": i,
+                "type": int(src["type"]),
+                "type_name": src["type_name"],
+                "size": list(src["size"]),
+                "mass": float(src["mass"]),
+            }
+        )
     return boxes
 
 
@@ -133,12 +185,15 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     pct_config_path: str = str(DEFAULT_PCT_CONFIG)
     max_boxes: int = 8
 
-    # Box source. random_boxes=True (default) generates spec-compliant continuous
+    # Box source. box_source="random" (default) generates spec-compliant continuous
     # random boxes; the committed box_sequence_*.json files are a FIXED 5-type set
     # (item_size_set) and are kept only for reproducible CPU tests, not training.
     # Ranges mirror givenData / the CJ rules: W,L 0.17-0.32, H 0.13-0.26, mass 0.5-6.0.
+    box_source: str = "random"
     random_boxes: bool = True
     box_seed: int = 0
+    train_box_seq_dir: str = str(DEFAULT_TRAIN_BOX_SEQ_DIR)
+    train_type_sequences: tuple[str, ...] = ("box_sequence_0", "box_sequence_1")
     box_wl_range: tuple[float, float] = (0.17, 0.32)
     box_h_range: tuple[float, float] = (0.13, 0.26)
     box_mass_range: tuple[float, float] = (0.5, 6.0)
@@ -215,9 +270,14 @@ class PalletPackingEnv(DirectRLEnv):
 
     def __init__(self, cfg: PalletPackingEnvCfg, render_mode: str | None = None, **kwargs):
         self.pct_cfg = _load_yaml(cfg.pct_config_path)
-        if cfg.random_boxes:
+        box_source = str(getattr(cfg, "box_source", "random"))
+        if box_source == "random" and cfg.random_boxes:
             self.boxes = _generate_random_boxes(
                 cfg.max_boxes, cfg.box_seed, cfg.box_wl_range, cfg.box_h_range, cfg.box_mass_range
+            )
+        elif box_source == "fixed_type_random":
+            self.boxes = _generate_fixed_type_random_boxes(
+                cfg.max_boxes, cfg.box_seed, cfg.train_box_seq_dir, cfg.train_type_sequences
             )
         else:
             self.boxes = _load_boxes(cfg.box_sequence_path, cfg.max_boxes)
