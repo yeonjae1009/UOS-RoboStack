@@ -1,0 +1,3 @@
+[run_compare_eval10_gui] DISPLAY=:0 XAUTHORITY=/run/user/1000/gdm/Xauthority
+[run_compare_eval10_gui] STEP_DELAY=0.4 EPISODE_DELAY=2.0
+[run_compare_eval10_gui] log=/home/robotics/UOS-RoboStack/palletizing_simulator/compare_eval10_gui.log

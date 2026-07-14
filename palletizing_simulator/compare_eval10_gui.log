@@ -1,0 +1,1596 @@
+Loading user config located at: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim Full/5.1/kit_20260714_142654.log
+2026-07-14T05:26:54Z [1ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/5683079d-11ae-406d-69fe79be-82120051.dmp'
+2026-07-14T05:26:54Z [2ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/8303db9e-f6df-413a-7c41a288-f5576224.dmp'
+2026-07-14T05:26:54Z [3ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/21eb2f1d-0574-447c-9dfb0fba-32c46538.dmp'
+2026-07-14T05:26:54Z [3ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/ac061690-ba94-4684-fd8974b9-4d0ff465.dmp'
+2026-07-14T05:26:54Z [3ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/c31f2a55-f5dc-4b3d-fce55aa7-41273599.dmp'
+2026-07-14T05:26:54Z [4ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/60c02f87-0c36-4148-39e44a95-7eb8d82a.dmp'
+2026-07-14T05:26:54Z [4ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/fb8ae0e9-7260-4fc1-ad115cbd-67efa459.dmp'
+2026-07-14T05:26:54Z [4ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/8e2d15ff-c11f-46b2-9b12aa91-fede97c9.dmp'
+2026-07-14T05:26:54Z [5ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim Full/5.1/e19b91f0-5466-4e57-009c328b-71d2de40.dmp'
+[0.100s] [ext: omni.kit.async_engine-0.0.3] startup
+[0.389s] [ext: omni.metrics.core-0.0.3] startup
+[0.390s] [ext: omni.client.lib-1.1.0] startup
+[0.407s] [ext: omni.blobkey-1.1.2] startup
+[0.408s] [ext: omni.stats-1.0.1] startup
+[0.409s] [ext: omni.datastore-0.0.0] startup
+[0.416s] [ext: omni.client-1.3.0] startup
+[0.422s] [ext: omni.ujitso.default-1.0.0] startup
+[0.426s] [ext: omni.hsscclient-1.1.2] startup
+[0.430s] [ext: omni.gpu_foundation.shadercache.vulkan-1.0.0] startup
+[0.433s] [ext: omni.assets.plugins-0.0.0] startup
+[0.434s] [ext: omni.gpu_foundation-0.0.0] startup
+[0.445s] [ext: carb.windowing.plugins-1.0.0] startup
+[0.456s] [ext: omni.kit.renderer.init-0.0.0] startup
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 2070          | Yes: 0 |     | 8438    MB | 10de      | 0          |
+|     |                                  |        |     |            | 1f07      | cfe4294b.. |
+|     |                                  |        |     |            | 7         |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-106-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: AMD Ryzen 7 2700 Eight-Core Processor
+| Cores: 8 | Logical Cores: 16
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 31990 | Free Memory: 24550
+| Total Page/Swap (MB): 26688 | Free Page/Swap: 26688
+|---------------------------------------------------------------------------------------------|
+2026-07-14T05:26:55Z [1,338ms] [Warning] [gpu.foundation.plugin] IOMMU is enabled.
+[1.613s] [ext: omni.kit.telemetry-0.5.2] startup
+[1.674s] [ext: omni.materialx.libs-1.0.7] startup
+[1.686s] [ext: omni.services.pip_archive-0.16.0] startup
+[1.686s] [ext: omni.kit.loop-isaac-1.3.7] startup
+[1.688s] [ext: omni.kit.test-2.0.1] startup
+[1.749s] [ext: omni.usd.config-1.0.6] startup
+[1.754s] [ext: omni.gpucompute.plugins-0.0.0] startup
+[1.755s] [ext: omni.usd.libs-1.0.1] startup
+[1.857s] [ext: omni.kit.pipapi-0.0.0] startup
+[1.858s] [ext: omni.mdl-56.0.3] startup
+[1.885s] [ext: omni.iray.libs-0.0.0] startup
+[1.892s] [ext: omni.mdl.neuraylib-0.2.12] startup
+[1.894s] [ext: omni.kit.usd.mdl-1.1.5] startup
+[2.008s] [ext: omni.appwindow-1.1.10] startup
+[2.993s] [ext: omni.kit.renderer.core-1.1.0] startup
+[9.222s] [ext: omni.kit.renderer.capture-0.0.0] startup
+[9.226s] [ext: omni.kit.renderer.imgui-2.0.5] startup
+[9.326s] [ext: omni.ui-2.27.1] startup
+[9.341s] [ext: omni.kit.mainwindow-1.0.3] startup
+[9.342s] [ext: carb.audio-0.1.0] startup
+[9.350s] [ext: omni.uiaudio-1.0.0] startup
+[9.351s] [ext: omni.kit.uiapp-0.0.0] startup
+[9.352s] [ext: omni.usd.schema.metrics.assembler-107.3.1] startup
+[9.356s] [ext: omni.anim.navigation.schema-107.3.3] startup
+[9.360s] [ext: omni.usd.schema.flow-107.1.1] startup
+[9.361s] [ext: omni.usd.schema.anim-0.0.0] startup
+[9.390s] [ext: omni.usd.schema.omniscripting-1.0.0] startup
+[9.395s] [ext: omni.usd.schema.semantics-0.0.0] startup
+[9.398s] [ext: omni.usd.schema.scene.visualization-2.0.2] startup
+[9.401s] [ext: omni.anim.graph.schema-107.3.3] startup
+[9.410s] [ext: isaacsim.robot.schema-3.6.0] startup
+[9.420s] [ext: omni.usd.schema.omnigraph-1.0.0] startup
+[9.427s] [ext: omni.usd.schema.audio-0.0.0] startup
+[9.431s] [ext: omni.usd.schema.geospatial-0.0.0] startup
+[9.434s] [ext: omni.usd.schema.isaac-3.0.5] startup
+[9.434s] [ext: omni.usd_resolver-1.0.0] startup
+[9.440s] [ext: omni.usd.core-1.5.3] startup
+[9.442s] [ext: omni.usd.schema.render_settings.rtx-0.0.0] startup
+[9.462s] [ext: omni.graph.exec-0.9.6] startup
+[9.463s] [ext: omni.kit.audiodeviceenum-1.0.2] startup
+[9.464s] [ext: omni.kit.window.popup_dialog-2.0.24] startup
+[9.470s] [ext: omni.kit.exec.core-0.13.4] startup
+[9.472s] [ext: omni.activity.core-1.0.3] startup
+[9.474s] [ext: omni.kit.widget.nucleus_connector-2.0.1] startup
+[9.477s] [ext: omni.kit.usd_undo-0.1.8] startup
+[9.477s] [ext: omni.kit.actions.core-1.0.0] startup
+[9.480s] [ext: usdrt.scenegraph-7.6.1] startup
+[9.529s] [ext: omni.resourcemonitor-107.0.1] startup
+[9.532s] [ext: omni.kit.commands-1.4.10] startup
+[9.536s] [ext: omni.hydra.usdrt_delegate-7.5.1] startup
+[9.544s] [ext: omni.timeline-1.0.14] startup
+[9.547s] [ext: omni.hydra.scene_delegate-0.3.4] startup
+[9.552s] [ext: omni.usd-1.13.10] startup
+[9.584s] [ext: omni.inspect-1.0.2] startup
+[9.585s] [ext: omni.kit.notification_manager-1.0.10] startup
+[9.587s] [ext: omni.graph.core-2.184.5] startup
+[9.591s] [ext: isaacsim.core.deprecation_manager-0.2.7] startup
+[9.592s] [ext: omni.usd.schema.omni_sensors-0.0.0] startup
+[9.592s] [ext: omni.kit.asset_converter-5.0.17] startup
+[9.606s] [ext: omni.usd.schema.omni_lens_distortion-0.0.0] startup
+[9.607s] [ext: omni.usd.schema.physx-107.3.26] startup
+[9.646s] [ext: omni.kit.collaboration.telemetry-1.1.0] startup
+[9.647s] [ext: omni.volume-0.5.2] startup
+[9.651s] [ext: omni.kit.manipulator.selector-1.1.3] startup
+[9.652s] [ext: omni.kit.collaboration.channel_manager-1.0.14] startup
+[9.653s] [ext: omni.kit.menu.core-1.1.2] startup
+[9.654s] [ext: omni.kit.usd.layers-2.2.11] startup
+[9.663s] [ext: omni.kit.menu.utils-2.0.5] startup
+[9.671s] [ext: omni.ui.scene-1.11.5] startup
+[9.676s] [ext: omni.kit.primitive.mesh-1.0.17] startup
+[9.680s] [ext: omni.kit.manipulator.viewport-107.0.1] startup
+[9.681s] [ext: omni.fabric.commands-1.1.6] startup
+[9.684s] [ext: omni.kit.helper.file_utils-0.1.9] startup
+[9.686s] [ext: omni.kit.widget.nucleus_info-2.0.2] startup
+[9.687s] [ext: omni.kit.widget.filebrowser-2.12.3] startup
+[9.692s] [ext: omni.kit.search_core-1.0.8] startup
+[9.693s] [ext: omni.kit.widget.options_menu-1.1.6] startup
+[9.696s] [ext: omni.kit.widget.search_delegate-1.0.7] startup
+[9.697s] [ext: omni.kit.widget.path_field-2.0.11] startup
+[9.697s] [ext: omni.kit.widget.options_button-1.0.3] startup
+[9.698s] [ext: omni.index.libs-380600.8087.0] startup
+[9.698s] [ext: omni.kit.widget.browser_bar-2.0.10] startup
+[9.699s] [ext: omni.kit.widget.context_menu-1.2.5] startup
+[9.700s] [ext: omni.index-1.0.1] startup
+[9.701s] [ext: omni.ujitso.client-0.0.0] startup
+[9.702s] [ext: omni.hydra.rtx.shadercache.vulkan-1.0.0] startup
+[9.703s] [ext: omni.kit.widget.versioning-1.4.10] startup
+[9.705s] [ext: omni.kit.clipboard-1.0.5] startup
+[9.706s] [ext: omni.hydra.rtx-1.0.0] startup
+2026-07-14T05:27:04Z [9,694ms] [Warning] [omni.log] Source: omni.hydra was already registered.
+[9.748s] [ext: omni.kit.window.filepicker-2.13.4] startup
+[9.764s] [ext: omni.kit.context_menu-1.8.6] startup
+[9.766s] [ext: omni.kit.viewport.scene_camera_model-1.0.6] startup
+[9.771s] [ext: omni.kit.hydra_texture-1.4.6] startup
+[9.775s] [ext: omni.kit.window.file_importer-1.1.18] startup
+[9.778s] [ext: omni.kit.viewport.legacy_gizmos-1.0.19] startup
+[9.780s] [ext: omni.kit.raycast.query-1.1.0] startup
+[9.786s] [ext: omni.kit.material.library-2.0.7] startup
+[9.792s] [ext: omni.kit.widget.viewport-107.1.3] startup
+[9.796s] [ext: omni.kit.widget.searchable_combobox-1.0.6] startup
+[9.797s] [ext: omni.kit.window.drop_support-1.0.5] startup
+[9.798s] [ext: omni.kit.viewport.registry-104.0.6] startup
+[9.798s] [ext: omni.hydra.engine.stats-1.0.3] startup
+[9.801s] [ext: omni.kit.widget.settings-1.2.6] startup
+[9.803s] [ext: omni.kit.viewport.window-107.2.0] startup
+[9.822s] [ext: omni.kit.window.preferences-1.8.0] startup
+[9.829s] [ext: omni.kit.widget.toolbar-2.0.1] startup
+[9.836s] [ext: omni.kit.viewport.utility-1.1.2] startup
+[9.836s] [ext: omni.kit.manipulator.transform-107.0.0] startup
+[9.841s] [ext: omni.kit.widget.prompt-1.0.7] startup
+[9.842s] [ext: omni.kit.manipulator.tool.snap-1.5.13] startup
+[9.847s] [ext: omni.kit.widget.live_session_management.ui-1.0.3] startup
+[9.849s] [ext: omni.kit.viewport.manipulator.transform-107.0.4] startup
+[9.851s] [ext: omni.kit.collaboration.presence_layer-1.1.2] startup
+[9.854s] [ext: omni.kit.manipulator.prim.core-107.0.8] startup
+[9.861s] [ext: omni.kit.property.adapter.core-1.0.2] startup
+[9.864s] [ext: omni.kit.manipulator.prim.fabric-107.0.4] startup
+[9.865s] [ext: omni.kit.widget.live_session_management-1.2.23] startup
+[9.868s] [ext: omni.kit.property.adapter.usd-1.0.2] startup
+[9.869s] [ext: omni.kit.manipulator.prim.usd-107.0.3] startup
+[9.870s] [ext: omni.kit.property.adapter.fabric-1.0.3] startup
+[9.871s] [ext: omni.kit.manipulator.prim-107.0.0] startup
+[9.871s] [ext: omni.kit.window.content_browser_registry-0.0.6] startup
+[9.871s] [ext: omni.kit.widget.filter-1.1.4] startup
+[9.872s] [ext: omni.kit.window.file_exporter-1.0.33] startup
+[9.873s] [ext: omni.kit.stage_template.core-1.1.22] startup
+[9.874s] [ext: omni.kit.widget.searchfield-1.1.8] startup
+[9.875s] [ext: omni.kit.widget.highlight_label-1.0.3] startup
+[9.876s] [ext: omni.kit.window.file-2.0.5] startup
+[9.879s] [ext: omni.kit.hotkeys.core-1.3.10] startup
+[9.881s] [ext: omni.kit.window.property-1.12.1] startup
+[9.884s] [ext: omni.kit.window.content_browser-3.1.3] startup
+[9.898s] [ext: omni.kit.widget.stage-3.1.4] startup
+[9.911s] [ext: omni.convexdecomposition-107.3.26] startup
+[9.914s] [ext: omni.kit.property.usd-4.5.12] startup
+[9.926s] [ext: omni.kit.manipulator.selection-106.0.1] startup
+[9.927s] [ext: omni.kvdb-107.3.26] startup
+[9.929s] [ext: omni.usdphysics-107.3.26] startup
+[9.931s] [ext: omni.physx.foundation-107.3.26] startup
+[9.933s] [ext: omni.localcache-107.3.26] startup
+[9.935s] [ext: omni.debugdraw-0.1.4] startup
+[9.939s] [ext: omni.physx.cooking-107.3.26] startup
+[9.942s] [ext: omni.physics-107.3.26] startup
+[9.946s] [ext: omni.physx-107.3.26] startup
+[9.957s] [ext: omni.physics.stageupdate-107.3.26] startup
+[9.960s] [ext: omni.physics.physx-107.3.26] startup
+2026-07-14T05:27:04Z [9,929ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+[9.962s] [ext: omni.kit.numpy.common-0.1.3] startup
+[9.964s] [ext: omni.kit.window.cursor-1.1.4] startup
+[9.964s] [ext: omni.isaac.dynamic_control-2.0.7] startup
+2026-07-14T05:27:04Z [9,938ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+[9.971s] [ext: omni.kit.viewport.menubar.core-107.2.1] startup
+[9.988s] [ext: omni.kit.viewport.actions-107.0.2] startup
+[9.994s] [ext: omni.kit.widget.layers-1.8.6] startup
+[10.007s] [ext: omni.kit.viewport.menubar.display-107.0.3] startup
+[10.009s] [ext: isaacsim.core.version-2.0.6] startup
+[10.010s] [ext: omni.usdphysics.ui-107.3.26] startup
+[10.040s] [ext: omni.physx.commands-107.3.26] startup
+[10.046s] [ext: isaacsim.storage.native-1.5.1] startup
+[10.047s] [ext: omni.usd.metrics.assembler-107.3.1] startup
+[10.056s] [ext: omni.physx.ui-107.3.26] startup
+[10.096s] [ext: omni.physics.tensors-107.3.26] startup
+[10.102s] [ext: omni.warp.core-1.8.2] startup
+[10.383s] [ext: omni.usd.metrics.assembler.physics-107.3.26] startup
+[10.385s] [ext: omni.graph.tools-1.79.2] startup
+[10.412s] [ext: omni.physx.tensors-107.3.26] startup
+[10.416s] [ext: isaacsim.core.utils-3.5.1] startup
+[10.420s] [ext: omni.kit.widget.text_editor-1.1.1] startup
+[10.422s] [ext: omni.graph-1.141.2] startup
+[10.473s] [ext: omni.ui_query-1.1.8] startup
+[10.474s] [ext: omni.kit.window.extensions-1.4.27] startup
+[10.483s] [ext: isaacsim.core.simulation_manager-1.4.4] startup
+[12.473s] [ext: omni.kit.widget.graph-2.0.0] startup
+[12.488s] [ext: omni.graph.image.core-0.6.1] startup
+[12.490s] [ext: isaacsim.core.prims-0.6.1] startup
+[12.524s] [ext: omni.kit.stage_templates-2.0.0] startup
+[12.536s] [ext: omni.kit.graph.delegate.default-1.2.3] startup
+[12.539s] [ext: omni.graph.image.nodes-1.3.1] startup
+[12.542s] [ext: omni.graph.action_core-1.1.7] startup
+[12.544s] [ext: isaacsim.core.api-4.8.0] startup
+[12.558s] [ext: omni.kit.graph.editor.core-1.5.3] startup
+[12.572s] [ext: omni.syntheticdata-0.6.13] startup
+[12.610s] [ext: omni.graph.ui-1.101.6] startup
+[12.657s] [ext: omni.kit.widget.material_preview-1.0.16] startup
+[12.664s] [ext: omni.kit.graph.usd.commands-1.3.1] startup
+[12.666s] [ext: omni.videoencoding-0.1.2] startup
+[12.670s] [ext: omni.graph.action_nodes-1.50.4] startup
+[12.675s] [ext: omni.kit.window.material_graph-1.9.1] startup
+[12.693s] [ext: omni.graph.nodes-1.170.10] startup
+[12.708s] [ext: omni.graph.action-1.130.0] startup
+[12.710s] [ext: omni.kit.ui_test-1.3.7] startup
+[12.714s] [ext: omni.graph.visualization.nodes-2.1.3] startup
+[12.759s] [ext: omni.graph.ui_nodes-1.50.5] startup
+[12.767s] [ext: omni.kit.selection-0.1.6] startup
+[12.775s] [ext: omni.warp-1.8.2] startup
+[12.799s] [ext: isaacsim.gui.components-1.2.1] startup
+[12.811s] [ext: isaacsim.gui.menu-2.4.4] startup
+[12.852s] [ext: omni.graph.scriptnode-1.50.0] startup
+[12.872s] [ext: isaacsim.test.docstring-1.1.0] startup
+[12.885s] [ext: isaacsim.core.experimental.utils-0.3.0] startup
+[12.902s] [ext: omni.replicator.core-1.12.27] startup
+2026-07-14T05:27:07Z [12,956ms] [Warning] [pxr.Semantics] pxr.Semantics is deprecated - please use Semantics instead
+2026-07-14T05:27:07Z [13,210ms] [Warning] [omni.graph.core.plugin] Found duplicate of category 'Replicator' - was 'Annotators', adding 'Fabric Reader'
+2026-07-14T05:27:07Z [13,210ms] [Warning] [omni.graph.core.plugin] Category 'Replicator' not accepted on node type 'omni.replicator.core.FabricReader' in extension 'omni.replicator.core'
+2026-07-14T05:27:07Z [13,211ms] [Warning] [omni.replicator.core.scripts.extension] No material configuration file, adding configuration to material settings directly.
+[13.248s] [ext: isaacsim.core.experimental.prims-0.8.1] startup
+[13.318s] [ext: isaacsim.core.nodes-3.4.3] startup
+[13.339s] [ext: isaacsim.robot.surface_gripper-3.3.1] startup
+[13.353s] [ext: isaacsim.sensors.camera-1.3.6] startup
+[13.377s] [ext: isaacsim.robot.surface_gripper.ui-3.0.2] startup
+[13.397s] [ext: isaacsim.sensors.camera.ui-0.2.2] startup
+[13.406s] [ext: omni.kit.core.collection-0.2.3] startup
+[13.419s] [ext: isaacsim.core.experimental.materials-0.4.0] startup
+[13.485s] [ext: omni.kit.widget.zoombar-1.0.6] startup
+[13.505s] [ext: omni.kit.widget.stage_icons-1.0.8] startup
+[13.526s] [ext: omni.kit.browser.core-2.3.13] startup
+[13.564s] [ext: isaacsim.core.experimental.objects-0.4.0] startup
+[13.632s] [ext: omni.kit.usd.collect-2.4.5] startup
+[13.659s] [ext: omni.kit.window.stage-2.6.1] startup
+[13.698s] [ext: omni.kit.browser.folder.core-1.10.9] startup
+[13.741s] [ext: isaacsim.util.debug_draw-3.1.0] startup
+[13.754s] [ext: isaacsim.robot_motion.lula-4.0.8] startup
+[13.779s] [ext: omni.kit.tool.collect-2.2.18] startup
+[13.786s] [ext: omni.kit.menu.stage-1.2.7] startup
+[13.792s] [ext: omni.kit.usdz_export-1.0.9] startup
+[13.813s] [ext: isaacsim.robot.manipulators-3.3.6] startup
+[13.820s] [ext: isaacsim.sensors.physx-2.3.2] startup
+[13.843s] [ext: isaacsim.robot_motion.motion_generation-8.0.26] startup
+[13.870s] [ext: isaacsim.asset.browser-1.3.23] startup
+[14.096s] [ext: omni.kit.tool.asset_importer-4.3.2] startup
+[14.304s] [ext: omni.isaac.nucleus-1.0.6] startup
+2026-07-14T05:27:08Z [14,275ms] [Warning] [omni.isaac.nucleus] omni.isaac.nucleus has been deprecated in favor of isaacsim.storage.native. Please update your code accordingly.
+2026-07-14T05:27:08Z [14,277ms] [Warning] [omni.isaac.nucleus.nucleus] omni.isaac.nucleus.nucleus has been deprecated in favor of isaacsim.storage.native. Please update your code accordingly.
+[14.313s] [ext: omni.isaac.range_sensor-4.0.6] startup
+2026-07-14T05:27:08Z [14,285ms] [Warning] [omni.isaac.range_sensor] omni.isaac.range_sensor has been deprecated in favor of isaacsim.sensors.physx. Please update your code accordingly.
+2026-07-14T05:27:08Z [14,286ms] [Warning] [omni.isaac.range_sensor.commands] omni.isaac.range_sensor.commands has been deprecated in favor of isaacsim.sensors.physx.commands. Please update your code accordingly.
+[14.324s] [ext: isaacsim.robot.manipulators.examples-1.1.2] startup
+[14.438s] [ext: omni.isaac.asset_browser-1.0.6] startup
+2026-07-14T05:27:08Z [14,432ms] [Warning] [omni.isaac.asset_browser] omni.isaac.asset_browser has been deprecated in favor of isaacsim.asset.browser. Please update your code accordingly.
+[14.499s] [ext: isaacsim.asset.importer.mjcf-2.5.13] startup
+[14.868s] [ext: isaacsim.core.cloner-1.4.10] startup
+[14.875s] [ext: omni.isaac.assets_check-0.3.13] startup
+2026-07-14T05:27:09Z [14,842ms] [Warning] [omni.isaac.assets_check] omni.isaac.assets_check has been deprecated in favor of isaacsim.asset.browser. Please update your code accordingly.
+[14.875s] [ext: isaacsim.cortex.framework-1.0.12] startup
+[14.880s] [ext: isaacsim.examples.browser-0.2.1] startup
+[14.886s] [ext: isaacsim.asset.importer.urdf-2.4.30] startup
+[14.914s] [ext: omni.isaac.cloner-1.0.7] startup
+2026-07-14T05:27:09Z [14,886ms] [Warning] [omni.isaac.cloner] omni.isaac.cloner has been deprecated in favor of isaacsim.core.cloner. Please update your code accordingly.
+[14.919s] [ext: omni.importer.onshape-1.0.1] startup
+[14.947s] [ext: omni.kit.widget.collection-0.3.1] startup
+[14.967s] [ext: omni.isaac.core_nodes-2.0.6] startup
+2026-07-14T05:27:09Z [14,940ms] [Warning] [omni.isaac.core_nodes] omni.isaac.core_nodes has been deprecated in favor of isaacsim.core.nodes. Please update your code accordingly.
+[14.974s] [ext: omni.isaac.cortex-1.0.5] startup
+2026-07-14T05:27:09Z [14,949ms] [Warning] [omni.isaac.cortex] omni.isaac.cortex has been deprecated in favor of isaacsim.cortex.framework. Please update your code accordingly.
+[14.982s] [ext: isaacsim.core.throttling-2.2.2] startup
+[15.001s] [ext: omni.kit.window.collection-0.3.1] startup
+2026-07-14T05:27:09Z [14,977ms] [Warning] [omni.kit.window.collection.collection_watch] Get collection from usdrt stage failed: Attach(): incompatible function arguments. The following argument types are supported:
+    1. (stageId: int) -> usdrt.Usd._Usd.Stage
+    2. (fabricId: usdrt.helpers._helpers.FabricId) -> usdrt.Usd._Usd.Stage
+
+Invoked with: -1
+[15.011s] [ext: omni.anim.shared.core-107.0.1] startup
+[15.032s] [ext: omni.sensors.nv.common-3.0.0] startup
+[15.061s] [ext: omni.kit.viewport.menubar.lighting-107.3.1] startup
+[15.072s] [ext: omni.isaac.franka-1.0.7] startup
+2026-07-14T05:27:09Z [15,040ms] [Warning] [omni.isaac.franka] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.franka. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,043ms] [Warning] [omni.isaac.franka.franka] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.franka. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,085ms] [Warning] [omni.isaac.franka.kinematics_solver] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.franka. Please update your code accordingly.
+[15.119s] [ext: isaacsim.cortex.behaviors-2.0.14] startup
+[15.125s] [ext: omni.sensors.nv.materials-2.0.0] startup
+[15.135s] [ext: omni.sensors.nv.wpm-3.0.0] startup
+[15.139s] [ext: omni.sensors.net-1.0.0] startup
+[15.144s] [ext: omni.isaac.cortex.sample_behaviors-2.0.5] startup
+2026-07-14T05:27:09Z [15,113ms] [Warning] [omni.isaac.cortex.sample_behaviors] omni.isaac.cortex.sample_behaviors has been deprecated in favor of isaacsim.cortex.behaviors. Please update your code accordingly.
+[15.146s] [ext: isaacsim.sensors.physics-0.4.3] startup
+[15.159s] [ext: omni.sensors.nv.radar-3.0.0] startup
+[15.170s] [ext: omni.sensors.nv.lidar-3.0.0] startup
+[15.179s] [ext: omni.sensors.nv.ids-2.0.0] startup
+[15.182s] [ext: isaacsim.simulation_app-2.12.2] startup
+[15.185s] [ext: isaacsim.robot.policy.examples-4.1.11] startup
+[15.188s] [ext: isaacsim.sensors.rtx-15.8.4] startup
+[15.209s] [ext: omni.isaac.kit-2.0.6] startup
+2026-07-14T05:27:09Z [15,182ms] [Warning] [omni.isaac.kit] omni.isaac.kit has been deprecated in favor of isaacsim.simulation_app. Please update your code accordingly.
+[15.221s] [ext: omni.isaac.quadruped-3.0.7] startup
+2026-07-14T05:27:09Z [15,191ms] [Warning] [omni.isaac.quadruped] omni.isaac.quadruped has been deprecated in favor of isaacsim.robot.policy.examples. Please update your code accordingly.
+[15.228s] [ext: omni.isaac.lula-4.0.6] startup
+2026-07-14T05:27:09Z [15,213ms] [Warning] [omni.isaac.lula] omni.isaac.lula has been deprecated in favor of isaacsim.robot_motion.lula. Please update your code accordingly.
+[15.257s] [ext: isaacsim.gui.sensors.icon-2.0.3] startup
+[15.305s] [ext: isaacsim.gui.content_browser-0.1.11] startup
+[15.319s] [ext: omni.isaac.sensor-13.0.7] startup
+2026-07-14T05:27:09Z [15,291ms] [Warning] [omni.isaac.sensor] omni.isaac.sensor has been deprecated in favor of isaacsim.sensors.camera, isaacsim.sensors.physics, isaacsim.sensors.physx, and isaacsim.sensors.rtx. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,291ms] [Warning] [omni.isaac.sensor.camera] omni.isaac.sensor.camera has been deprecated in favor of isaacsim.sensors.camera.camera. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,292ms] [Warning] [omni.isaac.sensor.camera_view] omni.isaac.sensor.camera_view has been deprecated in favor of isaacsim.sensors.camera.camera_view. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,293ms] [Warning] [omni.isaac.sensor.commands] omni.isaac.sensor.commands has been deprecated in favor of isaacsim.sensors.physics.commands, isaacsim.sensors.physx.commands, and isaacsim.sensors.rtx.commands. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,293ms] [Warning] [omni.isaac.sensor.contact_sensor] omni.isaac.sensor.contact_sensor has been deprecated in favor of isaacsim.sensors.physics.contact_sensor. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,293ms] [Warning] [omni.isaac.sensor.imu_sensor] omni.isaac.sensor.imu_sensor has been deprecated in favor of isaacsim.sensors.physics.imu_sensor. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,294ms] [Warning] [omni.isaac.sensor.lidar_rtx] omni.isaac.sensor.lidar_rtx has been deprecated in favor of isaacsim.sensors.rtx.lidar_rtx. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,294ms] [Warning] [omni.isaac.sensor.rotating_lidar_physX] omni.isaac.sensor.imu_sensor has been deprecated in favor of isaacsim.sensors.physix.rotating_lidar_physX. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,296ms] [Warning] [omni.isaac.sensor.scripts.samples.contact_sensor] omni.isaac.sensor.scripts.samples.contact_sensor has been deprecated in favor of isaacsim.sensors.physics.scripts.samples.contact_sensor. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,296ms] [Warning] [omni.isaac.sensor.scripts.samples.imu_sensor] omni.isaac.sensor.scripts.samples.imu_sensor has been deprecated in favor of isaacsim.sensors.physics.scripts.samples.imu_sensor. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,297ms] [Warning] [omni.isaac.sensor.scripts.samples.lightbeam_sensor] omni.isaac.sensor.scripts.samples.lightbeam_sensor has been deprecated in favor of isaacsim.sensors.physx.scripts.samples.lightbeam_sensor. Please update your code accordingly.
+[15.331s] [ext: omni.isaac.surface_gripper-2.0.6] startup
+2026-07-14T05:27:09Z [15,307ms] [Warning] [omni.isaac.surface_gripper] omni.isaac.surface_gripper has been deprecated in favor of isaacsim.robot.surface_gripper. Please update your code accordingly.
+[15.342s] [ext: omni.isaac.universal_robots-1.0.6] startup
+2026-07-14T05:27:09Z [15,316ms] [Warning] [omni.isaac.universal_robots] omni.isaac.universal_robots has been deprecated in favor of isaacsim.robot.manipulators.examples.universal_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,321ms] [Warning] [omni.isaac.universal_robots.kinematics_solver] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.universal_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,356ms] [Warning] [omni.isaac.universal_robots.ur10] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.universal_robots. Please update your code accordingly.
+[15.390s] [ext: isaacsim.robot.wheeled_robots-4.0.24] startup
+[15.423s] [ext: omni.isaac.utils-2.0.6] startup
+[15.432s] [ext: isaacsim.app.about-2.0.11] startup
+[15.441s] [ext: omni.isaac.version-2.0.7] startup
+2026-07-14T05:27:09Z [15,411ms] [Warning] [omni.isaac.version] omni.isaac.version has been deprecated in favor of isaacsim.core.version. Please update your code accordingly.
+[15.447s] [ext: omni.isaac.wheeled_robots-3.0.7] startup
+2026-07-14T05:27:09Z [15,415ms] [Warning] [omni.isaac.wheeled_robots] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,416ms] [Warning] [omni.isaac.wheeled_robots.controllers] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,417ms] [Warning] [omni.isaac.wheeled_robots.controllers.ackermann_controller] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,420ms] [Warning] [omni.isaac.wheeled_robots.controllers.differential_controller] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,420ms] [Warning] [omni.isaac.wheeled_robots.controllers.holonomic_controller] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,421ms] [Warning] [omni.isaac.wheeled_robots.controllers.quintic_path_planner] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,422ms] [Warning] [omni.isaac.wheeled_robots.controllers.stanley_control] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,423ms] [Warning] [omni.isaac.wheeled_robots.controllers.wheel_base_pose_controller] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,424ms] [Warning] [omni.isaac.wheeled_robots.impl] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,425ms] [Warning] [omni.isaac.wheeled_robots.robots] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,426ms] [Warning] [omni.isaac.wheeled_robots.robots.holonomic_robot_usd_setup] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,430ms] [Warning] [omni.isaac.wheeled_robots.robots.wheeled_robot] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+[15.464s] [ext: omni.kit.widget.imageview-1.0.4] startup
+[15.482s] [ext: omni.isaac.window.about-2.0.7] startup
+2026-07-14T05:27:09Z [15,471ms] [Warning] [omni.isaac.window.about] omni.isaac.window.about has been deprecated in favor of isaacsim.app.about. Please update your code accordingly.
+2026-07-14T05:27:09Z [15,474ms] [Warning] [omni.isaac.window.about.about] omni.isaac.window.about.about has been deprecated in favor of isaacsim.app.about.about. Please update your code accordingly.
+[15.509s] [ext: omni.kit.property.audio-1.0.16] startup
+[15.527s] [ext: omni.kit.property.camera-1.0.10] startup
+[15.540s] [ext: omni.kit.window.quicksearch-2.4.4] startup
+[15.562s] [ext: omni.kit.property.geometry-2.0.4] startup
+[15.579s] [ext: omni.hydra.scene_api-0.1.2] startup
+[15.608s] [ext: omni.kit.property.light-1.0.12] startup
+[15.643s] [ext: omni.kit.property.material-1.11.9] startup
+[15.660s] [ext: omni.kit.property.render-1.2.1] startup
+[15.665s] [ext: omni.kit.property.transform-1.5.13] startup
+[15.674s] [ext: isaacsim.gui.property-1.1.3] startup
+[15.682s] [ext: omni.kit.manipulator.camera-106.0.4] startup
+[15.694s] [ext: omni.isaac.core-4.0.7] startup
+2026-07-14T05:27:10Z [15,666ms] [Warning] [omni.isaac.core.physics_context.physics_context] omni.isaac.core.physics_context.physics_context has been deprecated in favor of isaacsim.core.api.physics_context.physics_context. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,667ms] [Warning] [omni.isaac.core.simulation_context.simulation_context] omni.isaac.core.simulation_context.simulation_context has been deprecated in favor of isaacsim.core.api.simulation_context.simulation_context. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,668ms] [Warning] [omni.isaac.core.world.world] omni.isaac.core.world.world has been deprecated in favor of isaacsim.core.api.world.world. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,668ms] [Warning] [omni.isaac.core] omni.isaac.core has been deprecated in favor of isaacsim.core.api. Please update your code accordingly.
+[15.702s] [ext: omni.kit.property.bundle-1.4.1] startup
+[15.715s] [ext: omni.kit.property.isaac-1.0.6] startup
+2026-07-14T05:27:10Z [15,686ms] [Warning] [omni.kit.property.isaac] omni.kit.property.isaac has been deprecated in favor of isaacsim.gui.property. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,687ms] [Warning] [omni.kit.property.isaac.widgets] omni.kit.property.isaac.widgets has been deprecated in favor of isaacsim.gui.property.widgets. Please update your code accordingly.
+[15.721s] [ext: omni.kit.viewport.menubar.camera-107.0.6] startup
+[15.747s] [ext: isaacsim.replicator.writers-1.0.17] startup
+[15.811s] [ext: omni.kit.viewport.menubar.render-107.0.10] startup
+[15.826s] [ext: omni.kit.viewport.menubar.settings-107.0.3] startup
+[15.841s] [ext: omni.kit.window.console-1.1.4] startup
+[15.853s] [ext: isaacsim.replicator.domain_randomization-1.0.16] startup
+[15.859s] [ext: isaacsim.replicator.examples-1.3.6] startup
+[15.866s] [ext: omni.ocio-0.1.1] startup
+[15.872s] [ext: omni.rtx.window.settings-0.6.19] startup
+[15.889s] [ext: omni.kit.window.status_bar-0.1.9] startup
+[15.906s] [ext: omni.kit.window.toolbar-2.0.0] startup
+[15.926s] [ext: isaacsim.robot_motion.lula_test_widget-1.0.12] startup
+[15.941s] [ext: omni.replicator.isaac-2.0.8] startup
+2026-07-14T05:27:10Z [15,916ms] [Warning] [omni.replicator.isaac] omni.replicator.isaac has been deprecated in favor of isaacsim.replicator.domain_randomization, isaacsim.replicator.examples, isaacsim.replicator.writers. Please update your code accordingly.
+[15.952s] [ext: omni.kit.menu.create-2.0.1] startup
+[15.967s] [ext: omni.rtx.settings.core-0.6.5] startup
+[15.998s] [ext: omni.replicator.replicator_yaml-2.0.11] startup
+[16.011s] [ext: omni.isaac.manipulators-3.0.7] startup
+2026-07-14T05:27:10Z [15,982ms] [Warning] [omni.isaac.manipulators] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,983ms] [Warning] [omni.isaac.manipulators.controllers] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,984ms] [Warning] [omni.isaac.manipulators.controllers.pick_place_controller] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,986ms] [Warning] [omni.isaac.manipulators.controllers.stacking_controller] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,986ms] [Warning] [omni.isaac.manipulators.grippers] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,986ms] [Warning] [omni.isaac.manipulators.grippers.gripper] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,987ms] [Warning] [omni.isaac.manipulators.grippers.parallel_gripper] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,987ms] [Warning] [omni.isaac.manipulators.grippers.surface_gripper] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,988ms] [Warning] [omni.isaac.manipulators.manipulators] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-14T05:27:10Z [15,988ms] [Warning] [omni.isaac.manipulators.manipulators.single_manipulator] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+[16.022s] [ext: omni.isaac.lula_test_widget-1.0.6] startup
+2026-07-14T05:27:10Z [15,996ms] [Warning] [omni.isaac.lula_test_widget] omni.isaac.lula_test_widget has been deprecated in favor of isaacsim.robot_motion.lula_test_widget. Please update your code accordingly.
+[16.029s] [ext: omni.usd.metrics.assembler.ui-107.3.1] startup
+[16.085s] [ext: omni.isaac.menu-1.0.6] startup
+2026-07-14T05:27:10Z [16,055ms] [Warning] [omni.isaac.menu] omni.isaac.menu has been deprecated in favor of isaacsim.gui.menu. Please update your code accordingly.
+[16.090s] [ext: omni.kit.scripting-107.3.2] startup
+[16.115s] [ext: semantics.schema.editor-2.0.2] startup
+[16.141s] [ext: omni.kit.ui.actions-1.0.5] startup
+[16.149s] [ext: semantics.schema.property-2.0.1] startup
+[16.158s] [ext: omni.isaac.motion_generation-8.0.7] startup
+2026-07-14T05:27:10Z [16,128ms] [Warning] [omni.isaac.motion_generation] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,129ms] [Warning] [omni.isaac.motion_generation.articulation_kinematics_solver] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,130ms] [Warning] [omni.isaac.motion_generation.articulation_motion_policy] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,131ms] [Warning] [omni.isaac.motion_generation.articulation_trajectory] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,132ms] [Warning] [omni.isaac.motion_generation.kinematics_interface] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,133ms] [Warning] [omni.isaac.motion_generation.lula] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,134ms] [Warning] [omni.isaac.motion_generation.lula.kinematics] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,134ms] [Warning] [omni.isaac.motion_generation.lula.motion_policies] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,136ms] [Warning] [omni.isaac.motion_generation.lula.path_planners] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,137ms] [Warning] [omni.isaac.motion_generation.lula.trajectory_generator] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,137ms] [Warning] [omni.isaac.motion_generation.motion_policy_controller] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,138ms] [Warning] [omni.isaac.motion_generation.motion_policy_interface] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,138ms] [Warning] [omni.isaac.motion_generation.path_planner_visualizer] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,139ms] [Warning] [omni.isaac.motion_generation.path_planning_interface] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,140ms] [Warning] [omni.isaac.motion_generation.trajectory] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-14T05:27:10Z [16,141ms] [Warning] [omni.isaac.motion_generation.world_interface] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+[16.175s] [ext: omni.anim.curve.core-1.3.1] startup
+[16.215s] [ext: isaacsim.replicator.behavior-1.1.16] startup
+[16.219s] [ext: omni.mdl.usd_converter-1.0.30] startup
+[16.226s] [ext: omni.kit.menu.common-2.0.1] startup
+[16.231s] [ext: isaacsim.exp.base-5.1.0] startup
+[16.233s] [ext: omni.kit.stage.mdl_converter-1.0.8] startup
+[16.236s] [ext: isaacsim.examples.extension-2.0.12] startup
+[16.240s] [ext: isaacsim.sensors.physics.examples-0.1.15] startup
+[16.253s] [ext: isaacsim.sensors.physics.ui-0.1.12] startup
+[16.267s] [ext: isaacsim.replicator.behavior.ui-1.0.5] startup
+[16.278s] [ext: isaacsim.examples.interactive-4.7.4] startup
+[16.370s] [ext: omni.kit.graph.delegate.modern-1.10.9] startup
+[16.396s] [ext: omni.anim.curve.ui-1.4.1] startup
+[16.439s] [ext: omni.kit.actions.window-1.1.3] startup
+[16.512s] [ext: omni.kit.graph.widget.variables-2.1.0] startup
+[16.519s] [ext: isaacsim.util.physics-1.1.5] startup
+[16.553s] [ext: omni.anim.curve.bundle-1.2.3] startup
+[16.559s] [ext: omni.kit.hotkeys.window-1.4.9] startup
+[16.624s] [ext: omni.graph.window.core-2.0.0] startup
+[16.677s] [ext: omni.graph.bundle.action-2.30.0] startup
+[16.682s] [ext: isaacsim.asset.importer.heightmap-2.0.6] startup
+[16.704s] [ext: isaacsim.robot.wheeled_robots.ui-2.1.23] startup
+[16.714s] [ext: omni.graph.window.generic-1.50.2] startup
+[16.765s] [ext: omni.simready.explorer-1.1.3] startup
+[16.810s] [ext: omni.isaac.block_world-2.0.6] startup
+2026-07-14T05:27:11Z [16,784ms] [Warning] [omni.isaac.block_world] ['omni.isaac.block_world'] has been deprecated in favor of ['isaacsim.asset.importer.heightmap']. Please update your code accordingly.
+[16.820s] [ext: isaacsim.asset.gen.omap-2.0.29] startup
+[16.843s] [ext: isaacsim.robot_setup.gain_tuner-3.0.6] startup
+[16.899s] [ext: isaacsim.robot_setup.grasp_editor-2.0.20] startup
+[16.918s] [ext: omni.isaac.extension_templates-2.0.7] startup
+2026-07-14T05:27:11Z [16,891ms] [Warning] [omni.isaac.extension_templates] omni.isaac.extension_templates has been deprecated in favor of isaacsim.examples.extension. Please update your code accordingly.
+[16.924s] [ext: isaacsim.asset.gen.omap.ui-2.2.3] startup
+[16.937s] [ext: omni.isaac.gain_tuner-2.0.5] startup
+[16.942s] [ext: omni.isaac.grasp_editor-2.0.7] startup
+2026-07-14T05:27:11Z [16,910ms] [Warning] [omni.isaac.grasp_editor] omni.isaac.grasp_editor has been deprecated in favor of isaacsim.robot_setup.grasp_editor. Please update your code accordingly.
+[16.944s] [ext: omni.isaac.occupancy_map-2.0.8] startup
+2026-07-14T05:27:11Z [16,919ms] [Warning] [omni.isaac.occupancy_map] omni.isaac.occupancy_map has been deprecated in favor of isaacsim.asset.gen.omap. Please update your code accordingly.
+[16.960s] [ext: omni.isaac.occupancy_map.ui-2.0.8] startup
+2026-07-14T05:27:11Z [16,931ms] [Warning] [omni.isaac.occupancy_map.ui] omni.isaac.occupancy_map.ui has been deprecated in favor of isaacsim.asset.gen.omap.ui. Please update your code accordingly.
+[16.968s] [ext: isaacsim.sensors.rtx.ui-1.1.6] startup
+[16.992s] [ext: isaacsim.robot_setup.assembler-3.0.11] startup
+[17.020s] [ext: isaacsim.robot_setup.xrdf_editor-3.1.11] startup
+[17.035s] [ext: isaacsim.replicator.scene_blox-1.0.8] startup
+2026-07-14T05:27:11Z [17,009ms] [Warning] [isaacsim.replicator.scene_blox] isacsim.replicator.scene_blox has been deprecated since Isaac Sim 5.0.0.
+[17.049s] [ext: isaacsim.replicator.synthetic_recorder-2.2.17] startup
+[17.059s] [ext: isaacsim.robot.manipulators.ui-2.1.23] startup
+[17.073s] [ext: omni.isaac.robot_assembler-2.0.8] startup
+2026-07-14T05:27:11Z [17,048ms] [Warning] [omni.isaac.robot_assembler] omni.isaac.robot_assembler has been deprecated in favor of isaacsim.robot_setup.assembler. Please update your code accordingly.
+[17.084s] [ext: omni.isaac.robot_description_editor-3.0.5] startup
+[17.092s] [ext: omni.isaac.scene_blox-1.0.6] startup
+2026-07-14T05:27:11Z [17,060ms] [Warning] [omni.isaac.scene_blox] omni.isaac.scene_blox has been deprecated in favor of isaacsim.replicator.scene_blox. Please update your code accordingly.
+[17.094s] [ext: omni.isaac.synthetic_recorder-2.0.6] startup
+2026-07-14T05:27:11Z [17,069ms] [Warning] [omni.isaac.synthetic_recorder] omni.isaac.synthetic_recorder has been deprecated in favor of isaacsim.replicator.synthetic_recorder. Please update your code accordingly.
+Starting kit application with the following args:  ['/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/exts/isaacsim.simulation_app/isaacsim/simulation_app/simulation_app.py', '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/apps/isaacsim.exp.full.kit', '--/app/tokens/exe-path=/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/kit', '--/persistent/app/viewport/displayOptions=3286', '--/rtx/materialDb/syncLoads=True', '--/rtx/hydra/materialSyncLoads=True', '--/omni.kit.plugin/syncUsdLoads=True', '--/app/renderer/resolution/width=1920', '--/app/renderer/resolution/height=1080', '--/app/window/width=1920', '--/app/window/height=1080', '--/renderer/multiGpu/enabled=True', '--/app/fastShutdown=True', '--/app/installSignalHandlers=0', '--ext-folder', '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/exts', '--ext-folder', '/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/apps', '--/physics/cudaDevice=0', '--/plugins/carb.tasking.plugin/threadCount=16', '--/plugins/omni.tbb.globalcontrol/maxThreadCount=16', '--portable', '--/app/window/hideUi=False']
+Passing the following args to the base kit application:  ['--step-delay', '0.4', '--episode-delay', '2.0', '--limit', '10', '--limit', '0', '--hold-final', '-1']
+Warp 1.8.2 initialized:
+   CUDA Toolkit 12.8, Driver 13.0
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 2070" (8 GiB, sm_75, mempool enabled)
+   Kernel cache:
+     /home/robotics/.cache/warp/1.8.2
+Warp DeprecationWarning: The `warp.sim` module is deprecated and will be removed in v1.10. Please transition to using the forthcoming Newton library instead.
+[17.103s] [ext: omni.isaac.throttling-2.0.7] startup
+2026-07-14T05:27:11Z [17,078ms] [Warning] [omni.isaac.throttling] omni.isaac.throttling has been deprecated in favor of isaacsim.core.throttling. Please update your code accordingly.
+2026-07-14T05:27:11Z [17,079ms] [Warning] [omni.isaac.throttling.throttling] omni.isaac.throttling.throttling has been deprecated in favor of isaacsim.core.throttling.extension. Please update your code accordingly.
+[17.114s] [ext: omni.kit.browser.asset-1.3.12] startup
+[17.144s] [ext: omni.kit.mesh.raycast-107.0.1] startup
+[17.161s] [ext: omni.kit.preferences.animation-1.2.0] startup
+[17.177s] [ext: omni.graph.window.action-1.50.2] startup
+[17.207s] [ext: omni.kit.property.collection-0.2.3] startup
+[17.213s] [ext: omni.kit.property.layer-1.1.9] startup
+[17.224s] [ext: omni.kit.stagerecorder.core-107.0.3] startup
+[17.233s] [ext: omni.kit.search.files-1.0.4] startup
+[17.240s] [ext: omni.kit.stage.copypaste-1.2.4] startup
+[17.264s] [ext: omni.kit.browser.material-1.6.2] startup
+[17.380s] [ext: omni.kit.window.title-1.1.7] startup
+[17.462s] [ext: omni.kit.widgets.custom-1.0.13] startup
+[17.855s] [ext: omni.kit.stagerecorder.ui-107.0.1] startup
+[17.864s] [ext: omni.kit.stage_column.payload-2.0.3] startup
+[17.872s] [ext: omni.kit.tool.remove_unused.core-0.1.3] startup
+[17.878s] [ext: omni.kit.window.material-1.7.2] startup
+[17.893s] [ext: omni.kit.stage_column.variant-1.0.17] startup
+[17.903s] [ext: omni.kit.variant.editor-107.5.3] startup
+[17.928s] [ext: omni.kit.stagerecorder.bundle-105.0.2] startup
+[17.931s] [ext: omni.kit.tool.asset_exporter-4.0.5] startup
+[17.933s] [ext: omni.services.facilities.base-1.0.4] startup
+[17.936s] [ext: omni.kit.tool.remove_unused.controller-0.1.4] startup
+[17.939s] [ext: omni.kit.usda_edit-1.1.18] startup
+[17.955s] [ext: omni.kit.variant.presenter-107.0.0] startup
+[17.959s] [ext: omni.kit.viewport.bundle-104.0.1] startup
+[17.960s] [ext: omni.kit.viewport.rtx-104.0.1] startup
+[17.960s] [ext: omni.services.core-1.9.0] startup
+[18.513s] [ext: omni.kit.widget.live-2.1.11] startup
+[18.517s] [ext: omni.kit.widget.calendar-1.0.9] startup
+[18.521s] [ext: omni.services.transport.client.base-1.2.4] startup
+[18.523s] [ext: omni.kit.viewport_widgets_manager-1.0.9] startup
+[18.526s] [ext: omni.usdex.libs-1.2.2] startup
+[18.538s] [ext: omni.scene.optimizer.core-107.3.12] startup
+[18.583s] [ext: omni.kit.widget.cache_indicator-3.0.7] startup
+2026-07-14T05:27:12Z [18,550ms] [Warning] [omni.kit.pipapi.pipapi] extension omni.kit.widget.cache_indicator-3.0.7 has a [python.pipapi] entry, but use_online_index=true is not set. It doesn't do anything and can be removed.
+[18.651s] [ext: omni.kit.widget.extended_searchfield-1.0.31] startup
+2026-07-14T05:27:13Z [18,618ms] [Warning] [omni.kit.widget.cache_indicator.cache_state_menu] Unable to detect Omniverse Cache Server. File /home/robotics/.nvidia-omniverse/config/omniverse.toml is not found. Consider installing it for better IO performance.
+[18.664s] [ext: omni.services.client-0.5.3] startup
+[18.670s] [ext: omni.kit.widget.schema_api-1.0.3] startup
+[18.673s] [ext: omni.isaac.physics_inspector-0.1.11] startup
+2026-07-14T05:27:13Z [18,642ms] [Warning] [omni.isaac.physics_inspector] omni.isaac.physics_inspector has been deprecated.Replaced by Physics Visualization tools
+[18.675s] [ext: omni.kit.converter.common-507.1.2] startup
+[18.678s] [ext: omni.services.transport.server.base-1.1.1] startup
+[18.680s] [ext: omni.physx.demos-107.3.26] startup
+[18.715s] [ext: omni.asset_validator.core-1.1.6] startup
+[18.772s] [ext: omni.kit.property.physx-107.3.26] startup
+[18.807s] [ext: omni.services.facilities.monitoring.progress-0.2.4] startup
+[18.814s] [ext: isaacsim.util.merge_mesh-2.0.15] startup
+[18.817s] [ext: omni.services.transport.server.http-1.3.1] startup
+[18.847s] [ext: omni.services.transport.client.http_async-1.4.0] startup
+[18.849s] [ext: omni.kit.widget.timeline-107.0.1] startup
+[18.854s] [ext: omni.physx.vehicle-107.3.26] startup
+[18.879s] [ext: omni.kit.window.script_editor-2.0.1] startup
+[18.884s] [ext: omni.asset_validator.ui-1.1.6] startup
+[18.903s] [ext: omni.physx.asset_validator-107.3.26] startup
+[18.923s] [ext: omni.services.convert.cad-507.0.2] startup
+[18.933s] [ext: isaacsim.sensors.physx.ui-2.3.0] startup
+[18.937s] [ext: omni.physx.camera-107.3.26] startup
+[18.960s] [ext: omni.physx.cct-107.3.26] startup
+[18.975s] [ext: omni.physx.graph-107.3.26] startup
+[19.003s] [ext: omni.physx.supportui-107.3.26] startup
+[19.031s] [ext: omni.physx.telemetry-107.3.26] startup
+[19.044s] [ext: omni.kit.converter.dgn_core-510.1.0] startup
+[19.134s] [ext: omni.isaac.range_sensor.ui-2.0.5] startup
+2026-07-14T05:27:13Z [19,108ms] [Warning] [omni.isaac.range_sensor.ui] omni.isaac.range_sensor.ui has been deprecated in favor of isaacsim.sensors.physx.ui. Please update your code accordingly.
+2026-07-14T05:27:13Z [19,108ms] [Warning] [omni.isaac.range_sensor.ui.menu] omni.isaac.range_sensor.ui.menu has been deprecated in favor of isaacsim.sensors.physx.ui.menu. Please update your code accordingly.
+[19.141s] [ext: omni.kit.converter.hoops_core-509.1.0] startup
+[19.154s] [ext: omni.kit.window.usd_paths-1.0.8] startup
+[19.162s] [ext: omni.kit.converter.jt_core-508.1.0] startup
+[19.189s] [ext: omni.services.facilities.monitoring.metrics-0.3.0] startup
+[19.212s] [ext: omni.physx.bundle-107.3.26] startup
+[19.212s] [ext: omni.kit.converter.dgn-509.1.0] startup
+[19.222s] [ext: isaacsim.sensors.physx.examples-2.2.15] startup
+[19.225s] [ext: omni.kit.converter.hoops-509.1.0] startup
+[19.246s] [ext: isaacsim.replicator.grasping-1.0.9] startup
+[19.787s] [ext: omni.kit.converter.jt-508.1.0] startup
+[19.792s] [ext: omni.services.convert.asset-508.0.2] startup
+[19.805s] [ext: omni.kit.quicklayout-1.0.8] startup
+[19.808s] [ext: omni.kit.window.commands-0.2.9] startup
+[19.812s] [ext: omni.isaac.range_sensor.examples-2.0.6] startup
+2026-07-14T05:27:14Z [19,782ms] [Warning] [omni.isaac.range_sensor.examples] omni.isaac.range_sensor.examples has been deprecated in favor of isaacsim.sensors.physx.examples. Please update your code accordingly.
+2026-07-14T05:27:14Z [19,782ms] [Warning] [omni.isaac.range_sensor.examples.lidar_info] omni.isaac.range_sensor.examples.lidar_info has been deprecated in favor of isaacsim.sensors.physx.examples.lidar_info. Please update your code accordingly.
+2026-07-14T05:27:14Z [19,782ms] [Warning] [omni.isaac.range_sensor.examples.generic_info] omni.isaac.range_sensor.examples.generic_info has been deprecated in favor of isaacsim.sensors.physx.examples.generic_info. Please update your code accordingly.
+[19.815s] [ext: isaacsim.util.camera_inspector-1.0.16] startup
+[19.835s] [ext: isaacsim.replicator.grasping.ui-1.0.8] startup
+[19.844s] [ext: isaacsim.asset.validation-1.1.0] startup
+[19.903s] [ext: omni.kit.converter.cad-205.0.0] startup
+[19.906s] [ext: omni.kit.window.stats-0.1.7] startup
+[19.908s] [ext: isaacsim.app.setup-1.6.0] startup
+[19.911s] Isaac Sim Full Version: 5.1.0-rc.19
+[19.911s] Writing Isaac Sim icon file
+[19.912s] [ext: omni.kit.profiler.window-2.3.5] startup
+[20.196s] [ext: isaacsim.exp.full-5.1.0] startup
+[20.203s] Simulation App Starting
+2026-07-14T05:27:15Z [20,986ms] [Warning] [omni.fabric.plugin] Warning: attribute viewPickingId not found for bucket id 9
+
+2026-07-14T05:27:15Z [21,136ms] [Warning] [usdrt.population.plugin] [UsdNoticeHandler] Unhandled attribute type VtArray<std::string> (prim attribute: omni:rtx:material:db:flattener:ior_constant)
+2026-07-14T05:27:15Z [21,136ms] [Warning] [usdrt.population.plugin] [UsdNoticeHandler] Unhandled attribute type VtArray<std::string> (prim attribute: omni:rtx:material:db:flattener:reflection_roughness_constant)
+2026-07-14T05:27:15Z [21,136ms] [Warning] [usdrt.population.plugin] [UsdNoticeHandler] Unhandled attribute type VtArray<std::string> (prim attribute: omni:rtx:material:db:flattener:transmittance_color)
+[21.194s] [ext: isaacsim.ros2.bridge-4.12.4] startup
+[21.220s] Using backup internal ROS2 humble distro
+[21.237s] To use the internal libraries included with the extension please set the following environment variables to use with FastDDS (default) or CycloneDDS before starting Isaac Sim:
+
+FastDDS (default):
+export ROS_DISTRO=humble
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/exts/isaacsim.ros2.bridge/humble/lib
+
+OR
+
+CycloneDDS:
+export ROS_DISTRO=humble
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/robotics/isaac-sim-5.1/lib/python3.11/site-packages/isaacsim/exts/isaacsim.ros2.bridge/humble/lib
+
+
+2026-07-14T05:27:15Z [21,204ms] [Error] [isaacsim.ros2.bridge.impl.extension] ROS2 Bridge startup failed
+[21.462s] [ext: isaacsim.ros2.bridge-4.12.4] shutdown
+[24.714s] app ready
+Checking to see if RMW can be loaded:
+failed to get symbol 'rmw_init_options_init' due to Environment variable 'AMENT_PREFIX_PATH' is not set or empty, at /workspace/humble_ws/src/rmw_implementation/src/functions.cpp:171, at /workspace/humble_ws/src/rcl/rcl/src/rcl/init_options.c:75
+RMW was not loaded
+
+[compare] Config           : /home/robotics/UOS-RoboStack/palletizing_simulator/config/sim_config_submit_eval10_slow_gui.yaml
+[compare] Left results     : /home/robotics/UOS-RoboStack/palletizing_simulator/../submit_buffer3_search/algorithm_results_eval10/1400
+[compare] Right results    : /home/robotics/UOS-RoboStack/palletizing_simulator/../submit_buffer3_search/algorithm_results_eval10/1450
+[compare] Box sequence dir : /home/robotics/UOS-RoboStack/palletizing_simulator/../submit_buffer3_search/random_spec_eval_10/box_sequence
+[compare] step_delay=0.4s episode_delay=2.0s
+[compare] Matched episodes : 10
+  - random_spec_000.json
+  - random_spec_001.json
+  - random_spec_002.json
+  - random_spec_003.json
+  - random_spec_004.json
+  - random_spec_005.json
+  - random_spec_006.json
+  - random_spec_007.json
+  - random_spec_008.json
+  - random_spec_009.json
+
+[compare] Episode random_spec_000.json
+[compare] 1400: 84 boxes, 1450: 80 boxes
+[compare] step 001/084  1400=id 0  1450=id 0
+[compare] step 002/084  1400=id 1  1450=id 1
+[compare] step 003/084  1400=id 2  1450=id 2
+[compare] step 004/084  1400=id 3  1450=id 3
+[compare] step 005/084  1400=id 4  1450=id 4
+[compare] step 006/084  1400=id 5  1450=id 5
+[compare] step 007/084  1400=id 6  1450=id 6
+[compare] step 008/084  1400=id 7  1450=id 7
+[compare] step 009/084  1400=id 8  1450=id 8
+[compare] step 010/084  1400=id 9  1450=id 9
+[compare] step 011/084  1400=id 10  1450=id 10
+[compare] step 012/084  1400=id 11  1450=id 11
+[compare] step 013/084  1400=id 12  1450=id 12
+[compare] step 014/084  1400=id 13  1450=id 13
+[compare] step 015/084  1400=id 14  1450=id 14
+[compare] step 016/084  1400=id 15  1450=id 15
+[compare] step 017/084  1400=id 16  1450=id 16
+[compare] step 018/084  1400=id 17  1450=id 17
+[compare] step 019/084  1400=id 18  1450=id 18
+[compare] step 020/084  1400=id 19  1450=id 19
+[compare] step 021/084  1400=id 20  1450=id 20
+[compare] step 022/084  1400=id 21  1450=id 21
+[compare] step 023/084  1400=id 22  1450=id 22
+[compare] step 024/084  1400=id 23  1450=id 23
+[compare] step 025/084  1400=id 24  1450=id 24
+[compare] step 026/084  1400=id 25  1450=id 25
+[compare] step 027/084  1400=id 26  1450=id 26
+[compare] step 028/084  1400=id 27  1450=id 27
+[compare] step 029/084  1400=id 28  1450=id 28
+[compare] step 030/084  1400=id 29  1450=id 29
+[compare] step 031/084  1400=id 30  1450=id 30
+[compare] step 032/084  1400=id 31  1450=id 31
+[compare] step 033/084  1400=id 32  1450=id 32
+[compare] step 034/084  1400=id 33  1450=id 33
+[compare] step 035/084  1400=id 34  1450=id 34
+[compare] step 036/084  1400=id 35  1450=id 35
+[compare] step 037/084  1400=id 36  1450=id 36
+[compare] step 038/084  1400=id 37  1450=id 37
+[compare] step 039/084  1400=id 38  1450=id 38
+[compare] step 040/084  1400=id 39  1450=id 39
+[compare] step 041/084  1400=id 40  1450=id 40
+[compare] step 042/084  1400=id 41  1450=id 41
+[compare] step 043/084  1400=id 42  1450=id 42
+[compare] step 044/084  1400=id 43  1450=id 43
+[compare] step 045/084  1400=id 44  1450=id 44
+[compare] step 046/084  1400=id 45  1450=id 45
+[compare] step 047/084  1400=id 46  1450=id 46
+[compare] step 048/084  1400=id 47  1450=id 47
+[compare] step 049/084  1400=id 48  1450=id 48
+[compare] step 050/084  1400=id 49  1450=id 49
+[compare] step 051/084  1400=id 50  1450=id 50
+[compare] step 052/084  1400=id 51  1450=id 51
+[compare] step 053/084  1400=id 52  1450=id 52
+[compare] step 054/084  1400=id 53  1450=id 53
+[compare] step 055/084  1400=id 54  1450=id 54
+[compare] step 056/084  1400=id 55  1450=id 55
+[compare] step 057/084  1400=id 56  1450=id 56
+[compare] step 058/084  1400=id 57  1450=id 57
+[compare] step 059/084  1400=id 58  1450=id 58
+[compare] step 060/084  1400=id 59  1450=id 59
+[compare] step 061/084  1400=id 60  1450=id 60
+[compare] step 062/084  1400=id 61  1450=id 61
+[compare] step 063/084  1400=id 62  1450=id 62
+[compare] step 064/084  1400=id 63  1450=id 63
+[compare] step 065/084  1400=id 64  1450=id 64
+[compare] step 066/084  1400=id 65  1450=id 65
+[compare] step 067/084  1400=id 66  1450=id 66
+[compare] step 068/084  1400=id 67  1450=id 67
+[compare] step 069/084  1400=id 68  1450=id 68
+[compare] step 070/084  1400=id 69  1450=id 69
+[compare] step 071/084  1400=id 70  1450=id 70
+[compare] step 072/084  1400=id 71  1450=id 71
+[compare] step 073/084  1400=id 72  1450=id 72
+[compare] step 074/084  1400=id 73  1450=id 73
+[compare] step 075/084  1400=id 74  1450=id 74
+[compare] step 076/084  1400=id 75  1450=id 75
+[compare] step 077/084  1400=id 76  1450=id 76
+[compare] step 078/084  1400=id 77  1450=id 77
+[compare] step 079/084  1400=id 78  1450=id 78
+[compare] step 080/084  1400=id 79  1450=id 79
+[compare] step 081/084  1400=id 80  1450=id None
+[compare] step 082/084  1400=id 81  1450=id None
+[compare] step 083/084  1400=id 82  1450=id None
+[compare] step 084/084  1400=id 83  1450=id None
+[compare] Final settle 100 steps
+
+[compare] Episode random_spec_001.json
+[compare] 1400: 82 boxes, 1450: 89 boxes
+[compare] step 001/089  1400=id 0  1450=id 0
+[compare] step 002/089  1400=id 1  1450=id 1
+[compare] step 003/089  1400=id 2  1450=id 2
+[compare] step 004/089  1400=id 3  1450=id 3
+[compare] step 005/089  1400=id 4  1450=id 4
+[compare] step 006/089  1400=id 5  1450=id 5
+[compare] step 007/089  1400=id 6  1450=id 6
+[compare] step 008/089  1400=id 7  1450=id 7
+[compare] step 009/089  1400=id 8  1450=id 8
+[compare] step 010/089  1400=id 9  1450=id 9
+[compare] step 011/089  1400=id 10  1450=id 10
+[compare] step 012/089  1400=id 11  1450=id 11
+[compare] step 013/089  1400=id 12  1450=id 12
+[compare] step 014/089  1400=id 13  1450=id 13
+[compare] step 015/089  1400=id 14  1450=id 14
+[compare] step 016/089  1400=id 15  1450=id 15
+[compare] step 017/089  1400=id 16  1450=id 16
+[compare] step 018/089  1400=id 17  1450=id 17
+[compare] step 019/089  1400=id 18  1450=id 18
+[compare] step 020/089  1400=id 19  1450=id 19
+[compare] step 021/089  1400=id 20  1450=id 20
+[compare] step 022/089  1400=id 21  1450=id 21
+[compare] step 023/089  1400=id 22  1450=id 22
+[compare] step 024/089  1400=id 23  1450=id 23
+[compare] step 025/089  1400=id 24  1450=id 24
+[compare] step 026/089  1400=id 25  1450=id 25
+[compare] step 027/089  1400=id 26  1450=id 26
+[compare] step 028/089  1400=id 27  1450=id 27
+[compare] step 029/089  1400=id 28  1450=id 28
+[compare] step 030/089  1400=id 29  1450=id 29
+[compare] step 031/089  1400=id 30  1450=id 30
+[compare] step 032/089  1400=id 31  1450=id 31
+[compare] step 033/089  1400=id 32  1450=id 32
+[compare] step 034/089  1400=id 33  1450=id 33
+[compare] step 035/089  1400=id 34  1450=id 34
+[compare] step 036/089  1400=id 35  1450=id 35
+[compare] step 037/089  1400=id 36  1450=id 36
+[compare] step 038/089  1400=id 37  1450=id 37
+[compare] step 039/089  1400=id 38  1450=id 38
+[compare] step 040/089  1400=id 39  1450=id 39
+[compare] step 041/089  1400=id 40  1450=id 40
+[compare] step 042/089  1400=id 41  1450=id 41
+[compare] step 043/089  1400=id 42  1450=id 42
+[compare] step 044/089  1400=id 43  1450=id 43
+[compare] step 045/089  1400=id 44  1450=id 44
+[compare] step 046/089  1400=id 45  1450=id 45
+[compare] step 047/089  1400=id 46  1450=id 46
+[compare] step 048/089  1400=id 47  1450=id 47
+[compare] step 049/089  1400=id 48  1450=id 48
+[compare] step 050/089  1400=id 49  1450=id 49
+[compare] step 051/089  1400=id 50  1450=id 50
+[compare] step 052/089  1400=id 51  1450=id 51
+[compare] step 053/089  1400=id 52  1450=id 52
+[compare] step 054/089  1400=id 53  1450=id 53
+[compare] step 055/089  1400=id 54  1450=id 54
+[compare] step 056/089  1400=id 55  1450=id 55
+[compare] step 057/089  1400=id 56  1450=id 56
+[compare] step 058/089  1400=id 57  1450=id 57
+[compare] step 059/089  1400=id 58  1450=id 58
+[compare] step 060/089  1400=id 59  1450=id 59
+[compare] step 061/089  1400=id 60  1450=id 60
+[compare] step 062/089  1400=id 61  1450=id 61
+[compare] step 063/089  1400=id 62  1450=id 62
+[compare] step 064/089  1400=id 63  1450=id 63
+[compare] step 065/089  1400=id 64  1450=id 64
+[compare] step 066/089  1400=id 65  1450=id 65
+[compare] step 067/089  1400=id 66  1450=id 66
+[compare] step 068/089  1400=id 67  1450=id 67
+[compare] step 069/089  1400=id 68  1450=id 68
+[compare] step 070/089  1400=id 69  1450=id 69
+[compare] step 071/089  1400=id 70  1450=id 70
+[compare] step 072/089  1400=id 71  1450=id 71
+[compare] step 073/089  1400=id 72  1450=id 72
+[compare] step 074/089  1400=id 73  1450=id 73
+[compare] step 075/089  1400=id 74  1450=id 74
+[compare] step 076/089  1400=id 75  1450=id 75
+[compare] step 077/089  1400=id 76  1450=id 76
+[compare] step 078/089  1400=id 77  1450=id 77
+[compare] step 079/089  1400=id 78  1450=id 78
+[compare] step 080/089  1400=id 79  1450=id 79
+[compare] step 081/089  1400=id 80  1450=id 80
+[compare] step 082/089  1400=id 81  1450=id 81
+[compare] step 083/089  1400=id None  1450=id 82
+[compare] step 084/089  1400=id None  1450=id 83
+[compare] step 085/089  1400=id None  1450=id 84
+[compare] step 086/089  1400=id None  1450=id 85
+[compare] step 087/089  1400=id None  1450=id 86
+[compare] step 088/089  1400=id None  1450=id 87
+[compare] step 089/089  1400=id None  1450=id 88
+[compare] Final settle 100 steps
+
+[compare] Episode random_spec_002.json
+[compare] 1400: 87 boxes, 1450: 90 boxes
+[compare] step 001/090  1400=id 0  1450=id 0
+[compare] step 002/090  1400=id 1  1450=id 1
+[compare] step 003/090  1400=id 2  1450=id 2
+[compare] step 004/090  1400=id 3  1450=id 3
+[compare] step 005/090  1400=id 4  1450=id 4
+[compare] step 006/090  1400=id 5  1450=id 5
+[compare] step 007/090  1400=id 6  1450=id 6
+[compare] step 008/090  1400=id 7  1450=id 7
+[compare] step 009/090  1400=id 8  1450=id 8
+[compare] step 010/090  1400=id 9  1450=id 9
+[compare] step 011/090  1400=id 10  1450=id 10
+[compare] step 012/090  1400=id 11  1450=id 11
+[compare] step 013/090  1400=id 12  1450=id 12
+[compare] step 014/090  1400=id 13  1450=id 13
+[compare] step 015/090  1400=id 14  1450=id 14
+[compare] step 016/090  1400=id 15  1450=id 15
+[compare] step 017/090  1400=id 16  1450=id 16
+[compare] step 018/090  1400=id 17  1450=id 17
+[compare] step 019/090  1400=id 18  1450=id 18
+[compare] step 020/090  1400=id 19  1450=id 19
+[compare] step 021/090  1400=id 20  1450=id 20
+[compare] step 022/090  1400=id 21  1450=id 21
+[compare] step 023/090  1400=id 22  1450=id 22
+[compare] step 024/090  1400=id 23  1450=id 23
+[compare] step 025/090  1400=id 24  1450=id 24
+[compare] step 026/090  1400=id 25  1450=id 25
+[compare] step 027/090  1400=id 26  1450=id 26
+[compare] step 028/090  1400=id 27  1450=id 27
+[compare] step 029/090  1400=id 28  1450=id 28
+[compare] step 030/090  1400=id 29  1450=id 29
+[compare] step 031/090  1400=id 30  1450=id 30
+[compare] step 032/090  1400=id 31  1450=id 31
+[compare] step 033/090  1400=id 32  1450=id 32
+[compare] step 034/090  1400=id 33  1450=id 33
+[compare] step 035/090  1400=id 34  1450=id 34
+[compare] step 036/090  1400=id 35  1450=id 35
+[compare] step 037/090  1400=id 36  1450=id 36
+[compare] step 038/090  1400=id 37  1450=id 37
+[compare] step 039/090  1400=id 38  1450=id 38
+[compare] step 040/090  1400=id 39  1450=id 39
+[compare] step 041/090  1400=id 40  1450=id 40
+[compare] step 042/090  1400=id 41  1450=id 41
+[compare] step 043/090  1400=id 42  1450=id 42
+[compare] step 044/090  1400=id 43  1450=id 43
+[compare] step 045/090  1400=id 44  1450=id 44
+[compare] step 046/090  1400=id 45  1450=id 45
+[compare] step 047/090  1400=id 46  1450=id 46
+[compare] step 048/090  1400=id 47  1450=id 47
+[compare] step 049/090  1400=id 48  1450=id 48
+[compare] step 050/090  1400=id 49  1450=id 49
+[compare] step 051/090  1400=id 50  1450=id 50
+[compare] step 052/090  1400=id 51  1450=id 51
+[compare] step 053/090  1400=id 52  1450=id 52
+[compare] step 054/090  1400=id 53  1450=id 53
+[compare] step 055/090  1400=id 54  1450=id 54
+[compare] step 056/090  1400=id 55  1450=id 55
+[compare] step 057/090  1400=id 56  1450=id 56
+[compare] step 058/090  1400=id 57  1450=id 57
+[compare] step 059/090  1400=id 58  1450=id 58
+[compare] step 060/090  1400=id 59  1450=id 59
+[compare] step 061/090  1400=id 60  1450=id 60
+[compare] step 062/090  1400=id 61  1450=id 61
+[compare] step 063/090  1400=id 62  1450=id 62
+[compare] step 064/090  1400=id 63  1450=id 63
+[compare] step 065/090  1400=id 64  1450=id 64
+[compare] step 066/090  1400=id 65  1450=id 65
+[compare] step 067/090  1400=id 66  1450=id 66
+[compare] step 068/090  1400=id 67  1450=id 67
+[compare] step 069/090  1400=id 68  1450=id 68
+[compare] step 070/090  1400=id 69  1450=id 69
+[compare] step 071/090  1400=id 70  1450=id 70
+[compare] step 072/090  1400=id 71  1450=id 71
+[compare] step 073/090  1400=id 72  1450=id 72
+[compare] step 074/090  1400=id 73  1450=id 73
+[compare] step 075/090  1400=id 74  1450=id 74
+[compare] step 076/090  1400=id 75  1450=id 75
+[compare] step 077/090  1400=id 76  1450=id 76
+[compare] step 078/090  1400=id 77  1450=id 77
+[compare] step 079/090  1400=id 78  1450=id 78
+[compare] step 080/090  1400=id 79  1450=id 79
+[compare] step 081/090  1400=id 80  1450=id 80
+[compare] step 082/090  1400=id 81  1450=id 81
+[compare] step 083/090  1400=id 82  1450=id 82
+[compare] step 084/090  1400=id 83  1450=id 83
+[compare] step 085/090  1400=id 84  1450=id 84
+[compare] step 086/090  1400=id 85  1450=id 85
+[compare] step 087/090  1400=id 86  1450=id 86
+[compare] step 088/090  1400=id None  1450=id 87
+[compare] step 089/090  1400=id None  1450=id 88
+[compare] step 090/090  1400=id None  1450=id 89
+[compare] Final settle 100 steps
+
+[compare] Episode random_spec_003.json
+[compare] 1400: 87 boxes, 1450: 83 boxes
+[compare] step 001/087  1400=id 0  1450=id 0
+[compare] step 002/087  1400=id 1  1450=id 1
+[compare] step 003/087  1400=id 2  1450=id 2
+[compare] step 004/087  1400=id 3  1450=id 3
+[compare] step 005/087  1400=id 4  1450=id 4
+[compare] step 006/087  1400=id 5  1450=id 5
+[compare] step 007/087  1400=id 6  1450=id 6
+[compare] step 008/087  1400=id 7  1450=id 7
+[compare] step 009/087  1400=id 8  1450=id 8
+[compare] step 010/087  1400=id 9  1450=id 9
+[compare] step 011/087  1400=id 10  1450=id 10
+[compare] step 012/087  1400=id 11  1450=id 11
+[compare] step 013/087  1400=id 12  1450=id 12
+[compare] step 014/087  1400=id 13  1450=id 13
+[compare] step 015/087  1400=id 14  1450=id 14
+[compare] step 016/087  1400=id 15  1450=id 15
+[compare] step 017/087  1400=id 16  1450=id 16
+[compare] step 018/087  1400=id 17  1450=id 17
+[compare] step 019/087  1400=id 18  1450=id 18
+[compare] step 020/087  1400=id 19  1450=id 19
+[compare] step 021/087  1400=id 20  1450=id 20
+[compare] step 022/087  1400=id 21  1450=id 21
+[compare] step 023/087  1400=id 22  1450=id 22
+[compare] step 024/087  1400=id 23  1450=id 23
+[compare] step 025/087  1400=id 24  1450=id 24
+[compare] step 026/087  1400=id 25  1450=id 25
+[compare] step 027/087  1400=id 26  1450=id 26
+[compare] step 028/087  1400=id 27  1450=id 27
+[compare] step 029/087  1400=id 28  1450=id 28
+[compare] step 030/087  1400=id 29  1450=id 29
+[compare] step 031/087  1400=id 30  1450=id 30
+[compare] step 032/087  1400=id 31  1450=id 31
+[compare] step 033/087  1400=id 32  1450=id 32
+[compare] step 034/087  1400=id 33  1450=id 33
+[compare] step 035/087  1400=id 34  1450=id 34
+[compare] step 036/087  1400=id 35  1450=id 35
+[compare] step 037/087  1400=id 36  1450=id 36
+[compare] step 038/087  1400=id 37  1450=id 37
+[compare] step 039/087  1400=id 38  1450=id 38
+[compare] step 040/087  1400=id 39  1450=id 39
+[compare] step 041/087  1400=id 40  1450=id 40
+[compare] step 042/087  1400=id 41  1450=id 41
+[compare] step 043/087  1400=id 42  1450=id 42
+[compare] step 044/087  1400=id 43  1450=id 43
+[compare] step 045/087  1400=id 44  1450=id 44
+[compare] step 046/087  1400=id 45  1450=id 45
+[compare] step 047/087  1400=id 46  1450=id 46
+[compare] step 048/087  1400=id 47  1450=id 47
+[compare] step 049/087  1400=id 48  1450=id 48
+[compare] step 050/087  1400=id 49  1450=id 49
+[compare] step 051/087  1400=id 50  1450=id 50
+[compare] step 052/087  1400=id 51  1450=id 51
+[compare] step 053/087  1400=id 52  1450=id 52
+[compare] step 054/087  1400=id 53  1450=id 53
+[compare] step 055/087  1400=id 54  1450=id 54
+[compare] step 056/087  1400=id 55  1450=id 55
+[compare] step 057/087  1400=id 56  1450=id 56
+[compare] step 058/087  1400=id 57  1450=id 57
+[compare] step 059/087  1400=id 58  1450=id 58
+[compare] step 060/087  1400=id 59  1450=id 59
+[compare] step 061/087  1400=id 60  1450=id 60
+[compare] step 062/087  1400=id 61  1450=id 61
+[compare] step 063/087  1400=id 62  1450=id 62
+[compare] step 064/087  1400=id 63  1450=id 63
+[compare] step 065/087  1400=id 64  1450=id 64
+[compare] step 066/087  1400=id 65  1450=id 65
+[compare] step 067/087  1400=id 66  1450=id 66
+[compare] step 068/087  1400=id 67  1450=id 67
+[compare] step 069/087  1400=id 68  1450=id 68
+[compare] step 070/087  1400=id 69  1450=id 69
+[compare] step 071/087  1400=id 70  1450=id 70
+[compare] step 072/087  1400=id 71  1450=id 71
+[compare] step 073/087  1400=id 72  1450=id 72
+[compare] step 074/087  1400=id 73  1450=id 73
+[compare] step 075/087  1400=id 74  1450=id 74
+[compare] step 076/087  1400=id 75  1450=id 75
+[compare] step 077/087  1400=id 76  1450=id 76
+[compare] step 078/087  1400=id 77  1450=id 77
+[compare] step 079/087  1400=id 78  1450=id 78
+[compare] step 080/087  1400=id 79  1450=id 79
+[compare] step 081/087  1400=id 80  1450=id 80
+[compare] step 082/087  1400=id 81  1450=id 81
+[compare] step 083/087  1400=id 82  1450=id 82
+[compare] step 084/087  1400=id 83  1450=id None
+[compare] step 085/087  1400=id 84  1450=id None
+[compare] step 086/087  1400=id 85  1450=id None
+[compare] step 087/087  1400=id 86  1450=id None
+[compare] Final settle 100 steps
+
+[compare] Episode random_spec_004.json
+[compare] 1400: 85 boxes, 1450: 92 boxes
+[compare] step 001/092  1400=id 0  1450=id 0
+[compare] step 002/092  1400=id 1  1450=id 1
+[compare] step 003/092  1400=id 2  1450=id 2
+[compare] step 004/092  1400=id 3  1450=id 3
+[compare] step 005/092  1400=id 4  1450=id 4
+[compare] step 006/092  1400=id 5  1450=id 5
+[compare] step 007/092  1400=id 6  1450=id 6
+[compare] step 008/092  1400=id 7  1450=id 7
+[compare] step 009/092  1400=id 8  1450=id 8
+[compare] step 010/092  1400=id 9  1450=id 9
+[compare] step 011/092  1400=id 10  1450=id 10
+[compare] step 012/092  1400=id 11  1450=id 11
+[compare] step 013/092  1400=id 12  1450=id 12
+[compare] step 014/092  1400=id 13  1450=id 13
+[compare] step 015/092  1400=id 14  1450=id 14
+[compare] step 016/092  1400=id 15  1450=id 15
+[compare] step 017/092  1400=id 16  1450=id 16
+[compare] step 018/092  1400=id 17  1450=id 17
+[compare] step 019/092  1400=id 18  1450=id 18
+[compare] step 020/092  1400=id 19  1450=id 19
+[compare] step 021/092  1400=id 20  1450=id 20
+[compare] step 022/092  1400=id 21  1450=id 21
+[compare] step 023/092  1400=id 22  1450=id 22
+[compare] step 024/092  1400=id 23  1450=id 23
+[compare] step 025/092  1400=id 24  1450=id 24
+[compare] step 026/092  1400=id 25  1450=id 25
+[compare] step 027/092  1400=id 26  1450=id 26
+[compare] step 028/092  1400=id 27  1450=id 27
+[compare] step 029/092  1400=id 28  1450=id 28
+[compare] step 030/092  1400=id 29  1450=id 29
+[compare] step 031/092  1400=id 30  1450=id 30
+[compare] step 032/092  1400=id 31  1450=id 31
+[compare] step 033/092  1400=id 32  1450=id 32
+[compare] step 034/092  1400=id 33  1450=id 33
+[compare] step 035/092  1400=id 34  1450=id 34
+[compare] step 036/092  1400=id 35  1450=id 35
+[compare] step 037/092  1400=id 36  1450=id 36
+[compare] step 038/092  1400=id 37  1450=id 37
+[compare] step 039/092  1400=id 38  1450=id 38
+[compare] step 040/092  1400=id 39  1450=id 39
+[compare] step 041/092  1400=id 40  1450=id 40
+[compare] step 042/092  1400=id 41  1450=id 41
+[compare] step 043/092  1400=id 42  1450=id 42
+[compare] step 044/092  1400=id 43  1450=id 43
+[compare] step 045/092  1400=id 44  1450=id 44
+[compare] step 046/092  1400=id 45  1450=id 45
+[compare] step 047/092  1400=id 46  1450=id 46
+[compare] step 048/092  1400=id 47  1450=id 47
+[compare] step 049/092  1400=id 48  1450=id 48
+[compare] step 050/092  1400=id 49  1450=id 49
+[compare] step 051/092  1400=id 50  1450=id 50
+[compare] step 052/092  1400=id 51  1450=id 51
+[compare] step 053/092  1400=id 52  1450=id 52
+[compare] step 054/092  1400=id 53  1450=id 53
+[compare] step 055/092  1400=id 54  1450=id 54
+[compare] step 056/092  1400=id 55  1450=id 55
+[compare] step 057/092  1400=id 56  1450=id 56
+[compare] step 058/092  1400=id 57  1450=id 57
+[compare] step 059/092  1400=id 58  1450=id 58
+[compare] step 060/092  1400=id 59  1450=id 59
+[compare] step 061/092  1400=id 60  1450=id 60
+[compare] step 062/092  1400=id 61  1450=id 61
+[compare] step 063/092  1400=id 62  1450=id 62
+[compare] step 064/092  1400=id 63  1450=id 63
+[compare] step 065/092  1400=id 64  1450=id 64
+[compare] step 066/092  1400=id 65  1450=id 65
+[compare] step 067/092  1400=id 66  1450=id 66
+[compare] step 068/092  1400=id 67  1450=id 67
+[compare] step 069/092  1400=id 68  1450=id 68
+[compare] step 070/092  1400=id 69  1450=id 69
+[compare] step 071/092  1400=id 70  1450=id 70
+[compare] step 072/092  1400=id 71  1450=id 71
+[compare] step 073/092  1400=id 72  1450=id 72
+[compare] step 074/092  1400=id 73  1450=id 73
+[compare] step 075/092  1400=id 74  1450=id 74
+[compare] step 076/092  1400=id 75  1450=id 75
+[compare] step 077/092  1400=id 76  1450=id 76
+[compare] step 078/092  1400=id 77  1450=id 77
+[compare] step 079/092  1400=id 78  1450=id 78
+[compare] step 080/092  1400=id 79  1450=id 79
+[compare] step 081/092  1400=id 80  1450=id 80
+[compare] step 082/092  1400=id 81  1450=id 81
+[compare] step 083/092  1400=id 82  1450=id 82
+[compare] step 084/092  1400=id 83  1450=id 83
+[compare] step 085/092  1400=id 84  1450=id 84
+[compare] step 086/092  1400=id None  1450=id 85
+[compare] step 087/092  1400=id None  1450=id 86
+[compare] step 088/092  1400=id None  1450=id 87
+[compare] step 089/092  1400=id None  1450=id 88
+[compare] step 090/092  1400=id None  1450=id 89
+[compare] step 091/092  1400=id None  1450=id 90
+[compare] step 092/092  1400=id None  1450=id 91
+[compare] Final settle 100 steps
+
+[compare] Episode random_spec_005.json
+[compare] 1400: 81 boxes, 1450: 79 boxes
+[compare] step 001/081  1400=id 0  1450=id 0
+[compare] step 002/081  1400=id 1  1450=id 1
+[compare] step 003/081  1400=id 2  1450=id 2
+[compare] step 004/081  1400=id 3  1450=id 3
+[compare] step 005/081  1400=id 4  1450=id 4
+[compare] step 006/081  1400=id 5  1450=id 5
+[compare] step 007/081  1400=id 6  1450=id 6
+[compare] step 008/081  1400=id 7  1450=id 7
+[compare] step 009/081  1400=id 8  1450=id 8
+[compare] step 010/081  1400=id 9  1450=id 9
+[compare] step 011/081  1400=id 10  1450=id 10
+[compare] step 012/081  1400=id 11  1450=id 11
+[compare] step 013/081  1400=id 12  1450=id 12
+[compare] step 014/081  1400=id 13  1450=id 13
+[compare] step 015/081  1400=id 14  1450=id 14
+[compare] step 016/081  1400=id 15  1450=id 15
+[compare] step 017/081  1400=id 16  1450=id 16
+[compare] step 018/081  1400=id 17  1450=id 17
+[compare] step 019/081  1400=id 18  1450=id 18
+[compare] step 020/081  1400=id 19  1450=id 19
+[compare] step 021/081  1400=id 20  1450=id 20
+[compare] step 022/081  1400=id 21  1450=id 21
+[compare] step 023/081  1400=id 22  1450=id 22
+[compare] step 024/081  1400=id 23  1450=id 23
+[compare] step 025/081  1400=id 24  1450=id 24
+[compare] step 026/081  1400=id 25  1450=id 25
+[compare] step 027/081  1400=id 26  1450=id 26
+[compare] step 028/081  1400=id 27  1450=id 27
+[compare] step 029/081  1400=id 28  1450=id 28
+[compare] step 030/081  1400=id 29  1450=id 29
+[compare] step 031/081  1400=id 30  1450=id 30
+[compare] step 032/081  1400=id 31  1450=id 31
+[compare] step 033/081  1400=id 32  1450=id 32
+[compare] step 034/081  1400=id 33  1450=id 33
+[compare] step 035/081  1400=id 34  1450=id 34
+[compare] step 036/081  1400=id 35  1450=id 35
+[compare] step 037/081  1400=id 36  1450=id 36
+[compare] step 038/081  1400=id 37  1450=id 37
+[compare] step 039/081  1400=id 38  1450=id 38
+[compare] step 040/081  1400=id 39  1450=id 39
+[compare] step 041/081  1400=id 40  1450=id 40
+[compare] step 042/081  1400=id 41  1450=id 41
+[compare] step 043/081  1400=id 42  1450=id 42
+[compare] step 044/081  1400=id 43  1450=id 43
+[compare] step 045/081  1400=id 44  1450=id 44
+[compare] step 046/081  1400=id 45  1450=id 45
+[compare] step 047/081  1400=id 46  1450=id 46
+[compare] step 048/081  1400=id 47  1450=id 47
+[compare] step 049/081  1400=id 48  1450=id 48
+[compare] step 050/081  1400=id 49  1450=id 49
+[compare] step 051/081  1400=id 50  1450=id 50
+[compare] step 052/081  1400=id 51  1450=id 51
+[compare] step 053/081  1400=id 52  1450=id 52
+[compare] step 054/081  1400=id 53  1450=id 53
+[compare] step 055/081  1400=id 54  1450=id 54
+[compare] step 056/081  1400=id 55  1450=id 55
+[compare] step 057/081  1400=id 56  1450=id 56
+[compare] step 058/081  1400=id 57  1450=id 57
+[compare] step 059/081  1400=id 58  1450=id 58
+[compare] step 060/081  1400=id 59  1450=id 59
+[compare] step 061/081  1400=id 60  1450=id 60
+[compare] step 062/081  1400=id 61  1450=id 61
+[compare] step 063/081  1400=id 62  1450=id 62
+[compare] step 064/081  1400=id 63  1450=id 63
+[compare] step 065/081  1400=id 64  1450=id 64
+[compare] step 066/081  1400=id 65  1450=id 65
+[compare] step 067/081  1400=id 66  1450=id 66
+[compare] step 068/081  1400=id 67  1450=id 67
+[compare] step 069/081  1400=id 68  1450=id 68
+[compare] step 070/081  1400=id 69  1450=id 69
+[compare] step 071/081  1400=id 70  1450=id 70
+[compare] step 072/081  1400=id 71  1450=id 71
+[compare] step 073/081  1400=id 72  1450=id 72
+[compare] step 074/081  1400=id 73  1450=id 73
+[compare] step 075/081  1400=id 74  1450=id 74
+[compare] step 076/081  1400=id 75  1450=id 75
+[compare] step 077/081  1400=id 76  1450=id 76
+[compare] step 078/081  1400=id 77  1450=id 77
+[compare] step 079/081  1400=id 78  1450=id 78
+[compare] step 080/081  1400=id 79  1450=id None
+[compare] step 081/081  1400=id 80  1450=id None
+[compare] Final settle 100 steps
+
+[compare] Episode random_spec_006.json
+[compare] 1400: 84 boxes, 1450: 84 boxes
+[compare] step 001/084  1400=id 0  1450=id 0
+[compare] step 002/084  1400=id 1  1450=id 1
+[compare] step 003/084  1400=id 2  1450=id 2
+[compare] step 004/084  1400=id 3  1450=id 3
+[compare] step 005/084  1400=id 4  1450=id 4
+[compare] step 006/084  1400=id 5  1450=id 5
+[compare] step 007/084  1400=id 6  1450=id 6
+[compare] step 008/084  1400=id 7  1450=id 7
+[compare] step 009/084  1400=id 8  1450=id 8
+[compare] step 010/084  1400=id 9  1450=id 9
+[compare] step 011/084  1400=id 10  1450=id 10
+[compare] step 012/084  1400=id 11  1450=id 11
+[compare] step 013/084  1400=id 12  1450=id 12
+[compare] step 014/084  1400=id 13  1450=id 13
+[compare] step 015/084  1400=id 14  1450=id 14
+[compare] step 016/084  1400=id 15  1450=id 15
+[compare] step 017/084  1400=id 16  1450=id 16
+[compare] step 018/084  1400=id 17  1450=id 17
+[compare] step 019/084  1400=id 18  1450=id 18
+[compare] step 020/084  1400=id 19  1450=id 19
+[compare] step 021/084  1400=id 20  1450=id 20
+[compare] step 022/084  1400=id 21  1450=id 21
+[compare] step 023/084  1400=id 22  1450=id 22
+[compare] step 024/084  1400=id 23  1450=id 23
+[compare] step 025/084  1400=id 24  1450=id 24
+[compare] step 026/084  1400=id 25  1450=id 25
+[compare] step 027/084  1400=id 26  1450=id 26
+[compare] step 028/084  1400=id 27  1450=id 27
+[compare] step 029/084  1400=id 28  1450=id 28
+[compare] step 030/084  1400=id 29  1450=id 29
+[compare] step 031/084  1400=id 30  1450=id 30
+[compare] step 032/084  1400=id 31  1450=id 31
+[compare] step 033/084  1400=id 32  1450=id 32
+[compare] step 034/084  1400=id 33  1450=id 33
+[compare] step 035/084  1400=id 34  1450=id 34
+[compare] step 036/084  1400=id 35  1450=id 35
+[compare] step 037/084  1400=id 36  1450=id 36
+[compare] step 038/084  1400=id 37  1450=id 37
+[compare] step 039/084  1400=id 38  1450=id 38
+[compare] step 040/084  1400=id 39  1450=id 39
+[compare] step 041/084  1400=id 40  1450=id 40
+[compare] step 042/084  1400=id 41  1450=id 41
+[compare] step 043/084  1400=id 42  1450=id 42
+[compare] step 044/084  1400=id 43  1450=id 43
+[compare] step 045/084  1400=id 44  1450=id 44
+[compare] step 046/084  1400=id 45  1450=id 45
+[compare] step 047/084  1400=id 46  1450=id 46
+[compare] step 048/084  1400=id 47  1450=id 47
+[compare] step 049/084  1400=id 48  1450=id 48
+[compare] step 050/084  1400=id 49  1450=id 49
+[compare] step 051/084  1400=id 50  1450=id 50
+[compare] step 052/084  1400=id 51  1450=id 51
+[compare] step 053/084  1400=id 52  1450=id 52
+[compare] step 054/084  1400=id 53  1450=id 53
+[compare] step 055/084  1400=id 54  1450=id 54
+[compare] step 056/084  1400=id 55  1450=id 55
+[compare] step 057/084  1400=id 56  1450=id 56
+[compare] step 058/084  1400=id 57  1450=id 57
+[compare] step 059/084  1400=id 58  1450=id 58
+[compare] step 060/084  1400=id 59  1450=id 59
+[compare] step 061/084  1400=id 60  1450=id 60
+[compare] step 062/084  1400=id 61  1450=id 61
+[compare] step 063/084  1400=id 62  1450=id 62
+[compare] step 064/084  1400=id 63  1450=id 63
+[compare] step 065/084  1400=id 64  1450=id 64
+[compare] step 066/084  1400=id 65  1450=id 65
+[compare] step 067/084  1400=id 66  1450=id 66
+[compare] step 068/084  1400=id 67  1450=id 67
+[compare] step 069/084  1400=id 68  1450=id 68
+[compare] step 070/084  1400=id 69  1450=id 69
+[compare] step 071/084  1400=id 70  1450=id 70
+[compare] step 072/084  1400=id 71  1450=id 71
+[compare] step 073/084  1400=id 72  1450=id 72
+[compare] step 074/084  1400=id 73  1450=id 73
+[compare] step 075/084  1400=id 74  1450=id 74
+[compare] step 076/084  1400=id 75  1450=id 75
+[compare] step 077/084  1400=id 76  1450=id 76
+[compare] step 078/084  1400=id 77  1450=id 77
+[compare] step 079/084  1400=id 78  1450=id 78
+[compare] step 080/084  1400=id 79  1450=id 79
+[compare] step 081/084  1400=id 80  1450=id 80
+[compare] step 082/084  1400=id 81  1450=id 81
+[compare] step 083/084  1400=id 82  1450=id 82
+[compare] step 084/084  1400=id 83  1450=id 83
+[compare] Final settle 100 steps
+
+[compare] Episode random_spec_007.json
+[compare] 1400: 84 boxes, 1450: 86 boxes
+[compare] step 001/086  1400=id 0  1450=id 0
+[compare] step 002/086  1400=id 1  1450=id 1
+[compare] step 003/086  1400=id 2  1450=id 2
+[compare] step 004/086  1400=id 3  1450=id 3
+[compare] step 005/086  1400=id 4  1450=id 4
+[compare] step 006/086  1400=id 5  1450=id 5
+[compare] step 007/086  1400=id 6  1450=id 6
+[compare] step 008/086  1400=id 7  1450=id 7
+[compare] step 009/086  1400=id 8  1450=id 8
+[compare] step 010/086  1400=id 9  1450=id 9
+[compare] step 011/086  1400=id 10  1450=id 10
+[compare] step 012/086  1400=id 11  1450=id 11
+[compare] step 013/086  1400=id 12  1450=id 12
+[compare] step 014/086  1400=id 13  1450=id 13
+[compare] step 015/086  1400=id 14  1450=id 14
+[compare] step 016/086  1400=id 15  1450=id 15
+[compare] step 017/086  1400=id 16  1450=id 16
+[compare] step 018/086  1400=id 17  1450=id 17
+[compare] step 019/086  1400=id 18  1450=id 18
+[compare] step 020/086  1400=id 19  1450=id 19
+[compare] step 021/086  1400=id 20  1450=id 20
+[compare] step 022/086  1400=id 21  1450=id 21
+[compare] step 023/086  1400=id 22  1450=id 22
+[compare] step 024/086  1400=id 23  1450=id 23
+[compare] step 025/086  1400=id 24  1450=id 24
+[compare] step 026/086  1400=id 25  1450=id 25
+[compare] step 027/086  1400=id 26  1450=id 26
+[compare] step 028/086  1400=id 27  1450=id 27
+[compare] step 029/086  1400=id 28  1450=id 28
+[compare] step 030/086  1400=id 29  1450=id 29
+[compare] step 031/086  1400=id 30  1450=id 30
+[compare] step 032/086  1400=id 31  1450=id 31
+[compare] step 033/086  1400=id 32  1450=id 32
+[compare] step 034/086  1400=id 33  1450=id 33
+[compare] step 035/086  1400=id 34  1450=id 34
+[compare] step 036/086  1400=id 35  1450=id 35
+[compare] step 037/086  1400=id 36  1450=id 36
+[compare] step 038/086  1400=id 37  1450=id 37
+[compare] step 039/086  1400=id 38  1450=id 38
+[compare] step 040/086  1400=id 39  1450=id 39
+[compare] step 041/086  1400=id 40  1450=id 40
+[compare] step 042/086  1400=id 41  1450=id 41
+[compare] step 043/086  1400=id 42  1450=id 42
+[compare] step 044/086  1400=id 43  1450=id 43
+[compare] step 045/086  1400=id 44  1450=id 44
+[compare] step 046/086  1400=id 45  1450=id 45
+[compare] step 047/086  1400=id 46  1450=id 46
+[compare] step 048/086  1400=id 47  1450=id 47
+[compare] step 049/086  1400=id 48  1450=id 48
+[compare] step 050/086  1400=id 49  1450=id 49
+[compare] step 051/086  1400=id 50  1450=id 50
+[compare] step 052/086  1400=id 51  1450=id 51
+[compare] step 053/086  1400=id 52  1450=id 52
+[compare] step 054/086  1400=id 53  1450=id 53
+[compare] step 055/086  1400=id 54  1450=id 54
+[compare] step 056/086  1400=id 55  1450=id 55
+[compare] step 057/086  1400=id 56  1450=id 56
+[compare] step 058/086  1400=id 57  1450=id 57
+[compare] step 059/086  1400=id 58  1450=id 58
+[compare] step 060/086  1400=id 59  1450=id 59
+[compare] step 061/086  1400=id 60  1450=id 60
+[compare] step 062/086  1400=id 61  1450=id 61
+[compare] step 063/086  1400=id 62  1450=id 62
+[compare] step 064/086  1400=id 63  1450=id 63
+[compare] step 065/086  1400=id 64  1450=id 64
+[compare] step 066/086  1400=id 65  1450=id 65
+[compare] step 067/086  1400=id 66  1450=id 66
+[compare] step 068/086  1400=id 67  1450=id 67
+[compare] step 069/086  1400=id 68  1450=id 68
+[compare] step 070/086  1400=id 69  1450=id 69
+[compare] step 071/086  1400=id 70  1450=id 70
+[compare] step 072/086  1400=id 71  1450=id 71
+[compare] step 073/086  1400=id 72  1450=id 72
+[compare] step 074/086  1400=id 73  1450=id 73
+[compare] step 075/086  1400=id 74  1450=id 74
+[compare] step 076/086  1400=id 75  1450=id 75
+[compare] step 077/086  1400=id 76  1450=id 76
+[compare] step 078/086  1400=id 77  1450=id 77
+[compare] step 079/086  1400=id 78  1450=id 78
+[compare] step 080/086  1400=id 79  1450=id 79
+[compare] step 081/086  1400=id 80  1450=id 80
+[compare] step 082/086  1400=id 81  1450=id 81
+[compare] step 083/086  1400=id 82  1450=id 82
+[compare] step 084/086  1400=id 83  1450=id 83
+[compare] step 085/086  1400=id None  1450=id 84
+[compare] step 086/086  1400=id None  1450=id 85
+[compare] Final settle 100 steps
+
+[compare] Episode random_spec_008.json
+[compare] 1400: 94 boxes, 1450: 88 boxes
+[compare] step 001/094  1400=id 0  1450=id 0
+[compare] step 002/094  1400=id 1  1450=id 1
+[compare] step 003/094  1400=id 2  1450=id 2
+[compare] step 004/094  1400=id 3  1450=id 3
+[compare] step 005/094  1400=id 4  1450=id 4
+[compare] step 006/094  1400=id 5  1450=id 5
+[compare] step 007/094  1400=id 6  1450=id 6
+[compare] step 008/094  1400=id 7  1450=id 7
+[compare] step 009/094  1400=id 8  1450=id 8
+[compare] step 010/094  1400=id 9  1450=id 9
+[compare] step 011/094  1400=id 10  1450=id 10
+[compare] step 012/094  1400=id 11  1450=id 11
+[compare] step 013/094  1400=id 12  1450=id 12
+[compare] step 014/094  1400=id 13  1450=id 13
+[compare] step 015/094  1400=id 14  1450=id 14
+[compare] step 016/094  1400=id 15  1450=id 15
+[compare] step 017/094  1400=id 16  1450=id 16
+[compare] step 018/094  1400=id 17  1450=id 17
+[compare] step 019/094  1400=id 18  1450=id 18
+[compare] step 020/094  1400=id 19  1450=id 19
+[compare] step 021/094  1400=id 20  1450=id 20
+[compare] step 022/094  1400=id 21  1450=id 21
+[compare] step 023/094  1400=id 22  1450=id 22
+[compare] step 024/094  1400=id 23  1450=id 23
+[compare] step 025/094  1400=id 24  1450=id 24
+[compare] step 026/094  1400=id 25  1450=id 25
+[compare] step 027/094  1400=id 26  1450=id 26
+[compare] step 028/094  1400=id 27  1450=id 27
+[compare] step 029/094  1400=id 28  1450=id 28
+[compare] step 030/094  1400=id 29  1450=id 29
+[compare] step 031/094  1400=id 30  1450=id 30
+[compare] step 032/094  1400=id 31  1450=id 31
+[compare] step 033/094  1400=id 32  1450=id 32
+[compare] step 034/094  1400=id 33  1450=id 33
+[compare] step 035/094  1400=id 34  1450=id 34
+[compare] step 036/094  1400=id 35  1450=id 35
+[compare] step 037/094  1400=id 36  1450=id 36
+[compare] step 038/094  1400=id 37  1450=id 37
+[compare] step 039/094  1400=id 38  1450=id 38
+[compare] step 040/094  1400=id 39  1450=id 39
+[compare] step 041/094  1400=id 40  1450=id 40
+[compare] step 042/094  1400=id 41  1450=id 41
+[compare] step 043/094  1400=id 42  1450=id 42
+[compare] step 044/094  1400=id 43  1450=id 43
+[compare] step 045/094  1400=id 44  1450=id 44
+[compare] step 046/094  1400=id 45  1450=id 45
+[compare] step 047/094  1400=id 46  1450=id 46
+[compare] step 048/094  1400=id 47  1450=id 47
+[compare] step 049/094  1400=id 48  1450=id 48
+[compare] step 050/094  1400=id 49  1450=id 49
+[compare] step 051/094  1400=id 50  1450=id 50
+[compare] step 052/094  1400=id 51  1450=id 51
+[compare] step 053/094  1400=id 52  1450=id 52
+[compare] step 054/094  1400=id 53  1450=id 53
+[compare] step 055/094  1400=id 54  1450=id 54
+[compare] step 056/094  1400=id 55  1450=id 55
+[compare] step 057/094  1400=id 56  1450=id 56
+[compare] step 058/094  1400=id 57  1450=id 57
+[compare] step 059/094  1400=id 58  1450=id 58
+[compare] step 060/094  1400=id 59  1450=id 59
+[compare] step 061/094  1400=id 60  1450=id 60
+[compare] step 062/094  1400=id 61  1450=id 61
+[compare] step 063/094  1400=id 62  1450=id 62
+[compare] step 064/094  1400=id 63  1450=id 63
+[compare] step 065/094  1400=id 64  1450=id 64
+[compare] step 066/094  1400=id 65  1450=id 65
+[compare] step 067/094  1400=id 66  1450=id 66
+[compare] step 068/094  1400=id 67  1450=id 67
+[compare] step 069/094  1400=id 68  1450=id 68
+[compare] step 070/094  1400=id 69  1450=id 69
+[compare] step 071/094  1400=id 70  1450=id 70
+[compare] step 072/094  1400=id 71  1450=id 71
+[compare] step 073/094  1400=id 72  1450=id 72
+[compare] step 074/094  1400=id 73  1450=id 73
+[compare] step 075/094  1400=id 74  1450=id 74
+[compare] step 076/094  1400=id 75  1450=id 75
+[compare] step 077/094  1400=id 76  1450=id 76
+[compare] step 078/094  1400=id 77  1450=id 77
+[compare] step 079/094  1400=id 78  1450=id 78
+[compare] step 080/094  1400=id 79  1450=id 79
+[compare] step 081/094  1400=id 80  1450=id 80
+[compare] step 082/094  1400=id 81  1450=id 81
+[compare] step 083/094  1400=id 82  1450=id 82
+[compare] step 084/094  1400=id 83  1450=id 83
+[compare] step 085/094  1400=id 84  1450=id 84
+[compare] step 086/094  1400=id 85  1450=id 85
+[compare] step 087/094  1400=id 86  1450=id 86
+[compare] step 088/094  1400=id 87  1450=id 87
+[compare] step 089/094  1400=id 88  1450=id None
+[compare] step 090/094  1400=id 89  1450=id None
+[compare] step 091/094  1400=id 90  1450=id None
+[compare] step 092/094  1400=id 91  1450=id None
+[compare] step 093/094  1400=id 92  1450=id None
+[compare] step 094/094  1400=id 93  1450=id None
+[compare] Final settle 100 steps
+
+[compare] Episode random_spec_009.json
+[compare] 1400: 91 boxes, 1450: 94 boxes
+[compare] step 001/094  1400=id 0  1450=id 0
+[compare] step 002/094  1400=id 1  1450=id 1
+[compare] step 003/094  1400=id 2  1450=id 2
+[compare] step 004/094  1400=id 3  1450=id 3
+[compare] step 005/094  1400=id 4  1450=id 4
+[compare] step 006/094  1400=id 5  1450=id 5
+[compare] step 007/094  1400=id 6  1450=id 6
+[compare] step 008/094  1400=id 7  1450=id 7
+[compare] step 009/094  1400=id 8  1450=id 8
+[compare] step 010/094  1400=id 9  1450=id 9
+[compare] step 011/094  1400=id 10  1450=id 10
+[compare] step 012/094  1400=id 11  1450=id 11
+[compare] step 013/094  1400=id 12  1450=id 12
+[compare] step 014/094  1400=id 13  1450=id 13
+[compare] step 015/094  1400=id 14  1450=id 14
+[compare] step 016/094  1400=id 15  1450=id 15
+[compare] step 017/094  1400=id 16  1450=id 16
+[compare] step 018/094  1400=id 17  1450=id 17
+[compare] step 019/094  1400=id 18  1450=id 18
+[compare] step 020/094  1400=id 19  1450=id 19
+[compare] step 021/094  1400=id 20  1450=id 20
+[compare] step 022/094  1400=id 21  1450=id 21
+[compare] step 023/094  1400=id 22  1450=id 22
+[compare] step 024/094  1400=id 23  1450=id 23
+[compare] step 025/094  1400=id 24  1450=id 24
+[compare] step 026/094  1400=id 25  1450=id 25
+[compare] step 027/094  1400=id 26  1450=id 26
+[compare] step 028/094  1400=id 27  1450=id 27
+[compare] step 029/094  1400=id 28  1450=id 28
+[compare] step 030/094  1400=id 29  1450=id 29
+[compare] step 031/094  1400=id 30  1450=id 30
+[compare] step 032/094  1400=id 31  1450=id 31
+[compare] step 033/094  1400=id 32  1450=id 32
+[compare] step 034/094  1400=id 33  1450=id 33
+[compare] step 035/094  1400=id 34  1450=id 34
+[compare] step 036/094  1400=id 35  1450=id 35
+[compare] step 037/094  1400=id 36  1450=id 36
+[compare] step 038/094  1400=id 37  1450=id 37
+[compare] step 039/094  1400=id 38  1450=id 38
+[compare] step 040/094  1400=id 39  1450=id 39
+[compare] step 041/094  1400=id 40  1450=id 40
+[compare] step 042/094  1400=id 41  1450=id 41
+[compare] step 043/094  1400=id 42  1450=id 42
+[compare] step 044/094  1400=id 43  1450=id 43
+[compare] step 045/094  1400=id 44  1450=id 44
+[compare] step 046/094  1400=id 45  1450=id 45
+[compare] step 047/094  1400=id 46  1450=id 46
+[compare] step 048/094  1400=id 47  1450=id 47
+[compare] step 049/094  1400=id 48  1450=id 48
+[compare] step 050/094  1400=id 49  1450=id 49
+[compare] step 051/094  1400=id 50  1450=id 50
+[compare] step 052/094  1400=id 51  1450=id 51
+[compare] step 053/094  1400=id 52  1450=id 52
+[compare] step 054/094  1400=id 53  1450=id 53
+[compare] step 055/094  1400=id 54  1450=id 54
+[compare] step 056/094  1400=id 55  1450=id 55
+[compare] step 057/094  1400=id 56  1450=id 56
+[compare] step 058/094  1400=id 57  1450=id 57
+[compare] step 059/094  1400=id 58  1450=id 58
+[compare] step 060/094  1400=id 59  1450=id 59
+[compare] step 061/094  1400=id 60  1450=id 60
+[compare] step 062/094  1400=id 61  1450=id 61
+[compare] step 063/094  1400=id 62  1450=id 62
+[compare] step 064/094  1400=id 63  1450=id 63
+[compare] step 065/094  1400=id 64  1450=id 64
+[compare] step 066/094  1400=id 65  1450=id 65
+[compare] step 067/094  1400=id 66  1450=id 66
+[compare] step 068/094  1400=id 67  1450=id 67
+[compare] step 069/094  1400=id 68  1450=id 68
+[compare] step 070/094  1400=id 69  1450=id 69
+[compare] step 071/094  1400=id 70  1450=id 70
+[compare] step 072/094  1400=id 71  1450=id 71
+[compare] step 073/094  1400=id 72  1450=id 72
+[compare] step 074/094  1400=id 73  1450=id 73
+[compare] step 075/094  1400=id 74  1450=id 74
+[compare] step 076/094  1400=id 75  1450=id 75
+[compare] step 077/094  1400=id 76  1450=id 76
+[compare] step 078/094  1400=id 77  1450=id 77
+[compare] step 079/094  1400=id 78  1450=id 78
+[compare] step 080/094  1400=id 79  1450=id 79
+[compare] step 081/094  1400=id 80  1450=id 80
+[compare] step 082/094  1400=id 81  1450=id 81
+[compare] step 083/094  1400=id 82  1450=id 82
+[compare] step 084/094  1400=id 83  1450=id 83
+[compare] step 085/094  1400=id 84  1450=id 84
+[compare] step 086/094  1400=id 85  1450=id 85
+[compare] step 087/094  1400=id 86  1450=id 86
+[compare] step 088/094  1400=id 87  1450=id 87
+[compare] step 089/094  1400=id 88  1450=id 88
+[compare] step 090/094  1400=id 89  1450=id 89
+[compare] step 091/094  1400=id 90  1450=id 90
+[compare] step 092/094  1400=id None  1450=id 91
+[compare] step 093/094  1400=id None  1450=id 92
+[compare] step 094/094  1400=id None  1450=id 93
+[compare] Final settle 100 steps
+[25.504s] Isaac Sim Full App is loaded.
+[25.972s] Simulation App Startup Complete
+2026-07-14T05:28:53Z [118,735ms] [Warning] [omni.physx.tensors.plugin] prim '/World/left_box_001_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-14T05:28:54Z [120,424ms] [Warning] [isaacsim.core.api.simulation_context.simulation_context] A new stage was opened, World or Simulation Object are invalidated and you would need to initialize them again before using them.
+2026-07-14T05:30:29Z [214,735ms] [Warning] [omni.physx.tensors.plugin] prim '/World/left_box_001_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-14T05:30:31Z [216,644ms] [Warning] [isaacsim.core.api.simulation_context.simulation_context] A new stage was opened, World or Simulation Object are invalidated and you would need to initialize them again before using them.
+2026-07-14T05:31:59Z [305,367ms] [Warning] [omni.physx.tensors.plugin] prim '/World/left_box_001_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-14T05:32:01Z [307,108ms] [Warning] [isaacsim.core.api.simulation_context.simulation_context] A new stage was opened, World or Simulation Object are invalidated and you would need to initialize them again before using them.
+2026-07-14T05:33:25Z [391,520ms] [Warning] [omni.physx.tensors.plugin] prim '/World/left_box_001_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-14T05:33:27Z [393,306ms] [Warning] [isaacsim.core.api.simulation_context.simulation_context] A new stage was opened, World or Simulation Object are invalidated and you would need to initialize them again before using them.
+2026-07-14T05:34:58Z [483,901ms] [Warning] [omni.physx.tensors.plugin] prim '/World/left_box_001_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-14T05:35:00Z [485,622ms] [Warning] [isaacsim.core.api.simulation_context.simulation_context] A new stage was opened, World or Simulation Object are invalidated and you would need to initialize them again before using them.
+2026-07-14T05:36:04Z [550,553ms] [Warning] [isaacsim.core.api.simulation_context.simulation_context] A new stage was opened, World or Simulation Object are invalidated and you would need to initialize them again before using them.
+2026-07-14T05:37:25Z [631,043ms] [Warning] [omni.physx.tensors.plugin] prim '/World/left_box_001_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-14T05:37:27Z [632,741ms] [Warning] [isaacsim.core.api.simulation_context.simulation_context] A new stage was opened, World or Simulation Object are invalidated and you would need to initialize them again before using them.
+2026-07-14T05:38:50Z [716,486ms] [Warning] [omni.physx.tensors.plugin] prim '/World/left_box_001_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-14T05:38:52Z [718,590ms] [Warning] [isaacsim.core.api.simulation_context.simulation_context] A new stage was opened, World or Simulation Object are invalidated and you would need to initialize them again before using them.
+2026-07-14T05:40:24Z [809,788ms] [Warning] [omni.physx.tensors.plugin] prim '/World/left_box_001_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-14T05:40:25Z [811,573ms] [Warning] [isaacsim.core.api.simulation_context.simulation_context] A new stage was opened, World or Simulation Object are invalidated and you would need to initialize them again before using them.
+2026-07-14T05:41:57Z [902,765ms] [Warning] [omni.physx.tensors.plugin] prim '/World/left_box_001_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+[903.254s] Simulation App Shutting Down
