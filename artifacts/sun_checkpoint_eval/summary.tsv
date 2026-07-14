@@ -1,2 +1,3 @@
 label	dataset	count	avg	min	max	success	checkpoint	result_json
 gap12to52_c1450	eval12	12	85.7250	81.5000	92.3000	True	isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_gap_guard_v1_deploybest/deploy_eval/candidate-001450.pt	/home/user/Documents/assignment2_project/artifacts/sun_checkpoint_eval/gap12to52_c1450/eval12/candidate-001450/sim_results/result.json
+gap12to52_c1450	eval52	52	85.5577	73.1000	92.6000	True	isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_gap_guard_v1_deploybest/deploy_eval/candidate-001450.pt	/home/user/Documents/assignment2_project/artifacts/sun_checkpoint_eval/gap12to52_c1450/eval52/candidate-001450/sim_results/result.json

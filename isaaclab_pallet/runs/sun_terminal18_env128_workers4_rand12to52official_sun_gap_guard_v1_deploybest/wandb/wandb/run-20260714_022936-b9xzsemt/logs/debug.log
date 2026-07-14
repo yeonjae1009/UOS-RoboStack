@@ -17,3 +17,8 @@ config: {'run_name': 'sun_terminal18_env128_workers4_rand12to52official_sun_gap_
 2026-07-14 02:29:37,564 INFO    MainThread:2379460 [wandb_run.py:_redirect():2442] Wrapping output streams.
 2026-07-14 02:29:37,564 INFO    MainThread:2379460 [wandb_run.py:_redirect():2465] Redirects installed.
 2026-07-14 02:29:37,565 INFO    MainThread:2379460 [wandb_init.py:init():1012] run started, returning control to user process
+2026-07-14 13:43:25,795 INFO    MainThread:2379460 [wandb_run.py:_finish():2285] finishing run nkyeonjae1009-university-of-seoul/assignment2-pallet/b9xzsemt
+2026-07-14 13:43:25,795 INFO    MainThread:2379460 [wandb_run.py:_atexit_cleanup():2490] got exitcode: 0
+2026-07-14 13:43:25,795 INFO    MainThread:2379460 [wandb_run.py:_restore():2472] restore
+2026-07-14 13:43:25,795 INFO    MainThread:2379460 [wandb_run.py:_restore():2478] restore done
+2026-07-14 13:43:27,940 INFO    MainThread:2379460 [wandb_run.py:_footer_sync_info():3895] logging synced files

@@ -1,0 +1,37 @@
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/j9idxqnt
+[gat-train] run_dir=isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_anchor_plateau_v1_deploybest device=cuda:0 num_envs=128 num_packer_workers=4 obs_shape=(128, 301, 9) leaf_shape=(128, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=sun_anchor_plateau_v1 learn_finish_action=False action_space=100 candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=12 box_seq_dir=artifacts/random_spec_eval_10_plus_official/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,box_sequence_0,box_sequence_1
+[gat-train] confirm_eval_seq_count=52 confirm_box_seq_dir=artifacts/random_spec_eval_50_plus_official/box_sequence confirm_eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,random_spec_010,random_spec_011,random_spec_012,random_spec_013,random_spec_014,random_spec_015,random_spec_016,random_spec_017,random_spec_018,random_spec_019,random_spec_020,random_spec_021,random_spec_022,random_spec_023,random_spec_024,random_spec_025,random_spec_026,random_spec_027,random_spec_028,random_spec_029,random_spec_030,random_spec_031,random_spec_032,random_spec_033,random_spec_034,random_spec_035,random_spec_036,random_spec_037,random_spec_038,random_spec_039,random_spec_040,random_spec_041,random_spec_042,random_spec_043,random_spec_044,random_spec_045,random_spec_046,random_spec_047,random_spec_048,random_spec_049,box_sequence_0,box_sequence_1
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial deployment score = 84.86 min=77.54 bottom10=78.61 confirm_score=82.12 confirm_min=0.00 confirm_bottom10=62.14 (torch_eval=87.65)  -> PCT-best.pt
+[gat-train] update=1 samples=640 fps=4.0 loss=1.3203 actor=0.3924 value=0.9340 entropy=0.6173 mean_return=0.000 mean_len=0.0
+[gat-train] update=2 samples=1280 fps=7.8 loss=2.5588 actor=0.9944 value=1.5751 entropy=1.0705 mean_return=0.000 mean_len=0.0
+[gat-train] update=3 samples=1920 fps=11.3 loss=4.3970 actor=2.1603 value=2.2547 entropy=1.7995 mean_return=0.000 mean_len=0.0
+[gat-train] update=4 samples=2560 fps=14.5 loss=7.4260 actor=3.7218 value=3.7266 entropy=2.2420 mean_return=0.000 mean_len=0.0
+[gat-train] update=5 samples=3200 fps=17.4 loss=7.1589 actor=3.7012 value=3.4816 entropy=2.3970 mean_return=0.000 mean_len=0.0
+[gat-train] update=6 samples=3840 fps=19.8 loss=6.8623 actor=3.9175 value=2.9711 entropy=2.6387 mean_return=0.000 mean_len=0.0
+[gat-train] update=7 samples=4480 fps=22.1 loss=7.4645 actor=3.4808 value=4.0096 entropy=2.5904 mean_return=12.433 mean_len=33.0
+[gat-train] update=8 samples=5120 fps=24.1 loss=6.2202 actor=3.6413 value=2.6054 entropy=2.6567 mean_return=12.433 mean_len=33.0
+[gat-train] update=9 samples=5760 fps=25.8 loss=6.2878 actor=3.6609 value=2.6537 entropy=2.6792 mean_return=12.433 mean_len=33.0
+[gat-train] update=10 samples=6400 fps=27.3 loss=5.3157 actor=3.0827 value=2.2587 entropy=2.5777 mean_return=12.433 mean_len=33.0
+[gat-train] update=11 samples=7040 fps=28.6 loss=5.6662 actor=3.2493 value=2.4424 entropy=2.5485 mean_return=24.587 mean_len=42.5
+[gat-train] update=12 samples=7680 fps=29.7 loss=5.0369 actor=2.8861 value=2.1753 entropy=2.4482 mean_return=29.098 mean_len=47.0
+[gat-train] update=13 samples=8320 fps=30.7 loss=5.1882 actor=2.8981 value=2.3135 entropy=2.3334 mean_return=29.098 mean_len=47.0
+[gat-train] update=14 samples=8960 fps=31.7 loss=4.5704 actor=2.4609 value=2.1309 entropy=2.1361 mean_return=41.435 mean_len=62.8
+[gat-train] update=15 samples=9600 fps=32.8 loss=4.8155 actor=2.4710 value=2.3636 entropy=1.8995 mean_return=45.482 mean_len=69.2
+[gat-train] update=16 samples=10240 fps=34.1 loss=4.8374 actor=2.2141 value=2.6404 entropy=1.7037 mean_return=51.166 mean_len=77.7
+[gat-train] update=17 samples=10880 fps=35.6 loss=5.0539 actor=2.1127 value=2.9567 entropy=1.5595 mean_return=53.490 mean_len=81.5
+[gat-train] update=18 samples=11520 fps=37.1 loss=4.3034 actor=1.8300 value=2.4883 entropy=1.4828 mean_return=55.399 mean_len=84.2
+[gat-train] update=19 samples=12160 fps=38.4 loss=5.2978 actor=2.1320 value=3.1794 entropy=1.3535 mean_return=55.664 mean_len=84.4
+[gat-train] update=20 samples=12800 fps=39.5 loss=5.9891 actor=2.1397 value=3.8629 entropy=1.3520 mean_return=55.664 mean_len=84.4
+[gat-train] update=21 samples=13440 fps=40.4 loss=6.1833 actor=2.3072 value=3.8902 entropy=1.4198 mean_return=55.664 mean_len=84.4
+[gat-train] update=22 samples=14080 fps=41.1 loss=5.9540 actor=2.3129 value=3.6555 entropy=1.4451 mean_return=55.664 mean_len=84.4
+[gat-train] update=23 samples=14720 fps=41.8 loss=5.4892 actor=2.3042 value=3.2008 entropy=1.5764 mean_return=55.677 mean_len=84.4
+[gat-train] update=24 samples=15360 fps=42.4 loss=5.3720 actor=2.3385 value=3.0490 entropy=1.5586 mean_return=55.677 mean_len=84.4
+[gat-train] update=25 samples=16000 fps=42.9 loss=5.0814 actor=2.1976 value=2.8998 entropy=1.6029 mean_return=55.677 mean_len=84.4
+[gat-train] update=26 samples=16640 fps=43.3 loss=4.8771 actor=2.1976 value=2.6961 entropy=1.6664 mean_return=55.609 mean_len=84.2
+[gat-train] update=27 samples=17280 fps=43.5 loss=5.0997 actor=2.2582 value=2.8577 entropy=1.6180 mean_return=55.323 mean_len=83.7
+[gat-train] update=28 samples=17920 fps=43.7 loss=4.4022 actor=2.0291 value=2.3897 entropy=1.6597 mean_return=55.323 mean_len=83.7
+[gat-train] update=29 samples=18560 fps=43.9 loss=4.4602 actor=2.0413 value=2.4348 entropy=1.5922 mean_return=55.168 mean_len=83.4
+[gat-train] update=30 samples=19200 fps=44.1 loss=4.2085 actor=1.9270 value=2.2973 entropy=1.5818 mea
