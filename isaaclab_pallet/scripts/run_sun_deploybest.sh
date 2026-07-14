@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-set -u
+set -euo pipefail
 
-cd /home/user/Documents/assignment2_project
+cd "$(dirname "$0")/../.."
 
 NV_LIB_DIRS=$(
   python3 -c 'import glob, os, site
@@ -14,12 +14,28 @@ if [ -n "$NV_LIB_DIRS" ]; then
   export LD_LIBRARY_PATH="$NV_LIB_DIRS${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
 
-BEST=isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
-SUN_V2_RESUME=isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand10eval_sun_v2_deploybest/PCT-resume.pt
-EVAL12_DIR=artifacts/random_spec_eval_10_plus_official/box_sequence
-EVAL12_SEQS="$(printf 'random_spec_%03d ' $(seq 0 9))box_sequence_0 box_sequence_1"
-EVAL52_DIR=artifacts/random_spec_eval_50_plus_official/box_sequence
-EVAL52_SEQS="$(printf 'random_spec_%03d ' $(seq 0 49))box_sequence_0 box_sequence_1"
+BEST="${BEST:-isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt}"
+SUN_V2_RESUME="${SUN_V2_RESUME:-isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand10eval_sun_v2_deploybest/PCT-resume.pt}"
+EVAL12_DIR="${EVAL12_DIR:-artifacts/random_spec_eval_10_plus_official/box_sequence}"
+EVAL52_DIR="${EVAL52_DIR:-artifacts/random_spec_eval_50_plus_official/box_sequence}"
+
+mapfile -t EVAL12_SEQS < <(printf 'random_spec_%03d\n' $(seq 0 9); printf '%s\n' box_sequence_0 box_sequence_1)
+mapfile -t EVAL52_SEQS < <(printf 'random_spec_%03d\n' $(seq 0 49); printf '%s\n' box_sequence_0 box_sequence_1)
+
+if [ "${#EVAL12_SEQS[@]}" -ne 12 ]; then
+  echo "[sun-deploybest] expected 12 primary eval sequences, got ${#EVAL12_SEQS[@]}" >&2
+  exit 1
+fi
+if [ "${#EVAL52_SEQS[@]}" -ne 52 ]; then
+  echo "[sun-deploybest] expected 52 confirm eval sequences, got ${#EVAL52_SEQS[@]}" >&2
+  exit 1
+fi
+for name in "${EVAL12_SEQS[@]}"; do
+  test -f "$EVAL12_DIR/$name.json" || { echo "[sun-deploybest] missing primary eval: $EVAL12_DIR/$name.json" >&2; exit 1; }
+done
+for name in "${EVAL52_SEQS[@]}"; do
+  test -f "$EVAL52_DIR/$name.json" || { echo "[sun-deploybest] missing confirm eval: $EVAL52_DIR/$name.json" >&2; exit 1; }
+done
 
 for item in \
   sun_v2:1:sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest:1000:resume \
@@ -42,7 +58,7 @@ do
   if [ "$mode" = "resume" ]; then
     model_args=(--resume "$SUN_V2_RESUME")
   fi
-  echo "[sun-deploybest] start profile=$profile run=$run_name box_seed=$box_seed updates=$updates mode=$mode best=$BEST resume=$SUN_V2_RESUME eval12_dir=$EVAL12_DIR eval12=$EVAL12_SEQS confirm_eval52_dir=$EVAL52_DIR confirm_eval52=$EVAL52_SEQS $(date)" | tee -a "$log"
+  echo "[sun-deploybest] start profile=$profile run=$run_name box_seed=$box_seed updates=$updates mode=$mode best=$BEST resume=$SUN_V2_RESUME eval12_dir=$EVAL12_DIR eval12=${EVAL12_SEQS[*]} confirm_eval52_dir=$EVAL52_DIR confirm_eval52=${EVAL52_SEQS[*]} $(date)" | tee -a "$log"
 
   python3 isaaclab_pallet/scripts/train_pallet_gat.py \
     --run-name "$run_name" \
@@ -58,9 +74,9 @@ do
     --candidate-rerank-k 0 \
     --candidate-diversity-center-m 0.05 \
     --box-seq-dir "$EVAL12_DIR" \
-    --eval-sequences $EVAL12_SEQS \
+    --eval-sequences "${EVAL12_SEQS[@]}" \
     --confirm-box-seq-dir "$EVAL52_DIR" \
-    --confirm-eval-sequences $EVAL52_SEQS \
+    --confirm-eval-sequences "${EVAL52_SEQS[@]}" \
     --seed 0 \
     --headless \
     --wandb \
