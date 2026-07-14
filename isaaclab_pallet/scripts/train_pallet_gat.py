@@ -9,6 +9,8 @@ import subprocess
 import sys
 import time
 from collections import deque
+from dataclasses import dataclass
+from math import ceil
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -64,6 +66,8 @@ parser.add_argument(
         "sun_v1",
         "sun_v2",
         "sun_v3",
+        "sun_gap_guard_v1",
+        "sun_anchor_plateau_v1",
     ],
     default="base",
     help="Reward-scale preset. Keeps the Isaac Lab GAT pipeline unchanged.",
@@ -75,11 +79,14 @@ parser.add_argument("--entropy-coef", type=float, default=0.01)
 parser.add_argument("--eval-interval", type=int, default=50, help="Updates between competition-score evals (0=off).")
 parser.add_argument("--box-seq-dir", type=str, default="palletizing_simulator/box_sequence")
 parser.add_argument("--eval-sequences", nargs="+", default=["box_sequence_0", "box_sequence_1"])
+parser.add_argument("--confirm-box-seq-dir", type=str, default="", help="Optional second-stage deploy eval directory.")
+parser.add_argument("--confirm-eval-sequences", nargs="+", default=[], help="Optional second-stage deploy eval sequence names.")
 parser.add_argument("--deploy-eval-best", action="store_true", default=True, help="Confirm candidate best checkpoints through exported ONNX + submission main.py.")
 parser.add_argument("--no-deploy-eval-best", dest="deploy_eval_best", action="store_false")
 parser.add_argument("--deploy-eval-submit-dir", type=str, default="submit_buffer3_search")
 parser.add_argument("--deploy-eval-buffer-size", type=int, default=0, help="buffer.size used in the temporary submission config for deployment best selection.")
 parser.add_argument("--deploy-eval-timeout", type=float, default=300.0)
+parser.add_argument("--deploy-eval-regression-guard", type=float, default=5.0, help="Reject deploy best candidates that regress any shared sequence by more than this many score points.")
 parser.add_argument("--save-update-checkpoints", action="store_true", default=True)
 parser.add_argument("--no-save-update-checkpoints", dest="save_update_checkpoints", action="store_false")
 parser.add_argument("--wandb", action="store_true", help="Log training/eval metrics to Weights & Biases.")
@@ -112,6 +119,66 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import eval_competition_generate as _cg  # noqa: E402
 
 _PALLET_VOLUME = 1.2 * 1.0 * 1.25
+
+
+@dataclass(frozen=True)
+class DeployEvalMetrics:
+    mean_score: float
+    min_score: float
+    bottom10_score: float
+    per_sequence: dict[str, float]
+
+
+@dataclass(frozen=True)
+class DeployBestDecision:
+    accepted: bool
+    mean_improved: bool
+    max_regression: float
+    regression_count: int
+    guard_rejected: bool
+
+
+def _summarize_sequence_scores(per_sequence: dict[str, float]) -> DeployEvalMetrics:
+    scores = list(per_sequence.values())
+    if not scores:
+        return DeployEvalMetrics(0.0, 0.0, 0.0, per_sequence)
+    sorted_scores = sorted(scores)
+    bottom_n = max(1, ceil(len(sorted_scores) * 0.10))
+    return DeployEvalMetrics(
+        mean_score=sum(scores) / len(scores),
+        min_score=sorted_scores[0],
+        bottom10_score=sum(sorted_scores[:bottom_n]) / bottom_n,
+        per_sequence=per_sequence,
+    )
+
+
+def _decide_deploy_best(
+    candidate: DeployEvalMetrics,
+    best: DeployEvalMetrics | None,
+    regression_guard: float,
+) -> DeployBestDecision:
+    if best is None:
+        return DeployBestDecision(
+            accepted=True,
+            mean_improved=True,
+            max_regression=0.0,
+            regression_count=0,
+            guard_rejected=False,
+        )
+
+    mean_improved = candidate.mean_score > best.mean_score
+    shared = sorted(set(best.per_sequence) & set(candidate.per_sequence))
+    regressions = [best.per_sequence[name] - candidate.per_sequence[name] for name in shared]
+    max_regression = max(regressions, default=0.0)
+    regression_count = sum(1 for value in regressions if value > regression_guard)
+    guard_rejected = regression_count > 0
+    return DeployBestDecision(
+        accepted=mean_improved and not guard_rejected,
+        mean_improved=mean_improved,
+        max_regression=max_regression,
+        regression_count=regression_count,
+        guard_rejected=guard_rejected,
+    )
 
 
 def apply_reward_profile(cfg: PalletPackingEnvCfg, profile: str) -> None:
@@ -247,6 +314,46 @@ def apply_reward_profile(cfg: PalletPackingEnvCfg, profile: str) -> None:
             "center_of_mass_z_penalty_scale": 0.25,
             "terminal_ratio_reward_scale": 21.0,
         },
+        "sun_gap_guard_v1": {
+            "volume_reward_scale": 0.0,
+            "floor_coverage_reward_scale": 0.0,
+            "boundary_floor_reward_scale": 0.0,
+            "corner_floor_reward_scale": 0.0,
+            "height_smoothness_reward_scale": 0.6,
+            "support_reward_scale": 0.08,
+            "weak_support_penalty_scale": 0.10,
+            "elevation_penalty_scale": 0.20,
+            "corner_large_reward_scale": 0.55,
+            "wall_anchor_reward_scale": 0.0,
+            "tight_fit_reward_scale": 0.65,
+            "void_reduction_reward_scale": 0.25,
+            "support_margin_reward_scale": 0.35,
+            "active_layer_coverage_reward_scale": 0.8,
+            "center_of_mass_z_penalty_scale": 0.25,
+            "sliver_void_penalty_scale": 1.0,
+            "blocked_void_penalty_scale": 0.8,
+            "terminal_ratio_reward_scale": 18.0,
+        },
+        "sun_anchor_plateau_v1": {
+            "volume_reward_scale": 0.0,
+            "floor_coverage_reward_scale": 0.0,
+            "boundary_floor_reward_scale": 0.0,
+            "corner_floor_reward_scale": 0.0,
+            "height_smoothness_reward_scale": 0.6,
+            "support_reward_scale": 0.08,
+            "weak_support_penalty_scale": 0.10,
+            "elevation_penalty_scale": 0.20,
+            "corner_large_reward_scale": 0.90,
+            "wall_anchor_reward_scale": 0.45,
+            "tight_fit_reward_scale": 0.90,
+            "void_reduction_reward_scale": 0.25,
+            "support_margin_reward_scale": 0.25,
+            "active_layer_coverage_reward_scale": 0.8,
+            "center_of_mass_z_penalty_scale": 0.25,
+            "sliver_void_penalty_scale": 0.55,
+            "blocked_void_penalty_scale": 0.45,
+            "terminal_ratio_reward_scale": 18.0,
+        },
     }
     for name, value in profiles[profile].items():
         setattr(cfg, name, value)
@@ -308,9 +415,19 @@ def _prepare_deploy_eval_inputs(seq_paths: list[str], dst: Path) -> None:
         shutil.copy2(src, dst / src.name)
 
 
-def _score_submission_results(output_dir: Path, buffer_size: int) -> float:
-    scores = []
-    for path in sorted(output_dir.glob("*.json")):
+def _score_submission_results(output_dir: Path, seq_paths: list[str], buffer_size: int) -> DeployEvalMetrics:
+    expected = [Path(path).stem for path in seq_paths]
+    missing = [name for name in expected if not (output_dir / f"{name}.json").is_file()]
+    if missing:
+        raise RuntimeError(
+            "deploy eval missing output JSONs: "
+            + ", ".join(missing)
+            + f" in {output_dir}"
+        )
+
+    per_sequence: dict[str, float] = {}
+    for name in expected:
+        path = output_dir / f"{name}.json"
         data = json.loads(path.read_text())
         placed = data.get("sequence", [])
         vol = sum(float(b["size"][0]) * float(b["size"][1]) * float(b["size"][2]) for b in placed)
@@ -320,8 +437,8 @@ def _score_submission_results(output_dir: Path, buffer_size: int) -> float:
             default=0.0,
         )
         bonus = max(0.0, 20.0 - float(buffer_size))
-        scores.append(fill * 100.0 + bonus if max_top <= 1.25 + 1e-6 else 0.0)
-    return (sum(scores) / len(scores)) if scores else 0.0
+        per_sequence[name] = fill * 100.0 + bonus if max_top <= 1.25 + 1e-6 else 0.0
+    return _summarize_sequence_scores(per_sequence)
 
 
 def evaluate_deployment_score(
@@ -330,7 +447,7 @@ def evaluate_deployment_score(
     pct_args,
     seq_paths: list[str],
     update: int,
-) -> float:
+) -> DeployEvalMetrics:
     deploy_root = run_dir / "deploy_eval"
     submit_src = PROJECT_ROOT / args_cli.deploy_eval_submit_dir
     submit_dir = deploy_root / "submission"
@@ -378,7 +495,7 @@ def evaluate_deployment_score(
         text=True,
         timeout=args_cli.deploy_eval_timeout,
     )
-    return _score_submission_results(output_dir, args_cli.deploy_eval_buffer_size)
+    return _score_submission_results(output_dir, seq_paths, args_cli.deploy_eval_buffer_size)
 
 
 def make_run_dir() -> Path:
@@ -675,6 +792,11 @@ def main() -> None:
     # ★1 eval-in-loop setup: resolve the real competition sequences and seed the best
     # score with the (warm-started) model so we can NEVER end up worse than the start.
     eval_seq_paths = [str(PROJECT_ROOT / args_cli.box_seq_dir / f"{n}.json") for n in args_cli.eval_sequences]
+    confirm_eval_enabled = bool(args_cli.confirm_box_seq_dir and args_cli.confirm_eval_sequences)
+    confirm_eval_seq_paths = [
+        str(PROJECT_ROOT / args_cli.confirm_box_seq_dir / f"{n}.json")
+        for n in args_cli.confirm_eval_sequences
+    ]
     print(
         "[gat-train] "
         f"eval_seq_count={len(eval_seq_paths)} "
@@ -682,15 +804,46 @@ def main() -> None:
         f"eval_sequences={','.join(args_cli.eval_sequences)}",
         flush=True,
     )
+    if confirm_eval_enabled:
+        print(
+            "[gat-train] "
+            f"confirm_eval_seq_count={len(confirm_eval_seq_paths)} "
+            f"confirm_box_seq_dir={args_cli.confirm_box_seq_dir} "
+            f"confirm_eval_sequences={','.join(args_cli.confirm_eval_sequences)}",
+            flush=True,
+        )
     best_score = -1.0
     best_torch_score = -1.0
+    best_deploy_metrics: DeployEvalMetrics | None = None
+    best_confirm_deploy_metrics: DeployEvalMetrics | None = None
     if args_cli.eval_interval > 0:
         torch_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
         best_torch_score = torch_score
         if args_cli.deploy_eval_best:
-            best_score = evaluate_deployment_score(policy, run_dir, pct_args, eval_seq_paths, start_update)
+            best_deploy_metrics = evaluate_deployment_score(policy, run_dir, pct_args, eval_seq_paths, start_update)
+            if confirm_eval_enabled:
+                best_confirm_deploy_metrics = evaluate_deployment_score(
+                    policy,
+                    run_dir,
+                    pct_args,
+                    confirm_eval_seq_paths,
+                    start_update,
+                )
+                best_score = best_confirm_deploy_metrics.mean_score
+            else:
+                best_score = best_deploy_metrics.mean_score
+            confirm_text = (
+                f"confirm_score={best_confirm_deploy_metrics.mean_score:.2f} "
+                f"confirm_min={best_confirm_deploy_metrics.min_score:.2f} "
+                f"confirm_bottom10={best_confirm_deploy_metrics.bottom10_score:.2f} "
+                if best_confirm_deploy_metrics is not None
+                else ""
+            )
             print(
-                f"[gat-train] initial deployment score = {best_score:.2f} "
+                f"[gat-train] initial deployment score = {best_deploy_metrics.mean_score:.2f} "
+                f"min={best_deploy_metrics.min_score:.2f} "
+                f"bottom10={best_deploy_metrics.bottom10_score:.2f} "
+                f"{confirm_text}"
                 f"(torch_eval={torch_score:.2f})  -> PCT-best.pt",
                 flush=True,
             )
@@ -704,7 +857,28 @@ def main() -> None:
                     "update": start_update,
                     "eval/competition_score": torch_score,
                     "eval/deployment_score": best_score,
+                    "eval/deployment_primary_score": (
+                        best_deploy_metrics.mean_score if best_deploy_metrics is not None else -1.0
+                    ),
+                    "eval/deployment_confirm_score": (
+                        best_confirm_deploy_metrics.mean_score if best_confirm_deploy_metrics is not None else -1.0
+                    ),
                     "eval/best_score": best_score,
+                    "eval/deployment_min_score": (
+                        best_deploy_metrics.min_score if best_deploy_metrics is not None else -1.0
+                    ),
+                    "eval/deployment_bottom10_score": (
+                        best_deploy_metrics.bottom10_score if best_deploy_metrics is not None else -1.0
+                    ),
+                    "eval/deployment_max_regression": 0.0,
+                    "eval/deployment_regression_count": 0,
+                    "eval/deployment_guard_rejected": 0,
+                    "eval/deployment_confirm_min_score": (
+                        best_confirm_deploy_metrics.min_score if best_confirm_deploy_metrics is not None else -1.0
+                    ),
+                    "eval/deployment_confirm_bottom10_score": (
+                        best_confirm_deploy_metrics.bottom10_score if best_confirm_deploy_metrics is not None else -1.0
+                    ),
                     "eval/improved": 1,
                 },
                 step=start_update,
@@ -840,20 +1014,57 @@ def main() -> None:
         # ★1: score on the real competition sequences; keep PCT-best.pt only when it improves.
         if args_cli.eval_interval > 0 and update % args_cli.eval_interval == 0:
             torch_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
-            deploy_score = None
+            deploy_metrics = None
+            confirm_deploy_metrics = None
             torch_candidate = torch_score > best_torch_score
             if torch_candidate:
                 best_torch_score = torch_score
-            if args_cli.deploy_eval_best and torch_candidate:
-                deploy_score = evaluate_deployment_score(policy, run_dir, pct_args, eval_seq_paths, update)
-                score = deploy_score
-            elif args_cli.deploy_eval_best:
-                score = -1.0
+            if args_cli.deploy_eval_best:
+                deploy_metrics = evaluate_deployment_score(policy, run_dir, pct_args, eval_seq_paths, update)
+                primary_decision = _decide_deploy_best(
+                    deploy_metrics,
+                    best_deploy_metrics,
+                    args_cli.deploy_eval_regression_guard,
+                )
+                deploy_decision = primary_decision
+                run_confirm_eval = confirm_eval_enabled and primary_decision.mean_improved
+                if run_confirm_eval:
+                    confirm_deploy_metrics = evaluate_deployment_score(
+                        policy,
+                        run_dir,
+                        pct_args,
+                        confirm_eval_seq_paths,
+                        update,
+                    )
+                    deploy_decision = _decide_deploy_best(
+                        confirm_deploy_metrics,
+                        best_confirm_deploy_metrics,
+                        args_cli.deploy_eval_regression_guard,
+                    )
+                    score = confirm_deploy_metrics.mean_score
+                    improved = primary_decision.accepted and deploy_decision.accepted
+                elif confirm_eval_enabled:
+                    score = best_score
+                    improved = False
+                else:
+                    score = deploy_metrics.mean_score
+                    improved = deploy_decision.accepted
             else:
                 score = torch_score
-            improved = score > best_score
+                deploy_decision = DeployBestDecision(
+                    accepted=score > best_score,
+                    mean_improved=score > best_score,
+                    max_regression=0.0,
+                    regression_count=0,
+                    guard_rejected=False,
+                )
+                improved = deploy_decision.accepted
             if improved:
                 best_score = score
+                if deploy_metrics is not None:
+                    best_deploy_metrics = deploy_metrics
+                if confirm_deploy_metrics is not None:
+                    best_confirm_deploy_metrics = confirm_deploy_metrics
                 torch.save(policy.state_dict(), run_dir / "PCT-best.pt")
                 save_checkpoint(run_dir / "PCT-best-resume.pt", policy, optimizer, update, pct_args)
             if wandb_run is not None:
@@ -861,14 +1072,55 @@ def main() -> None:
                     {
                         "update": update,
                         "eval/competition_score": torch_score,
-                        "eval/deployment_score": deploy_score if deploy_score is not None else -1.0,
+                        "eval/deployment_score": (
+                            confirm_deploy_metrics.mean_score
+                            if confirm_deploy_metrics is not None
+                            else (deploy_metrics.mean_score if deploy_metrics is not None else -1.0)
+                        ),
+                        "eval/deployment_primary_score": deploy_metrics.mean_score if deploy_metrics is not None else -1.0,
+                        "eval/deployment_confirm_score": (
+                            confirm_deploy_metrics.mean_score if confirm_deploy_metrics is not None else -1.0
+                        ),
+                        "eval/deployment_min_score": deploy_metrics.min_score if deploy_metrics is not None else -1.0,
+                        "eval/deployment_bottom10_score": (
+                            deploy_metrics.bottom10_score if deploy_metrics is not None else -1.0
+                        ),
+                        "eval/deployment_confirm_min_score": (
+                            confirm_deploy_metrics.min_score if confirm_deploy_metrics is not None else -1.0
+                        ),
+                        "eval/deployment_confirm_bottom10_score": (
+                            confirm_deploy_metrics.bottom10_score if confirm_deploy_metrics is not None else -1.0
+                        ),
+                        "eval/deployment_max_regression": deploy_decision.max_regression,
+                        "eval/deployment_regression_count": deploy_decision.regression_count,
+                        "eval/deployment_guard_rejected": int(deploy_decision.guard_rejected),
+                        "eval/deployment_mean_improved": int(deploy_decision.mean_improved),
                         "eval/best_score": best_score,
                         "eval/improved": int(improved),
                         "eval/torch_candidate": int(torch_candidate),
                     },
                     step=update,
                 )
-            deploy_text = "" if deploy_score is None else f" deploy_score={deploy_score:.2f}"
+            confirm_update_text = (
+                f" confirm_score={confirm_deploy_metrics.mean_score:.2f}"
+                f" confirm_min={confirm_deploy_metrics.min_score:.2f}"
+                f" confirm_bottom10={confirm_deploy_metrics.bottom10_score:.2f}"
+                if confirm_deploy_metrics is not None
+                else ""
+            )
+            deploy_text = (
+                ""
+                if deploy_metrics is None
+                else (
+                    f" deploy_score={deploy_metrics.mean_score:.2f}"
+                    f" min={deploy_metrics.min_score:.2f}"
+                    f" bottom10={deploy_metrics.bottom10_score:.2f}"
+                    f"{confirm_update_text}"
+                    f" max_regression={deploy_decision.max_regression:.2f}"
+                    f" regressions={deploy_decision.regression_count}"
+                    f" guard_rejected={int(deploy_decision.guard_rejected)}"
+                )
+            )
             print(
                 f"[gat-train] eval update={update} torch_score={torch_score:.2f}"
                 f"{deploy_text} best={best_score:.2f}"

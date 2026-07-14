@@ -1,0 +1,24 @@
+2026-07-13 22:17:09,687 INFO    MainThread:1945427 [wandb_setup.py:_flush():81] Current SDK version is 0.28.0
+2026-07-13 22:17:09,687 INFO    MainThread:1945427 [wandb_setup.py:_flush():81] Configure stats pid to 1945427
+2026-07-13 22:17:09,687 INFO    MainThread:1945427 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-07-13 22:17:09,687 INFO    MainThread:1945427 [wandb_init.py:setup_run_log_directory():725] Logging user logs to isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest/wandb/wandb/run-20260713_221709-we04wmk9/logs/debug.log
+2026-07-13 22:17:09,687 INFO    MainThread:1945427 [wandb_init.py:setup_run_log_directory():726] Logging internal logs to isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest/wandb/wandb/run-20260713_221709-we04wmk9/logs/debug-internal.log
+2026-07-13 22:17:09,687 INFO    MainThread:1945427 [wandb_init.py:init():768] calling init triggers
+2026-07-13 22:17:09,688 INFO    MainThread:1945427 [wandb_init.py:init():773] wandb.init called with sweep_config: {}
+config: {'run_name': 'sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest', 'reward_profile': 'sun_v2', 'num_envs': 128, 'max_boxes': 256, 'updates': 1000, 'start_update': 1500, 'num_steps': 5, 'save_interval': 250, 'eval_interval': 50, 'learning_rate': 1e-06, 'gamma': 1.0, 'actor_loss_coef': 1.0, 'critic_loss_coef': 1.0, 'entropy_coef': 0.01, 'max_grad_norm': 0.5, 'candidate_rerank_k': 0, 'candidate_diversity_center_m': 0.05, 'save_update_checkpoints': True, 'seed': 0, 'box_seed': 1, 'device': 'cuda:0', 'load_model': '', 'resume_checkpoint': 'isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand10eval_sun_v2_deploybest/PCT-resume.pt', 'internal_node_holder': 200, 'leaf_node_holder': 100, 'embedding_size': 64, 'hidden_size': 128, 'gat_layer_num': 1, 'normFactor': 0.8, 'learn_finish_action': False, '_wandb': {}}
+2026-07-13 22:17:09,688 INFO    MainThread:1945427 [wandb_init.py:init():816] starting backend
+2026-07-13 22:17:09,688 INFO    MainThread:1945427 [wandb_init.py:init():831] sending inform_init request
+2026-07-13 22:17:10,035 INFO    MainThread:1945427 [wandb_init.py:init():836] backend started and connected
+2026-07-13 22:17:10,036 INFO    MainThread:1945427 [wandb_init.py:init():906] updated telemetry
+2026-07-13 22:17:10,039 INFO    MainThread:1945427 [wandb_init.py:init():929] communicating run to backend with 90.0 second timeout
+2026-07-13 22:17:10,847 INFO    MainThread:1945427 [wandb_init.py:init():974] starting run threads in backend
+2026-07-13 22:17:10,958 INFO    MainThread:1945427 [wandb_run.py:_console_start():2523] atexit reg
+2026-07-13 22:17:10,958 INFO    MainThread:1945427 [wandb_run.py:_redirect():2373] redirect: wrap_raw
+2026-07-13 22:17:10,958 INFO    MainThread:1945427 [wandb_run.py:_redirect():2442] Wrapping output streams.
+2026-07-13 22:17:10,958 INFO    MainThread:1945427 [wandb_run.py:_redirect():2465] Redirects installed.
+2026-07-13 22:17:10,959 INFO    MainThread:1945427 [wandb_init.py:init():1012] run started, returning control to user process
+2026-07-14 02:29:02,151 INFO    MainThread:1945427 [wandb_run.py:_finish():2285] finishing run nkyeonjae1009-university-of-seoul/assignment2-pallet/we04wmk9
+2026-07-14 02:29:02,151 INFO    MainThread:1945427 [wandb_run.py:_atexit_cleanup():2490] got exitcode: 0
+2026-07-14 02:29:02,151 INFO    MainThread:1945427 [wandb_run.py:_restore():2472] restore
+2026-07-14 02:29:02,152 INFO    MainThread:1945427 [wandb_run.py:_restore():2478] restore done
+2026-07-14 02:29:04,228 INFO    MainThread:1945427 [wandb_run.py:_footer_sync_info():3895] logging synced files

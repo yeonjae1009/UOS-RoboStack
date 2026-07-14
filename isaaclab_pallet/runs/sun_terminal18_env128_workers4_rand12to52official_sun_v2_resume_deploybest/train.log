@@ -1,0 +1,1309 @@
+[sun-deploybest] start profile=sun_v2 run=sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest box_seed=1 updates=1000 mode=resume best=isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt resume=isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand10eval_sun_v2_deploybest/PCT-resume.pt eval12_dir=artifacts/random_spec_eval_10_plus_official/box_sequence eval12=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 box_sequence_0 box_sequence_1 confirm_eval52_dir=artifacts/random_spec_eval_50_plus_official/box_sequence confirm_eval52=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049 box_sequence_0 box_sequence_1 Mon Jul 13 10:16:38 PM KST 2026
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-13_22-16-40.log[0m
+[36m======================================================================================[0m
+
+[33m22:16:40 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m22:17:03 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 22.343244 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 128
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 4.576638 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] resumed from isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand10eval_sun_v2_deploybest/PCT-resume.pt at update=1500
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/user/.netrc.
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+wandb: Currently logged in as: nkyeonjae1009 (nkyeonjae1009-university-of-seoul) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: setting up run we04wmk9
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: Tracking run with wandb version 0.28.0
+wandb: Run data is saved locally in isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest/wandb/wandb/run-20260713_221709-we04wmk9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest
+wandb: ⭐️ View project at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet
+wandb: 🚀 View run at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/we04wmk9
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/we04wmk9
+[gat-train] run_dir=isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest device=cuda:0 num_envs=128 num_packer_workers=4 obs_shape=(128, 301, 9) leaf_shape=(128, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=sun_v2 learn_finish_action=False action_space=100 candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=12 box_seq_dir=artifacts/random_spec_eval_10_plus_official/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,box_sequence_0,box_sequence_1
+[gat-train] confirm_eval_seq_count=52 confirm_box_seq_dir=artifacts/random_spec_eval_50_plus_official/box_sequence confirm_eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,random_spec_010,random_spec_011,random_spec_012,random_spec_013,random_spec_014,random_spec_015,random_spec_016,random_spec_017,random_spec_018,random_spec_019,random_spec_020,random_spec_021,random_spec_022,random_spec_023,random_spec_024,random_spec_025,random_spec_026,random_spec_027,random_spec_028,random_spec_029,random_spec_030,random_spec_031,random_spec_032,random_spec_033,random_spec_034,random_spec_035,random_spec_036,random_spec_037,random_spec_038,random_spec_039,random_spec_040,random_spec_041,random_spec_042,random_spec_043,random_spec_044,random_spec_045,random_spec_046,random_spec_047,random_spec_048,random_spec_049,box_sequence_0,box_sequence_1
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial deployment score = 83.95 min=72.86 bottom10=75.87 confirm_score=82.56 confirm_min=0.00 confirm_bottom10=60.37 (torch_eval=78.38)  -> PCT-best.pt
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] update=1501 samples=640 fps=3.7 loss=8.9396 actor=0.6982 value=8.2509 entropy=0.9524 mean_return=0.000 mean_len=0.0
+[gat-train] update=1502 samples=1280 fps=7.1 loss=0.3379 actor=-0.5166 value=0.8654 entropy=1.0907 mean_return=0.000 mean_len=0.0
+[gat-train] update=1503 samples=1920 fps=10.1 loss=0.3640 actor=-0.1857 value=0.5640 entropy=1.4272 mean_return=0.000 mean_len=0.0
+[gat-train] update=1504 samples=2560 fps=12.8 loss=1.3052 actor=0.6047 value=0.7208 entropy=2.0227 mean_return=0.000 mean_len=0.0
+[gat-train] update=1505 samples=3200 fps=15.3 loss=1.6440 actor=0.5529 value=1.1108 entropy=1.9698 mean_return=0.000 mean_len=0.0
+[gat-train] update=1506 samples=3840 fps=17.5 loss=2.2726 actor=0.7953 value=1.4991 entropy=2.1820 mean_return=0.000 mean_len=0.0
+[gat-train] update=1507 samples=4480 fps=19.3 loss=2.1596 actor=0.7586 value=1.4206 entropy=1.9705 mean_return=0.000 mean_len=0.0
+[gat-train] update=1508 samples=5120 fps=21.0 loss=2.4159 actor=0.7379 value=1.6971 entropy=1.8988 mean_return=0.000 mean_len=0.0
+[gat-train] update=1509 samples=5760 fps=22.4 loss=2.5887 actor=0.7068 value=1.9023 entropy=2.0342 mean_return=0.000 mean_len=0.0
+[gat-train] update=1510 samples=6400 fps=23.2 loss=2.6599 actor=0.5528 value=2.1277 entropy=2.0505 mean_return=0.000 mean_len=0.0
+[gat-train] update=1511 samples=7040 fps=24.3 loss=7.5347 actor=-0.4720 value=8.0279 entropy=2.1138 mean_return=17.716 mean_len=54.0
+[gat-train] update=1512 samples=7680 fps=25.1 loss=2.7530 actor=0.2202 value=2.5545 entropy=2.1737 mean_return=17.716 mean_len=54.0
+[gat-train] update=1513 samples=8320 fps=25.8 loss=2.8445 actor=-0.0981 value=2.9644 entropy=2.1767 mean_return=17.716 mean_len=54.0
+[gat-train] update=1514 samples=8960 fps=26.4 loss=4.5476 actor=-0.7521 value=5.3204 entropy=2.0645 mean_return=28.203 mean_len=65.4
+[gat-train] update=1515 samples=9600 fps=27.3 loss=3.0992 actor=-1.2180 value=4.3363 entropy=1.9082 mean_return=30.887 mean_len=69.0
+[gat-train] update=1516 samples=10240 fps=28.2 loss=10.9527 actor=-3.8056 value=14.7755 entropy=1.7197 mean_return=34.531 mean_len=76.4
+[gat-train] update=1517 samples=10880 fps=29.4 loss=9.2029 actor=-2.9907 value=12.2081 entropy=1.4482 mean_return=38.399 mean_len=82.7
+[gat-train] update=1518 samples=11520 fps=30.3 loss=5.2835 actor=-1.6195 value=6.9155 entropy=1.2446 mean_return=39.880 mean_len=86.3
+[gat-train] update=1519 samples=12160 fps=31.5 loss=1.4107 actor=-0.3795 value=1.8024 entropy=1.2232 mean_return=40.287 mean_len=87.7
+[gat-train] update=1520 samples=12800 fps=32.5 loss=0.9078 actor=0.1177 value=0.8042 entropy=1.4097 mean_return=40.287 mean_len=87.7
+[gat-train] update=1521 samples=13440 fps=33.1 loss=1.3910 actor=0.4668 value=0.9395 entropy=1.5336 mean_return=40.287 mean_len=87.7
+[gat-train] update=1522 samples=14080 fps=33.9 loss=1.5568 actor=0.6418 value=0.9315 entropy=1.6515 mean_return=40.287 mean_len=87.7
+[gat-train] update=1523 samples=14720 fps=34.4 loss=1.8972 actor=0.6326 value=1.2796 entropy=1.5023 mean_return=40.287 mean_len=87.7
+[gat-train] update=1524 samples=15360 fps=34.8 loss=1.9725 actor=0.5856 value=1.4019 entropy=1.5022 mean_return=40.287 mean_len=87.7
+[gat-train] update=1525 samples=16000 fps=34.9 loss=2.3138 actor=0.5594 value=1.7685 entropy=1.4076 mean_return=40.287 mean_len=87.7
+[gat-train] update=1526 samples=16640 fps=35.0 loss=2.4975 actor=0.4399 value=2.0713 entropy=1.3670 mean_return=40.287 mean_len=87.7
+[gat-train] update=1527 samples=17280 fps=35.2 loss=2.7762 actor=0.3606 value=2.4294 entropy=1.3774 mean_return=40.287 mean_len=87.7
+[gat-train] update=1528 samples=17920 fps=34.8 loss=3.2323 actor=0.2879 value=2.9582 entropy=1.3777 mean_return=40.283 mean_len=87.5
+[gat-train] update=1529 samples=18560 fps=34.9 loss=3.7012 actor=0.0907 value=3.6243 entropy=1.3843 mean_return=40.008 mean_len=87.1
+[gat-train] update=1530 samples=19200 fps=35.0 loss=4.7418 actor=-0.2470 value=5.0026 entropy=1.3811 mean_return=39.770 mean_len=86.3
+[gat-train] update=1531 samples=19840 fps=35.1 loss=3.1912 actor=-0.1427 value=3.3473 entropy=1.3506 mean_return=39.588 mean_len=86.0
+[gat-train] update=1532 samples=20480 fps=35.5 loss=5.3708 actor=-1.0845 value=6.4693 entropy=1.3940 mean_return=38.899 mean_len=85.1
+[gat-train] update=1533 samples=21120 fps=35.7 loss=8.5017 actor=-2.3872 value=10.9027 entropy=1.3722 mean_return=37.795 mean_len=81.9
+[gat-train] update=1534 samples=21760 fps=36.2 loss=6.7075 actor=-1.8838 value=8.6045 entropy=1.3157 mean_return=38.820 mean_len=84.2
+[gat-train] update=1535 samples=22400 fps=36.6 loss=5.0735 actor=-1.7508 value=6.8376 entropy=1.3253 mean_return=40.293 mean_len=86.7
+[gat-train] update=1536 samples=23040 fps=37.0 loss=2.4383 actor=-0.5320 value=2.9828 entropy=1.2483 mean_return=41.175 mean_len=87.9
+[gat-train] update=1537 samples=23680 fps=37.2 loss=1.7851 actor=-0.3888 value=2.1872 entropy=1.3341 mean_return=41.882 mean_len=89.6
+[gat-train] update=1538 samples=24320 fps=37.6 loss=1.0835 actor=0.1241 value=0.9721 entropy=1.2646 mean_return=42.068 mean_len=90.0
+[gat-train] update=1539 samples=24960 fps=38.0 loss=1.7909 actor=0.4223 value=1.3812 entropy=1.2680 mean_return=42.068 mean_len=90.0
+[gat-train] update=1540 samples=25600 fps=38.4 loss=1.6539 actor=0.4086 value=1.2579 entropy=1.2596 mean_return=42.068 mean_len=90.0
+[gat-train] update=1541 samples=26240 fps=38.5 loss=2.0368 actor=0.3865 value=1.6637 entropy=1.3543 mean_return=42.068 mean_len=90.0
+[gat-train] update=1542 samples=26880 fps=38.9 loss=1.9615 actor=0.4895 value=1.4842 entropy=1.2220 mean_return=42.068 mean_len=90.0
+[gat-train] update=1543 samples=27520 fps=38.9 loss=2.3327 actor=0.4336 value=1.9117 entropy=1.2645 mean_return=42.068 mean_len=90.0
+[gat-train] update=1544 samples=28160 fps=38.9 loss=2.4249 actor=0.1500 value=2.2882 entropy=1.3317 mean_return=42.001 mean_len=89.9
+[gat-train] update=1545 samples=28800 fps=39.1 loss=2.8588 actor=0.3093 value=2.5620 entropy=1.2510 mean_return=41.956 mean_len=89.9
+[gat-train] update=1546 samples=29440 fps=39.3 loss=3.4909 actor=0.2164 value=3.2870 entropy=1.2438 mean_return=41.717 mean_len=89.4
+[gat-train] update=1547 samples=30080 fps=39.5 loss=2.9650 actor=-0.0047 value=2.9824 entropy=1.2667 mean_return=41.658 mean_len=89.1
+[gat-train] update=1548 samples=30720 fps=39.6 loss=4.7969 actor=-0.8091 value=5.6189 entropy=1.2983 mean_return=40.863 mean_len=87.6
+[gat-train] update=1549 samples=31360 fps=39.8 loss=5.8826 actor=-1.7605 value=7.6562 entropy=1.3204 mean_return=39.242 mean_len=84.7
+[gat-train] update=1550 samples=32000 fps=40.2 loss=7.2883 actor=-1.8431 value=9.1446 entropy=1.3210 mean_return=37.807 mean_len=81.1
+[gat-train] eval update=1550 torch_score=77.25 deploy_score=78.04 min=0.00 bottom10=40.14 max_regression=89.18 regressions=2 guard_rejected=1 best=82.56
+[gat-train] update=1551 samples=32640 fps=38.2 loss=7.1972 actor=-1.6433 value=8.8539 entropy=1.3352 mean_return=39.048 mean_len=83.8
+[gat-train] update=1552 samples=33280 fps=38.6 loss=5.9242 actor=-1.7501 value=7.6880 entropy=1.3683 mean_return=39.313 mean_len=85.1
+[gat-train] update=1553 samples=33920 fps=39.1 loss=3.2779 actor=-0.6672 value=3.9584 entropy=1.3273 mean_return=40.103 mean_len=86.4
+[gat-train] update=1554 samples=34560 fps=39.5 loss=2.1259 actor=-0.4478 value=2.5867 entropy=1.3021 mean_return=40.209 mean_len=86.8
+[gat-train] update=1555 samples=35200 fps=39.8 loss=2.5371 actor=0.0098 value=2.5407 entropy=1.3348 mean_return=40.387 mean_len=87.5
+[gat-train] update=1556 samples=35840 fps=40.1 loss=2.0314 actor=0.4137 value=1.6302 entropy=1.2423 mean_return=40.541 mean_len=87.7
+[gat-train] update=1557 samples=36480 fps=40.4 loss=1.9390 actor=0.6133 value=1.3390 entropy=1.3272 mean_return=40.541 mean_len=87.7
+[gat-train] update=1558 samples=37120 fps=40.7 loss=4.2299 actor=0.1368 value=4.1061 entropy=1.2986 mean_return=40.179 mean_len=87.1
+[gat-train] update=1559 samples=37760 fps=40.8 loss=2.3403 actor=0.5333 value=1.8197 entropy=1.2788 mean_return=40.179 mean_len=87.1
+[gat-train] update=1560 samples=38400 fps=41.0 loss=1.9399 actor=0.1584 value=1.7946 entropy=1.3019 mean_return=40.179 mean_len=87.1
+[gat-train] update=1561 samples=39040 fps=41.1 loss=2.9770 actor=0.3596 value=2.6299 entropy=1.2584 mean_return=40.002 mean_len=86.4
+[gat-train] update=1562 samples=39680 fps=40.9 loss=8.5916 actor=0.1054 value=8.4994 entropy=1.3143 mean_return=39.481 mean_len=85.7
+[gat-train] update=1563 samples=40320 fps=40.8 loss=4.0843 actor=-0.4357 value=4.5331 entropy=1.3105 mean_return=39.287 mean_len=85.3
+[gat-train] update=1564 samples=40960 fps=40.7 loss=3.9505 actor=-0.2413 value=4.2047 entropy=1.2932 mean_return=38.883 mean_len=84.8
+[gat-train] update=1565 samples=41600 fps=40.8 loss=3.4756 actor=-0.3660 value=3.8543 entropy=1.2716 mean_return=38.527 mean_len=84.0
+[gat-train] update=1566 samples=42240 fps=40.6 loss=6.6792 actor=-1.4602 value=8.1527 entropy=1.3273 mean_return=38.144 mean_len=83.1
+[gat-train] update=1567 samples=42880 fps=40.7 loss=4.9633 actor=-0.9739 value=5.9505 entropy=1.3280 mean_return=38.716 mean_len=83.4
+[gat-train] update=1568 samples=43520 fps=40.8 loss=4.8544 actor=-1.5551 value=6.4237 entropy=1.4174 mean_return=39.479 mean_len=85.0
+[gat-train] update=1569 samples=44160 fps=41.0 loss=5.6877 actor=-1.5185 value=7.2199 entropy=1.3770 mean_return=39.834 mean_len=86.1
+[gat-train] update=1570 samples=44800 fps=41.2 loss=3.0123 actor=-0.9483 value=3.9750 entropy=1.4386 mean_return=40.171 mean_len=86.5
+[gat-train] update=1571 samples=45440 fps=41.4 loss=2.2410 actor=-0.5999 value=2.8559 entropy=1.5047 mean_return=40.623 mean_len=87.3
+[gat-train] update=1572 samples=46080 fps=41.7 loss=2.1287 actor=-0.1813 value=2.3239 entropy=1.3961 mean_return=40.659 mean_len=87.5
+[gat-train] update=1573 samples=46720 fps=41.9 loss=2.2589 actor=0.1601 value=2.1125 entropy=1.3616 mean_return=40.679 mean_len=87.6
+[gat-train] update=1574 samples=47360 fps=42.0 loss=1.7348 actor=0.2333 value=1.5149 entropy=1.3351 mean_return=40.732 mean_len=87.8
+[gat-train] update=1575 samples=48000 fps=42.1 loss=2.2326 actor=0.2960 value=1.9497 entropy=1.3081 mean_return=40.767 mean_len=87.8
+[gat-train] update=1576 samples=48640 fps=42.1 loss=3.3979 actor=0.2161 value=3.1953 entropy=1.3542 mean_return=40.417 mean_len=87.0
+[gat-train] update=1577 samples=49280 fps=42.2 loss=2.2596 actor=0.0912 value=2.1820 entropy=1.3623 mean_return=40.394 mean_len=87.0
+[gat-train] update=1578 samples=49920 fps=42.1 loss=2.8422 actor=0.1943 value=2.6616 entropy=1.3715 mean_return=40.290 mean_len=86.8
+[gat-train] update=1579 samples=50560 fps=42.0 loss=2.7326 actor=0.2569 value=2.4887 entropy=1.3016 mean_return=40.388 mean_len=86.9
+[gat-train] update=1580 samples=51200 fps=41.9 loss=3.6324 actor=-0.0485 value=3.6945 entropy=1.3575 mean_return=40.188 mean_len=86.8
+[gat-train] update=1581 samples=51840 fps=41.9 loss=3.8297 actor=-0.1910 value=4.0335 entropy=1.2865 mean_return=40.065 mean_len=86.3
+[gat-train] update=1582 samples=52480 fps=41.9 loss=3.1351 actor=-0.1930 value=3.3419 entropy=1.3782 mean_return=40.053 mean_len=86.7
+[gat-train] update=1583 samples=53120 fps=42.0 loss=6.4249 actor=-1.5657 value=8.0043 entropy=1.3782 mean_return=38.469 mean_len=84.2
+[gat-train] update=1584 samples=53760 fps=42.2 loss=6.7620 actor=-1.4841 value=8.2599 entropy=1.3774 mean_return=38.340 mean_len=83.6
+[gat-train] update=1585 samples=54400 fps=42.2 loss=7.6246 actor=-1.7225 value=9.3607 entropy=1.3616 mean_return=38.857 mean_len=83.9
+[gat-train] update=1586 samples=55040 fps=42.4 loss=4.1284 actor=-1.2457 value=5.3886 entropy=1.4491 mean_return=39.481 mean_len=85.0
+[gat-train] update=1587 samples=55680 fps=42.4 loss=4.8611 actor=-0.9019 value=5.7766 entropy=1.3598 mean_return=39.880 mean_len=85.7
+[gat-train] update=1588 samples=56320 fps=42.5 loss=2.4271 actor=-0.3610 value=2.8015 entropy=1.3351 mean_return=40.355 mean_len=86.7
+[gat-train] update=1589 samples=56960 fps=42.7 loss=2.4907 actor=-0.3869 value=2.8912 entropy=1.3640 mean_return=40.591 mean_len=86.9
+[gat-train] update=1590 samples=57600 fps=42.8 loss=2.0304 actor=0.3574 value=1.6855 entropy=1.2562 mean_return=40.689 mean_len=87.2
+[gat-train] update=1591 samples=58240 fps=42.9 loss=1.9080 actor=0.2557 value=1.6659 entropy=1.3569 mean_return=40.869 mean_len=87.6
+[gat-train] update=1592 samples=58880 fps=42.7 loss=2.8865 actor=0.0309 value=2.8687 entropy=1.3107 mean_return=40.778 mean_len=87.5
+[gat-train] update=1593 samples=59520 fps=42.7 loss=2.6119 actor=0.1287 value=2.4965 entropy=1.3248 mean_return=40.604 mean_len=87.1
+[gat-train] update=1594 samples=60160 fps=42.6 loss=2.5680 actor=0.5955 value=1.9859 entropy=1.3355 mean_return=40.604 mean_len=87.1
+[gat-train] update=1595 samples=60800 fps=42.6 loss=1.9064 actor=-0.2021 value=2.1215 entropy=1.3048 mean_return=40.604 mean_len=87.1
+[gat-train] update=1596 samples=61440 fps=42.5 loss=3.1806 actor=-0.1206 value=3.3141 entropy=1.2924 mean_return=40.277 mean_len=86.4
+[gat-train] update=1597 samples=62080 fps=42.5 loss=4.8428 actor=-0.1315 value=4.9871 entropy=1.2864 mean_return=39.657 mean_len=85.0
+[gat-train] update=1598 samples=62720 fps=42.5 loss=3.5240 actor=-0.6255 value=4.1624 entropy=1.2931 mean_return=39.039 mean_len=83.7
+[gat-train] update=1599 samples=63360 fps=42.5 loss=4.7949 actor=-0.5205 value=5.3289 entropy=1.3460 mean_return=38.427 mean_len=82.8
+[gat-train] update=1600 samples=64000 fps=42.6 loss=4.7833 actor=-1.1792 value=5.9758 entropy=1.3304 mean_return=37.436 mean_len=81.3
+[gat-train] eval update=1600 torch_score=85.24 deploy_score=84.74 min=73.64 bottom10=76.96 max_regression=8.04 regressions=1 guard_rejected=1 best=82.56
+[gat-train] update=1601 samples=64640 fps=41.1 loss=4.9971 actor=-1.1898 value=6.1996 entropy=1.2719 mean_return=37.134 mean_len=80.8
+[gat-train] update=1602 samples=65280 fps=41.0 loss=6.1724 actor=-1.3975 value=7.5830 entropy=1.3060 mean_return=38.824 mean_len=83.7
+[gat-train] update=1603 samples=65920 fps=40.9 loss=5.2578 actor=-1.3228 value=6.5939 entropy=1.3281 mean_return=39.716 mean_len=85.3
+[gat-train] update=1604 samples=66560 fps=40.9 loss=3.4712 actor=-0.8057 value=4.2899 entropy=1.3085 mean_return=39.811 mean_len=85.9
+[gat-train] update=1605 samples=67200 fps=41.1 loss=3.1372 actor=-0.4630 value=3.6132 entropy=1.2983 mean_return=39.832 mean_len=86.3
+[gat-train] update=1606 samples=67840 fps=41.3 loss=2.7406 actor=-0.2846 value=3.0376 entropy=1.2431 mean_return=39.940 mean_len=86.6
+[gat-train] update=1607 samples=68480 fps=41.4 loss=1.8200 actor=0.0649 value=1.7677 entropy=1.2675 mean_return=39.958 mean_len=86.6
+[gat-train] update=1608 samples=69120 fps=41.6 loss=2.4972 actor=0.3032 value=2.2066 entropy=1.2591 mean_return=39.895 mean_len=86.6
+[gat-train] update=1609 samples=69760 fps=41.7 loss=2.8696 actor=0.2735 value=2.6088 entropy=1.2724 mean_return=39.701 mean_len=86.2
+[gat-train] update=1610 samples=70400 fps=41.8 loss=2.1536 actor=0.1483 value=2.0177 entropy=1.2492 mean_return=39.622 mean_len=86.2
+[gat-train] update=1611 samples=71040 fps=41.9 loss=2.4954 actor=0.4191 value=2.0892 entropy=1.2824 mean_return=39.622 mean_len=86.2
+[gat-train] update=1612 samples=71680 fps=42.0 loss=3.0915 actor=0.0981 value=3.0061 entropy=1.2668 mean_return=39.639 mean_len=86.0
+[gat-train] update=1613 samples=72320 fps=42.0 loss=2.9530 actor=0.0332 value=2.9325 entropy=1.2698 mean_return=39.619 mean_len=85.5
+[gat-train] update=1614 samples=72960 fps=42.1 loss=3.9645 actor=-0.2251 value=4.2032 entropy=1.3648 mean_return=39.150 mean_len=84.4
+[gat-train] update=1615 samples=73600 fps=42.2 loss=4.8220 actor=-0.4605 value=5.2958 entropy=1.3305 mean_return=39.180 mean_len=84.0
+[gat-train] update=1616 samples=74240 fps=42.3 loss=4.8579 actor=-0.9147 value=5.7864 entropy=1.3807 mean_return=39.078 mean_len=83.8
+[gat-train] update=1617 samples=74880 fps=42.3 loss=3.8862 actor=-0.9796 value=4.8792 entropy=1.3417 mean_return=38.910 mean_len=83.3
+[gat-train] update=1618 samples=75520 fps=42.4 loss=6.7225 actor=-1.3921 value=8.1287 entropy=1.4079 mean_return=38.932 mean_len=83.0
+[gat-train] update=1619 samples=76160 fps=42.6 loss=6.0308 actor=-1.6879 value=7.7324 entropy=1.3766 mean_return=38.706 mean_len=83.3
+[gat-train] update=1620 samples=76800 fps=42.7 loss=3.5836 actor=-0.5718 value=4.1685 entropy=1.3092 mean_return=39.423 mean_len=84.5
+[gat-train] update=1621 samples=77440 fps=42.9 loss=3.3969 actor=-0.5264 value=3.9364 entropy=1.3007 mean_return=39.579 mean_len=85.5
+[gat-train] update=1622 samples=78080 fps=43.0 loss=7.2322 actor=-0.8331 value=8.0785 entropy=1.3282 mean_return=39.315 mean_len=86.8
+[gat-train] update=1623 samples=78720 fps=43.1 loss=12.7671 actor=-1.0485 value=13.8285 entropy=1.2829 mean_return=39.061 mean_len=86.2
+[gat-train] update=1624 samples=79360 fps=43.3 loss=2.5365 actor=0.0393 value=2.5101 entropy=1.2915 mean_return=39.175 mean_len=86.6
+[gat-train] update=1625 samples=80000 fps=43.4 loss=2.1156 actor=0.4932 value=1.6360 entropy=1.3580 mean_return=39.441 mean_len=87.2
+[gat-train] update=1626 samples=80640 fps=43.3 loss=2.8359 actor=0.0681 value=2.7813 entropy=1.3501 mean_return=39.524 mean_len=87.4
+[gat-train] update=1627 samples=81280 fps=43.3 loss=2.6460 actor=0.3874 value=2.2721 entropy=1.3548 mean_return=39.450 mean_len=87.3
+[gat-train] update=1628 samples=81920 fps=43.3 loss=1.9555 actor=0.2076 value=1.7616 entropy=1.3702 mean_return=39.450 mean_len=87.3
+[gat-train] update=1629 samples=82560 fps=43.3 loss=3.2422 actor=0.3710 value=2.8849 entropy=1.3634 mean_return=39.336 mean_len=86.9
+[gat-train] update=1630 samples=83200 fps=43.3 loss=3.5246 actor=-0.1473 value=3.6860 entropy=1.4080 mean_return=38.984 mean_len=86.0
+[gat-train] update=1631 samples=83840 fps=43.4 loss=5.2669 actor=-0.7220 value=6.0025 entropy=1.3650 mean_return=39.216 mean_len=84.6
+[gat-train] update=1632 samples=84480 fps=43.2 loss=5.6076 actor=-0.4268 value=6.0481 entropy=1.3752 mean_return=38.693 mean_len=83.4
+[gat-train] update=1633 samples=85120 fps=43.0 loss=3.6891 actor=-0.4334 value=4.1362 entropy=1.3743 mean_return=38.793 mean_len=82.8
+[gat-train] update=1634 samples=85760 fps=42.9 loss=3.4120 actor=-0.2725 value=3.6977 entropy=1.3236 mean_return=38.575 mean_len=82.4
+[gat-train] update=1635 samples=86400 fps=42.9 loss=5.2970 actor=-1.1624 value=6.4729 entropy=1.3619 mean_return=38.685 mean_len=82.7
+[gat-train] update=1636 samples=87040 fps=42.8 loss=5.1561 actor=-0.7490 value=5.9183 entropy=1.3228 mean_return=39.142 mean_len=84.5
+[gat-train] update=1637 samples=87680 fps=42.8 loss=3.4979 actor=-0.7426 value=4.2543 entropy=1.3779 mean_return=39.241 mean_len=85.1
+[gat-train] update=1638 samples=88320 fps=42.8 loss=3.2354 actor=-0.7295 value=3.9775 entropy=1.2631 mean_return=39.654 mean_len=86.1
+[gat-train] update=1639 samples=88960 fps=42.9 loss=5.1689 actor=-0.6814 value=5.8628 entropy=1.2374 mean_return=39.385 mean_len=85.5
+[gat-train] update=1640 samples=89600 fps=43.0 loss=2.9740 actor=-0.3591 value=3.3461 entropy=1.2969 mean_return=39.810 mean_len=86.3
+[gat-train] update=1641 samples=90240 fps=42.9 loss=2.3874 actor=-0.1012 value=2.5017 entropy=1.3078 mean_return=39.996 mean_len=86.8
+[gat-train] update=1642 samples=90880 fps=42.7 loss=2.5454 actor=-0.1037 value=2.6623 entropy=1.3277 mean_return=40.126 mean_len=87.2
+[gat-train] update=1643 samples=91520 fps=42.8 loss=2.0618 actor=0.1760 value=1.8995 entropy=1.3628 mean_return=40.169 mean_len=87.2
+[gat-train] update=1644 samples=92160 fps=42.9 loss=2.5363 actor=0.3668 value=2.1830 entropy=1.3425 mean_return=40.169 mean_len=87.2
+[gat-train] update=1645 samples=92800 fps=42.8 loss=2.4963 actor=0.3987 value=2.1115 entropy=1.3887 mean_return=40.205 mean_len=87.1
+[gat-train] update=1646 samples=93440 fps=42.7 loss=2.7234 actor=-0.0888 value=2.8268 entropy=1.4559 mean_return=40.208 mean_len=86.7
+[gat-train] update=1647 samples=94080 fps=42.8 loss=3.2518 actor=0.1856 value=3.0811 entropy=1.4968 mean_return=40.101 mean_len=86.3
+[gat-train] update=1648 samples=94720 fps=42.9 loss=3.8890 actor=-0.2028 value=4.1070 entropy=1.5159 mean_return=39.910 mean_len=85.8
+[gat-train] update=1649 samples=95360 fps=42.7 loss=3.8149 actor=-0.5637 value=4.3938 entropy=1.5242 mean_return=40.000 mean_len=86.0
+[gat-train] update=1650 samples=96000 fps=42.7 loss=4.0706 actor=-0.8890 value=4.9751 entropy=1.5450 mean_return=39.436 mean_len=84.7
+[gat-train] eval update=1650 torch_score=78.34 deploy_score=82.03 min=71.11 bottom10=72.37 max_regression=11.49 regressions=4 guard_rejected=1 best=82.56
+[gat-train] update=1651 samples=96640 fps=41.7 loss=3.1417 actor=-0.7707 value=3.9279 entropy=1.5434 mean_return=39.076 mean_len=84.1
+[gat-train] update=1652 samples=97280 fps=41.6 loss=4.2434 actor=-1.1044 value=5.3627 entropy=1.4864 mean_return=38.163 mean_len=82.9
+[gat-train] update=1653 samples=97920 fps=41.6 loss=4.2941 actor=-1.2795 value=5.5890 entropy=1.5369 mean_return=38.445 mean_len=83.8
+[gat-train] update=1654 samples=98560 fps=41.7 loss=3.8646 actor=-0.5223 value=4.4008 entropy=1.3884 mean_return=38.774 mean_len=84.5
+[gat-train] update=1655 samples=99200 fps=41.7 loss=4.4538 actor=-0.8609 value=5.3286 entropy=1.3961 mean_return=39.246 mean_len=85.5
+[gat-train] update=1656 samples=99840 fps=41.8 loss=3.8524 actor=-0.4822 value=4.3480 entropy=1.3394 mean_return=39.434 mean_len=85.7
+[gat-train] update=1657 samples=100480 fps=41.8 loss=3.5193 actor=-0.1605 value=3.6931 entropy=1.3282 mean_return=39.257 mean_len=85.5
+[gat-train] update=1658 samples=101120 fps=41.9 loss=2.8984 actor=-0.0565 value=2.9680 entropy=1.3082 mean_return=39.258 mean_len=85.6
+[gat-train] update=1659 samples=101760 fps=41.9 loss=2.8292 actor=0.2145 value=2.6280 entropy=1.3365 mean_return=39.410 mean_len=85.8
+[gat-train] update=1660 samples=102400 fps=42.0 loss=2.3515 actor=0.3577 value=2.0068 entropy=1.3028 mean_return=39.294 mean_len=85.6
+[gat-train] update=1661 samples=103040 fps=42.1 loss=2.2456 actor=0.0642 value=2.1947 entropy=1.3353 mean_return=39.292 mean_len=85.6
+[gat-train] update=1662 samples=103680 fps=42.0 loss=5.2359 actor=-0.0850 value=5.3340 entropy=1.3079 mean_return=38.456 mean_len=83.9
+[gat-train] update=1663 samples=104320 fps=42.1 loss=3.9060 actor=-0.0374 value=3.9566 entropy=1.3132 mean_return=38.671 mean_len=83.8
+[gat-train] update=1664 samples=104960 fps=42.0 loss=3.0025 actor=-0.3285 value=3.3443 entropy=1.3292 mean_return=38.661 mean_len=83.6
+[gat-train] update=1665 samples=105600 fps=42.1 loss=4.8377 actor=-0.1537 value=5.0046 entropy=1.3156 mean_return=38.502 mean_len=83.0
+[gat-train] update=1666 samples=106240 fps=42.0 loss=3.9103 actor=-0.4637 value=4.3876 entropy=1.3598 mean_return=38.503 mean_len=82.9
+[gat-train] update=1667 samples=106880 fps=42.1 loss=3.3984 actor=-0.6900 value=4.1023 entropy=1.3908 mean_return=38.602 mean_len=82.6
+[gat-train] update=1668 samples=107520 fps=42.2 loss=4.4302 actor=-0.7430 value=5.1871 entropy=1.3875 mean_return=38.290 mean_len=82.0
+[gat-train] update=1669 samples=108160 fps=42.2 loss=5.2329 actor=-1.0201 value=6.2671 entropy=1.4090 mean_return=39.019 mean_len=83.7
+[gat-train] update=1670 samples=108800 fps=42.3 loss=3.8962 actor=-0.7816 value=4.6920 entropy=1.4141 mean_return=39.186 mean_len=84.4
+[gat-train] update=1671 samples=109440 fps=42.4 loss=3.9612 actor=-0.9728 value=4.9487 entropy=1.4642 mean_return=39.350 mean_len=85.1
+[gat-train] update=1672 samples=110080 fps=42.5 loss=3.5438 actor=-1.0488 value=4.6079 entropy=1.5324 mean_return=39.543 mean_len=85.6
+[gat-train] update=1673 samples=110720 fps=42.6 loss=4.8491 actor=-0.6462 value=5.5102 entropy=1.4965 mean_return=39.620 mean_len=85.7
+[gat-train] update=1674 samples=111360 fps=42.7 loss=2.9578 actor=-0.6991 value=3.6719 entropy=1.4966 mean_return=39.655 mean_len=85.9
+[gat-train] update=1675 samples=112000 fps=42.8 loss=2.6047 actor=0.0959 value=2.5245 entropy=1.5587 mean_return=39.509 mean_len=85.9
+[gat-train] update=1676 samples=112640 fps=42.8 loss=2.6678 actor=-0.3010 value=2.9840 entropy=1.5268 mean_return=39.887 mean_len=86.5
+[gat-train] update=1677 samples=113280 fps=42.9 loss=3.2314 actor=-0.2293 value=3.4760 entropy=1.5336 mean_return=39.963 mean_len=86.3
+[gat-train] update=1678 samples=113920 fps=43.0 loss=3.2738 actor=0.3898 value=2.8991 entropy=1.5035 mean_return=39.797 mean_len=86.2
+[gat-train] update=1679 samples=114560 fps=43.0 loss=4.6672 actor=-0.1475 value=4.8296 entropy=1.4879 mean_return=39.385 mean_len=85.3
+[gat-train] update=1680 samples=115200 fps=43.1 loss=3.5556 actor=0.0097 value=3.5610 entropy=1.5154 mean_return=39.150 mean_len=84.8
+[gat-train] update=1681 samples=115840 fps=43.2 loss=4.5130 actor=-0.6976 value=5.2269 entropy=1.6252 mean_return=39.050 mean_len=84.2
+[gat-train] update=1682 samples=116480 fps=43.2 loss=3.2086 actor=-0.6290 value=3.8534 entropy=1.5777 mean_return=38.903 mean_len=83.8
+[gat-train] update=1683 samples=117120 fps=43.3 loss=3.4669 actor=-0.1399 value=3.6223 entropy=1.5497 mean_return=38.968 mean_len=83.7
+[gat-train] update=1684 samples=117760 fps=43.3 loss=4.2550 actor=-0.5708 value=4.8411 entropy=1.5309 mean_return=38.594 mean_len=82.9
+[gat-train] update=1685 samples=118400 fps=43.4 loss=2.8139 actor=-0.3043 value=3.1332 entropy=1.5004 mean_return=38.655 mean_len=82.8
+[gat-train] update=1686 samples=119040 fps=43.4 loss=4.4856 actor=-0.8330 value=5.3345 entropy=1.5877 mean_return=38.508 mean_len=82.6
+[gat-train] update=1687 samples=119680 fps=43.5 loss=5.9097 actor=-1.6104 value=7.5357 entropy=1.5668 mean_return=38.957 mean_len=84.2
+[gat-train] update=1688 samples=120320 fps=43.6 loss=3.2344 actor=-0.2906 value=3.5409 entropy=1.5876 mean_return=39.023 mean_len=84.7
+[gat-train] update=1689 samples=120960 fps=43.6 loss=4.3108 actor=-1.0983 value=5.4256 entropy=1.6565 mean_return=39.258 mean_len=85.8
+[gat-train] update=1690 samples=121600 fps=43.6 loss=3.3125 actor=-0.7680 value=4.0965 entropy=1.6002 mean_return=39.576 mean_len=86.5
+[gat-train] update=1691 samples=122240 fps=43.6 loss=3.1761 actor=-0.8531 value=4.0454 entropy=1.6223 mean_return=39.950 mean_len=87.1
+[gat-train] update=1692 samples=122880 fps=43.6 loss=2.9866 actor=-0.2548 value=3.2563 entropy=1.4905 mean_return=40.080 mean_len=87.0
+[gat-train] update=1693 samples=123520 fps=43.7 loss=3.0607 actor=-0.3084 value=3.3835 entropy=1.4427 mean_return=39.854 mean_len=86.5
+[gat-train] update=1694 samples=124160 fps=43.7 loss=3.7236 actor=-0.5657 value=4.3037 entropy=1.4385 mean_return=39.569 mean_len=85.7
+[gat-train] update=1695 samples=124800 fps=43.7 loss=3.0502 actor=-0.3762 value=3.4399 entropy=1.3611 mean_return=39.537 mean_len=85.4
+[gat-train] update=1696 samples=125440 fps=43.7 loss=3.6348 actor=0.0012 value=3.6467 entropy=1.3097 mean_return=39.239 mean_len=84.8
+[gat-train] update=1697 samples=126080 fps=43.8 loss=2.7444 actor=-0.2791 value=3.0368 entropy=1.3305 mean_return=39.016 mean_len=84.3
+[gat-train] update=1698 samples=126720 fps=43.8 loss=2.7795 actor=-0.0818 value=2.8742 entropy=1.2899 mean_return=38.705 mean_len=83.5
+[gat-train] update=1699 samples=127360 fps=43.8 loss=3.8190 actor=-0.2000 value=4.0319 entropy=1.2917 mean_return=38.835 mean_len=83.5
+[gat-train] update=1700 samples=128000 fps=43.8 loss=3.7463 actor=-0.5415 value=4.3005 entropy=1.2742 mean_return=38.374 mean_len=82.5
+[gat-train] eval update=1700 torch_score=78.64 deploy_score=84.68 min=73.64 bottom10=77.45 max_regression=8.04 regressions=1 guard_rejected=1 best=82.56
+[gat-train] update=1701 samples=128640 fps=42.9 loss=4.1782 actor=-0.5767 value=4.7683 entropy=1.3409 mean_return=38.056 mean_len=81.8
+[gat-train] update=1702 samples=129280 fps=43.0 loss=3.6493 actor=-0.2275 value=3.8905 entropy=1.3665 mean_return=38.222 mean_len=82.3
+[gat-train] update=1703 samples=129920 fps=43.0 loss=5.0438 actor=-0.6216 value=5.6785 entropy=1.3116 mean_return=38.065 mean_len=81.4
+[gat-train] update=1704 samples=130560 fps=43.0 loss=4.2241 actor=-0.4686 value=4.7057 entropy=1.2911 mean_return=38.254 mean_len=82.0
+[gat-train] update=1705 samples=131200 fps=42.9 loss=4.6262 actor=-0.7315 value=5.3706 entropy=1.2868 mean_return=38.374 mean_len=82.6
+[gat-train] update=1706 samples=131840 fps=42.9 loss=3.6196 actor=-0.4689 value=4.1012 entropy=1.2779 mean_return=38.528 mean_len=83.1
+[gat-train] update=1707 samples=132480 fps=43.0 loss=3.4991 actor=-0.7721 value=4.2847 entropy=1.3426 mean_return=38.727 mean_len=84.0
+[gat-train] update=1708 samples=133120 fps=43.1 loss=2.3757 actor=-0.2785 value=2.6671 entropy=1.2877 mean_return=38.867 mean_len=84.7
+[gat-train] update=1709 samples=133760 fps=43.1 loss=2.6152 actor=-0.5031 value=3.1322 entropy=1.3893 mean_return=39.027 mean_len=85.0
+[gat-train] update=1710 samples=134400 fps=43.2 loss=2.5047 actor=-0.0633 value=2.5817 entropy=1.3661 mean_return=38.975 mean_len=84.8
+[gat-train] update=1711 samples=135040 fps=43.1 loss=2.5640 actor=-0.2538 value=2.8316 entropy=1.3749 mean_return=39.012 mean_len=85.2
+[gat-train] update=1712 samples=135680 fps=43.2 loss=3.5541 actor=-0.1054 value=3.6737 entropy=1.4084 mean_return=38.984 mean_len=85.4
+[gat-train] update=1713 samples=136320 fps=43.2 loss=3.0601 actor=-0.0911 value=3.1653 entropy=1.4054 mean_return=39.090 mean_len=85.3
+[gat-train] update=1714 samples=136960 fps=43.2 loss=3.3755 actor=-0.0123 value=3.4024 entropy=1.4599 mean_return=39.164 mean_len=85.2
+[gat-train] update=1715 samples=137600 fps=43.2 loss=2.2337 actor=-0.1729 value=2.4218 entropy=1.5245 mean_return=39.051 mean_len=85.0
+[gat-train] update=1716 samples=138240 fps=43.2 loss=4.0746 actor=-0.4948 value=4.5851 entropy=1.5733 mean_return=39.039 mean_len=84.9
+[gat-train] update=1717 samples=138880 fps=43.2 loss=3.6490 actor=-0.3101 value=3.9747 entropy=1.5711 mean_return=38.822 mean_len=84.6
+[gat-train] update=1718 samples=139520 fps=43.3 loss=3.9357 actor=-0.7124 value=4.6637 entropy=1.5621 mean_return=38.591 mean_len=84.2
+[gat-train] update=1719 samples=140160 fps=43.3 loss=4.8979 actor=-0.1473 value=5.0599 entropy=1.4693 mean_return=38.667 mean_len=83.6
+[gat-train] update=1720 samples=140800 fps=43.3 loss=3.5672 actor=-0.6698 value=4.2517 entropy=1.4723 mean_return=38.448 mean_len=83.4
+[gat-train] update=1721 samples=141440 fps=43.2 loss=3.5934 actor=-0.3265 value=3.9341 entropy=1.4171 mean_return=38.629 mean_len=83.6
+[gat-train] update=1722 samples=142080 fps=43.2 loss=5.2625 actor=-0.9425 value=6.2190 entropy=1.4023 mean_return=38.335 mean_len=82.9
+[gat-train] update=1723 samples=142720 fps=43.1 loss=4.2684 actor=-0.7537 value=5.0356 entropy=1.3469 mean_return=38.809 mean_len=83.3
+[gat-train] update=1724 samples=143360 fps=43.0 loss=4.4044 actor=-0.7995 value=5.2170 entropy=1.3065 mean_return=38.668 mean_len=83.1
+[gat-train] update=1725 samples=144000 fps=42.9 loss=3.1186 actor=-0.2117 value=3.3431 entropy=1.2762 mean_return=38.793 mean_len=83.4
+[gat-train] update=1726 samples=144640 fps=42.9 loss=3.6730 actor=-0.5809 value=4.2677 entropy=1.3706 mean_return=38.950 mean_len=84.1
+[gat-train] update=1727 samples=145280 fps=42.9 loss=2.8074 actor=-0.0616 value=2.8816 entropy=1.2641 mean_return=38.898 mean_len=84.0
+[gat-train] update=1728 samples=145920 fps=42.8 loss=3.9416 actor=-0.4697 value=4.4245 entropy=1.3190 mean_return=39.044 mean_len=84.2
+[gat-train] update=1729 samples=146560 fps=42.7 loss=2.8863 actor=-0.0086 value=2.9074 entropy=1.2594 mean_return=38.878 mean_len=84.1
+[gat-train] update=1730 samples=147200 fps=42.7 loss=3.2277 actor=-0.2630 value=3.5035 entropy=1.2834 mean_return=38.991 mean_len=84.2
+[gat-train] update=1731 samples=147840 fps=42.7 loss=3.0146 actor=-0.2072 value=3.2349 entropy=1.3045 mean_return=38.721 mean_len=84.0
+[gat-train] update=1732 samples=148480 fps=42.8 loss=3.7617 actor=-0.1071 value=3.8817 entropy=1.2876 mean_return=38.748 mean_len=83.3
+[gat-train] update=1733 samples=149120 fps=42.8 loss=2.8349 actor=-0.0114 value=2.8593 entropy=1.2922 mean_return=38.933 mean_len=83.4
+[gat-train] update=1734 samples=149760 fps=42.9 loss=4.1776 actor=-0.3376 value=4.5287 entropy=1.3444 mean_return=38.708 mean_len=82.9
+[gat-train] update=1735 samples=150400 fps=42.9 loss=3.7052 actor=-1.0086 value=4.7277 entropy=1.3883 mean_return=38.679 mean_len=82.7
+[gat-train] update=1736 samples=151040 fps=43.0 loss=3.1285 actor=-0.1910 value=3.3332 entropy=1.3715 mean_return=38.921 mean_len=83.4
+[gat-train] update=1737 samples=151680 fps=43.0 loss=4.2586 actor=-0.5463 value=4.8188 entropy=1.3920 mean_return=39.409 mean_len=84.2
+[gat-train] update=1738 samples=152320 fps=43.1 loss=5.4227 actor=-1.2408 value=6.6776 entropy=1.4182 mean_return=39.523 mean_len=84.9
+[gat-train] update=1739 samples=152960 fps=43.1 loss=2.4104 actor=-0.3310 value=2.7546 entropy=1.3127 mean_return=39.599 mean_len=85.5
+[gat-train] update=1740 samples=153600 fps=43.2 loss=4.1533 actor=-0.4968 value=4.6636 entropy=1.3456 mean_return=39.822 mean_len=86.0
+[gat-train] update=1741 samples=154240 fps=43.2 loss=4.1681 actor=-0.4755 value=4.6573 entropy=1.3692 mean_return=39.651 mean_len=86.1
+[gat-train] update=1742 samples=154880 fps=43.3 loss=2.7997 actor=-0.7027 value=3.5156 entropy=1.3203 mean_return=39.344 mean_len=85.6
+[gat-train] update=1743 samples=155520 fps=43.3 loss=3.5165 actor=-0.2528 value=3.7825 entropy=1.3115 mean_return=39.221 mean_len=85.8
+[gat-train] update=1744 samples=156160 fps=43.4 loss=3.4735 actor=-0.3188 value=3.8057 entropy=1.3350 mean_return=39.148 mean_len=85.5
+[gat-train] update=1745 samples=156800 fps=43.4 loss=2.7311 actor=0.1159 value=2.6283 entropy=1.3104 mean_return=39.240 mean_len=85.6
+[gat-train] update=1746 samples=157440 fps=43.5 loss=3.0569 actor=-0.1835 value=3.2542 entropy=1.3780 mean_return=39.174 mean_len=85.6
+[gat-train] update=1747 samples=158080 fps=43.5 loss=2.7326 actor=-0.0163 value=2.7631 entropy=1.4189 mean_return=39.240 mean_len=85.6
+[gat-train] update=1748 samples=158720 fps=43.6 loss=2.8370 actor=-0.3994 value=3.2508 entropy=1.4380 mean_return=39.370 mean_len=85.1
+[gat-train] update=1749 samples=159360 fps=43.6 loss=2.5412 actor=-0.1224 value=2.6775 entropy=1.3905 mean_return=39.491 mean_len=85.3
+[gat-train] update=1750 samples=160000 fps=43.7 loss=2.8451 actor=-0.0675 value=2.9266 entropy=1.3993 mean_return=39.218 mean_len=84.9
+[gat-train] eval update=1750 torch_score=77.19 deploy_score=83.95 min=78.16 bottom10=78.80 max_regression=5.20 regressions=1 guard_rejected=1 best=82.56
+[gat-train] update=1751 samples=160640 fps=43.1 loss=2.6587 actor=-0.0812 value=2.7532 entropy=1.3337 mean_return=39.179 mean_len=84.8
+[gat-train] update=1752 samples=161280 fps=43.1 loss=4.2805 actor=-0.4807 value=4.7749 entropy=1.3675 mean_return=39.333 mean_len=84.9
+[gat-train] update=1753 samples=161920 fps=43.1 loss=3.4350 actor=-0.5165 value=3.9647 entropy=1.3150 mean_return=39.407 mean_len=84.7
+[gat-train] update=1754 samples=162560 fps=43.1 loss=3.7288 actor=-0.4483 value=4.1901 entropy=1.3014 mean_return=39.327 mean_len=84.2
+[gat-train] update=1755 samples=163200 fps=43.1 loss=4.7278 actor=-0.8461 value=5.5876 entropy=1.3664 mean_return=39.085 mean_len=84.3
+[gat-train] update=1756 samples=163840 fps=43.1 loss=3.9268 actor=-0.6327 value=4.5740 entropy=1.4442 mean_return=39.119 mean_len=84.5
+[gat-train] update=1757 samples=164480 fps=43.1 loss=4.0399 actor=-0.4911 value=4.5459 entropy=1.4933 mean_return=38.747 mean_len=83.7
+[gat-train] update=1758 samples=165120 fps=43.2 loss=2.9466 actor=-0.4690 value=3.4321 entropy=1.6443 mean_return=38.836 mean_len=84.3
+[gat-train] update=1759 samples=165760 fps=43.2 loss=8.5369 actor=-0.8264 value=9.3806 entropy=1.7325 mean_return=38.774 mean_len=84.0
+[gat-train] update=1760 samples=166400 fps=43.3 loss=3.8933 actor=-0.6991 value=4.6106 entropy=1.8171 mean_return=38.531 mean_len=83.3
+[gat-train] update=1761 samples=167040 fps=43.3 loss=2.6616 actor=-0.2388 value=2.9196 entropy=1.9277 mean_return=38.679 mean_len=83.5
+[gat-train] update=1762 samples=167680 fps=43.4 loss=3.6799 actor=-0.4118 value=4.1116 entropy=1.9970 mean_return=38.455 mean_len=83.1
+[gat-train] update=1763 samples=168320 fps=43.4 loss=2.5770 actor=0.0285 value=2.5705 entropy=2.1989 mean_return=38.573 mean_len=83.5
+[gat-train] update=1764 samples=168960 fps=43.4 loss=3.1884 actor=0.1609 value=3.0497 entropy=2.2216 mean_return=38.723 mean_len=83.8
+[gat-train] update=1765 samples=169600 fps=43.4 loss=5.5242 actor=-1.1428 value=6.6899 entropy=2.2811 mean_return=38.135 mean_len=82.6
+[gat-train] update=1766 samples=170240 fps=43.5 loss=3.0207 actor=-0.7818 value=3.8250 entropy=2.2446 mean_return=38.197 mean_len=82.8
+[gat-train] update=1767 samples=170880 fps=43.5 loss=3.3867 actor=-0.1051 value=3.5154 entropy=2.3621 mean_return=38.195 mean_len=82.5
+[gat-train] update=1768 samples=171520 fps=43.5 loss=5.7009 actor=-0.9473 value=6.6705 entropy=2.2354 mean_return=37.900 mean_len=81.8
+[gat-train] update=1769 samples=172160 fps=43.5 loss=4.1247 actor=-0.7766 value=4.9235 entropy=2.2250 mean_return=37.330 mean_len=80.8
+[gat-train] update=1770 samples=172800 fps=43.5 loss=4.4040 actor=-0.7821 value=5.2078 entropy=2.1685 mean_return=36.941 mean_len=79.9
+[gat-train] update=1771 samples=173440 fps=43.5 loss=5.6016 actor=-0.9646 value=6.5880 entropy=2.1777 mean_return=37.018 mean_len=79.9
+[gat-train] update=1772 samples=174080 fps=43.5 loss=6.6027 actor=-1.6603 value=8.2849 entropy=2.1946 mean_return=36.729 mean_len=79.2
+[gat-train] update=1773 samples=174720 fps=43.6 loss=3.3890 actor=-1.3350 value=4.7466 entropy=2.2596 mean_return=36.972 mean_len=79.4
+[gat-train] update=1774 samples=175360 fps=43.5 loss=2.5643 actor=-0.6703 value=3.2558 entropy=2.1204 mean_return=36.990 mean_len=79.6
+[gat-train] update=1775 samples=176000 fps=43.5 loss=2.9095 actor=-0.5701 value=3.5014 entropy=2.1782 mean_return=36.942 mean_len=79.9
+[gat-train] update=1776 samples=176640 fps=43.4 loss=3.9594 actor=-0.7761 value=4.7564 entropy=2.0898 mean_return=37.031 mean_len=80.0
+[gat-train] update=1777 samples=177280 fps=43.4 loss=4.0271 actor=-0.4959 value=4.5435 entropy=2.0545 mean_return=37.137 mean_len=80.0
+[gat-train] update=1778 samples=177920 fps=43.4 loss=3.3754 actor=-0.0898 value=3.4857 entropy=2.0410 mean_return=37.220 mean_len=80.3
+[gat-train] update=1779 samples=178560 fps=43.4 loss=3.6976 actor=-0.9112 value=4.6298 entropy=2.1077 mean_return=37.095 mean_len=80.0
+[gat-train] update=1780 samples=179200 fps=43.4 loss=3.1234 actor=0.1572 value=2.9863 entropy=2.0040 mean_return=37.113 mean_len=80.3
+[gat-train] update=1781 samples=179840 fps=43.3 loss=3.3405 actor=-0.5977 value=3.9585 entropy=2.0276 mean_return=37.189 mean_len=80.1
+[gat-train] update=1782 samples=180480 fps=43.3 loss=2.6655 actor=-0.3795 value=3.0640 entropy=1.8950 mean_return=37.160 mean_len=79.9
+[gat-train] update=1783 samples=181120 fps=43.2 loss=3.1851 actor=-0.0634 value=3.2669 entropy=1.8382 mean_return=37.175 mean_len=79.5
+[gat-train] update=1784 samples=181760 fps=43.2 loss=3.9235 actor=-0.6537 value=4.5946 entropy=1.7450 mean_return=37.232 mean_len=79.6
+[gat-train] update=1785 samples=182400 fps=43.2 loss=4.1884 actor=-0.6513 value=4.8565 entropy=1.6754 mean_return=37.320 mean_len=79.9
+[gat-train] update=1786 samples=183040 fps=43.1 loss=2.3546 actor=-0.3225 value=2.6937 entropy=1.6669 mean_return=37.267 mean_len=79.9
+[gat-train] update=1787 samples=183680 fps=43.0 loss=4.4776 actor=-1.3121 value=5.8066 entropy=1.6897 mean_return=37.226 mean_len=80.1
+[gat-train] update=1788 samples=184320 fps=42.9 loss=6.8232 actor=-1.0937 value=7.9338 entropy=1.6854 mean_return=36.981 mean_len=80.2
+[gat-train] update=1789 samples=184960 fps=42.9 loss=4.2000 actor=-0.6946 value=4.9103 entropy=1.5706 mean_return=36.934 mean_len=79.9
+[gat-train] update=1790 samples=185600 fps=43.0 loss=3.1495 actor=-0.7713 value=3.9369 entropy=1.6058 mean_return=36.989 mean_len=80.1
+[gat-train] update=1791 samples=186240 fps=43.0 loss=3.6070 actor=-0.7198 value=4.3417 entropy=1.4840 mean_return=37.526 mean_len=80.8
+[gat-train] update=1792 samples=186880 fps=42.9 loss=3.4369 actor=-0.2111 value=3.6632 entropy=1.5136 mean_return=37.460 mean_len=80.4
+[gat-train] update=1793 samples=187520 fps=42.9 loss=2.3175 actor=0.0576 value=2.2755 entropy=1.5577 mean_return=37.692 mean_len=80.8
+[gat-train] update=1794 samples=188160 fps=42.8 loss=4.6191 actor=-0.4757 value=5.1097 entropy=1.4965 mean_return=38.128 mean_len=81.9
+[gat-train] update=1795 samples=188800 fps=42.8 loss=3.1969 actor=-0.5078 value=3.7198 entropy=1.5107 mean_return=38.085 mean_len=81.9
+[gat-train] update=1796 samples=189440 fps=42.8 loss=3.3663 actor=-0.1228 value=3.5048 entropy=1.5663 mean_return=38.123 mean_len=82.4
+[gat-train] update=1797 samples=190080 fps=42.7 loss=3.5195 actor=0.1025 value=3.4332 entropy=1.6221 mean_return=38.312 mean_len=83.1
+[gat-train] update=1798 samples=190720 fps=42.7 loss=2.7638 actor=-0.1014 value=2.8821 entropy=1.6950 mean_return=38.351 mean_len=83.1
+[gat-train] update=1799 samples=191360 fps=42.8 loss=2.8512 actor=-0.3149 value=3.1831 entropy=1.6929 mean_return=37.999 mean_len=82.7
+[gat-train] update=1800 samples=192000 fps=42.8 loss=3.1860 actor=-0.0772 value=3.2805 entropy=1.7312 mean_return=37.999 mean_len=82.8
+[gat-train] eval update=1800 torch_score=87.04 deploy_score=85.68 min=80.28 bottom10=80.89 confirm_score=85.86 confirm_min=72.72 confirm_bottom10=78.68 max_regression=16.22 regressions=5 guard_rejected=1 best=82.56
+[gat-train] update=1801 samples=192640 fps=41.3 loss=4.0171 actor=-0.3808 value=4.4150 entropy=1.7017 mean_return=37.658 mean_len=82.4
+[gat-train] update=1802 samples=193280 fps=41.4 loss=4.2839 actor=-1.0374 value=5.3394 entropy=1.8125 mean_return=37.631 mean_len=82.3
+[gat-train] update=1803 samples=193920 fps=41.4 loss=4.7573 actor=-0.7183 value=5.4941 entropy=1.8470 mean_return=37.352 mean_len=81.4
+[gat-train] update=1804 samples=194560 fps=41.4 loss=3.1629 actor=-1.3143 value=4.4964 entropy=1.9203 mean_return=37.509 mean_len=81.4
+[gat-train] update=1805 samples=195200 fps=41.4 loss=3.4766 actor=-1.1600 value=4.6565 entropy=1.9912 mean_return=38.166 mean_len=82.5
+[gat-train] update=1806 samples=195840 fps=41.5 loss=14.4759 actor=-1.4078 value=15.9036 entropy=1.9889 mean_return=37.734 mean_len=81.8
+[gat-train] update=1807 samples=196480 fps=41.5 loss=3.8253 actor=-0.7138 value=4.5593 entropy=2.0178 mean_return=37.832 mean_len=81.9
+[gat-train] update=1808 samples=197120 fps=41.5 loss=3.3152 actor=-0.6371 value=3.9725 entropy=2.0117 mean_return=38.249 mean_len=82.7
+[gat-train] update=1809 samples=197760 fps=41.5 loss=2.3159 actor=-0.2038 value=2.5398 entropy=2.0047 mean_return=38.345 mean_len=82.9
+[gat-train] update=1810 samples=198400 fps=41.6 loss=2.6240 actor=-0.7165 value=3.3612 entropy=2.0733 mean_return=38.170 mean_len=82.8
+[gat-train] update=1811 samples=199040 fps=41.6 loss=7.8056 actor=-1.1394 value=8.9651 entropy=1.9992 mean_return=37.311 mean_len=80.8
+[gat-train] update=1812 samples=199680 fps=41.6 loss=3.6034 actor=-0.2025 value=3.8264 entropy=2.0580 mean_return=37.287 mean_len=80.8
+[gat-train] update=1813 samples=200320 fps=41.6 loss=3.4169 actor=-0.6477 value=4.0858 entropy=2.1153 mean_return=37.938 mean_len=81.6
+[gat-train] update=1814 samples=200960 fps=41.6 loss=3.3392 actor=-0.1450 value=3.5043 entropy=2.0075 mean_return=38.235 mean_len=82.2
+[gat-train] update=1815 samples=201600 fps=41.6 loss=3.2756 actor=0.0677 value=3.2296 entropy=2.1744 mean_return=38.169 mean_len=82.0
+[gat-train] update=1816 samples=202240 fps=41.5 loss=3.1226 actor=-0.3723 value=3.5172 entropy=2.2343 mean_return=37.822 mean_len=81.7
+[gat-train] update=1817 samples=202880 fps=41.6 loss=3.4993 actor=-0.6748 value=4.1951 entropy=2.0984 mean_return=37.622 mean_len=81.6
+[gat-train] update=1818 samples=203520 fps=41.6 loss=3.9835 actor=-0.7071 value=4.7114 entropy=2.0855 mean_return=37.324 mean_len=80.4
+[gat-train] update=1819 samples=204160 fps=41.6 loss=2.6408 actor=-0.6383 value=3.2994 entropy=2.0298 mean_return=37.986 mean_len=82.0
+[gat-train] update=1820 samples=204800 fps=41.6 loss=3.9791 actor=-1.3792 value=5.3782 entropy=1.9869 mean_return=38.146 mean_len=82.5
+[gat-train] update=1821 samples=205440 fps=41.7 loss=3.6295 actor=-0.6282 value=4.2758 entropy=1.8192 mean_return=37.756 mean_len=81.8
+[gat-train] update=1822 samples=206080 fps=41.7 loss=6.2539 actor=-1.2656 value=7.5377 entropy=1.8154 mean_return=37.147 mean_len=80.4
+[gat-train] update=1823 samples=206720 fps=41.8 loss=2.2220 actor=-0.3985 value=2.6380 entropy=1.7557 mean_return=37.402 mean_len=80.9
+[gat-train] update=1824 samples=207360 fps=41.8 loss=3.1190 actor=-0.3964 value=3.5326 entropy=1.7144 mean_return=37.342 mean_len=80.9
+[gat-train] update=1825 samples=208000 fps=41.9 loss=2.3725 actor=-0.1889 value=2.5773 entropy=1.5892 mean_return=37.426 mean_len=81.0
+[gat-train] update=1826 samples=208640 fps=41.9 loss=2.4326 actor=-0.3026 value=2.7500 entropy=1.4797 mean_return=37.274 mean_len=80.9
+[gat-train] update=1827 samples=209280 fps=41.8 loss=3.2100 actor=-0.2713 value=3.4960 entropy=1.4623 mean_return=37.426 mean_len=81.0
+[gat-train] update=1828 samples=209920 fps=41.9 loss=2.6052 actor=-0.0662 value=2.6860 entropy=1.4570 mean_return=37.594 mean_len=81.5
+[gat-train] update=1829 samples=210560 fps=41.9 loss=3.3023 actor=-0.4759 value=3.7923 entropy=1.4030 mean_return=38.718 mean_len=83.7
+[gat-train] update=1830 samples=211200 fps=41.9 loss=2.9857 actor=-0.0918 value=3.0913 entropy=1.3752 mean_return=38.825 mean_len=83.8
+[gat-train] update=1831 samples=211840 fps=41.9 loss=3.3766 actor=-0.3703 value=3.7602 entropy=1.3340 mean_return=38.921 mean_len=83.7
+[gat-train] update=1832 samples=212480 fps=41.9 loss=2.6301 actor=-0.3937 value=3.0371 entropy=1.3311 mean_return=39.076 mean_len=83.8
+[gat-train] update=1833 samples=213120 fps=41.9 loss=3.2028 actor=-0.0547 value=3.2706 entropy=1.3116 mean_return=38.895 mean_len=83.3
+[gat-train] update=1834 samples=213760 fps=42.0 loss=4.4683 actor=-0.3767 value=4.8582 entropy=1.3207 mean_return=38.384 mean_len=82.5
+[gat-train] update=1835 samples=214400 fps=42.0 loss=3.7927 actor=-0.4829 value=4.2885 entropy=1.2888 mean_return=38.518 mean_len=82.5
+[gat-train] update=1836 samples=215040 fps=42.0 loss=3.7205 actor=-0.3928 value=4.1268 entropy=1.3573 mean_return=38.422 mean_len=82.4
+[gat-train] update=1837 samples=215680 fps=41.9 loss=2.0317 actor=-0.4420 value=2.4868 entropy=1.3162 mean_return=38.420 mean_len=82.5
+[gat-train] update=1838 samples=216320 fps=41.9 loss=4.0398 actor=-0.7757 value=4.8294 entropy=1.3902 mean_return=38.613 mean_len=83.4
+[gat-train] update=1839 samples=216960 fps=41.9 loss=2.9133 actor=-0.5697 value=3.4953 entropy=1.2349 mean_return=39.165 mean_len=84.3
+[gat-train] update=1840 samples=217600 fps=41.9 loss=3.1620 actor=-0.4527 value=3.6282 entropy=1.3582 mean_return=38.910 mean_len=84.6
+[gat-train] update=1841 samples=218240 fps=41.9 loss=2.7928 actor=-0.3010 value=3.1070 entropy=1.3230 mean_return=39.541 mean_len=85.7
+[gat-train] update=1842 samples=218880 fps=41.8 loss=3.3429 actor=-0.2488 value=3.6040 entropy=1.2248 mean_return=39.348 mean_len=85.3
+[gat-train] update=1843 samples=219520 fps=41.9 loss=3.1448 actor=-0.2324 value=3.3898 entropy=1.2643 mean_return=39.511 mean_len=85.4
+[gat-train] update=1844 samples=220160 fps=41.9 loss=3.2375 actor=-0.2493 value=3.4998 entropy=1.2995 mean_return=39.090 mean_len=84.9
+[gat-train] update=1845 samples=220800 fps=41.8 loss=3.1106 actor=-0.1928 value=3.3157 entropy=1.2368 mean_return=39.295 mean_len=84.9
+[gat-train] update=1846 samples=221440 fps=41.9 loss=2.4333 actor=-0.2320 value=2.6786 entropy=1.3230 mean_return=39.282 mean_len=85.1
+[gat-train] update=1847 samples=222080 fps=41.9 loss=3.0404 actor=0.0402 value=3.0133 entropy=1.3148 mean_return=39.224 mean_len=84.9
+[gat-train] update=1848 samples=222720 fps=41.9 loss=2.2741 actor=-0.3179 value=2.6048 entropy=1.2811 mean_return=39.911 mean_len=85.5
+[gat-train] update=1849 samples=223360 fps=42.0 loss=2.5728 actor=-0.1286 value=2.7147 entropy=1.3391 mean_return=39.599 mean_len=85.2
+[gat-train] update=1850 samples=224000 fps=42.0 loss=2.8290 actor=-0.3366 value=3.1792 entropy=1.3656 mean_return=39.419 mean_len=84.8
+[gat-train] eval update=1850 torch_score=85.96 deploy_score=84.47 min=71.49 bottom10=75.93 max_regression=10.19 regressions=2 guard_rejected=1 best=82.56
+[gat-train] update=1851 samples=224640 fps=41.6 loss=2.6598 actor=-0.3485 value=3.0219 entropy=1.3666 mean_return=39.403 mean_len=84.6
+[gat-train] update=1852 samples=225280 fps=41.7 loss=3.2748 actor=-0.1807 value=3.4687 entropy=1.3261 mean_return=39.168 mean_len=84.4
+[gat-train] update=1853 samples=225920 fps=41.7 loss=3.2640 actor=-0.3759 value=3.6536 entropy=1.3683 mean_return=39.124 mean_len=84.3
+[gat-train] update=1854 samples=226560 fps=41.7 loss=3.2313 actor=-0.1392 value=3.3836 entropy=1.3116 mean_return=38.902 mean_len=84.3
+[gat-train] update=1855 samples=227200 fps=41.8 loss=3.2669 actor=-0.4250 value=3.7055 entropy=1.3589 mean_return=38.711 mean_len=83.8
+[gat-train] update=1856 samples=227840 fps=41.8 loss=2.5926 actor=-0.2516 value=2.8574 entropy=1.3303 mean_return=38.802 mean_len=84.3
+[gat-train] update=1857 samples=228480 fps=41.8 loss=2.7286 actor=-0.5250 value=3.2673 entropy=1.3678 mean_return=39.216 mean_len=85.1
+[gat-train] update=1858 samples=229120 fps=41.9 loss=3.0541 actor=-0.2501 value=3.3180 entropy=1.3780 mean_return=40.022 mean_len=86.5
+[gat-train] update=1859 samples=229760 fps=41.9 loss=2.3857 actor=-0.4610 value=2.8608 entropy=1.4085 mean_return=40.064 mean_len=86.5
+[gat-train] update=1860 samples=230400 fps=42.0 loss=2.9545 actor=-0.1451 value=3.1136 entropy=1.4064 mean_return=40.054 mean_len=86.3
+[gat-train] update=1861 samples=231040 fps=42.0 loss=2.7481 actor=-0.0504 value=2.8128 entropy=1.4273 mean_return=39.959 mean_len=85.9
+[gat-train] update=1862 samples=231680 fps=42.0 loss=2.6319 actor=-0.3102 value=2.9570 entropy=1.4903 mean_return=39.811 mean_len=85.7
+[gat-train] update=1863 samples=232320 fps=42.1 loss=2.9240 actor=0.0409 value=2.8986 entropy=1.5534 mean_return=39.711 mean_len=85.4
+[gat-train] update=1864 samples=232960 fps=42.1 loss=2.8162 actor=-0.0126 value=2.8454 entropy=1.6660 mean_return=39.780 mean_len=85.5
+[gat-train] update=1865 samples=233600 fps=42.1 loss=2.8277 actor=-0.5285 value=3.3742 entropy=1.7978 mean_return=39.681 mean_len=85.2
+[gat-train] update=1866 samples=234240 fps=42.2 loss=2.0287 actor=-0.5053 value=2.5517 entropy=1.7657 mean_return=39.018 mean_len=84.1
+[gat-train] update=1867 samples=234880 fps=42.2 loss=2.6070 actor=-0.4021 value=3.0276 entropy=1.8549 mean_return=38.994 mean_len=84.3
+[gat-train] update=1868 samples=235520 fps=42.2 loss=2.9896 actor=-0.2859 value=3.2934 entropy=1.7991 mean_return=38.865 mean_len=84.3
+[gat-train] update=1869 samples=236160 fps=42.3 loss=2.9234 actor=-0.1076 value=3.0483 entropy=1.7370 mean_return=38.915 mean_len=84.9
+[gat-train] update=1870 samples=236800 fps=42.3 loss=2.5258 actor=-0.3519 value=2.8949 entropy=1.7228 mean_return=38.992 mean_len=84.5
+[gat-train] update=1871 samples=237440 fps=42.3 loss=3.4844 actor=-0.5275 value=4.0289 entropy=1.7030 mean_return=38.876 mean_len=84.1
+[gat-train] update=1872 samples=238080 fps=42.4 loss=3.6482 actor=-0.5830 value=4.2477 entropy=1.6410 mean_return=39.159 mean_len=84.0
+[gat-train] update=1873 samples=238720 fps=42.4 loss=3.1240 actor=-0.6173 value=3.7570 entropy=1.5767 mean_return=38.679 mean_len=83.5
+[gat-train] update=1874 samples=239360 fps=42.3 loss=2.3718 actor=-0.2924 value=2.6793 entropy=1.5167 mean_return=38.404 mean_len=83.0
+[gat-train] update=1875 samples=240000 fps=42.3 loss=2.7772 actor=-0.2925 value=3.0848 entropy=1.5139 mean_return=38.480 mean_len=83.6
+[gat-train] update=1876 samples=240640 fps=42.2 loss=2.4966 actor=-0.1113 value=2.6233 entropy=1.5375 mean_return=38.192 mean_len=83.2
+[gat-train] update=1877 samples=241280 fps=42.2 loss=1.9768 actor=-0.1304 value=2.1222 entropy=1.4999 mean_return=38.522 mean_len=84.0
+[gat-train] update=1878 samples=241920 fps=42.2 loss=2.1075 actor=-0.5643 value=2.6870 entropy=1.5163 mean_return=38.240 mean_len=83.7
+[gat-train] update=1879 samples=242560 fps=42.2 loss=2.2038 actor=0.3278 value=1.8910 entropy=1.5053 mean_return=38.340 mean_len=84.0
+[gat-train] update=1880 samples=243200 fps=42.2 loss=2.1478 actor=0.1541 value=2.0078 entropy=1.4117 mean_return=38.431 mean_len=84.0
+[gat-train] update=1881 samples=243840 fps=42.1 loss=3.4083 actor=-0.2955 value=3.7188 entropy=1.4995 mean_return=38.811 mean_len=84.2
+[gat-train] update=1882 samples=244480 fps=42.1 loss=2.6996 actor=-0.0654 value=2.7794 entropy=1.4384 mean_return=38.665 mean_len=84.0
+[gat-train] update=1883 samples=245120 fps=42.1 loss=2.4592 actor=-0.1415 value=2.6144 entropy=1.3674 mean_return=38.644 mean_len=83.8
+[gat-train] update=1884 samples=245760 fps=42.1 loss=2.5817 actor=0.0887 value=2.5067 entropy=1.3707 mean_return=38.869 mean_len=84.2
+[gat-train] update=1885 samples=246400 fps=42.1 loss=3.7623 actor=-0.6892 value=4.4659 entropy=1.4334 mean_return=38.826 mean_len=84.0
+[gat-train] update=1886 samples=247040 fps=42.1 loss=2.6222 actor=-0.2610 value=2.8974 entropy=1.4120 mean_return=38.796 mean_len=83.9
+[gat-train] update=1887 samples=247680 fps=42.1 loss=2.7699 actor=0.0348 value=2.7497 entropy=1.4539 mean_return=39.151 mean_len=84.3
+[gat-train] update=1888 samples=248320 fps=42.0 loss=2.8446 actor=-0.4385 value=3.2979 entropy=1.4735 mean_return=39.352 mean_len=84.9
+[gat-train] update=1889 samples=248960 fps=42.0 loss=3.4316 actor=-0.7156 value=4.1618 entropy=1.4621 mean_return=39.624 mean_len=85.6
+[gat-train] update=1890 samples=249600 fps=41.9 loss=3.4153 actor=-0.5916 value=4.0211 entropy=1.4279 mean_return=39.624 mean_len=85.6
+[gat-train] update=1891 samples=250240 fps=41.9 loss=2.9332 actor=-0.4200 value=3.3669 entropy=1.3678 mean_return=39.826 mean_len=86.2
+[gat-train] update=1892 samples=250880 fps=41.9 loss=2.9630 actor=-0.4167 value=3.3936 entropy=1.3898 mean_return=39.338 mean_len=85.6
+[gat-train] update=1893 samples=251520 fps=41.9 loss=2.2399 actor=0.1113 value=2.1417 entropy=1.3063 mean_return=39.251 mean_len=85.3
+[gat-train] update=1894 samples=252160 fps=41.9 loss=2.0229 actor=0.0403 value=1.9958 entropy=1.3204 mean_return=39.098 mean_len=85.3
+[gat-train] update=1895 samples=252800 fps=41.9 loss=2.4726 actor=-0.3318 value=2.8175 entropy=1.3119 mean_return=39.645 mean_len=85.8
+[gat-train] update=1896 samples=253440 fps=41.9 loss=3.0727 actor=0.0004 value=3.0853 entropy=1.3029 mean_return=39.575 mean_len=85.4
+[gat-train] update=1897 samples=254080 fps=41.9 loss=2.3887 actor=-0.0757 value=2.4769 entropy=1.2584 mean_return=39.274 mean_len=84.8
+[gat-train] update=1898 samples=254720 fps=42.0 loss=2.7667 actor=-0.6700 value=3.4496 entropy=1.2903 mean_return=38.884 mean_len=84.1
+[gat-train] update=1899 samples=255360 fps=42.0 loss=2.1957 actor=-0.0560 value=2.2648 entropy=1.3061 mean_return=39.161 mean_len=84.6
+[gat-train] update=1900 samples=256000 fps=42.0 loss=3.2969 actor=-0.3906 value=3.7007 entropy=1.3229 mean_return=38.900 mean_len=84.0
+[gat-train] eval update=1900 torch_score=79.85 deploy_score=85.78 min=71.49 bottom10=75.62 max_regression=5.01 regressions=1 guard_rejected=1 best=82.56
+[gat-train] update=1901 samples=256640 fps=41.7 loss=2.2660 actor=-0.2379 value=2.5169 entropy=1.3084 mean_return=39.109 mean_len=84.4
+[gat-train] update=1902 samples=257280 fps=41.7 loss=2.2639 actor=-0.1992 value=2.4766 entropy=1.3517 mean_return=39.118 mean_len=84.5
+[gat-train] update=1903 samples=257920 fps=41.7 loss=3.1273 actor=-0.1108 value=3.2515 entropy=1.3378 mean_return=38.802 mean_len=83.6
+[gat-train] update=1904 samples=258560 fps=41.7 loss=2.7202 actor=-0.6532 value=3.3868 entropy=1.3432 mean_return=38.846 mean_len=84.3
+[gat-train] update=1905 samples=259200 fps=41.6 loss=4.7389 actor=-1.0716 value=5.8242 entropy=1.3763 mean_return=39.380 mean_len=85.1
+[gat-train] update=1906 samples=259840 fps=41.6 loss=2.3577 actor=-0.5651 value=2.9363 entropy=1.3488 mean_return=39.198 mean_len=84.6
+[gat-train] update=1907 samples=260480 fps=41.6 loss=2.8003 actor=-0.6983 value=3.5132 entropy=1.4570 mean_return=39.430 mean_len=84.7
+[gat-train] update=1908 samples=261120 fps=41.6 loss=3.6013 actor=-0.5445 value=4.1596 entropy=1.3708 mean_return=39.921 mean_len=85.7
+[gat-train] update=1909 samples=261760 fps=41.6 loss=1.7749 actor=-0.3325 value=2.1206 entropy=1.3229 mean_return=39.828 mean_len=85.5
+[gat-train] update=1910 samples=262400 fps=41.6 loss=2.5507 actor=-0.2591 value=2.8237 entropy=1.3913 mean_return=40.141 mean_len=85.8
+[gat-train] update=1911 samples=263040 fps=41.6 loss=2.4540 actor=-0.3403 value=2.8080 entropy=1.3743 mean_return=40.093 mean_len=85.8
+[gat-train] update=1912 samples=263680 fps=41.6 loss=1.9056 actor=0.0729 value=1.8449 entropy=1.2236 mean_return=40.079 mean_len=86.0
+[gat-train] update=1913 samples=264320 fps=41.6 loss=2.6152 actor=-0.1355 value=2.7638 entropy=1.3111 mean_return=40.148 mean_len=86.4
+[gat-train] update=1914 samples=264960 fps=41.5 loss=2.8526 actor=-0.4522 value=3.3176 entropy=1.2861 mean_return=39.601 mean_len=85.6
+[gat-train] update=1915 samples=265600 fps=41.6 loss=2.8380 actor=-0.5043 value=3.3550 entropy=1.2610 mean_return=39.414 mean_len=85.4
+[gat-train] update=1916 samples=266240 fps=41.6 loss=2.8781 actor=-0.0269 value=2.9178 entropy=1.2820 mean_return=39.316 mean_len=85.2
+[gat-train] update=1917 samples=266880 fps=41.6 loss=2.7852 actor=-0.0752 value=2.8739 entropy=1.3563 mean_return=39.123 mean_len=84.9
+[gat-train] update=1918 samples=267520 fps=41.7 loss=2.9029 actor=-0.0088 value=2.9246 entropy=1.2993 mean_return=38.778 mean_len=84.5
+[gat-train] update=1919 samples=268160 fps=41.7 loss=2.1789 actor=0.0804 value=2.1122 entropy=1.3742 mean_return=38.900 mean_len=84.6
+[gat-train] update=1920 samples=268800 fps=41.7 loss=1.9291 actor=-0.3010 value=2.2440 entropy=1.3869 mean_return=38.645 mean_len=84.0
+[gat-train] update=1921 samples=269440 fps=41.7 loss=2.3370 actor=0.1451 value=2.2052 entropy=1.3221 mean_return=38.612 mean_len=83.7
+[gat-train] update=1922 samples=270080 fps=41.8 loss=3.5558 actor=-0.5551 value=4.1246 entropy=1.3658 mean_return=38.982 mean_len=84.3
+[gat-train] update=1923 samples=270720 fps=41.8 loss=3.6723 actor=-0.7324 value=4.4181 entropy=1.3386 mean_return=39.349 mean_len=84.4
+[gat-train] update=1924 samples=271360 fps=41.8 loss=2.8406 actor=-0.3849 value=3.2387 entropy=1.3259 mean_return=39.682 mean_len=84.8
+[gat-train] update=1925 samples=272000 fps=41.9 loss=3.4097 actor=-1.0226 value=4.4453 entropy=1.3012 mean_return=39.725 mean_len=85.2
+[gat-train] update=1926 samples=272640 fps=41.9 loss=2.7017 actor=-0.4152 value=3.1294 entropy=1.2483 mean_return=39.769 mean_len=85.4
+[gat-train] update=1927 samples=273280 fps=41.9 loss=1.9414 actor=-0.2007 value=2.1547 entropy=1.2581 mean_return=39.827 mean_len=85.6
+[gat-train] update=1928 samples=273920 fps=42.0 loss=2.3701 actor=0.0594 value=2.3242 entropy=1.3492 mean_return=40.034 mean_len=86.4
+[gat-train] update=1929 samples=274560 fps=42.0 loss=1.9465 actor=-0.2538 value=2.2131 entropy=1.2835 mean_return=39.623 mean_len=85.7
+[gat-train] update=1930 samples=275200 fps=42.0 loss=3.0861 actor=-0.2641 value=3.3633 entropy=1.3051 mean_return=39.182 mean_len=85.3
+[gat-train] update=1931 samples=275840 fps=42.1 loss=2.0028 actor=0.0914 value=1.9241 entropy=1.2651 mean_return=39.082 mean_len=85.2
+[gat-train] update=1932 samples=276480 fps=42.1 loss=3.1206 actor=-0.2836 value=3.4175 entropy=1.3278 mean_return=39.399 mean_len=85.7
+[gat-train] update=1933 samples=277120 fps=42.1 loss=2.6440 actor=-0.3822 value=3.0392 entropy=1.3057 mean_return=39.671 mean_len=86.4
+[gat-train] update=1934 samples=277760 fps=42.1 loss=2.4278 actor=-0.1748 value=2.6154 entropy=1.2788 mean_return=39.808 mean_len=86.4
+[gat-train] update=1935 samples=278400 fps=42.2 loss=3.0686 actor=-0.1197 value=3.2011 entropy=1.2740 mean_return=39.848 mean_len=86.7
+[gat-train] update=1936 samples=279040 fps=42.2 loss=2.2030 actor=-0.1763 value=2.3922 entropy=1.2891 mean_return=39.923 mean_len=86.9
+[gat-train] update=1937 samples=279680 fps=42.1 loss=4.6857 actor=-0.2540 value=4.9529 entropy=1.3174 mean_return=39.330 mean_len=85.5
+[gat-train] update=1938 samples=280320 fps=42.1 loss=2.4007 actor=-0.2369 value=2.6508 entropy=1.3213 mean_return=39.613 mean_len=85.9
+[gat-train] update=1939 samples=280960 fps=42.2 loss=2.9123 actor=-0.7205 value=3.6468 entropy=1.3912 mean_return=39.062 mean_len=85.1
+[gat-train] update=1940 samples=281600 fps=42.1 loss=3.0419 actor=-0.5922 value=3.6477 entropy=1.3524 mean_return=38.908 mean_len=84.6
+[gat-train] update=1941 samples=282240 fps=42.1 loss=2.7654 actor=-0.4082 value=3.1870 entropy=1.3345 mean_return=38.908 mean_len=84.3
+[gat-train] update=1942 samples=282880 fps=42.2 loss=2.9695 actor=-0.7862 value=3.7690 entropy=1.3328 mean_return=39.372 mean_len=84.6
+[gat-train] update=1943 samples=283520 fps=42.2 loss=3.1804 actor=-0.1208 value=3.3142 entropy=1.3004 mean_return=39.946 mean_len=85.5
+[gat-train] update=1944 samples=284160 fps=42.2 loss=2.5083 actor=-0.3969 value=2.9187 entropy=1.3576 mean_return=39.957 mean_len=85.1
+[gat-train] update=1945 samples=284800 fps=42.3 loss=2.0846 actor=-0.1508 value=2.2487 entropy=1.3319 mean_return=40.141 mean_len=85.3
+[gat-train] update=1946 samples=285440 fps=42.3 loss=2.5881 actor=-0.0465 value=2.6485 entropy=1.3868 mean_return=39.640 mean_len=84.8
+[gat-train] update=1947 samples=286080 fps=42.2 loss=2.7956 actor=0.0668 value=2.7424 entropy=1.3613 mean_return=39.286 mean_len=84.4
+[gat-train] update=1948 samples=286720 fps=42.2 loss=3.0327 actor=-0.3100 value=3.3563 entropy=1.3574 mean_return=39.275 mean_len=84.1
+[gat-train] update=1949 samples=287360 fps=42.2 loss=3.2233 actor=-0.1629 value=3.3991 entropy=1.2910 mean_return=39.209 mean_len=84.2
+[gat-train] update=1950 samples=288000 fps=42.2 loss=3.1452 actor=-0.0074 value=3.1655 entropy=1.2935 mean_return=38.896 mean_len=83.7
+[gat-train] eval update=1950 torch_score=84.87 deploy_score=84.75 min=71.49 bottom10=75.62 max_regression=5.19 regressions=1 guard_rejected=1 best=82.56
+[gat-train] update=1951 samples=288640 fps=41.9 loss=2.4439 actor=-0.1733 value=2.6300 entropy=1.2827 mean_return=38.347 mean_len=82.8
+[gat-train] update=1952 samples=289280 fps=41.9 loss=2.4142 actor=-0.2601 value=2.6875 entropy=1.3280 mean_return=38.452 mean_len=83.3
+[gat-train] update=1953 samples=289920 fps=41.9 loss=2.6673 actor=0.0454 value=2.6349 entropy=1.2922 mean_return=38.917 mean_len=84.0
+[gat-train] update=1954 samples=290560 fps=41.9 loss=2.3198 actor=0.0468 value=2.2862 entropy=1.3244 mean_return=38.747 mean_len=83.9
+[gat-train] update=1955 samples=291200 fps=41.9 loss=3.3038 actor=-0.2777 value=3.5950 entropy=1.3496 mean_return=38.775 mean_len=83.8
+[gat-train] update=1956 samples=291840 fps=41.9 loss=3.0014 actor=-0.1571 value=3.1717 entropy=1.3159 mean_return=38.717 mean_len=83.7
+[gat-train] update=1957 samples=292480 fps=41.9 loss=3.0405 actor=-0.6744 value=3.7281 entropy=1.3229 mean_return=38.785 mean_len=83.9
+[gat-train] update=1958 samples=293120 fps=41.9 loss=3.5589 actor=-0.4531 value=4.0251 entropy=1.3167 mean_return=39.191 mean_len=84.5
+[gat-train] update=1959 samples=293760 fps=41.9 loss=4.2967 actor=-0.9007 value=5.2109 entropy=1.3544 mean_return=39.277 mean_len=84.4
+[gat-train] update=1960 samples=294400 fps=41.9 loss=2.0655 actor=-0.2958 value=2.3743 entropy=1.2969 mean_return=39.650 mean_len=85.6
+[gat-train] update=1961 samples=295040 fps=41.9 loss=2.5094 actor=-0.5250 value=3.0484 entropy=1.4038 mean_return=39.680 mean_len=85.6
+[gat-train] update=1962 samples=295680 fps=41.9 loss=2.2859 actor=-0.3046 value=2.6039 entropy=1.3408 mean_return=39.609 mean_len=85.3
+[gat-train] update=1963 samples=296320 fps=41.9 loss=2.5054 actor=-0.2156 value=2.7342 entropy=1.3179 mean_return=39.689 mean_len=85.5
+[gat-train] update=1964 samples=296960 fps=41.9 loss=3.5769 actor=-0.3305 value=3.9206 entropy=1.3191 mean_return=39.222 mean_len=84.7
+[gat-train] update=1965 samples=297600 fps=42.0 loss=2.3444 actor=-0.1905 value=2.5478 entropy=1.2826 mean_return=39.209 mean_len=84.7
+[gat-train] update=1966 samples=298240 fps=41.9 loss=2.8448 actor=-0.2259 value=3.0842 entropy=1.3592 mean_return=39.082 mean_len=84.6
+[gat-train] update=1967 samples=298880 fps=41.9 loss=2.7938 actor=-0.1761 value=2.9828 entropy=1.2845 mean_return=39.043 mean_len=84.6
+[gat-train] update=1968 samples=299520 fps=41.9 loss=2.7516 actor=-0.1958 value=2.9607 entropy=1.3301 mean_return=38.993 mean_len=84.4
+[gat-train] update=1969 samples=300160 fps=41.9 loss=2.3343 actor=0.0451 value=2.3024 entropy=1.3231 mean_return=39.060 mean_len=84.8
+[gat-train] update=1970 samples=300800 fps=41.9 loss=3.7016 actor=-0.3272 value=4.0423 entropy=1.3540 mean_return=39.008 mean_len=84.6
+[gat-train] update=1971 samples=301440 fps=41.9 loss=3.0130 actor=-0.5114 value=3.5381 entropy=1.3757 mean_return=39.110 mean_len=85.1
+[gat-train] update=1972 samples=302080 fps=41.9 loss=3.1460 actor=-0.4697 value=3.6302 entropy=1.4477 mean_return=39.124 mean_len=84.7
+[gat-train] update=1973 samples=302720 fps=42.0 loss=3.9100 actor=-0.1584 value=4.0833 entropy=1.4863 mean_return=39.063 mean_len=84.6
+[gat-train] update=1974 samples=303360 fps=42.0 loss=4.0524 actor=-0.7434 value=4.8106 entropy=1.4742 mean_return=38.841 mean_len=84.1
+[gat-train] update=1975 samples=304000 fps=42.0 loss=3.5547 actor=-0.9305 value=4.4995 entropy=1.4250 mean_return=38.545 mean_len=83.4
+[gat-train] update=1976 samples=304640 fps=42.0 loss=2.7846 actor=-0.5156 value=3.3142 entropy=1.4008 mean_return=38.655 mean_len=83.2
+[gat-train] update=1977 samples=305280 fps=42.0 loss=2.6846 actor=-0.2479 value=2.9459 entropy=1.3419 mean_return=39.037 mean_len=83.9
+[gat-train] update=1978 samples=305920 fps=42.0 loss=2.8124 actor=-0.4361 value=3.2623 entropy=1.3793 mean_return=39.130 mean_len=84.6
+[gat-train] update=1979 samples=306560 fps=42.0 loss=2.9442 actor=-0.0200 value=2.9778 entropy=1.3597 mean_return=39.357 mean_len=84.7
+[gat-train] update=1980 samples=307200 fps=42.0 loss=2.4296 actor=-0.1986 value=2.6415 entropy=1.3317 mean_return=39.608 mean_len=84.7
+[gat-train] update=1981 samples=307840 fps=42.0 loss=2.7782 actor=-0.1243 value=2.9156 entropy=1.3053 mean_return=39.610 mean_len=85.1
+[gat-train] update=1982 samples=308480 fps=42.0 loss=10.8670 actor=-0.2617 value=11.1419 entropy=1.3227 mean_return=39.194 mean_len=84.4
+[gat-train] update=1983 samples=309120 fps=42.1 loss=2.4276 actor=-0.3461 value=2.7868 entropy=1.3161 mean_return=38.933 mean_len=84.3
+[gat-train] update=1984 samples=309760 fps=42.1 loss=3.4953 actor=-0.1711 value=3.6795 entropy=1.3139 mean_return=38.649 mean_len=83.5
+[gat-train] update=1985 samples=310400 fps=42.1 loss=2.4266 actor=-0.2139 value=2.6539 entropy=1.3318 mean_return=38.581 mean_len=83.4
+[gat-train] update=1986 samples=311040 fps=42.1 loss=3.7874 actor=-0.3505 value=4.1516 entropy=1.3744 mean_return=38.407 mean_len=83.5
+[gat-train] update=1987 samples=311680 fps=42.2 loss=3.2235 actor=-0.3264 value=3.5634 entropy=1.3498 mean_return=38.291 mean_len=83.4
+[gat-train] update=1988 samples=312320 fps=42.2 loss=6.1621 actor=-0.5018 value=6.6783 entropy=1.4319 mean_return=37.949 mean_len=83.0
+[gat-train] update=1989 samples=312960 fps=42.2 loss=3.0029 actor=0.0236 value=2.9932 entropy=1.3947 mean_return=37.700 mean_len=82.6
+[gat-train] update=1990 samples=313600 fps=42.2 loss=2.7827 actor=-0.2473 value=3.0444 entropy=1.4427 mean_return=38.365 mean_len=83.5
+[gat-train] update=1991 samples=314240 fps=42.3 loss=4.3937 actor=-0.7822 value=5.1903 entropy=1.4391 mean_return=38.514 mean_len=83.8
+[gat-train] update=1992 samples=314880 fps=42.3 loss=3.2004 actor=-0.2688 value=3.4833 entropy=1.4149 mean_return=38.765 mean_len=84.1
+[gat-train] update=1993 samples=315520 fps=42.3 loss=3.0697 actor=-0.4938 value=3.5781 entropy=1.4563 mean_return=39.090 mean_len=84.6
+[gat-train] update=1994 samples=316160 fps=42.3 loss=3.0632 actor=-0.3968 value=3.4751 entropy=1.5165 mean_return=39.332 mean_len=85.2
+[gat-train] update=1995 samples=316800 fps=42.4 loss=2.5483 actor=-0.4744 value=3.0381 entropy=1.5407 mean_return=39.787 mean_len=85.8
+[gat-train] update=1996 samples=317440 fps=42.4 loss=2.2175 actor=-0.1946 value=2.4266 entropy=1.4438 mean_return=40.123 mean_len=86.3
+[gat-train] update=1997 samples=318080 fps=42.4 loss=3.3596 actor=-0.1222 value=3.4958 entropy=1.4011 mean_return=40.016 mean_len=86.2
+[gat-train] update=1998 samples=318720 fps=42.4 loss=3.4765 actor=-0.3786 value=3.8695 entropy=1.4423 mean_return=39.804 mean_len=85.8
+[gat-train] update=1999 samples=319360 fps=42.5 loss=2.4264 actor=-0.0192 value=2.4598 entropy=1.4259 mean_return=39.917 mean_len=85.6
+[gat-train] update=2000 samples=320000 fps=42.5 loss=2.2729 actor=-0.2995 value=2.5866 entropy=1.4085 mean_return=40.286 mean_len=86.2
+[gat-train] eval update=2000 torch_score=80.17 deploy_score=84.87 min=71.49 bottom10=75.62 max_regression=7.24 regressions=1 guard_rejected=1 best=82.56
+[gat-train] update=2001 samples=320640 fps=42.2 loss=3.1752 actor=-0.3358 value=3.5253 entropy=1.4298 mean_return=39.935 mean_len=85.3
+[gat-train] update=2002 samples=321280 fps=42.2 loss=2.5008 actor=-0.1605 value=2.6755 entropy=1.4250 mean_return=39.777 mean_len=85.4
+[gat-train] update=2003 samples=321920 fps=42.1 loss=2.9477 actor=-0.2160 value=3.1781 entropy=1.4403 mean_return=39.410 mean_len=84.8
+[gat-train] update=2004 samples=322560 fps=42.1 loss=3.1970 actor=-0.3383 value=3.5495 entropy=1.4194 mean_return=39.414 mean_len=85.0
+[gat-train] update=2005 samples=323200 fps=42.1 loss=3.2042 actor=-0.2738 value=3.4923 entropy=1.4263 mean_return=39.543 mean_len=85.0
+[gat-train] update=2006 samples=323840 fps=42.1 loss=2.7257 actor=-0.5543 value=3.2942 entropy=1.4178 mean_return=39.346 mean_len=85.0
+[gat-train] update=2007 samples=324480 fps=42.1 loss=2.6592 actor=-0.3892 value=3.0626 entropy=1.4163 mean_return=38.995 mean_len=84.6
+[gat-train] update=2008 samples=325120 fps=42.1 loss=2.7969 actor=-0.4528 value=3.2638 entropy=1.4047 mean_return=39.068 mean_len=84.5
+[gat-train] update=2009 samples=325760 fps=42.1 loss=2.8418 actor=-0.2977 value=3.1534 entropy=1.3943 mean_return=39.171 mean_len=84.5
+[gat-train] update=2010 samples=326400 fps=42.1 loss=2.7666 actor=-0.4435 value=3.2242 entropy=1.4007 mean_return=39.287 mean_len=84.8
+[gat-train] update=2011 samples=327040 fps=42.1 loss=2.4034 actor=-0.3947 value=2.8119 entropy=1.3780 mean_return=39.199 mean_len=84.3
+[gat-train] update=2012 samples=327680 fps=42.1 loss=2.4366 actor=-0.3056 value=2.7567 entropy=1.4453 mean_return=39.106 mean_len=84.5
+[gat-train] update=2013 samples=328320 fps=42.1 loss=2.3782 actor=-0.2884 value=2.6805 entropy=1.3940 mean_return=39.415 mean_len=85.2
+[gat-train] update=2014 samples=328960 fps=42.1 loss=2.9279 actor=-0.5378 value=3.4796 entropy=1.3878 mean_return=39.455 mean_len=85.1
+[gat-train] update=2015 samples=329600 fps=42.1 loss=2.5387 actor=-0.1436 value=2.6963 entropy=1.4016 mean_return=39.407 mean_len=85.6
+[gat-train] update=2016 samples=330240 fps=42.1 loss=3.2163 actor=-0.5247 value=3.7547 entropy=1.3744 mean_return=39.401 mean_len=86.0
+[gat-train] update=2017 samples=330880 fps=42.2 loss=2.7924 actor=-0.1177 value=2.9231 entropy=1.3017 mean_return=39.678 mean_len=86.1
+[gat-train] update=2018 samples=331520 fps=42.2 loss=2.5565 actor=-0.0088 value=2.5786 entropy=1.3277 mean_return=39.770 mean_len=86.5
+[gat-train] update=2019 samples=332160 fps=42.2 loss=2.7431 actor=-0.5603 value=3.3164 entropy=1.2924 mean_return=39.660 mean_len=85.9
+[gat-train] update=2020 samples=332800 fps=42.2 loss=2.0661 actor=-0.2392 value=2.3179 entropy=1.2576 mean_return=39.637 mean_len=85.5
+[gat-train] update=2021 samples=333440 fps=42.2 loss=3.6127 actor=-0.3647 value=3.9906 entropy=1.3139 mean_return=39.570 mean_len=84.9
+[gat-train] update=2022 samples=334080 fps=42.3 loss=2.4632 actor=-0.2053 value=2.6812 entropy=1.2674 mean_return=39.588 mean_len=84.5
+[gat-train] update=2023 samples=334720 fps=42.2 loss=2.6432 actor=0.0992 value=2.5568 entropy=1.2721 mean_return=39.387 mean_len=84.0
+[gat-train] update=2024 samples=335360 fps=42.2 loss=3.6164 actor=-0.6292 value=4.2586 entropy=1.3006 mean_return=39.054 mean_len=83.2
+[gat-train] update=2025 samples=336000 fps=42.2 loss=2.7542 actor=-0.4589 value=3.2264 entropy=1.3265 mean_return=39.097 mean_len=83.6
+[gat-train] update=2026 samples=336640 fps=42.2 loss=2.1993 actor=-0.0678 value=2.2801 entropy=1.3027 mean_return=38.926 mean_len=83.1
+[gat-train] update=2027 samples=337280 fps=42.2 loss=1.8737 actor=-0.2291 value=2.1161 entropy=1.3305 mean_return=38.914 mean_len=83.3
+[gat-train] update=2028 samples=337920 fps=42.2 loss=2.6765 actor=-0.1364 value=2.8266 entropy=1.3731 mean_return=39.535 mean_len=84.7
+[gat-train] update=2029 samples=338560 fps=42.2 loss=2.4321 actor=-0.3048 value=2.7502 entropy=1.3431 mean_return=39.213 mean_len=84.4
+[gat-train] update=2030 samples=339200 fps=42.3 loss=2.5444 actor=0.1159 value=2.4419 entropy=1.3485 mean_return=39.410 mean_len=84.4
+[gat-train] update=2031 samples=339840 fps=42.2 loss=2.4644 actor=-0.1376 value=2.6155 entropy=1.3520 mean_return=39.423 mean_len=84.6
+[gat-train] update=2032 samples=340480 fps=42.2 loss=3.0687 actor=-0.2861 value=3.3681 entropy=1.3336 mean_return=39.463 mean_len=85.0
+[gat-train] update=2033 samples=341120 fps=42.2 loss=2.5463 actor=-0.0757 value=2.6354 entropy=1.3478 mean_return=39.579 mean_len=85.6
+[gat-train] update=2034 samples=341760 fps=42.1 loss=2.5954 actor=-0.1100 value=2.7194 entropy=1.3888 mean_return=39.671 mean_len=85.6
+[gat-train] update=2035 samples=342400 fps=42.2 loss=4.1596 actor=-0.4925 value=4.6662 entropy=1.4059 mean_return=39.474 mean_len=85.1
+[gat-train] update=2036 samples=343040 fps=42.1 loss=2.7355 actor=-0.3052 value=3.0546 entropy=1.3989 mean_return=39.729 mean_len=85.6
+[gat-train] update=2037 samples=343680 fps=42.1 loss=2.0741 actor=-0.2019 value=2.2898 entropy=1.3815 mean_return=39.848 mean_len=85.7
+[gat-train] update=2038 samples=344320 fps=42.1 loss=2.2673 actor=-0.1123 value=2.3937 entropy=1.4079 mean_return=39.911 mean_len=86.0
+[gat-train] update=2039 samples=344960 fps=42.2 loss=2.1556 actor=-0.1260 value=2.2954 entropy=1.3826 mean_return=40.202 mean_len=86.0
+[gat-train] update=2040 samples=345600 fps=42.2 loss=3.4131 actor=-0.4131 value=3.8402 entropy=1.4017 mean_return=40.329 mean_len=86.3
+[gat-train] update=2041 samples=346240 fps=42.1 loss=2.7049 actor=-0.3327 value=3.0515 entropy=1.4005 mean_return=40.274 mean_len=86.5
+[gat-train] update=2042 samples=346880 fps=42.1 loss=2.6607 actor=-0.7641 value=3.4392 entropy=1.4386 mean_return=40.099 mean_len=86.2
+[gat-train] update=2043 samples=347520 fps=42.2 loss=2.2809 actor=-0.1347 value=2.4296 entropy=1.3954 mean_return=40.315 mean_len=86.5
+[gat-train] update=2044 samples=348160 fps=42.2 loss=2.6740 actor=-0.1053 value=2.7937 entropy=1.4427 mean_return=39.992 mean_len=85.9
+[gat-train] update=2045 samples=348800 fps=42.1 loss=2.3314 actor=-0.4617 value=2.8073 entropy=1.4188 mean_return=39.714 mean_len=85.1
+[gat-train] update=2046 samples=349440 fps=42.1 loss=2.8234 actor=-0.5603 value=3.3988 entropy=1.5045 mean_return=39.594 mean_len=85.1
+[gat-train] update=2047 samples=350080 fps=42.1 loss=2.7603 actor=-0.1283 value=2.9038 entropy=1.5182 mean_return=39.365 mean_len=84.8
+[gat-train] update=2048 samples=350720 fps=42.1 loss=2.5222 actor=-0.2514 value=2.7896 entropy=1.6073 mean_return=39.157 mean_len=84.4
+[gat-train] update=2049 samples=351360 fps=42.1 loss=2.5964 actor=-0.0727 value=2.6855 entropy=1.6471 mean_return=39.080 mean_len=84.7
+[gat-train] update=2050 samples=352000 fps=42.1 loss=2.7736 actor=-0.3510 value=3.1418 entropy=1.7156 mean_return=38.893 mean_len=84.4
+[gat-train] eval update=2050 torch_score=84.54 deploy_score=83.19 min=71.49 bottom10=74.30 max_regression=10.53 regressions=2 guard_rejected=1 best=82.56
+[gat-train] update=2051 samples=352640 fps=41.9 loss=2.6694 actor=-0.0018 value=2.6878 entropy=1.6556 mean_return=39.238 mean_len=84.9
+[gat-train] update=2052 samples=353280 fps=41.9 loss=3.0763 actor=-0.5297 value=3.6228 entropy=1.6806 mean_return=38.823 mean_len=84.4
+[gat-train] update=2053 samples=353920 fps=42.0 loss=2.9862 actor=-0.6019 value=3.6052 entropy=1.7036 mean_return=38.589 mean_len=83.8
+[gat-train] update=2054 samples=354560 fps=42.0 loss=2.6122 actor=-0.3303 value=2.9587 entropy=1.6129 mean_return=38.915 mean_len=84.4
+[gat-train] update=2055 samples=355200 fps=42.0 loss=3.0699 actor=-0.3675 value=3.4540 entropy=1.6555 mean_return=38.985 mean_len=84.2
+[gat-train] update=2056 samples=355840 fps=42.0 loss=2.9139 actor=-0.4036 value=3.3338 entropy=1.6231 mean_return=38.687 mean_len=83.7
+[gat-train] update=2057 samples=356480 fps=42.1 loss=2.5083 actor=-0.5106 value=3.0344 entropy=1.5515 mean_return=38.487 mean_len=83.6
+[gat-train] update=2058 samples=357120 fps=42.1 loss=2.3971 actor=-0.4741 value=2.8861 entropy=1.4901 mean_return=38.758 mean_len=84.4
+[gat-train] update=2059 samples=357760 fps=42.1 loss=2.4464 actor=-0.3409 value=2.8015 entropy=1.4198 mean_return=38.447 mean_len=84.1
+[gat-train] update=2060 samples=358400 fps=42.1 loss=3.0073 actor=-0.1696 value=3.1909 entropy=1.4046 mean_return=38.658 mean_len=84.0
+[gat-train] update=2061 samples=359040 fps=42.1 loss=2.8262 actor=-0.4855 value=3.3253 entropy=1.3613 mean_return=38.385 mean_len=83.4
+[gat-train] update=2062 samples=359680 fps=42.2 loss=2.2693 actor=-0.1527 value=2.4344 entropy=1.2300 mean_return=38.811 mean_len=84.0
+[gat-train] update=2063 samples=360320 fps=42.2 loss=2.9000 actor=-0.1318 value=3.0447 entropy=1.2933 mean_return=38.893 mean_len=83.8
+[gat-train] update=2064 samples=360960 fps=42.2 loss=2.6880 actor=-0.1018 value=2.8027 entropy=1.2851 mean_return=39.151 mean_len=83.9
+[gat-train] update=2065 samples=361600 fps=42.2 loss=2.0986 actor=-0.1614 value=2.2727 entropy=1.2754 mean_return=39.165 mean_len=84.1
+[gat-train] update=2066 samples=362240 fps=42.2 loss=3.7904 actor=-0.4678 value=4.2710 entropy=1.2809 mean_return=39.038 mean_len=83.6
+[gat-train] update=2067 samples=362880 fps=42.1 loss=3.4501 actor=-0.1469 value=3.6103 entropy=1.3324 mean_return=38.783 mean_len=83.6
+[gat-train] update=2068 samples=363520 fps=42.1 loss=1.9998 actor=-0.4403 value=2.4531 entropy=1.2991 mean_return=39.058 mean_len=84.2
+[gat-train] update=2069 samples=364160 fps=42.1 loss=2.3086 actor=-0.3284 value=2.6507 entropy=1.3762 mean_return=39.019 mean_len=84.1
+[gat-train] update=2070 samples=364800 fps=42.1 loss=2.6732 actor=-0.3229 value=3.0101 entropy=1.3965 mean_return=39.339 mean_len=84.8
+[gat-train] update=2071 samples=365440 fps=42.1 loss=2.4335 actor=-0.3427 value=2.7898 entropy=1.3670 mean_return=39.047 mean_len=84.3
+[gat-train] update=2072 samples=366080 fps=42.1 loss=2.6635 actor=-0.5963 value=3.2734 entropy=1.3666 mean_return=39.011 mean_len=84.1
+[gat-train] update=2073 samples=366720 fps=42.1 loss=3.2992 actor=-0.4251 value=3.7380 entropy=1.3647 mean_return=39.344 mean_len=84.3
+[gat-train] update=2074 samples=367360 fps=42.0 loss=3.0029 actor=-0.4008 value=3.4170 entropy=1.3232 mean_return=39.217 mean_len=84.2
+[gat-train] update=2075 samples=368000 fps=42.0 loss=2.6499 actor=-0.2938 value=2.9568 entropy=1.3061 mean_return=39.353 mean_len=85.1
+[gat-train] update=2076 samples=368640 fps=42.0 loss=3.5933 actor=-0.4338 value=4.0401 entropy=1.3075 mean_return=39.004 mean_len=84.3
+[gat-train] update=2077 samples=369280 fps=42.0 loss=3.2858 actor=-0.2140 value=3.5126 entropy=1.2795 mean_return=38.799 mean_len=84.3
+[gat-train] update=2078 samples=369920 fps=42.0 loss=2.1580 actor=-0.1519 value=2.3227 entropy=1.2709 mean_return=38.764 mean_len=84.4
+[gat-train] update=2079 samples=370560 fps=42.0 loss=3.0359 actor=-0.4274 value=3.4764 entropy=1.3159 mean_return=38.764 mean_len=84.8
+[gat-train] update=2080 samples=371200 fps=42.0 loss=1.9194 actor=-0.2486 value=2.1806 entropy=1.2593 mean_return=39.070 mean_len=85.6
+[gat-train] update=2081 samples=371840 fps=42.1 loss=2.2509 actor=-0.3902 value=2.6545 entropy=1.3368 mean_return=39.400 mean_len=85.8
+[gat-train] update=2082 samples=372480 fps=42.1 loss=2.5372 actor=-0.1618 value=2.7118 entropy=1.2774 mean_return=39.756 mean_len=86.3
+[gat-train] update=2083 samples=373120 fps=42.1 loss=2.4493 actor=-0.1080 value=2.5700 entropy=1.2746 mean_return=39.495 mean_len=86.0
+[gat-train] update=2084 samples=373760 fps=42.1 loss=2.6092 actor=-0.1975 value=2.8200 entropy=1.3259 mean_return=39.787 mean_len=86.4
+[gat-train] update=2085 samples=374400 fps=42.1 loss=1.5878 actor=-0.4452 value=2.0459 entropy=1.2961 mean_return=39.915 mean_len=86.6
+[gat-train] update=2086 samples=375040 fps=42.1 loss=2.9674 actor=-0.2367 value=3.2173 entropy=1.3205 mean_return=40.206 mean_len=86.3
+[gat-train] update=2087 samples=375680 fps=42.0 loss=2.6054 actor=-0.2613 value=2.8803 entropy=1.3590 mean_return=39.317 mean_len=84.9
+[gat-train] update=2088 samples=376320 fps=42.0 loss=1.6509 actor=-0.3874 value=2.0524 entropy=1.3994 mean_return=39.279 mean_len=84.9
+[gat-train] update=2089 samples=376960 fps=42.0 loss=2.4712 actor=0.0425 value=2.4429 entropy=1.4097 mean_return=39.386 mean_len=84.8
+[gat-train] update=2090 samples=377600 fps=42.0 loss=3.7254 actor=-0.4814 value=4.2218 entropy=1.5021 mean_return=39.161 mean_len=84.4
+[gat-train] update=2091 samples=378240 fps=42.0 loss=2.9033 actor=-0.3335 value=3.2509 entropy=1.4031 mean_return=39.031 mean_len=84.1
+[gat-train] update=2092 samples=378880 fps=42.1 loss=2.1572 actor=-0.4209 value=2.5922 entropy=1.4136 mean_return=39.175 mean_len=84.7
+[gat-train] update=2093 samples=379520 fps=42.1 loss=2.4059 actor=-0.2338 value=2.6540 entropy=1.4308 mean_return=39.141 mean_len=84.7
+[gat-train] update=2094 samples=380160 fps=42.1 loss=2.8223 actor=-0.3376 value=3.1735 entropy=1.3591 mean_return=39.430 mean_len=84.8
+[gat-train] update=2095 samples=380800 fps=42.1 loss=2.4726 actor=-0.3048 value=2.7910 entropy=1.3609 mean_return=39.504 mean_len=84.8
+[gat-train] update=2096 samples=381440 fps=42.1 loss=4.6126 actor=-0.4610 value=5.0869 entropy=1.3320 mean_return=39.448 mean_len=85.2
+[gat-train] update=2097 samples=382080 fps=42.1 loss=2.8536 actor=0.1140 value=2.7524 entropy=1.2775 mean_return=39.125 mean_len=84.6
+[gat-train] update=2098 samples=382720 fps=42.1 loss=2.4035 actor=0.0878 value=2.3284 entropy=1.2708 mean_return=39.323 mean_len=85.3
+[gat-train] update=2099 samples=383360 fps=42.1 loss=1.8979 actor=-0.0847 value=1.9954 entropy=1.2752 mean_return=39.284 mean_len=85.4
+[gat-train] update=2100 samples=384000 fps=42.1 loss=2.9165 actor=-0.2136 value=3.1431 entropy=1.3046 mean_return=39.010 mean_len=84.2
+[gat-train] eval update=2100 torch_score=84.97 deploy_score=84.52 min=75.99 bottom10=78.16 max_regression=12.36 regressions=3 guard_rejected=1 best=82.56
+[gat-train] update=2101 samples=384640 fps=41.8 loss=3.4533 actor=-0.5252 value=3.9914 entropy=1.2906 mean_return=38.948 mean_len=84.1
+[gat-train] update=2102 samples=385280 fps=41.8 loss=2.4772 actor=-0.5722 value=3.0622 entropy=1.2745 mean_return=38.920 mean_len=84.4
+[gat-train] update=2103 samples=385920 fps=41.8 loss=2.1137 actor=-0.2580 value=2.3844 entropy=1.2748 mean_return=39.223 mean_len=84.4
+[gat-train] update=2104 samples=386560 fps=41.8 loss=2.8896 actor=-0.3824 value=3.2850 entropy=1.2968 mean_return=39.041 mean_len=84.5
+[gat-train] update=2105 samples=387200 fps=41.8 loss=1.9100 actor=-0.1500 value=2.0726 entropy=1.2657 mean_return=39.108 mean_len=84.5
+[gat-train] update=2106 samples=387840 fps=41.8 loss=2.5622 actor=0.0519 value=2.5231 entropy=1.2860 mean_return=39.225 mean_len=85.3
+[gat-train] update=2107 samples=388480 fps=41.8 loss=1.6925 actor=-0.0473 value=1.7526 entropy=1.2701 mean_return=39.195 mean_len=85.3
+[gat-train] update=2108 samples=389120 fps=41.8 loss=2.7378 actor=-0.5303 value=3.2817 entropy=1.3638 mean_return=39.588 mean_len=85.7
+[gat-train] update=2109 samples=389760 fps=41.8 loss=2.6740 actor=-0.2404 value=2.9270 entropy=1.2594 mean_return=40.226 mean_len=86.6
+[gat-train] update=2110 samples=390400 fps=41.8 loss=3.1500 actor=-0.3622 value=3.5254 entropy=1.3251 mean_return=39.820 mean_len=85.6
+[gat-train] update=2111 samples=391040 fps=41.8 loss=2.8940 actor=-0.5449 value=3.4533 entropy=1.4349 mean_return=39.624 mean_len=85.1
+[gat-train] update=2112 samples=391680 fps=41.9 loss=2.6454 actor=-0.0449 value=2.7049 entropy=1.4672 mean_return=39.657 mean_len=85.1
+[gat-train] update=2113 samples=392320 fps=41.9 loss=1.8353 actor=-0.2401 value=2.0895 entropy=1.4161 mean_return=39.530 mean_len=85.3
+[gat-train] update=2114 samples=392960 fps=41.9 loss=2.3086 actor=-0.0743 value=2.3969 entropy=1.3939 mean_return=39.698 mean_len=85.4
+[gat-train] update=2115 samples=393600 fps=41.9 loss=2.5702 actor=0.0305 value=2.5541 entropy=1.4327 mean_return=39.755 mean_len=86.0
+[gat-train] update=2116 samples=394240 fps=42.0 loss=3.5379 actor=-0.5085 value=4.0605 entropy=1.4017 mean_return=39.084 mean_len=84.9
+[gat-train] update=2117 samples=394880 fps=42.0 loss=3.4916 actor=-0.0366 value=3.5430 entropy=1.4768 mean_return=39.030 mean_len=84.8
+[gat-train] update=2118 samples=395520 fps=42.0 loss=3.1727 actor=-0.5995 value=3.7873 entropy=1.4991 mean_return=39.162 mean_len=85.0
+[gat-train] update=2119 samples=396160 fps=42.0 loss=3.1065 actor=-0.2265 value=3.3479 entropy=1.4879 mean_return=39.023 mean_len=85.0
+[gat-train] update=2120 samples=396800 fps=42.0 loss=2.7249 actor=-0.3016 value=3.0425 entropy=1.6037 mean_return=38.949 mean_len=84.9
+[gat-train] update=2121 samples=397440 fps=42.1 loss=2.4384 actor=0.0841 value=2.3703 entropy=1.6065 mean_return=38.954 mean_len=84.8
+[gat-train] update=2122 samples=398080 fps=42.1 loss=2.4248 actor=-0.2203 value=2.6613 entropy=1.6196 mean_return=39.014 mean_len=85.0
+[gat-train] update=2123 samples=398720 fps=42.1 loss=2.9041 actor=-0.4456 value=3.3660 entropy=1.6265 mean_return=39.486 mean_len=85.7
+[gat-train] update=2124 samples=399360 fps=42.1 loss=2.5088 actor=-0.5486 value=3.0744 entropy=1.6911 mean_return=39.622 mean_len=85.9
+[gat-train] update=2125 samples=400000 fps=42.1 loss=3.4791 actor=-0.7618 value=4.2579 entropy=1.7073 mean_return=39.476 mean_len=85.1
+[gat-train] update=2126 samples=400640 fps=42.2 loss=2.6789 actor=-0.1718 value=2.8683 entropy=1.7559 mean_return=39.639 mean_len=85.3
+[gat-train] update=2127 samples=401280 fps=42.2 loss=3.6577 actor=-0.4803 value=4.1557 entropy=1.7730 mean_return=39.378 mean_len=84.4
+[gat-train] update=2128 samples=401920 fps=42.2 loss=2.3529 actor=-0.4295 value=2.7997 entropy=1.7230 mean_return=38.652 mean_len=82.9
+[gat-train] update=2129 samples=402560 fps=42.2 loss=2.4086 actor=-0.0009 value=2.4264 entropy=1.6791 mean_return=38.833 mean_len=83.5
+[gat-train] update=2130 samples=403200 fps=42.2 loss=2.1112 actor=-0.3696 value=2.4985 entropy=1.7704 mean_return=39.012 mean_len=83.6
+[gat-train] update=2131 samples=403840 fps=42.2 loss=2.8262 actor=-0.3844 value=3.2274 entropy=1.6861 mean_return=38.885 mean_len=83.8
+[gat-train] update=2132 samples=404480 fps=42.3 loss=2.4479 actor=-0.5633 value=3.0277 entropy=1.6481 mean_return=38.887 mean_len=83.8
+[gat-train] update=2133 samples=405120 fps=42.3 loss=2.6464 actor=-0.3035 value=2.9665 entropy=1.6621 mean_return=38.587 mean_len=83.0
+[gat-train] update=2134 samples=405760 fps=42.3 loss=2.1403 actor=-0.5844 value=2.7402 entropy=1.5524 mean_return=38.444 mean_len=82.9
+[gat-train] update=2135 samples=406400 fps=42.3 loss=3.3558 actor=-0.5056 value=3.8764 entropy=1.5062 mean_return=38.450 mean_len=82.5
+[gat-train] update=2136 samples=407040 fps=42.3 loss=3.2748 actor=-0.5050 value=3.7940 entropy=1.4153 mean_return=38.084 mean_len=82.0
+[gat-train] update=2137 samples=407680 fps=42.3 loss=2.7528 actor=-0.3492 value=3.1160 entropy=1.3960 mean_return=38.048 mean_len=81.9
+[gat-train] update=2138 samples=408320 fps=42.3 loss=2.9380 actor=-0.3640 value=3.3145 entropy=1.2533 mean_return=37.918 mean_len=81.7
+[gat-train] update=2139 samples=408960 fps=42.3 loss=2.3311 actor=0.0188 value=2.3250 entropy=1.2684 mean_return=37.801 mean_len=81.8
+[gat-train] update=2140 samples=409600 fps=42.3 loss=2.4211 actor=0.0542 value=2.3792 entropy=1.2277 mean_return=37.728 mean_len=81.8
+[gat-train] update=2141 samples=410240 fps=42.3 loss=2.5671 actor=-0.4871 value=3.0672 entropy=1.2954 mean_return=38.008 mean_len=82.5
+[gat-train] update=2142 samples=410880 fps=42.3 loss=2.8556 actor=-0.1319 value=3.0003 entropy=1.2877 mean_return=37.839 mean_len=82.2
+[gat-train] update=2143 samples=411520 fps=42.4 loss=1.9790 actor=-0.2087 value=2.2006 entropy=1.2925 mean_return=37.991 mean_len=82.7
+[gat-train] update=2144 samples=412160 fps=42.4 loss=2.0771 actor=-0.1948 value=2.2860 entropy=1.4219 mean_return=38.114 mean_len=82.7
+[gat-train] update=2145 samples=412800 fps=42.4 loss=2.3584 actor=-0.3414 value=2.7140 entropy=1.4214 mean_return=38.620 mean_len=83.7
+[gat-train] update=2146 samples=413440 fps=42.3 loss=3.5339 actor=-0.2900 value=3.8394 entropy=1.5498 mean_return=38.730 mean_len=83.4
+[gat-train] update=2147 samples=414080 fps=42.4 loss=2.1950 actor=-0.0025 value=2.2130 entropy=1.5555 mean_return=38.685 mean_len=83.1
+[gat-train] update=2148 samples=414720 fps=42.4 loss=2.2964 actor=-0.1321 value=2.4452 entropy=1.6732 mean_return=38.970 mean_len=83.4
+[gat-train] update=2149 samples=415360 fps=42.4 loss=2.1105 actor=-0.4093 value=2.5368 entropy=1.6937 mean_return=39.212 mean_len=84.0
+[gat-train] update=2150 samples=416000 fps=42.3 loss=3.4849 actor=-0.4177 value=3.9201 entropy=1.7480 mean_return=38.946 mean_len=83.6
+[gat-train] eval update=2150 torch_score=85.35 deploy_score=84.63 min=77.10 bottom10=78.93 max_regression=7.77 regressions=2 guard_rejected=1 best=82.56
+[gat-train] update=2151 samples=416640 fps=42.1 loss=2.1018 actor=-0.5177 value=2.6366 entropy=1.7045 mean_return=38.513 mean_len=82.9
+[gat-train] update=2152 samples=417280 fps=42.1 loss=3.2359 actor=-0.6741 value=3.9265 entropy=1.6448 mean_return=38.793 mean_len=83.5
+[gat-train] update=2153 samples=417920 fps=42.2 loss=2.9034 actor=-0.5232 value=3.4421 entropy=1.5385 mean_return=38.507 mean_len=83.5
+[gat-train] update=2154 samples=418560 fps=42.2 loss=2.9730 actor=-0.1872 value=3.1753 entropy=1.5128 mean_return=38.150 mean_len=83.3
+[gat-train] update=2155 samples=419200 fps=42.2 loss=2.1556 actor=-0.0351 value=2.2052 entropy=1.4567 mean_return=38.446 mean_len=83.8
+[gat-train] update=2156 samples=419840 fps=42.1 loss=2.5121 actor=-0.1909 value=2.7173 entropy=1.4314 mean_return=38.713 mean_len=83.7
+[gat-train] update=2157 samples=420480 fps=42.1 loss=2.5801 actor=-0.4464 value=3.0403 entropy=1.3782 mean_return=38.815 mean_len=84.1
+[gat-train] update=2158 samples=421120 fps=42.1 loss=2.4805 actor=-0.1577 value=2.6515 entropy=1.3236 mean_return=39.185 mean_len=84.6
+[gat-train] update=2159 samples=421760 fps=42.1 loss=2.1833 actor=-0.4069 value=2.6033 entropy=1.3145 mean_return=39.202 mean_len=84.6
+[gat-train] update=2160 samples=422400 fps=42.1 loss=2.1870 actor=-0.5832 value=2.7835 entropy=1.3346 mean_return=39.455 mean_len=83.9
+[gat-train] update=2161 samples=423040 fps=42.1 loss=2.6096 actor=-0.1732 value=2.7962 entropy=1.3396 mean_return=39.491 mean_len=83.9
+[gat-train] update=2162 samples=423680 fps=42.2 loss=2.1286 actor=-0.0033 value=2.1447 entropy=1.2783 mean_return=39.226 mean_len=83.4
+[gat-train] update=2163 samples=424320 fps=42.2 loss=3.0052 actor=-0.2991 value=3.3181 entropy=1.3776 mean_return=39.000 mean_len=83.3
+[gat-train] update=2164 samples=424960 fps=42.2 loss=2.6722 actor=-0.1033 value=2.7895 entropy=1.4015 mean_return=38.916 mean_len=83.5
+[gat-train] update=2165 samples=425600 fps=42.2 loss=2.4069 actor=0.0389 value=2.3832 entropy=1.5180 mean_return=39.066 mean_len=84.2
+[gat-train] update=2166 samples=426240 fps=42.2 loss=1.9436 actor=-0.0859 value=2.0449 entropy=1.5386 mean_return=39.268 mean_len=84.8
+[gat-train] update=2167 samples=426880 fps=42.2 loss=1.5519 actor=-0.2610 value=1.8286 entropy=1.5706 mean_return=39.085 mean_len=85.1
+[gat-train] update=2168 samples=427520 fps=42.2 loss=2.4365 actor=-0.4383 value=2.8907 entropy=1.5948 mean_return=38.814 mean_len=85.1
+[gat-train] update=2169 samples=428160 fps=42.2 loss=2.9920 actor=-0.5670 value=3.5751 entropy=1.6109 mean_return=39.299 mean_len=85.4
+[gat-train] update=2170 samples=428800 fps=42.2 loss=1.9735 actor=-0.2680 value=2.2580 entropy=1.6542 mean_return=39.363 mean_len=85.7
+[gat-train] update=2171 samples=429440 fps=42.2 loss=1.5828 actor=-0.5088 value=2.1082 entropy=1.6620 mean_return=39.584 mean_len=85.5
+[gat-train] update=2172 samples=430080 fps=42.1 loss=2.6145 actor=-0.3322 value=2.9637 entropy=1.6930 mean_return=39.175 mean_len=85.0
+[gat-train] update=2173 samples=430720 fps=42.1 loss=2.3097 actor=-0.1852 value=2.5122 entropy=1.7295 mean_return=39.286 mean_len=85.2
+[gat-train] update=2174 samples=431360 fps=42.1 loss=3.5126 actor=-0.6807 value=4.2119 entropy=1.8582 mean_return=39.092 mean_len=84.2
+[gat-train] update=2175 samples=432000 fps=42.1 loss=1.7955 actor=-0.2512 value=2.0646 entropy=1.7922 mean_return=38.907 mean_len=83.9
+[gat-train] update=2176 samples=432640 fps=42.1 loss=2.9630 actor=-0.7360 value=3.7164 entropy=1.7458 mean_return=38.619 mean_len=83.3
+[gat-train] update=2177 samples=433280 fps=42.2 loss=3.3010 actor=-0.6531 value=3.9717 entropy=1.7569 mean_return=37.808 mean_len=81.5
+[gat-train] update=2178 samples=433920 fps=42.2 loss=2.3289 actor=-0.0332 value=2.3784 entropy=1.6257 mean_return=38.217 mean_len=82.8
+[gat-train] update=2179 samples=434560 fps=42.2 loss=2.3582 actor=-0.6271 value=3.0020 entropy=1.6602 mean_return=37.660 mean_len=81.8
+[gat-train] update=2180 samples=435200 fps=42.2 loss=2.1812 actor=-0.0419 value=2.2395 entropy=1.6448 mean_return=37.925 mean_len=82.7
+[gat-train] update=2181 samples=435840 fps=42.2 loss=3.6786 actor=-0.3399 value=4.0342 entropy=1.5706 mean_return=37.347 mean_len=81.3
+[gat-train] update=2182 samples=436480 fps=42.2 loss=2.2105 actor=0.0037 value=2.2223 entropy=1.5496 mean_return=37.411 mean_len=81.6
+[gat-train] update=2183 samples=437120 fps=42.3 loss=2.6331 actor=-0.1267 value=2.7754 entropy=1.5566 mean_return=37.576 mean_len=82.2
+[gat-train] update=2184 samples=437760 fps=42.3 loss=2.4180 actor=-0.1362 value=2.5688 entropy=1.4681 mean_return=37.456 mean_len=82.3
+[gat-train] update=2185 samples=438400 fps=42.3 loss=1.8311 actor=-0.1962 value=2.0419 entropy=1.4584 mean_return=37.797 mean_len=83.2
+[gat-train] update=2186 samples=439040 fps=42.3 loss=2.7040 actor=-0.5190 value=3.2378 entropy=1.4738 mean_return=37.866 mean_len=82.9
+[gat-train] update=2187 samples=439680 fps=42.3 loss=2.7436 actor=-0.2140 value=2.9722 entropy=1.4597 mean_return=38.354 mean_len=83.8
+[gat-train] update=2188 samples=440320 fps=42.3 loss=1.9732 actor=-0.5607 value=2.5482 entropy=1.4223 mean_return=39.044 mean_len=85.4
+[gat-train] update=2189 samples=440960 fps=42.4 loss=2.3262 actor=-0.3742 value=2.7142 entropy=1.3771 mean_return=38.784 mean_len=84.9
+[gat-train] update=2190 samples=441600 fps=42.4 loss=2.0193 actor=-0.1623 value=2.1959 entropy=1.4329 mean_return=38.944 mean_len=85.3
+[gat-train] update=2191 samples=442240 fps=42.4 loss=2.8770 actor=-0.5467 value=3.4377 entropy=1.4058 mean_return=39.091 mean_len=84.7
+[gat-train] update=2192 samples=442880 fps=42.4 loss=1.9535 actor=-0.0894 value=2.0570 entropy=1.4045 mean_return=39.233 mean_len=84.8
+[gat-train] update=2193 samples=443520 fps=42.4 loss=2.0505 actor=-0.1070 value=2.1714 entropy=1.3938 mean_return=39.393 mean_len=84.8
+[gat-train] update=2194 samples=444160 fps=42.5 loss=2.3184 actor=-0.2345 value=2.5677 entropy=1.4719 mean_return=39.742 mean_len=85.0
+[gat-train] update=2195 samples=444800 fps=42.5 loss=2.0887 actor=-0.1701 value=2.2739 entropy=1.5160 mean_return=39.936 mean_len=84.9
+[gat-train] update=2196 samples=445440 fps=42.5 loss=2.8132 actor=-0.4902 value=3.3186 entropy=1.5190 mean_return=39.851 mean_len=85.1
+[gat-train] update=2197 samples=446080 fps=42.5 loss=1.4188 actor=-0.2027 value=1.6372 entropy=1.5740 mean_return=39.747 mean_len=84.9
+[gat-train] update=2198 samples=446720 fps=42.5 loss=1.9846 actor=-0.0472 value=2.0483 entropy=1.6422 mean_return=39.585 mean_len=85.2
+[gat-train] update=2199 samples=447360 fps=42.5 loss=2.8400 actor=0.2310 value=2.6256 entropy=1.6517 mean_return=39.451 mean_len=84.8
+[gat-train] update=2200 samples=448000 fps=42.5 loss=2.4929 actor=-0.0061 value=2.5166 entropy=1.7609 mean_return=38.807 mean_len=84.1
+[gat-train] eval update=2200 torch_score=85.86 deploy_score=83.63 min=75.89 bottom10=76.50 max_regression=7.24 regressions=1 guard_rejected=1 best=82.56
+[gat-train] update=2201 samples=448640 fps=42.3 loss=2.0228 actor=0.1348 value=1.9043 entropy=1.6420 mean_return=38.810 mean_len=84.2
+[gat-train] update=2202 samples=449280 fps=42.3 loss=2.2052 actor=-0.4680 value=2.6900 entropy=1.6797 mean_return=38.924 mean_len=84.4
+[gat-train] update=2203 samples=449920 fps=42.3 loss=2.7221 actor=-0.7108 value=3.4502 entropy=1.7286 mean_return=38.619 mean_len=84.2
+[gat-train] update=2204 samples=450560 fps=42.3 loss=3.6185 actor=-0.3274 value=3.9625 entropy=1.6606 mean_return=38.712 mean_len=84.2
+[gat-train] update=2205 samples=451200 fps=42.3 loss=2.8168 actor=-0.2711 value=3.1043 entropy=1.6440 mean_return=38.525 mean_len=83.8
+[gat-train] update=2206 samples=451840 fps=42.3 loss=3.2402 actor=-0.6496 value=3.9062 entropy=1.6412 mean_return=38.346 mean_len=83.3
+[gat-train] update=2207 samples=452480 fps=42.4 loss=1.9354 actor=-0.2878 value=2.2397 entropy=1.6482 mean_return=38.202 mean_len=83.0
+[gat-train] update=2208 samples=453120 fps=42.4 loss=2.1398 actor=-0.1076 value=2.2645 entropy=1.7161 mean_return=38.257 mean_len=83.3
+[gat-train] update=2209 samples=453760 fps=42.4 loss=2.2989 actor=-0.4399 value=2.7554 entropy=1.6622 mean_return=38.266 mean_len=83.4
+[gat-train] update=2210 samples=454400 fps=42.3 loss=2.4771 actor=-0.1597 value=2.6525 entropy=1.5589 mean_return=38.303 mean_len=83.3
+[gat-train] update=2211 samples=455040 fps=42.4 loss=3.0044 actor=-0.5008 value=3.5203 entropy=1.5173 mean_return=38.439 mean_len=83.5
+[gat-train] update=2212 samples=455680 fps=42.3 loss=2.5526 actor=-0.1362 value=2.7036 entropy=1.4756 mean_return=39.144 mean_len=84.6
+[gat-train] update=2213 samples=456320 fps=42.4 loss=1.6893 actor=0.0179 value=1.6858 entropy=1.4434 mean_return=39.159 mean_len=84.6
+[gat-train] update=2214 samples=456960 fps=42.4 loss=2.1181 actor=-0.2010 value=2.3333 entropy=1.4263 mean_return=39.209 mean_len=84.6
+[gat-train] update=2215 samples=457600 fps=42.4 loss=2.4989 actor=0.1964 value=2.3165 entropy=1.4004 mean_return=39.188 mean_len=84.5
+[gat-train] update=2216 samples=458240 fps=42.4 loss=2.8859 actor=0.0711 value=2.8288 entropy=1.4014 mean_return=39.411 mean_len=84.7
+[gat-train] update=2217 samples=458880 fps=42.4 loss=2.3932 actor=-0.1619 value=2.5690 entropy=1.3892 mean_return=39.308 mean_len=84.3
+[gat-train] update=2218 samples=459520 fps=42.4 loss=2.2197 actor=0.1616 value=2.0722 entropy=1.4161 mean_return=39.476 mean_len=84.5
+[gat-train] update=2219 samples=460160 fps=42.4 loss=3.3356 actor=-0.7225 value=4.0725 entropy=1.4395 mean_return=38.685 mean_len=83.2
+[gat-train] update=2220 samples=460800 fps=42.4 loss=2.3117 actor=-0.4660 value=2.7924 entropy=1.4635 mean_return=38.369 mean_len=82.9
+[gat-train] update=2221 samples=461440 fps=42.4 loss=2.4071 actor=-0.4598 value=2.8820 entropy=1.5130 mean_return=38.628 mean_len=83.4
+[gat-train] update=2222 samples=462080 fps=42.5 loss=2.4862 actor=0.0332 value=2.4683 entropy=1.5272 mean_return=38.666 mean_len=83.8
+[gat-train] update=2223 samples=462720 fps=42.4 loss=2.1874 actor=-0.2718 value=2.4749 entropy=1.5626 mean_return=38.945 mean_len=84.2
+[gat-train] update=2224 samples=463360 fps=42.5 loss=2.2132 actor=-0.2610 value=2.4904 entropy=1.6222 mean_return=39.160 mean_len=84.7
+[gat-train] update=2225 samples=464000 fps=42.5 loss=1.9230 actor=-0.6276 value=2.5663 entropy=1.5589 mean_return=39.888 mean_len=85.9
+[gat-train] update=2226 samples=464640 fps=42.5 loss=2.5008 actor=-0.2570 value=2.7732 entropy=1.5378 mean_return=40.075 mean_len=86.2
+[gat-train] update=2227 samples=465280 fps=42.4 loss=3.0825 actor=-0.5957 value=3.6933 entropy=1.5065 mean_return=39.601 mean_len=85.1
+[gat-train] update=2228 samples=465920 fps=42.4 loss=1.8706 actor=-0.4396 value=2.3250 entropy=1.4847 mean_return=39.430 mean_len=84.6
+[gat-train] update=2229 samples=466560 fps=42.4 loss=1.8974 actor=-0.2257 value=2.1377 entropy=1.4482 mean_return=39.415 mean_len=84.3
+[gat-train] update=2230 samples=467200 fps=42.4 loss=1.8945 actor=0.2358 value=1.6731 entropy=1.4337 mean_return=39.382 mean_len=84.5
+[gat-train] update=2231 samples=467840 fps=42.3 loss=2.3507 actor=-0.3497 value=2.7147 entropy=1.4219 mean_return=39.394 mean_len=84.6
+[gat-train] update=2232 samples=468480 fps=42.3 loss=2.1950 actor=-0.2696 value=2.4788 entropy=1.4156 mean_return=39.302 mean_len=84.7
+[gat-train] update=2233 samples=469120 fps=42.3 loss=2.2931 actor=0.1410 value=2.1652 entropy=1.3145 mean_return=39.234 mean_len=84.3
+[gat-train] update=2234 samples=469760 fps=42.3 loss=2.3240 actor=-0.1727 value=2.5097 entropy=1.3031 mean_return=39.330 mean_len=84.8
+[gat-train] update=2235 samples=470400 fps=42.3 loss=3.4301 actor=-0.3951 value=3.8385 entropy=1.3337 mean_return=38.944 mean_len=84.3
+[gat-train] update=2236 samples=471040 fps=42.3 loss=2.7628 actor=-0.1716 value=2.9472 entropy=1.2845 mean_return=38.765 mean_len=84.1
+[gat-train] update=2237 samples=471680 fps=42.3 loss=3.3861 actor=-0.8011 value=4.1997 entropy=1.2612 mean_return=38.022 mean_len=83.0
+[gat-train] update=2238 samples=472320 fps=42.3 loss=1.9376 actor=0.0265 value=1.9231 entropy=1.1995 mean_return=38.228 mean_len=83.2
+[gat-train] update=2239 samples=472960 fps=42.3 loss=1.7165 actor=-0.3073 value=2.0367 entropy=1.2902 mean_return=38.214 mean_len=83.8
+[gat-train] update=2240 samples=473600 fps=42.3 loss=1.6916 actor=-0.2144 value=1.9190 entropy=1.3027 mean_return=38.326 mean_len=83.8
+[gat-train] update=2241 samples=474240 fps=42.3 loss=2.3426 actor=-0.3313 value=2.6867 entropy=1.2771 mean_return=38.377 mean_len=84.1
+[gat-train] update=2242 samples=474880 fps=42.3 loss=2.4960 actor=-0.4612 value=2.9703 entropy=1.3126 mean_return=38.249 mean_len=83.4
+[gat-train] update=2243 samples=475520 fps=42.3 loss=2.4676 actor=-0.3249 value=2.8059 entropy=1.3363 mean_return=38.568 mean_len=83.4
+[gat-train] update=2244 samples=476160 fps=42.4 loss=2.4301 actor=-0.3099 value=2.7535 entropy=1.3561 mean_return=38.681 mean_len=83.7
+[gat-train] update=2245 samples=476800 fps=42.4 loss=2.7163 actor=-0.0720 value=2.8012 entropy=1.2868 mean_return=38.826 mean_len=83.7
+[gat-train] update=2246 samples=477440 fps=42.4 loss=1.9095 actor=-0.1670 value=2.0901 entropy=1.3632 mean_return=39.166 mean_len=83.8
+[gat-train] update=2247 samples=478080 fps=42.4 loss=2.1321 actor=-0.3014 value=2.4476 entropy=1.4080 mean_return=39.650 mean_len=84.5
+[gat-train] update=2248 samples=478720 fps=42.4 loss=2.5984 actor=-0.2256 value=2.8376 entropy=1.3499 mean_return=40.012 mean_len=84.9
+[gat-train] update=2249 samples=479360 fps=42.4 loss=2.1909 actor=-0.1619 value=2.3667 entropy=1.3850 mean_return=40.171 mean_len=85.5
+[gat-train] update=2250 samples=480000 fps=42.5 loss=2.0528 actor=0.2813 value=1.7849 entropy=1.3438 mean_return=40.317 mean_len=85.8
+[gat-train] eval update=2250 torch_score=85.05 deploy_score=85.35 min=80.76 bottom10=81.66 confirm_score=80.72 confirm_min=0.00 confirm_bottom10=45.58 max_regression=85.16 regressions=6 guard_rejected=1 best=82.56
+[gat-train] update=2251 samples=480640 fps=41.9 loss=2.1031 actor=-0.1607 value=2.2787 entropy=1.4905 mean_return=40.337 mean_len=85.9
+[gat-train] update=2252 samples=481280 fps=41.9 loss=3.7400 actor=-0.1666 value=3.9203 entropy=1.3779 mean_return=40.023 mean_len=85.5
+[gat-train] update=2253 samples=481920 fps=41.9 loss=2.5647 actor=-0.6250 value=3.2042 entropy=1.4551 mean_return=39.783 mean_len=85.0
+[gat-train] update=2254 samples=482560 fps=41.9 loss=1.7422 actor=-0.3199 value=2.0772 entropy=1.5006 mean_return=39.422 mean_len=84.6
+[gat-train] update=2255 samples=483200 fps=41.9 loss=1.6286 actor=-0.5391 value=2.1835 entropy=1.5744 mean_return=39.557 mean_len=85.0
+[gat-train] update=2256 samples=483840 fps=41.9 loss=2.9014 actor=-0.0598 value=2.9775 entropy=1.6401 mean_return=39.344 mean_len=84.5
+[gat-train] update=2257 samples=484480 fps=41.9 loss=2.9806 actor=-0.4193 value=3.4168 entropy=1.6877 mean_return=38.973 mean_len=84.0
+[gat-train] update=2258 samples=485120 fps=41.9 loss=2.2383 actor=-0.2184 value=2.4728 entropy=1.6078 mean_return=39.256 mean_len=84.1
+[gat-train] update=2259 samples=485760 fps=41.9 loss=2.7841 actor=-0.5545 value=3.3559 entropy=1.7277 mean_return=39.250 mean_len=84.3
+[gat-train] update=2260 samples=486400 fps=41.9 loss=2.4876 actor=0.0631 value=2.4420 entropy=1.7406 mean_return=39.213 mean_len=84.8
+[gat-train] update=2261 samples=487040 fps=41.9 loss=2.1728 actor=-0.7658 value=2.9567 entropy=1.8084 mean_return=39.339 mean_len=85.0
+[gat-train] update=2262 samples=487680 fps=41.9 loss=2.0537 actor=-0.7104 value=2.7816 entropy=1.7453 mean_return=39.298 mean_len=85.0
+[gat-train] update=2263 samples=488320 fps=41.9 loss=2.7299 actor=-0.2057 value=2.9525 entropy=1.6922 mean_return=39.431 mean_len=84.8
+[gat-train] update=2264 samples=488960 fps=41.9 loss=2.3466 actor=-0.3011 value=2.6640 entropy=1.6240 mean_return=39.228 mean_len=84.4
+[gat-train] update=2265 samples=489600 fps=41.9 loss=3.3978 actor=-0.7646 value=4.1793 entropy=1.6822 mean_return=39.619 mean_len=84.5
+[gat-train] update=2266 samples=490240 fps=41.9 loss=2.2577 actor=-0.5166 value=2.7899 entropy=1.5534 mean_return=39.232 mean_len=83.6
+[gat-train] update=2267 samples=490880 fps=41.9 loss=2.2044 actor=0.0211 value=2.1990 entropy=1.5705 mean_return=39.454 mean_len=83.7
+[gat-train] update=2268 samples=491520 fps=41.9 loss=2.5908 actor=-0.1304 value=2.7363 entropy=1.5142 mean_return=38.900 mean_len=82.7
+[gat-train] update=2269 samples=492160 fps=41.9 loss=2.6525 actor=-0.0531 value=2.7205 entropy=1.4878 mean_return=38.903 mean_len=82.3
+[gat-train] update=2270 samples=492800 fps=41.8 loss=2.9952 actor=-0.6509 value=3.6618 entropy=1.5685 mean_return=39.016 mean_len=82.9
+[gat-train] update=2271 samples=493440 fps=41.8 loss=2.5040 actor=-0.2924 value=2.8113 entropy=1.4890 mean_return=38.698 mean_len=83.0
+[gat-train] update=2272 samples=494080 fps=41.8 loss=2.3932 actor=-0.2820 value=2.6900 entropy=1.4804 mean_return=38.803 mean_len=83.5
+[gat-train] update=2273 samples=494720 fps=41.8 loss=2.3417 actor=0.0979 value=2.2573 entropy=1.3508 mean_return=38.624 mean_len=83.6
+[gat-train] update=2274 samples=495360 fps=41.8 loss=1.8801 actor=-0.1835 value=2.0772 entropy=1.3596 mean_return=38.944 mean_len=84.5
+[gat-train] update=2275 samples=496000 fps=41.9 loss=2.5597 actor=-0.4630 value=3.0357 entropy=1.2949 mean_return=38.553 mean_len=84.1
+[gat-train] update=2276 samples=496640 fps=41.8 loss=2.0731 actor=-0.2572 value=2.3431 entropy=1.2757 mean_return=38.064 mean_len=83.0
+[gat-train] update=2277 samples=497280 fps=41.8 loss=2.0736 actor=-0.2800 value=2.3668 entropy=1.3186 mean_return=38.659 mean_len=84.0
+[gat-train] update=2278 samples=497920 fps=41.8 loss=2.8153 actor=-0.4731 value=3.3013 entropy=1.2864 mean_return=38.597 mean_len=83.3
+[gat-train] update=2279 samples=498560 fps=41.8 loss=2.0132 actor=-0.0891 value=2.1161 entropy=1.3800 mean_return=38.656 mean_len=83.2
+[gat-train] update=2280 samples=499200 fps=41.8 loss=1.8419 actor=-0.5457 value=2.4024 entropy=1.4776 mean_return=39.046 mean_len=83.9
+[gat-train] update=2281 samples=499840 fps=41.9 loss=2.0520 actor=-0.1502 value=2.2170 entropy=1.4819 mean_return=39.191 mean_len=84.1
+[gat-train] update=2282 samples=500480 fps=41.9 loss=1.9521 actor=-0.1867 value=2.1549 entropy=1.6051 mean_return=39.628 mean_len=85.2
+[gat-train] update=2283 samples=501120 fps=41.9 loss=1.8416 actor=0.0012 value=1.8560 entropy=1.5539 mean_return=39.695 mean_len=85.0
+[gat-train] update=2284 samples=501760 fps=41.9 loss=2.1675 actor=0.1326 value=2.0506 entropy=1.5667 mean_return=39.766 mean_len=84.9
+[gat-train] update=2285 samples=502400 fps=41.9 loss=1.9225 actor=-0.1663 value=2.1050 entropy=1.6213 mean_return=39.714 mean_len=84.8
+[gat-train] update=2286 samples=503040 fps=41.9 loss=2.7271 actor=-0.0732 value=2.8165 entropy=1.6150 mean_return=39.947 mean_len=85.5
+[gat-train] update=2287 samples=503680 fps=41.9 loss=2.2551 actor=-0.4974 value=2.7677 entropy=1.5156 mean_return=39.770 mean_len=84.8
+[gat-train] update=2288 samples=504320 fps=41.9 loss=2.4402 actor=-0.2082 value=2.6632 entropy=1.4850 mean_return=39.564 mean_len=84.6
+[gat-train] update=2289 samples=504960 fps=42.0 loss=1.8667 actor=-0.2662 value=2.1473 entropy=1.4476 mean_return=39.406 mean_len=84.7
+[gat-train] update=2290 samples=505600 fps=42.0 loss=1.6275 actor=0.0253 value=1.6161 entropy=1.3898 mean_return=39.129 mean_len=84.4
+[gat-train] update=2291 samples=506240 fps=41.9 loss=1.9699 actor=-0.2924 value=2.2756 entropy=1.3318 mean_return=39.363 mean_len=84.7
+[gat-train] update=2292 samples=506880 fps=42.0 loss=2.0290 actor=0.0455 value=1.9967 entropy=1.3219 mean_return=39.520 mean_len=85.0
+[gat-train] update=2293 samples=507520 fps=42.0 loss=2.0566 actor=-0.6368 value=2.7064 entropy=1.3023 mean_return=39.191 mean_len=85.2
+[gat-train] update=2294 samples=508160 fps=42.0 loss=2.2624 actor=-0.1891 value=2.4645 entropy=1.2958 mean_return=39.302 mean_len=86.1
+[gat-train] update=2295 samples=508800 fps=42.0 loss=1.9798 actor=-0.4807 value=2.4741 entropy=1.3576 mean_return=39.367 mean_len=85.6
+[gat-train] update=2296 samples=509440 fps=42.0 loss=2.1543 actor=-0.2420 value=2.4100 entropy=1.3653 mean_return=39.534 mean_len=85.6
+[gat-train] update=2297 samples=510080 fps=42.0 loss=2.0553 actor=-0.2376 value=2.3081 entropy=1.5163 mean_return=39.320 mean_len=85.3
+[gat-train] update=2298 samples=510720 fps=42.0 loss=2.1614 actor=-0.2684 value=2.4449 entropy=1.5124 mean_return=39.517 mean_len=85.4
+[gat-train] update=2299 samples=511360 fps=42.0 loss=1.7694 actor=-0.1174 value=1.9021 entropy=1.5281 mean_return=39.470 mean_len=85.4
+[gat-train] update=2300 samples=512000 fps=42.0 loss=1.9597 actor=-0.1515 value=2.1267 entropy=1.5454 mean_return=39.710 mean_len=85.8
+[gat-train] eval update=2300 torch_score=84.10 deploy_score=82.41 min=72.60 bottom10=75.16 max_regression=12.36 regressions=3 guard_rejected=1 best=82.56
+[gat-train] update=2301 samples=512640 fps=41.9 loss=2.0151 actor=-0.0689 value=2.0994 entropy=1.5439 mean_return=39.669 mean_len=85.4
+[gat-train] update=2302 samples=513280 fps=41.9 loss=2.3967 actor=-0.2158 value=2.6294 entropy=1.6912 mean_return=39.883 mean_len=85.8
+[gat-train] update=2303 samples=513920 fps=41.9 loss=2.9976 actor=-0.6130 value=3.6272 entropy=1.6549 mean_return=39.201 mean_len=85.0
+[gat-train] update=2304 samples=514560 fps=41.9 loss=2.2174 actor=-0.5045 value=2.7379 entropy=1.5951 mean_return=39.174 mean_len=85.2
+[gat-train] update=2305 samples=515200 fps=41.9 loss=1.6039 actor=-0.2736 value=1.8951 entropy=1.7621 mean_return=39.605 mean_len=85.8
+[gat-train] update=2306 samples=515840 fps=41.9 loss=1.8895 actor=-0.5888 value=2.4952 entropy=1.6883 mean_return=39.486 mean_len=85.6
+[gat-train] update=2307 samples=516480 fps=42.0 loss=2.2333 actor=-0.2717 value=2.5213 entropy=1.6259 mean_return=39.175 mean_len=85.0
+[gat-train] update=2308 samples=517120 fps=42.0 loss=3.4890 actor=-0.3861 value=3.8912 entropy=1.6075 mean_return=39.438 mean_len=85.2
+[gat-train] update=2309 samples=517760 fps=42.0 loss=2.0602 actor=-0.1357 value=2.2116 entropy=1.5652 mean_return=39.329 mean_len=84.6
+[gat-train] update=2310 samples=518400 fps=42.0 loss=1.9386 actor=-0.3428 value=2.2975 entropy=1.6047 mean_return=39.258 mean_len=84.6
+[gat-train] update=2311 samples=519040 fps=42.0 loss=2.8663 actor=0.1062 value=2.7751 entropy=1.4966 mean_return=39.175 mean_len=84.5
+[gat-train] update=2312 samples=519680 fps=42.0 loss=3.5721 actor=-0.4002 value=3.9873 entropy=1.5023 mean_return=38.848 mean_len=84.0
+[gat-train] update=2313 samples=520320 fps=42.0 loss=2.2042 actor=-0.4704 value=2.6896 entropy=1.4982 mean_return=39.164 mean_len=84.4
+[gat-train] update=2314 samples=520960 fps=42.1 loss=2.0208 actor=-0.2032 value=2.2388 entropy=1.4811 mean_return=38.968 mean_len=84.5
+[gat-train] update=2315 samples=521600 fps=42.1 loss=1.9887 actor=-0.1166 value=2.1193 entropy=1.3993 mean_return=38.937 mean_len=84.9
+[gat-train] update=2316 samples=522240 fps=42.1 loss=2.4932 actor=-0.3643 value=2.8715 entropy=1.4026 mean_return=39.006 mean_len=84.8
+[gat-train] update=2317 samples=522880 fps=42.1 loss=2.5591 actor=0.1609 value=2.4113 entropy=1.3021 mean_return=38.973 mean_len=84.7
+[gat-train] update=2318 samples=523520 fps=42.1 loss=1.8451 actor=-0.2064 value=2.0641 entropy=1.2556 mean_return=39.092 mean_len=84.9
+[gat-train] update=2319 samples=524160 fps=42.0 loss=2.0018 actor=-0.2700 value=2.2844 entropy=1.2618 mean_return=38.986 mean_len=84.7
+[gat-train] update=2320 samples=524800 fps=42.1 loss=2.7912 actor=-0.5986 value=3.4021 entropy=1.2391 mean_return=38.672 mean_len=84.6
+[gat-train] update=2321 samples=525440 fps=42.1 loss=1.9856 actor=-0.2302 value=2.2282 entropy=1.2441 mean_return=39.032 mean_len=85.1
+[gat-train] update=2322 samples=526080 fps=42.1 loss=2.3519 actor=0.1142 value=2.2502 entropy=1.2552 mean_return=39.097 mean_len=85.2
+[gat-train] update=2323 samples=526720 fps=42.1 loss=2.4317 actor=-0.4555 value=2.8997 entropy=1.2538 mean_return=39.244 mean_len=85.1
+[gat-train] update=2324 samples=527360 fps=42.1 loss=1.9945 actor=-0.3381 value=2.3458 entropy=1.3196 mean_return=39.163 mean_len=84.8
+[gat-train] update=2325 samples=528000 fps=42.1 loss=2.5310 actor=-0.0961 value=2.6404 entropy=1.3379 mean_return=39.297 mean_len=84.8
+[gat-train] update=2326 samples=528640 fps=42.1 loss=2.0362 actor=-0.0719 value=2.1214 entropy=1.3349 mean_return=39.466 mean_len=85.1
+[gat-train] update=2327 samples=529280 fps=42.1 loss=1.7210 actor=-0.0427 value=1.7783 entropy=1.4626 mean_return=39.653 mean_len=85.3
+[gat-train] update=2328 samples=529920 fps=42.1 loss=1.8717 actor=-0.2504 value=2.1361 entropy=1.4074 mean_return=39.555 mean_len=84.6
+[gat-train] update=2329 samples=530560 fps=42.1 loss=1.7880 actor=-0.4537 value=2.2560 entropy=1.4256 mean_return=39.290 mean_len=84.3
+[gat-train] update=2330 samples=531200 fps=42.0 loss=1.7751 actor=-0.4030 value=2.1927 entropy=1.4721 mean_return=39.375 mean_len=84.7
+[gat-train] update=2331 samples=531840 fps=42.1 loss=2.1210 actor=-0.4383 value=2.5733 entropy=1.3947 mean_return=39.320 mean_len=84.5
+[gat-train] update=2332 samples=532480 fps=42.1 loss=2.3612 actor=0.2033 value=2.1721 entropy=1.4166 mean_return=39.626 mean_len=85.2
+[gat-train] update=2333 samples=533120 fps=42.1 loss=1.8437 actor=-0.3320 value=2.1902 entropy=1.4519 mean_return=39.282 mean_len=84.6
+[gat-train] update=2334 samples=533760 fps=42.1 loss=2.0476 actor=0.1015 value=1.9601 entropy=1.4006 mean_return=39.156 mean_len=84.5
+[gat-train] update=2335 samples=534400 fps=42.1 loss=2.3549 actor=-0.1003 value=2.4700 entropy=1.4778 mean_return=38.935 mean_len=84.2
+[gat-train] update=2336 samples=535040 fps=42.1 loss=1.7901 actor=-0.1544 value=1.9589 entropy=1.4364 mean_return=39.163 mean_len=84.6
+[gat-train] update=2337 samples=535680 fps=42.1 loss=2.1515 actor=-0.5516 value=2.7177 entropy=1.4555 mean_return=38.986 mean_len=84.6
+[gat-train] update=2338 samples=536320 fps=42.1 loss=3.0798 actor=-0.4154 value=3.5092 entropy=1.4021 mean_return=39.036 mean_len=84.7
+[gat-train] update=2339 samples=536960 fps=42.1 loss=2.0463 actor=-0.3547 value=2.4146 entropy=1.3566 mean_return=39.376 mean_len=85.1
+[gat-train] update=2340 samples=537600 fps=42.2 loss=2.3982 actor=-0.5033 value=2.9147 entropy=1.3225 mean_return=39.053 mean_len=84.6
+[gat-train] update=2341 samples=538240 fps=42.2 loss=1.3813 actor=-0.3894 value=1.7836 entropy=1.2856 mean_return=39.233 mean_len=85.2
+[gat-train] update=2342 samples=538880 fps=42.1 loss=1.9580 actor=-0.0369 value=2.0079 entropy=1.2910 mean_return=39.199 mean_len=84.9
+[gat-train] update=2343 samples=539520 fps=42.1 loss=2.2442 actor=-0.0797 value=2.3362 entropy=1.2322 mean_return=39.294 mean_len=85.4
+[gat-train] update=2344 samples=540160 fps=42.1 loss=2.0092 actor=-0.2934 value=2.3149 entropy=1.2383 mean_return=39.171 mean_len=85.1
+[gat-train] update=2345 samples=540800 fps=42.1 loss=2.1868 actor=-0.1580 value=2.3574 entropy=1.2612 mean_return=39.162 mean_len=84.9
+[gat-train] update=2346 samples=541440 fps=42.1 loss=1.9996 actor=-0.1291 value=2.1422 entropy=1.3529 mean_return=38.926 mean_len=84.6
+[gat-train] update=2347 samples=542080 fps=42.1 loss=2.3321 actor=-0.1133 value=2.4582 entropy=1.2824 mean_return=39.151 mean_len=84.9
+[gat-train] update=2348 samples=542720 fps=42.1 loss=2.4465 actor=-0.3291 value=2.7895 entropy=1.3834 mean_return=39.115 mean_len=84.5
+[gat-train] update=2349 samples=543360 fps=42.1 loss=1.5885 actor=-0.1304 value=1.7326 entropy=1.3661 mean_return=39.290 mean_len=84.5
+[gat-train] update=2350 samples=544000 fps=42.1 loss=2.0607 actor=-0.2676 value=2.3422 entropy=1.3979 mean_return=39.522 mean_len=84.7
+[gat-train] eval update=2350 torch_score=84.86 deploy_score=80.68 min=51.45 bottom10=62.02 max_regression=31.03 regressions=4 guard_rejected=1 best=82.56
+[gat-train] update=2351 samples=544640 fps=41.9 loss=2.4388 actor=0.0519 value=2.4011 entropy=1.4215 mean_return=39.333 mean_len=84.5
+[gat-train] update=2352 samples=545280 fps=41.9 loss=2.3663 actor=-0.2447 value=2.6260 entropy=1.4960 mean_return=39.490 mean_len=84.9
+[gat-train] update=2353 samples=545920 fps=41.9 loss=2.4801 actor=-0.0818 value=2.5766 entropy=1.4742 mean_return=39.616 mean_len=85.1
+[gat-train] update=2354 samples=546560 fps=41.9 loss=2.5400 actor=-0.1860 value=2.7415 entropy=1.5483 mean_return=39.549 mean_len=84.5
+[gat-train] update=2355 samples=547200 fps=41.9 loss=2.3229 actor=-0.5282 value=2.8658 entropy=1.4744 mean_return=39.691 mean_len=84.9
+[gat-train] update=2356 samples=547840 fps=41.9 loss=2.0879 actor=-0.5174 value=2.6196 entropy=1.4305 mean_return=39.518 mean_len=84.8
+[gat-train] update=2357 samples=548480 fps=41.9 loss=2.3662 actor=-0.0058 value=2.3859 entropy=1.3946 mean_return=39.804 mean_len=85.3
+[gat-train] update=2358 samples=549120 fps=42.0 loss=2.6896 actor=-0.0271 value=2.7306 entropy=1.3805 mean_return=39.800 mean_len=85.3
+[gat-train] update=2359 samples=549760 fps=42.0 loss=2.2611 actor=-0.0181 value=2.2927 entropy=1.3496 mean_return=39.785 mean_len=85.2
+[gat-train] update=2360 samples=550400 fps=42.0 loss=2.4311 actor=-0.3419 value=2.7863 entropy=1.3299 mean_return=39.876 mean_len=85.6
+[gat-train] update=2361 samples=551040 fps=42.0 loss=2.1612 actor=-0.0809 value=2.2550 entropy=1.2856 mean_return=39.922 mean_len=85.5
+[gat-train] update=2362 samples=551680 fps=42.0 loss=2.1999 actor=-0.1613 value=2.3739 entropy=1.2694 mean_return=39.612 mean_len=85.3
+[gat-train] update=2363 samples=552320 fps=42.0 loss=2.0961 actor=0.0231 value=2.0856 entropy=1.2594 mean_return=39.557 mean_len=85.0
+[gat-train] update=2364 samples=552960 fps=42.0 loss=2.2549 actor=-0.2983 value=2.5663 entropy=1.3152 mean_return=39.356 mean_len=84.4
+[gat-train] update=2365 samples=553600 fps=42.1 loss=1.4844 actor=-0.2891 value=1.7859 entropy=1.2412 mean_return=39.371 mean_len=84.9
+[gat-train] update=2366 samples=554240 fps=42.1 loss=1.5341 actor=-0.1646 value=1.7113 entropy=1.2589 mean_return=39.541 mean_len=84.9
+[gat-train] update=2367 samples=554880 fps=42.1 loss=1.9375 actor=-0.0665 value=2.0164 entropy=1.2439 mean_return=39.520 mean_len=84.8
+[gat-train] update=2368 samples=555520 fps=42.1 loss=1.9422 actor=-0.1783 value=2.1330 entropy=1.2531 mean_return=39.378 mean_len=84.6
+[gat-train] update=2369 samples=556160 fps=42.1 loss=2.1656 actor=-0.2162 value=2.3945 entropy=1.2718 mean_return=39.765 mean_len=84.7
+[gat-train] update=2370 samples=556800 fps=42.1 loss=2.1340 actor=-0.1631 value=2.3101 entropy=1.3051 mean_return=39.663 mean_len=84.9
+[gat-train] update=2371 samples=557440 fps=42.1 loss=2.2329 actor=-0.0237 value=2.2694 entropy=1.2783 mean_return=39.321 mean_len=84.8
+[gat-train] update=2372 samples=558080 fps=42.2 loss=2.2906 actor=-0.0861 value=2.3898 entropy=1.3176 mean_return=39.428 mean_len=85.2
+[gat-train] update=2373 samples=558720 fps=42.2 loss=2.3370 actor=-0.1973 value=2.5477 entropy=1.3287 mean_return=39.280 mean_len=84.7
+[gat-train] update=2374 samples=559360 fps=42.2 loss=2.2372 actor=-0.0016 value=2.2515 entropy=1.2622 mean_return=39.468 mean_len=85.2
+[gat-train] update=2375 samples=560000 fps=42.2 loss=2.4497 actor=-0.2777 value=2.7409 entropy=1.3447 mean_return=39.348 mean_len=85.6
+[gat-train] update=2376 samples=560640 fps=42.2 loss=1.8454 actor=-0.2558 value=2.1144 entropy=1.3188 mean_return=39.319 mean_len=85.7
+[gat-train] update=2377 samples=561280 fps=42.2 loss=1.8411 actor=0.1351 value=1.7189 entropy=1.2977 mean_return=39.365 mean_len=85.7
+[gat-train] update=2378 samples=561920 fps=42.2 loss=2.9472 actor=-0.5137 value=3.4739 entropy=1.2986 mean_return=39.562 mean_len=85.9
+[gat-train] update=2379 samples=562560 fps=42.3 loss=1.9362 actor=-0.2493 value=2.1984 entropy=1.2893 mean_return=39.562 mean_len=86.1
+[gat-train] update=2380 samples=563200 fps=42.3 loss=2.0032 actor=-0.1437 value=2.1590 entropy=1.2081 mean_return=39.420 mean_len=85.9
+[gat-train] update=2381 samples=563840 fps=42.2 loss=1.9963 actor=-0.4091 value=2.4184 entropy=1.3040 mean_return=39.316 mean_len=85.6
+[gat-train] update=2382 samples=564480 fps=42.2 loss=1.9317 actor=-0.1019 value=2.0464 entropy=1.2870 mean_return=39.264 mean_len=85.3
+[gat-train] update=2383 samples=565120 fps=42.2 loss=2.2280 actor=-0.0298 value=2.2706 entropy=1.2860 mean_return=39.646 mean_len=85.7
+[gat-train] update=2384 samples=565760 fps=42.3 loss=1.9707 actor=-0.3459 value=2.3297 entropy=1.3112 mean_return=39.686 mean_len=85.7
+[gat-train] update=2385 samples=566400 fps=42.3 loss=1.9198 actor=-0.1116 value=2.0445 entropy=1.3126 mean_return=39.606 mean_len=85.3
+[gat-train] update=2386 samples=567040 fps=42.3 loss=1.7571 actor=-0.1846 value=1.9547 entropy=1.2986 mean_return=39.715 mean_len=85.8
+[gat-train] update=2387 samples=567680 fps=42.3 loss=3.6802 actor=-0.1365 value=3.8298 entropy=1.3081 mean_return=39.141 mean_len=84.7
+[gat-train] update=2388 samples=568320 fps=42.3 loss=2.8749 actor=-0.3300 value=3.2178 entropy=1.2875 mean_return=39.305 mean_len=85.0
+[gat-train] update=2389 samples=568960 fps=42.2 loss=2.5695 actor=-0.1609 value=2.7425 entropy=1.2158 mean_return=39.289 mean_len=84.8
+[gat-train] update=2390 samples=569600 fps=42.2 loss=2.4930 actor=-0.3742 value=2.8801 entropy=1.2975 mean_return=39.138 mean_len=84.8
+[gat-train] update=2391 samples=570240 fps=42.2 loss=2.6929 actor=-0.0657 value=2.7713 entropy=1.2670 mean_return=39.170 mean_len=84.8
+[gat-train] update=2392 samples=570880 fps=42.3 loss=1.8622 actor=-0.2197 value=2.0953 entropy=1.3352 mean_return=39.873 mean_len=85.8
+[gat-train] update=2393 samples=571520 fps=42.3 loss=1.7149 actor=0.0196 value=1.7087 entropy=1.3394 mean_return=39.858 mean_len=85.8
+[gat-train] update=2394 samples=572160 fps=42.2 loss=1.9570 actor=-0.4157 value=2.3866 entropy=1.3861 mean_return=39.426 mean_len=85.0
+[gat-train] update=2395 samples=572800 fps=42.2 loss=2.3405 actor=-0.1291 value=2.4841 entropy=1.4533 mean_return=39.768 mean_len=85.3
+[gat-train] update=2396 samples=573440 fps=42.2 loss=1.4998 actor=-0.5256 value=2.0400 entropy=1.4557 mean_return=40.035 mean_len=85.6
+[gat-train] update=2397 samples=574080 fps=42.2 loss=1.9178 actor=-0.4204 value=2.3533 entropy=1.5111 mean_return=39.788 mean_len=85.5
+[gat-train] update=2398 samples=574720 fps=42.2 loss=1.7176 actor=-0.2191 value=1.9522 entropy=1.5417 mean_return=39.936 mean_len=85.9
+[gat-train] update=2399 samples=575360 fps=42.2 loss=2.2660 actor=-0.3259 value=2.6080 entropy=1.6078 mean_return=40.051 mean_len=86.2
+[gat-train] update=2400 samples=576000 fps=42.2 loss=2.0898 actor=-0.5390 value=2.6450 entropy=1.6205 mean_return=40.146 mean_len=86.1
+[gat-train] eval update=2400 torch_score=83.15 deploy_score=83.56 min=66.92 bottom10=73.92 max_regression=11.14 regressions=3 guard_rejected=1 best=82.56
+[gat-train] update=2401 samples=576640 fps=42.0 loss=2.1864 actor=0.0340 value=2.1680 entropy=1.5600 mean_return=40.377 mean_len=86.4
+[gat-train] update=2402 samples=577280 fps=42.0 loss=1.6953 actor=-0.2746 value=1.9855 entropy=1.5622 mean_return=40.250 mean_len=86.4
+[gat-train] update=2403 samples=577920 fps=42.0 loss=2.0451 actor=-0.1971 value=2.2586 entropy=1.6363 mean_return=40.370 mean_len=86.3
+[gat-train] update=2404 samples=578560 fps=42.0 loss=1.9639 actor=-0.2524 value=2.2325 entropy=1.6262 mean_return=40.065 mean_len=85.7
+[gat-train] update=2405 samples=579200 fps=42.0 loss=1.7614 actor=-0.2742 value=2.0519 entropy=1.6279 mean_return=39.653 mean_len=84.7
+[gat-train] update=2406 samples=579840 fps=42.1 loss=1.7859 actor=-0.3653 value=2.1674 entropy=1.6204 mean_return=39.601 mean_len=85.1
+[gat-train] update=2407 samples=580480 fps=42.0 loss=2.8945 actor=-0.9047 value=3.8149 entropy=1.5742 mean_return=39.248 mean_len=84.9
+[gat-train] update=2408 samples=581120 fps=42.0 loss=1.9165 actor=-0.3637 value=2.2951 entropy=1.4898 mean_return=39.075 mean_len=85.1
+[gat-train] update=2409 samples=581760 fps=42.0 loss=1.7870 actor=-0.2733 value=2.0748 entropy=1.4555 mean_return=39.141 mean_len=85.1
+[gat-train] update=2410 samples=582400 fps=42.0 loss=2.2403 actor=-0.4810 value=2.7359 entropy=1.4583 mean_return=38.645 mean_len=84.7
+[gat-train] update=2411 samples=583040 fps=42.0 loss=2.5390 actor=-0.2362 value=2.7898 entropy=1.4618 mean_return=38.763 mean_len=84.7
+[gat-train] update=2412 samples=583680 fps=42.0 loss=1.7751 actor=-0.1313 value=1.9208 entropy=1.4352 mean_return=38.556 mean_len=84.0
+[gat-train] update=2413 samples=584320 fps=42.0 loss=1.8593 actor=-0.1630 value=2.0367 entropy=1.4448 mean_return=38.725 mean_len=84.0
+[gat-train] update=2414 samples=584960 fps=42.1 loss=2.3240 actor=0.0198 value=2.3186 entropy=1.4395 mean_return=38.836 mean_len=84.1
+[gat-train] update=2415 samples=585600 fps=42.0 loss=2.1025 actor=-0.1430 value=2.2595 entropy=1.3968 mean_return=38.742 mean_len=83.7
+[gat-train] update=2416 samples=586240 fps=42.0 loss=2.0667 actor=-0.1093 value=2.1902 entropy=1.4168 mean_return=38.931 mean_len=84.0
+[gat-train] update=2417 samples=586880 fps=42.1 loss=1.8178 actor=0.0077 value=1.8243 entropy=1.4222 mean_return=39.139 mean_len=84.6
+[gat-train] update=2418 samples=587520 fps=42.1 loss=1.6546 actor=-0.1560 value=1.8248 entropy=1.4196 mean_return=39.576 mean_len=85.3
+[gat-train] update=2419 samples=588160 fps=42.1 loss=2.0834 actor=-0.3606 value=2.4577 entropy=1.3741 mean_return=39.719 mean_len=85.4
+[gat-train] update=2420 samples=588800 fps=42.1 loss=2.7347 actor=0.1169 value=2.6315 entropy=1.3768 mean_return=39.886 mean_len=86.2
+[gat-train] update=2421 samples=589440 fps=42.1 loss=2.5802 actor=-0.2622 value=2.8567 entropy=1.4252 mean_return=39.868 mean_len=86.1
+[gat-train] update=2422 samples=590080 fps=42.1 loss=2.4474 actor=0.1206 value=2.3411 entropy=1.4274 mean_return=39.698 mean_len=86.0
+[gat-train] update=2423 samples=590720 fps=42.1 loss=2.1441 actor=-0.5221 value=2.6801 entropy=1.3937 mean_return=39.675 mean_len=85.9
+[gat-train] update=2424 samples=591360 fps=42.1 loss=2.4131 actor=-0.3652 value=2.7921 entropy=1.3819 mean_return=39.337 mean_len=85.0
+[gat-train] update=2425 samples=592000 fps=42.1 loss=2.0702 actor=-0.2823 value=2.3661 entropy=1.3635 mean_return=39.394 mean_len=85.5
+[gat-train] update=2426 samples=592640 fps=42.1 loss=1.8110 actor=-0.1641 value=1.9895 entropy=1.4415 mean_return=39.114 mean_len=85.1
+[gat-train] update=2427 samples=593280 fps=42.1 loss=1.8854 actor=-0.2116 value=2.1116 entropy=1.4614 mean_return=39.378 mean_len=85.4
+[gat-train] update=2428 samples=593920 fps=42.1 loss=2.0148 actor=-0.2821 value=2.3114 entropy=1.4546 mean_return=39.523 mean_len=85.4
+[gat-train] update=2429 samples=594560 fps=42.2 loss=1.6438 actor=-0.4164 value=2.0752 entropy=1.4977 mean_return=39.396 mean_len=85.3
+[gat-train] update=2430 samples=595200 fps=42.2 loss=2.7138 actor=-0.1504 value=2.8793 entropy=1.5154 mean_return=39.630 mean_len=85.8
+[gat-train] update=2431 samples=595840 fps=42.2 loss=1.6649 actor=-0.1610 value=1.8409 entropy=1.5058 mean_return=39.921 mean_len=86.2
+[gat-train] update=2432 samples=596480 fps=42.2 loss=2.1873 actor=-0.1660 value=2.3694 entropy=1.6064 mean_return=39.895 mean_len=86.2
+[gat-train] update=2433 samples=597120 fps=42.2 loss=5.6468 actor=-0.4073 value=6.0704 entropy=1.6250 mean_return=39.425 mean_len=84.9
+[gat-train] update=2434 samples=597760 fps=42.2 loss=1.8761 actor=-0.5123 value=2.4058 entropy=1.7347 mean_return=39.472 mean_len=85.1
+[gat-train] update=2435 samples=598400 fps=42.2 loss=1.9519 actor=-0.3607 value=2.3302 entropy=1.7616 mean_return=39.732 mean_len=85.3
+[gat-train] update=2436 samples=599040 fps=42.3 loss=2.6880 actor=-0.4898 value=3.1956 entropy=1.7825 mean_return=39.115 mean_len=84.4
+[gat-train] update=2437 samples=599680 fps=42.3 loss=2.0235 actor=-0.3602 value=2.4016 entropy=1.7958 mean_return=38.889 mean_len=83.9
+[gat-train] update=2438 samples=600320 fps=42.3 loss=3.0432 actor=-0.6484 value=3.7090 entropy=1.7342 mean_return=38.240 mean_len=82.5
+[gat-train] update=2439 samples=600960 fps=42.3 loss=2.2626 actor=-0.4617 value=2.7414 entropy=1.7170 mean_return=38.538 mean_len=83.1
+[gat-train] update=2440 samples=601600 fps=42.3 loss=2.3467 actor=0.0994 value=2.2642 entropy=1.6955 mean_return=38.306 mean_len=82.7
+[gat-train] update=2441 samples=602240 fps=42.3 loss=1.9289 actor=-0.1545 value=2.1000 entropy=1.6562 mean_return=37.942 mean_len=82.2
+[gat-train] update=2442 samples=602880 fps=42.3 loss=2.3608 actor=-0.1110 value=2.4876 entropy=1.5799 mean_return=37.934 mean_len=82.3
+[gat-train] update=2443 samples=603520 fps=42.3 loss=1.5576 actor=-0.5514 value=2.1245 entropy=1.5491 mean_return=37.969 mean_len=82.9
+[gat-train] update=2444 samples=604160 fps=42.4 loss=2.4749 actor=-0.0374 value=2.5272 entropy=1.4876 mean_return=38.220 mean_len=83.5
+[gat-train] update=2445 samples=604800 fps=42.4 loss=2.5396 actor=-0.3725 value=2.9265 entropy=1.4442 mean_return=38.881 mean_len=84.8
+[gat-train] update=2446 samples=605440 fps=42.4 loss=2.2334 actor=-0.3442 value=2.5921 entropy=1.4509 mean_return=38.925 mean_len=84.8
+[gat-train] update=2447 samples=606080 fps=42.4 loss=1.6426 actor=-0.3337 value=1.9907 entropy=1.4408 mean_return=39.110 mean_len=85.2
+[gat-train] update=2448 samples=606720 fps=42.4 loss=2.1893 actor=0.0748 value=2.1281 entropy=1.3679 mean_return=39.455 mean_len=85.6
+[gat-train] update=2449 samples=607360 fps=42.4 loss=1.9357 actor=-0.5136 value=2.4633 entropy=1.4045 mean_return=39.197 mean_len=85.0
+[gat-train] update=2450 samples=608000 fps=42.4 loss=1.9649 actor=-0.2440 value=2.2222 entropy=1.3192 mean_return=39.346 mean_len=85.0
+[gat-train] eval update=2450 torch_score=84.29 deploy_score=79.17 min=41.22 bottom10=54.07 max_regression=41.37 regressions=5 guard_rejected=1 best=82.56
+[gat-train] update=2451 samples=608640 fps=42.3 loss=2.2287 actor=-0.5745 value=2.8163 entropy=1.3091 mean_return=39.315 mean_len=84.9
+[gat-train] update=2452 samples=609280 fps=42.2 loss=2.6259 actor=-0.1775 value=2.8162 entropy=1.2812 mean_return=39.144 mean_len=84.5
+[gat-train] update=2453 samples=609920 fps=42.2 loss=2.4922 actor=-0.4093 value=2.9147 entropy=1.3185 mean_return=38.984 mean_len=84.6
+[gat-train] update=2454 samples=610560 fps=42.2 loss=1.5741 actor=-0.1159 value=1.7031 entropy=1.3099 mean_return=38.970 mean_len=84.5
+[gat-train] update=2455 samples=611200 fps=42.2 loss=1.6387 actor=-0.3569 value=2.0090 entropy=1.3451 mean_return=39.061 mean_len=84.8
+[gat-train] update=2456 samples=611840 fps=42.2 loss=1.7396 actor=-0.2744 value=2.0274 entropy=1.3324 mean_return=39.182 mean_len=85.1
+[gat-train] update=2457 samples=612480 fps=42.2 loss=2.2272 actor=-0.2903 value=2.5315 entropy=1.3951 mean_return=39.398 mean_len=85.2
+[gat-train] update=2458 samples=613120 fps=42.2 loss=1.9713 actor=0.0170 value=1.9680 entropy=1.3671 mean_return=39.506 mean_len=85.5
+[gat-train] update=2459 samples=613760 fps=42.2 loss=1.9047 actor=-0.2878 value=2.2074 entropy=1.4921 mean_return=39.465 mean_len=85.2
+[gat-train] update=2460 samples=614400 fps=42.2 loss=2.0266 actor=-0.0641 value=2.1053 entropy=1.4614 mean_return=39.993 mean_len=86.0
+[gat-train] update=2461 samples=615040 fps=42.2 loss=1.9347 actor=-0.3636 value=2.3133 entropy=1.5000 mean_return=40.096 mean_len=86.3
+[gat-train] update=2462 samples=615680 fps=42.2 loss=2.2075 actor=-0.5022 value=2.7251 entropy=1.5325 mean_return=39.807 mean_len=85.4
+[gat-train] update=2463 samples=616320 fps=42.2 loss=1.7625 actor=-0.3419 value=2.1198 entropy=1.5398 mean_return=39.910 mean_len=85.3
+[gat-train] update=2464 samples=616960 fps=42.2 loss=2.2744 actor=-0.2962 value=2.5867 entropy=1.6033 mean_return=39.599 mean_len=84.7
+[gat-train] update=2465 samples=617600 fps=42.2 loss=1.7662 actor=-0.1010 value=1.8837 entropy=1.6451 mean_return=39.649 mean_len=84.7
+[gat-train] update=2466 samples=618240 fps=42.2 loss=2.4287 actor=-0.1026 value=2.5481 entropy=1.6803 mean_return=39.804 mean_len=84.9
+[gat-train] update=2467 samples=618880 fps=42.2 loss=1.9643 actor=-0.3659 value=2.3476 entropy=1.7312 mean_return=39.783 mean_len=84.9
+[gat-train] update=2468 samples=619520 fps=42.2 loss=2.1941 actor=-0.6376 value=2.8485 entropy=1.6745 mean_return=39.317 mean_len=84.4
+[gat-train] update=2469 samples=620160 fps=42.2 loss=1.6831 actor=-0.6277 value=2.3269 entropy=1.6159 mean_return=39.174 mean_len=84.2
+[gat-train] update=2470 samples=620800 fps=42.2 loss=2.3281 actor=-0.3793 value=2.7237 entropy=1.6371 mean_return=39.297 mean_len=84.4
+[gat-train] update=2471 samples=621440 fps=42.2 loss=1.8366 actor=-0.2714 value=2.1238 entropy=1.5894 mean_return=38.940 mean_len=83.8
+[gat-train] update=2472 samples=622080 fps=42.3 loss=2.1567 actor=0.1641 value=2.0079 entropy=1.5344 mean_return=38.734 mean_len=83.6
+[gat-train] update=2473 samples=622720 fps=42.3 loss=1.6168 actor=-0.6220 value=2.2539 entropy=1.5066 mean_return=38.823 mean_len=83.5
+[gat-train] update=2474 samples=623360 fps=42.3 loss=1.9277 actor=-0.3115 value=2.2538 entropy=1.4715 mean_return=38.811 mean_len=83.3
+[gat-train] update=2475 samples=624000 fps=42.3 loss=1.8218 actor=-0.4160 value=2.2519 entropy=1.4051 mean_return=38.557 mean_len=82.6
+[gat-train] update=2476 samples=624640 fps=42.3 loss=2.6643 actor=-0.1051 value=2.7839 entropy=1.4551 mean_return=38.403 mean_len=82.7
+[gat-train] update=2477 samples=625280 fps=42.3 loss=2.0938 actor=-0.0728 value=2.1813 entropy=1.4706 mean_return=37.975 mean_len=82.2
+[gat-train] update=2478 samples=625920 fps=42.3 loss=1.9593 actor=-0.1356 value=2.1095 entropy=1.4674 mean_return=38.170 mean_len=82.5
+[gat-train] update=2479 samples=626560 fps=42.3 loss=1.7839 actor=-0.1704 value=1.9680 entropy=1.3836 mean_return=38.450 mean_len=82.9
+[gat-train] update=2480 samples=627200 fps=42.3 loss=2.3960 actor=0.0562 value=2.3537 entropy=1.3855 mean_return=38.531 mean_len=83.3
+[gat-train] update=2481 samples=627840 fps=42.3 loss=1.7309 actor=-0.1765 value=1.9212 entropy=1.3850 mean_return=38.802 mean_len=83.8
+[gat-train] update=2482 samples=628480 fps=42.3 loss=1.7972 actor=-0.3024 value=2.1138 entropy=1.4222 mean_return=39.347 mean_len=85.0
+[gat-train] update=2483 samples=629120 fps=42.3 loss=1.7598 actor=-0.0965 value=1.8699 entropy=1.3651 mean_return=39.602 mean_len=85.4
+[gat-train] update=2484 samples=629760 fps=42.3 loss=2.7319 actor=-0.5840 value=3.3295 entropy=1.3553 mean_return=39.890 mean_len=85.7
+[gat-train] update=2485 samples=630400 fps=42.3 loss=2.0167 actor=-0.0370 value=2.0670 entropy=1.3346 mean_return=39.479 mean_len=85.6
+[gat-train] update=2486 samples=631040 fps=42.3 loss=1.5264 actor=-0.3940 value=1.9340 entropy=1.3611 mean_return=39.510 mean_len=85.5
+[gat-train] update=2487 samples=631680 fps=42.3 loss=1.8601 actor=-0.0613 value=1.9346 entropy=1.3220 mean_return=39.357 mean_len=84.9
+[gat-train] update=2488 samples=632320 fps=42.4 loss=2.3869 actor=-0.2957 value=2.6955 entropy=1.2943 mean_return=39.486 mean_len=85.3
+[gat-train] update=2489 samples=632960 fps=42.4 loss=2.6589 actor=-0.2636 value=2.9354 entropy=1.2908 mean_return=39.596 mean_len=85.3
+[gat-train] update=2490 samples=633600 fps=42.4 loss=1.6985 actor=-0.0096 value=1.7210 entropy=1.2929 mean_return=39.689 mean_len=85.5
+[gat-train] update=2491 samples=634240 fps=42.4 loss=1.9477 actor=-0.1591 value=2.1200 entropy=1.3232 mean_return=40.231 mean_len=86.1
+[gat-train] update=2492 samples=634880 fps=42.4 loss=1.7058 actor=-0.2619 value=1.9808 entropy=1.3050 mean_return=40.288 mean_len=86.1
+[gat-train] update=2493 samples=635520 fps=42.4 loss=2.0287 actor=0.0796 value=1.9625 entropy=1.3302 mean_return=40.248 mean_len=85.9
+[gat-train] update=2494 samples=636160 fps=42.4 loss=1.9486 actor=-0.2602 value=2.2220 entropy=1.3233 mean_return=40.351 mean_len=86.3
+[gat-train] update=2495 samples=636800 fps=42.4 loss=2.4824 actor=-0.0700 value=2.5656 entropy=1.3207 mean_return=40.011 mean_len=85.5
+[gat-train] update=2496 samples=637440 fps=42.4 loss=1.7343 actor=-0.1092 value=1.8558 entropy=1.2427 mean_return=40.244 mean_len=85.9
+[gat-train] update=2497 samples=638080 fps=42.5 loss=2.2708 actor=-0.4357 value=2.7197 entropy=1.3138 mean_return=40.009 mean_len=85.7
+[gat-train] update=2498 samples=638720 fps=42.5 loss=2.0135 actor=-0.1835 value=2.2095 entropy=1.2480 mean_return=39.632 mean_len=85.4
+[gat-train] update=2499 samples=639360 fps=42.5 loss=2.2840 actor=-0.0331 value=2.3302 entropy=1.3047 mean_return=39.538 mean_len=85.1
+[gat-train] update=2500 samples=640000 fps=42.5 loss=3.9707 actor=-0.1214 value=4.1050 entropy=1.2947 mean_return=38.925 mean_len=84.3
+[gat-train] eval update=2500 torch_score=85.23 deploy_score=80.15 min=41.22 bottom10=58.55 max_regression=41.37 regressions=4 guard_rejected=1 best=82.56
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260713_221640.log
+2026-07-13T13:16:41Z [176ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-13T13:16:41Z [177ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-13T13:16:41Z [468ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-13T13:16:41Z [571ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-13T13:16:43Z [2,697ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-13T13:16:43Z [2,697ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106249
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-13T13:16:44Z [3,269ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260713_221640.log
+2026-07-13T13:16:41Z [176ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-13T13:16:41Z [181ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-13T13:16:41Z [464ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-13T13:16:41Z [568ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-13T13:16:43Z [2,696ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-13T13:16:43Z [2,696ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106249
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-13T13:16:44Z [3,268ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260713_221640.log
+2026-07-13T13:16:41Z [176ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-13T13:16:41Z [177ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-13T13:16:41Z [467ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-13T13:16:41Z [570ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-13T13:16:43Z [2,718ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-13T13:16:43Z [2,719ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106115
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-13T13:16:44Z [3,258ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260713_221640.log
+2026-07-13T13:16:41Z [177ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-13T13:16:41Z [182ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-13T13:16:41Z [466ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-13T13:16:41Z [570ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-13T13:16:43Z [2,717ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-13T13:16:43Z [2,717ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106115
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-13T13:16:44Z [3,269ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+2026-07-13T17:29:01Z [15,140,248ms] [Warning] [omni.physx.plugin] USD stage detach not called, holding a loose ptr to a stage!
+2026-07-13T17:29:01Z [15,140,575ms] [Warning] [carb] Recursive unloadAllPlugins() detected!
+2026-07-13T17:29:01Z [15,140,246ms] [Warning] [omni.physx.plugin] USD stage detach not called, holding a loose ptr to a stage!
+2026-07-13T17:29:01Z [15,140,584ms] [Warning] [carb] Recursive unloadAllPlugins() detected!
+2026-07-13T17:29:01Z [15,140,246ms] [Warning] [omni.physx.plugin] USD stage detach not called, holding a loose ptr to a stage!
+2026-07-13T17:29:01Z [15,140,592ms] [Warning] [carb] Recursive unloadAllPlugins() detected!
+2026-07-13T17:29:01Z [15,140,245ms] [Warning] [omni.physx.plugin] USD stage detach not called, holding a loose ptr to a stage!
+2026-07-13T17:29:01Z [15,140,618ms] [Warning] [carb] Recursive unloadAllPlugins() detected!
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log
+wandb: uploading history steps 1000-1000, summary, console lines 1026-1026
+wandb: 
+wandb: Run history:
+wandb:               checkpoint/latest_update ▁▃▆█
+wandb:                       checkpoint/saved ▁▁▁▁
+wandb:                        eval/best_score ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                 eval/competition_score ▂▁▇▂▂▁█▇▃▆▃▆▇▇▇▇▆▆▅▆▇
+wandb:         eval/deployment_bottom10_score ▇▁▇▆▇██▇▇▇▇▇▇█▇█▇▅▇▃▄
+wandb: eval/deployment_confirm_bottom10_score ▆▁▁▁▁▁█▁▁▁▁▁▁▁▁▅▁▁▁▁▁
+wandb:      eval/deployment_confirm_min_score ▁▁▁▁▁▁█▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:          eval/deployment_confirm_score █▁▁▁▁▁█▁▁▁▁▁▁▁▁█▁▁▁▁▁
+wandb:         eval/deployment_guard_rejected ▁████████████████████
+wandb:         eval/deployment_max_regression ▁█▂▂▂▁▂▂▁▁▂▂▂▂▂█▂▃▂▄▄
+wandb:                                    +17 ...
+wandb: 
+wandb: Run summary:
+wandb:               checkpoint/latest_update 2500
+wandb:                       checkpoint/saved 1
+wandb:                        eval/best_score 82.56488
+wandb:                 eval/competition_score 85.23004
+wandb:         eval/deployment_bottom10_score 58.54621
+wandb: eval/deployment_confirm_bottom10_score -1
+wandb:      eval/deployment_confirm_min_score -1
+wandb:          eval/deployment_confirm_score -1
+wandb:         eval/deployment_guard_rejected 1
+wandb:         eval/deployment_max_regression 41.36722
+wandb:                                    +17 ...
+wandb: 
+wandb: 🚀 View run sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest at: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/we04wmk9
+wandb: ⭐️ View project at: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest/wandb/wandb/run-20260713_221709-we04wmk9/logs
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260713_221638.log
+2026-07-13T13:16:38Z [163ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-13T13:16:38Z [165ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-13T13:16:38Z [442ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-13T13:16:38Z [540ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-13T13:16:40Z [2,175ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-13T13:16:40Z [2,175ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 109386
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-13T13:16:40Z [2,364ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+2026-07-13T13:16:40Z [2,664ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+[sun-deploybest] profile=sun_v2 exited code=0 Tue Jul 14 02:29:04 AM KST 2026

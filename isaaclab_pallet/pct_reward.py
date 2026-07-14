@@ -47,6 +47,8 @@ class RewardScales:
     support_margin: float = 0.0
     active_layer_coverage: float = 0.0
     center_of_mass_z_penalty: float = 0.0
+    sliver_void_penalty: float = 0.0
+    blocked_void_penalty: float = 0.0
 
 
 def density_for_box(box: dict, setting: int, density_max: float) -> float:
@@ -228,6 +230,28 @@ def usable_void_volume(ems: np.ndarray, min_sorted: Sequence[float] = (0.13, 0.1
     return float(volumes[usable].sum())
 
 
+def sliver_void_volume(
+    ems: np.ndarray,
+    narrow_axis_max: float = 0.08,
+    long_axis_min: float = 0.35,
+    volume_min: float = 0.001,
+) -> float:
+    arr = np.asarray(ems, dtype=np.float64)
+    if arr.size == 0:
+        return 0.0
+    arr = arr.reshape(-1, 6)
+    sizes = np.maximum(arr[:, 3:6] - arr[:, 0:3], 0.0)
+    sorted_sizes = np.sort(sizes, axis=1)
+    volumes = sizes[:, 0] * sizes[:, 1] * sizes[:, 2]
+    sliver = (
+        (sorted_sizes[:, 0] > 1e-6)
+        & (sorted_sizes[:, 0] <= narrow_axis_max)
+        & (sorted_sizes[:, 2] >= long_axis_min)
+        & (volumes >= volume_min)
+    )
+    return float(volumes[sliver].sum())
+
+
 def _layer_coverage(boxes, pallet_size, layer_z: float, grid: float = 0.025, tol: float = 0.006) -> float:
     pallet_x, pallet_y, _ = pallet_size
     nx = max(1, int(np.ceil(float(pallet_x) / grid)))
@@ -298,6 +322,8 @@ def placement_geometry_terms(
     pallet_size,
     before_void_volume: float | None = None,
     after_void_volume: float | None = None,
+    before_sliver_void_volume: float | None = None,
+    after_sliver_void_volume: float | None = None,
 ) -> dict[str, float]:
     pallet_x, pallet_y, pallet_z = [float(v) for v in pallet_size]
     lx, ly, lz, hx, hy, hz = _box_bounds(packed_box)
@@ -342,6 +368,14 @@ def placement_geometry_terms(
     if before_void_volume is not None and after_void_volume is not None:
         void_reduction = float(np.clip((before_void_volume - after_void_volume) / 0.05, 0.0, 1.0))
 
+    sliver_void_increase = 0.0
+    if before_sliver_void_volume is not None and after_sliver_void_volume is not None:
+        sliver_void_increase = float(np.clip((after_sliver_void_volume - before_sliver_void_volume) / 0.02, 0.0, 1.0))
+
+    unsupported_fraction = 0.0 if lz <= 1e-6 else max(0.0, 1.0 - ratio)
+    height_factor = 0.0 if lz <= 1e-6 else float(np.clip(lz / max(pallet_z, 1e-9), 0.0, 1.0))
+    blocked_void_penalty = float(np.clip(unsupported_fraction * area_ratio * (1.0 + 2.0 * height_factor) / 0.08, 0.0, 1.0))
+
     return {
         "corner_large_anchor": float(corner_large_anchor),
         "wall_anchor": float(wall_anchor),
@@ -353,6 +387,8 @@ def placement_geometry_terms(
         "active_layer_coverage": float(active_layer_coverage),
         "center_of_mass_z": float(com_after),
         "center_of_mass_z_increase": float(center_of_mass_z_increase),
+        "sliver_void_increase": float(sliver_void_increase),
+        "blocked_void_penalty": float(blocked_void_penalty),
     }
 
 
@@ -395,6 +431,8 @@ def compute_online3dbpp_reward(
     center_of_mass_z_penalty = scales.center_of_mass_z_penalty * float(
         geometry.get("center_of_mass_z_increase", 0.0)
     )
+    sliver_void_penalty = scales.sliver_void_penalty * float(geometry.get("sliver_void_increase", 0.0))
+    blocked_void_penalty = scales.blocked_void_penalty * float(geometry.get("blocked_void_penalty", 0.0))
 
     reward = float(
         volume_reward
@@ -412,6 +450,8 @@ def compute_online3dbpp_reward(
         - weak_support_penalty
         - elevation_penalty
         - center_of_mass_z_penalty
+        - sliver_void_penalty
+        - blocked_void_penalty
     )
     terms = {
         "volume_reward": float(volume_reward),
@@ -429,6 +469,8 @@ def compute_online3dbpp_reward(
         "support_margin_reward": float(support_margin_reward),
         "active_layer_coverage_reward": float(active_layer_coverage_reward),
         "center_of_mass_z_penalty": float(center_of_mass_z_penalty),
+        "sliver_void_penalty": float(sliver_void_penalty),
+        "blocked_void_penalty": float(blocked_void_penalty),
         "corner_large_anchor": float(geometry.get("corner_large_anchor", 0.0)),
         "wall_anchor": float(geometry.get("wall_anchor", 0.0)),
         "tight_fit": float(geometry.get("tight_fit", 0.0)),
@@ -437,6 +479,8 @@ def compute_online3dbpp_reward(
         "active_layer_coverage": float(geometry.get("active_layer_coverage", 0.0)),
         "center_of_mass_z": float(geometry.get("center_of_mass_z", 0.0)),
         "center_of_mass_z_increase": float(geometry.get("center_of_mass_z_increase", 0.0)),
+        "sliver_void_increase": float(geometry.get("sliver_void_increase", 0.0)),
+        "blocked_void": float(geometry.get("blocked_void_penalty", 0.0)),
         "support_ratio": float(ratio),
         "reward": reward,
     }

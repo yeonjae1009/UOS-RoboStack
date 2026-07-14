@@ -193,6 +193,8 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     support_margin_reward_scale: float = 0.0
     active_layer_coverage_reward_scale: float = 0.0
     center_of_mass_z_penalty_scale: float = 0.0
+    sliver_void_penalty_scale: float = 0.0
+    blocked_void_penalty_scale: float = 0.0
     terminal_ratio_reward_scale: float = 0.0  # success/no-feasible terminal fill bonus; 0=off
     auto_finish_ratio: float = 0.0  # stop successfully after this utilization ratio; 0=off
     learn_finish_action: bool = False  # add a policy-selected finish action after leaf actions
@@ -286,6 +288,8 @@ class PalletPackingEnv(DirectRLEnv):
             support_margin=cfg.support_margin_reward_scale,
             active_layer_coverage=cfg.active_layer_coverage_reward_scale,
             center_of_mass_z_penalty=cfg.center_of_mass_z_penalty_scale,
+            sliver_void_penalty=cfg.sliver_void_penalty_scale,
+            blocked_void_penalty=cfg.blocked_void_penalty_scale,
         )
         self._packer_config = packer_pool.PackerConfig(
             pallet_size=tuple(cfg.pallet_size),

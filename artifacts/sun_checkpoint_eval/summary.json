@@ -1,0 +1,24 @@
+[
+  {
+    "label": "gap52_c1400",
+    "dataset": "eval12",
+    "checkpoint": "isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand52official_sun_gap_guard_v1_deploybest/deploy_eval/candidate-001400.pt",
+    "count": 12,
+    "avg": 84.81666666666666,
+    "min": 80.4,
+    "max": 90.9,
+    "success": true,
+    "result_json": "/home/user/Documents/assignment2_project/artifacts/sun_checkpoint_eval/gap52_c1400/eval12/candidate-001400/sim_results/result.json"
+  },
+  {
+    "label": "gap52_c1400",
+    "dataset": "eval52",
+    "checkpoint": "isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand52official_sun_gap_guard_v1_deploybest/deploy_eval/candidate-001400.pt",
+    "count": 52,
+    "avg": 86.13076923076925,
+    "min": 74.3,
+    "max": 94.0,
+    "success": true,
+    "result_json": "/home/user/Documents/assignment2_project/artifacts/sun_checkpoint_eval/gap52_c1400/eval52/candidate-001400/sim_results/result.json"
+  }
+]
