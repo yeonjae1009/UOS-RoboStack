@@ -1,8 +1,8 @@
-input_path: random_spec_eval_10/box_sequence
-output_dir: algorithm_results_eval10
+#input_path: random_spec_eval_10/box_sequence
+#output_dir: algorithm_results_eval10
 
-#input_path: box_sequence
-#output_dir: algorithm_results
+input_path: box_sequence
+output_dir: algorithm_results
 pallet:
   length: 1.2
   width: 1.0
