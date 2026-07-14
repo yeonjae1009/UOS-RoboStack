@@ -39,6 +39,11 @@ class RewardScales:
     # Default 0.0 = OFF (no behaviour change vs original PCT; equivalence preserved).
     # Tune on the Isaac machine where utilization can actually be measured.
     elevation_penalty: float = 0.0
+    # Optional sun_v2 diagnostic/shaping hooks. They default to zero so existing
+    # reward profiles remain bit-compatible unless a profile explicitly enables them.
+    sun_v2_floor_expansion: float = 0.0
+    sun_v2_height_smoothness: float = 0.0
+    sun_v2_support: float = 0.0
 
 
 def density_for_box(box: dict, setting: int, density_max: float) -> float:
@@ -201,6 +206,13 @@ def compute_online3dbpp_reward(
     )
     # #4 density knob: penalize elevation (off by default -> reward unchanged).
     elevation_penalty = scales.elevation_penalty * max(0.0, float(packed_box.lz))
+    sun_v2_floor_expansion_reward = scales.sun_v2_floor_expansion * (
+        after["floor_coverage"] - before["floor_coverage"]
+    )
+    sun_v2_height_smoothness_reward = scales.sun_v2_height_smoothness * float(
+        np.clip(height_delta, -0.05, 0.05)
+    )
+    sun_v2_support_reward = scales.sun_v2_support * ratio
 
     reward = float(
         volume_reward
@@ -209,6 +221,9 @@ def compute_online3dbpp_reward(
         + corner_floor_reward
         + height_smoothness_reward
         + support_reward
+        + sun_v2_floor_expansion_reward
+        + sun_v2_height_smoothness_reward
+        + sun_v2_support_reward
         - weak_support_penalty
         - elevation_penalty
     )
@@ -221,6 +236,9 @@ def compute_online3dbpp_reward(
         "support_reward": float(support_reward),
         "weak_support_penalty": float(weak_support_penalty),
         "elevation_penalty": float(elevation_penalty),
+        "sun_v2_floor_expansion_reward": float(sun_v2_floor_expansion_reward),
+        "sun_v2_height_smoothness_reward": float(sun_v2_height_smoothness_reward),
+        "sun_v2_support_reward": float(sun_v2_support_reward),
         "support_ratio": float(ratio),
         "reward": reward,
     }

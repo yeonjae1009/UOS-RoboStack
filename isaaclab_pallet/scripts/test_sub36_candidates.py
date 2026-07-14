@@ -37,7 +37,7 @@ def load_boxes(path: Path, limit: int) -> list[dict]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Smoke-test the sub36 PCT candidate generator.")
+    parser = argparse.ArgumentParser(description="Smoke-test the sub36-family PCT candidate generators.")
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--sequence", type=Path, default=DEFAULT_SEQUENCE)
     parser.add_argument("--max-boxes", type=int, default=120)
@@ -57,19 +57,31 @@ def main() -> int:
         internal,
         leaf,
         setting,
-        candidate_generator="sub36",
+        candidate_generator=str(cfg.get("candidate_generator", "sub36")),
     )
     packer.reset()
 
     placed = 0
+    checked_diversity = False
     for step, box in enumerate(boxes):
         density = pct_reward.density_for_box(box, setting, density_max)
         obs = packer.observe(box["size"], density=density).reshape(internal + leaf + 1, 9)
         leaves = obs[internal:internal + leaf]
         valid = [idx for idx in range(leaf) if float(leaves[idx, 8]) > 0.5]
         if not valid:
-            print(f"[step {step}] no valid sub36 leaf; placed={placed}")
+            print(f"[step {step}] no valid {cfg.get('candidate_generator', 'sub36')} leaf; placed={placed}")
             break
+        if str(cfg.get("candidate_generator", "sub36")) == "sub36_sun_ensemble" and not checked_diversity:
+            family_ids = [int(round(float(leaves[idx, 6]) * 7.0)) for idx in valid]
+            unique_families = sorted(set(family_ids))
+            exploration_count = sum(1 for family_id in family_ids if family_id == 7)
+            if len(unique_families) < 5:
+                print(f"[step {step}] ensemble diversity failed: families={unique_families}")
+                return 1
+            if exploration_count <= 0:
+                print(f"[step {step}] ensemble exploration family missing")
+                return 1
+            checked_diversity = True
         if args.policy == "first":
             action_idx = valid[0]
         elif args.policy == "last":
@@ -82,7 +94,10 @@ def main() -> int:
         placed += 1
 
     ratio = packer.get_ratio()
-    print(f"sub36 candidate smoke ok: placed={placed}/{len(boxes)} ratio={ratio:.6f}")
+    print(
+        f"{cfg.get('candidate_generator', 'sub36')} candidate smoke ok: "
+        f"placed={placed}/{len(boxes)} ratio={ratio:.6f}"
+    )
     return 0
 
 

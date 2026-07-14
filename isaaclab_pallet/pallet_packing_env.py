@@ -185,6 +185,9 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     weak_support_penalty_scale: float = 0.05
     weak_support_threshold: float = 0.85
     elevation_penalty_scale: float = 0.0  # #4 density knob (fill-bottom-first); 0=off, tune on Isaac
+    sun_v2_floor_expansion_scale: float = 0.0
+    sun_v2_height_smoothness_scale: float = 0.0
+    sun_v2_support_scale: float = 0.0
     terminal_ratio_reward_scale: float = 0.0  # success/no-feasible terminal fill bonus; 0=off
     auto_finish_ratio: float = 0.0  # stop successfully after this utilization ratio; 0=off
     learn_finish_action: bool = False  # add a policy-selected finish action after leaf actions
@@ -259,6 +262,7 @@ class PalletPackingEnv(DirectRLEnv):
         self.terminal_height_ratio: torch.Tensor | None = None
         self.terminal_stack_drift: torch.Tensor | None = None
         self.last_chosen_action: torch.Tensor | None = None
+        self.last_chosen_family: torch.Tensor | None = None
         self.last_candidate_count: torch.Tensor | None = None
         self.last_candidate_pass_count: torch.Tensor | None = None
         self.box_assets: list[RigidObject] = []
@@ -271,6 +275,9 @@ class PalletPackingEnv(DirectRLEnv):
             weak_support=cfg.weak_support_penalty_scale,
             weak_support_threshold=cfg.weak_support_threshold,
             elevation_penalty=cfg.elevation_penalty_scale,
+            sun_v2_floor_expansion=cfg.sun_v2_floor_expansion_scale,
+            sun_v2_height_smoothness=cfg.sun_v2_height_smoothness_scale,
+            sun_v2_support=cfg.sun_v2_support_scale,
         )
         self._packer_config = packer_pool.PackerConfig(
             pallet_size=tuple(cfg.pallet_size),
@@ -307,6 +314,7 @@ class PalletPackingEnv(DirectRLEnv):
         self.terminal_height_ratio = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
         self.terminal_stack_drift = torch.zeros(self.num_envs, dtype=torch.float32, device=self.device)
         self.last_chosen_action = torch.full((self.num_envs,), -1, dtype=torch.long, device=self.device)
+        self.last_chosen_family = torch.full((self.num_envs,), -1, dtype=torch.long, device=self.device)
         self.last_candidate_count = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
         self.last_candidate_pass_count = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
         nb = len(self.boxes)
@@ -413,6 +421,17 @@ class PalletPackingEnv(DirectRLEnv):
             ],
             dtype=np.float32,
         )
+
+    def _leaf_family_id(self, env_id: int, action_idx: int) -> int:
+        if action_idx < 0 or action_idx >= self.leaf_node_holder:
+            return -1
+        leaves = self.last_obs_np[env_id].reshape(self.obs_node_count, 9)[
+            self.internal_node_holder : self.internal_node_holder + self.leaf_node_holder
+        ]
+        if float(leaves[action_idx, 8]) <= 0.5:
+            return -1
+        family_norm = float(leaves[action_idx, 6])
+        return int(round(max(0.0, min(1.0, family_norm)) * 7.0))
 
     def _select_candidate_actions(self, env_id: int, probs: torch.Tensor) -> list[int]:
         k = max(1, int(self.cfg.candidate_rerank_k))
@@ -541,6 +560,7 @@ class PalletPackingEnv(DirectRLEnv):
         self.last_invalid.zero_()
         self.last_done_reason.zero_()
         self.last_chosen_action.copy_(actions.clamp(0, self.cfg.action_space - 1))
+        self.last_chosen_family.fill_(-1)
         self.last_candidate_count.zero_()
         self.last_candidate_pass_count.zero_()
 
@@ -568,6 +588,7 @@ class PalletPackingEnv(DirectRLEnv):
                     continue
             requests[env_id] = (box, selected_action)
             self.last_chosen_action[env_id] = selected_action
+            self.last_chosen_family[env_id] = self._leaf_family_id(env_id, selected_action)
 
         if candidate_requests:
             candidate_results = self.packer_pool.candidate_steps(candidate_requests)
@@ -577,6 +598,9 @@ class PalletPackingEnv(DirectRLEnv):
                 passed: list[dict] = []
                 fallbacks: list[dict] = []
                 for candidate in candidates:
+                    action_idx = int(candidate.get("action_idx", -1))
+                    policy_prob = float(action_probs[env_id, action_idx].item()) if 0 <= action_idx < action_probs.shape[1] else 0.0
+                    candidate["policy_prob"] = policy_prob
                     if candidate.get("status") != "ok":
                         continue
                     physics = self._candidate_physics_check(env_id, candidate, box_idx, step)
@@ -587,9 +611,15 @@ class PalletPackingEnv(DirectRLEnv):
                         fallbacks.append(candidate)
                 self.last_candidate_pass_count[env_id] = len(passed)
                 if passed:
-                    winner = max(passed, key=lambda c: float(c.get("reward", 0.0)))
+                    winner = max(passed, key=lambda c: float(c.get("policy_prob", 0.0)))
                 elif fallbacks:
-                    winner = min(fallbacks, key=lambda c: float(c.get("violation", float("inf"))))
+                    winner = min(
+                        fallbacks,
+                        key=lambda c: (
+                            float(c.get("violation", float("inf"))),
+                            -float(c.get("policy_prob", 0.0)),
+                        ),
+                    )
                 else:
                     winner = None
 
@@ -605,6 +635,7 @@ class PalletPackingEnv(DirectRLEnv):
                     action_idx,
                 )
                 self.last_chosen_action[env_id] = action_idx
+                self.last_chosen_family[env_id] = self._leaf_family_id(env_id, action_idx)
 
         # All per-env CPU work (observe -> select -> place -> reward) happens here,
         # serially or across worker processes depending on num_packer_workers.
@@ -683,6 +714,7 @@ class PalletPackingEnv(DirectRLEnv):
         self.extras["pct_leaf_node_mask"] = leaf_node_mask
         self.extras["pct_full_mask"] = full_mask
         self.extras["chosen_action"] = self.last_chosen_action.reshape(self.num_envs, 1)
+        self.extras["chosen_family"] = self.last_chosen_family
         self.extras["candidate_count"] = self.last_candidate_count
         self.extras["candidate_pass_count"] = self.last_candidate_pass_count
         physics_features = self.physics_features
@@ -881,6 +913,9 @@ class PalletPackingEnv(DirectRLEnv):
         self.extras["terminal_height_ratio"] = self.terminal_height_ratio.clone()
         self.extras["terminal_stack_drift"] = self.terminal_stack_drift.clone()
         self.extras["last_stack_drift"] = self.last_stack_drift.clone()
+        self.extras["step_chosen_family"] = self.last_chosen_family.clone()
+        self.extras["step_candidate_count"] = self.last_candidate_count.clone()
+        self.extras["step_candidate_pass_count"] = self.last_candidate_pass_count.clone()
         return terminated, time_out
 
     def _reset_idx(self, env_ids: Sequence[int] | None):
@@ -924,6 +959,7 @@ class PalletPackingEnv(DirectRLEnv):
             self.episode_reward_sum[env_ids_tensor] = 0.0
         if self.last_chosen_action is not None:
             self.last_chosen_action[env_ids_tensor] = -1
+            self.last_chosen_family[env_ids_tensor] = -1
             self.last_candidate_count[env_ids_tensor] = 0
             self.last_candidate_pass_count[env_ids_tensor] = 0
             self.last_terminated[env_ids_tensor] = False

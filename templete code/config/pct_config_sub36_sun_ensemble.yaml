@@ -1,0 +1,14 @@
+# PCT(DRL) config for strategy-ensemble sub36 candidate generation.
+# Input shape matches the existing 200 internal / 100 leaf GAT checkpoints.
+
+model_path: models/pct_model.onnx
+
+internal_node_holder: 200
+leaf_node_holder: 100
+
+candidate_generator: sub36_sun_ensemble
+
+norm_factor: 0.8
+size_minimum: 0.13
+setting: 3
+density_max: 1597.01889805696

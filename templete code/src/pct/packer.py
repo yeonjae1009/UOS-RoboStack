@@ -14,6 +14,7 @@ torch.seed / gym / box_creator 결합을 제거했다. 박스는 외부에서 �
 import numpy as np
 from .space import Space
 from .sub36_candidates import Sub36CandidateGenerator
+from .sub36_sun_ensemble import Sub36SunEnsembleCandidateGenerator
 
 
 class Packer:
@@ -28,11 +29,14 @@ class Packer:
         self.size_minimum = size_minimum
         self.space = Space(*self.bin_size, size_minimum, internal_node_holder)
         self.candidate_generator = str(candidate_generator or "ems").lower()
-        if self.candidate_generator not in ("ems", "sub36"):
+        if self.candidate_generator not in ("ems", "sub36", "sub36_sun_ensemble"):
             raise ValueError(f"unknown candidate_generator: {candidate_generator}")
-        self.sub36_generator = (
-            Sub36CandidateGenerator(self.bin_size) if self.candidate_generator == "sub36" else None
-        )
+        if self.candidate_generator == "sub36":
+            self.sub36_generator = Sub36CandidateGenerator(self.bin_size)
+        elif self.candidate_generator == "sub36_sun_ensemble":
+            self.sub36_generator = Sub36SunEnsembleCandidateGenerator(self.bin_size)
+        else:
+            self.sub36_generator = None
         self.next_box_vec = np.zeros((self.next_holder, 9))
         self.next_box = None
         self.next_den = 1
@@ -44,7 +48,7 @@ class Packer:
 
     # 현재 박스에 대한 잎 노드(배치 후보) 생성
     def get_possible_position(self):
-        if self.candidate_generator == "sub36":
+        if self.candidate_generator in ("sub36", "sub36_sun_ensemble"):
             allPosition = self.sub36_generator.generate(
                 self.space,
                 self.next_box,
@@ -58,12 +62,14 @@ class Packer:
         leaf_node_vec = np.zeros((self.leaf_node_holder, 9))
         tmp_list = []
         for position in allPosition:
-            xs, ys, zs, xe, ye, ze = position
+            xs, ys, zs, xe, ye, ze = position[:6]
+            family_id_norm = float(position[6]) if len(position) > 6 else 0.0
+            heuristic_prior_score = float(position[7]) if len(position) > 7 else 0.0
             x = xe - xs
             y = ye - ys
             z = ze - zs
             if self.space.drop_box_virtual([x, y, z], (xs, ys), False, self.next_den, self.setting):
-                tmp_list.append([xs, ys, zs, xe, ye, self.bin_size[2], 0, 0, 1])
+                tmp_list.append([xs, ys, zs, xe, ye, self.bin_size[2], family_id_norm, heuristic_prior_score, 1])
                 leaf_node_idx += 1
             if leaf_node_idx >= self.leaf_node_holder:
                 break

@@ -48,7 +48,7 @@ parser.add_argument("--tilt-fail-threshold", type=float, default=0.35)
 parser.add_argument("--out-of-bounds-margin", type=float, default=0.02)
 parser.add_argument("--height-fail-margin", type=float, default=0.005)
 parser.add_argument("--drop-fail-threshold", type=float, default=0.08)
-parser.add_argument("--candidate-rerank-k", type=int, default=0, help=">1: test diverse policy top-k leaves with Isaac before committing.")
+parser.add_argument("--candidate-rerank-k", type=int, default=4, help=">1: test diverse policy top-k leaves with Isaac before committing.")
 parser.add_argument("--candidate-diversity-center-m", type=float, default=0.05)
 parser.add_argument(
     "--reward-profile",
@@ -60,6 +60,7 @@ parser.add_argument(
         "finish_ratio",
         "terminal_ratio_t18",
         "finish_ratio_t15",
+        "sun_v2_terminal_explore",
     ],
     default="base",
     help="Reward-scale preset. Keeps the Isaac Lab GAT pipeline unchanged.",
@@ -195,6 +196,22 @@ def apply_reward_profile(cfg: PalletPackingEnvCfg, profile: str) -> None:
             "elevation_penalty_scale": 0.2,
             "terminal_ratio_reward_scale": 15.0,
             "learn_finish_action": True,
+        },
+        "sun_v2_terminal_explore": {
+            "floor_coverage_reward_scale": 0.15,
+            "boundary_floor_reward_scale": 0.0,
+            "corner_floor_reward_scale": 0.0,
+            "height_smoothness_reward_scale": 0.10,
+            "support_reward_scale": 0.02,
+            "weak_support_penalty_scale": 0.03,
+            "elevation_penalty_scale": 0.0,
+            "sun_v2_floor_expansion_scale": 0.0,
+            "sun_v2_height_smoothness_scale": 0.0,
+            "sun_v2_support_scale": 0.0,
+            "terminal_ratio_reward_scale": 18.0,
+            "invalid_action_penalty": -10.0,
+            "no_feasible_leaf_reward": -10.0,
+            "fail_zeroes_pallet": True,
         },
     }
     for name, value in profiles[profile].items():
@@ -505,6 +522,22 @@ def main() -> None:
     recent_returns: deque[float] = deque(maxlen=50)
     recent_lengths: deque[float] = deque(maxlen=50)
     train_start = time.perf_counter()
+    family_names = [
+        "support_anchor",
+        "low_smooth_layer",
+        "floor_expansion",
+        "wall_corner_anchor",
+        "tight_fit_void_closure",
+        "active_layer_coverage",
+        "compact_center_of_mass",
+        "random_feasible",
+    ]
+    family_count = len(family_names)
+    interval_family_count = torch.zeros(family_count, dtype=torch.float32, device=env.device)
+    interval_family_reward = torch.zeros(family_count, dtype=torch.float32, device=env.device)
+    interval_family_fail = torch.zeros(family_count, dtype=torch.float32, device=env.device)
+    interval_candidate_checked = torch.tensor(0.0, dtype=torch.float32, device=env.device)
+    interval_candidate_passed = torch.tensor(0.0, dtype=torch.float32, device=env.device)
 
     print(
         "[gat-train] "
@@ -575,6 +608,35 @@ def main() -> None:
                 obs_dict, reward, terminated, truncated, extras = env.step(selected_idx)
             done = terminated | truncated
 
+            chosen_family = extras.get("step_chosen_family", extras.get("chosen_family"))
+            if chosen_family is not None:
+                chosen_family = chosen_family.to(env.device).long()
+                family_valid = (chosen_family >= 0) & (chosen_family < family_count)
+                if bool(family_valid.any().item()):
+                    fam_idx = chosen_family[family_valid]
+                    interval_family_count += torch.bincount(fam_idx, minlength=family_count).to(torch.float32)
+                    reward_by_family = torch.zeros(family_count, dtype=torch.float32, device=env.device)
+                    reward_by_family.scatter_add_(0, fam_idx, reward.detach()[family_valid].to(torch.float32))
+                    interval_family_reward += reward_by_family
+
+                    terminal_reason = extras.get("terminal_done_reason")
+                    if terminal_reason is not None:
+                        terminal_reason = terminal_reason.to(env.device).long()
+                        family_fail = torch.zeros_like(done)
+                        for reason in (2, 3, 4, 6, 7, 8):
+                            family_fail |= terminal_reason == reason
+                        fail_idx = chosen_family[family_valid & done & family_fail]
+                        if fail_idx.numel() > 0:
+                            interval_family_fail += torch.bincount(fail_idx, minlength=family_count).to(torch.float32)
+
+            candidate_count = extras.get("step_candidate_count", extras.get("candidate_count"))
+            candidate_pass_count = extras.get("step_candidate_pass_count", extras.get("candidate_pass_count"))
+            if candidate_count is not None and candidate_pass_count is not None:
+                candidate_count = candidate_count.to(env.device).to(torch.float32)
+                candidate_pass_count = candidate_pass_count.to(env.device).to(torch.float32)
+                interval_candidate_checked += candidate_count.sum()
+                interval_candidate_passed += candidate_pass_count.sum()
+
             pct_obs = extras["pct_obs"]
             all_nodes, leaf_nodes = pct_tools.get_leaf_nodes(pct_obs, env.internal_node_holder, env.leaf_node_holder)
             all_nodes = all_nodes.to(env.device)
@@ -634,30 +696,57 @@ def main() -> None:
             fps = samples / elapsed
             mean_return = sum(recent_returns) / len(recent_returns) if recent_returns else 0.0
             mean_length = sum(recent_lengths) / len(recent_lengths) if recent_lengths else 0.0
+            family_count_cpu = interval_family_count.detach().cpu()
+            family_reward_cpu = interval_family_reward.detach().cpu()
+            family_fail_cpu = interval_family_fail.detach().cpu()
+            family_total = float(family_count_cpu.sum().item())
+            family_log = {}
+            family_summary = []
+            for family_id, name in enumerate(family_names):
+                count = float(family_count_cpu[family_id].item())
+                ratio = count / family_total if family_total > 0.0 else 0.0
+                avg_reward = float(family_reward_cpu[family_id].item()) / count if count > 0.0 else 0.0
+                fail_rate = float(family_fail_cpu[family_id].item()) / count if count > 0.0 else 0.0
+                family_log[f"train/family/{name}/select_ratio"] = ratio
+                family_log[f"train/family/{name}/avg_reward"] = avg_reward
+                family_log[f"train/family/{name}/failure_rate"] = fail_rate
+                if count > 0.0:
+                    family_summary.append(f"{family_id}:{ratio:.2f}")
+            checked = float(interval_candidate_checked.detach().cpu().item())
+            passed = float(interval_candidate_passed.detach().cpu().item())
+            topk_pass_rate = passed / checked if checked > 0.0 else 0.0
+            family_log["train/topk_physics_pass_rate"] = topk_pass_rate
+            family_log["train/topk_physics_checked"] = checked
             if wandb_run is not None:
-                wandb_run.log(
-                    {
-                        "update": update,
-                        "train/samples": samples,
-                        "train/fps": fps,
-                        "train/loss": float(loss.item()),
-                        "train/actor_loss": float(actor_loss.item()),
-                        "train/critic_loss": float(critic_loss.item()),
-                        "train/entropy": float(dist_entropy.mean().item()),
-                        "train/mean_return": mean_return,
-                        "train/mean_length": mean_length,
-                        "train/learning_rate": args_cli.learning_rate,
-                    },
-                    step=update,
-                )
+                log_payload = {
+                    "update": update,
+                    "train/samples": samples,
+                    "train/fps": fps,
+                    "train/loss": float(loss.item()),
+                    "train/actor_loss": float(actor_loss.item()),
+                    "train/critic_loss": float(critic_loss.item()),
+                    "train/entropy": float(dist_entropy.mean().item()),
+                    "train/policy_entropy": float(dist_entropy.mean().item()),
+                    "train/mean_return": mean_return,
+                    "train/mean_length": mean_length,
+                    "train/learning_rate": args_cli.learning_rate,
+                }
+                log_payload.update(family_log)
+                wandb_run.log(log_payload, step=update)
             print(
                 "[gat-train] "
                 f"update={update} samples={samples} fps={fps:.1f} "
                 f"loss={loss.item():.4f} actor={actor_loss.item():.4f} "
                 f"value={critic_loss.item():.4f} entropy={dist_entropy.mean().item():.4f} "
-                f"mean_return={mean_return:.3f} mean_len={mean_length:.1f}",
+                f"mean_return={mean_return:.3f} mean_len={mean_length:.1f} "
+                f"topk_pass={topk_pass_rate:.3f} families={','.join(family_summary[:8])}",
                 flush=True,
             )
+            interval_family_count.zero_()
+            interval_family_reward.zero_()
+            interval_family_fail.zero_()
+            interval_candidate_checked.zero_()
+            interval_candidate_passed.zero_()
 
         if update % args_cli.save_interval == 0 or update == start_update + args_cli.updates:
             save_checkpoint(run_dir / "PCT-resume.pt", policy, optimizer, update, pct_args)
