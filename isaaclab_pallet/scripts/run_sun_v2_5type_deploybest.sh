@@ -18,6 +18,7 @@ RUN_DIR="${OUT_DIR}/${RUN_NAME}"
 LOG="${RUN_DIR}/train.log"
 
 WARM_START="${WARM_START:-isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand12to52official_sun_v2_resume_deploybest/PCT-best.pt}"
+RESUME="${RESUME:-}"
 NUM_ENVS="${NUM_ENVS:-128}"
 NUM_PACKER_WORKERS="${NUM_PACKER_WORKERS:-8}"
 MAX_BOXES="${MAX_BOXES:-256}"
@@ -45,7 +46,11 @@ EVAL_BOX_SEQ_DIR="${EVAL_BOX_SEQ_DIR:-submit_buffer3_search/box_sequence}"
 EVAL_SEQUENCE_NAMES="${EVAL_SEQUENCE_NAMES:-box_sequence_0 box_sequence_1}"
 
 mkdir -p "$RUN_DIR"
-if [ ! -s "$WARM_START" ]; then
+if [ -n "$RESUME" ] && [ ! -s "$RESUME" ]; then
+  echo "[sun-v2-5type] missing resume=$RESUME" | tee -a "$LOG"
+  exit 1
+fi
+if [ -z "$RESUME" ] && [ ! -s "$WARM_START" ]; then
   echo "[sun-v2-5type] missing warm_start=$WARM_START" | tee -a "$LOG"
   exit 1
 fi
@@ -74,7 +79,12 @@ if [ "$WANDB_ENABLE" = "1" ]; then
   fi
 fi
 
-echo "[sun-v2-5type] start run=$RUN_NAME device=$DEVICE num_envs=$NUM_ENVS workers=$NUM_PACKER_WORKERS max_boxes=$MAX_BOXES updates=$UPDATES box_seed=$BOX_SEED warm_start=$WARM_START $(date)" | tee -a "$LOG"
+model_args=(--load-model "$WARM_START")
+if [ -n "$RESUME" ]; then
+  model_args=(--resume "$RESUME")
+fi
+
+echo "[sun-v2-5type] start run=$RUN_NAME device=$DEVICE num_envs=$NUM_ENVS workers=$NUM_PACKER_WORKERS max_boxes=$MAX_BOXES updates=$UPDATES box_seed=$BOX_SEED warm_start=$WARM_START resume=$RESUME $(date)" | tee -a "$LOG"
 echo "[sun-v2-5type] train_box_seq_dir=$TRAIN_BOX_SEQ_DIR train_type_sequences=${train_type_sequences_array[*]} eval_box_seq_dir=$EVAL_BOX_SEQ_DIR eval_sequences=${eval_sequences_array[*]} deploy_buffer=$DEPLOY_EVAL_BUFFER_SIZE" | tee -a "$LOG"
 
 python3 isaaclab_pallet/scripts/train_pallet_gat.py \
@@ -101,7 +111,7 @@ python3 isaaclab_pallet/scripts/train_pallet_gat.py \
   --seed 0 \
   --headless \
   "${wandb_args[@]}" \
-  --load-model "$WARM_START" \
+  "${model_args[@]}" \
   --deploy-eval-best \
   --deploy-eval-buffer-size "$DEPLOY_EVAL_BUFFER_SIZE" \
   --deploy-eval-timeout "$DEPLOY_EVAL_TIMEOUT" >> "$LOG" 2>&1

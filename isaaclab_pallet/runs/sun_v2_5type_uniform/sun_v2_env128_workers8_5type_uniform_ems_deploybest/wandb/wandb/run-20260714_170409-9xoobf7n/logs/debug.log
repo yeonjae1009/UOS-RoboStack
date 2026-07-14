@@ -1,0 +1,20 @@
+2026-07-14 17:04:09,175 INFO    MainThread:3520916 [wandb_setup.py:_flush():81] Current SDK version is 0.28.0
+2026-07-14 17:04:09,175 INFO    MainThread:3520916 [wandb_setup.py:_flush():81] Configure stats pid to 3520916
+2026-07-14 17:04:09,175 INFO    MainThread:3520916 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-07-14 17:04:09,175 INFO    MainThread:3520916 [wandb_init.py:setup_run_log_directory():725] Logging user logs to isaaclab_pallet/runs/sun_v2_5type_uniform/sun_v2_env128_workers8_5type_uniform_ems_deploybest/wandb/wandb/run-20260714_170409-9xoobf7n/logs/debug.log
+2026-07-14 17:04:09,175 INFO    MainThread:3520916 [wandb_init.py:setup_run_log_directory():726] Logging internal logs to isaaclab_pallet/runs/sun_v2_5type_uniform/sun_v2_env128_workers8_5type_uniform_ems_deploybest/wandb/wandb/run-20260714_170409-9xoobf7n/logs/debug-internal.log
+2026-07-14 17:04:09,175 INFO    MainThread:3520916 [wandb_init.py:init():768] calling init triggers
+2026-07-14 17:04:09,175 INFO    MainThread:3520916 [wandb_init.py:init():773] wandb.init called with sweep_config: {}
+config: {'run_name': 'sun_v2_env128_workers8_5type_uniform_ems_deploybest', 'reward_profile': 'sun_v2', 'num_envs': 128, 'max_boxes': 256, 'updates': 2500, 'start_update': 250, 'num_steps': 5, 'save_interval': 250, 'eval_interval': 50, 'learning_rate': 1e-06, 'gamma': 1.0, 'actor_loss_coef': 1.0, 'critic_loss_coef': 1.0, 'entropy_coef': 0.01, 'max_grad_norm': 0.5, 'candidate_rerank_k': 0, 'candidate_diversity_center_m': 0.05, 'save_update_checkpoints': True, 'seed': 0, 'box_seed': 0, 'box_source': 'fixed_type_random', 'train_box_seq_dir': 'submit_buffer3_search/box_sequence', 'train_type_sequences': ['box_sequence_0', 'box_sequence_1'], 'candidate_generator': 'ems', 'device': 'cuda:0', 'load_model': '', 'resume_checkpoint': 'isaaclab_pallet/runs/sun_v2_5type_uniform/sun_v2_env128_workers8_5type_uniform_ems_deploybest/PCT-resume.pt', 'internal_node_holder': 200, 'leaf_node_holder': 100, 'embedding_size': 64, 'hidden_size': 128, 'gat_layer_num': 1, 'normFactor': 0.8, 'learn_finish_action': False, '_wandb': {}}
+2026-07-14 17:04:09,175 INFO    MainThread:3520916 [wandb_init.py:init():816] starting backend
+2026-07-14 17:04:09,175 INFO    MainThread:3520916 [wandb_init.py:init():831] sending inform_init request
+2026-07-14 17:04:09,528 INFO    MainThread:3520916 [wandb_init.py:init():836] backend started and connected
+2026-07-14 17:04:09,529 INFO    MainThread:3520916 [wandb_init.py:init():906] updated telemetry
+2026-07-14 17:04:09,532 INFO    MainThread:3520916 [wandb_init.py:init():929] communicating run to backend with 90.0 second timeout
+2026-07-14 17:04:10,117 INFO    MainThread:3520916 [wandb_init.py:init():969] run resumed
+2026-07-14 17:04:10,119 INFO    MainThread:3520916 [wandb_init.py:init():974] starting run threads in backend
+2026-07-14 17:04:10,220 INFO    MainThread:3520916 [wandb_run.py:_console_start():2523] atexit reg
+2026-07-14 17:04:10,220 INFO    MainThread:3520916 [wandb_run.py:_redirect():2373] redirect: wrap_raw
+2026-07-14 17:04:10,220 INFO    MainThread:3520916 [wandb_run.py:_redirect():2442] Wrapping output streams.
+2026-07-14 17:04:10,220 INFO    MainThread:3520916 [wandb_run.py:_redirect():2465] Redirects installed.
+2026-07-14 17:04:10,221 INFO    MainThread:3520916 [wandb_init.py:init():1012] run started, returning control to user process

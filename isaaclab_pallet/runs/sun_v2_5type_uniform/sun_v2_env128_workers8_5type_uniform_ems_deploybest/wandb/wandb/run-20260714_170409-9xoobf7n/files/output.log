@@ -1,0 +1,262 @@
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/9xoobf7n
+[gat-train] run_dir=isaaclab_pallet/runs/sun_v2_5type_uniform/sun_v2_env128_workers8_5type_uniform_ems_deploybest device=cuda:0 num_envs=128 num_packer_workers=8 obs_shape=(128, 301, 9) leaf_shape=(128, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 box_source=fixed_type_random box_seed=0 train_box_seq_dir=submit_buffer3_search/box_sequence train_type_sequences=box_sequence_0,box_sequence_1 reward_profile=sun_v2 learn_finish_action=False action_space=100 candidate_generator=ems candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=3 box_seq_dir=submit_buffer3_search/box_sequence eval_sequences=box_sequence_0,box_sequence_1,box_sequence_large_bias
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial deployment score = 87.18 min=78.57 bottom10=78.57 (torch_eval=89.72)  -> PCT-best.pt
+wandb: WARNING Tried to log to step 250 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=251 samples=640 fps=49.1 loss=8.0741 actor=0.3284 value=7.7546 entropy=0.8983 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 251 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=252 samples=1280 fps=81.1 loss=0.4008 actor=-0.2778 value=0.6946 entropy=1.5986 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 252 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=253 samples=1920 fps=101.1 loss=1.0277 actor=-0.0097 value=1.0535 entropy=1.6175 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 253 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=254 samples=2560 fps=112.7 loss=2.0084 actor=0.2200 value=1.8016 entropy=1.3172 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 254 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=255 samples=3200 fps=118.3 loss=2.1569 actor=0.3753 value=1.7929 entropy=1.1347 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 255 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=256 samples=3840 fps=120.9 loss=3.0997 actor=0.6207 value=2.4901 entropy=1.1123 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 256 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=257 samples=4480 fps=121.4 loss=2.7421 actor=0.5887 value=2.1648 entropy=1.1327 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 257 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=258 samples=5120 fps=119.5 loss=3.5153 actor=0.5679 value=2.9596 entropy=1.2082 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 258 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=259 samples=5760 fps=118.5 loss=2.7522 actor=0.5276 value=2.2360 entropy=1.1410 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 259 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=260 samples=6400 fps=116.6 loss=3.1025 actor=0.6081 value=2.5066 entropy=1.2223 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 260 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=261 samples=7040 fps=114.1 loss=3.9239 actor=0.5372 value=3.3989 entropy=1.2181 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 261 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=262 samples=7680 fps=111.9 loss=3.8115 actor=0.2074 value=3.6160 entropy=1.1920 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 262 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=263 samples=8320 fps=109.6 loss=3.9719 actor=0.1860 value=3.7979 entropy=1.2005 mean_return=0.000 mean_len=0.0
+wandb: WARNING Tried to log to step 263 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=264 samples=8960 fps=107.3 loss=6.6078 actor=-0.2587 value=6.8787 entropy=1.2141 mean_return=34.019 mean_len=69.0
+wandb: WARNING Tried to log to step 264 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=265 samples=9600 fps=104.6 loss=9.6023 actor=-0.4863 value=10.1012 entropy=1.2556 mean_return=38.407 mean_len=73.4
+wandb: WARNING Tried to log to step 265 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=266 samples=10240 fps=102.6 loss=11.7375 actor=-1.5971 value=13.3477 entropy=1.3021 mean_return=39.695 mean_len=76.8
+wandb: WARNING Tried to log to step 266 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=267 samples=10880 fps=101.4 loss=13.4984 actor=-2.1077 value=15.6200 entropy=1.3943 mean_return=41.363 mean_len=80.0
+wandb: WARNING Tried to log to step 267 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=268 samples=11520 fps=101.5 loss=16.2855 actor=-3.9334 value=20.2349 entropy=1.5965 mean_return=43.815 mean_len=86.2
+wandb: WARNING Tried to log to step 268 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=269 samples=12160 fps=102.7 loss=12.2482 actor=-2.8156 value=15.0795 entropy=1.5707 mean_return=46.155 mean_len=91.1
+wandb: WARNING Tried to log to step 269 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=270 samples=12800 fps=104.5 loss=7.2900 actor=-2.2287 value=9.5359 entropy=1.7117 mean_return=47.368 mean_len=95.0
+wandb: WARNING Tried to log to step 270 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=271 samples=13440 fps=106.3 loss=2.8085 actor=-0.2369 value=3.0619 entropy=1.6434 mean_return=47.787 mean_len=96.9
+wandb: WARNING Tried to log to step 271 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=272 samples=14080 fps=107.9 loss=2.1021 actor=0.1092 value=2.0082 entropy=1.5242 mean_return=47.869 mean_len=97.2
+wandb: WARNING Tried to log to step 272 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=273 samples=14720 fps=109.1 loss=2.4078 actor=0.2630 value=2.1575 entropy=1.2746 mean_return=47.869 mean_len=97.2
+wandb: WARNING Tried to log to step 273 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=274 samples=15360 fps=109.9 loss=2.9486 actor=0.5876 value=2.3730 entropy=1.1924 mean_return=47.869 mean_len=97.2
+wandb: WARNING Tried to log to step 274 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=275 samples=16000 fps=110.4 loss=2.8971 actor=0.5391 value=2.3691 entropy=1.1091 mean_return=47.869 mean_len=97.2
+wandb: WARNING Tried to log to step 275 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=276 samples=16640 fps=110.5 loss=2.7617 actor=0.5094 value=2.2639 entropy=1.1606 mean_return=47.869 mean_len=97.2
+wandb: WARNING Tried to log to step 276 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=277 samples=17280 fps=110.4 loss=4.0657 actor=0.7538 value=3.3237 entropy=1.1761 mean_return=47.869 mean_len=97.2
+wandb: WARNING Tried to log to step 277 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=278 samples=17920 fps=109.9 loss=3.3994 actor=0.7351 value=2.6758 entropy=1.1571 mean_return=47.869 mean_len=97.2
+wandb: WARNING Tried to log to step 278 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=279 samples=18560 fps=109.3 loss=3.8929 actor=0.6322 value=3.2726 entropy=1.1984 mean_return=47.869 mean_len=97.2
+wandb: WARNING Tried to log to step 279 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=280 samples=19200 fps=108.3 loss=5.8159 actor=0.1489 value=5.6802 entropy=1.3187 mean_return=47.541 mean_len=96.6
+wandb: WARNING Tried to log to step 280 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=281 samples=19840 fps=107.2 loss=6.5537 actor=0.1139 value=6.4540 entropy=1.4138 mean_return=47.150 mean_len=96.0
+wandb: WARNING Tried to log to step 281 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=282 samples=20480 fps=106.3 loss=5.5920 actor=-0.1921 value=5.7984 entropy=1.4366 mean_return=46.893 mean_len=95.3
+wandb: WARNING Tried to log to step 282 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=283 samples=21120 fps=105.4 loss=7.3134 actor=-0.7701 value=8.0987 entropy=1.5132 mean_return=46.345 mean_len=94.3
+wandb: WARNING Tried to log to step 283 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=284 samples=21760 fps=104.5 loss=11.3108 actor=-1.9312 value=13.2577 entropy=1.5710 mean_return=44.925 mean_len=91.2
+wandb: WARNING Tried to log to step 284 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=285 samples=22400 fps=104.0 loss=11.1132 actor=-2.2297 value=13.3584 entropy=1.5519 mean_return=44.036 mean_len=88.4
+wandb: WARNING Tried to log to step 285 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=286 samples=23040 fps=104.0 loss=14.7630 actor=-2.5267 value=17.3057 entropy=1.5976 mean_return=44.112 mean_len=88.4
+wandb: WARNING Tried to log to step 286 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=287 samples=23680 fps=104.2 loss=9.4303 actor=-1.8955 value=11.3412 entropy=1.5483 mean_return=44.876 mean_len=89.8
+wandb: WARNING Tried to log to step 287 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=288 samples=24320 fps=104.5 loss=9.1102 actor=-2.1940 value=11.3198 entropy=1.5535 mean_return=45.896 mean_len=91.4
+wandb: WARNING Tried to log to step 288 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=289 samples=24960 fps=105.2 loss=8.1695 actor=-1.7741 value=9.9582 entropy=1.4663 mean_return=47.583 mean_len=94.5
+wandb: WARNING Tried to log to step 289 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=290 samples=25600 fps=105.9 loss=4.3490 actor=-0.5685 value=4.9324 entropy=1.4899 mean_return=48.229 mean_len=95.8
+wandb: WARNING Tried to log to step 290 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=291 samples=26240 fps=106.6 loss=2.1925 actor=0.0872 value=2.1201 entropy=1.4762 mean_return=48.236 mean_len=96.1
+wandb: WARNING Tried to log to step 291 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=292 samples=26880 fps=107.1 loss=2.5428 actor=0.3099 value=2.2458 entropy=1.2936 mean_return=48.372 mean_len=96.2
+wandb: WARNING Tried to log to step 292 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=293 samples=27520 fps=107.4 loss=2.8267 actor=0.3973 value=2.4415 entropy=1.1992 mean_return=48.372 mean_len=96.2
+wandb: WARNING Tried to log to step 293 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=294 samples=28160 fps=107.5 loss=3.0598 actor=0.5818 value=2.4897 entropy=1.1661 mean_return=48.372 mean_len=96.2
+wandb: WARNING Tried to log to step 294 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=295 samples=28800 fps=107.4 loss=4.7991 actor=0.3030 value=4.5084 entropy=1.2305 mean_return=47.835 mean_len=95.7
+wandb: WARNING Tried to log to step 295 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=296 samples=29440 fps=107.2 loss=3.5242 actor=0.5284 value=3.0078 entropy=1.2012 mean_return=47.835 mean_len=95.7
+wandb: WARNING Tried to log to step 296 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=297 samples=30080 fps=107.0 loss=6.4447 actor=0.3610 value=6.0964 entropy=1.2697 mean_return=47.472 mean_len=95.1
+wandb: WARNING Tried to log to step 297 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=298 samples=30720 fps=106.6 loss=5.3025 actor=-0.2126 value=5.5277 entropy=1.2572 mean_return=47.183 mean_len=94.4
+wandb: WARNING Tried to log to step 298 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=299 samples=31360 fps=106.1 loss=8.1515 actor=0.0061 value=8.1581 entropy=1.2674 mean_return=46.527 mean_len=93.2
+wandb: WARNING Tried to log to step 299 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=300 samples=32000 fps=105.6 loss=7.4208 actor=-0.3009 value=7.7350 entropy=1.3259 mean_return=45.582 mean_len=91.7
+wandb: WARNING Tried to log to step 300 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] eval update=300 torch_score=89.72 deploy_score=86.50 min=78.57 bottom10=78.57 max_regression=2.04 regressions=0 guard_rejected=0 best=87.18
+wandb: WARNING Tried to log to step 300 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=301 samples=32640 fps=101.8 loss=8.0122 actor=-0.7923 value=8.8181 entropy=1.3578 mean_return=45.433 mean_len=90.4
+wandb: WARNING Tried to log to step 301 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=302 samples=33280 fps=101.5 loss=10.5096 actor=-1.4075 value=11.9314 entropy=1.4266 mean_return=44.207 mean_len=87.8
+wandb: WARNING Tried to log to step 302 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=303 samples=33920 fps=101.2 loss=8.5281 actor=-1.2555 value=9.7986 entropy=1.5086 mean_return=43.864 mean_len=86.7
+wandb: WARNING Tried to log to step 303 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=304 samples=34560 fps=101.2 loss=10.5759 actor=-1.6422 value=12.2330 entropy=1.4952 mean_return=44.927 mean_len=88.5
+wandb: WARNING Tried to log to step 304 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=305 samples=35200 fps=101.2 loss=13.4326 actor=-2.6842 value=16.1325 entropy=1.5801 mean_return=45.255 mean_len=89.4
+wandb: WARNING Tried to log to step 305 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=306 samples=35840 fps=101.4 loss=8.2572 actor=-1.3121 value=9.5861 entropy=1.6838 mean_return=44.683 mean_len=89.4
+wandb: WARNING Tried to log to step 306 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=307 samples=36480 fps=101.8 loss=11.2178 actor=-2.5717 value=13.8080 entropy=1.8389 mean_return=45.670 mean_len=91.1
+wandb: WARNING Tried to log to step 307 that is less than the current step 308. Steps must be monotonically increasing, so this data will be ignored. See https://wandb.me/define-metric to log data out of order.
+[gat-train] update=308 samples=37120 fps=102.2 loss=4.4489 actor=-0.4862 value=4.9519 entropy=1.6705 mean_return=45.994 mean_len=91.9
+[gat-train] update=309 samples=37760 fps=102.6 loss=3.1832 actor=-0.3610 value=3.5612 entropy=1.7016 mean_return=46.227 mean_len=92.5
+[gat-train] update=310 samples=38400 fps=102.9 loss=3.3987 actor=0.3102 value=3.1036 entropy=1.5067 mean_return=46.271 mean_len=92.6
+[gat-train] update=311 samples=39040 fps=103.1 loss=2.5957 actor=0.2075 value=2.4032 entropy=1.5020 mean_return=46.271 mean_len=92.6
+[gat-train] update=312 samples=39680 fps=103.2 loss=5.0396 actor=0.2103 value=4.8430 entropy=1.3718 mean_return=46.144 mean_len=92.4
+[gat-train] update=313 samples=40320 fps=103.2 loss=3.2449 actor=0.3144 value=2.9441 entropy=1.3608 mean_return=46.144 mean_len=92.4
+[gat-train] update=314 samples=40960 fps=103.1 loss=4.6008 actor=0.4372 value=4.1771 entropy=1.3542 mean_return=46.120 mean_len=92.3
+[gat-train] update=315 samples=41600 fps=102.9 loss=5.6342 actor=0.2928 value=5.3551 entropy=1.3664 mean_return=45.903 mean_len=91.8
+[gat-train] update=316 samples=42240 fps=102.8 loss=4.4062 actor=0.2805 value=4.1390 entropy=1.3274 mean_return=45.903 mean_len=91.8
+[gat-train] update=317 samples=42880 fps=102.5 loss=6.4416 actor=-0.0535 value=6.5076 entropy=1.2498 mean_return=45.585 mean_len=91.2
+[gat-train] update=318 samples=43520 fps=102.2 loss=8.8000 actor=-0.4409 value=9.2540 entropy=1.3176 mean_return=45.091 mean_len=90.1
+[gat-train] update=319 samples=44160 fps=101.9 loss=11.3759 actor=-1.7567 value=13.1466 entropy=1.3960 mean_return=44.405 mean_len=89.0
+[gat-train] update=320 samples=44800 fps=101.7 loss=9.8324 actor=-1.4879 value=11.3351 entropy=1.4767 mean_return=43.238 mean_len=86.8
+[gat-train] update=321 samples=45440 fps=101.5 loss=8.1705 actor=-1.2411 value=9.4264 entropy=1.4881 mean_return=42.880 mean_len=85.9
+[gat-train] update=322 samples=46080 fps=101.6 loss=11.6690 actor=-1.8961 value=13.5806 entropy=1.5502 mean_return=43.358 mean_len=86.4
+[gat-train] update=323 samples=46720 fps=101.7 loss=7.9085 actor=-1.1189 value=9.0435 entropy=1.6073 mean_return=43.075 mean_len=85.8
+[gat-train] update=324 samples=47360 fps=101.8 loss=8.3237 actor=-1.1829 value=9.5231 entropy=1.6609 mean_return=44.254 mean_len=88.0
+[gat-train] update=325 samples=48000 fps=102.0 loss=7.2118 actor=-1.4019 value=8.6306 entropy=1.6921 mean_return=44.859 mean_len=89.7
+[gat-train] update=326 samples=48640 fps=102.2 loss=4.8758 actor=-0.9347 value=5.8275 entropy=1.7003 mean_return=45.591 mean_len=91.2
+[gat-train] update=327 samples=49280 fps=102.4 loss=5.4740 actor=-0.5246 value=6.0151 entropy=1.6471 mean_return=45.920 mean_len=92.5
+[gat-train] update=328 samples=49920 fps=102.5 loss=3.1277 actor=0.3068 value=2.8377 entropy=1.6772 mean_return=46.017 mean_len=92.6
+[gat-train] update=329 samples=50560 fps=102.6 loss=5.1290 actor=-0.1821 value=5.3288 entropy=1.7714 mean_return=46.084 mean_len=93.3
+[gat-train] update=330 samples=51200 fps=102.7 loss=3.7515 actor=0.3485 value=3.4192 entropy=1.6199 mean_return=46.084 mean_len=93.3
+[gat-train] update=331 samples=51840 fps=102.8 loss=3.3488 actor=0.4918 value=2.8733 entropy=1.6269 mean_return=46.084 mean_len=93.3
+[gat-train] update=332 samples=52480 fps=102.7 loss=4.4246 actor=0.2056 value=4.2358 entropy=1.6881 mean_return=45.652 mean_len=92.4
+[gat-train] update=333 samples=53120 fps=102.5 loss=7.3273 actor=0.2462 value=7.0989 entropy=1.7684 mean_return=45.130 mean_len=90.9
+[gat-train] update=334 samples=53760 fps=102.3 loss=6.0108 actor=0.0276 value=6.0018 entropy=1.8562 mean_return=44.900 mean_len=90.3
+[gat-train] update=335 samples=54400 fps=102.1 loss=10.8123 actor=-0.4257 value=11.2569 entropy=1.8909 mean_return=44.090 mean_len=88.9
+[gat-train] update=336 samples=55040 fps=101.8 loss=6.9147 actor=-1.0989 value=8.0328 entropy=1.9105 mean_return=43.960 mean_len=87.5
+[gat-train] update=337 samples=55680 fps=101.7 loss=9.5544 actor=-1.5250 value=11.0985 entropy=1.9142 mean_return=43.014 mean_len=85.6
+[gat-train] update=338 samples=56320 fps=101.6 loss=14.0318 actor=-2.4002 value=16.4517 entropy=1.9645 mean_return=42.153 mean_len=83.0
+[gat-train] update=339 samples=56960 fps=101.5 loss=15.9076 actor=-2.8724 value=18.8009 entropy=2.0888 mean_return=42.671 mean_len=84.4
+[gat-train] update=340 samples=57600 fps=101.6 loss=7.9596 actor=-2.4209 value=10.4031 entropy=2.2560 mean_return=42.312 mean_len=83.7
+[gat-train] update=341 samples=58240 fps=101.7 loss=15.0852 actor=-2.8527 value=17.9611 entropy=2.3120 mean_return=41.778 mean_len=83.1
+[gat-train] update=342 samples=58880 fps=101.8 loss=7.6411 actor=-1.4692 value=9.1336 entropy=2.3323 mean_return=42.308 mean_len=84.4
+[gat-train] update=343 samples=59520 fps=102.0 loss=5.7973 actor=-0.0391 value=5.8597 entropy=2.3394 mean_return=42.038 mean_len=84.7
+[gat-train] update=344 samples=60160 fps=102.1 loss=3.7155 actor=-0.2590 value=3.9972 entropy=2.2639 mean_return=42.077 mean_len=84.9
+[gat-train] update=345 samples=60800 fps=102.2 loss=7.0655 actor=-0.1164 value=7.2050 entropy=2.3008 mean_return=41.648 mean_len=84.7
+[gat-train] update=346 samples=61440 fps=102.3 loss=5.6251 actor=0.5028 value=5.1449 entropy=2.2600 mean_return=41.560 mean_len=84.5
+[gat-train] update=347 samples=62080 fps=102.2 loss=6.4893 actor=0.3258 value=6.1864 entropy=2.3005 mean_return=41.737 mean_len=85.2
+[gat-train] update=348 samples=62720 fps=102.2 loss=7.6874 actor=-0.0340 value=7.7444 entropy=2.2982 mean_return=40.881 mean_len=83.3
+[gat-train] update=349 samples=63360 fps=102.1 loss=5.7517 actor=-0.7240 value=6.4985 entropy=2.2780 mean_return=40.454 mean_len=82.2
+[gat-train] update=350 samples=64000 fps=101.9 loss=8.8623 actor=-0.2613 value=9.1467 entropy=2.3063 mean_return=39.886 mean_len=81.3
+[gat-train] eval update=350 torch_score=89.72 deploy_score=86.99 min=80.04 bottom10=80.04 max_regression=2.04 regressions=0 guard_rejected=0 best=87.18
+[gat-train] update=351 samples=64640 fps=100.2 loss=7.9361 actor=-0.4922 value=8.4503 entropy=2.1982 mean_return=39.846 mean_len=80.9
+[gat-train] update=352 samples=65280 fps=100.0 loss=13.1055 actor=-1.8313 value=14.9582 entropy=2.1417 mean_return=38.878 mean_len=79.3
+[gat-train] update=353 samples=65920 fps=99.9 loss=11.2863 actor=-2.0921 value=13.3982 entropy=1.9817 mean_return=38.123 mean_len=77.2
+[gat-train] update=354 samples=66560 fps=99.8 loss=17.7730 actor=-2.8897 value=20.6839 entropy=2.1224 mean_return=37.774 mean_len=76.9
+[gat-train] update=355 samples=67200 fps=99.7 loss=13.5509 actor=-2.0524 value=15.6241 entropy=2.0724 mean_return=38.619 mean_len=78.9
+[gat-train] update=356 samples=67840 fps=99.8 loss=12.8984 actor=-2.2365 value=15.1560 entropy=2.1041 mean_return=38.637 mean_len=79.6
+[gat-train] update=357 samples=68480 fps=99.9 loss=18.8381 actor=-0.9769 value=19.8361 entropy=2.1168 mean_return=38.279 mean_len=79.9
+[gat-train] update=358 samples=69120 fps=100.1 loss=8.2684 actor=-0.8130 value=9.1007 entropy=1.9222 mean_return=39.056 mean_len=80.9
+[gat-train] update=359 samples=69760 fps=100.3 loss=4.9371 actor=-0.6290 value=5.5843 entropy=1.8284 mean_return=39.284 mean_len=81.7
+[gat-train] update=360 samples=70400 fps=100.4 loss=3.5987 actor=-0.0804 value=3.6960 entropy=1.6848 mean_return=39.286 mean_len=82.1
+[gat-train] update=361 samples=71040 fps=100.5 loss=5.0757 actor=-0.2260 value=5.3177 entropy=1.6030 mean_return=39.510 mean_len=82.2
+[gat-train] update=362 samples=71680 fps=100.5 loss=5.6444 actor=-0.0810 value=5.7415 entropy=1.6015 mean_return=39.531 mean_len=82.4
+[gat-train] update=363 samples=72320 fps=100.5 loss=4.5131 actor=0.1209 value=4.4074 entropy=1.5188 mean_return=40.105 mean_len=83.1
+[gat-train] update=364 samples=72960 fps=100.5 loss=3.5241 actor=0.1071 value=3.4315 entropy=1.4435 mean_return=40.105 mean_len=83.1
+[gat-train] update=365 samples=73600 fps=100.4 loss=5.6099 actor=-0.0902 value=5.7141 entropy=1.3981 mean_return=40.561 mean_len=84.0
+[gat-train] update=366 samples=74240 fps=100.3 loss=4.7794 actor=0.1782 value=4.6142 entropy=1.2954 mean_return=40.982 mean_len=84.6
+[gat-train] update=367 samples=74880 fps=100.2 loss=6.4222 actor=-0.4840 value=6.9194 entropy=1.3232 mean_return=41.136 mean_len=84.6
+[gat-train] update=368 samples=75520 fps=100.0 loss=9.8017 actor=-1.3121 value=11.1266 entropy=1.2870 mean_return=41.972 mean_len=85.5
+[gat-train] update=369 samples=76160 fps=100.0 loss=6.1669 actor=-0.5557 value=6.7355 entropy=1.2887 mean_return=41.944 mean_len=85.4
+[gat-train] update=370 samples=76800 fps=99.9 loss=13.5292 actor=-2.0690 value=15.6120 entropy=1.3752 mean_return=41.337 mean_len=84.2
+[gat-train] update=371 samples=77440 fps=99.8 loss=11.1871 actor=-1.5067 value=12.7075 entropy=1.3691 mean_return=41.169 mean_len=83.9
+[gat-train] update=372 samples=78080 fps=99.8 loss=8.4499 actor=-1.0141 value=9.4780 entropy=1.3972 mean_return=41.988 mean_len=84.8
+[gat-train] update=373 samples=78720 fps=99.8 loss=6.8141 actor=-0.5244 value=7.3532 entropy=1.4680 mean_return=42.547 mean_len=85.4
+[gat-train] update=374 samples=79360 fps=99.8 loss=7.3676 actor=-1.0811 value=8.4629 entropy=1.4147 mean_return=43.540 mean_len=87.0
+[gat-train] update=375 samples=80000 fps=99.9 loss=6.4961 actor=-0.4807 value=6.9898 entropy=1.3045 mean_return=43.364 mean_len=86.8
+[gat-train] update=376 samples=80640 fps=99.9 loss=4.2149 actor=-0.6078 value=4.8356 entropy=1.2997 mean_return=43.715 mean_len=87.7
+[gat-train] update=377 samples=81280 fps=99.9 loss=5.1320 actor=-0.4167 value=5.5615 entropy=1.2782 mean_return=44.440 mean_len=89.3
+[gat-train] update=378 samples=81920 fps=99.9 loss=21.1076 actor=-1.1530 value=22.2734 entropy=1.2744 mean_return=43.616 mean_len=89.0
+[gat-train] update=379 samples=82560 fps=100.0 loss=5.4728 actor=0.0551 value=5.4290 entropy=1.1389 mean_return=43.668 mean_len=89.3
+[gat-train] update=380 samples=83200 fps=100.0 loss=5.3243 actor=0.0879 value=5.2490 entropy=1.2618 mean_return=43.518 mean_len=89.2
+[gat-train] update=381 samples=83840 fps=100.0 loss=3.4037 actor=0.3248 value=3.0916 entropy=1.2640 mean_return=43.681 mean_len=89.2
+[gat-train] update=382 samples=84480 fps=100.0 loss=4.4429 actor=-0.1401 value=4.5957 entropy=1.2646 mean_return=43.947 mean_len=89.5
+[gat-train] update=383 samples=85120 fps=99.9 loss=6.6074 actor=-0.3402 value=6.9606 entropy=1.2960 mean_return=43.845 mean_len=89.3
+[gat-train] update=384 samples=85760 fps=99.9 loss=2.8143 actor=0.2343 value=2.5939 entropy=1.3985 mean_return=43.845 mean_len=89.3
+[gat-train] update=385 samples=86400 fps=99.8 loss=7.8654 actor=-1.1489 value=9.0286 entropy=1.4299 mean_return=43.852 mean_len=89.2
+[gat-train] update=386 samples=87040 fps=99.8 loss=4.9912 actor=-0.2770 value=5.2819 entropy=1.3660 mean_return=44.025 mean_len=89.7
+[gat-train] update=387 samples=87680 fps=99.7 loss=7.5957 actor=-0.8589 value=8.4687 entropy=1.4076 mean_return=43.303 mean_len=87.9
+[gat-train] update=388 samples=88320 fps=99.6 loss=9.0532 actor=-1.7932 value=10.8606 entropy=1.4205 mean_return=44.379 mean_len=87.7
+[gat-train] update=389 samples=88960 fps=99.5 loss=9.9320 actor=-2.1881 value=12.1344 entropy=1.4231 mean_return=44.043 mean_len=87.9
+[gat-train] update=390 samples=89600 fps=99.5 loss=5.6704 actor=-1.0723 value=6.7561 entropy=1.3270 mean_return=44.746 mean_len=88.8
+[gat-train] update=391 samples=90240 fps=99.5 loss=5.7544 actor=-0.4032 value=6.1705 entropy=1.2793 mean_return=44.577 mean_len=88.6
+[gat-train] update=392 samples=90880 fps=99.5 loss=8.4155 actor=-1.1025 value=9.5319 entropy=1.3927 mean_return=44.834 mean_len=89.2
+[gat-train] update=393 samples=91520 fps=99.6 loss=6.9830 actor=-0.8657 value=7.8622 entropy=1.3520 mean_return=45.144 mean_len=90.3
+[gat-train] update=394 samples=92160 fps=99.7 loss=6.9810 actor=-0.5563 value=7.5505 entropy=1.3280 mean_return=45.669 mean_len=90.6
+[gat-train] update=395 samples=92800 fps=99.7 loss=5.4667 actor=-0.1636 value=5.6437 entropy=1.3477 mean_return=45.384 mean_len=90.2
+[gat-train] update=396 samples=93440 fps=99.8 loss=5.4673 actor=-0.6087 value=6.0895 entropy=1.3644 mean_return=45.581 mean_len=90.8
+[gat-train] update=397 samples=94080 fps=99.8 loss=4.0124 actor=-0.3672 value=4.3934 entropy=1.3812 mean_return=45.951 mean_len=91.1
+[gat-train] update=398 samples=94720 fps=99.9 loss=3.8953 actor=0.0150 value=3.8944 entropy=1.4044 mean_return=45.843 mean_len=91.4
+[gat-train] update=399 samples=95360 fps=99.8 loss=4.6598 actor=0.2118 value=4.4621 entropy=1.4046 mean_return=46.553 mean_len=92.5
+[gat-train] update=400 samples=96000 fps=99.8 loss=4.1432 actor=-0.1001 value=4.2583 entropy=1.4951 mean_return=46.623 mean_len=92.4
+[gat-train] eval update=400 torch_score=91.37 deploy_score=85.31 min=80.28 bottom10=80.28 max_regression=8.56 regressions=1 guard_rejected=1 best=87.18
+[gat-train] update=401 samples=96640 fps=98.8 loss=4.7810 actor=-0.1785 value=4.9739 entropy=1.4445 mean_return=46.844 mean_len=92.7
+[gat-train] update=402 samples=97280 fps=98.8 loss=4.5237 actor=-0.3250 value=4.8643 entropy=1.5645 mean_return=46.687 mean_len=92.3
+[gat-train] update=403 samples=97920 fps=98.7 loss=8.5362 actor=-0.8971 value=9.4497 entropy=1.6364 mean_return=45.733 mean_len=90.7
+[gat-train] update=404 samples=98560 fps=98.6 loss=11.0071 actor=-1.6592 value=12.6827 entropy=1.6409 mean_return=45.021 mean_len=90.2
+[gat-train] update=405 samples=99200 fps=98.6 loss=9.6543 actor=-1.5157 value=11.1859 entropy=1.5903 mean_return=44.260 mean_len=88.5
+[gat-train] update=406 samples=99840 fps=98.5 loss=8.1854 actor=-1.1325 value=9.3344 entropy=1.6519 mean_return=43.984 mean_len=88.1
+[gat-train] update=407 samples=100480 fps=98.5 loss=6.9400 actor=-0.9632 value=7.9195 entropy=1.6245 mean_return=43.705 mean_len=87.6
+[gat-train] update=408 samples=101120 fps=98.4 loss=5.6246 actor=-0.6674 value=6.3082 entropy=1.6217 mean_return=43.910 mean_len=88.1
+[gat-train] update=409 samples=101760 fps=98.4 loss=8.0444 actor=-1.5261 value=9.5865 entropy=1.6121 mean_return=44.762 mean_len=89.6
+[gat-train] update=410 samples=102400 fps=98.4 loss=6.6084 actor=-1.2410 value=7.8649 entropy=1.5502 mean_return=45.006 mean_len=90.3
+[gat-train] update=411 samples=103040 fps=98.4 loss=6.1754 actor=-0.9962 value=7.1867 entropy=1.5127 mean_return=44.433 mean_len=89.7
+[gat-train] update=412 samples=103680 fps=98.5 loss=5.8214 actor=-0.6884 value=6.5247 entropy=1.4814 mean_return=44.670 mean_len=90.8
+[gat-train] update=413 samples=104320 fps=98.5 loss=5.0139 actor=-0.6289 value=5.6581 entropy=1.5315 mean_return=44.847 mean_len=90.6
+[gat-train] update=414 samples=104960 fps=98.5 loss=3.8329 actor=-0.3356 value=4.1838 entropy=1.5417 mean_return=44.890 mean_len=90.8
+[gat-train] update=415 samples=105600 fps=98.5 loss=8.0217 actor=-0.8506 value=8.8886 entropy=1.6293 mean_return=44.296 mean_len=89.5
+[gat-train] update=416 samples=106240 fps=98.6 loss=3.9995 actor=0.5153 value=3.5000 entropy=1.5777 mean_return=44.757 mean_len=89.8
+[gat-train] update=417 samples=106880 fps=98.5 loss=7.2731 actor=-0.3764 value=7.6659 entropy=1.6454 mean_return=44.397 mean_len=88.9
+[gat-train] update=418 samples=107520 fps=98.5 loss=3.6090 actor=-0.0555 value=3.6813 entropy=1.6805 mean_return=44.441 mean_len=89.0
+[gat-train] update=419 samples=108160 fps=98.5 loss=6.1588 actor=-0.3200 value=6.4953 entropy=1.6508 mean_return=44.244 mean_len=88.5
+[gat-train] update=420 samples=108800 fps=98.5 loss=4.8363 actor=-0.0894 value=4.9428 entropy=1.7136 mean_return=44.216 mean_len=88.3
+[gat-train] update=421 samples=109440 fps=98.4 loss=28.4686 actor=-2.0009 value=30.4861 entropy=1.6592 mean_return=42.877 mean_len=87.2
+[gat-train] update=422 samples=110080 fps=98.3 loss=7.3948 actor=-0.6549 value=8.0657 entropy=1.6021 mean_return=42.663 mean_len=86.5
+[gat-train] update=423 samples=110720 fps=98.3 loss=12.0084 actor=-1.7571 value=13.7815 entropy=1.6022 mean_return=42.585 mean_len=86.4
+[gat-train] update=424 samples=111360 fps=98.3 loss=9.0251 actor=-1.3882 value=10.4279 entropy=1.4673 mean_return=42.419 mean_len=87.4
+[gat-train] update=425 samples=112000 fps=98.2 loss=7.9645 actor=-0.8837 value=8.8623 entropy=1.4043 mean_return=42.376 mean_len=87.6
+[gat-train] update=426 samples=112640 fps=98.2 loss=5.9965 actor=-1.4551 value=7.4659 entropy=1.4280 mean_return=42.270 mean_len=87.7
+[gat-train] update=427 samples=113280 fps=98.2 loss=7.2135 actor=-1.3523 value=8.5793 entropy=1.3534 mean_return=43.111 mean_len=88.1
+[gat-train] update=428 samples=113920 fps=98.3 loss=7.7605 actor=-1.0657 value=8.8396 entropy=1.3406 mean_return=43.457 mean_len=89.0
+[gat-train] update=429 samples=114560 fps=98.3 loss=6.4370 actor=-0.5141 value=6.9642 entropy=1.3089 mean_return=43.669 mean_len=88.1
+[gat-train] update=430 samples=115200 fps=98.3 loss=5.4108 actor=-0.6319 value=6.0565 entropy=1.3824 mean_return=44.019 mean_len=88.3
+[gat-train] update=431 samples=115840 fps=98.3 loss=6.1035 actor=-0.5499 value=6.6673 entropy=1.3935 mean_return=44.542 mean_len=89.0
+[gat-train] update=432 samples=116480 fps=98.4 loss=4.2781 actor=-0.3462 value=4.6373 entropy=1.3036 mean_return=44.771 mean_len=89.2
+[gat-train] update=433 samples=117120 fps=98.4 loss=4.5262 actor=-0.0605 value=4.5997 entropy=1.2916 mean_return=45.072 mean_len=89.6
+[gat-train] update=434 samples=117760 fps=98.4 loss=3.9065 actor=0.2009 value=3.7179 entropy=1.2339 mean_return=45.101 mean_len=89.4
+[gat-train] update=435 samples=118400 fps=98.4 loss=3.4429 actor=-0.2928 value=3.7482 entropy=1.2485 mean_return=45.443 mean_len=90.0
+[gat-train] update=436 samples=119040 fps=98.3 loss=6.3507 actor=-0.1403 value=6.5037 entropy=1.2623 mean_return=45.451 mean_len=89.9
+[gat-train] update=437 samples=119680 fps=98.3 loss=4.6593 actor=-0.2397 value=4.9115 entropy=1.2503 mean_return=45.697 mean_len=90.1
+[gat-train] update=438 samples=120320 fps=98.3 loss=6.4062 actor=-0.3597 value=6.7788 entropy=1.2919 mean_return=45.530 mean_len=90.0
+[gat-train] update=439 samples=120960 fps=98.3 loss=3.6813 actor=-0.0616 value=3.7557 entropy=1.2789 mean_return=45.278 mean_len=89.7
+[gat-train] update=440 samples=121600 fps=98.2 loss=7.5620 actor=-1.1769 value=8.7526 entropy=1.3739 mean_return=45.248 mean_len=89.7
+[gat-train] update=441 samples=122240 fps=98.2 loss=7.6262 actor=-1.0787 value=8.7186 entropy=1.3734 mean_return=45.493 mean_len=89.5
+[gat-train] update=442 samples=122880 fps=98.1 loss=7.9667 actor=-0.6017 value=8.5816 entropy=1.3171 mean_return=45.664 mean_len=89.7
+[gat-train] update=443 samples=123520 fps=98.1 loss=7.5908 actor=-1.0074 value=8.6123 entropy=1.4046 mean_return=46.254 mean_len=90.3
+[gat-train] update=444 samples=124160 fps=98.1 loss=7.2032 actor=-0.9361 value=8.1533 entropy=1.3963 mean_return=46.495 mean_len=91.1
