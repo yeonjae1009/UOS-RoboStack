@@ -1,6 +1,7 @@
-input_path: random_spec_eval_10/box_sequence
-output_dir: algorithm_results_eval10
-
+#input_path: random_spec_eval_10/box_sequence
+#output_dir: algorithm_results_eval10
+input_path: test_box_sequence_250
+output_dir: test_box_sequence_250_result
 #input_path: box_sequence
 #output_dir: algorithm_results
 pallet:
