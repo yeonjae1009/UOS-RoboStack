@@ -1,0 +1,881 @@
+[sub36-sun-ensemble] start Tue Jul 14 01:55:35 PM KST 2026
+[sub36-sun-ensemble] out_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50 run_name=sun_v2_terminal_explore_sub36_sun_ensemble pct_config=templete code/config/pct_config_sub36_sun_ensemble.yaml warm_start=isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[sub36-sun-ensemble] num_envs=2 packer_workers=0 max_boxes=32 updates=2 lr=5e-7 candidate_k=4
+[sub36-sun-ensemble] eval_box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_count=50 eval_sequences=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260714_135535.log
+2026-07-14T04:55:35Z [142ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:35Z [214ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:36Z [296ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:36Z [387ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:36Z [489ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:36Z [601ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:36Z [722ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:36Z [854ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:36Z [996ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:36Z [1,148ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:37Z [1,310ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:37Z [1,482ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:37Z [1,663ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:37Z [1,855ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:37Z [2,057ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:38Z [2,268ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:38Z [2,490ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:38Z [2,722ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:38Z [2,965ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:38Z [3,216ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:39Z [3,478ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:39Z [3,749ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:39Z [4,031ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:40Z [4,323ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:40Z [4,626ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:40Z [4,937ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:41Z [5,259ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:41Z [5,591ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:41Z [5,932ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:42Z [6,283ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:42Z [6,645ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:42Z [7,017ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:43Z [7,399ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:43Z [7,791ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:43Z [8,193ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:44Z [8,604ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:44Z [9,025ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:45Z [9,457ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:45Z [9,898ms] [Warning] [carb.omniclient.plugin]  62: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-E896C8F4.config.json\\\"\")"
+2026-07-14T04:55:46Z [10,353ms] [Error] [omni.datastore] Failed to acquire exclusive lock to data store (256>=256)
+2026-07-14T04:55:46Z [10,353ms] [Error] [omni.datastore] Failed to create local file data store at '/home/user/isaacsim/kit/cache/DerivedDataCache'
+2026-07-14T04:55:46Z [10,374ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-14T04:55:46Z [10,378ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-14T04:55:46Z [10,626ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-14T04:55:46Z [10,722ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-14T04:55:46Z [10,736ms] [Error] [omni.physx.tensors.plugin] CUDA error: no CUDA-capable device is detected: ../../../extensions/runtime/source/omni.physx.tensors/plugins/gpu/CudaCommon.h: 111
+2026-07-14T04:55:46Z [10,736ms] [Error] [omni.physx.tensors.plugin] Failed to create primary CUDA context
+Warp CUDA error 100: no CUDA-capable device is detected (in function init_cuda_driver, /builds/omniverse/warp/warp/native/cuda_util.cpp:266)
+Warp CUDA error 3: initialization error (in function cuda_device_get_count, /builds/omniverse/warp/warp/native/warp.cu:1769)
+2026-07-14T04:55:47Z [12,021ms] [Warning] [matplotlib] /home/user/.config/matplotlib is not a writable directory
+2026-07-14T04:55:47Z [12,021ms] [Warning] [matplotlib] Matplotlib created a temporary cache directory at /tmp/matplotlib-1wse98he because there was an issue with the default path (/home/user/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+2026-07-14T04:55:47Z [12,059ms] [Error] [omni.kit.app.plugin] failed to open file '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json' - unable to save the dictionary
+2026-07-14T04:55:47Z [12,078ms] [Error] [omni.gpucompute-cuda.plugin] CUDA error in createContext: no CUDA-capable device is detected: ../../../source/plugins/omni.gpucompute-cuda/GpuCompute-Cuda.cpp: 179 (device 1654552816)
+2026-07-14T04:55:47Z [12,095ms] [Error] [carb.cudainterop.plugin] Could not initialize NVML: return code 9 (NVML_ERROR_DRIVER_NOT_LOADED: NVIDIA driver is not loaded.)
+2026-07-14T04:55:47Z [12,097ms] [Error] [carb.cudainterop.plugin] Could not initialize NVML: return code 9 (NVML_ERROR_DRIVER_NOT_LOADED: NVIDIA driver is not loaded.)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 0             | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 116535
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-14T04:55:48Z [12,444ms] [Error] [gpu.foundation.plugin] No device could be created. Some known system issues:
+- The driver is not installed properly and requires a clean re-install.
+- Your GPUs do not support RayTracing: DXR or Vulkan ray_tracing, or hardware is excluded due to performance.
+- The driver cannot enumerate any GPU: driver, display, TCC mode or a docker issue. For Vulkan, test it with Vulkaninfo tool from Vulkan SDK, instead of nvidia-smi.
+- For Ubuntu, it requires server-xorg-core 1.20.7+ and a display to work without --no-window.
+- For Linux dockers, the setup is not complete. Install the latest driver, xServer and NVIDIA container runtime.
+
+2026-07-14T04:55:48Z [12,445ms] [Error] [gpu.foundation.plugin] Invalid getDeviceInfo parameters.
+2026-07-14T04:55:48Z [12,445ms] [Warning] [omni.physx.foundation.plugin] PhysXFoundation: Couldn't get driver version, failed to getDeviceInfo
+2026-07-14T04:55:48Z [12,445ms] [Warning] [omni.physx.foundation.plugin] PhysXFoundation: Unable to get IGpuFoundation, GpuDevices or Graphics!
+2026-07-14T04:55:48Z [12,447ms] [Error] [carb.cudainterop.plugin] CUDA error 100: cudaErrorNoDevice - no CUDA-capable device is detected)
+2026-07-14T04:55:48Z [12,447ms] [Error] [carb.cudainterop.plugin] Failed to get the CUDA device.
+2026-07-14T04:55:48Z [12,447ms] [Error] [carb.cudainterop.plugin] CUDA error 100: cudaErrorNoDevice - no CUDA-capable device is detected)
+2026-07-14T04:55:48Z [12,447ms] [Error] [carb.cudainterop.plugin] Failed to set the CUDA device: 0
+2026-07-14T04:55:48Z [12,447ms] [Error] [omni.physx.plugin] No CUDA devices found
+2026-07-14T04:55:48Z [12,447ms] [Error] [omni.physx.plugin] Unable to create PxCudaContextManager!
+2026-07-14T04:55:48Z [12,448ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+2026-07-14T04:55:48Z [12,458ms] [Error] [omni.kit.app.plugin] failed to open file '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json' - unable to save the dictionary
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Traceback (most recent call last):
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/scripts/train_pallet_gat.py", line 799, in <module>
+    main()
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/scripts/train_pallet_gat.py", line 489, in main
+    env = PalletPackingEnv(cfg)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/pallet_packing_env.py", line 296, in __init__
+    super().__init__(cfg, render_mode, **kwargs)
+  File "/home/user/IsaacLab/source/isaaclab/isaaclab/envs/direct_rl_env.py", line 106, in __init__
+    self.sim: SimulationContext = SimulationContext(self.cfg.sim)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/IsaacLab/source/isaaclab/isaaclab/sim/simulation_context.py", line 241, in __init__
+    self._gravity_tensor = torch.tensor(self.cfg.gravity, dtype=torch.float32, device=self.cfg.device)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/cuda/__init__.py", line 372, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: No CUDA GPUs are available
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-14_13-55-48.log[0m
+[36m======================================================================================[0m
+
+[sub36-sun-ensemble] exited code=1 Tue Jul 14 01:55:48 PM KST 2026
+[sub36-sun-ensemble] start Tue Jul 14 01:56:04 PM KST 2026
+[sub36-sun-ensemble] out_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50 run_name=sun_v2_terminal_explore_sub36_sun_ensemble pct_config=templete code/config/pct_config_sub36_sun_ensemble.yaml warm_start=isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[sub36-sun-ensemble] num_envs=2 packer_workers=0 max_boxes=32 updates=2 lr=5e-7 candidate_k=4
+[sub36-sun-ensemble] eval_box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_count=50 eval_sequences=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-14_13-56-07.log[0m
+[36m======================================================================================[0m
+
+[33m13:56:07 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m13:56:08 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 0.830342 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 2
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.277680 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[gat-train] run_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50/sun_v2_terminal_explore_sub36_sun_ensemble device=cuda:0 num_envs=2 num_packer_workers=0 obs_shape=(2, 301, 9) leaf_shape=(2, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=sun_v2_terminal_explore learn_finish_action=False action_space=100 candidate_generator=sub36_sun_ensemble candidate_rerank_k=4 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=50 box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,random_spec_010,random_spec_011,random_spec_012,random_spec_013,random_spec_014,random_spec_015,random_spec_016,random_spec_017,random_spec_018,random_spec_019,random_spec_020,random_spec_021,random_spec_022,random_spec_023,random_spec_024,random_spec_025,random_spec_026,random_spec_027,random_spec_028,random_spec_029,random_spec_030,random_spec_031,random_spec_032,random_spec_033,random_spec_034,random_spec_035,random_spec_036,random_spec_037,random_spec_038,random_spec_039,random_spec_040,random_spec_041,random_spec_042,random_spec_043,random_spec_044,random_spec_045,random_spec_046,random_spec_047,random_spec_048,random_spec_049
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial competition score = 70.72  -> PCT-best.pt
+[gat-train] update=1 samples=10 fps=0.0 loss=-0.9395 actor=-1.2055 value=0.2985 entropy=3.2528 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:0.60,1:0.10,2:0.10,4:0.20
+[gat-train] update=2 samples=20 fps=0.1 loss=-1.2699 actor=-1.4141 value=0.1859 entropy=4.1778 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:1.00
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260714_135604.log
+2026-07-14T04:56:04Z [164ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-14T04:56:04Z [165ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-14T04:56:05Z [402ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-14T04:56:05Z [499ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-14T04:56:06Z [2,069ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-14T04:56:06Z [2,069ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 116610
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-14T04:56:07Z [2,572ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+[sub36-sun-ensemble] exited code=0 Tue Jul 14 02:01:47 PM KST 2026
+[sub36-sun-ensemble] start Tue Jul 14 02:02:26 PM KST 2026
+[sub36-sun-ensemble] out_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50 run_name=sun_v2_terminal_explore_sub36_sun_ensemble pct_config=templete code/config/pct_config_sub36_sun_ensemble.yaml warm_start=isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[sub36-sun-ensemble] num_envs=32 packer_workers=8 max_boxes=256 updates=2500 lr=5e-7 candidate_k=4
+[sub36-sun-ensemble] eval_box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_count=50 eval_sequences=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049
+[sub36-sun-ensemble] start Tue Jul 14 02:06:09 PM KST 2026
+[sub36-sun-ensemble] out_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50 run_name=sun_v2_terminal_explore_sub36_sun_ensemble pct_config=templete code/config/pct_config_sub36_sun_ensemble.yaml warm_start=isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[sub36-sun-ensemble] num_envs=32 packer_workers=8 max_boxes=256 updates=2500 lr=5e-7 candidate_k=4
+[sub36-sun-ensemble] eval_box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_count=50 eval_sequences=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-14_14-06-12.log[0m
+[36m======================================================================================[0m
+
+[33m14:06:12 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m14:06:17 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 5.086913 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 1.529761 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[gat-train] run_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50/sun_v2_terminal_explore_sub36_sun_ensemble device=cuda:0 num_envs=32 num_packer_workers=8 obs_shape=(32, 301, 9) leaf_shape=(32, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=sun_v2_terminal_explore learn_finish_action=False action_space=100 candidate_generator=sub36_sun_ensemble candidate_rerank_k=4 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=50 box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,random_spec_010,random_spec_011,random_spec_012,random_spec_013,random_spec_014,random_spec_015,random_spec_016,random_spec_017,random_spec_018,random_spec_019,random_spec_020,random_spec_021,random_spec_022,random_spec_023,random_spec_024,random_spec_025,random_spec_026,random_spec_027,random_spec_028,random_spec_029,random_spec_030,random_spec_031,random_spec_032,random_spec_033,random_spec_034,random_spec_035,random_spec_036,random_spec_037,random_spec_038,random_spec_039,random_spec_040,random_spec_041,random_spec_042,random_spec_043,random_spec_044,random_spec_045,random_spec_046,random_spec_047,random_spec_048,random_spec_049
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial competition score = 70.72  -> PCT-best.pt
+[gat-train] update=1 samples=160 fps=0.3 loss=-0.3291 actor=-0.5378 value=0.2420 entropy=3.3362 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:0.60,1:0.02,2:0.17,4:0.21,5:0.01
+[gat-train] update=2 samples=320 fps=0.5 loss=-0.8268 actor=-0.9425 value=0.1584 entropy=4.2672 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:1.00
+[gat-train] update=3 samples=480 fps=0.6 loss=-0.4905 actor=-0.5597 value=0.1132 entropy=4.4044 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:1.00
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260714_140609.log
+2026-07-14T05:06:09Z [162ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-14T05:06:09Z [164ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-14T05:06:09Z [396ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-14T05:06:09Z [491ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-14T05:06:11Z [2,054ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-14T05:06:11Z [2,054ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 116964
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-14T05:06:12Z [2,579ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+Process ForkServerProcess-8:
+Process ForkServerProcess-5:
+Process ForkServerProcess-1:
+Process ForkServerProcess-4:
+Process ForkServerProcess-7:
+Process ForkServerProcess-3:
+Process ForkServerProcess-6:
+Process ForkServerProcess-2:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+EOFError
+EOFError
+EOFError
+EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+EOFError
+EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+[sub36-sun-ensemble] exited code=1 Tue Jul 14 02:22:38 PM KST 2026
+[sub36-sun-ensemble] start Tue Jul 14 02:23:11 PM KST 2026
+[sub36-sun-ensemble] out_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50 run_name=sun_v2_terminal_explore_sub36_sun_ensemble pct_config=templete code/config/pct_config_sub36_sun_ensemble.yaml warm_start=isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[sub36-sun-ensemble] num_envs=32 packer_workers=8 max_boxes=256 updates=2500 lr=5e-7 candidate_k=4
+[sub36-sun-ensemble] eval_box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_count=50 eval_sequences=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-14_14-23-14.log[0m
+[36m======================================================================================[0m
+
+[33m14:23:14 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m14:23:19 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 5.197003 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 1.531173 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/user/.netrc.
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+wandb: Currently logged in as: nkyeonjae1009 (nkyeonjae1009-university-of-seoul) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: setting up run dj0d7ewv
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: Tracking run with wandb version 0.28.0
+wandb: Run data is saved locally in isaaclab_pallet/runs/sub36_sun_ensemble_random50/sun_v2_terminal_explore_sub36_sun_ensemble/wandb/wandb/run-20260714_142322-dj0d7ewv
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run sun_v2_terminal_explore_sub36_sun_ensemble
+wandb: ⭐️ View project at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet
+wandb: 🚀 View run at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/dj0d7ewv
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/dj0d7ewv
+[gat-train] run_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50/sun_v2_terminal_explore_sub36_sun_ensemble device=cuda:0 num_envs=32 num_packer_workers=8 obs_shape=(32, 301, 9) leaf_shape=(32, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=sun_v2_terminal_explore learn_finish_action=False action_space=100 candidate_generator=sub36_sun_ensemble candidate_rerank_k=4 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=50 box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,random_spec_010,random_spec_011,random_spec_012,random_spec_013,random_spec_014,random_spec_015,random_spec_016,random_spec_017,random_spec_018,random_spec_019,random_spec_020,random_spec_021,random_spec_022,random_spec_023,random_spec_024,random_spec_025,random_spec_026,random_spec_027,random_spec_028,random_spec_029,random_spec_030,random_spec_031,random_spec_032,random_spec_033,random_spec_034,random_spec_035,random_spec_036,random_spec_037,random_spec_038,random_spec_039,random_spec_040,random_spec_041,random_spec_042,random_spec_043,random_spec_044,random_spec_045,random_spec_046,random_spec_047,random_spec_048,random_spec_049
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260714_142311.log
+2026-07-14T05:23:11Z [161ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-14T05:23:11Z [162ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-14T05:23:12Z [426ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-14T05:23:12Z [520ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-14T05:23:13Z [2,099ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-14T05:23:13Z [2,099ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 116885
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-14T05:23:14Z [2,637ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+Process ForkServerProcess-5:
+Process ForkServerProcess-6:
+Process ForkServerProcess-8:
+Process ForkServerProcess-2:
+Process ForkServerProcess-1:
+Process ForkServerProcess-4:
+Process ForkServerProcess-7:
+Process ForkServerProcess-3:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+EOFError
+EOFError
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+EOFError
+[sub36-sun-ensemble] exited code=1 Tue Jul 14 02:25:31 PM KST 2026
+[sub36-sun-ensemble] start Tue Jul 14 02:26:01 PM KST 2026
+[sub36-sun-ensemble] out_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50 run_name=sun_v2_terminal_explore_sub36_sun_ensemble pct_config=templete code/config/pct_config_sub36_sun_ensemble.yaml warm_start=isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+[sub36-sun-ensemble] num_envs=32 packer_workers=6 max_boxes=256 updates=2500 lr=5e-7 candidate_k=4
+[sub36-sun-ensemble] eval_box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_count=50 eval_sequences=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-14_14-26-04.log[0m
+[36m======================================================================================[0m
+
+[33m14:26:04 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m14:26:09 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 5.192959 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 1.528503 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/reward_terminal18_finish15/terminal_ratio_t18_from_terminal_best/PCT-best.pt
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/user/.netrc.
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+wandb: Currently logged in as: nkyeonjae1009 (nkyeonjae1009-university-of-seoul) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: setting up run dj0d7ewv
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: Tracking run with wandb version 0.28.0
+wandb: Run data is saved locally in isaaclab_pallet/runs/sub36_sun_ensemble_random50/sun_v2_terminal_explore_sub36_sun_ensemble/wandb/wandb/run-20260714_142613-dj0d7ewv
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Resuming run sun_v2_terminal_explore_sub36_sun_ensemble
+wandb: ⭐️ View project at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet
+wandb: 🚀 View run at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/dj0d7ewv
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/dj0d7ewv
+[gat-train] run_dir=isaaclab_pallet/runs/sub36_sun_ensemble_random50/sun_v2_terminal_explore_sub36_sun_ensemble device=cuda:0 num_envs=32 num_packer_workers=6 obs_shape=(32, 301, 9) leaf_shape=(32, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 reward_profile=sun_v2_terminal_explore learn_finish_action=False action_space=100 candidate_generator=sub36_sun_ensemble candidate_rerank_k=4 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=50 box_seq_dir=artifacts/random_spec_eval_50/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,random_spec_010,random_spec_011,random_spec_012,random_spec_013,random_spec_014,random_spec_015,random_spec_016,random_spec_017,random_spec_018,random_spec_019,random_spec_020,random_spec_021,random_spec_022,random_spec_023,random_spec_024,random_spec_025,random_spec_026,random_spec_027,random_spec_028,random_spec_029,random_spec_030,random_spec_031,random_spec_032,random_spec_033,random_spec_034,random_spec_035,random_spec_036,random_spec_037,random_spec_038,random_spec_039,random_spec_040,random_spec_041,random_spec_042,random_spec_043,random_spec_044,random_spec_045,random_spec_046,random_spec_047,random_spec_048,random_spec_049
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial competition score = 70.72  -> PCT-best.pt
+[gat-train] update=1 samples=160 fps=0.3 loss=-0.3291 actor=-0.5378 value=0.2420 entropy=3.3362 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:0.60,1:0.02,2:0.17,4:0.21,5:0.01
+[gat-train] update=2 samples=320 fps=0.5 loss=-0.8268 actor=-0.9425 value=0.1584 entropy=4.2672 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:1.00
+[gat-train] update=3 samples=480 fps=0.6 loss=-0.4905 actor=-0.5597 value=0.1132 entropy=4.4044 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:1.00
+[gat-train] update=4 samples=640 fps=0.6 loss=-0.1495 actor=-0.2104 value=0.1045 entropy=4.3580 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:1.00
+[gat-train] update=5 samples=800 fps=0.7 loss=0.2028 actor=0.0784 value=0.1674 entropy=4.2935 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:1.00
+[gat-train] update=6 samples=960 fps=0.7 loss=0.3269 actor=0.1385 value=0.2304 entropy=4.2075 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:0.99,1:0.01
+[gat-train] update=7 samples=1120 fps=0.7 loss=0.7528 actor=0.4700 value=0.3247 entropy=4.1859 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:0.99,1:0.01
+[gat-train] update=8 samples=1280 fps=0.7 loss=0.6760 actor=0.4340 value=0.2837 entropy=4.1694 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:0.97,1:0.02,7:0.01
+[gat-train] update=9 samples=1440 fps=0.7 loss=1.0219 actor=0.6383 value=0.4240 entropy=4.0410 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:0.98,1:0.02
+[gat-train] update=10 samples=1600 fps=0.8 loss=3.3072 actor=2.1478 value=1.1992 entropy=3.9774 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:0.96,1:0.03,4:0.01,5:0.01
+[gat-train] update=11 samples=1760 fps=0.8 loss=1.8941 actor=0.9501 value=0.9811 entropy=3.7096 mean_return=0.000 mean_len=0.0 topk_pass=1.000 families=0:0.99,4:0.01
+[gat-train] update=12 samples=1920 fps=0.8 loss=7.8663 actor=0.5411 value=7.3601 entropy=3.4869 mean_return=3.798 mean_len=58.0 topk_pass=1.000 families=0:0.97,2:0.01,4:0.01
+[gat-train] update=13 samples=2080 fps=0.8 loss=15.4817 actor=-4.4201 value=19.9338 entropy=3.1990 mean_return=4.813 mean_len=62.1 topk_pass=1.000 families=0:0.90,2:0.05,4:0.05
+[gat-train] update=14 samples=2240 fps=0.8 loss=9.6420 actor=-4.3948 value=14.0703 entropy=3.3454 mean_return=5.442 mean_len=64.5 topk_pass=1.000 families=0:0.87,1:0.01,2:0.05,4:0.07
+[gat-train] update=15 samples=2400 fps=0.8 loss=4.8730 actor=-4.3001 value=9.2110 entropy=3.7855 mean_return=5.926 mean_len=66.7 topk_pass=1.000 families=0:0.89,1:0.01,2:0.04,4:0.06
+[gat-train] update=16 samples=2560 fps=0.8 loss=0.1249 actor=-1.4373 value=1.6036 entropy=4.1358 mean_return=6.089 mean_len=67.4 topk_pass=1.000 families=0:0.96,1:0.01,2:0.02,4:0.02
+[gat-train] update=17 samples=2720 fps=0.8 loss=-0.2959 actor=-0.3965 value=0.1439 entropy=4.3296 mean_return=6.089 mean_len=67.4 topk_pass=1.000 families=0:1.00
+[gat-train] update=18 samples=2880 fps=0.8 loss=-0.0853 actor=-0.2244 value=0.1821 entropy=4.2982 mean_return=6.089 mean_len=67.4 topk_pass=1.000 families=0:1.00
+[gat-train] update=19 samples=3040 fps=0.8 loss=0.7149 actor=0.5596 value=0.1981 entropy=4.2757 mean_return=6.089 mean_len=67.4 topk_pass=1.000 families=0:1.00
+[gat-train] update=20 samples=3200 fps=0.8 loss=0.5060 actor=0.2733 value=0.2749 entropy=4.2218 mean_return=6.089 mean_len=67.4 topk_pass=1.000 families=0:0.99,1:0.01
+[gat-train] update=21 samples=3360 fps=0.8 loss=0.6582 actor=0.3424 value=0.3572 entropy=4.1499 mean_return=6.089 mean_len=67.4 topk_pass=1.000 families=0:0.99,1:0.01
+[gat-train] update=22 samples=3520 fps=0.8 loss=1.1550 actor=0.7664 value=0.4298 entropy=4.1206 mean_return=6.089 mean_len=67.4 topk_pass=1.000 families=0:0.99,1:0.01
+[gat-train] update=23 samples=3680 fps=0.8 loss=2.6954 actor=1.6575 value=1.0770 entropy=3.9128 mean_return=6.089 mean_len=67.4 topk_pass=1.000 families=0:0.98,1:0.02
+[gat-train] update=24 samples=3840 fps=0.8 loss=2.3152 actor=0.6388 value=1.7137 entropy=3.7372 mean_return=6.008 mean_len=67.0 topk_pass=1.000 families=0:0.99,2:0.01,4:0.01
+[gat-train] update=25 samples=4000 fps=0.8 loss=7.0601 actor=-1.6472 value=8.7438 entropy=3.6528 mean_return=5.929 mean_len=66.5 topk_pass=1.000 families=0:0.97,1:0.01,2:0.01,4:0.01
+[gat-train] update=26 samples=4160 fps=0.8 loss=4.9600 actor=-1.9612 value=6.9568 entropy=3.5625 mean_return=5.906 mean_len=66.3 topk_pass=1.000 families=0:0.95,2:0.02,4:0.03
+[gat-train] update=27 samples=4320 fps=0.9 loss=4.2031 actor=-1.2121 value=5.4502 entropy=3.4987 mean_return=5.976 mean_len=66.6 topk_pass=1.000 families=0:0.94,1:0.01,2:0.01,4:0.03
+[gat-train] update=28 samples=4480 fps=0.9 loss=9.1948 actor=-4.4107 value=13.6414 entropy=3.5893 mean_return=6.290 mean_len=67.9 topk_pass=1.000 families=0:0.93,1:0.01,2:0.01,4:0.05
+[gat-train] update=29 samples=4640 fps=0.9 loss=1.0016 actor=-1.0949 value=2.1332 entropy=3.6705 mean_return=6.371 mean_len=68.3 topk_pass=1.000 families=0:0.94,1:0.01,2:0.03,4:0.03
+[gat-train] update=30 samples=4800 fps=0.9 loss=2.6753 actor=-2.5486 value=5.2631 entropy=3.9195 mean_return=6.690 mean_len=69.5 topk_pass=1.000 families=0:0.95,1:0.01,2:0.01,4:0.03,5:0.01
+[gat-train] update=31 samples=4960 fps=0.9 loss=1.0882 actor=-1.5687 value=2.6975 entropy=4.0620 mean_return=6.790 mean_len=70.0 topk_pass=1.000 families=0:0.95,1:0.02,2:0.01,4:0.02
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260714_142602.log
+2026-07-14T05:26:02Z [161ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-14T05:26:02Z [163ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-14T05:26:02Z [419ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-14T05:26:02Z [513ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-14T05:26:04Z [2,083ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-14T05:26:04Z [2,083ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 116890
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-14T05:26:04Z [2,610ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+Process ForkServerProcess-4:
+Process ForkServerProcess-5:
+Process ForkServerProcess-3:
+Process ForkServerProcess-6:
+Process ForkServerProcess-1:
+Process ForkServerProcess-2:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/packer_pool.py", line 185, in _worker_loop
+    cmd = conn.recv()
+          ^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+EOFError
+[sub36-sun-ensemble] exited code=1 Tue Jul 14 04:03:28 PM KST 2026
