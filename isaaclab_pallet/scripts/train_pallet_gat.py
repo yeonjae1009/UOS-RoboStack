@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import deque
 from dataclasses import dataclass
 from math import ceil
@@ -59,6 +60,8 @@ parser.add_argument("--tilt-fail-threshold", type=float, default=0.35)
 parser.add_argument("--out-of-bounds-margin", type=float, default=0.02)
 parser.add_argument("--height-fail-margin", type=float, default=0.005)
 parser.add_argument("--drop-fail-threshold", type=float, default=0.08)
+parser.add_argument("--settle-max-steps", type=int, default=24, help="Max extra physics settle substeps after each placement.")
+parser.add_argument("--leaf-score-trial-limit", type=int, default=200, help="Max expensive trial-scored leaf candidates per observe call. 0 disables trial scoring.")
 parser.add_argument("--candidate-rerank-k", type=int, default=0, help=">1: test diverse policy top-k leaves with Isaac before committing.")
 parser.add_argument("--candidate-diversity-center-m", type=float, default=0.05)
 parser.add_argument(
@@ -90,10 +93,14 @@ parser.add_argument("--box-seq-dir", type=str, default="palletizing_simulator/bo
 parser.add_argument("--eval-sequences", nargs="+", default=["box_sequence_0", "box_sequence_1"])
 parser.add_argument("--confirm-box-seq-dir", type=str, default="", help="Optional second-stage deploy eval directory.")
 parser.add_argument("--confirm-eval-sequences", nargs="+", default=[], help="Optional second-stage deploy eval sequence names.")
+parser.add_argument("--skip-initial-eval", action="store_true", help="Start training immediately and save the initial policy as PCT-best.pt without scoring it first.")
 parser.add_argument("--deploy-eval-best", action="store_true", default=True, help="Confirm candidate best checkpoints through exported ONNX + submission main.py.")
 parser.add_argument("--no-deploy-eval-best", dest="deploy_eval_best", action="store_false")
+parser.add_argument("--skip-torch-eval-with-deploy-best", action="store_true", help="When deploy-eval-best is enabled, skip the separate geometric torch eval and score only with deployment eval.")
+parser.add_argument("--deploy-eval-interval", type=int, default=0, help="Updates between deployment evals. 0 follows --eval-interval.")
 parser.add_argument("--deploy-eval-submit-dir", type=str, default="submit_buffer3_search")
 parser.add_argument("--deploy-eval-buffer-size", type=int, default=0, help="buffer.size used in the temporary submission config for deployment best selection.")
+parser.add_argument("--deploy-eval-workers", type=int, default=1, help="Parallel submission main.py workers for deployment eval sequences.")
 parser.add_argument("--deploy-eval-timeout", type=float, default=300.0)
 parser.add_argument("--deploy-eval-regression-guard", type=float, default=5.0, help="Reject deploy best candidates that regress any shared sequence by more than this many score points.")
 parser.add_argument("--save-update-checkpoints", action="store_true", default=True)
@@ -450,6 +457,52 @@ def _score_submission_results(output_dir: Path, seq_paths: list[str], buffer_siz
     return _summarize_sequence_scores(per_sequence)
 
 
+def _copy_exported_model(src_submit_dir: Path, dst_submit_dir: Path) -> None:
+    src = src_submit_dir / "src" / "models" / "pct_model.onnx"
+    dst = dst_submit_dir / "src" / "models" / "pct_model.onnx"
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dst)
+
+
+def _deploy_eval_chunks(seq_paths: list[str], worker_count: int) -> list[list[str]]:
+    worker_count = max(1, min(worker_count, len(seq_paths)))
+    chunk_size = ceil(len(seq_paths) / worker_count)
+    return [seq_paths[i : i + chunk_size] for i in range(0, len(seq_paths), chunk_size)]
+
+
+def _run_deploy_eval_main(
+    submit_dir: Path,
+    input_dir: Path,
+    output_dir: Path,
+    seq_paths: list[str],
+    log_path: Path,
+) -> None:
+    _prepare_deploy_eval_inputs(seq_paths, input_dir)
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
+    _write_deploy_eval_config(submit_dir, input_dir, output_dir, args_cli.deploy_eval_buffer_size)
+
+    env = os.environ.copy()
+    env.setdefault("OMP_NUM_THREADS", "1")
+    env.setdefault("OPENBLAS_NUM_THREADS", "1")
+    env.setdefault("MKL_NUM_THREADS", "1")
+    env.setdefault("NUMEXPR_NUM_THREADS", "1")
+    with log_path.open("w", encoding="utf-8") as log_f:
+        try:
+            subprocess.run(
+                [sys.executable, "main.py"],
+                cwd=str(submit_dir),
+                check=True,
+                stdout=log_f,
+                stderr=subprocess.STDOUT,
+                text=True,
+                timeout=args_cli.deploy_eval_timeout,
+                env=env,
+            )
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
+            raise RuntimeError(f"deploy eval worker failed; see {log_path}") from exc
+
+
 def evaluate_deployment_score(
     policy,
     run_dir: Path,
@@ -462,14 +515,13 @@ def evaluate_deployment_score(
     submit_dir = deploy_root / "submission"
     input_dir = deploy_root / "box_sequence"
     output_dir = deploy_root / "algorithm_results"
+    worker_root = deploy_root / "workers"
     candidate_pt = deploy_root / f"candidate-{update:06d}.pt"
 
     deploy_root.mkdir(parents=True, exist_ok=True)
     _copy_submission_for_deploy_eval(submit_src, submit_dir)
-    _prepare_deploy_eval_inputs(seq_paths, input_dir)
     if output_dir.exists():
         shutil.rmtree(output_dir)
-    _write_deploy_eval_config(submit_dir, input_dir, output_dir, args_cli.deploy_eval_buffer_size)
 
     torch.save(policy.state_dict(), candidate_pt)
     export_cmd = [
@@ -495,15 +547,44 @@ def evaluate_deployment_score(
         text=True,
         timeout=args_cli.deploy_eval_timeout,
     )
-    subprocess.run(
-        [sys.executable, "main.py"],
-        cwd=str(submit_dir),
-        check=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        timeout=args_cli.deploy_eval_timeout,
-    )
+
+    deploy_workers = max(1, int(args_cli.deploy_eval_workers))
+    chunks = _deploy_eval_chunks(seq_paths, deploy_workers)
+    if len(chunks) == 1:
+        _run_deploy_eval_main(
+            submit_dir,
+            input_dir,
+            output_dir,
+            seq_paths,
+            deploy_root / f"main-{update:06d}.log",
+        )
+    else:
+        worker_root.mkdir(parents=True, exist_ok=True)
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        def run_worker(worker_idx: int, chunk: list[str]) -> Path:
+            worker_dir = worker_root / f"worker-{worker_idx:02d}"
+            worker_submit_dir = worker_dir / "submission"
+            worker_input_dir = worker_dir / "box_sequence"
+            worker_output_dir = worker_dir / "algorithm_results"
+            _copy_submission_for_deploy_eval(submit_src, worker_submit_dir)
+            _copy_exported_model(submit_dir, worker_submit_dir)
+            _run_deploy_eval_main(
+                worker_submit_dir,
+                worker_input_dir,
+                worker_output_dir,
+                chunk,
+                worker_dir / f"main-{update:06d}.log",
+            )
+            return worker_output_dir
+
+        with ThreadPoolExecutor(max_workers=len(chunks)) as pool:
+            futures = [pool.submit(run_worker, idx, chunk) for idx, chunk in enumerate(chunks)]
+            for future in as_completed(futures):
+                worker_output_dir = future.result()
+                for result_path in worker_output_dir.glob("*.json"):
+                    shutil.copy2(result_path, output_dir / result_path.name)
+
     return _score_submission_results(output_dir, seq_paths, args_cli.deploy_eval_buffer_size)
 
 
@@ -612,8 +693,15 @@ def init_wandb_run(run_dir: Path, pct_args: SimpleNamespace, start_update: int):
             "updates": args_cli.updates,
             "start_update": start_update,
             "num_steps": args_cli.num_steps,
+            "settle_max_steps": args_cli.settle_max_steps,
+            "leaf_score_trial_limit": args_cli.leaf_score_trial_limit,
             "save_interval": args_cli.save_interval,
             "eval_interval": args_cli.eval_interval,
+            "skip_initial_eval": args_cli.skip_initial_eval,
+            "deploy_eval_best": args_cli.deploy_eval_best,
+            "deploy_eval_interval": args_cli.deploy_eval_interval,
+            "deploy_eval_buffer_size": args_cli.deploy_eval_buffer_size,
+            "deploy_eval_workers": args_cli.deploy_eval_workers,
             "learning_rate": args_cli.learning_rate,
             "gamma": args_cli.gamma,
             "actor_loss_coef": args_cli.actor_loss_coef,
@@ -751,6 +839,8 @@ def main() -> None:
     cfg.out_of_bounds_margin = args_cli.out_of_bounds_margin
     cfg.height_fail_margin = args_cli.height_fail_margin
     cfg.drop_fail_threshold = args_cli.drop_fail_threshold
+    cfg.settle_max_steps = args_cli.settle_max_steps
+    cfg.leaf_score_trial_limit = args_cli.leaf_score_trial_limit
     cfg.candidate_rerank_k = args_cli.candidate_rerank_k
     cfg.candidate_diversity_center_m = args_cli.candidate_diversity_center_m
     apply_reward_profile(cfg, args_cli.reward_profile)
@@ -798,6 +888,8 @@ def main() -> None:
         f"num_packer_workers={cfg.num_packer_workers} "
         f"obs_shape={tuple(all_nodes.shape)} leaf_shape={tuple(leaf_nodes.shape)} "
         f"num_steps={args_cli.num_steps} normFactor={pct_args.normFactor} "
+        f"settle_max_steps={cfg.settle_max_steps} "
+        f"leaf_score_trial_limit={cfg.leaf_score_trial_limit} "
         f"drift_fail_threshold={cfg.drift_fail_threshold} "
         f"box_source={cfg.box_source} box_seed={cfg.box_seed} "
         f"train_box_seq_dir={args_cli.train_box_seq_dir} "
@@ -837,9 +929,29 @@ def main() -> None:
     best_torch_score = -1.0
     best_deploy_metrics: DeployEvalMetrics | None = None
     best_confirm_deploy_metrics: DeployEvalMetrics | None = None
-    if args_cli.eval_interval > 0:
-        torch_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
-        best_torch_score = torch_score
+    deploy_eval_interval = args_cli.deploy_eval_interval if args_cli.deploy_eval_interval > 0 else args_cli.eval_interval
+    if args_cli.skip_initial_eval:
+        torch.save(policy.state_dict(), run_dir / "PCT-best.pt")
+        save_checkpoint(run_dir / "PCT-best-resume.pt", policy, optimizer, start_update, pct_args)
+        print(
+            "[gat-train] skipped initial eval; saved warm-start policy -> PCT-best.pt",
+            flush=True,
+        )
+        if wandb_run is not None:
+            wandb_run.log(
+                {
+                    "update": start_update,
+                    "eval/initial_skipped": 1,
+                    "eval/best_score": best_score,
+                },
+                step=start_update,
+            )
+    elif args_cli.eval_interval > 0:
+        skip_torch_eval = args_cli.deploy_eval_best and args_cli.skip_torch_eval_with_deploy_best
+        torch_score = -1.0
+        if not skip_torch_eval:
+            torch_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
+            best_torch_score = torch_score
         if args_cli.deploy_eval_best:
             best_deploy_metrics = evaluate_deployment_score(policy, run_dir, pct_args, eval_seq_paths, start_update)
             if confirm_eval_enabled:
@@ -865,7 +977,7 @@ def main() -> None:
                 f"min={best_deploy_metrics.min_score:.2f} "
                 f"bottom10={best_deploy_metrics.bottom10_score:.2f} "
                 f"{confirm_text}"
-                f"(torch_eval={torch_score:.2f})  -> PCT-best.pt",
+                f"(torch_eval={'skipped' if skip_torch_eval else f'{torch_score:.2f}'})  -> PCT-best.pt",
                 flush=True,
             )
         else:
@@ -905,6 +1017,7 @@ def main() -> None:
                 step=start_update,
             )
 
+    train_start = time.perf_counter()
     for update in range(start_update + 1, start_update + args_cli.updates + 1):
         policy.train()
         storage.step = 0
@@ -1034,42 +1147,55 @@ def main() -> None:
 
         # ★1: score on the real competition sequences; keep PCT-best.pt only when it improves.
         if args_cli.eval_interval > 0 and update % args_cli.eval_interval == 0:
-            torch_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
+            skip_torch_eval = args_cli.deploy_eval_best and args_cli.skip_torch_eval_with_deploy_best
+            torch_score = -1.0
+            if not skip_torch_eval:
+                torch_score = evaluate_competition_score(policy, pct_args, env.pct_cfg, eval_seq_paths, env.device)
             deploy_metrics = None
             confirm_deploy_metrics = None
-            torch_candidate = torch_score > best_torch_score
+            torch_candidate = (not skip_torch_eval) and torch_score > best_torch_score
             if torch_candidate:
                 best_torch_score = torch_score
             if args_cli.deploy_eval_best:
-                deploy_metrics = evaluate_deployment_score(policy, run_dir, pct_args, eval_seq_paths, update)
-                primary_decision = _decide_deploy_best(
-                    deploy_metrics,
-                    best_deploy_metrics,
-                    args_cli.deploy_eval_regression_guard,
+                run_deploy_eval = deploy_eval_interval > 0 and update % deploy_eval_interval == 0
+                deploy_decision = DeployBestDecision(
+                    accepted=False,
+                    mean_improved=False,
+                    max_regression=0.0,
+                    regression_count=0,
+                    guard_rejected=False,
                 )
-                deploy_decision = primary_decision
-                run_confirm_eval = confirm_eval_enabled and primary_decision.mean_improved
-                if run_confirm_eval:
-                    confirm_deploy_metrics = evaluate_deployment_score(
-                        policy,
-                        run_dir,
-                        pct_args,
-                        confirm_eval_seq_paths,
-                        update,
-                    )
-                    deploy_decision = _decide_deploy_best(
-                        confirm_deploy_metrics,
-                        best_confirm_deploy_metrics,
+                score = best_score
+                improved = False
+                if run_deploy_eval:
+                    deploy_metrics = evaluate_deployment_score(policy, run_dir, pct_args, eval_seq_paths, update)
+                    primary_decision = _decide_deploy_best(
+                        deploy_metrics,
+                        best_deploy_metrics,
                         args_cli.deploy_eval_regression_guard,
                     )
-                    score = confirm_deploy_metrics.mean_score
-                    improved = primary_decision.accepted and deploy_decision.accepted
-                elif confirm_eval_enabled:
-                    score = best_score
-                    improved = False
-                else:
-                    score = deploy_metrics.mean_score
-                    improved = deploy_decision.accepted
+                    deploy_decision = primary_decision
+                    run_confirm_eval = confirm_eval_enabled and primary_decision.mean_improved
+                    if run_confirm_eval:
+                        confirm_deploy_metrics = evaluate_deployment_score(
+                            policy,
+                            run_dir,
+                            pct_args,
+                            confirm_eval_seq_paths,
+                            update,
+                        )
+                        deploy_decision = _decide_deploy_best(
+                            confirm_deploy_metrics,
+                            best_confirm_deploy_metrics,
+                            args_cli.deploy_eval_regression_guard,
+                        )
+                        score = confirm_deploy_metrics.mean_score
+                        improved = primary_decision.accepted and deploy_decision.accepted
+                    elif confirm_eval_enabled:
+                        score = best_score
+                    else:
+                        score = deploy_metrics.mean_score
+                        improved = deploy_decision.accepted
             else:
                 score = torch_score
                 deploy_decision = DeployBestDecision(

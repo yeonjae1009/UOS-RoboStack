@@ -1,0 +1,75 @@
+[INFO] input_path            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/box_sequence
+[INFO] output_dir            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results
+[INFO] buffer_size           : 0
+[INFO] pallet_length         : 1.2
+[INFO] pallet_width          : 1.0
+[INFO] pallet_height         : 1.25
+[INFO] allow_rotation        : True
+[INFO] total_input_files     : 3
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results/vis/box_sequence_0.png
+
+[INFO] file_index            : 1/3
+[INFO] input_file            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/box_sequence/box_sequence_0.json
+[INFO] output_file           : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results/box_sequence_0.json
+[INFO] vis_file              : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results/vis/box_sequence_0.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 99
+[INFO] placed_count          : 99
+[INFO] placed_volume         : 1.085123
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.191000
+[INFO] utilization           : 0.7234
+[INFO] utilization_percent   : 72.34%
+[INFO] terminated            : True
+[INFO] terminated_step       : 99
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 71.052 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results/vis/box_sequence_1.png
+
+[INFO] file_index            : 2/3
+[INFO] input_file            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/box_sequence/box_sequence_1.json
+[INFO] output_file           : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results/box_sequence_1.json
+[INFO] vis_file              : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results/vis/box_sequence_1.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 72
+[INFO] placed_count          : 72
+[INFO] placed_volume         : 0.900554
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.207500
+[INFO] utilization           : 0.6004
+[INFO] utilization_percent   : 60.04%
+[INFO] terminated            : True
+[INFO] terminated_step       : 72
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 47.105 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results/vis/random_spec_049.png
+
+[INFO] file_index            : 3/3
+[INFO] input_file            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/box_sequence/random_spec_049.json
+[INFO] output_file           : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results/random_spec_049.json
+[INFO] vis_file              : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-07/algorithm_results/vis/random_spec_049.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 85
+[INFO] placed_count          : 85
+[INFO] placed_volume         : 1.003320
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.195000
+[INFO] utilization           : 0.6689
+[INFO] utilization_percent   : 66.89%
+[INFO] terminated            : True
+[INFO] terminated_step       : 85
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 96.951 sec
+
+===================================================
+[INFO] ALL FILES SUMMARY
+===================================================
+[INFO] total_input_files      : 3
+[INFO] total_input_boxes      : 750
+[INFO] total_output_boxes     : 256
+[INFO] total_placed_volume    : 2.988997
+[INFO] files_processing_time  : 215.109 sec
+[INFO] total_processing_time  : 215.110 sec

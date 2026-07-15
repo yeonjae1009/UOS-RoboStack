@@ -1,0 +1,690 @@
+[workers8-deploybest] start profile=sun_v2 run=sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16 box_seed=1 updates=2500 mode=load_model num_envs=64 workers=16 num_steps=10 settle_max_steps=12 leaf_score_trial_limit=32 deploy_eval_workers=16 best=isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_deployworkers16/PCT-best.pt eval12_dir=artifacts/random_spec_eval_10_plus_official/box_sequence eval12=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 box_sequence_0 box_sequence_1 confirm_eval52_dir=artifacts/random_spec_eval_50_plus_official/box_sequence confirm_eval52=random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049 box_sequence_0 box_sequence_1 Wed Jul 15 11:49:36 AM KST 2026
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-15_11-49-38.log[0m
+[36m======================================================================================[0m
+
+[33m11:49:38 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m11:49:50 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 11.416275 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 64
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 2.443792 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_deployworkers16/PCT-best.pt
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/user/.netrc.
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+wandb: Currently logged in as: nkyeonjae1009 (nkyeonjae1009-university-of-seoul) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: setting up run mldkd8e0
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:269: DeprecationWarning: Read the `app_url` setting from the appropriate Settings object.
+  app_url = wandb.util.app_url(tags["base_url"])  # type: ignore[index]
+/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/wandb/analytics/sentry.py:280: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  self.scope.user = {"email": email}
+wandb: Tracking run with wandb version 0.28.0
+wandb: Run data is saved locally in isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16/wandb/wandb/run-20260715_114954-mldkd8e0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16
+wandb: ⭐️ View project at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet
+wandb: 🚀 View run at https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/mldkd8e0
+[gat-train] wandb run url: https://wandb.ai/nkyeonjae1009-university-of-seoul/assignment2-pallet/runs/mldkd8e0
+[gat-train] run_dir=isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16 device=cuda:0 num_envs=64 num_packer_workers=16 obs_shape=(64, 301, 9) leaf_shape=(64, 100, 9) num_steps=10 normFactor=0.8 settle_max_steps=12 leaf_score_trial_limit=32 drift_fail_threshold=0.4 box_source=random box_seed=1 train_box_seq_dir=submit_buffer3_search/box_sequence train_type_sequences=box_sequence_0,box_sequence_1 reward_profile=sun_v2 learn_finish_action=False action_space=100 candidate_generator=ems candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=12 box_seq_dir=artifacts/random_spec_eval_10_plus_official/box_sequence eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,box_sequence_0,box_sequence_1
+[gat-train] confirm_eval_seq_count=52 confirm_box_seq_dir=artifacts/random_spec_eval_50_plus_official/box_sequence confirm_eval_sequences=random_spec_000,random_spec_001,random_spec_002,random_spec_003,random_spec_004,random_spec_005,random_spec_006,random_spec_007,random_spec_008,random_spec_009,random_spec_010,random_spec_011,random_spec_012,random_spec_013,random_spec_014,random_spec_015,random_spec_016,random_spec_017,random_spec_018,random_spec_019,random_spec_020,random_spec_021,random_spec_022,random_spec_023,random_spec_024,random_spec_025,random_spec_026,random_spec_027,random_spec_028,random_spec_029,random_spec_030,random_spec_031,random_spec_032,random_spec_033,random_spec_034,random_spec_035,random_spec_036,random_spec_037,random_spec_038,random_spec_039,random_spec_040,random_spec_041,random_spec_042,random_spec_043,random_spec_044,random_spec_045,random_spec_046,random_spec_047,random_spec_048,random_spec_049,box_sequence_0,box_sequence_1
+[gat-train] initial deployment score = 85.10 min=74.17 bottom10=77.10 confirm_score=81.76 confirm_min=0.00 confirm_bottom10=56.27 (torch_eval=skipped)  -> PCT-best.pt
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] update=10 samples=6400 fps=5.5 loss=3.8568 actor=1.8970 value=1.9768 entropy=1.7069 mean_return=38.064 mean_len=82.3
+[gat-train] update=20 samples=12800 fps=4.7 loss=7.2003 actor=3.0918 value=4.1257 entropy=1.7193 mean_return=39.499 mean_len=85.4
+[gat-train] update=30 samples=19200 fps=3.9 loss=6.4086 actor=2.7414 value=3.6855 entropy=1.8236 mean_return=40.718 mean_len=86.6
+[gat-train] update=40 samples=25600 fps=3.6 loss=6.3538 actor=3.1179 value=3.2570 entropy=2.1155 mean_return=40.389 mean_len=85.6
+[gat-train] update=50 samples=32000 fps=3.4 loss=5.8181 actor=2.4615 value=3.3757 entropy=1.9131 mean_return=40.606 mean_len=86.3
+[gat-train] eval update=50 torch_score=-1.00 deploy_score=76.86 min=0.00 bottom10=38.28 max_regression=74.17 regressions=3 guard_rejected=1 best=81.76
+[gat-train] update=60 samples=38400 fps=3.3 loss=5.4760 actor=2.3456 value=3.1500 entropy=1.9608 mean_return=39.447 mean_len=84.3
+[gat-train] update=70 samples=44800 fps=3.3 loss=6.6513 actor=2.9298 value=3.7402 entropy=1.8623 mean_return=38.581 mean_len=83.2
+[gat-train] update=80 samples=51200 fps=3.3 loss=7.1603 actor=3.4255 value=3.7561 entropy=2.1369 mean_return=38.824 mean_len=83.3
+[gat-train] update=90 samples=57600 fps=3.3 loss=5.5194 actor=2.6562 value=2.8834 entropy=2.0092 mean_return=39.434 mean_len=84.6
+[gat-train] update=100 samples=64000 fps=3.3 loss=4.8143 actor=2.3433 value=2.4918 entropy=2.0769 mean_return=38.849 mean_len=83.5
+[gat-train] eval update=100 torch_score=-1.00 deploy_score=78.45 min=0.00 bottom10=39.84 max_regression=74.17 regressions=2 guard_rejected=1 best=81.76
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [195ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:38Z [197ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [668ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [783ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,091ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,092ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106972
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,030ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:39Z [209ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:39Z [214ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [746ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [857ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,073ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,073ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106972
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,116ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [199ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:38Z [201ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [722ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [865ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,130ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,130ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106792
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,123ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:39Z [179ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:39Z [181ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [662ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [781ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,114ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,114ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106263
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,123ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [186ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:38Z [186ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [649ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [805ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,096ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,096ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106807
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,029ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [224ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:38Z [225ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [710ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [831ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,130ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,130ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106874
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,149ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:39Z [207ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:39Z [210ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [660ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [784ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,041ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,041ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 107107
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,083ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [207ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:38Z [208ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [646ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [760ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:41Z [3,155ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:41Z [3,155ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 109726
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:42Z [3,396ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:39Z [183ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:39Z [187ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [633ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [748ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,053ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,053ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106850
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,084ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [206ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:38Z [208ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [682ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [800ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,111ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,111ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106972
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,076ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:39Z [226ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:39Z [228ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [692ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [808ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,083ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,083ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106973
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,110ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [203ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:38Z [205ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [714ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [831ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,128ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,128ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106815
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,166ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [228ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:39Z [231ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [718ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [836ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,126ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,126ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106874
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,145ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:39Z [236ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:39Z [239ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [748ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [865ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,067ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,067ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 107101
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,098ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [201ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:39Z [206ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [683ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [795ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:43Z [5,106ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:43Z [5,106ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 106792
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [7,017ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114938.log
+2026-07-15T02:49:38Z [201ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:38Z [202ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:39Z [687ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:39Z [803ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:42Z [3,584ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:42Z [3,584ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 108315
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:45Z [6,267ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260715_114936.log
+2026-07-15T02:49:36Z [160ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T02:49:36Z [161ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T02:49:36Z [440ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T02:49:36Z [538ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T02:49:38Z [2,124ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T02:49:38Z [2,124ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 118670
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T02:49:38Z [2,584ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.

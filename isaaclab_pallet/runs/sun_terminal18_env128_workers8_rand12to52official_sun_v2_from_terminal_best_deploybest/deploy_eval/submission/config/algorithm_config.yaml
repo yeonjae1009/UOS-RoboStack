@@ -1,0 +1,32 @@
+input_path: /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env128_workers8_rand12to52official_sun_v2_from_terminal_best_deploybest/deploy_eval/box_sequence
+output_dir: /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env128_workers8_rand12to52official_sun_v2_from_terminal_best_deploybest/deploy_eval/algorithm_results
+pallet:
+  length: 1.2
+  width: 1.0
+  height: 1.25
+json:
+  indent: 2
+  ensure_ascii: false
+algorithm:
+  allow_rotation: true
+buffer:
+  size: 0
+search:
+  enabled: true
+  mode: beam
+  score_profile: sun_v2
+  top_k_leaf: 4
+  beam_width: 2
+  depth: 2
+  non_buffer_enabled: false
+  rollout_depth: 2
+  pseudo_samples: 4
+  rollout_weight: 0.1
+  rollout_discount: 0.7
+  time_budget_sec: 80.0
+  random_seed: 0
+selector:
+  enabled: false
+  model_path: src/models/buffer_selector.onnx
+  buffer_size: 3
+  bonus_weight: 0.5

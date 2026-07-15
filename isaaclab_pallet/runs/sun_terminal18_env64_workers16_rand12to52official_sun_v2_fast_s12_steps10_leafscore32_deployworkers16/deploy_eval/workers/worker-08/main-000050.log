@@ -1,0 +1,37 @@
+[INFO] input_path            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16/deploy_eval/workers/worker-08/box_sequence
+[INFO] output_dir            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16/deploy_eval/workers/worker-08/algorithm_results
+[INFO] buffer_size           : 0
+[INFO] pallet_length         : 1.2
+[INFO] pallet_width          : 1.0
+[INFO] pallet_height         : 1.25
+[INFO] allow_rotation        : True
+[INFO] total_input_files     : 1
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16/deploy_eval/workers/worker-08/algorithm_results/vis/random_spec_008.png
+
+[INFO] file_index            : 1/1
+[INFO] input_file            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16/deploy_eval/workers/worker-08/box_sequence/random_spec_008.json
+[INFO] output_file           : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16/deploy_eval/workers/worker-08/algorithm_results/random_spec_008.json
+[INFO] vis_file              : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_fast_s12_steps10_leafscore32_deployworkers16/deploy_eval/workers/worker-08/algorithm_results/vis/random_spec_008.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 77
+[INFO] placed_count          : 77
+[INFO] placed_volume         : 0.848350
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.227500
+[INFO] utilization           : 0.5656
+[INFO] utilization_percent   : 56.56%
+[INFO] terminated            : True
+[INFO] terminated_step       : 77
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 42.325 sec
+
+===================================================
+[INFO] ALL FILES SUMMARY
+===================================================
+[INFO] total_input_files      : 1
+[INFO] total_input_boxes      : 250
+[INFO] total_output_boxes     : 77
+[INFO] total_placed_volume    : 0.848350
+[INFO] files_processing_time  : 42.325 sec
+[INFO] total_processing_time  : 42.326 sec

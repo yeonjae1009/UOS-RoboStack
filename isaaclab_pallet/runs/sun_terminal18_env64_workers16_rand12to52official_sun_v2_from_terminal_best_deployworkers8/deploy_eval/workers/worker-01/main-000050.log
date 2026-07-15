@@ -1,0 +1,56 @@
+[INFO] input_path            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/box_sequence
+[INFO] output_dir            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/algorithm_results
+[INFO] buffer_size           : 0
+[INFO] pallet_length         : 1.2
+[INFO] pallet_width          : 1.0
+[INFO] pallet_height         : 1.25
+[INFO] allow_rotation        : True
+[INFO] total_input_files     : 2
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/algorithm_results/vis/random_spec_002.png
+
+[INFO] file_index            : 1/2
+[INFO] input_file            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/box_sequence/random_spec_002.json
+[INFO] output_file           : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/algorithm_results/random_spec_002.json
+[INFO] vis_file              : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/algorithm_results/vis/random_spec_002.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 79
+[INFO] placed_count          : 79
+[INFO] placed_volume         : 0.905552
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.240500
+[INFO] utilization           : 0.6037
+[INFO] utilization_percent   : 60.37%
+[INFO] terminated            : True
+[INFO] terminated_step       : 79
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 52.849 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/algorithm_results/vis/random_spec_003.png
+
+[INFO] file_index            : 2/2
+[INFO] input_file            : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/box_sequence/random_spec_003.json
+[INFO] output_file           : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/algorithm_results/random_spec_003.json
+[INFO] vis_file              : /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_terminal18_env64_workers16_rand12to52official_sun_v2_from_terminal_best_deployworkers8/deploy_eval/workers/worker-01/algorithm_results/vis/random_spec_003.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 79
+[INFO] placed_count          : 79
+[INFO] placed_volume         : 0.951301
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.245500
+[INFO] utilization           : 0.6342
+[INFO] utilization_percent   : 63.42%
+[INFO] terminated            : True
+[INFO] terminated_step       : 79
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 92.956 sec
+
+===================================================
+[INFO] ALL FILES SUMMARY
+===================================================
+[INFO] total_input_files      : 2
+[INFO] total_input_boxes      : 500
+[INFO] total_output_boxes     : 158
+[INFO] total_placed_volume    : 1.856854
+[INFO] files_processing_time  : 145.805 sec
+[INFO] total_processing_time  : 145.806 sec

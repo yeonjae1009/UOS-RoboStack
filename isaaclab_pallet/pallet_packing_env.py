@@ -255,6 +255,7 @@ class PalletPackingEnvCfg(DirectRLEnvCfg):
     learn_finish_action: bool = False  # add a policy-selected finish action after leaf actions
     candidate_rerank_k: int = 0  # >1: test diverse policy top-k leaves with Isaac before committing
     candidate_diversity_center_m: float = 0.05
+    leaf_score_trial_limit: int = 200
     physics_fail_penalty: float = -10.0
     invalid_action_penalty: float = -10.0
     no_feasible_leaf_reward: float = 0.0
@@ -358,6 +359,7 @@ class PalletPackingEnv(DirectRLEnv):
             leaf_node_holder=self.leaf_node_holder,
             setting=self.pct_setting,
             density_max=self.density_max,
+            leaf_score_trial_limit=int(cfg.leaf_score_trial_limit),
             scales=self._reward_scales,
         )
         self.packer_pool = packer_pool.make_packer_pool(

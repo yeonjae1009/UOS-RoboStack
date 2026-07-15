@@ -51,6 +51,7 @@ class PackerConfig:
     leaf_node_holder: int
     setting: int
     density_max: float
+    leaf_score_trial_limit: int
     scales: pct_reward.RewardScales
 
 
@@ -64,6 +65,7 @@ def _make_packer(cfg: PackerConfig):
         internal_node_holder=cfg.internal_node_holder,
         leaf_node_holder=cfg.leaf_node_holder,
         setting=cfg.setting,
+        leaf_score_trial_limit=cfg.leaf_score_trial_limit,
     )
     packer.reset()
     return packer

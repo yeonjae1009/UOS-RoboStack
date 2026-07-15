@@ -18,12 +18,14 @@ from .space import Space
 
 class Packer:
     def __init__(self, container_size, size_minimum,
-                 internal_node_holder=200, leaf_node_holder=100, setting=1):
+                 internal_node_holder=200, leaf_node_holder=100, setting=1,
+                 leaf_score_trial_limit=200):
         self.bin_size = list(container_size)
         self.internal_node_holder = internal_node_holder
         self.leaf_node_holder = leaf_node_holder
         self.next_holder = 1
         self.setting = setting
+        self.leaf_score_trial_limit = int(leaf_score_trial_limit)
         self.size_minimum = size_minimum
         self.space = Space(*self.bin_size, size_minimum, internal_node_holder)
         self.next_box_vec = np.zeros((self.next_holder, 9))
@@ -145,22 +147,45 @@ class Packer:
         return candidates
 
     def _select_scored_leaves(self, candidates):
-        trial_limit = max(200, self.leaf_node_holder * 2)
+        trial_limit = int(getattr(self, "leaf_score_trial_limit", 200))
         candidates = sorted(
             candidates,
             key=lambda c: (-self._cheap_candidate_score(c["leaf"]), c["position_key"]),
-        )[:trial_limit]
+        )
+        if trial_limit <= 0:
+            return [candidate["leaf"] for candidate in candidates[:self.leaf_node_holder]]
 
         base_metrics = self._ems_metrics(self.space)
         scored = []
-        for idx, candidate in enumerate(candidates):
+        for idx, candidate in enumerate(candidates[:trial_limit]):
             score = self._score_candidate(candidate["leaf"], base_metrics)
             if score is None:
                 continue
             scored.append((score, candidate["position_key"], idx, candidate["leaf"]))
 
         scored.sort(key=lambda item: (-item[0], item[1], item[2]))
-        return [item[3] for item in scored[:self.leaf_node_holder]]
+        leaves = []
+        seen = set()
+        for item in scored:
+            leaf = item[3]
+            key = tuple(round(float(v), 6) for v in leaf[:6])
+            if key in seen:
+                continue
+            leaves.append(leaf)
+            seen.add(key)
+            if len(leaves) >= self.leaf_node_holder:
+                return leaves
+
+        for candidate in candidates:
+            leaf = candidate["leaf"]
+            key = tuple(round(float(v), 6) for v in leaf[:6])
+            if key in seen:
+                continue
+            leaves.append(leaf)
+            seen.add(key)
+            if len(leaves) >= self.leaf_node_holder:
+                break
+        return leaves
 
     def _cheap_candidate_score(self, leaf):
         bottom_z = float(leaf[2])
