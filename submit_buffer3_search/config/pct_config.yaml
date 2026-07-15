@@ -3,6 +3,10 @@
 
 # 학습된 GAT 정책의 ONNX 모델 경로 (algorithm.py 기준 상대경로)
 model_path: src/models/pct_model.onnx
+model_paths:
+  - src/models/candidate-001400.onnx
+  - src/models/candidate-001450.onnx
+  - src/models/pct_model_bestonnx.onnx
 
 # 노드 홀더 크기 — 반드시 학습/ONNX export 때와 동일해야 함(입력 크기 일치)
 internal_node_holder: 200
