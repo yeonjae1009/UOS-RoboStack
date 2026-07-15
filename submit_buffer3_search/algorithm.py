@@ -172,6 +172,7 @@ class Palletizer:
         self._non_buffer_time_budget_sec = 80.0
         self._non_buffer_random_seed = 0
         self._candidate_union_enabled = False
+        self._candidate_union_mode = "rerank"
         self._union_top_k_per_model = 4
         self._union_fallback_top_k_leaf = 20
         self._candidate_union_score_profile = ""
@@ -201,6 +202,7 @@ class Palletizer:
         self._non_buffer_time_budget_sec = float(search_cfg.get("time_budget_sec", self._non_buffer_time_budget_sec))
         self._non_buffer_random_seed = int(search_cfg.get("random_seed", self._non_buffer_random_seed))
         self._candidate_union_enabled = bool(search_cfg.get("candidate_union_enabled", self._candidate_union_enabled))
+        self._candidate_union_mode = str(search_cfg.get("candidate_union_mode", self._candidate_union_mode))
         self._union_top_k_per_model = max(1, int(search_cfg.get("union_top_k_per_model", self._union_top_k_per_model)))
         self._union_fallback_top_k_leaf = max(1, int(search_cfg.get("union_fallback_top_k_leaf", self._union_fallback_top_k_leaf)))
         self._candidate_union_score_profile = str(search_cfg.get("candidate_union_score_profile", self._candidate_union_score_profile))
@@ -1440,7 +1442,12 @@ class Palletizer:
         if not self._ensure_packer_for_current_run():
             return self._find_position_baseline(box)
 
-        if self._search_enabled and self.algo.buffer_size == 0:
+        use_union_rerank = (
+            self._candidate_union_enabled
+            and self._candidate_union_mode == "rerank"
+        )
+
+        if self._search_enabled and self.algo.buffer_size == 0 and use_union_rerank:
             planned = self._plan_non_buffer_lookahead(box)
             if planned is None:
                 planned = self._plan_non_buffer_candidate_union(box)
@@ -1468,7 +1475,13 @@ class Palletizer:
         if float(safe_leaf_region[:, 8].sum()) <= 0.0:
             return None
 
-        candidate_indices, _ = self._candidate_leaf_indices(obs_arr, safe_leaf_region)
+        old_union_enabled = self._candidate_union_enabled
+        if self.algo.buffer_size == 0 and self._candidate_union_mode == "fallback":
+            self._candidate_union_enabled = False
+        try:
+            candidate_indices, _ = self._candidate_leaf_indices(obs_arr, safe_leaf_region)
+        finally:
+            self._candidate_union_enabled = old_union_enabled
         if not candidate_indices:
             return None
 
@@ -1492,6 +1505,18 @@ class Palletizer:
 
             self._packer = trial_packer
             return validated
+
+        if (
+            self._search_enabled
+            and self.algo.buffer_size == 0
+            and self._candidate_union_enabled
+            and self._candidate_union_mode == "fallback"
+        ):
+            planned = self._plan_non_buffer_candidate_union(box)
+            if planned is not None:
+                self._packer = planned["packer"]
+                self._pending_raw_placed = planned["raw_placed"]
+                return planned["validated"]
 
         return None
 
