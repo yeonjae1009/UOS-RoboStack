@@ -171,6 +171,10 @@ class Palletizer:
         self._non_buffer_rollout_discount = 0.7
         self._non_buffer_time_budget_sec = 80.0
         self._non_buffer_random_seed = 0
+        self._candidate_union_enabled = False
+        self._union_top_k_per_model = 4
+        self._union_fallback_top_k_leaf = 20
+        self._candidate_union_score_profile = ""
 
         if yaml is None:
             return
@@ -196,6 +200,10 @@ class Palletizer:
         self._non_buffer_rollout_discount = float(search_cfg.get("rollout_discount", self._non_buffer_rollout_discount))
         self._non_buffer_time_budget_sec = float(search_cfg.get("time_budget_sec", self._non_buffer_time_budget_sec))
         self._non_buffer_random_seed = int(search_cfg.get("random_seed", self._non_buffer_random_seed))
+        self._candidate_union_enabled = bool(search_cfg.get("candidate_union_enabled", self._candidate_union_enabled))
+        self._union_top_k_per_model = max(1, int(search_cfg.get("union_top_k_per_model", self._union_top_k_per_model)))
+        self._union_fallback_top_k_leaf = max(1, int(search_cfg.get("union_fallback_top_k_leaf", self._union_fallback_top_k_leaf)))
+        self._candidate_union_score_profile = str(search_cfg.get("candidate_union_score_profile", self._candidate_union_score_profile))
 
         selector_cfg = cfg.get("selector", {}) or {}
         self._selector_enabled = bool(selector_cfg.get("enabled", self._selector_enabled))
@@ -232,6 +240,7 @@ class Palletizer:
         self._pct_available = False
         self._session = None
         self._input_name = None
+        self._policy_sessions = []
         self._selector_session = None
         self._selector_input_name = None
 
@@ -255,23 +264,24 @@ class Palletizer:
         self._density_max = float(cfg.get("density_max", 1.0))
         self._container = [float(self.pallet.length), float(self.pallet.width), float(self.pallet.height)]
 
-        model_path = str(cfg["model_path"])
-        if not os.path.isabs(model_path):
-            model_path = str(here / model_path)
-
         if ort is not None:
-            try:
-                session_options = ort.SessionOptions()
-                session_options.intra_op_num_threads = 1
-                self._session = ort.InferenceSession(
-                    model_path,
-                    sess_options=session_options,
-                    providers=["CPUExecutionProvider"],
-                )
-                self._input_name = self._session.get_inputs()[0].name
-            except Exception:
-                self._session = None
-                self._input_name = None
+            model_paths = cfg.get("model_paths") or []
+            if isinstance(model_paths, (str, bytes)):
+                model_paths = [model_paths]
+
+            for raw_path in model_paths:
+                session_info = self._load_policy_session(str(raw_path), here)
+                if session_info is not None:
+                    self._policy_sessions.append(session_info)
+
+            if not self._policy_sessions:
+                session_info = self._load_policy_session(str(cfg["model_path"]), here)
+                if session_info is not None:
+                    self._policy_sessions.append(session_info)
+
+            if self._policy_sessions:
+                self._session = self._policy_sessions[0]["session"]
+                self._input_name = self._policy_sessions[0]["input_name"]
 
             if self._selector_enabled:
                 selector_path = self._selector_model_path
@@ -296,6 +306,30 @@ class Palletizer:
 
         self._pct_available = True
         self._policy_ready = True
+
+    def _load_policy_session(self, raw_path: str, here: Path) -> Optional[Dict]:
+        model_path = raw_path
+        if not os.path.isabs(model_path):
+            model_path = str(here / model_path)
+        if not os.path.exists(model_path):
+            return None
+
+        try:
+            session_options = ort.SessionOptions()
+            session_options.intra_op_num_threads = 1
+            session = ort.InferenceSession(
+                model_path,
+                sess_options=session_options,
+                providers=["CPUExecutionProvider"],
+            )
+            return {
+                "name": Path(model_path).name,
+                "path": model_path,
+                "session": session,
+                "input_name": session.get_inputs()[0].name,
+            }
+        except Exception:
+            return None
 
     def _ensure_packer_for_current_run(self) -> bool:
         self._ensure_policy()
@@ -539,16 +573,62 @@ class Palletizer:
     ) -> Tuple[List[int], Dict[int, float]]:
         scores: Dict[int, float] = {}
 
-        if self._session is not None and self._input_name is not None:
-            try:
-                probs = self._session.run(None, {self._input_name: obs_arr})[0][0].astype(np.float64, copy=True)
-                leaf_probs = probs[:self._lnh]
-                leaf_probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
-                indices = [int(i) for i in np.argsort(leaf_probs)[::-1] if np.isfinite(leaf_probs[int(i)])]
-                scores = {int(i): float(leaf_probs[int(i)]) for i in indices}
-                return indices, scores
-            except Exception:
-                pass
+        policy_sessions = list(getattr(self, "_policy_sessions", []))
+        if not policy_sessions and self._session is not None and self._input_name is not None:
+            policy_sessions = [{
+                "name": "model_path",
+                "path": "",
+                "session": self._session,
+                "input_name": self._input_name,
+            }]
+
+        if policy_sessions:
+            if self._candidate_union_enabled:
+                candidates: Dict[int, Dict[str, float]] = {}
+                top_k = max(1, int(self._union_top_k_per_model))
+                for policy in policy_sessions:
+                    try:
+                        probs = policy["session"].run(None, {policy["input_name"]: obs_arr})[0][0].astype(np.float64, copy=True)
+                    except Exception:
+                        continue
+
+                    leaf_probs = probs[:self._lnh]
+                    leaf_probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
+                    ranked = [int(i) for i in np.argsort(leaf_probs)[::-1] if np.isfinite(leaf_probs[int(i)])]
+                    for rank, idx in enumerate(ranked[:top_k]):
+                        prob = float(leaf_probs[idx])
+                        item = candidates.setdefault(
+                            idx,
+                            {"votes": 0.0, "best_rank": float("inf"), "best_prob": -float("inf")},
+                        )
+                        item["votes"] += 1.0
+                        item["best_rank"] = min(float(item["best_rank"]), float(rank))
+                        item["best_prob"] = max(float(item["best_prob"]), prob)
+
+                if candidates:
+                    ordered = sorted(
+                        candidates.items(),
+                        key=lambda item: (
+                            item[1]["votes"],
+                            -item[1]["best_rank"],
+                            item[1]["best_prob"],
+                        ),
+                        reverse=True,
+                    )
+                    indices = [int(idx) for idx, _ in ordered]
+                    scores = {int(idx): float(meta["best_prob"]) for idx, meta in ordered}
+                    return indices, scores
+            else:
+                for policy in policy_sessions:
+                    try:
+                        probs = policy["session"].run(None, {policy["input_name"]: obs_arr})[0][0].astype(np.float64, copy=True)
+                        leaf_probs = probs[:self._lnh]
+                        leaf_probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
+                        indices = [int(i) for i in np.argsort(leaf_probs)[::-1] if np.isfinite(leaf_probs[int(i)])]
+                        scores = {int(i): float(leaf_probs[int(i)]) for i in indices}
+                        return indices, scores
+                    except Exception:
+                        continue
 
         valid_indices = [int(i) for i in np.flatnonzero(safe_leaf_region[:, 8] > 0.5)]
         if not valid_indices:
@@ -802,9 +882,58 @@ class Palletizer:
             return []
 
         candidate_indices, policy_scores = self._candidate_leaf_indices(obs_arr, safe_leaf_region)
-        candidates = []
+        candidates = self._build_trial_candidates(
+            box,
+            base_packer,
+            obs_packer,
+            safe_leaf_region,
+            raw_sequence,
+            buffer_index,
+            candidate_indices,
+            policy_scores,
+            len(candidate_indices) if (
+                self._candidate_union_enabled and getattr(self, "_policy_sessions", [])
+            ) else top_k,
+            selector_bonus,
+        )
 
-        for leaf_rank, selected in enumerate(candidate_indices[:top_k]):
+        if not candidates and self._candidate_union_enabled and getattr(self, "_policy_sessions", []):
+            self._candidate_union_enabled = False
+            try:
+                fallback_indices, fallback_scores = self._candidate_leaf_indices(obs_arr, safe_leaf_region)
+            finally:
+                self._candidate_union_enabled = True
+            candidates = self._build_trial_candidates(
+                box,
+                base_packer,
+                obs_packer,
+                safe_leaf_region,
+                raw_sequence,
+                buffer_index,
+                fallback_indices,
+                fallback_scores,
+                max(top_k, int(self._union_fallback_top_k_leaf)),
+                selector_bonus,
+            )
+
+        candidates.sort(key=lambda c: (c["score"], -c["buffer_index"], -c["leaf_rank"]), reverse=True)
+        return candidates
+
+    def _build_trial_candidates(
+        self,
+        box: BoxInput,
+        base_packer,
+        obs_packer,
+        safe_leaf_region: np.ndarray,
+        raw_sequence: List[PlacedBox],
+        buffer_index: int,
+        candidate_indices: List[int],
+        policy_scores: Dict[int, float],
+        candidate_limit: int,
+        selector_bonus: float,
+    ) -> List[Dict]:
+        candidates = []
+        for leaf_rank, selected in enumerate(candidate_indices[:candidate_limit]):
             leaf = safe_leaf_region[selected]
             if float(np.sum(leaf[:6])) == 0.0:
                 continue
@@ -841,8 +970,6 @@ class Palletizer:
                 "raw_placed": raw_placed,
                 "score": float(score),
             })
-
-        candidates.sort(key=lambda c: (c["score"], -c["buffer_index"], -c["leaf_rank"]), reverse=True)
         return candidates
 
     def _plan_one_step(self, current_buffer: List[BoxInput]) -> Optional[Dict]:
@@ -1095,6 +1222,32 @@ class Palletizer:
         )
         return scored[0][1]
 
+    def _plan_non_buffer_candidate_union(self, current_box: BoxInput) -> Optional[Dict]:
+        if not self._candidate_union_enabled or self.algo.buffer_size != 0:
+            return None
+        if self._non_buffer_time_exhausted():
+            return None
+
+        raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
+        score_profile = self._candidate_union_score_profile.strip()
+        old_score_profile = self._score_profile
+        if score_profile:
+            self._score_profile = score_profile
+        try:
+            candidates = self._trial_candidates(
+                current_box,
+                self._packer,
+                raw_sequence,
+                0,
+                self._search_top_k_leaf,
+            )
+        finally:
+            self._score_profile = old_score_profile
+        if not candidates:
+            return None
+
+        return candidates[0]
+
     def _prepare_buffer_search(self, current_buffer: List[BoxInput]) -> None:
         if not self._ensure_packer_for_current_run():
             return
@@ -1289,6 +1442,8 @@ class Palletizer:
 
         if self._search_enabled and self.algo.buffer_size == 0:
             planned = self._plan_non_buffer_lookahead(box)
+            if planned is None:
+                planned = self._plan_non_buffer_candidate_union(box)
             if planned is not None:
                 self._packer = planned["packer"]
                 self._pending_raw_placed = planned["raw_placed"]
@@ -1313,19 +1468,9 @@ class Palletizer:
         if float(safe_leaf_region[:, 8].sum()) <= 0.0:
             return None
 
-        if self._session is not None and self._input_name is not None:
-            try:
-                probs = self._session.run(None, {self._input_name: obs_arr})[0][0].astype(np.float64, copy=True)
-                leaf_probs = probs[:self._lnh]
-                leaf_probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
-                candidate_indices = [int(i) for i in np.argsort(leaf_probs)[::-1] if np.isfinite(leaf_probs[int(i)])]
-                if not candidate_indices:
-                    return None
-            except Exception:
-                candidate_indices = [self._fallback_leaf_index(safe_leaf_region)]
-        else:
-            valid_indices = np.flatnonzero(safe_leaf_region[:, 8] > 0.5)
-            candidate_indices = [int(i) for i in valid_indices]
+        candidate_indices, _ = self._candidate_leaf_indices(obs_arr, safe_leaf_region)
+        if not candidate_indices:
+            return None
 
         for selected in candidate_indices[:20]:
             leaf = safe_leaf_region[selected]

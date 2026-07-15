@@ -1,5 +1,5 @@
-#input_path: random_spec_eval_10/box_sequence
-#output_dir: algorithm_results_eval10
+# input_path: random_spec_eval_10/box_sequence
+# output_dir: algorithm_results_eval10
 input_path: test_box_sequence_250
 output_dir: test_box_sequence_250_result
 #input_path: box_sequence
@@ -24,6 +24,10 @@ search:
   mode: beam                     # one_step 또는 beam
   score_profile: sun_v2     # legacy 또는 geometry_v1
   top_k_leaf: 4
+  candidate_union_enabled: true
+  union_top_k_per_model: 4      # 각 ONNX 모델별 top-K 후보 수 (3개 모델이면 최대 12개 union 후보)
+  union_fallback_top_k_leaf: 20 # union 후보가 전부 실패할 때 첫 정책의 top-K까지 확장
+  candidate_union_score_profile: legacy # no-buffer union rerank 전용 점수
   beam_width: 2
   depth: 2
   non_buffer_enabled: false
@@ -38,4 +42,4 @@ selector:
   enabled: true                  # true면 search score에 selector 점수를 작은 bonus로 추가
   model_path: src/models/buffer_selector.onnx
   buffer_size: 3
-  bonus_weight: 0.50
+  bonus_weight: 0.10
