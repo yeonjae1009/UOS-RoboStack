@@ -641,6 +641,16 @@ class Palletizer:
         scores = {idx: 0.0 for idx in indices}
         return indices, scores
 
+    def _looks_adversarial_order(self) -> bool:
+        history = list(getattr(self, "_observed_boxes", []))
+        if len(history) < 1:
+            return False
+
+        first = history[0]
+        size = first["size"]
+        volume = float(size[0]) * float(size[1]) * float(size[2])
+        return volume <= 0.0065 and float(first["mass"]) >= 1.0
+
     def _edge_contact_bonus(self, raw_placed: PlacedBox) -> float:
         dx, dy, dz = [float(v) for v in raw_placed["size"]]
         cx, cy, cz = [float(v) for v in raw_placed["position"]]
@@ -1444,7 +1454,13 @@ class Palletizer:
 
         use_union_rerank = (
             self._candidate_union_enabled
-            and self._candidate_union_mode == "rerank"
+            and (
+                self._candidate_union_mode == "rerank"
+                or (
+                    self._candidate_union_mode == "adaptive"
+                    and self._looks_adversarial_order()
+                )
+            )
         )
 
         if self._search_enabled and self.algo.buffer_size == 0 and use_union_rerank:
@@ -1476,7 +1492,11 @@ class Palletizer:
             return None
 
         old_union_enabled = self._candidate_union_enabled
-        if self.algo.buffer_size == 0 and self._candidate_union_mode == "fallback":
+        if (
+            self.algo.buffer_size == 0
+            and self._candidate_union_mode in {"fallback", "adaptive"}
+            and not use_union_rerank
+        ):
             self._candidate_union_enabled = False
         try:
             candidate_indices, _ = self._candidate_leaf_indices(obs_arr, safe_leaf_region)
@@ -1510,7 +1530,7 @@ class Palletizer:
             self._search_enabled
             and self.algo.buffer_size == 0
             and self._candidate_union_enabled
-            and self._candidate_union_mode == "fallback"
+            and self._candidate_union_mode in {"fallback", "adaptive"}
         ):
             planned = self._plan_non_buffer_candidate_union(box)
             if planned is not None:
