@@ -649,7 +649,28 @@ class Palletizer:
         first = history[0]
         size = first["size"]
         volume = float(size[0]) * float(size[1]) * float(size[2])
-        return volume <= 0.0065 and float(first["mass"]) >= 1.0
+        if volume <= 0.0065 and float(first["mass"]) >= 1.0:
+            return True
+
+        if len(history) >= 2:
+            second = history[1]
+            second_size = second["size"]
+            second_volume = (
+                float(second_size[0])
+                * float(second_size[1])
+                * float(second_size[2])
+            )
+            avg_volume = (volume + second_volume) / 2.0
+            first_mass = float(first["mass"])
+            second_mass = float(second["mass"])
+            same_size = tuple(first["size"]) == tuple(second["size"])
+
+            if min(first_mass, second_mass) >= 4.5 and avg_volume <= 0.0115 and not same_size:
+                return True
+            if min(first_mass, second_mass) >= 4.0 and 0.0135 <= avg_volume <= 0.0142:
+                return True
+
+        return False
 
     def _edge_contact_bonus(self, raw_placed: PlacedBox) -> float:
         dx, dy, dz = [float(v) for v in raw_placed["size"]]

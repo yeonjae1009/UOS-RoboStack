@@ -1,0 +1,968 @@
+[INFO] input_path            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1
+[INFO] output_dir            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best
+[INFO] buffer_size           : 0
+[INFO] pallet_length         : 1.2
+[INFO] pallet_width          : 1.0
+[INFO] pallet_height         : 1.25
+[INFO] allow_rotation        : True
+[INFO] total_input_files     : 50
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_000.png
+
+[INFO] file_index            : 1/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_000.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_000.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_000.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 80
+[INFO] placed_count          : 80
+[INFO] placed_volume         : 0.973527
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.242500
+[INFO] utilization           : 0.6490
+[INFO] utilization_percent   : 64.90%
+[INFO] terminated            : True
+[INFO] terminated_step       : 80
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.897 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_001.png
+
+[INFO] file_index            : 2/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_001.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_001.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_001.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 89
+[INFO] placed_count          : 89
+[INFO] placed_volume         : 1.035467
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.241000
+[INFO] utilization           : 0.6903
+[INFO] utilization_percent   : 69.03%
+[INFO] terminated            : True
+[INFO] terminated_step       : 89
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.484 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_002.png
+
+[INFO] file_index            : 3/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_002.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_002.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_002.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 90
+[INFO] placed_count          : 90
+[INFO] placed_volume         : 1.014229
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.222000
+[INFO] utilization           : 0.6762
+[INFO] utilization_percent   : 67.62%
+[INFO] terminated            : True
+[INFO] terminated_step       : 90
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.655 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_003.png
+
+[INFO] file_index            : 4/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_003.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_003.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_003.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 83
+[INFO] placed_count          : 83
+[INFO] placed_volume         : 0.990957
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.244000
+[INFO] utilization           : 0.6606
+[INFO] utilization_percent   : 66.06%
+[INFO] terminated            : True
+[INFO] terminated_step       : 83
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.442 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_004.png
+
+[INFO] file_index            : 5/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_004.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_004.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_004.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 92
+[INFO] placed_count          : 92
+[INFO] placed_volume         : 1.037678
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.238000
+[INFO] utilization           : 0.6918
+[INFO] utilization_percent   : 69.18%
+[INFO] terminated            : True
+[INFO] terminated_step       : 92
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.112 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_005.png
+
+[INFO] file_index            : 6/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_005.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_005.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_005.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 79
+[INFO] placed_count          : 79
+[INFO] placed_volume         : 0.906630
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.227500
+[INFO] utilization           : 0.6044
+[INFO] utilization_percent   : 60.44%
+[INFO] terminated            : True
+[INFO] terminated_step       : 79
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.970 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_006.png
+
+[INFO] file_index            : 7/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_006.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_006.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_006.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 84
+[INFO] placed_count          : 84
+[INFO] placed_volume         : 1.021139
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.249500
+[INFO] utilization           : 0.6808
+[INFO] utilization_percent   : 68.08%
+[INFO] terminated            : True
+[INFO] terminated_step       : 84
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.036 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_007.png
+
+[INFO] file_index            : 8/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_007.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_007.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_007.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 86
+[INFO] placed_count          : 86
+[INFO] placed_volume         : 1.018923
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.249000
+[INFO] utilization           : 0.6793
+[INFO] utilization_percent   : 67.93%
+[INFO] terminated            : True
+[INFO] terminated_step       : 86
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.277 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_008.png
+
+[INFO] file_index            : 9/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_008.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_008.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_008.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 88
+[INFO] placed_count          : 88
+[INFO] placed_volume         : 0.992062
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.237500
+[INFO] utilization           : 0.6614
+[INFO] utilization_percent   : 66.14%
+[INFO] terminated            : True
+[INFO] terminated_step       : 88
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.797 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_009.png
+
+[INFO] file_index            : 10/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_009.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_009.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_009.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 94
+[INFO] placed_count          : 94
+[INFO] placed_volume         : 1.058362
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.240000
+[INFO] utilization           : 0.7056
+[INFO] utilization_percent   : 70.56%
+[INFO] terminated            : True
+[INFO] terminated_step       : 94
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.922 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_010.png
+
+[INFO] file_index            : 11/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_010.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_010.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_010.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 81
+[INFO] placed_count          : 81
+[INFO] placed_volume         : 0.961956
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.234500
+[INFO] utilization           : 0.6413
+[INFO] utilization_percent   : 64.13%
+[INFO] terminated            : True
+[INFO] terminated_step       : 81
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.622 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_011.png
+
+[INFO] file_index            : 12/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_011.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_011.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_011.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 86
+[INFO] placed_count          : 86
+[INFO] placed_volume         : 0.984772
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.228000
+[INFO] utilization           : 0.6565
+[INFO] utilization_percent   : 65.65%
+[INFO] terminated            : True
+[INFO] terminated_step       : 86
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.879 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_012.png
+
+[INFO] file_index            : 13/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_012.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_012.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_012.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 84
+[INFO] placed_count          : 84
+[INFO] placed_volume         : 0.982747
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.235000
+[INFO] utilization           : 0.6552
+[INFO] utilization_percent   : 65.52%
+[INFO] terminated            : True
+[INFO] terminated_step       : 84
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.473 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_013.png
+
+[INFO] file_index            : 14/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_013.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_013.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_013.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 86
+[INFO] placed_count          : 86
+[INFO] placed_volume         : 1.023778
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.242500
+[INFO] utilization           : 0.6825
+[INFO] utilization_percent   : 68.25%
+[INFO] terminated            : True
+[INFO] terminated_step       : 86
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.264 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_014.png
+
+[INFO] file_index            : 15/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_014.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_014.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_014.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 92
+[INFO] placed_count          : 92
+[INFO] placed_volume         : 1.059212
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.236000
+[INFO] utilization           : 0.7061
+[INFO] utilization_percent   : 70.61%
+[INFO] terminated            : True
+[INFO] terminated_step       : 92
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.325 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_015.png
+
+[INFO] file_index            : 16/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_015.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_015.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_015.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 84
+[INFO] placed_count          : 84
+[INFO] placed_volume         : 0.990337
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.211500
+[INFO] utilization           : 0.6602
+[INFO] utilization_percent   : 66.02%
+[INFO] terminated            : True
+[INFO] terminated_step       : 84
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.754 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_016.png
+
+[INFO] file_index            : 17/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_016.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_016.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_016.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 84
+[INFO] placed_count          : 84
+[INFO] placed_volume         : 0.959925
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.237500
+[INFO] utilization           : 0.6400
+[INFO] utilization_percent   : 64.00%
+[INFO] terminated            : True
+[INFO] terminated_step       : 84
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.723 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_017.png
+
+[INFO] file_index            : 18/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_017.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_017.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_017.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 90
+[INFO] placed_count          : 90
+[INFO] placed_volume         : 0.984948
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.212500
+[INFO] utilization           : 0.6566
+[INFO] utilization_percent   : 65.66%
+[INFO] terminated            : True
+[INFO] terminated_step       : 90
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.230 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_018.png
+
+[INFO] file_index            : 19/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_018.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_018.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_018.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 93
+[INFO] placed_count          : 93
+[INFO] placed_volume         : 1.078943
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.249000
+[INFO] utilization           : 0.7193
+[INFO] utilization_percent   : 71.93%
+[INFO] terminated            : True
+[INFO] terminated_step       : 93
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.624 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_019.png
+
+[INFO] file_index            : 20/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_019.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_019.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_019.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 90
+[INFO] placed_count          : 90
+[INFO] placed_volume         : 1.062956
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.238500
+[INFO] utilization           : 0.7086
+[INFO] utilization_percent   : 70.86%
+[INFO] terminated            : True
+[INFO] terminated_step       : 90
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.977 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_020.png
+
+[INFO] file_index            : 21/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_020.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_020.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_020.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 82
+[INFO] placed_count          : 82
+[INFO] placed_volume         : 0.907810
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.225500
+[INFO] utilization           : 0.6052
+[INFO] utilization_percent   : 60.52%
+[INFO] terminated            : True
+[INFO] terminated_step       : 82
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.467 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_021.png
+
+[INFO] file_index            : 22/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_021.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_021.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_021.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 79
+[INFO] placed_count          : 79
+[INFO] placed_volume         : 0.901808
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.234000
+[INFO] utilization           : 0.6012
+[INFO] utilization_percent   : 60.12%
+[INFO] terminated            : True
+[INFO] terminated_step       : 79
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.739 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_022.png
+
+[INFO] file_index            : 23/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_022.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_022.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_022.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 89
+[INFO] placed_count          : 89
+[INFO] placed_volume         : 0.998639
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.213000
+[INFO] utilization           : 0.6658
+[INFO] utilization_percent   : 66.58%
+[INFO] terminated            : True
+[INFO] terminated_step       : 89
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.101 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_023.png
+
+[INFO] file_index            : 24/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_023.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_023.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_023.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 81
+[INFO] placed_count          : 81
+[INFO] placed_volume         : 0.927247
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.248500
+[INFO] utilization           : 0.6182
+[INFO] utilization_percent   : 61.82%
+[INFO] terminated            : True
+[INFO] terminated_step       : 81
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.100 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_024.png
+
+[INFO] file_index            : 25/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_024.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_024.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_024.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 87
+[INFO] placed_count          : 87
+[INFO] placed_volume         : 1.013359
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.249500
+[INFO] utilization           : 0.6756
+[INFO] utilization_percent   : 67.56%
+[INFO] terminated            : True
+[INFO] terminated_step       : 87
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.047 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_025.png
+
+[INFO] file_index            : 26/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_025.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_025.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_025.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 82
+[INFO] placed_count          : 82
+[INFO] placed_volume         : 0.906605
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.243500
+[INFO] utilization           : 0.6044
+[INFO] utilization_percent   : 60.44%
+[INFO] terminated            : True
+[INFO] terminated_step       : 82
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.593 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_026.png
+
+[INFO] file_index            : 27/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_026.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_026.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_026.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 96
+[INFO] placed_count          : 96
+[INFO] placed_volume         : 1.087234
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.248000
+[INFO] utilization           : 0.7248
+[INFO] utilization_percent   : 72.48%
+[INFO] terminated            : True
+[INFO] terminated_step       : 96
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.762 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_027.png
+
+[INFO] file_index            : 28/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_027.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_027.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_027.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 79
+[INFO] placed_count          : 79
+[INFO] placed_volume         : 0.962196
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.222000
+[INFO] utilization           : 0.6415
+[INFO] utilization_percent   : 64.15%
+[INFO] terminated            : True
+[INFO] terminated_step       : 79
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.287 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_028.png
+
+[INFO] file_index            : 29/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_028.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_028.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_028.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 93
+[INFO] placed_count          : 93
+[INFO] placed_volume         : 1.034914
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.239500
+[INFO] utilization           : 0.6899
+[INFO] utilization_percent   : 68.99%
+[INFO] terminated            : True
+[INFO] terminated_step       : 93
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.368 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_029.png
+
+[INFO] file_index            : 30/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_029.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_029.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_029.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 85
+[INFO] placed_count          : 85
+[INFO] placed_volume         : 1.030819
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.231000
+[INFO] utilization           : 0.6872
+[INFO] utilization_percent   : 68.72%
+[INFO] terminated            : True
+[INFO] terminated_step       : 85
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.380 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_030.png
+
+[INFO] file_index            : 31/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_030.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_030.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_030.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 82
+[INFO] placed_count          : 82
+[INFO] placed_volume         : 1.002918
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.240500
+[INFO] utilization           : 0.6686
+[INFO] utilization_percent   : 66.86%
+[INFO] terminated            : True
+[INFO] terminated_step       : 82
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.480 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_031.png
+
+[INFO] file_index            : 32/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_031.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_031.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_031.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 89
+[INFO] placed_count          : 89
+[INFO] placed_volume         : 1.022160
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.232500
+[INFO] utilization           : 0.6814
+[INFO] utilization_percent   : 68.14%
+[INFO] terminated            : True
+[INFO] terminated_step       : 89
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.420 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_032.png
+
+[INFO] file_index            : 33/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_032.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_032.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_032.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 85
+[INFO] placed_count          : 85
+[INFO] placed_volume         : 0.912030
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.214000
+[INFO] utilization           : 0.6080
+[INFO] utilization_percent   : 60.80%
+[INFO] terminated            : True
+[INFO] terminated_step       : 85
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.106 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_033.png
+
+[INFO] file_index            : 34/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_033.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_033.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_033.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 78
+[INFO] placed_count          : 78
+[INFO] placed_volume         : 0.962393
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.249500
+[INFO] utilization           : 0.6416
+[INFO] utilization_percent   : 64.16%
+[INFO] terminated            : True
+[INFO] terminated_step       : 78
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.609 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_034.png
+
+[INFO] file_index            : 35/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_034.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_034.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_034.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 77
+[INFO] placed_count          : 77
+[INFO] placed_volume         : 0.860592
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.122500
+[INFO] utilization           : 0.5737
+[INFO] utilization_percent   : 57.37%
+[INFO] terminated            : True
+[INFO] terminated_step       : 77
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.390 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_035.png
+
+[INFO] file_index            : 36/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_035.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_035.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_035.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 90
+[INFO] placed_count          : 90
+[INFO] placed_volume         : 1.007807
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.239000
+[INFO] utilization           : 0.6719
+[INFO] utilization_percent   : 67.19%
+[INFO] terminated            : True
+[INFO] terminated_step       : 90
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.545 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_036.png
+
+[INFO] file_index            : 37/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_036.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_036.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_036.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 78
+[INFO] placed_count          : 78
+[INFO] placed_volume         : 0.952810
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.235500
+[INFO] utilization           : 0.6352
+[INFO] utilization_percent   : 63.52%
+[INFO] terminated            : True
+[INFO] terminated_step       : 78
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.391 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_037.png
+
+[INFO] file_index            : 38/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_037.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_037.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_037.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 93
+[INFO] placed_count          : 93
+[INFO] placed_volume         : 0.999738
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.241000
+[INFO] utilization           : 0.6665
+[INFO] utilization_percent   : 66.65%
+[INFO] terminated            : True
+[INFO] terminated_step       : 93
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.939 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_038.png
+
+[INFO] file_index            : 39/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_038.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_038.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_038.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 83
+[INFO] placed_count          : 83
+[INFO] placed_volume         : 1.024844
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.244000
+[INFO] utilization           : 0.6832
+[INFO] utilization_percent   : 68.32%
+[INFO] terminated            : True
+[INFO] terminated_step       : 83
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.680 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_039.png
+
+[INFO] file_index            : 40/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_039.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_039.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_039.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 81
+[INFO] placed_count          : 81
+[INFO] placed_volume         : 1.004165
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.204000
+[INFO] utilization           : 0.6694
+[INFO] utilization_percent   : 66.94%
+[INFO] terminated            : True
+[INFO] terminated_step       : 81
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.438 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_040.png
+
+[INFO] file_index            : 41/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_040.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_040.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_040.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 88
+[INFO] placed_count          : 88
+[INFO] placed_volume         : 1.026770
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.236500
+[INFO] utilization           : 0.6845
+[INFO] utilization_percent   : 68.45%
+[INFO] terminated            : True
+[INFO] terminated_step       : 88
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.851 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_041.png
+
+[INFO] file_index            : 42/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_041.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_041.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_041.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 73
+[INFO] placed_count          : 73
+[INFO] placed_volume         : 0.832412
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.178000
+[INFO] utilization           : 0.5549
+[INFO] utilization_percent   : 55.49%
+[INFO] terminated            : True
+[INFO] terminated_step       : 73
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.012 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_042.png
+
+[INFO] file_index            : 43/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_042.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_042.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_042.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 84
+[INFO] placed_count          : 84
+[INFO] placed_volume         : 0.956612
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.239500
+[INFO] utilization           : 0.6377
+[INFO] utilization_percent   : 63.77%
+[INFO] terminated            : True
+[INFO] terminated_step       : 84
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.831 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_043.png
+
+[INFO] file_index            : 44/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_043.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_043.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_043.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 86
+[INFO] placed_count          : 86
+[INFO] placed_volume         : 1.005664
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.244000
+[INFO] utilization           : 0.6704
+[INFO] utilization_percent   : 67.04%
+[INFO] terminated            : True
+[INFO] terminated_step       : 86
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.244 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_044.png
+
+[INFO] file_index            : 45/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_044.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_044.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_044.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 82
+[INFO] placed_count          : 82
+[INFO] placed_volume         : 0.993591
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.248500
+[INFO] utilization           : 0.6624
+[INFO] utilization_percent   : 66.24%
+[INFO] terminated            : True
+[INFO] terminated_step       : 82
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.936 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_045.png
+
+[INFO] file_index            : 46/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_045.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_045.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_045.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 84
+[INFO] placed_count          : 84
+[INFO] placed_volume         : 0.969782
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.249500
+[INFO] utilization           : 0.6465
+[INFO] utilization_percent   : 64.65%
+[INFO] terminated            : True
+[INFO] terminated_step       : 84
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.348 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_046.png
+
+[INFO] file_index            : 47/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_046.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_046.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_046.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 82
+[INFO] placed_count          : 82
+[INFO] placed_volume         : 1.009555
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.245500
+[INFO] utilization           : 0.6730
+[INFO] utilization_percent   : 67.30%
+[INFO] terminated            : True
+[INFO] terminated_step       : 82
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.110 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_047.png
+
+[INFO] file_index            : 48/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_047.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_047.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_047.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 85
+[INFO] placed_count          : 85
+[INFO] placed_volume         : 0.992096
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.243500
+[INFO] utilization           : 0.6614
+[INFO] utilization_percent   : 66.14%
+[INFO] terminated            : True
+[INFO] terminated_step       : 85
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.540 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_048.png
+
+[INFO] file_index            : 49/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_048.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_048.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_048.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 88
+[INFO] placed_count          : 88
+[INFO] placed_volume         : 1.021191
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.250000
+[INFO] utilization           : 0.6808
+[INFO] utilization_percent   : 68.08%
+[INFO] terminated            : True
+[INFO] terminated_step       : 88
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.381 sec
+[VIS] matplotlib backend: agg
+[VIS] saved figure: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_049.png
+
+[INFO] file_index            : 50/50
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/box_sequence1/random_spec_049.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/random_spec_049.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_first_model_sweep/fallback_first-1450_1450-1400-best/vis/random_spec_049.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 89
+[INFO] placed_count          : 89
+[INFO] placed_volume         : 1.056335
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.210000
+[INFO] utilization           : 0.7042
+[INFO] utilization_percent   : 70.42%
+[INFO] terminated            : True
+[INFO] terminated_step       : 89
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.173 sec
+
+===================================================
+[INFO] ALL FILES SUMMARY
+===================================================
+[INFO] total_input_files      : 50
+[INFO] total_input_boxes      : 12500
+[INFO] total_output_boxes     : 4265
+[INFO] total_placed_volume    : 49.522643
+[INFO] files_processing_time  : 339.731 sec
+[INFO] total_processing_time  : 339.740 sec
