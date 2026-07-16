@@ -1,0 +1,28 @@
+[
+  {
+    "files": 50,
+    "avg_utilization": 0.6673814117733333,
+    "avg_percent": 66.73814117733333,
+    "avg_count": 86.32,
+    "total_count": 4316,
+    "min_file": "random_spec_025.json",
+    "min_percent": 57.08015966666666,
+    "min_count": 78,
+    "max_file": "random_spec_036.json",
+    "max_percent": 75.65291520000001,
+    "max_count": 94,
+    "terminated_count": 50,
+    "nonzero_buffer_files": 0,
+    "mode": "adaptive",
+    "order": [
+      "src/models/candidate-001400.onnx",
+      "src/models/candidate-001450.onnx",
+      "src/models/pct_model_bestonnx.onnx"
+    ],
+    "order_label": "1400-1450-best",
+    "output_dir": "algorithm_results_order_sweep/adaptive_1400-1450-best",
+    "log": "algorithm_results_order_sweep/adaptive_1400-1450-best.log",
+    "returncode": 0,
+    "elapsed_sec": 390.3914637565613
+  }
+]
