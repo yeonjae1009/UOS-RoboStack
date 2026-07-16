@@ -1,0 +1,10 @@
+{
+  "mode": "mpc_rule",
+  "episode": "validation_edge_geometry_000",
+  "family": "edge_geometry",
+  "fill_pct": 53.412466800000004,
+  "placed_boxes": 79,
+  "runtime_sec": 56.40367952900124,
+  "terminated": true,
+  "terminated_step": 79
+}

@@ -1,0 +1,10 @@
+{
+  "mode": "mpc_rule",
+  "episode": "validation_large_heavy_000",
+  "family": "large_heavy",
+  "fill_pct": 77.98856666666667,
+  "placed_boxes": 60,
+  "runtime_sec": 69.08795876600016,
+  "terminated": true,
+  "terminated_step": 60
+}

@@ -1,0 +1,10 @@
+{
+  "mode": "mpc_rule",
+  "episode": "validation_switch_5sku_000",
+  "family": "switch_5sku",
+  "fill_pct": 58.9995678,
+  "placed_boxes": 71,
+  "runtime_sec": 57.75146329100062,
+  "terminated": true,
+  "terminated_step": 71
+}

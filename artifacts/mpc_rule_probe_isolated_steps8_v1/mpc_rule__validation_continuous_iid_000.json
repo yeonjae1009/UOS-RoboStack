@@ -1,0 +1,10 @@
+{
+  "mode": "mpc_rule",
+  "episode": "validation_continuous_iid_000",
+  "family": "continuous_iid",
+  "fill_pct": 68.38805119999999,
+  "placed_boxes": 85,
+  "runtime_sec": 51.15163015800135,
+  "terminated": true,
+  "terminated_step": 85
+}

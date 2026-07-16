@@ -5,7 +5,7 @@ import copy
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, TypedDict
+from typing import Any, Dict, List, Optional, Tuple, TypedDict
 
 from buffer_manager import BufferManager
 
@@ -122,6 +122,8 @@ class Palletizer:
         self._selector_plan = None
         self._observed_boxes: List[BoxInput] = []
         self._run_deadline: Optional[float] = None
+        self._search_deadline: Optional[float] = None
+        self._mpc_decisions_used = 0
 
     # -----------------------------------------------------------------------
     # 참가자 수정 가능 함수
@@ -176,6 +178,33 @@ class Palletizer:
         self._union_top_k_per_model = 4
         self._union_fallback_top_k_leaf = 20
         self._candidate_union_score_profile = ""
+        self._mpc_root_candidates = 6
+        self._mpc_horizon = 4
+        self._mpc_samples = 8
+        self._mpc_beam_width = 2
+        self._mpc_rollout_top_k = 2
+        self._mpc_search_cutoff_sec = 75.0
+        self._mpc_fallback_reserve_sec = 10.0
+        self._mpc_rule_max_search_steps = 1
+        self._mpc_value_max_search_steps = 8
+        self._mpc_cvar_fraction = 0.25
+        self._mpc_weights = {
+            "expected_volume": 1.00,
+            "cvar_volume": 0.55,
+            "usable_ems": 0.10,
+            "void_fragmentation": -0.08,
+            "height": -0.12,
+            "roughness": -0.10,
+            "support": 0.12,
+            "immediate": 0.18,
+        }
+        self._fallback_model_name = "candidate-001400.onnx"
+        self._value_model_path = "src/models/candidate_value.onnx"
+        self._value_score_weight = 0.35
+        self._value_dagger_metadata_version = "dagger-v2"
+        self._value_session = None
+        self._value_input_name = None
+        self._value_output_name = None
 
         if yaml is None:
             return
@@ -206,6 +235,30 @@ class Palletizer:
         self._union_top_k_per_model = max(1, int(search_cfg.get("union_top_k_per_model", self._union_top_k_per_model)))
         self._union_fallback_top_k_leaf = max(1, int(search_cfg.get("union_fallback_top_k_leaf", self._union_fallback_top_k_leaf)))
         self._candidate_union_score_profile = str(search_cfg.get("candidate_union_score_profile", self._candidate_union_score_profile))
+        self._mpc_root_candidates = max(1, int(search_cfg.get("root_candidates", self._mpc_root_candidates)))
+        self._mpc_horizon = max(1, int(search_cfg.get("horizon", self._mpc_horizon)))
+        self._mpc_samples = max(1, int(search_cfg.get("samples", self._mpc_samples)))
+        self._mpc_beam_width = max(1, int(search_cfg.get("mpc_beam_width", self._mpc_beam_width)))
+        self._mpc_rollout_top_k = max(1, int(search_cfg.get("rollout_top_k", self._mpc_rollout_top_k)))
+        self._mpc_search_cutoff_sec = max(0.0, float(search_cfg.get("search_cutoff_sec", self._mpc_search_cutoff_sec)))
+        self._mpc_fallback_reserve_sec = max(0.0, float(search_cfg.get("fallback_reserve_sec", self._mpc_fallback_reserve_sec)))
+        legacy_max_steps = search_cfg.get("max_search_steps")
+        if legacy_max_steps is not None:
+            self._mpc_rule_max_search_steps = max(0, int(legacy_max_steps))
+            self._mpc_value_max_search_steps = max(0, int(legacy_max_steps))
+        self._mpc_rule_max_search_steps = max(0, int(search_cfg.get("rule_max_search_steps", self._mpc_rule_max_search_steps)))
+        self._mpc_value_max_search_steps = max(0, int(search_cfg.get("value_max_search_steps", self._mpc_value_max_search_steps)))
+        self._mpc_cvar_fraction = min(1.0, max(1e-6, float(search_cfg.get("cvar_fraction", self._mpc_cvar_fraction))))
+        configured_weights = search_cfg.get("mpc_weights", {}) or {}
+        for key in tuple(self._mpc_weights):
+            if key in configured_weights:
+                self._mpc_weights[key] = float(configured_weights[key])
+        self._fallback_model_name = Path(str(search_cfg.get("fallback_model", self._fallback_model_name))).name
+
+        value_cfg = search_cfg.get("value", {}) or {}
+        self._value_model_path = str(value_cfg.get("model_path", self._value_model_path))
+        self._value_score_weight = float(value_cfg.get("score_weight", self._value_score_weight))
+        self._value_dagger_metadata_version = str(value_cfg.get("dagger_metadata_version", self._value_dagger_metadata_version))
 
         selector_cfg = cfg.get("selector", {}) or {}
         self._selector_enabled = bool(selector_cfg.get("enabled", self._selector_enabled))
@@ -305,6 +358,26 @@ class Palletizer:
                     self._selector_session = None
                     self._selector_input_name = None
                     self._selector_enabled = False
+
+            value_path = self._value_model_path
+            if not os.path.isabs(value_path):
+                value_path = str(here / value_path)
+            try:
+                if os.path.exists(value_path):
+                    value_options = ort.SessionOptions()
+                    value_options.intra_op_num_threads = 1
+                    self._value_session = ort.InferenceSession(
+                        value_path,
+                        sess_options=value_options,
+                        providers=["CPUExecutionProvider"],
+                    )
+                    self._value_input_name = self._value_session.get_inputs()[0].name
+                    self._value_output_name = self._value_session.get_outputs()[0].name
+            except Exception:
+                # mpc_value intentionally degrades to mpc_rule.
+                self._value_session = None
+                self._value_input_name = None
+                self._value_output_name = None
 
         self._pct_available = True
         self._policy_ready = True
@@ -573,73 +646,128 @@ class Palletizer:
         obs_arr: np.ndarray,
         safe_leaf_region: np.ndarray,
     ) -> Tuple[List[int], Dict[int, float]]:
-        scores: Dict[int, float] = {}
+        source = "union" if self._candidate_union_enabled else "primary"
+        indices, metadata = self._candidate_leaf_metadata(obs_arr, safe_leaf_region, source)
+        scores = {idx: float(metadata[idx].get("aggregate_probability", 0.0)) for idx in indices}
+        return indices, scores
 
-        policy_sessions = list(getattr(self, "_policy_sessions", []))
-        if not policy_sessions and self._session is not None and self._input_name is not None:
-            policy_sessions = [{
+    def _canonical_policy_sessions(self) -> List[Dict[str, Any]]:
+        sessions = list(getattr(self, "_policy_sessions", []))
+        if not sessions and self._session is not None and self._input_name is not None:
+            sessions = [{
                 "name": "model_path",
                 "path": "",
                 "session": self._session,
                 "input_name": self._input_name,
             }]
+        # Candidate metadata, masks and tie-breaks must not depend on YAML order.
+        return sorted(sessions, key=lambda item: (str(item.get("name", "")), str(item.get("path", ""))))
 
-        if policy_sessions:
-            if self._candidate_union_enabled:
-                candidates: Dict[int, Dict[str, float]] = {}
-                top_k = max(1, int(self._union_top_k_per_model))
-                for policy in policy_sessions:
-                    try:
-                        probs = policy["session"].run(None, {policy["input_name"]: obs_arr})[0][0].astype(np.float64, copy=True)
-                    except Exception:
-                        continue
+    def _calibrated_leaf_probabilities(self, values: np.ndarray, valid_mask: np.ndarray) -> np.ndarray:
+        result = np.zeros((self._lnh,), dtype=np.float64)
+        finite = valid_mask & np.isfinite(values)
+        if not np.any(finite):
+            return result
+        chosen = values[finite].astype(np.float64, copy=True)
+        # Some exports return probabilities, others logits.  Renormalizing the
+        # former and softmaxing the latter gives comparable per-model masses.
+        if np.all(chosen >= 0.0) and np.all(chosen <= 1.0) and float(chosen.sum()) > 0.0:
+            calibrated = chosen / float(chosen.sum())
+        else:
+            chosen -= float(np.max(chosen))
+            calibrated = np.exp(np.clip(chosen, -60.0, 0.0))
+            calibrated /= max(float(calibrated.sum()), 1e-12)
+        result[np.flatnonzero(finite)] = calibrated
+        return result
 
-                    leaf_probs = probs[:self._lnh]
-                    leaf_probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
-                    ranked = [int(i) for i in np.argsort(leaf_probs)[::-1] if np.isfinite(leaf_probs[int(i)])]
-                    for rank, idx in enumerate(ranked[:top_k]):
-                        prob = float(leaf_probs[idx])
-                        item = candidates.setdefault(
-                            idx,
-                            {"votes": 0.0, "best_rank": float("inf"), "best_prob": -float("inf")},
-                        )
-                        item["votes"] += 1.0
-                        item["best_rank"] = min(float(item["best_rank"]), float(rank))
-                        item["best_prob"] = max(float(item["best_prob"]), prob)
+    def _candidate_leaf_metadata(
+        self,
+        obs_arr: np.ndarray,
+        safe_leaf_region: np.ndarray,
+        source: str = "union",
+    ) -> Tuple[List[int], Dict[int, Dict[str, Any]]]:
+        sessions = self._canonical_policy_sessions()
+        if source == "primary" and sessions:
+            sessions = [sessions[0] if not getattr(self, "_policy_sessions", []) else self._policy_sessions[0]]
+        elif source == "fallback":
+            fallback = [item for item in sessions if Path(str(item.get("name", ""))).name == self._fallback_model_name]
+            sessions = fallback[:1]
+        elif source.startswith("model:"):
+            requested = source.split(":", 1)[1]
+            sessions = [item for item in sessions if Path(str(item.get("name", ""))).name == Path(requested).name][:1]
 
-                if candidates:
-                    ordered = sorted(
-                        candidates.items(),
-                        key=lambda item: (
-                            item[1]["votes"],
-                            -item[1]["best_rank"],
-                            item[1]["best_prob"],
-                        ),
-                        reverse=True,
-                    )
-                    indices = [int(idx) for idx, _ in ordered]
-                    scores = {int(idx): float(meta["best_prob"]) for idx, meta in ordered}
-                    return indices, scores
-            else:
-                for policy in policy_sessions:
-                    try:
-                        probs = policy["session"].run(None, {policy["input_name"]: obs_arr})[0][0].astype(np.float64, copy=True)
-                        leaf_probs = probs[:self._lnh]
-                        leaf_probs[safe_leaf_region[:, 8] <= 0.5] = -np.inf
-                        indices = [int(i) for i in np.argsort(leaf_probs)[::-1] if np.isfinite(leaf_probs[int(i)])]
-                        scores = {int(i): float(leaf_probs[int(i)]) for i in indices}
-                        return indices, scores
-                    except Exception:
-                        continue
+        valid_mask = safe_leaf_region[:, 8] > 0.5
+        model_names = [Path(str(item.get("name", "model"))).name for item in self._canonical_policy_sessions()]
+        model_bits = {name: 1 << index for index, name in enumerate(model_names)}
+        metadata: Dict[int, Dict[str, Any]] = {}
+        top_k = max(1, int(self._union_top_k_per_model)) if source == "union" else max(20, int(self._union_fallback_top_k_leaf))
 
-        valid_indices = [int(i) for i in np.flatnonzero(safe_leaf_region[:, 8] > 0.5)]
-        if not valid_indices:
-            return [], scores
+        for policy in sessions:
+            model_name = Path(str(policy.get("name", "model"))).name
+            try:
+                output = policy["session"].run(None, {policy["input_name"]: obs_arr})[0]
+                values = np.asarray(output).reshape(-1)[:self._lnh].astype(np.float64, copy=True)
+            except Exception:
+                continue
+            if values.size < self._lnh:
+                continue
+            calibrated = self._calibrated_leaf_probabilities(values, valid_mask)
+            masked = values.copy()
+            masked[~valid_mask] = -np.inf
+            ranked = sorted(
+                (int(index) for index in np.flatnonzero(np.isfinite(masked))),
+                key=lambda index: (-float(masked[index]), index),
+            )
+            denominator = max(1, len(ranked) - 1)
+            for rank, leaf_index in enumerate(ranked[:top_k]):
+                item = metadata.setdefault(leaf_index, {
+                    "leaf_index": int(leaf_index),
+                    "model_ranks": {},
+                    "model_probabilities": {},
+                    "proposal_mask": 0,
+                    "proposal_models": [],
+                })
+                item["model_ranks"][model_name] = 1.0 - float(rank) / float(denominator)
+                item["model_probabilities"][model_name] = float(calibrated[leaf_index])
+                item["proposal_mask"] = int(item["proposal_mask"]) | int(model_bits.get(model_name, 0))
+                item["proposal_models"].append(model_name)
 
-        fallback = self._fallback_leaf_index(safe_leaf_region)
-        indices = [fallback] + [idx for idx in valid_indices if idx != fallback]
-        scores = {idx: 0.0 for idx in indices}
-        return indices, scores
+        if not metadata:
+            valid_indices = [int(i) for i in np.flatnonzero(valid_mask)]
+            if not valid_indices:
+                return [], {}
+            fallback = self._fallback_leaf_index(safe_leaf_region)
+            ordered = [fallback] + [idx for idx in valid_indices if idx != fallback]
+            metadata = {
+                idx: {
+                    "leaf_index": idx,
+                    "model_ranks": {},
+                    "model_probabilities": {},
+                    "proposal_mask": 0,
+                    "proposal_models": [],
+                    "aggregate_rank": 0.0,
+                    "aggregate_probability": 0.0,
+                }
+                for idx in ordered
+            }
+            return ordered, metadata
+
+        for item in metadata.values():
+            item["proposal_models"] = tuple(sorted(set(item["proposal_models"])))
+            ranks = list(item["model_ranks"].values())
+            probabilities = list(item["model_probabilities"].values())
+            item["aggregate_rank"] = float(sum(ranks) / len(ranks)) if ranks else 0.0
+            item["aggregate_probability"] = float(sum(probabilities) / len(probabilities)) if probabilities else 0.0
+
+        if source == "union":
+            # The union is a set. Geometry/value ranking happens after
+            # placement; leaf index is only a deterministic enumeration key.
+            return sorted(metadata), metadata
+        ordered = sorted(
+            metadata,
+            key=lambda idx: (-float(metadata[idx].get("aggregate_rank", 0.0)), int(idx)),
+        )
+        return ordered, metadata
 
     def _looks_adversarial_order(self) -> bool:
         history = list(getattr(self, "_observed_boxes", []))
@@ -892,6 +1020,7 @@ class Palletizer:
         buffer_index: int,
         top_k: int,
         selector_bonus: float = 0.0,
+        candidate_source: Optional[str] = None,
     ) -> List[Dict]:
         size = [float(box["size"][0]), float(box["size"][1]), float(box["size"][2])]
         density = self._density(box, size)
@@ -914,7 +1043,13 @@ class Palletizer:
         if float(safe_leaf_region[:, 8].sum()) <= 0.0:
             return []
 
-        candidate_indices, policy_scores = self._candidate_leaf_indices(obs_arr, safe_leaf_region)
+        if candidate_source is None:
+            candidate_source = "union" if self._candidate_union_enabled else "primary"
+        candidate_indices, candidate_metadata = self._candidate_leaf_metadata(
+            obs_arr,
+            safe_leaf_region,
+            candidate_source,
+        )
         candidates = self._build_trial_candidates(
             box,
             base_packer,
@@ -923,19 +1058,18 @@ class Palletizer:
             raw_sequence,
             buffer_index,
             candidate_indices,
-            policy_scores,
-            len(candidate_indices) if (
-                self._candidate_union_enabled and getattr(self, "_policy_sessions", [])
-            ) else top_k,
+            candidate_metadata,
+            len(candidate_indices) if candidate_source == "union" else top_k,
             selector_bonus,
+            obs_arr,
         )
 
-        if not candidates and self._candidate_union_enabled and getattr(self, "_policy_sessions", []):
-            self._candidate_union_enabled = False
-            try:
-                fallback_indices, fallback_scores = self._candidate_leaf_indices(obs_arr, safe_leaf_region)
-            finally:
-                self._candidate_union_enabled = True
+        if not candidates and candidate_source == "union":
+            fallback_indices, fallback_metadata = self._candidate_leaf_metadata(
+                obs_arr,
+                safe_leaf_region,
+                "fallback",
+            )
             candidates = self._build_trial_candidates(
                 box,
                 base_packer,
@@ -944,9 +1078,10 @@ class Palletizer:
                 raw_sequence,
                 buffer_index,
                 fallback_indices,
-                fallback_scores,
+                fallback_metadata,
                 max(top_k, int(self._union_fallback_top_k_leaf)),
                 selector_bonus,
+                obs_arr,
             )
 
         candidates.sort(key=lambda c: (c["score"], -c["buffer_index"], -c["leaf_rank"]), reverse=True)
@@ -961,11 +1096,12 @@ class Palletizer:
         raw_sequence: List[PlacedBox],
         buffer_index: int,
         candidate_indices: List[int],
-        policy_scores: Dict[int, float],
+        candidate_metadata: Dict[int, Dict[str, Any]],
         candidate_limit: int,
         selector_bonus: float,
+        obs_arr: Optional[np.ndarray] = None,
     ) -> List[Dict]:
-        candidates = []
+        candidates_by_placement: Dict[Tuple[Any, ...], Dict[str, Any]] = {}
         for leaf_rank, selected in enumerate(candidate_indices[:candidate_limit]):
             leaf = safe_leaf_region[selected]
             if float(np.sum(leaf[:6])) == 0.0:
@@ -985,25 +1121,50 @@ class Palletizer:
                 continue
 
             output, raw_placed = validated
+            metadata = copy.deepcopy(candidate_metadata.get(int(selected), {}))
             score = self._score_trial(
                 raw_sequence,
                 raw_placed,
-                policy_scores.get(int(selected), 0.0),
+                float(metadata.get("aggregate_probability", 0.0)),
                 leaf_rank,
                 base_packer,
                 trial_packer,
             ) + float(selector_bonus)
-            candidates.append({
+            placement_key = (
+                *(round(float(value), 6) for value in output[:3]),
+                *(round(float(value), 6) for value in output[3]),
+                int(output[4]),
+            )
+            candidate = {
                 "box": box,
                 "box_key": self._box_key(box),
                 "buffer_index": int(buffer_index),
                 "leaf_rank": int(leaf_rank),
+                "leaf_index": int(selected),
+                "candidate_metadata": metadata,
+                "placement_key": placement_key,
+                "observation": obs_arr,
+                "safe_leaf": safe_leaf_region[int(selected)].astype(np.float32, copy=True),
                 "packer": trial_packer,
                 "validated": output,
                 "raw_placed": raw_placed,
                 "score": float(score),
-            })
-        return candidates
+            }
+            previous = candidates_by_placement.get(placement_key)
+            if previous is None:
+                candidates_by_placement[placement_key] = candidate
+                continue
+
+            previous_meta = previous["candidate_metadata"]
+            previous_meta["proposal_mask"] = int(previous_meta.get("proposal_mask", 0)) | int(metadata.get("proposal_mask", 0))
+            previous_meta["proposal_models"] = tuple(sorted(set(previous_meta.get("proposal_models", ())) | set(metadata.get("proposal_models", ()))))
+            previous_meta.setdefault("model_ranks", {}).update(metadata.get("model_ranks", {}))
+            previous_meta.setdefault("model_probabilities", {}).update(metadata.get("model_probabilities", {}))
+            if candidate["score"] > previous["score"]:
+                candidate["candidate_metadata"] = previous_meta
+                candidates_by_placement[placement_key] = candidate
+
+        return list(candidates_by_placement.values())
 
     def _plan_one_step(self, current_buffer: List[BoxInput]) -> Optional[Dict]:
         raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
@@ -1281,6 +1442,327 @@ class Palletizer:
 
         return candidates[0]
 
+    def _mpc_search_time_exhausted(self) -> bool:
+        deadline = getattr(self, "_search_deadline", None)
+        return deadline is not None and time.monotonic() >= float(deadline)
+
+    def _fallback_single_candidate(self, box: BoxInput, base_packer=None, raw_sequence=None) -> Optional[Dict]:
+        if base_packer is None:
+            base_packer = self._packer
+        if raw_sequence is None:
+            raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
+        size = [float(value) for value in box["size"]]
+        try:
+            observed_packer = copy.deepcopy(base_packer)
+            observation = observed_packer.observe(size, self._density(box, size))
+            observation = observation.reshape(1, -1, 9).astype(np.float32)
+            leaves = observation[0, self._inh:self._inh + self._lnh]
+            safe_leaves, _ = apply_stability_mask(
+                leaves,
+                observed_packer.space.boxes,
+                size,
+                float(box["mass"]),
+                self._container,
+            )
+            indices, metadata = self._candidate_leaf_metadata(observation, safe_leaves, "fallback")
+        except Exception:
+            return None
+        for leaf_rank, leaf_index in enumerate(indices[:max(20, int(self._union_fallback_top_k_leaf))]):
+            try:
+                trial = copy.deepcopy(observed_packer)
+                if not trial.place(safe_leaves[leaf_index, :6]):
+                    continue
+                validated = self._validate_packed_record(box, trial.packed[-1], raw_sequence)
+            except Exception:
+                continue
+            if validated is None:
+                continue
+            output, raw_placed = validated
+            return {
+                "box": box,
+                "box_key": self._box_key(box),
+                "buffer_index": 0,
+                "leaf_rank": leaf_rank,
+                "leaf_index": leaf_index,
+                "candidate_metadata": metadata.get(leaf_index, {}),
+                "packer": trial,
+                "validated": output,
+                "raw_placed": raw_placed,
+            }
+        return None
+
+    def _mpc_immediate_score(self, candidate: Dict[str, Any], raw_sequence: List[PlacedBox], base_packer) -> float:
+        try:
+            terms = self._geometry_score_terms(
+                raw_sequence,
+                candidate["raw_placed"],
+                base_packer,
+                candidate["packer"],
+            )
+            return float(
+                0.65 * terms["corner_large_anchor"]
+                + 0.40 * terms["wall_anchor"]
+                + 0.50 * terms["tight_fit"]
+                + 0.35 * terms["support_quality"]
+                + 0.25 * terms["void_reduction"]
+                - 0.45 * terms["unsupported_risk"]
+                - 0.25 * terms["high_placement"]
+                - 0.20 * terms["rough_top"]
+            )
+        except Exception:
+            return float(candidate.get("score", 0.0))
+
+    def _normalized_observation(self, observation: np.ndarray) -> np.ndarray:
+        rows = np.asarray(observation, dtype=np.float32).reshape(-1, 9).copy()
+        scale = (float(self.pallet.length), float(self.pallet.width), float(self.pallet.height))
+        for axis in range(3):
+            rows[:, axis] /= max(scale[axis], 1e-9)
+            rows[:, axis + 3] /= max(scale[axis], 1e-9)
+        return rows.reshape(-1)
+
+    def _candidate_value_features(
+        self,
+        candidate: Dict[str, Any],
+        raw_sequence: Optional[List[PlacedBox]] = None,
+    ) -> np.ndarray:
+        observation = candidate.get("observation")
+        if observation is None:
+            observation_features = np.zeros(((self._inh + self._lnh + 1) * 9,), dtype=np.float32)
+        else:
+            observation_features = self._normalized_observation(observation)
+
+        safe_leaf = np.asarray(candidate.get("safe_leaf", np.zeros((9,))), dtype=np.float32).reshape(1, 9)
+        safe_leaf_features = self._normalized_observation(safe_leaf)
+        metadata = candidate.get("candidate_metadata", {})
+        canonical_names = [Path(str(item.get("name", "model"))).name for item in self._canonical_policy_sessions()[:3]]
+        while len(canonical_names) < 3:
+            canonical_names.append(f"__missing_{len(canonical_names)}")
+        rank_features = [float(metadata.get("model_ranks", {}).get(name, 0.0)) for name in canonical_names]
+        probability_features = [float(metadata.get("model_probabilities", {}).get(name, 0.0)) for name in canonical_names]
+
+        if raw_sequence is None:
+            raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
+        try:
+            geometry = self._geometry_score_terms(
+                raw_sequence,
+                candidate["raw_placed"],
+                self._packer if candidate.get("base_packer") is None else candidate["base_packer"],
+                candidate["packer"],
+            )
+        except Exception:
+            geometry = {key: 0.0 for key in (
+                "corner_large_anchor", "wall_anchor", "tight_fit", "support_quality",
+                "void_reduction", "unsupported_risk", "high_placement", "rough_top",
+            )}
+        geometry_features = [float(geometry[key]) for key in (
+            "corner_large_anchor", "wall_anchor", "tight_fit", "support_quality",
+            "void_reduction", "unsupported_risk", "high_placement", "rough_top",
+        )]
+
+        history = list(getattr(self, "_observed_boxes", []))
+        if history:
+            history_array = np.asarray(
+                [[*map(float, box["size"]), float(box["mass"])] for box in history],
+                dtype=np.float32,
+            )
+            divisors = np.asarray([self.pallet.length, self.pallet.width, self.pallet.height, 6.0], dtype=np.float32)
+            history_array /= divisors
+            history_features = [*history_array.mean(axis=0).tolist(), *history_array.std(axis=0).tolist()]
+        else:
+            history_features = [0.0] * 8
+
+        placed_volume = sum(
+            float(item["size"][0]) * float(item["size"][1]) * float(item["size"][2])
+            for item in raw_sequence
+        ) / max(float(self.pallet.length * self.pallet.width * self.pallet.height), 1e-9)
+        scalar_features = [
+            float(candidate.get("leaf_index", 0)) / max(1.0, float(self._lnh - 1)),
+            float(metadata.get("proposal_mask", 0)) / 7.0,
+            min(1.0, float(len(raw_sequence)) / 130.0),
+            float(placed_volume),
+        ]
+        return np.concatenate([
+            observation_features,
+            safe_leaf_features,
+            np.asarray(rank_features + probability_features + geometry_features + history_features + scalar_features, dtype=np.float32),
+        ]).astype(np.float32, copy=False)
+
+    def _score_candidates_with_value(
+        self,
+        candidates: List[Dict[str, Any]],
+        raw_sequence: List[PlacedBox],
+    ) -> Optional[np.ndarray]:
+        if not candidates or self._value_session is None or self._value_input_name is None:
+            return None
+        try:
+            features = np.stack([self._candidate_value_features(candidate, raw_sequence) for candidate in candidates])
+            output = self._value_session.run(
+                [self._value_output_name] if self._value_output_name else None,
+                {self._value_input_name: features},
+            )[0]
+            scores = np.asarray(output, dtype=np.float32).reshape(-1)
+            if scores.size != len(candidates) or not np.all(np.isfinite(scores)):
+                raise ValueError("invalid candidate value output")
+            return scores
+        except Exception:
+            self._value_session = None
+            self._value_input_name = None
+            self._value_output_name = None
+            return None
+
+    def _mpc_terminal_metrics(self, packer, raw_sequence: List[PlacedBox]) -> Dict[str, float]:
+        pallet_volume = max(float(self.pallet.length * self.pallet.width * self.pallet.height), 1e-9)
+        try:
+            ems = np.asarray(packer.space.EMS[:packer.space.NOEMS], dtype=np.float64)
+            extents = np.maximum(0.0, ems[:, 3:6] - ems[:, 0:3]) if ems.size else np.zeros((0, 3))
+            usable = extents[np.all(extents + 1e-9 >= float(self._size_minimum), axis=1)]
+            usable_volume = float(np.prod(usable, axis=1).sum()) / pallet_volume if usable.size else 0.0
+            fragmentation = min(1.0, float(len(usable)) / 40.0)
+        except Exception:
+            usable_volume, fragmentation = 0.0, 1.0
+
+        tops = [float(item["position"][2]) + float(item["size"][2]) / 2.0 for item in raw_sequence]
+        max_height = max(tops, default=0.0) / max(float(self.pallet.height), 1e-9)
+        roughness = float(np.std(np.asarray(tops, dtype=np.float64))) / max(float(self.pallet.height), 1e-9) if tops else 0.0
+        recent_start = max(0, len(raw_sequence) - 8)
+        support_values = [
+            self._support_ratio_for_raw(raw_sequence[:index], raw_sequence[index])
+            for index in range(recent_start, len(raw_sequence))
+        ] or [1.0]
+        return {
+            "usable_ems": min(1.0, usable_volume),
+            "void_fragmentation": fragmentation,
+            "height": min(1.0, max_height),
+            "roughness": min(1.0, roughness),
+            "support": float(sum(support_values) / len(support_values)),
+        }
+
+    def _mpc_rollout_sample(
+        self,
+        root: Dict[str, Any],
+        raw_sequence: List[PlacedBox],
+        future_boxes: List[BoxInput],
+        use_value: bool,
+    ) -> Optional[Dict[str, float]]:
+        beams = [{
+            "packer": root["packer"],
+            "raw_sequence": raw_sequence + [root["raw_placed"]],
+            "volume": 0.0,
+            "terminal_value": 0.0,
+        }]
+        for future_box in future_boxes:
+            if self._mpc_search_time_exhausted():
+                return None
+            expanded = []
+            for beam in beams:
+                candidates = self._trial_candidates(
+                    future_box,
+                    beam["packer"],
+                    beam["raw_sequence"],
+                    0,
+                    self._union_top_k_per_model * max(1, len(self._canonical_policy_sessions())),
+                    candidate_source="union",
+                )
+                for candidate in candidates:
+                    candidate["base_packer"] = beam["packer"]
+                    candidate["immediate_score"] = self._mpc_immediate_score(candidate, beam["raw_sequence"], beam["packer"])
+                candidates.sort(key=lambda item: (-item["immediate_score"], item["placement_key"]))
+                candidates = candidates[:self._mpc_rollout_top_k]
+                value_scores = self._score_candidates_with_value(candidates, beam["raw_sequence"]) if use_value else None
+                for index, candidate in enumerate(candidates):
+                    volume = float(np.prod(np.asarray(candidate["raw_placed"]["size"], dtype=np.float64)))
+                    expanded.append({
+                        "packer": candidate["packer"],
+                        "raw_sequence": beam["raw_sequence"] + [candidate["raw_placed"]],
+                        "volume": float(beam["volume"]) + volume,
+                        "terminal_value": float(value_scores[index]) if value_scores is not None else 0.0,
+                        "order_key": candidate["placement_key"],
+                        "beam_score": float(beam["volume"]) + volume + 0.02 * float(candidate["immediate_score"]),
+                    })
+            if not expanded:
+                break
+            expanded.sort(key=lambda item: (-item["beam_score"], item.get("order_key", ())))
+            beams = expanded[:self._mpc_beam_width]
+
+        best = max(beams, key=lambda item: (float(item["volume"]), float(item.get("terminal_value", 0.0))))
+        return {
+            "volume": float(best["volume"]),
+            "terminal_value": float(best.get("terminal_value", 0.0)),
+            **self._mpc_terminal_metrics(best["packer"], best["raw_sequence"]),
+        }
+
+    def _plan_hybrid_mpc(self, current_box: BoxInput) -> Optional[Dict]:
+        if self._mpc_search_time_exhausted():
+            return None
+        raw_sequence = list(getattr(self, "_raw_sequence", self.sequence))
+        candidates = self._trial_candidates(
+            current_box,
+            self._packer,
+            raw_sequence,
+            0,
+            self._union_top_k_per_model * max(1, len(self._canonical_policy_sessions())),
+            candidate_source="union",
+        )
+        if not candidates:
+            return None
+        for candidate in candidates:
+            candidate["base_packer"] = self._packer
+            candidate["immediate_score"] = self._mpc_immediate_score(candidate, raw_sequence, self._packer)
+
+        use_value = self._candidate_union_mode == "mpc_value" and self._value_session is not None
+        root_value_scores = self._score_candidates_with_value(candidates, raw_sequence) if use_value else None
+        if root_value_scores is None:
+            use_value = False
+            candidates.sort(key=lambda item: (-item["immediate_score"], item["placement_key"]))
+        else:
+            for index, candidate in enumerate(candidates):
+                candidate["root_value"] = float(root_value_scores[index])
+            candidates.sort(key=lambda item: (-item["root_value"], item["placement_key"]))
+        roots = candidates[:self._mpc_root_candidates]
+
+        future_count = max(0, int(self._mpc_horizon) - 1)
+        common_futures = [
+            self._sample_pseudo_future_boxes(current_box, sample_index, future_count)
+            for sample_index in range(self._mpc_samples)
+        ]
+        pallet_volume = max(float(self.pallet.length * self.pallet.width * self.pallet.height), 1e-9)
+        scored: List[Tuple[float, Tuple[Any, ...], Dict[str, Any]]] = []
+        weights = self._mpc_weights
+        for root in roots:
+            sample_metrics = []
+            for future_boxes in common_futures:
+                metrics = self._mpc_rollout_sample(root, raw_sequence, future_boxes, use_value)
+                if metrics is None:
+                    return None
+                sample_metrics.append(metrics)
+            volumes = sorted(float(item["volume"]) / pallet_volume for item in sample_metrics)
+            cvar_count = max(1, int(np.ceil(len(volumes) * self._mpc_cvar_fraction)))
+            expected_volume = float(sum(volumes) / len(volumes)) if volumes else 0.0
+            cvar_volume = float(sum(volumes[:cvar_count]) / cvar_count) if volumes else 0.0
+            averages = {
+                key: float(sum(float(item[key]) for item in sample_metrics) / len(sample_metrics)) if sample_metrics else 0.0
+                for key in ("usable_ems", "void_fragmentation", "height", "roughness", "support", "terminal_value")
+            }
+            score = (
+                weights["expected_volume"] * expected_volume
+                + weights["cvar_volume"] * cvar_volume
+                + weights["usable_ems"] * averages["usable_ems"]
+                + weights["void_fragmentation"] * averages["void_fragmentation"]
+                + weights["height"] * averages["height"]
+                + weights["roughness"] * averages["roughness"]
+                + weights["support"] * averages["support"]
+                + weights["immediate"] * float(root["immediate_score"])
+            )
+            if use_value:
+                score += self._value_score_weight * (
+                    float(root.get("root_value", 0.0)) + averages["terminal_value"]
+                )
+            scored.append((float(score), root["placement_key"], root))
+        if not scored:
+            return None
+        scored.sort(key=lambda item: (-item[0], item[1]))
+        return scored[0][2]
+
     def _prepare_buffer_search(self, current_buffer: List[BoxInput]) -> None:
         if not self._ensure_packer_for_current_run():
             return
@@ -1473,6 +1955,36 @@ class Palletizer:
         if not self._ensure_packer_for_current_run():
             return self._find_position_baseline(box)
 
+        if (
+            self._search_enabled
+            and self.algo.buffer_size == 0
+            and self._candidate_union_enabled
+            and self._candidate_union_mode in {"mpc_rule", "mpc_value"}
+        ):
+            planned = None
+            max_search_steps = (
+                self._mpc_value_max_search_steps
+                if self._candidate_union_mode == "mpc_value"
+                else self._mpc_rule_max_search_steps
+            )
+            if (
+                self._mpc_decisions_used < max_search_steps
+                and not self._mpc_search_time_exhausted()
+            ):
+                try:
+                    planned = self._plan_hybrid_mpc(box)
+                except Exception:
+                    planned = None
+                if planned is not None:
+                    self._mpc_decisions_used += 1
+            if planned is None:
+                planned = self._fallback_single_candidate(box)
+            if planned is None:
+                return None
+            self._packer = planned["packer"]
+            self._pending_raw_placed = planned["raw_placed"]
+            return planned["validated"]
+
         use_union_rerank = (
             self._candidate_union_enabled
             and (
@@ -1601,7 +2113,13 @@ class Palletizer:
     def run(self, boxes: List[BoxInput]) -> RunResult:
         self._reset_state()
         if self.algo.buffer_size == 0 and self._non_buffer_time_budget_sec > 0.0:
-            self._run_deadline = time.monotonic() + float(self._non_buffer_time_budget_sec)
+            started = time.monotonic()
+            self._run_deadline = started + float(self._non_buffer_time_budget_sec)
+            cutoff = min(
+                float(self._mpc_search_cutoff_sec),
+                max(0.0, float(self._non_buffer_time_budget_sec) - float(self._mpc_fallback_reserve_sec)),
+            )
+            self._search_deadline = started + max(0.0, cutoff)
 
         buf = BufferManager(self.algo.buffer_size)
         buf.reset(boxes)

@@ -1,0 +1,1344 @@
+[INFO] input_path            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences
+[INFO] output_dir            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400
+[INFO] buffer_size           : 0
+[INFO] pallet_length         : 1.2
+[INFO] pallet_width          : 1.0
+[INFO] pallet_height         : 1.25
+[INFO] allow_rotation        : True
+[INFO] total_input_files     : 78
+
+[INFO] file_index            : 1/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_000.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_000.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_000.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 88
+[INFO] placed_count          : 88
+[INFO] placed_volume         : 1.051123
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.245500
+[INFO] utilization           : 0.7007
+[INFO] utilization_percent   : 70.07%
+[INFO] terminated            : True
+[INFO] terminated_step       : 88
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.719 sec
+
+[INFO] file_index            : 2/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_001.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_001.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_001.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 96
+[INFO] placed_count          : 96
+[INFO] placed_volume         : 1.057225
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.246500
+[INFO] utilization           : 0.7048
+[INFO] utilization_percent   : 70.48%
+[INFO] terminated            : True
+[INFO] terminated_step       : 96
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 16.085 sec
+
+[INFO] file_index            : 3/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_002.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_002.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_002.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 84
+[INFO] placed_count          : 84
+[INFO] placed_volume         : 0.990552
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.239000
+[INFO] utilization           : 0.6604
+[INFO] utilization_percent   : 66.04%
+[INFO] terminated            : True
+[INFO] terminated_step       : 84
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 13.068 sec
+
+[INFO] file_index            : 4/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_003.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_003.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_003.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 78
+[INFO] placed_count          : 78
+[INFO] placed_volume         : 0.945955
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.225000
+[INFO] utilization           : 0.6306
+[INFO] utilization_percent   : 63.06%
+[INFO] terminated            : True
+[INFO] terminated_step       : 78
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 9.332 sec
+
+[INFO] file_index            : 5/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_004.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_004.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_004.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 95
+[INFO] placed_count          : 95
+[INFO] placed_volume         : 1.045973
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.235000
+[INFO] utilization           : 0.6973
+[INFO] utilization_percent   : 69.73%
+[INFO] terminated            : True
+[INFO] terminated_step       : 95
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 13.833 sec
+
+[INFO] file_index            : 6/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_005.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_005.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_005.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 77
+[INFO] placed_count          : 77
+[INFO] placed_volume         : 0.924466
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.237000
+[INFO] utilization           : 0.6163
+[INFO] utilization_percent   : 61.63%
+[INFO] terminated            : True
+[INFO] terminated_step       : 77
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 12.648 sec
+
+[INFO] file_index            : 7/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_006.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_006.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_006.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 83
+[INFO] placed_count          : 83
+[INFO] placed_volume         : 1.009793
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.214500
+[INFO] utilization           : 0.6732
+[INFO] utilization_percent   : 67.32%
+[INFO] terminated            : True
+[INFO] terminated_step       : 83
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 10.217 sec
+
+[INFO] file_index            : 8/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_007.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_007.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_007.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 91
+[INFO] placed_count          : 91
+[INFO] placed_volume         : 1.093481
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.242500
+[INFO] utilization           : 0.7290
+[INFO] utilization_percent   : 72.90%
+[INFO] terminated            : True
+[INFO] terminated_step       : 91
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 11.199 sec
+
+[INFO] file_index            : 9/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_008.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_008.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_008.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 78
+[INFO] placed_count          : 78
+[INFO] placed_volume         : 0.933459
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.225000
+[INFO] utilization           : 0.6223
+[INFO] utilization_percent   : 62.23%
+[INFO] terminated            : True
+[INFO] terminated_step       : 78
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 11.204 sec
+
+[INFO] file_index            : 10/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_009.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_009.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_009.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 89
+[INFO] placed_count          : 89
+[INFO] placed_volume         : 1.006973
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.227000
+[INFO] utilization           : 0.6713
+[INFO] utilization_percent   : 67.13%
+[INFO] terminated            : True
+[INFO] terminated_step       : 89
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 12.078 sec
+
+[INFO] file_index            : 11/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_010.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_010.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_010.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 83
+[INFO] placed_count          : 83
+[INFO] placed_volume         : 1.003322
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.232000
+[INFO] utilization           : 0.6689
+[INFO] utilization_percent   : 66.89%
+[INFO] terminated            : True
+[INFO] terminated_step       : 83
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 13.506 sec
+
+[INFO] file_index            : 12/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_011.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_011.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_011.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 93
+[INFO] placed_count          : 93
+[INFO] placed_volume         : 1.102667
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.243500
+[INFO] utilization           : 0.7351
+[INFO] utilization_percent   : 73.51%
+[INFO] terminated            : True
+[INFO] terminated_step       : 93
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.168 sec
+
+[INFO] file_index            : 13/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_012.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_012.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_012.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 101
+[INFO] placed_count          : 101
+[INFO] placed_volume         : 1.128918
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.245500
+[INFO] utilization           : 0.7526
+[INFO] utilization_percent   : 75.26%
+[INFO] terminated            : True
+[INFO] terminated_step       : 101
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 14.226 sec
+
+[INFO] file_index            : 14/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_013.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_013.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_013.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 91
+[INFO] placed_count          : 91
+[INFO] placed_volume         : 1.049235
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.246500
+[INFO] utilization           : 0.6995
+[INFO] utilization_percent   : 69.95%
+[INFO] terminated            : True
+[INFO] terminated_step       : 91
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 13.334 sec
+
+[INFO] file_index            : 15/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_014.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_014.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_014.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 74
+[INFO] placed_count          : 74
+[INFO] placed_volume         : 0.875760
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.235500
+[INFO] utilization           : 0.5838
+[INFO] utilization_percent   : 58.38%
+[INFO] terminated            : True
+[INFO] terminated_step       : 74
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.473 sec
+
+[INFO] file_index            : 16/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_015.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_015.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_015.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 85
+[INFO] placed_count          : 85
+[INFO] placed_volume         : 1.025231
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.244500
+[INFO] utilization           : 0.6835
+[INFO] utilization_percent   : 68.35%
+[INFO] terminated            : True
+[INFO] terminated_step       : 85
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.788 sec
+
+[INFO] file_index            : 17/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_016.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_016.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_016.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 86
+[INFO] placed_count          : 86
+[INFO] placed_volume         : 1.043947
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.250000
+[INFO] utilization           : 0.6960
+[INFO] utilization_percent   : 69.60%
+[INFO] terminated            : True
+[INFO] terminated_step       : 86
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.940 sec
+
+[INFO] file_index            : 18/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_017.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_017.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_017.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 82
+[INFO] placed_count          : 82
+[INFO] placed_volume         : 0.948773
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.246000
+[INFO] utilization           : 0.6325
+[INFO] utilization_percent   : 63.25%
+[INFO] terminated            : True
+[INFO] terminated_step       : 82
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 9.250 sec
+
+[INFO] file_index            : 19/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_018.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_018.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_018.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 92
+[INFO] placed_count          : 92
+[INFO] placed_volume         : 1.069898
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.220500
+[INFO] utilization           : 0.7133
+[INFO] utilization_percent   : 71.33%
+[INFO] terminated            : True
+[INFO] terminated_step       : 92
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 11.194 sec
+
+[INFO] file_index            : 20/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_019.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_019.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_019.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 85
+[INFO] placed_count          : 85
+[INFO] placed_volume         : 1.032076
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.246500
+[INFO] utilization           : 0.6881
+[INFO] utilization_percent   : 68.81%
+[INFO] terminated            : True
+[INFO] terminated_step       : 85
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.474 sec
+
+[INFO] file_index            : 21/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_020.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_020.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_020.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 92
+[INFO] placed_count          : 92
+[INFO] placed_volume         : 1.110165
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.247000
+[INFO] utilization           : 0.7401
+[INFO] utilization_percent   : 74.01%
+[INFO] terminated            : True
+[INFO] terminated_step       : 92
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.632 sec
+
+[INFO] file_index            : 22/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_021.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_021.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_021.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 86
+[INFO] placed_count          : 86
+[INFO] placed_volume         : 0.977867
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.221000
+[INFO] utilization           : 0.6519
+[INFO] utilization_percent   : 65.19%
+[INFO] terminated            : True
+[INFO] terminated_step       : 86
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.843 sec
+
+[INFO] file_index            : 23/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_022.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_022.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_022.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 80
+[INFO] placed_count          : 80
+[INFO] placed_volume         : 0.923199
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.231000
+[INFO] utilization           : 0.6155
+[INFO] utilization_percent   : 61.55%
+[INFO] terminated            : True
+[INFO] terminated_step       : 80
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 15.157 sec
+
+[INFO] file_index            : 24/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_023.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_023.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_023.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 83
+[INFO] placed_count          : 83
+[INFO] placed_volume         : 0.965231
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.202500
+[INFO] utilization           : 0.6435
+[INFO] utilization_percent   : 64.35%
+[INFO] terminated            : True
+[INFO] terminated_step       : 83
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.245 sec
+
+[INFO] file_index            : 25/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_024.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_024.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_024.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 94
+[INFO] placed_count          : 94
+[INFO] placed_volume         : 1.062662
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.198500
+[INFO] utilization           : 0.7084
+[INFO] utilization_percent   : 70.84%
+[INFO] terminated            : True
+[INFO] terminated_step       : 94
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.480 sec
+
+[INFO] file_index            : 26/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_025.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_025.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_025.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 72
+[INFO] placed_count          : 72
+[INFO] placed_volume         : 0.836350
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.210000
+[INFO] utilization           : 0.5576
+[INFO] utilization_percent   : 55.76%
+[INFO] terminated            : True
+[INFO] terminated_step       : 72
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.127 sec
+
+[INFO] file_index            : 27/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_026.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_026.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_026.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 93
+[INFO] placed_count          : 93
+[INFO] placed_volume         : 1.044984
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.250000
+[INFO] utilization           : 0.6967
+[INFO] utilization_percent   : 69.67%
+[INFO] terminated            : True
+[INFO] terminated_step       : 93
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.506 sec
+
+[INFO] file_index            : 28/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_027.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_027.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_027.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 92
+[INFO] placed_count          : 92
+[INFO] placed_volume         : 1.060858
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.227500
+[INFO] utilization           : 0.7072
+[INFO] utilization_percent   : 70.72%
+[INFO] terminated            : True
+[INFO] terminated_step       : 92
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 9.551 sec
+
+[INFO] file_index            : 29/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_028.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_028.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_028.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 86
+[INFO] placed_count          : 86
+[INFO] placed_volume         : 1.045901
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.249500
+[INFO] utilization           : 0.6973
+[INFO] utilization_percent   : 69.73%
+[INFO] terminated            : True
+[INFO] terminated_step       : 86
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.888 sec
+
+[INFO] file_index            : 30/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_029.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_029.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_029.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 83
+[INFO] placed_count          : 83
+[INFO] placed_volume         : 0.940519
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.235000
+[INFO] utilization           : 0.6270
+[INFO] utilization_percent   : 62.70%
+[INFO] terminated            : True
+[INFO] terminated_step       : 83
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 11.942 sec
+
+[INFO] file_index            : 31/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_030.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_030.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_030.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 83
+[INFO] placed_count          : 83
+[INFO] placed_volume         : 0.987451
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.234000
+[INFO] utilization           : 0.6583
+[INFO] utilization_percent   : 65.83%
+[INFO] terminated            : True
+[INFO] terminated_step       : 83
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 9.900 sec
+
+[INFO] file_index            : 32/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_031.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_031.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_031.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 80
+[INFO] placed_count          : 80
+[INFO] placed_volume         : 0.990074
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.247500
+[INFO] utilization           : 0.6600
+[INFO] utilization_percent   : 66.00%
+[INFO] terminated            : True
+[INFO] terminated_step       : 80
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.451 sec
+
+[INFO] file_index            : 33/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_032.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_032.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_032.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 91
+[INFO] placed_count          : 91
+[INFO] placed_volume         : 1.038851
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.240000
+[INFO] utilization           : 0.6926
+[INFO] utilization_percent   : 69.26%
+[INFO] terminated            : True
+[INFO] terminated_step       : 91
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 10.288 sec
+
+[INFO] file_index            : 34/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_033.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_033.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_033.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 90
+[INFO] placed_count          : 90
+[INFO] placed_volume         : 1.007076
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.243000
+[INFO] utilization           : 0.6714
+[INFO] utilization_percent   : 67.14%
+[INFO] terminated            : True
+[INFO] terminated_step       : 90
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 18.004 sec
+
+[INFO] file_index            : 35/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_034.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_034.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_034.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 86
+[INFO] placed_count          : 86
+[INFO] placed_volume         : 1.027556
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.243500
+[INFO] utilization           : 0.6850
+[INFO] utilization_percent   : 68.50%
+[INFO] terminated            : True
+[INFO] terminated_step       : 86
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 27.369 sec
+
+[INFO] file_index            : 36/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_035.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_035.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_035.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 83
+[INFO] placed_count          : 83
+[INFO] placed_volume         : 1.026711
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.250000
+[INFO] utilization           : 0.6845
+[INFO] utilization_percent   : 68.45%
+[INFO] terminated            : True
+[INFO] terminated_step       : 83
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 9.235 sec
+
+[INFO] file_index            : 37/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_036.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_036.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_036.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 77
+[INFO] placed_count          : 77
+[INFO] placed_volume         : 0.921697
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.236000
+[INFO] utilization           : 0.6145
+[INFO] utilization_percent   : 61.45%
+[INFO] terminated            : True
+[INFO] terminated_step       : 77
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.183 sec
+
+[INFO] file_index            : 38/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_037.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_037.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_037.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 91
+[INFO] placed_count          : 91
+[INFO] placed_volume         : 1.070599
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.247500
+[INFO] utilization           : 0.7137
+[INFO] utilization_percent   : 71.37%
+[INFO] terminated            : True
+[INFO] terminated_step       : 91
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 11.981 sec
+
+[INFO] file_index            : 39/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_038.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_038.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_038.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 95
+[INFO] placed_count          : 95
+[INFO] placed_volume         : 1.102221
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.246000
+[INFO] utilization           : 0.7348
+[INFO] utilization_percent   : 73.48%
+[INFO] terminated            : True
+[INFO] terminated_step       : 95
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 9.033 sec
+
+[INFO] file_index            : 40/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_039.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_039.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_039.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 89
+[INFO] placed_count          : 89
+[INFO] placed_volume         : 1.118325
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.250000
+[INFO] utilization           : 0.7456
+[INFO] utilization_percent   : 74.56%
+[INFO] terminated            : True
+[INFO] terminated_step       : 89
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 6.223 sec
+
+[INFO] file_index            : 41/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_040.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_040.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_040.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 86
+[INFO] placed_count          : 86
+[INFO] placed_volume         : 0.982345
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.250000
+[INFO] utilization           : 0.6549
+[INFO] utilization_percent   : 65.49%
+[INFO] terminated            : True
+[INFO] terminated_step       : 86
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.052 sec
+
+[INFO] file_index            : 42/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_041.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_041.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_041.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 82
+[INFO] placed_count          : 82
+[INFO] placed_volume         : 0.987867
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.228500
+[INFO] utilization           : 0.6586
+[INFO] utilization_percent   : 65.86%
+[INFO] terminated            : True
+[INFO] terminated_step       : 82
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.343 sec
+
+[INFO] file_index            : 43/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_042.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_042.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_042.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 92
+[INFO] placed_count          : 92
+[INFO] placed_volume         : 1.081146
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.247000
+[INFO] utilization           : 0.7208
+[INFO] utilization_percent   : 72.08%
+[INFO] terminated            : True
+[INFO] terminated_step       : 92
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 11.024 sec
+
+[INFO] file_index            : 44/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_043.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_043.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_043.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 82
+[INFO] placed_count          : 82
+[INFO] placed_volume         : 0.914500
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.249500
+[INFO] utilization           : 0.6097
+[INFO] utilization_percent   : 60.97%
+[INFO] terminated            : True
+[INFO] terminated_step       : 82
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.245 sec
+
+[INFO] file_index            : 45/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_044.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_044.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_044.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 91
+[INFO] placed_count          : 91
+[INFO] placed_volume         : 1.013875
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.246500
+[INFO] utilization           : 0.6759
+[INFO] utilization_percent   : 67.59%
+[INFO] terminated            : True
+[INFO] terminated_step       : 91
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 10.667 sec
+
+[INFO] file_index            : 46/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_045.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_045.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_045.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 74
+[INFO] placed_count          : 74
+[INFO] placed_volume         : 0.960568
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.250000
+[INFO] utilization           : 0.6404
+[INFO] utilization_percent   : 64.04%
+[INFO] terminated            : True
+[INFO] terminated_step       : 74
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.507 sec
+
+[INFO] file_index            : 47/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_046.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_046.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_046.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 87
+[INFO] placed_count          : 87
+[INFO] placed_volume         : 1.035781
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.243500
+[INFO] utilization           : 0.6905
+[INFO] utilization_percent   : 69.05%
+[INFO] terminated            : True
+[INFO] terminated_step       : 87
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.991 sec
+
+[INFO] file_index            : 48/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_047.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_047.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_047.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 83
+[INFO] placed_count          : 83
+[INFO] placed_volume         : 0.958040
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.242000
+[INFO] utilization           : 0.6387
+[INFO] utilization_percent   : 63.87%
+[INFO] terminated            : True
+[INFO] terminated_step       : 83
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.917 sec
+
+[INFO] file_index            : 49/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_048.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_048.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_048.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 49
+[INFO] placed_count          : 49
+[INFO] placed_volume         : 0.589853
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.109000
+[INFO] utilization           : 0.3932
+[INFO] utilization_percent   : 39.32%
+[INFO] terminated            : True
+[INFO] terminated_step       : 49
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 4.144 sec
+
+[INFO] file_index            : 50/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/continuous_iid_049.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/continuous_iid_049.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/continuous_iid_049.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 89
+[INFO] placed_count          : 89
+[INFO] placed_volume         : 1.026125
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.229000
+[INFO] utilization           : 0.6841
+[INFO] utilization_percent   : 68.41%
+[INFO] terminated            : True
+[INFO] terminated_step       : 89
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 10.598 sec
+
+[INFO] file_index            : 51/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_000.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_000.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_000.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 82
+[INFO] placed_count          : 82
+[INFO] placed_volume         : 0.929835
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.223000
+[INFO] utilization           : 0.6199
+[INFO] utilization_percent   : 61.99%
+[INFO] terminated            : True
+[INFO] terminated_step       : 82
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 21.597 sec
+
+[INFO] file_index            : 52/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_001.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_001.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_001.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 81
+[INFO] placed_count          : 81
+[INFO] placed_volume         : 0.943404
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.196500
+[INFO] utilization           : 0.6289
+[INFO] utilization_percent   : 62.89%
+[INFO] terminated            : True
+[INFO] terminated_step       : 81
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 9.055 sec
+
+[INFO] file_index            : 53/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_002.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_002.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_002.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 75
+[INFO] placed_count          : 75
+[INFO] placed_volume         : 0.872712
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.145500
+[INFO] utilization           : 0.5818
+[INFO] utilization_percent   : 58.18%
+[INFO] terminated            : True
+[INFO] terminated_step       : 75
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 7.045 sec
+
+[INFO] file_index            : 54/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_003.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_003.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_003.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 62
+[INFO] placed_count          : 62
+[INFO] placed_volume         : 0.753505
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.177000
+[INFO] utilization           : 0.5023
+[INFO] utilization_percent   : 50.23%
+[INFO] terminated            : True
+[INFO] terminated_step       : 62
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.889 sec
+
+[INFO] file_index            : 55/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_004.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_004.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_004.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 71
+[INFO] placed_count          : 71
+[INFO] placed_volume         : 0.914388
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.184500
+[INFO] utilization           : 0.6096
+[INFO] utilization_percent   : 60.96%
+[INFO] terminated            : True
+[INFO] terminated_step       : 71
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 5.395 sec
+
+[INFO] file_index            : 56/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_005.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_005.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_005.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 91
+[INFO] placed_count          : 91
+[INFO] placed_volume         : 0.989788
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.221000
+[INFO] utilization           : 0.6599
+[INFO] utilization_percent   : 65.99%
+[INFO] terminated            : True
+[INFO] terminated_step       : 91
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 8.702 sec
+
+[INFO] file_index            : 57/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_006.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_006.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_006.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 91
+[INFO] placed_count          : 91
+[INFO] placed_volume         : 1.030078
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.219500
+[INFO] utilization           : 0.6867
+[INFO] utilization_percent   : 68.67%
+[INFO] terminated            : True
+[INFO] terminated_step       : 91
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 11.009 sec
+
+[INFO] file_index            : 58/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_007.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_007.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_007.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 90
+[INFO] placed_count          : 90
+[INFO] placed_volume         : 1.086144
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.247000
+[INFO] utilization           : 0.7241
+[INFO] utilization_percent   : 72.41%
+[INFO] terminated            : True
+[INFO] terminated_step       : 90
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 11.260 sec
+
+[INFO] file_index            : 59/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_008.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_008.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_008.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 80
+[INFO] placed_count          : 80
+[INFO] placed_volume         : 0.962418
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.193000
+[INFO] utilization           : 0.6416
+[INFO] utilization_percent   : 64.16%
+[INFO] terminated            : True
+[INFO] terminated_step       : 80
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 11.178 sec
+
+[INFO] file_index            : 60/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/edge_geometry_009.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/edge_geometry_009.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/edge_geometry_009.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 84
+[INFO] placed_count          : 84
+[INFO] placed_volume         : 1.010866
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.201000
+[INFO] utilization           : 0.6739
+[INFO] utilization_percent   : 67.39%
+[INFO] terminated            : True
+[INFO] terminated_step       : 84
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 12.567 sec
+
+[INFO] file_index            : 61/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/large_heavy_000.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/large_heavy_000.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/large_heavy_000.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 50
+[INFO] placed_count          : 50
+[INFO] placed_volume         : 0.979980
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.215500
+[INFO] utilization           : 0.6533
+[INFO] utilization_percent   : 65.33%
+[INFO] terminated            : True
+[INFO] terminated_step       : 50
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 4.413 sec
+
+[INFO] file_index            : 62/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/large_heavy_001.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/large_heavy_001.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/large_heavy_001.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 59
+[INFO] placed_count          : 59
+[INFO] placed_volume         : 1.157598
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.234000
+[INFO] utilization           : 0.7717
+[INFO] utilization_percent   : 77.17%
+[INFO] terminated            : True
+[INFO] terminated_step       : 59
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 4.418 sec
+
+[INFO] file_index            : 63/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/large_heavy_002.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/large_heavy_002.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/large_heavy_002.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 41
+[INFO] placed_count          : 41
+[INFO] placed_volume         : 0.800604
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.180000
+[INFO] utilization           : 0.5337
+[INFO] utilization_percent   : 53.37%
+[INFO] terminated            : True
+[INFO] terminated_step       : 41
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 1.867 sec
+
+[INFO] file_index            : 64/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/large_heavy_003.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/large_heavy_003.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/large_heavy_003.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 53
+[INFO] placed_count          : 53
+[INFO] placed_volume         : 1.024706
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.207000
+[INFO] utilization           : 0.6831
+[INFO] utilization_percent   : 68.31%
+[INFO] terminated            : True
+[INFO] terminated_step       : 53
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 4.212 sec
+
+[INFO] file_index            : 65/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/large_heavy_004.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/large_heavy_004.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/large_heavy_004.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 54
+[INFO] placed_count          : 54
+[INFO] placed_volume         : 1.069614
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.243500
+[INFO] utilization           : 0.7131
+[INFO] utilization_percent   : 71.31%
+[INFO] terminated            : True
+[INFO] terminated_step       : 54
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 3.966 sec
+
+[INFO] file_index            : 66/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/large_heavy_005.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/large_heavy_005.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/large_heavy_005.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 57
+[INFO] placed_count          : 57
+[INFO] placed_volume         : 1.096830
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.222000
+[INFO] utilization           : 0.7312
+[INFO] utilization_percent   : 73.12%
+[INFO] terminated            : True
+[INFO] terminated_step       : 57
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 4.556 sec
+
+[INFO] file_index            : 67/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/small_dense_000.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/small_dense_000.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/small_dense_000.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 130
+[INFO] placed_count          : 130
+[INFO] placed_volume         : 0.846175
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.022500
+[INFO] utilization           : 0.5641
+[INFO] utilization_percent   : 56.41%
+[INFO] terminated            : False
+[INFO] terminated_step       : None
+[INFO] finished_by_user      : True
+[INFO] file_processing_time  : 32.432 sec
+
+[INFO] file_index            : 68/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/small_dense_001.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/small_dense_001.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/small_dense_001.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 130
+[INFO] placed_count          : 130
+[INFO] placed_volume         : 0.822846
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.242500
+[INFO] utilization           : 0.5486
+[INFO] utilization_percent   : 54.86%
+[INFO] terminated            : False
+[INFO] terminated_step       : None
+[INFO] finished_by_user      : True
+[INFO] file_processing_time  : 45.235 sec
+
+[INFO] file_index            : 69/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/small_dense_002.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/small_dense_002.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/small_dense_002.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 130
+[INFO] placed_count          : 130
+[INFO] placed_volume         : 0.812132
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.171500
+[INFO] utilization           : 0.5414
+[INFO] utilization_percent   : 54.14%
+[INFO] terminated            : False
+[INFO] terminated_step       : None
+[INFO] finished_by_user      : True
+[INFO] file_processing_time  : 24.485 sec
+
+[INFO] file_index            : 70/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/small_dense_003.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/small_dense_003.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/small_dense_003.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 130
+[INFO] placed_count          : 130
+[INFO] placed_volume         : 0.841071
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.182000
+[INFO] utilization           : 0.5607
+[INFO] utilization_percent   : 56.07%
+[INFO] terminated            : False
+[INFO] terminated_step       : None
+[INFO] finished_by_user      : True
+[INFO] file_processing_time  : 26.695 sec
+
+[INFO] file_index            : 71/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/small_dense_004.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/small_dense_004.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/small_dense_004.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 130
+[INFO] placed_count          : 130
+[INFO] placed_volume         : 0.847488
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.194500
+[INFO] utilization           : 0.5650
+[INFO] utilization_percent   : 56.50%
+[INFO] terminated            : False
+[INFO] terminated_step       : None
+[INFO] finished_by_user      : True
+[INFO] file_processing_time  : 34.828 sec
+
+[INFO] file_index            : 72/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/small_dense_005.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/small_dense_005.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/small_dense_005.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 130
+[INFO] placed_count          : 130
+[INFO] placed_volume         : 0.810936
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.184500
+[INFO] utilization           : 0.5406
+[INFO] utilization_percent   : 54.06%
+[INFO] terminated            : False
+[INFO] terminated_step       : None
+[INFO] finished_by_user      : True
+[INFO] file_processing_time  : 30.189 sec
+
+[INFO] file_index            : 73/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/switch_5sku_000.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/switch_5sku_000.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/switch_5sku_000.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 79
+[INFO] placed_count          : 79
+[INFO] placed_volume         : 1.028147
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.245000
+[INFO] utilization           : 0.6854
+[INFO] utilization_percent   : 68.54%
+[INFO] terminated            : True
+[INFO] terminated_step       : 79
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 4.727 sec
+
+[INFO] file_index            : 74/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/switch_5sku_001.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/switch_5sku_001.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/switch_5sku_001.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 54
+[INFO] placed_count          : 54
+[INFO] placed_volume         : 0.655717
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 0.958500
+[INFO] utilization           : 0.4371
+[INFO] utilization_percent   : 43.71%
+[INFO] terminated            : True
+[INFO] terminated_step       : 54
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 2.589 sec
+
+[INFO] file_index            : 75/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/switch_5sku_002.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/switch_5sku_002.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/switch_5sku_002.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 80
+[INFO] placed_count          : 80
+[INFO] placed_volume         : 1.057887
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.242000
+[INFO] utilization           : 0.7053
+[INFO] utilization_percent   : 70.53%
+[INFO] terminated            : True
+[INFO] terminated_step       : 80
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 4.659 sec
+
+[INFO] file_index            : 76/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/switch_5sku_003.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/switch_5sku_003.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/switch_5sku_003.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 72
+[INFO] placed_count          : 72
+[INFO] placed_volume         : 0.902986
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.197500
+[INFO] utilization           : 0.6020
+[INFO] utilization_percent   : 60.20%
+[INFO] terminated            : True
+[INFO] terminated_step       : 72
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 4.011 sec
+
+[INFO] file_index            : 77/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/switch_5sku_004.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/switch_5sku_004.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/switch_5sku_004.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 73
+[INFO] placed_count          : 73
+[INFO] placed_volume         : 0.915167
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.147000
+[INFO] utilization           : 0.6101
+[INFO] utilization_percent   : 61.01%
+[INFO] terminated            : True
+[INFO] terminated_step       : 73
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 4.419 sec
+
+[INFO] file_index            : 78/78
+[INFO] input_file            : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/input_sequences/switch_5sku_005.json
+[INFO] output_file           : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/switch_5sku_005.json
+[INFO] vis_file              : /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400/vis/switch_5sku_005.png
+[INFO] total_input_boxes     : 250
+[INFO] output_boxes          : 81
+[INFO] placed_count          : 81
+[INFO] placed_volume         : 1.044532
+[INFO] pallet_volume         : 1.500000
+[INFO] max_top_height        : 1.227000
+[INFO] utilization           : 0.6964
+[INFO] utilization_percent   : 69.64%
+[INFO] terminated            : True
+[INFO] terminated_step       : 81
+[INFO] finished_by_user      : False
+[INFO] file_processing_time  : 3.868 sec
+
+===================================================
+[INFO] ALL FILES SUMMARY
+===================================================
+[INFO] total_input_files      : 78
+[INFO] total_input_boxes      : 19500
+[INFO] total_output_boxes     : 6612
+[INFO] total_placed_volume    : 76.354782
+[INFO] files_processing_time  : 858.525 sec
+[INFO] total_processing_time  : 858.553 sec

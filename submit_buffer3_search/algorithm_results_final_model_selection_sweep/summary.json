@@ -1,0 +1,200 @@
+[
+  {
+    "kind": "single",
+    "first_model": "1400",
+    "model_paths": [
+      "src/models/candidate-001400.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 677.6736100019998,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/single_1400.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/single_1400",
+    "experiment": "single_1400",
+    "iid_mean_raw_fill_pct": 67.04016473466666,
+    "iid_stddev_raw_fill_pct": 5.806983786397681,
+    "stress_mean_raw_fill_pct": 62.66983056060606,
+    "selection_weighted_raw_fill_pct": 65.72906448244848,
+    "switch_5sku_mean_raw_fill_pct": 62.27153448888889,
+    "selection_mean_placed_boxes": 86.01388888888889,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "single",
+    "first_model": "1450",
+    "model_paths": [
+      "src/models/candidate-001450.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 665.1900481500006,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/single_1450.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/single_1450",
+    "experiment": "single_1450",
+    "iid_mean_raw_fill_pct": 66.00717099066667,
+    "iid_stddev_raw_fill_pct": 4.522410270433069,
+    "stress_mean_raw_fill_pct": 61.608424912121215,
+    "selection_weighted_raw_fill_pct": 64.68754716710302,
+    "switch_5sku_mean_raw_fill_pct": 62.22629546666666,
+    "selection_mean_placed_boxes": 84.61111111111111,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "single",
+    "first_model": "best",
+    "model_paths": [
+      "src/models/pct_model_bestonnx.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 675.9142462039999,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/single_best.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/single_best",
+    "experiment": "single_best",
+    "iid_mean_raw_fill_pct": 65.2185574,
+    "iid_stddev_raw_fill_pct": 4.25434623325119,
+    "stress_mean_raw_fill_pct": 62.25273033030303,
+    "selection_weighted_raw_fill_pct": 64.3288092790909,
+    "switch_5sku_mean_raw_fill_pct": 62.729816155555554,
+    "selection_mean_placed_boxes": 84.23611111111111,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "fallback",
+    "first_model": "1400",
+    "model_paths": [
+      "src/models/candidate-001400.onnx",
+      "src/models/candidate-001450.onnx",
+      "src/models/pct_model_bestonnx.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 711.4819362210001,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_fallback_first_1400.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_fallback_first_1400",
+    "experiment": "union_fallback_first_1400",
+    "iid_mean_raw_fill_pct": 67.04016473466666,
+    "iid_stddev_raw_fill_pct": 5.806983786397681,
+    "stress_mean_raw_fill_pct": 62.66983056060606,
+    "selection_weighted_raw_fill_pct": 65.72906448244848,
+    "switch_5sku_mean_raw_fill_pct": 62.27153448888889,
+    "selection_mean_placed_boxes": 86.01388888888889,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "fallback",
+    "first_model": "1450",
+    "model_paths": [
+      "src/models/candidate-001450.onnx",
+      "src/models/candidate-001400.onnx",
+      "src/models/pct_model_bestonnx.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 676.5201842019997,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_fallback_first_1450.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_fallback_first_1450",
+    "experiment": "union_fallback_first_1450",
+    "iid_mean_raw_fill_pct": 66.00717099066667,
+    "iid_stddev_raw_fill_pct": 4.522410270433069,
+    "stress_mean_raw_fill_pct": 61.608424912121215,
+    "selection_weighted_raw_fill_pct": 64.68754716710302,
+    "switch_5sku_mean_raw_fill_pct": 62.22629546666666,
+    "selection_mean_placed_boxes": 84.61111111111111,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "fallback",
+    "first_model": "best",
+    "model_paths": [
+      "src/models/pct_model_bestonnx.onnx",
+      "src/models/candidate-001400.onnx",
+      "src/models/candidate-001450.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 687.4835616869996,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_fallback_first_best.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_fallback_first_best",
+    "experiment": "union_fallback_first_best",
+    "iid_mean_raw_fill_pct": 65.2185574,
+    "iid_stddev_raw_fill_pct": 4.25434623325119,
+    "stress_mean_raw_fill_pct": 62.25273033030303,
+    "selection_weighted_raw_fill_pct": 64.3288092790909,
+    "switch_5sku_mean_raw_fill_pct": 62.729816155555554,
+    "selection_mean_placed_boxes": 84.23611111111111,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "adaptive",
+    "first_model": "1400",
+    "model_paths": [
+      "src/models/candidate-001400.onnx",
+      "src/models/candidate-001450.onnx",
+      "src/models/pct_model_bestonnx.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 859.6913728500003,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1400",
+    "experiment": "union_adaptive_first_1400",
+    "iid_mean_raw_fill_pct": 66.862969964,
+    "iid_stddev_raw_fill_pct": 5.769231258168903,
+    "stress_mean_raw_fill_pct": 62.433686563636364,
+    "selection_weighted_raw_fill_pct": 65.5341849438909,
+    "switch_5sku_mean_raw_fill_pct": 62.27153448888889,
+    "selection_mean_placed_boxes": 85.73611111111111,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "adaptive",
+    "first_model": "1450",
+    "model_paths": [
+      "src/models/candidate-001450.onnx",
+      "src/models/candidate-001400.onnx",
+      "src/models/pct_model_bestonnx.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 833.8367175080002,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1450.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_1450",
+    "experiment": "union_adaptive_first_1450",
+    "iid_mean_raw_fill_pct": 66.19978938666667,
+    "iid_stddev_raw_fill_pct": 4.023170280742483,
+    "stress_mean_raw_fill_pct": 61.18520136060606,
+    "selection_weighted_raw_fill_pct": 64.69541297884848,
+    "switch_5sku_mean_raw_fill_pct": 62.22629546666666,
+    "selection_mean_placed_boxes": 84.58333333333333,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "adaptive",
+    "first_model": "best",
+    "model_paths": [
+      "src/models/pct_model_bestonnx.onnx",
+      "src/models/candidate-001400.onnx",
+      "src/models/candidate-001450.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 809.6989632509994,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_best.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_final_model_selection_sweep/union_adaptive_first_best",
+    "experiment": "union_adaptive_first_best",
+    "iid_mean_raw_fill_pct": 65.41101395866667,
+    "iid_stddev_raw_fill_pct": 3.777048068536835,
+    "stress_mean_raw_fill_pct": 62.1180338,
+    "selection_weighted_raw_fill_pct": 64.42311991106666,
+    "switch_5sku_mean_raw_fill_pct": 62.729816155555554,
+    "selection_mean_placed_boxes": 84.31944444444444,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  }
+]

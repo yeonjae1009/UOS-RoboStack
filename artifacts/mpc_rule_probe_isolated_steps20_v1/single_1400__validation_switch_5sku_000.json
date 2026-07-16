@@ -1,0 +1,10 @@
+{
+  "mode": "single_1400",
+  "episode": "validation_switch_5sku_000",
+  "family": "switch_5sku",
+  "fill_pct": 58.9995678,
+  "placed_boxes": 71,
+  "runtime_sec": 6.955187214000034,
+  "terminated": true,
+  "terminated_step": 71
+}

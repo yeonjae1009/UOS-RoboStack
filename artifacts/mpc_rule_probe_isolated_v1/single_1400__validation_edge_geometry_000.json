@@ -1,0 +1,10 @@
+{
+  "mode": "single_1400",
+  "episode": "validation_edge_geometry_000",
+  "family": "edge_geometry",
+  "fill_pct": 54.829909066666666,
+  "placed_boxes": 81,
+  "runtime_sec": 9.564269421000063,
+  "terminated": true,
+  "terminated_step": 81
+}

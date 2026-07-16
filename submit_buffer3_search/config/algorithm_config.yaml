@@ -4,8 +4,8 @@
 # output_dir: test_box_sequence_250_result
 #input_path: box_sequence
 #output_dir: algorithm_results
-input_path: box_sequence1
-output_dir: algorithm_results1
+input_path: final_model_selection_v1
+output_dir: final_model_selection_v1_result
 pallet:
   length: 1.2
   width: 1.0
@@ -22,12 +22,14 @@ buffer:
   size: 0                  # 버퍼 슬롯 수, 동시에 대기 가능한 박스 수
 
 search:
-  enabled: true
+  # Full development validation must pass before enabling hybrid MPC.  Keeping
+  # this false deploys the recorded single-1400 baseline.
+  enabled: false
   mode: beam                     # one_step 또는 beam
   score_profile: sun_v2     # legacy 또는 geometry_v1
   top_k_leaf: 4
   candidate_union_enabled: false
-  candidate_union_mode: adaptive # 일반 입력은 단일 정책, 증가순 adversarial이면 union rerank
+  candidate_union_mode: mpc_rule # mpc_rule 또는 mpc_value (fallback/adaptive는 회귀 비교 전용)
   union_top_k_per_model: 4      # 각 ONNX 모델별 top-K 후보 수 (3개 모델이면 최대 12개 union 후보)
   union_fallback_top_k_leaf: 20 # union 후보가 전부 실패할 때 첫 정책의 top-K까지 확장
   candidate_union_score_profile: legacy # no-buffer union rerank 전용 점수
@@ -40,6 +42,30 @@ search:
   rollout_discount: 0.7
   time_budget_sec: 80.0
   random_seed: 0
+  root_candidates: 6
+  horizon: 4
+  samples: 8
+  mpc_beam_width: 2
+  rollout_top_k: 2
+  search_cutoff_sec: 75.0
+  fallback_reserve_sec: 10.0
+  rule_max_search_steps: 1      # rule failed the aggregate gate; regression comparison only
+  value_max_search_steps: 8     # learned root guard, still bounded by the hard deadline
+  cvar_fraction: 0.25
+  fallback_model: src/models/candidate-001400.onnx
+  mpc_weights:
+    expected_volume: 1.0
+    cvar_volume: 0.55
+    usable_ems: 0.10
+    void_fragmentation: -0.08
+    height: -0.12
+    roughness: -0.10
+    support: 0.12
+    immediate: 0.18
+  value:
+    model_path: src/models/candidate_value.onnx
+    score_weight: 0.35
+    dagger_metadata_version: dagger-v2
 
 selector:
   enabled: true                  # true면 search score에 selector 점수를 작은 bonus로 추가

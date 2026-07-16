@@ -315,3 +315,65 @@ algorithm_results/vis/
 # 라이선스
 
 본 코드는 대회 참가 목적으로 제공됩니다.
+
+---
+
+# Online Hybrid MPC 개발 절차
+
+`search.candidate_union_mode`는 `mpc_rule`과 `mpc_value`를 지원합니다. 두
+모드 모두 세 정책의 top-4를 순서 독립적인 후보 집합으로 만들고, 동일
+좌표·회전 후보를 제거한 뒤 공통 난수 rollout을 실행합니다. `mpc_value`의
+scorer가 없거나 예외를 내면 `mpc_rule`로, 탐색 실패·시간 부족 시에는
+`candidate-001400.onnx`의 첫 유효 후보로 내려갑니다.
+
+현재 제출 설정은 검증 gate를 우회하지 않도록 single-1400
+(`search.enabled: false`)을 유지합니다. 기록 기준은 single-1400
+65.7291%, sequence oracle 상한 68.2814%, 5-SKU gate 62.2715%입니다.
+
+개발 세트 생성 및 검증:
+
+```bash
+/home/robotics/Documents/assignment2/.venv/bin/python \
+  tools/make_hybrid_mpc_dev_set.py \
+  --output ../artifacts/hybrid_mpc_dev_v1 --validate-only
+```
+
+초기 label 수집, 1차 학습, DAgger 방문 상태 수집, 최종 학습:
+
+```bash
+/home/robotics/Documents/assignment2/.venv/bin/python \
+  tools/collect_candidate_value_labels.py \
+  --dataset ../artifacts/hybrid_mpc_dev_v1 \
+  --output ../artifacts/candidate_value_labels_initial \
+  --jobs 8
+
+python3 tools/train_candidate_value.py \
+  --labels ../artifacts/candidate_value_labels_initial \
+  --output src/models/candidate_value_pass1.onnx
+
+/home/robotics/Documents/assignment2/.venv/bin/python \
+  tools/collect_candidate_value_labels.py \
+  --dataset ../artifacts/hybrid_mpc_dev_v1 \
+  --output ../artifacts/candidate_value_labels_dagger2 \
+  --behavior-model src/models/candidate_value_pass1.onnx \
+  --pass-name dagger2 --jobs 8
+
+python3 tools/train_candidate_value.py \
+  --labels ../artifacts/candidate_value_labels_initial \
+           ../artifacts/candidate_value_labels_dagger2 \
+  --output src/models/candidate_value.onnx
+```
+
+개발 validation 78개 비교는 다음 명령으로 실행합니다. 최종 홀드아웃은
+설정과 모델을 동결한 뒤 같은 도구에 `--holdout-once`를 붙여 한 번만
+실행하며, 재실행을 막는 lock과 설정 SHA-256이 저장됩니다.
+
+```bash
+/home/robotics/Documents/assignment2/.venv/bin/python \
+  run_hybrid_mpc_validation.py \
+  --dataset ../artifacts/hybrid_mpc_dev_v1 \
+  --output ../artifacts/hybrid_mpc_validation
+```
+
+학습에는 PyTorch가 필요하지만 제출 추론은 기존 `numpy + onnxruntime`만
+사용합니다.

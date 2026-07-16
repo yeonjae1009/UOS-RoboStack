@@ -1,0 +1,783 @@
+{
+  "version": "final_model_selection_v1",
+  "root_seed": 20260716,
+  "format": "competition_jsonl_one_object_per_line",
+  "box_count_per_sequence": 250,
+  "limits": {
+    "length_width_m": [
+      0.17,
+      0.32
+    ],
+    "height_m": [
+      0.13,
+      0.26
+    ],
+    "mass_kg": [
+      0.5,
+      6.0
+    ],
+    "rounding_decimals": 3
+  },
+  "ranking": {
+    "selection_sequence_count": 72,
+    "iid_family": "continuous_iid",
+    "iid_weight": 0.7,
+    "stress_families": [
+      "edge_geometry",
+      "small_dense",
+      "large_heavy"
+    ],
+    "stress_weight": 0.3
+  },
+  "hybrid_gate": {
+    "family": "switch_5sku",
+    "sequence_count": 6,
+    "skus": [
+      {
+        "size": [
+          0.181,
+          0.291,
+          0.146
+        ],
+        "mass": 1.275
+      },
+      {
+        "size": [
+          0.214,
+          0.267,
+          0.171
+        ],
+        "mass": 2.35
+      },
+      {
+        "size": [
+          0.236,
+          0.193,
+          0.221
+        ],
+        "mass": 3.625
+      },
+      {
+        "size": [
+          0.278,
+          0.247,
+          0.186
+        ],
+        "mass": 4.825
+      },
+      {
+        "size": [
+          0.307,
+          0.309,
+          0.244
+        ],
+        "mass": 5.575
+      }
+    ],
+    "public_sku_overlap": false
+  },
+  "sequences": [
+    {
+      "name": "continuous_iid_000",
+      "file": "continuous_iid_000.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 1400900941219720769,
+      "sha256": "9935948097be168655540a6d7b45e359067187e3dd25ea19e7d756c821262488",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_001",
+      "file": "continuous_iid_001.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 9576580169424044962,
+      "sha256": "5f36bd95ed9856cda3046a8c622acc7e904d0ba41c96f355f07b6bb46eca0bfd",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_002",
+      "file": "continuous_iid_002.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 8635754722076145995,
+      "sha256": "0565b54a6a05a2006e9d47c4b615c0bd552e9498e1d56b1019a419dacefc4c07",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_003",
+      "file": "continuous_iid_003.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 3922603580015396821,
+      "sha256": "702397649cc1922ad552d983c7dae38448597fa288afd2d1b9e96ab424c390c8",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_004",
+      "file": "continuous_iid_004.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 348956644599553084,
+      "sha256": "9ecef6e091f20f0dd5fd7ef3f0cc79ff48913fdb2c15ef28ca9b0fd5abd146e4",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_005",
+      "file": "continuous_iid_005.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 11670887834464059415,
+      "sha256": "3fef6fb8860eb1304a93b91102cd38ab2a3af6fd486cde6ba26b74b9829b645c",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_006",
+      "file": "continuous_iid_006.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 13333420749975837654,
+      "sha256": "8abbe2a6b827a4f314a1e529dd09d4520a263633af977337ff7e8742d48ef77f",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_007",
+      "file": "continuous_iid_007.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 11271322751787987400,
+      "sha256": "826ebb114f17e18981019bd52c99dec2fc51c316ccf85b710deeedd88239b4ec",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_008",
+      "file": "continuous_iid_008.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 18257979922490534963,
+      "sha256": "8be99edc1e37044c1dce3464b327a1895866424c9683fdd90681288469b38b29",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_009",
+      "file": "continuous_iid_009.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 2270800321826305848,
+      "sha256": "0ed582e1a868dc2ee0c7fd7cc243b75a08cc77a3a4488f36e41de81f7204337e",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_010",
+      "file": "continuous_iid_010.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 13683060156410428803,
+      "sha256": "22e6b31cfc27d967199bee37cf4af107c05506a7a17139d70617aa6778618562",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_011",
+      "file": "continuous_iid_011.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 1841211737524419994,
+      "sha256": "e8eb6e182d66b035ce7224f4abb30e86c6e429abc0f8dca4d1fc51cc01caea00",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_012",
+      "file": "continuous_iid_012.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 16829804955209570308,
+      "sha256": "adde2095e0acab84e1874fa7ce38032616b4bfbedd875a70fc6ab29d6a5df405",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_013",
+      "file": "continuous_iid_013.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 16062579568636717255,
+      "sha256": "a5af97970671b7413d6952be3372e42302c03681f52f58fc53185125772db9bd",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_014",
+      "file": "continuous_iid_014.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 5892940820321709762,
+      "sha256": "76b51d340eec1345d66f560d8b1fed62b4c21323715018fe5fb20fd7862e8afb",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_015",
+      "file": "continuous_iid_015.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 14295920329649846379,
+      "sha256": "ab778b9bc32c87b8b46828c118e693f5fcc492d91fad0caf1b9b3e936d13bdd9",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_016",
+      "file": "continuous_iid_016.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 8756717752924333378,
+      "sha256": "47ef932d354f46f27c6bd48cd60340be13dec90669dc7ba159d23730631588fe",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_017",
+      "file": "continuous_iid_017.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 8356306557822389994,
+      "sha256": "069d02b92bafe8d327d7cd33f1e620377e3fb273561bfe46ec690b1546437cc3",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_018",
+      "file": "continuous_iid_018.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 10514088962353828206,
+      "sha256": "be4cb1fcb3ffce8d2a4542f87b5585cb91e0f3ab721cfa691adeb765d834b3ac",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_019",
+      "file": "continuous_iid_019.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 7804216008574570480,
+      "sha256": "8cc165ecd0bed546bf15b97287c89d5adc38bac02daa61a7b19c4ed64d91e74c",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_020",
+      "file": "continuous_iid_020.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 9484344984108021398,
+      "sha256": "028bbe7e84bc6ad0a81f1d89604a8edbfa0531a7b3e3a02f486e7ca69ca0398f",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_021",
+      "file": "continuous_iid_021.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 5748780519712822224,
+      "sha256": "85d88d7aaba04d28041e45dfda138ec97906d77bd8ef35df6c99ef038a3c991d",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_022",
+      "file": "continuous_iid_022.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 2084138777337170027,
+      "sha256": "410fc96e6a1d4b0089436f5d48c09ed8ee0b133d67201c79adbe4a5c71136110",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_023",
+      "file": "continuous_iid_023.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 14800130969037290907,
+      "sha256": "fb1dcb43daafe0a39f526b8a6dd8c25fa5f13cb68c64cee1cb07b9297137e736",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_024",
+      "file": "continuous_iid_024.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 5014758286179268187,
+      "sha256": "f6267b572c0acd093baea4ccc6fe1b79c35114f599b9e54f61da5b0432d94f4d",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_025",
+      "file": "continuous_iid_025.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 2963052487050193931,
+      "sha256": "3278d1c24ba64c6353ff9900c6a5435768354b32bdaf42085048301034193e26",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_026",
+      "file": "continuous_iid_026.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 11619271453351592880,
+      "sha256": "ae5e5492bb94a2ac40a1b8297995b3037377fb4d2b3feb0320ead1b9c8d9f447",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_027",
+      "file": "continuous_iid_027.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 382638468157098820,
+      "sha256": "b70c76d34c1e9e793dc9151bbc10a89b77b6d484503c30e8bbd5dec97fbbe8ef",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_028",
+      "file": "continuous_iid_028.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 876760474862858049,
+      "sha256": "60c216ad01d5e280b2766e9b5610aabfd84b08f64e0bc11f384d6add50bd4cb3",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_029",
+      "file": "continuous_iid_029.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 5106409157197000284,
+      "sha256": "cdd31b061aa6f571d290249e26772c359136befe08c96f62429fcaffeeccbaf2",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_030",
+      "file": "continuous_iid_030.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 5350422136735310782,
+      "sha256": "47b37e6ca054a40407002cc7617a7b81f9259eb17e8bd4bb04f8c27d518f2a27",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_031",
+      "file": "continuous_iid_031.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 2885200386196882146,
+      "sha256": "9154caff7233199b7740f8d3aa4ed0b19d5d0c9fe8f808463e172a20d57a9da6",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_032",
+      "file": "continuous_iid_032.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 963375007046866192,
+      "sha256": "2bd180ce78fa6927e397cf72b9c09cdc11160e6bb90c16ec7f5b5d18056b881a",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_033",
+      "file": "continuous_iid_033.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 12891747614661810419,
+      "sha256": "aeb49fd7fdabeb7ab7980c86510692af8e585ca35e4884d5781a900f2f9308a1",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_034",
+      "file": "continuous_iid_034.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 7213774487571808326,
+      "sha256": "1627842dcf8c922f319bf37910dc982c995ef2d6be31e1073d41d7fbd31ddc0e",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_035",
+      "file": "continuous_iid_035.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 5276823947650548322,
+      "sha256": "a492f02e9e86ed7c086463783bff8577d87fe945c769786d9eb743e03438f1c9",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_036",
+      "file": "continuous_iid_036.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 16792299805818628397,
+      "sha256": "4c00f260405cfec7405105f0322c2d7fa99a2818d591a842f64992524f6fc415",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_037",
+      "file": "continuous_iid_037.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 9389101879177182285,
+      "sha256": "e6a85756be7b71147d66e384d99e6757d5f59c535dfd650bdc983c4f05531855",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_038",
+      "file": "continuous_iid_038.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 7604458570146882185,
+      "sha256": "1006e9e99ecb06e2c6c65e3e900bb3f20648bf2ced4f8a402621fd73dc6a3b43",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_039",
+      "file": "continuous_iid_039.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 14975215876604099861,
+      "sha256": "1ccf8e5b5b33e27e752b2210564cf90b10a8eb95246bb6ece114d9b561e4f455",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_040",
+      "file": "continuous_iid_040.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 14611024151957280815,
+      "sha256": "c27581cb37670c6d7e0fc2b45e921efdad21280b00e1e7f3db6e44ef5e97ac29",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_041",
+      "file": "continuous_iid_041.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 15265337797486545285,
+      "sha256": "1bb7ade519e2bb10e39c7b91e1550b1bed67d28149c4756b33ab7547d6bfc4ce",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_042",
+      "file": "continuous_iid_042.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 910750037146354011,
+      "sha256": "45ed949a653a2a3e2d3f145d15626dca7f93d02ef53bf4719922160eb90a8d5c",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_043",
+      "file": "continuous_iid_043.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 17312432652466979659,
+      "sha256": "eb9ba9ceae22da326ab160dadbe1da0661c2b20fd6291e0fcc6943e02662e78d",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_044",
+      "file": "continuous_iid_044.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 13109075181531318523,
+      "sha256": "e3d91d78016e8aa2ad04dacb89b65c35abd9c96759aa59eb306f91119cfd73a4",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_045",
+      "file": "continuous_iid_045.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 1247237931126996366,
+      "sha256": "f11ba09d5f287a0ae1f6d78001a41158720c81fe43fdce87b759864f70c35809",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_046",
+      "file": "continuous_iid_046.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 1683034486757362414,
+      "sha256": "e31581b55d890535faeb160b09a607563036c431f297da1186a7cc62cc5309e2",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_047",
+      "file": "continuous_iid_047.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 12720839814378638771,
+      "sha256": "5acd8e5ca59ca7e056ddb95e15f32d03ad2a7bd931ec0dd722f7f50191fea019",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_048",
+      "file": "continuous_iid_048.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 3116092591315286609,
+      "sha256": "81eaca52f04da8393dbddf81383fae04c4e2bf97ba925b6fad8c1064e64e1beb",
+      "box_count": 250
+    },
+    {
+      "name": "continuous_iid_049",
+      "file": "continuous_iid_049.json",
+      "family": "continuous_iid",
+      "split": "selection",
+      "seed": 92482562685415414,
+      "sha256": "ea45261be13baaafb84c5befbcbc54003bc4fd8bfcf19e1c12572244cc4d8ffe",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_000",
+      "file": "edge_geometry_000.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 14780566961953421364,
+      "sha256": "68f9278ee9901110c52f8f3c2902cbfb6ab9499b40807e8e605f793b5dfafa68",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_001",
+      "file": "edge_geometry_001.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 14831789319349454560,
+      "sha256": "6b0823e18499ec3d133a94a790be3986789fb360dbd3d3d8e46f8819c658380b",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_002",
+      "file": "edge_geometry_002.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 1882896605538199276,
+      "sha256": "6eb97a73c0499e51cd3baa98748a4c30aba11265651c98b52bdcde0e51fca6a5",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_003",
+      "file": "edge_geometry_003.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 8427100481271283979,
+      "sha256": "b8c27905f4e6bf5ee7d785cb6d9ce60368d5bb9120591a27fcee06c2281256e5",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_004",
+      "file": "edge_geometry_004.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 12164516264681149799,
+      "sha256": "6b3b99f201649023c5e0a8477261428e89f245fbc1ddd8a860ab69a76319a32b",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_005",
+      "file": "edge_geometry_005.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 17142371208578722126,
+      "sha256": "a92285eb84822fe052ef512631ea5c43729a50243ff6bf0e6037cf9259b9b718",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_006",
+      "file": "edge_geometry_006.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 12259515299840509545,
+      "sha256": "728582646b9efc270f2e3a02bd0890baefbd947b12baae9662baaf2d0b52cac0",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_007",
+      "file": "edge_geometry_007.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 1015474019040293727,
+      "sha256": "50b77e5ea203f05e51a21022289ea4d55dde9e19e374976f3c9ecdf73e8bdeab",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_008",
+      "file": "edge_geometry_008.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 14236908756284647653,
+      "sha256": "e1dd60610ab5e7277bb963bfe03dace58c24faefebbd6009af09d20c92b1b277",
+      "box_count": 250
+    },
+    {
+      "name": "edge_geometry_009",
+      "file": "edge_geometry_009.json",
+      "family": "edge_geometry",
+      "split": "selection",
+      "seed": 16402195422398649552,
+      "sha256": "e1f6e41a6c5a999da507ebb170399eef6287771cd8dfd18379b03679f18a96c8",
+      "box_count": 250
+    },
+    {
+      "name": "small_dense_000",
+      "file": "small_dense_000.json",
+      "family": "small_dense",
+      "split": "selection",
+      "seed": 15918477270851722914,
+      "sha256": "5053238608f5e6366e255addd27c4b97961d06fdc682f4cad2fc2769eed8446a",
+      "box_count": 250
+    },
+    {
+      "name": "small_dense_001",
+      "file": "small_dense_001.json",
+      "family": "small_dense",
+      "split": "selection",
+      "seed": 15437468210408396558,
+      "sha256": "c3e3073e5827b64216960bdc0e04466ffebab6b66c06021d06b671f61b4b324e",
+      "box_count": 250
+    },
+    {
+      "name": "small_dense_002",
+      "file": "small_dense_002.json",
+      "family": "small_dense",
+      "split": "selection",
+      "seed": 2573524391803622382,
+      "sha256": "a4cd3a4f8e86ae8875909960591f968c9c84509c437e648704c737b86d829cf6",
+      "box_count": 250
+    },
+    {
+      "name": "small_dense_003",
+      "file": "small_dense_003.json",
+      "family": "small_dense",
+      "split": "selection",
+      "seed": 5864818685064764093,
+      "sha256": "775d1e51c737efdc8dceeed8eca7bd017428230093a015293740160b09cf113b",
+      "box_count": 250
+    },
+    {
+      "name": "small_dense_004",
+      "file": "small_dense_004.json",
+      "family": "small_dense",
+      "split": "selection",
+      "seed": 8035537680983605318,
+      "sha256": "13ad650cf77460cb8158589bc307a6cd7075ac42d561e1d74bc9eae962be221b",
+      "box_count": 250
+    },
+    {
+      "name": "small_dense_005",
+      "file": "small_dense_005.json",
+      "family": "small_dense",
+      "split": "selection",
+      "seed": 17239040825531458959,
+      "sha256": "ed06e96892b517d63624500ff2fc8082ca8294a640294de84dff4bb11da76ef8",
+      "box_count": 250
+    },
+    {
+      "name": "large_heavy_000",
+      "file": "large_heavy_000.json",
+      "family": "large_heavy",
+      "split": "selection",
+      "seed": 12085334617375255913,
+      "sha256": "d0d437255b66b39f5f67c0490924cf6d7a69eb8f16f78c24be0feb08b0b2a521",
+      "box_count": 250
+    },
+    {
+      "name": "large_heavy_001",
+      "file": "large_heavy_001.json",
+      "family": "large_heavy",
+      "split": "selection",
+      "seed": 7474104483276435191,
+      "sha256": "866cecb0ba1168fa14ff76550ea619b3335e41d09f4a2bb1a05af07be6076a22",
+      "box_count": 250
+    },
+    {
+      "name": "large_heavy_002",
+      "file": "large_heavy_002.json",
+      "family": "large_heavy",
+      "split": "selection",
+      "seed": 3619886290817448260,
+      "sha256": "038005b922324541a27b1c7506f587c6a2dd1442f93bdf7003826b8cdf288806",
+      "box_count": 250
+    },
+    {
+      "name": "large_heavy_003",
+      "file": "large_heavy_003.json",
+      "family": "large_heavy",
+      "split": "selection",
+      "seed": 15983878275697111215,
+      "sha256": "50324fcbee8faab5fa0fefcd4b233eae47289e7099c2964946e94c05d7a1a477",
+      "box_count": 250
+    },
+    {
+      "name": "large_heavy_004",
+      "file": "large_heavy_004.json",
+      "family": "large_heavy",
+      "split": "selection",
+      "seed": 12549450555950081636,
+      "sha256": "3aa9f82f1abcdb384c41bf46a34a939118786840fde108227d1db1702543e240",
+      "box_count": 250
+    },
+    {
+      "name": "large_heavy_005",
+      "file": "large_heavy_005.json",
+      "family": "large_heavy",
+      "split": "selection",
+      "seed": 3857583225586780861,
+      "sha256": "faeb94c4d7278697e2f97082ccd5a5d6c6f4bdd3ee113a6e47fb255b6fcb48d5",
+      "box_count": 250
+    },
+    {
+      "name": "switch_5sku_000",
+      "file": "switch_5sku_000.json",
+      "family": "switch_5sku",
+      "split": "hybrid_gate",
+      "seed": 9287666591885353261,
+      "sha256": "dcc9b865dfda2faa38555aacedd17c3476f5ddda26b8e782adba52f3b87b40e0",
+      "box_count": 250
+    },
+    {
+      "name": "switch_5sku_001",
+      "file": "switch_5sku_001.json",
+      "family": "switch_5sku",
+      "split": "hybrid_gate",
+      "seed": 727965809907914333,
+      "sha256": "1c466c5ac52db7c0d436c4a23d6e5a998c36ad027a5468c6e2bf1bee681e520a",
+      "box_count": 250
+    },
+    {
+      "name": "switch_5sku_002",
+      "file": "switch_5sku_002.json",
+      "family": "switch_5sku",
+      "split": "hybrid_gate",
+      "seed": 6428814128877537639,
+      "sha256": "516c0c45e30e5e6a37fd1e3ce7be5f18cc95d36f773692b7721d123debc6e412",
+      "box_count": 250
+    },
+    {
+      "name": "switch_5sku_003",
+      "file": "switch_5sku_003.json",
+      "family": "switch_5sku",
+      "split": "hybrid_gate",
+      "seed": 4987483132459003636,
+      "sha256": "02198d43fadc4f97a5ef672ef629dd2a9c711dc271d9c73a47d7e1b5eb711f8a",
+      "box_count": 250
+    },
+    {
+      "name": "switch_5sku_004",
+      "file": "switch_5sku_004.json",
+      "family": "switch_5sku",
+      "split": "hybrid_gate",
+      "seed": 16660003956089848709,
+      "sha256": "9521cdcb4c10802ccdbed129d2e4c2bdc6d671b118b08d0f06d701c01306dc0c",
+      "box_count": 250
+    },
+    {
+      "name": "switch_5sku_005",
+      "file": "switch_5sku_005.json",
+      "family": "switch_5sku",
+      "split": "hybrid_gate",
+      "seed": 18077936644046015951,
+      "sha256": "3ebfb97ce69eb13edcb31b75913ab1d481703aa319d086fe480fe80509bc6528",
+      "box_count": 250
+    }
+  ]
+}
