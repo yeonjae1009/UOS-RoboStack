@@ -1,0 +1,189 @@
+[c1400-workers16] start profile=sun_gap_guard_v1 run=sun_c1400_env128_workers16_rand52official_gap_guard_v1_lr5e7_cont_smoke start=isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand52official_sun_gap_guard_v1_deploybest/deploy_eval/candidate-001400.pt envs=2 workers=0 updates=2 eval_dir=artifacts/random_spec_eval_50_plus_official/box_sequence eval=random_spec_000 box_sequence_0 Thu Jul 16 01:24:11 AM KST 2026
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260716_012412.log
+2026-07-15T16:24:12Z [141ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:12Z [213ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:12Z [295ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:12Z [387ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:12Z [488ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:12Z [600ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:12Z [721ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:12Z [853ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:13Z [994ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:13Z [1,146ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:13Z [1,308ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:13Z [1,480ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:13Z [1,662ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:13Z [1,853ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:14Z [2,055ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:14Z [2,266ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:14Z [2,489ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:14Z [2,721ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:14Z [2,962ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:15Z [3,214ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:15Z [3,476ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:15Z [3,748ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:16Z [4,029ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:16Z [4,321ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:16Z [4,621ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:16Z [4,933ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:17Z [5,255ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:17Z [5,586ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:17Z [5,928ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:18Z [6,279ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:18Z [6,641ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:19Z [7,013ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:19Z [7,395ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:19Z [7,787ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:20Z [8,188ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:20Z [8,599ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:21Z [9,020ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:21Z [9,451ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:21Z [9,892ms] [Warning] [carb.omniclient.plugin]  51: OmniHub: ThreadId(03) Hub encountered error. Trying to reconnect to Hub. retry_reason="Hub failed to launch: Io(\"child exited with exit status: 1 without writing file \\\"/tmp/hub-user-DED3864.config.json\\\"\")"
+2026-07-15T16:24:22Z [10,347ms] [Error] [omni.datastore] Failed to acquire exclusive lock to data store (256>=256)
+2026-07-15T16:24:22Z [10,347ms] [Error] [omni.datastore] Failed to create local file data store at '/home/user/isaacsim/kit/cache/DerivedDataCache'
+2026-07-15T16:24:22Z [10,366ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-07-15T16:24:22Z [10,367ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T16:24:22Z [10,632ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T16:24:22Z [10,728ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T16:24:22Z [10,743ms] [Error] [omni.physx.tensors.plugin] CUDA error: no CUDA-capable device is detected: ../../../extensions/runtime/source/omni.physx.tensors/plugins/gpu/CudaCommon.h: 111
+2026-07-15T16:24:22Z [10,743ms] [Error] [omni.physx.tensors.plugin] Failed to create primary CUDA context
+Warp CUDA error 100: no CUDA-capable device is detected (in function init_cuda_driver, /builds/omniverse/warp/warp/native/cuda_util.cpp:266)
+Warp CUDA error 3: initialization error (in function cuda_device_get_count, /builds/omniverse/warp/warp/native/warp.cu:1769)
+2026-07-15T16:24:24Z [12,046ms] [Warning] [matplotlib] /home/user/.config/matplotlib is not a writable directory
+2026-07-15T16:24:24Z [12,047ms] [Warning] [matplotlib] Matplotlib created a temporary cache directory at /tmp/matplotlib-fmo5eqwy because there was an issue with the default path (/home/user/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+2026-07-15T16:24:24Z [12,083ms] [Error] [omni.kit.app.plugin] failed to open file '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json' - unable to save the dictionary
+2026-07-15T16:24:24Z [12,103ms] [Error] [omni.gpucompute-cuda.plugin] CUDA error in createContext: no CUDA-capable device is detected: ../../../source/plugins/omni.gpucompute-cuda/GpuCompute-Cuda.cpp: 179 (device -1423563904)
+2026-07-15T16:24:24Z [12,118ms] [Error] [carb.cudainterop.plugin] Could not initialize NVML: return code 9 (NVML_ERROR_DRIVER_NOT_LOADED: NVIDIA driver is not loaded.)
+2026-07-15T16:24:24Z [12,120ms] [Error] [carb.cudainterop.plugin] Could not initialize NVML: return code 9 (NVML_ERROR_DRIVER_NOT_LOADED: NVIDIA driver is not loaded.)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 0             | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 118527
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T16:24:24Z [12,495ms] [Error] [gpu.foundation.plugin] No device could be created. Some known system issues:
+- The driver is not installed properly and requires a clean re-install.
+- Your GPUs do not support RayTracing: DXR or Vulkan ray_tracing, or hardware is excluded due to performance.
+- The driver cannot enumerate any GPU: driver, display, TCC mode or a docker issue. For Vulkan, test it with Vulkaninfo tool from Vulkan SDK, instead of nvidia-smi.
+- For Ubuntu, it requires server-xorg-core 1.20.7+ and a display to work without --no-window.
+- For Linux dockers, the setup is not complete. Install the latest driver, xServer and NVIDIA container runtime.
+
+2026-07-15T16:24:24Z [12,496ms] [Error] [gpu.foundation.plugin] Invalid getDeviceInfo parameters.
+2026-07-15T16:24:24Z [12,496ms] [Warning] [omni.physx.foundation.plugin] PhysXFoundation: Couldn't get driver version, failed to getDeviceInfo
+2026-07-15T16:24:24Z [12,496ms] [Warning] [omni.physx.foundation.plugin] PhysXFoundation: Unable to get IGpuFoundation, GpuDevices or Graphics!
+2026-07-15T16:24:24Z [12,498ms] [Error] [carb.cudainterop.plugin] CUDA error 100: cudaErrorNoDevice - no CUDA-capable device is detected)
+2026-07-15T16:24:24Z [12,498ms] [Error] [carb.cudainterop.plugin] Failed to get the CUDA device.
+2026-07-15T16:24:24Z [12,498ms] [Error] [carb.cudainterop.plugin] CUDA error 100: cudaErrorNoDevice - no CUDA-capable device is detected)
+2026-07-15T16:24:24Z [12,498ms] [Error] [carb.cudainterop.plugin] Failed to set the CUDA device: 0
+2026-07-15T16:24:24Z [12,498ms] [Error] [omni.physx.plugin] No CUDA devices found
+2026-07-15T16:24:24Z [12,498ms] [Error] [omni.physx.plugin] Unable to create PxCudaContextManager!
+2026-07-15T16:24:24Z [12,498ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+2026-07-15T16:24:24Z [12,509ms] [Error] [omni.kit.app.plugin] failed to open file '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json' - unable to save the dictionary
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Traceback (most recent call last):
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/scripts/train_pallet_gat.py", line 1181, in <module>
+    main()
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/scripts/train_pallet_gat.py", line 779, in main
+    env = PalletPackingEnv(cfg)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Documents/assignment2_project/isaaclab_pallet/pallet_packing_env.py", line 367, in __init__
+    super().__init__(cfg, render_mode, **kwargs)
+  File "/home/user/IsaacLab/source/isaaclab/isaaclab/envs/direct_rl_env.py", line 106, in __init__
+    self.sim: SimulationContext = SimulationContext(self.cfg.sim)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/IsaacLab/source/isaaclab/isaaclab/sim/simulation_context.py", line 241, in __init__
+    self._gravity_tensor = torch.tensor(self.cfg.gravity, dtype=torch.float32, device=self.cfg.device)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/cuda/__init__.py", line 372, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: No CUDA GPUs are available
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-16_01-24-24.log[0m
+[36m======================================================================================[0m
+
+[c1400-workers16] start profile=sun_gap_guard_v1 run=sun_c1400_env128_workers16_rand52official_gap_guard_v1_lr5e7_cont_smoke start=isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand52official_sun_gap_guard_v1_deploybest/deploy_eval/candidate-001400.pt envs=2 workers=0 updates=2 eval_dir=artifacts/random_spec_eval_50_plus_official/box_sequence eval=random_spec_000 box_sequence_0 Thu Jul 16 01:24:50 AM KST 2026
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/user/IsaacLab/apps/isaaclab.python.headless.kit
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-07-16_01-24-56.log[0m
+[36m======================================================================================[0m
+
+[33m01:24:56 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.008333333333333333
+	Rendering step-size   : 0.16666666666666666
+	Environment step-size : 0.16666666666666666
+[33m01:25:03 [interactive_scene.py] WARNING: Collision filtering can only be automatically enabled when replicate_physics=True and using GPU simulation. Please call scene.filter_collisions(global_prim_paths) to filter collisions across environments.[0m
+[INFO]: Time taken for scene creation : 6.061191 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 2
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : False
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.811995 seconds
+[INFO]: Completed setting up the environment...
+[gat-train] loaded GAT checkpoint: isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand52official_sun_gap_guard_v1_deploybest/deploy_eval/candidate-001400.pt
+[gat-train] run_dir=isaaclab_pallet/runs/sun_c1400_env128_workers16_rand52official_gap_guard_v1_lr5e7_cont_smoke device=cuda:0 num_envs=2 num_packer_workers=0 obs_shape=(2, 301, 9) leaf_shape=(2, 100, 9) num_steps=5 normFactor=0.8 drift_fail_threshold=0.4 box_source=random box_seed=1 train_box_seq_dir=submit_buffer3_search/box_sequence train_type_sequences=box_sequence_0,box_sequence_1 reward_profile=sun_gap_guard_v1 learn_finish_action=False action_space=100 candidate_generator=ems candidate_rerank_k=0 candidate_diversity_center_m=0.05
+[gat-train] eval_seq_count=2 box_seq_dir=artifacts/random_spec_eval_50_plus_official/box_sequence eval_sequences=random_spec_000,box_sequence_0
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gat-train] initial deployment score = 84.03 min=80.28 bottom10=80.28 (torch_eval=87.89)  -> PCT-best.pt
+[gat-train] update=1 samples=10 fps=1.0 loss=-0.1198 actor=-0.3757 value=0.2692 entropy=1.3250 mean_return=0.000 mean_len=0.0
+[gat-train] update=2 samples=20 fps=1.8 loss=-0.7561 actor=-1.3547 value=0.6263 entropy=2.7692 mean_return=0.000 mean_len=0.0
+[gat-train] eval update=2 torch_score=87.89 deploy_score=84.03 min=80.28 bottom10=80.28 max_regression=0.00 regressions=0 guard_rejected=0 best=84.03
+Loading user config located at: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260716_012450.log
+2026-07-15T16:24:50Z [166ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-07-15T16:24:50Z [416ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-07-15T16:24:50Z [512ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-07-15T16:24:56Z [6,069ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-15T16:24:56Z [6,069ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 118497
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+2026-07-15T16:24:56Z [6,543ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+[c1400-workers16] profile=sun_gap_guard_v1 exited code=0 Thu Jul 16 01:25:24 AM KST 2026

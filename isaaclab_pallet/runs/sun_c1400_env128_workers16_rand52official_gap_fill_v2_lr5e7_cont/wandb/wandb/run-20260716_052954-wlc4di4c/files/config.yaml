@@ -1,0 +1,248 @@
+_wandb:
+    value:
+        cli_version: 0.28.0
+        e:
+            ik2zcykdxhkub3xhg7crtyoz1ykw7opp:
+                args:
+                    - --run-name
+                    - sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont
+                    - --reward-profile
+                    - sun_gap_fill_v2
+                    - --num-envs
+                    - "128"
+                    - --num-packer-workers
+                    - "16"
+                    - --max-boxes
+                    - "256"
+                    - --box-seed
+                    - "1"
+                    - --updates
+                    - "1500"
+                    - --save-interval
+                    - "250"
+                    - --eval-interval
+                    - "50"
+                    - --learning-rate
+                    - "5e-7"
+                    - --candidate-rerank-k
+                    - "0"
+                    - --candidate-diversity-center-m
+                    - "0.05"
+                    - --box-seq-dir
+                    - artifacts/random_spec_eval_50_plus_official/box_sequence
+                    - --eval-sequences
+                    - random_spec_000
+                    - random_spec_001
+                    - random_spec_002
+                    - random_spec_003
+                    - random_spec_004
+                    - random_spec_005
+                    - random_spec_006
+                    - random_spec_007
+                    - random_spec_008
+                    - random_spec_009
+                    - random_spec_010
+                    - random_spec_011
+                    - random_spec_012
+                    - random_spec_013
+                    - random_spec_014
+                    - random_spec_015
+                    - random_spec_016
+                    - random_spec_017
+                    - random_spec_018
+                    - random_spec_019
+                    - random_spec_020
+                    - random_spec_021
+                    - random_spec_022
+                    - random_spec_023
+                    - random_spec_024
+                    - random_spec_025
+                    - random_spec_026
+                    - random_spec_027
+                    - random_spec_028
+                    - random_spec_029
+                    - random_spec_030
+                    - random_spec_031
+                    - random_spec_032
+                    - random_spec_033
+                    - random_spec_034
+                    - random_spec_035
+                    - random_spec_036
+                    - random_spec_037
+                    - random_spec_038
+                    - random_spec_039
+                    - random_spec_040
+                    - random_spec_041
+                    - random_spec_042
+                    - random_spec_043
+                    - random_spec_044
+                    - random_spec_045
+                    - random_spec_046
+                    - random_spec_047
+                    - random_spec_048
+                    - random_spec_049
+                    - box_sequence_0
+                    - box_sequence_1
+                    - --seed
+                    - "0"
+                    - --headless
+                    - --wandb
+                    - --wandb-project
+                    - assignment2-pallet
+                    - --wandb-name
+                    - sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont
+                    - --wandb-group
+                    - sun_c1400_workers16_rand52_deploy
+                    - --wandb-tags
+                    - sun
+                    - c1400
+                    - env128
+                    - workers16
+                    - rand52official
+                    - deploybest
+                    - --load-model
+                    - isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand52official_sun_gap_guard_v1_deploybest/deploy_eval/candidate-001400.pt
+                    - --deploy-eval-best
+                    - --deploy-eval-buffer-size
+                    - "0"
+                    - --deploy-eval-timeout
+                    - "1800"
+                codePath: isaaclab_pallet/scripts/train_pallet_gat.py
+                codePathLocal: isaaclab_pallet/scripts/train_pallet_gat.py
+                cpu_count: 16
+                cpu_count_logical: 32
+                cudaVersion: "13.0"
+                disk:
+                    /:
+                        total: "1967317549056"
+                        used: "1849586601984"
+                email: nkyeonjae1009@gmail.com
+                executable: /home/user/miniconda3/envs/env_isaaclab/bin/python3
+                git:
+                    commit: 6d310def4331e3f92960db7c07f008148f0db6f2
+                    remote: https://github.com/yeonjae1009/UOS-RoboStack.git
+                gpu: NVIDIA RTX PRO 6000 Blackwell Workstation Edition
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Blackwell
+                      cudaCores: 24064
+                      memoryTotal: "102641958912"
+                      name: NVIDIA RTX PRO 6000 Blackwell Workstation Edition
+                      uuid: GPU-25b334fd-ab46-888e-11f4-03fc595ea8e4
+                host: robotics-ws
+                memory:
+                    total: "132569939968"
+                os: Linux-6.8.0-124-generic-x86_64-with-glibc2.35
+                program: /home/user/Documents/assignment2_project/isaaclab_pallet/scripts/train_pallet_gat.py
+                python: CPython 3.11.15
+                root: isaaclab_pallet/runs/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont/wandb
+                startedAt: "2026-07-15T20:29:54.344767Z"
+                writerId: ik2zcykdxhkub3xhg7crtyoz1ykw7opp
+        m:
+            - "1": update
+              "6":
+                - 3
+              "7": []
+            - "2": checkpoint/*
+              "5": 1
+              "6":
+                - 1
+              "7": []
+            - "2": train/*
+              "5": 1
+              "6":
+                - 1
+              "7": []
+            - "2": eval/*
+              "5": 1
+              "6":
+                - 1
+              "7": []
+        python_version: 3.11.15
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+            "3":
+                - 2
+                - 7
+                - 13
+                - 14
+                - 15
+                - 16
+                - 61
+            "4": 3.11.15
+            "5": 0.28.0
+            "12": 0.28.0
+            "13": linux-x86_64
+actor_loss_coef:
+    value: 1
+box_seed:
+    value: 1
+box_source:
+    value: random
+candidate_diversity_center_m:
+    value: 0.05
+candidate_generator:
+    value: ems
+candidate_rerank_k:
+    value: 0
+critic_loss_coef:
+    value: 1
+device:
+    value: cuda:0
+embedding_size:
+    value: 64
+entropy_coef:
+    value: 0.01
+eval_interval:
+    value: 50
+gamma:
+    value: 1
+gat_layer_num:
+    value: 1
+hidden_size:
+    value: 128
+internal_node_holder:
+    value: 200
+leaf_node_holder:
+    value: 100
+learn_finish_action:
+    value: false
+learning_rate:
+    value: 5e-07
+load_model:
+    value: isaaclab_pallet/runs/sun_terminal18_env128_workers4_rand52official_sun_gap_guard_v1_deploybest/deploy_eval/candidate-001400.pt
+max_boxes:
+    value: 256
+max_grad_norm:
+    value: 0.5
+normFactor:
+    value: 0.8
+num_envs:
+    value: 128
+num_steps:
+    value: 5
+resume_checkpoint:
+    value: ""
+reward_profile:
+    value: sun_gap_fill_v2
+run_name:
+    value: sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont
+save_interval:
+    value: 250
+save_update_checkpoints:
+    value: true
+seed:
+    value: 0
+start_update:
+    value: 0
+train_box_seq_dir:
+    value: submit_buffer3_search/box_sequence
+train_type_sequences:
+    value:
+        - box_sequence_0
+        - box_sequence_1
+updates:
+    value: 1500

@@ -24,7 +24,7 @@ search:
   mode: beam                     # one_step 또는 beam
   score_profile: sun_v2     # legacy 또는 geometry_v1
   top_k_leaf: 4
-  candidate_union_enabled: true
+  candidate_union_enabled: false
   candidate_union_mode: adaptive # 일반 입력은 단일 정책, 증가순 adversarial이면 union rerank
   union_top_k_per_model: 4      # 각 ONNX 모델별 top-K 후보 수 (3개 모델이면 최대 12개 union 후보)
   union_fallback_top_k_leaf: 20 # union 후보가 전부 실패할 때 첫 정책의 top-K까지 확장

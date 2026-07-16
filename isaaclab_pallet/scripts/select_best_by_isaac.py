@@ -11,6 +11,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import yaml
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -21,7 +23,9 @@ def _ensure_nvidia_libs(env: dict[str, str]) -> dict[str, str]:
         lib_dirs.extend(glob.glob(os.path.join(sp, "nvidia", "*", "lib")))
     if lib_dirs:
         old = env.get("LD_LIBRARY_PATH", "")
-        env["LD_LIBRARY_PATH"] = os.pathsep.join(lib_dirs + ([old] if old else []))
+        # Keep Isaac/Kit libraries ahead of torch's bundled CUDA libraries. Isaac
+        # can fail during plugin startup/shutdown if its own libs lose priority.
+        env["LD_LIBRARY_PATH"] = os.pathsep.join(([old] if old else []) + lib_dirs)
     return env
 
 
@@ -57,6 +61,15 @@ def _run(cmd: list[str], env: dict[str, str], log_path: Path) -> None:
         subprocess.run(cmd, cwd=PROJECT_ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, check=True)
 
 
+def _write_sim_config(base_config: str, box_seq_dir: str, out_path: Path) -> Path:
+    with open(base_config, "r", encoding="utf-8") as f:
+        cfg = yaml.safe_load(f)
+    cfg.setdefault("paths", {})["box_sequence_dir"] = str(Path(box_seq_dir).resolve())
+    cfg.setdefault("screenshot", {})["enabled"] = False
+    out_path.write_text(yaml.safe_dump(cfg, sort_keys=False, allow_unicode=True), encoding="utf-8")
+    return out_path
+
+
 def _score_checkpoint(
     checkpoint: Path,
     work_dir: Path,
@@ -70,6 +83,7 @@ def _score_checkpoint(
     log_path = ckpt_work / "eval.log"
     alg_dir.mkdir(parents=True, exist_ok=True)
     sim_dir.mkdir(parents=True, exist_ok=True)
+    sim_config = _write_sim_config(args.sim_config, args.box_seq_dir, ckpt_work / "sim_config.yaml")
 
     gen_cmd = [
         sys.executable,
@@ -91,7 +105,7 @@ def _score_checkpoint(
         sys.executable,
         "palletizing_simulator/simulator.py",
         "--config",
-        args.sim_config,
+        str(sim_config),
         "--input-dir",
         str(alg_dir.resolve()),
         "-o",
