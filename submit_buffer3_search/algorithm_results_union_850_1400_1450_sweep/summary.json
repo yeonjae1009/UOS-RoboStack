@@ -1,0 +1,140 @@
+[
+  {
+    "kind": "union",
+    "union_mode": "fallback",
+    "first_model": "850",
+    "model_paths": [
+      "src/models/pct_model.onnx",
+      "src/models/candidate-001400.onnx",
+      "src/models/candidate-001450.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 584.2638789150005,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_fallback_first_850.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_fallback_first_850",
+    "experiment": "union_fallback_first_850",
+    "iid_mean_raw_fill_pct": 66.21592067466666,
+    "iid_stddev_raw_fill_pct": 4.039708890515172,
+    "stress_mean_raw_fill_pct": 61.6983573060606,
+    "selection_weighted_raw_fill_pct": 64.86065166408484,
+    "switch_5sku_mean_raw_fill_pct": 66.436047,
+    "selection_mean_placed_boxes": 84.86111111111111,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "fallback",
+    "first_model": "1400",
+    "model_paths": [
+      "src/models/candidate-001400.onnx",
+      "src/models/pct_model.onnx",
+      "src/models/candidate-001450.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 584.3864285350028,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_fallback_first_1400.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_fallback_first_1400",
+    "experiment": "union_fallback_first_1400",
+    "iid_mean_raw_fill_pct": 67.04016473466666,
+    "iid_stddev_raw_fill_pct": 5.80698378639768,
+    "stress_mean_raw_fill_pct": 62.66983056060606,
+    "selection_weighted_raw_fill_pct": 65.72906448244848,
+    "switch_5sku_mean_raw_fill_pct": 62.271534488888896,
+    "selection_mean_placed_boxes": 86.01388888888889,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "fallback",
+    "first_model": "1450",
+    "model_paths": [
+      "src/models/candidate-001450.onnx",
+      "src/models/pct_model.onnx",
+      "src/models/candidate-001400.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 576.5090991780016,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_fallback_first_1450.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_fallback_first_1450",
+    "experiment": "union_fallback_first_1450",
+    "iid_mean_raw_fill_pct": 66.00717099066667,
+    "iid_stddev_raw_fill_pct": 4.522410270433067,
+    "stress_mean_raw_fill_pct": 61.608424912121215,
+    "selection_weighted_raw_fill_pct": 64.68754716710302,
+    "switch_5sku_mean_raw_fill_pct": 62.22629546666667,
+    "selection_mean_placed_boxes": 84.61111111111111,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "adaptive",
+    "first_model": "850",
+    "model_paths": [
+      "src/models/pct_model.onnx",
+      "src/models/candidate-001400.onnx",
+      "src/models/candidate-001450.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 707.6189402730015,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_adaptive_first_850.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_adaptive_first_850",
+    "experiment": "union_adaptive_first_850",
+    "iid_mean_raw_fill_pct": 66.00629462266667,
+    "iid_stddev_raw_fill_pct": 4.072074366789505,
+    "stress_mean_raw_fill_pct": 62.26613231515151,
+    "selection_weighted_raw_fill_pct": 64.88424593041212,
+    "switch_5sku_mean_raw_fill_pct": 66.436047,
+    "selection_mean_placed_boxes": 84.91666666666667,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "adaptive",
+    "first_model": "1400",
+    "model_paths": [
+      "src/models/candidate-001400.onnx",
+      "src/models/pct_model.onnx",
+      "src/models/candidate-001450.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 707.6437595320022,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_adaptive_first_1400.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_adaptive_first_1400",
+    "experiment": "union_adaptive_first_1400",
+    "iid_mean_raw_fill_pct": 66.97740259866667,
+    "iid_stddev_raw_fill_pct": 5.801560025015875,
+    "stress_mean_raw_fill_pct": 62.786938578787876,
+    "selection_weighted_raw_fill_pct": 65.72026339270303,
+    "switch_5sku_mean_raw_fill_pct": 62.271534488888896,
+    "selection_mean_placed_boxes": 86.01388888888889,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  },
+  {
+    "kind": "union",
+    "union_mode": "adaptive",
+    "first_model": "1450",
+    "model_paths": [
+      "src/models/candidate-001450.onnx",
+      "src/models/pct_model.onnx",
+      "src/models/candidate-001400.onnx"
+    ],
+    "returncode": 0,
+    "elapsed_sec": 699.5147331640001,
+    "log": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_adaptive_first_1450.log",
+    "output_dir": "/home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_adaptive_first_1450",
+    "experiment": "union_adaptive_first_1450",
+    "iid_mean_raw_fill_pct": 66.31422202133334,
+    "iid_stddev_raw_fill_pct": 4.088000430886309,
+    "stress_mean_raw_fill_pct": 61.53845337575758,
+    "selection_weighted_raw_fill_pct": 64.8814914276606,
+    "switch_5sku_mean_raw_fill_pct": 62.22629546666667,
+    "selection_mean_placed_boxes": 84.86111111111111,
+    "selection_terminated_count": 66,
+    "empty_output_count": 0
+  }
+]

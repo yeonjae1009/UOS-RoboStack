@@ -69,7 +69,6 @@ def _configure(workspace: Path, input_dir: Path, output_dir: Path, paths: list[s
     search["enabled"] = True
     search["candidate_union_enabled"] = union
     search["candidate_union_mode"] = mode
-    search["non_buffer_enabled"] = False
     pct["model_path"] = paths[0]
     pct["model_paths"] = paths
     _write_yaml(alg_path, alg)

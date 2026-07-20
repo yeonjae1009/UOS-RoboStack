@@ -22,7 +22,7 @@ MODELS = [
     "src/models/pct_model_bestonnx.onnx",
 ]
 
-MODES = ["adaptive", "fallback", "rerank"]
+MODES = ["adaptive", "fallback"]
 ORDERS = [
     (
         "1400",
@@ -82,7 +82,6 @@ def configure(order: tuple[str, ...], mode: str, output_dir: str) -> None:
     search["enabled"] = True
     search["candidate_union_enabled"] = True
     search["candidate_union_mode"] = mode
-    search["non_buffer_enabled"] = False
 
     pct["model_paths"] = list(order)
 

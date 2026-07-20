@@ -1,0 +1,61 @@
+input_path: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/input_sequences
+output_dir: /home/robotics/UOS-RoboStack/submit_buffer3_search/algorithm_results_union_850_1400_1450_sweep/union_fallback_first_850
+pallet:
+  length: 1.2
+  width: 1.0
+  height: 1.25
+json:
+  indent: 2
+  ensure_ascii: false
+algorithm:
+  allow_rotation: true
+buffer:
+  size: 0
+search:
+  enabled: true
+  mode: beam
+  score_profile: sun_v2
+  top_k_leaf: 4
+  candidate_union_enabled: true
+  candidate_union_mode: fallback
+  union_top_k_per_model: 4
+  union_fallback_top_k_leaf: 20
+  candidate_union_score_profile: legacy
+  beam_width: 2
+  depth: 2
+  non_buffer_enabled: false
+  rollout_depth: 2
+  pseudo_samples: 4
+  rollout_weight: 0.1
+  rollout_discount: 0.7
+  time_budget_sec: 80.0
+  random_seed: 0
+  root_candidates: 6
+  horizon: 4
+  samples: 8
+  mpc_beam_width: 2
+  rollout_top_k: 2
+  search_cutoff_sec: 75.0
+  fallback_reserve_sec: 10.0
+  rule_max_search_steps: 1
+  value_max_search_steps: 8
+  cvar_fraction: 0.25
+  fallback_model: src/models/candidate-001400.onnx
+  mpc_weights:
+    expected_volume: 1.0
+    cvar_volume: 0.55
+    usable_ems: 0.1
+    void_fragmentation: -0.08
+    height: -0.12
+    roughness: -0.1
+    support: 0.12
+    immediate: 0.18
+  value:
+    model_path: src/models/candidate_value.onnx
+    score_weight: 0.35
+    dagger_metadata_version: dagger-v2
+selector:
+  enabled: true
+  model_path: src/models/buffer_selector.onnx
+  buffer_size: 3
+  bonus_weight: 0.1

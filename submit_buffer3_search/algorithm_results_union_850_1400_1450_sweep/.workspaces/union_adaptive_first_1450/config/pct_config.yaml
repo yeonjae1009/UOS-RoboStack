@@ -1,0 +1,11 @@
+model_path: src/models/candidate-001450.onnx
+model_paths:
+- src/models/candidate-001450.onnx
+- src/models/pct_model.onnx
+- src/models/candidate-001400.onnx
+internal_node_holder: 200
+leaf_node_holder: 100
+norm_factor: 0.8
+size_minimum: 0.13
+setting: 3
+density_max: 1597.01889805696
