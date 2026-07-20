@@ -1,0 +1,855 @@
+{
+  "best": {
+    "checkpoint": "/home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont/deploy_eval/candidate-001250.pt",
+    "avg_score": 86.16,
+    "success": true,
+    "episodes": [
+      {
+        "source": "box_sequence_0.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.241,
+        "buffer_size": 0,
+        "score": 88.8
+      },
+      {
+        "source": "box_sequence_1.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.224,
+        "buffer_size": 0,
+        "score": 81.5
+      },
+      {
+        "source": "random_spec_000.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.25,
+        "buffer_size": 0,
+        "score": 88.3
+      },
+      {
+        "source": "random_spec_001.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.235,
+        "buffer_size": 0,
+        "score": 92.4
+      },
+      {
+        "source": "random_spec_002.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.207,
+        "buffer_size": 0,
+        "score": 84.3
+      },
+      {
+        "source": "random_spec_003.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.242,
+        "buffer_size": 0,
+        "score": 88.2
+      },
+      {
+        "source": "random_spec_004.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.227,
+        "buffer_size": 0,
+        "score": 90.4
+      },
+      {
+        "source": "random_spec_005.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.211,
+        "buffer_size": 0,
+        "score": 80.4
+      },
+      {
+        "source": "random_spec_006.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.248,
+        "buffer_size": 0,
+        "score": 91.5
+      },
+      {
+        "source": "random_spec_007.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.245,
+        "buffer_size": 0,
+        "score": 85.9
+      },
+      {
+        "source": "random_spec_008.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.235,
+        "buffer_size": 0,
+        "score": 83.5
+      },
+      {
+        "source": "random_spec_009.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.244,
+        "buffer_size": 0,
+        "score": 80.5
+      },
+      {
+        "source": "random_spec_010.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.24,
+        "buffer_size": 0,
+        "score": 88.0
+      },
+      {
+        "source": "random_spec_011.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.244,
+        "buffer_size": 0,
+        "score": 78.9
+      },
+      {
+        "source": "random_spec_012.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.224,
+        "buffer_size": 0,
+        "score": 82.9
+      },
+      {
+        "source": "random_spec_013.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.234,
+        "buffer_size": 0,
+        "score": 91.1
+      },
+      {
+        "source": "random_spec_014.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.239,
+        "buffer_size": 0,
+        "score": 84.7
+      },
+      {
+        "source": "random_spec_015.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.225,
+        "buffer_size": 0,
+        "score": 86.0
+      },
+      {
+        "source": "random_spec_016.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.219,
+        "buffer_size": 0,
+        "score": 84.0
+      },
+      {
+        "source": "random_spec_017.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.243,
+        "buffer_size": 0,
+        "score": 88.7
+      },
+      {
+        "source": "random_spec_018.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.224,
+        "buffer_size": 0,
+        "score": 82.5
+      },
+      {
+        "source": "random_spec_019.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.244,
+        "buffer_size": 0,
+        "score": 88.0
+      },
+      {
+        "source": "random_spec_020.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.24,
+        "buffer_size": 0,
+        "score": 85.6
+      },
+      {
+        "source": "random_spec_021.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.238,
+        "buffer_size": 0,
+        "score": 82.0
+      },
+      {
+        "source": "random_spec_022.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.229,
+        "buffer_size": 0,
+        "score": 84.6
+      },
+      {
+        "source": "random_spec_023.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.242,
+        "buffer_size": 0,
+        "score": 87.2
+      },
+      {
+        "source": "random_spec_024.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.249,
+        "buffer_size": 0,
+        "score": 90.4
+      },
+      {
+        "source": "random_spec_025.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.22,
+        "buffer_size": 0,
+        "score": 87.4
+      },
+      {
+        "source": "random_spec_026.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.244,
+        "buffer_size": 0,
+        "score": 84.4
+      },
+      {
+        "source": "random_spec_027.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.247,
+        "buffer_size": 0,
+        "score": 84.1
+      },
+      {
+        "source": "random_spec_028.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.226,
+        "buffer_size": 0,
+        "score": 85.0
+      },
+      {
+        "source": "random_spec_029.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.229,
+        "buffer_size": 0,
+        "score": 81.5
+      },
+      {
+        "source": "random_spec_030.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.228,
+        "buffer_size": 0,
+        "score": 85.0
+      },
+      {
+        "source": "random_spec_031.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.19,
+        "buffer_size": 0,
+        "score": 81.6
+      },
+      {
+        "source": "random_spec_032.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.236,
+        "buffer_size": 0,
+        "score": 81.9
+      },
+      {
+        "source": "random_spec_033.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.246,
+        "buffer_size": 0,
+        "score": 89.2
+      },
+      {
+        "source": "random_spec_034.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.248,
+        "buffer_size": 0,
+        "score": 88.8
+      },
+      {
+        "source": "random_spec_035.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.221,
+        "buffer_size": 0,
+        "score": 87.2
+      },
+      {
+        "source": "random_spec_036.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.226,
+        "buffer_size": 0,
+        "score": 90.9
+      },
+      {
+        "source": "random_spec_037.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.248,
+        "buffer_size": 0,
+        "score": 87.6
+      },
+      {
+        "source": "random_spec_038.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.245,
+        "buffer_size": 0,
+        "score": 93.0
+      },
+      {
+        "source": "random_spec_039.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.24,
+        "buffer_size": 0,
+        "score": 91.5
+      },
+      {
+        "source": "random_spec_040.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.212,
+        "buffer_size": 0,
+        "score": 82.5
+      },
+      {
+        "source": "random_spec_041.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.247,
+        "buffer_size": 0,
+        "score": 82.4
+      },
+      {
+        "source": "random_spec_042.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.243,
+        "buffer_size": 0,
+        "score": 87.9
+      },
+      {
+        "source": "random_spec_043.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.194,
+        "buffer_size": 0,
+        "score": 83.4
+      },
+      {
+        "source": "random_spec_044.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.23,
+        "buffer_size": 0,
+        "score": 88.7
+      },
+      {
+        "source": "random_spec_045.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.246,
+        "buffer_size": 0,
+        "score": 87.0
+      },
+      {
+        "source": "random_spec_046.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.241,
+        "buffer_size": 0,
+        "score": 91.2
+      },
+      {
+        "source": "random_spec_047.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.244,
+        "buffer_size": 0,
+        "score": 84.5
+      },
+      {
+        "source": "random_spec_048.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.233,
+        "buffer_size": 0,
+        "score": 84.4
+      },
+      {
+        "source": "random_spec_049.json",
+        "status": "success",
+        "reason": null,
+        "max_height_m": 1.247,
+        "buffer_size": 0,
+        "score": 88.8
+      }
+    ],
+    "result_json": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-001250/candidate-001250/sim_results/result.json",
+    "log": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-001250/candidate-001250/eval.log"
+  },
+  "copied_to": "/home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont/PCT-best-isaac-rand52-candidate-001250.pt",
+  "records": [
+    {
+      "checkpoint": "/home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont/deploy_eval/candidate-001250.pt",
+      "avg_score": 86.16,
+      "success": true,
+      "episodes": [
+        {
+          "source": "box_sequence_0.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.241,
+          "buffer_size": 0,
+          "score": 88.8
+        },
+        {
+          "source": "box_sequence_1.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.224,
+          "buffer_size": 0,
+          "score": 81.5
+        },
+        {
+          "source": "random_spec_000.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.25,
+          "buffer_size": 0,
+          "score": 88.3
+        },
+        {
+          "source": "random_spec_001.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.235,
+          "buffer_size": 0,
+          "score": 92.4
+        },
+        {
+          "source": "random_spec_002.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.207,
+          "buffer_size": 0,
+          "score": 84.3
+        },
+        {
+          "source": "random_spec_003.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.242,
+          "buffer_size": 0,
+          "score": 88.2
+        },
+        {
+          "source": "random_spec_004.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.227,
+          "buffer_size": 0,
+          "score": 90.4
+        },
+        {
+          "source": "random_spec_005.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.211,
+          "buffer_size": 0,
+          "score": 80.4
+        },
+        {
+          "source": "random_spec_006.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.248,
+          "buffer_size": 0,
+          "score": 91.5
+        },
+        {
+          "source": "random_spec_007.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.245,
+          "buffer_size": 0,
+          "score": 85.9
+        },
+        {
+          "source": "random_spec_008.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.235,
+          "buffer_size": 0,
+          "score": 83.5
+        },
+        {
+          "source": "random_spec_009.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.244,
+          "buffer_size": 0,
+          "score": 80.5
+        },
+        {
+          "source": "random_spec_010.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.24,
+          "buffer_size": 0,
+          "score": 88.0
+        },
+        {
+          "source": "random_spec_011.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.244,
+          "buffer_size": 0,
+          "score": 78.9
+        },
+        {
+          "source": "random_spec_012.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.224,
+          "buffer_size": 0,
+          "score": 82.9
+        },
+        {
+          "source": "random_spec_013.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.234,
+          "buffer_size": 0,
+          "score": 91.1
+        },
+        {
+          "source": "random_spec_014.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.239,
+          "buffer_size": 0,
+          "score": 84.7
+        },
+        {
+          "source": "random_spec_015.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.225,
+          "buffer_size": 0,
+          "score": 86.0
+        },
+        {
+          "source": "random_spec_016.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.219,
+          "buffer_size": 0,
+          "score": 84.0
+        },
+        {
+          "source": "random_spec_017.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.243,
+          "buffer_size": 0,
+          "score": 88.7
+        },
+        {
+          "source": "random_spec_018.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.224,
+          "buffer_size": 0,
+          "score": 82.5
+        },
+        {
+          "source": "random_spec_019.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.244,
+          "buffer_size": 0,
+          "score": 88.0
+        },
+        {
+          "source": "random_spec_020.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.24,
+          "buffer_size": 0,
+          "score": 85.6
+        },
+        {
+          "source": "random_spec_021.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.238,
+          "buffer_size": 0,
+          "score": 82.0
+        },
+        {
+          "source": "random_spec_022.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.229,
+          "buffer_size": 0,
+          "score": 84.6
+        },
+        {
+          "source": "random_spec_023.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.242,
+          "buffer_size": 0,
+          "score": 87.2
+        },
+        {
+          "source": "random_spec_024.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.249,
+          "buffer_size": 0,
+          "score": 90.4
+        },
+        {
+          "source": "random_spec_025.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.22,
+          "buffer_size": 0,
+          "score": 87.4
+        },
+        {
+          "source": "random_spec_026.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.244,
+          "buffer_size": 0,
+          "score": 84.4
+        },
+        {
+          "source": "random_spec_027.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.247,
+          "buffer_size": 0,
+          "score": 84.1
+        },
+        {
+          "source": "random_spec_028.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.226,
+          "buffer_size": 0,
+          "score": 85.0
+        },
+        {
+          "source": "random_spec_029.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.229,
+          "buffer_size": 0,
+          "score": 81.5
+        },
+        {
+          "source": "random_spec_030.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.228,
+          "buffer_size": 0,
+          "score": 85.0
+        },
+        {
+          "source": "random_spec_031.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.19,
+          "buffer_size": 0,
+          "score": 81.6
+        },
+        {
+          "source": "random_spec_032.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.236,
+          "buffer_size": 0,
+          "score": 81.9
+        },
+        {
+          "source": "random_spec_033.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.246,
+          "buffer_size": 0,
+          "score": 89.2
+        },
+        {
+          "source": "random_spec_034.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.248,
+          "buffer_size": 0,
+          "score": 88.8
+        },
+        {
+          "source": "random_spec_035.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.221,
+          "buffer_size": 0,
+          "score": 87.2
+        },
+        {
+          "source": "random_spec_036.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.226,
+          "buffer_size": 0,
+          "score": 90.9
+        },
+        {
+          "source": "random_spec_037.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.248,
+          "buffer_size": 0,
+          "score": 87.6
+        },
+        {
+          "source": "random_spec_038.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.245,
+          "buffer_size": 0,
+          "score": 93.0
+        },
+        {
+          "source": "random_spec_039.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.24,
+          "buffer_size": 0,
+          "score": 91.5
+        },
+        {
+          "source": "random_spec_040.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.212,
+          "buffer_size": 0,
+          "score": 82.5
+        },
+        {
+          "source": "random_spec_041.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.247,
+          "buffer_size": 0,
+          "score": 82.4
+        },
+        {
+          "source": "random_spec_042.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.243,
+          "buffer_size": 0,
+          "score": 87.9
+        },
+        {
+          "source": "random_spec_043.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.194,
+          "buffer_size": 0,
+          "score": 83.4
+        },
+        {
+          "source": "random_spec_044.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.23,
+          "buffer_size": 0,
+          "score": 88.7
+        },
+        {
+          "source": "random_spec_045.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.246,
+          "buffer_size": 0,
+          "score": 87.0
+        },
+        {
+          "source": "random_spec_046.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.241,
+          "buffer_size": 0,
+          "score": 91.2
+        },
+        {
+          "source": "random_spec_047.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.244,
+          "buffer_size": 0,
+          "score": 84.5
+        },
+        {
+          "source": "random_spec_048.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.233,
+          "buffer_size": 0,
+          "score": 84.4
+        },
+        {
+          "source": "random_spec_049.json",
+          "status": "success",
+          "reason": null,
+          "max_height_m": 1.247,
+          "buffer_size": 0,
+          "score": 88.8
+        }
+      ],
+      "result_json": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-001250/candidate-001250/sim_results/result.json",
+      "log": "/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-001250/candidate-001250/eval.log"
+    }
+  ]
+}

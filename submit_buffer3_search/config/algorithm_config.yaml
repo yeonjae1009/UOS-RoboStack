@@ -1,11 +1,11 @@
 #input_path: random_spec_eval_10/box_sequence
 #output_dir: algorithm_results_eval10
-# input_path: test_box_sequence_250
-# output_dir: test_box_sequence_250_result
+input_path: test_box_sequence_250
+output_dir: test_box_sequence_250_result
 #input_path: box_sequence
 #output_dir: algorithm_results
-input_path: final_model_selection_v1
-output_dir: final_model_selection_v1_result
+# input_path: final_model_selection_v1
+# output_dir: final_model_selection_v1_result
 pallet:
   length: 1.2
   width: 1.0
@@ -19,7 +19,7 @@ algorithm:
   allow_rotation: true            # 박스 Z축 기준 90도 회전 허용 여부
 ############# 아래는 사용자가 입력하는 설정값입니다. #############
 buffer:
-  size: 0                  # 버퍼 슬롯 수, 동시에 대기 가능한 박스 수
+  size: 3                  # 버퍼 슬롯 수, 동시에 대기 가능한 박스 수
 
 search:
   # Full development validation must pass before enabling hybrid MPC.  Keeping
@@ -28,7 +28,7 @@ search:
   mode: beam                     # one_step 또는 beam
   score_profile: sun_v2     # legacy 또는 geometry_v1
   top_k_leaf: 4
-  candidate_union_enabled: false
+  candidate_union_enabled: true
   candidate_union_mode: mpc_rule # mpc_rule 또는 mpc_value (fallback/adaptive는 회귀 비교 전용)
   union_top_k_per_model: 4      # 각 ONNX 모델별 top-K 후보 수 (3개 모델이면 최대 12개 union 후보)
   union_fallback_top_k_leaf: 20 # union 후보가 전부 실패할 때 첫 정책의 top-K까지 확장

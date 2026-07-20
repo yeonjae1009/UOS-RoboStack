@@ -923,3 +923,117 @@ Warp DeprecationWarning: The `warp.sim` module is deprecated and will be removed
 [simulator] ══ Processing: random_spec_044.json ══
 [simulator] plan=85  buffer_size=0  source_boxes=250
 [simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 6.6s)
+[evaluator] [SUCCESS]  ok=85/85  stacking=68.7% [68.7%]  collapse=0  oob=0  drop=0  buffer=0  score=88.7 (stacking=68.7 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_045.json ══
+[simulator] plan=79  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 6.7s)
+[evaluator] [SUCCESS]  ok=79/79  stacking=61.1% [61.1%]  collapse=0  oob=0  drop=0  buffer=0  score=81.1 (stacking=61.1 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_046.json ══
+[simulator] plan=87  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 7.1s)
+[evaluator] [SUCCESS]  ok=87/87  stacking=71.2% [71.2%]  collapse=0  oob=0  drop=0  buffer=0  score=91.2 (stacking=71.2 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_047.json ══
+[simulator] plan=79  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 6.3s)
+[evaluator] [SUCCESS]  ok=79/79  stacking=61.5% [61.5%]  collapse=0  oob=0  drop=0  buffer=0  score=81.5 (stacking=61.5 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_048.json ══
+[simulator] plan=83  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 6.3s)
+[evaluator] [SUCCESS]  ok=83/83  stacking=64.4% [64.4%]  collapse=0  oob=0  drop=0  buffer=0  score=84.4 (stacking=64.4 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_049.json ══
+[simulator] plan=87  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 6.7s)
+[evaluator] [SUCCESS]  ok=87/87  stacking=68.8% [68.8%]  collapse=0  oob=0  drop=0  buffer=0  score=88.8 (stacking=68.8 + buffer_bonus=20)
+
+[evaluator] ══ Result ══
+  ✓ box_sequence_0.json  stacking=70.9% [70.9%]  ok=98/98  time=0.0s  buffer=0  score=90.9 (stacking=70.9 + bonus=20)
+  ✓ box_sequence_1.json  stacking=61.5% [61.5%]  ok=73/73  time=0.0s  buffer=0  score=81.5 (stacking=61.5 + bonus=20)
+  ✓ random_spec_000.json  stacking=69.7% [69.7%]  ok=87/87  time=0.0s  buffer=0  score=89.7 (stacking=69.7 + bonus=20)
+  ✓ random_spec_001.json  stacking=71.1% [71.1%]  ok=92/92  time=0.0s  buffer=0  score=91.1 (stacking=71.1 + bonus=20)
+  ✓ random_spec_002.json  stacking=64.3% [64.3%]  ok=85/85  time=0.0s  buffer=0  score=84.3 (stacking=64.3 + bonus=20)
+  ✓ random_spec_003.json  stacking=68.2% [68.2%]  ok=86/86  time=0.0s  buffer=0  score=88.2 (stacking=68.2 + bonus=20)
+  ✓ random_spec_004.json  stacking=71.8% [71.8%]  ok=94/94  time=0.0s  buffer=0  score=91.8 (stacking=71.8 + bonus=20)
+  ✓ random_spec_005.json  stacking=64.2% [64.2%]  ok=83/83  time=0.0s  buffer=0  score=84.2 (stacking=64.2 + bonus=20)
+  ✓ random_spec_006.json  stacking=71.5% [71.5%]  ok=88/88  time=0.0s  buffer=0  score=91.5 (stacking=71.5 + bonus=20)
+  ✓ random_spec_007.json  stacking=65.9% [65.9%]  ok=84/84  time=0.0s  buffer=0  score=85.9 (stacking=65.9 + bonus=20)
+  ✓ random_spec_008.json  stacking=67.7% [67.7%]  ok=90/90  time=0.0s  buffer=0  score=87.7 (stacking=67.7 + bonus=20)
+  ✓ random_spec_009.json  stacking=60.5% [60.5%]  ok=82/82  time=0.0s  buffer=0  score=80.5 (stacking=60.5 + bonus=20)
+  ✓ random_spec_010.json  stacking=68.0% [68.0%]  ok=86/86  time=0.0s  buffer=0  score=88.0 (stacking=68.0 + bonus=20)
+  ✓ random_spec_011.json  stacking=58.9% [58.9%]  ok=77/77  time=0.0s  buffer=0  score=78.9 (stacking=58.9 + bonus=20)
+  ✓ random_spec_012.json  stacking=62.9% [62.9%]  ok=80/80  time=0.0s  buffer=0  score=82.9 (stacking=62.9 + bonus=20)
+  ✓ random_spec_013.json  stacking=69.4% [69.4%]  ok=88/88  time=0.0s  buffer=0  score=89.4 (stacking=69.4 + bonus=20)
+  ✓ random_spec_014.json  stacking=64.7% [64.7%]  ok=85/85  time=0.0s  buffer=0  score=84.7 (stacking=64.7 + bonus=20)
+  ✓ random_spec_015.json  stacking=66.0% [66.0%]  ok=84/84  time=0.0s  buffer=0  score=86.0 (stacking=66.0 + bonus=20)
+  ✓ random_spec_016.json  stacking=65.2% [65.2%]  ok=86/86  time=0.0s  buffer=0  score=85.2 (stacking=65.2 + bonus=20)
+  ✓ random_spec_017.json  stacking=68.7% [68.7%]  ok=94/94  time=0.0s  buffer=0  score=88.7 (stacking=68.7 + bonus=20)
+  ✓ random_spec_018.json  stacking=62.5% [62.5%]  ok=81/81  time=0.0s  buffer=0  score=82.5 (stacking=62.5 + bonus=20)
+  ✓ random_spec_019.json  stacking=71.8% [71.8%]  ok=91/91  time=0.0s  buffer=0  score=91.8 (stacking=71.8 + bonus=20)
+  ✓ random_spec_020.json  stacking=66.9% [66.9%]  ok=88/88  time=0.0s  buffer=0  score=86.9 (stacking=66.9 + bonus=20)
+  ✓ random_spec_021.json  stacking=62.0% [62.0%]  ok=81/81  time=0.0s  buffer=0  score=82.0 (stacking=62.0 + bonus=20)
+  ✓ random_spec_022.json  stacking=62.0% [62.0%]  ok=83/83  time=0.0s  buffer=0  score=82.0 (stacking=62.0 + bonus=20)
+  ✓ random_spec_023.json  stacking=69.6% [69.6%]  ok=91/91  time=0.0s  buffer=0  score=89.6 (stacking=69.6 + bonus=20)
+  ✓ random_spec_024.json  stacking=70.4% [70.4%]  ok=90/90  time=0.0s  buffer=0  score=90.4 (stacking=70.4 + bonus=20)
+  ✓ random_spec_025.json  stacking=67.4% [67.4%]  ok=91/91  time=0.0s  buffer=0  score=87.4 (stacking=67.4 + bonus=20)
+  ✓ random_spec_026.json  stacking=68.2% [68.2%]  ok=89/89  time=0.0s  buffer=0  score=88.2 (stacking=68.2 + bonus=20)
+  ✓ random_spec_027.json  stacking=64.1% [64.1%]  ok=79/79  time=0.0s  buffer=0  score=84.1 (stacking=64.1 + bonus=20)
+  ✓ random_spec_028.json  stacking=70.1% [70.1%]  ok=94/94  time=0.0s  buffer=0  score=90.1 (stacking=70.1 + bonus=20)
+  ✓ random_spec_029.json  stacking=61.5% [61.5%]  ok=77/77  time=0.0s  buffer=0  score=81.5 (stacking=61.5 + bonus=20)
+  ✓ random_spec_030.json  stacking=65.0% [65.0%]  ok=80/80  time=0.0s  buffer=0  score=85.0 (stacking=65.0 + bonus=20)
+  ✓ random_spec_031.json  stacking=69.2% [69.2%]  ok=91/91  time=0.0s  buffer=0  score=89.2 (stacking=69.2 + bonus=20)
+  ✓ random_spec_032.json  stacking=61.9% [61.9%]  ok=86/86  time=0.0s  buffer=0  score=81.9 (stacking=61.9 + bonus=20)
+  ✓ random_spec_033.json  stacking=69.2% [69.2%]  ok=85/85  time=0.0s  buffer=0  score=89.2 (stacking=69.2 + bonus=20)
+  ✓ random_spec_034.json  stacking=68.8% [68.8%]  ok=92/92  time=0.0s  buffer=0  score=88.8 (stacking=68.8 + bonus=20)
+  ✓ random_spec_035.json  stacking=67.2% [67.2%]  ok=90/90  time=0.0s  buffer=0  score=87.2 (stacking=67.2 + bonus=20)
+  ✓ random_spec_036.json  stacking=70.9% [70.9%]  ok=88/88  time=0.0s  buffer=0  score=90.9 (stacking=70.9 + bonus=20)
+  ✓ random_spec_037.json  stacking=59.6% [59.6%]  ok=84/84  time=0.0s  buffer=0  score=79.6 (stacking=59.6 + bonus=20)
+  ✓ random_spec_038.json  stacking=75.3% [75.3%]  ok=93/93  time=0.0s  buffer=0  score=95.3 (stacking=75.3 + bonus=20)
+  ✓ random_spec_039.json  stacking=71.5% [71.5%]  ok=85/85  time=0.0s  buffer=0  score=91.5 (stacking=71.5 + bonus=20)
+  ✓ random_spec_040.json  stacking=58.4% [58.4%]  ok=74/74  time=0.0s  buffer=0  score=78.4 (stacking=58.4 + bonus=20)
+  ✓ random_spec_041.json  stacking=62.4% [62.4%]  ok=82/82  time=0.0s  buffer=0  score=82.4 (stacking=62.4 + bonus=20)
+  ✓ random_spec_042.json  stacking=68.8% [68.8%]  ok=91/91  time=0.0s  buffer=0  score=88.8 (stacking=68.8 + bonus=20)
+  ✓ random_spec_043.json  stacking=63.4% [63.4%]  ok=82/82  time=0.0s  buffer=0  score=83.4 (stacking=63.4 + bonus=20)
+  ✓ random_spec_044.json  stacking=68.7% [68.7%]  ok=85/85  time=0.0s  buffer=0  score=88.7 (stacking=68.7 + bonus=20)
+  ✓ random_spec_045.json  stacking=61.1% [61.1%]  ok=79/79  time=0.0s  buffer=0  score=81.1 (stacking=61.1 + bonus=20)
+  ✓ random_spec_046.json  stacking=71.2% [71.2%]  ok=87/87  time=0.0s  buffer=0  score=91.2 (stacking=71.2 + bonus=20)
+  ✓ random_spec_047.json  stacking=61.5% [61.5%]  ok=79/79  time=0.0s  buffer=0  score=81.5 (stacking=61.5 + bonus=20)
+  ✓ random_spec_048.json  stacking=64.4% [64.4%]  ok=83/83  time=0.0s  buffer=0  score=84.4 (stacking=64.4 + bonus=20)
+  ✓ random_spec_049.json  stacking=68.8% [68.8%]  ok=87/87  time=0.0s  buffer=0  score=88.8 (stacking=68.8 + bonus=20)
+  ───────────────────────────────────────────────────────
+  summary : episodes 52 success / 0 failure / 0 height_overflow
+            avg stacking rate  66.4% [66.4%]
+            avg success rate   100.0%
+            avg score          86.44
+            total processing time 353.4s
+[evaluator] Saved → /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_shortlist/candidate-001200/sim_results/result.json
+
+[simulator] All files processed.
+2026-07-16T07:28:53Z [286,584ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:29:00Z [293,282ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:29:06Z [298,975ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:29:12Z [305,343ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:29:19Z [312,592ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:29:26Z [319,349ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:29:33Z [326,349ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:29:40Z [333,473ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:29:48Z [340,969ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:29:54Z [347,557ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:30:01Z [354,181ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T07:30:08Z [361,213ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+[361.362s] Simulation App Shutting Down

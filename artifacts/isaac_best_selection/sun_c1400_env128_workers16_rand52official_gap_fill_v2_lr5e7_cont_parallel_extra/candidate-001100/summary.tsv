@@ -1,0 +1,2 @@
+checkpoint	avg_score	success	result_json
+candidate-001100.pt	85.78	True	/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-001100/candidate-001100/sim_results/result.json

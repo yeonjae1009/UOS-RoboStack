@@ -1,0 +1,7 @@
+[parallel-select] start candidate-000900 Thu Jul 16 05:24:05 PM KST 2026
+[isaac-best] scoring /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont/deploy_eval/candidate-000900.pt
+[isaac-best] score=86.18 success=True checkpoint=candidate-000900.pt
+[isaac-best] BEST candidate-000900.pt score=86.18 success=True
+[isaac-best] copied -> /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont/PCT-best-isaac-rand52-candidate-000900.pt
+[isaac-best] summary -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/summary.json
+[parallel-select] done candidate-000900 Thu Jul 16 05:35:30 PM KST 2026

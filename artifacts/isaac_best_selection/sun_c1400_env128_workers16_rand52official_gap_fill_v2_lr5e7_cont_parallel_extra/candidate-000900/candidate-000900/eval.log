@@ -1,0 +1,1041 @@
+$ /home/user/miniconda3/envs/env_isaaclab/bin/python3 isaaclab_pallet/scripts/eval_competition_generate.py --checkpoint /home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont/deploy_eval/candidate-000900.pt --box-seq-dir artifacts/random_spec_eval_50_plus_official/box_sequence --out-dir /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results --device cuda:0 --sequences random_spec_000 random_spec_001 random_spec_002 random_spec_003 random_spec_004 random_spec_005 random_spec_006 random_spec_007 random_spec_008 random_spec_009 random_spec_010 random_spec_011 random_spec_012 random_spec_013 random_spec_014 random_spec_015 random_spec_016 random_spec_017 random_spec_018 random_spec_019 random_spec_020 random_spec_021 random_spec_022 random_spec_023 random_spec_024 random_spec_025 random_spec_026 random_spec_027 random_spec_028 random_spec_029 random_spec_030 random_spec_031 random_spec_032 random_spec_033 random_spec_034 random_spec_035 random_spec_036 random_spec_037 random_spec_038 random_spec_039 random_spec_040 random_spec_041 random_spec_042 random_spec_043 random_spec_044 random_spec_045 random_spec_046 random_spec_047 random_spec_048 random_spec_049 box_sequence_0 box_sequence_1
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[gen] checkpoint=/home/user/Documents/assignment2_project/isaaclab_pallet/runs/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont/deploy_eval/candidate-000900.pt setting=3 INH=200 LNH=100 density_max=1597.01889805696
+/home/user/Documents/assignment2_project/templete code/src/pct/convex_hull.py:104: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  if np.sum(np.cross(coords[i] - point, point - coords[j])) == 0:
+[gen] random_spec_000: placed=80/250 raw_fill=64.9% max_top=1.231m terminated_step=80 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_000.json
+[gen] random_spec_001: placed=91/250 raw_fill=70.6% max_top=1.244m terminated_step=91 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_001.json
+[gen] random_spec_002: placed=90/250 raw_fill=67.6% max_top=1.226m terminated_step=90 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_002.json
+[gen] random_spec_003: placed=90/250 raw_fill=70.8% max_top=1.245m terminated_step=90 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_003.json
+[gen] random_spec_004: placed=93/250 raw_fill=70.4% max_top=1.244m terminated_step=93 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_004.json
+[gen] random_spec_005: placed=83/250 raw_fill=64.2% max_top=1.242m terminated_step=83 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_005.json
+[gen] random_spec_006: placed=84/250 raw_fill=68.1% max_top=1.230m terminated_step=84 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_006.json
+[gen] random_spec_007: placed=90/250 raw_fill=70.6% max_top=1.246m terminated_step=90 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_007.json
+[gen] random_spec_008: placed=85/250 raw_fill=63.5% max_top=1.224m terminated_step=85 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_008.json
+[gen] random_spec_009: placed=95/250 raw_fill=70.9% max_top=1.245m terminated_step=95 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_009.json
+[gen] random_spec_010: placed=84/250 raw_fill=66.3% max_top=1.247m terminated_step=84 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_010.json
+[gen] random_spec_011: placed=77/250 raw_fill=58.9% max_top=1.246m terminated_step=77 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_011.json
+[gen] random_spec_012: placed=90/250 raw_fill=70.7% max_top=1.247m terminated_step=90 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_012.json
+[gen] random_spec_013: placed=94/250 raw_fill=74.2% max_top=1.248m terminated_step=94 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_013.json
+[gen] random_spec_014: placed=87/250 raw_fill=66.0% max_top=1.232m terminated_step=87 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_014.json
+[gen] random_spec_015: placed=89/250 raw_fill=69.9% max_top=1.228m terminated_step=89 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_015.json
+[gen] random_spec_016: placed=84/250 raw_fill=64.0% max_top=1.234m terminated_step=84 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_016.json
+[gen] random_spec_017: placed=94/250 raw_fill=68.7% max_top=1.243m terminated_step=94 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_017.json
+[gen] random_spec_018: placed=86/250 raw_fill=66.7% max_top=1.192m terminated_step=86 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_018.json
+[gen] random_spec_019: placed=84/250 raw_fill=65.2% max_top=1.226m terminated_step=84 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_019.json
+[gen] random_spec_020: placed=82/250 raw_fill=60.5% max_top=1.240m terminated_step=82 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_020.json
+[gen] random_spec_021: placed=81/250 raw_fill=62.0% max_top=1.208m terminated_step=81 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_021.json
+[gen] random_spec_022: placed=92/250 raw_fill=68.8% max_top=1.207m terminated_step=92 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_022.json
+[gen] random_spec_023: placed=88/250 raw_fill=67.2% max_top=1.236m terminated_step=88 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_023.json
+[gen] random_spec_024: placed=88/250 raw_fill=68.4% max_top=1.247m terminated_step=88 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_024.json
+[gen] random_spec_025: placed=87/250 raw_fill=64.4% max_top=1.242m terminated_step=87 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_025.json
+[gen] random_spec_026: placed=92/250 raw_fill=69.9% max_top=1.249m terminated_step=92 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_026.json
+[gen] random_spec_027: placed=81/250 raw_fill=66.6% max_top=1.250m terminated_step=81 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_027.json
+[gen] random_spec_028: placed=94/250 raw_fill=70.1% max_top=1.248m terminated_step=94 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_028.json
+[gen] random_spec_029: placed=77/250 raw_fill=61.5% max_top=1.226m terminated_step=77 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_029.json
+[gen] random_spec_030: placed=88/250 raw_fill=71.3% max_top=1.221m terminated_step=88 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_030.json
+[gen] random_spec_031: placed=91/250 raw_fill=69.2% max_top=1.244m terminated_step=91 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_031.json
+[gen] random_spec_032: placed=91/250 raw_fill=65.6% max_top=1.250m terminated_step=91 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_032.json
+[gen] random_spec_033: placed=86/250 raw_fill=69.9% max_top=1.250m terminated_step=86 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_033.json
+[gen] random_spec_034: placed=55/250 raw_fill=41.4% max_top=0.928m terminated_step=55 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_034.json
+[gen] random_spec_035: placed=86/250 raw_fill=63.0% max_top=1.220m terminated_step=86 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_035.json
+[gen] random_spec_036: placed=89/250 raw_fill=71.8% max_top=1.236m terminated_step=89 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_036.json
+[gen] random_spec_037: placed=86/250 raw_fill=61.3% max_top=1.236m terminated_step=86 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_037.json
+[gen] random_spec_038: placed=83/250 raw_fill=68.3% max_top=1.237m terminated_step=83 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_038.json
+[gen] random_spec_039: placed=81/250 raw_fill=66.9% max_top=1.236m terminated_step=81 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_039.json
+[gen] random_spec_040: placed=85/250 raw_fill=65.8% max_top=1.236m terminated_step=85 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_040.json
+[gen] random_spec_041: placed=87/250 raw_fill=66.1% max_top=1.246m terminated_step=87 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_041.json
+[gen] random_spec_042: placed=89/250 raw_fill=67.1% max_top=1.248m terminated_step=89 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_042.json
+[gen] random_spec_043: placed=71/250 raw_fill=53.1% max_top=1.052m terminated_step=71 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_043.json
+[gen] random_spec_044: placed=81/250 raw_fill=65.1% max_top=1.238m terminated_step=81 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_044.json
+[gen] random_spec_045: placed=84/250 raw_fill=64.7% max_top=1.225m terminated_step=84 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_045.json
+[gen] random_spec_046: placed=85/250 raw_fill=69.7% max_top=1.244m terminated_step=85 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_046.json
+[gen] random_spec_047: placed=84/250 raw_fill=65.3% max_top=1.245m terminated_step=84 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_047.json
+[gen] random_spec_048: placed=83/250 raw_fill=64.4% max_top=1.241m terminated_step=83 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_048.json
+[gen] random_spec_049: placed=82/250 raw_fill=64.2% max_top=1.218m terminated_step=82 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/random_spec_049.json
+[gen] box_sequence_0: placed=98/250 raw_fill=70.9% max_top=1.237m terminated_step=98 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/box_sequence_0.json
+[gen] box_sequence_1: placed=77/250 raw_fill=64.7% max_top=1.238m terminated_step=77 -> /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results/box_sequence_1.json
+$ /home/user/miniconda3/envs/env_isaaclab/bin/python3 palletizing_simulator/simulator.py --config /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/sim_config.yaml --input-dir /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results -o /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/sim_results
+[Info] [carb] Logging to file: /home/user/isaacsim/kit/logs/Kit/Isaac-Sim Python/5.1/kit_20260716_172519.log
+2026-07-16T08:25:19Z [0ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim Python/5.1/d4edd6aa-efca-4ed5-81c67393-daee0087.dmp'
+2026-07-16T08:25:19Z [0ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim Python/5.1/13a6a893-52fc-4ae6-5bf793b1-938a0e21.dmp'
+2026-07-16T08:25:19Z [0ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim Python/5.1/0c68f833-0a03-4e65-9d13f099-6d018ff3.dmp'
+2026-07-16T08:25:19Z [1ms] [Warning] [carb.crashreporter-breakpad.plugin] [previous crash] preventing upload of minidump due to user opt-out: '/home/user/isaacsim/kit/data/Kit/Isaac-Sim Python/5.1/45c729ec-d0a9-42f2-ba1e2781-00ca8696.dmp'
+[0.023s] [ext: omni.kit.async_engine-0.0.3] startup
+[0.122s] [ext: omni.metrics.core-0.0.3] startup
+[0.122s] [ext: omni.client.lib-1.1.0] startup
+[0.129s] [ext: omni.blobkey-1.1.2] startup
+[0.129s] [ext: omni.stats-1.0.1] startup
+[0.130s] [ext: omni.datastore-0.0.0] startup
+[0.133s] [ext: omni.client-1.3.0] startup
+[0.185s] [ext: omni.ujitso.default-1.0.0] startup
+[0.186s] [ext: omni.hsscclient-1.1.2] startup
+[0.188s] [ext: omni.gpu_foundation.shadercache.vulkan-1.0.0] startup
+[0.189s] [ext: omni.assets.plugins-0.0.0] startup
+[0.190s] [ext: omni.gpu_foundation-0.0.0] startup
+[0.194s] [ext: carb.windowing.plugins-1.0.0] startup
+[4.233s] [ext: omni.kit.renderer.init-0.0.0] startup
+2026-07-16T08:25:24Z [4,562ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+2026-07-16T08:25:24Z [4,562ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: AMD Unknown (RADV RAPHAEL_MENDOCINO)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.159.03    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX PRO 6000 Blackwell .. | Yes: 0 |     | 97887   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2bb1      | 25b334fd.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | AMD Unknown (RADV RAPHAEL_MEND.. |        |     | 43508   MB | 1002      | 0          |
+|     |                                  |        |     |            | 13c0      | 00000000.. |
+|     |                                  |        |     |            | 79        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-124-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: AMD Ryzen 9 9950X3D 16-Core Processor
+| Cores: 16 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 126428 | Free Memory: 116603
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 2047
+|---------------------------------------------------------------------------------------------|
+[5.091s] [ext: omni.kit.pipapi-0.0.0] startup
+[5.091s] [ext: omni.kit.pip_archive-0.0.0] startup
+[5.092s] [ext: omni.pip.compute-1.6.3] startup
+[5.092s] [ext: omni.materialx.libs-1.0.7] startup
+[5.096s] [ext: omni.pip.cloud-1.4.3] startup
+[5.098s] [ext: omni.isaac.core_archive-3.0.0] startup
+[5.099s] [ext: omni.usd.config-1.0.6] startup
+[5.100s] [ext: omni.gpucompute.plugins-0.0.0] startup
+[5.101s] [ext: omni.usd.libs-1.0.1] startup
+[5.147s] [ext: omni.kit.telemetry-0.5.2] startup
+[5.165s] [ext: omni.mdl-56.0.3] startup
+[5.254s] [ext: omni.iray.libs-0.0.0] startup
+[5.257s] [ext: omni.mdl.neuraylib-0.2.12] startup
+[5.259s] [ext: omni.kit.usd.mdl-1.1.5] startup
+[5.317s] [ext: omni.isaac.ml_archive-3.0.4] startup
+[5.318s] [ext: omni.kit.loop-isaac-1.3.7] startup
+[5.318s] [ext: omni.kit.test-2.0.1] startup
+[5.346s] [ext: omni.appwindow-1.1.10] startup
+[5.347s] [ext: omni.kit.renderer.core-1.1.0] startup
+[6.860s] [ext: omni.kit.renderer.capture-0.0.0] startup
+[6.861s] [ext: omni.kit.renderer.imgui-2.0.5] startup
+[7.155s] [ext: omni.ui-2.27.1] startup
+[7.160s] [ext: omni.kit.mainwindow-1.0.3] startup
+[7.160s] [ext: carb.audio-0.1.0] startup
+[7.162s] [ext: omni.uiaudio-1.0.0] startup
+[7.163s] [ext: omni.kit.uiapp-0.0.0] startup
+[7.163s] [ext: omni.usd.schema.metrics.assembler-107.3.1] startup
+[7.164s] [ext: omni.usd.schema.audio-0.0.0] startup
+[7.166s] [ext: omni.anim.graph.schema-107.3.3] startup
+[7.171s] [ext: omni.usd_resolver-1.0.0] startup
+[7.174s] [ext: omni.usd.core-1.5.3] startup
+[7.175s] [ext: omni.usd.schema.render_settings.rtx-0.0.0] startup
+[7.184s] [ext: omni.usd.schema.semantics-0.0.0] startup
+[7.185s] [ext: isaacsim.robot.schema-3.6.0] startup
+[7.189s] [ext: omni.usd.schema.geospatial-0.0.0] startup
+[7.190s] [ext: omni.usd.schema.anim-0.0.0] startup
+[7.198s] [ext: omni.kit.window.popup_dialog-2.0.24] startup
+[7.200s] [ext: usdrt.scenegraph-7.6.1] startup
+[7.217s] [ext: omni.timeline-1.0.14] startup
+[7.218s] [ext: omni.resourcemonitor-107.0.1] startup
+[7.219s] [ext: omni.activity.core-1.0.3] startup
+[7.220s] [ext: omni.kit.widget.nucleus_connector-2.0.1] startup
+[7.222s] [ext: omni.hydra.usdrt_delegate-7.5.1] startup
+[7.225s] [ext: omni.kit.actions.core-1.0.0] startup
+[7.226s] [ext: omni.graph.exec-0.9.6] startup
+[7.226s] [ext: omni.kit.commands-1.4.10] startup
+[7.228s] [ext: omni.kit.usd_undo-0.1.8] startup
+[7.228s] [ext: omni.kit.exec.core-0.13.4] startup
+[7.229s] [ext: omni.kit.audiodeviceenum-1.0.2] startup
+[7.229s] [ext: omni.hydra.scene_delegate-0.3.4] startup
+[7.231s] [ext: omni.usd-1.13.10] startup
+[7.243s] [ext: omni.kit.asset_converter-5.0.17] startup
+[7.249s] [ext: omni.usd.schema.flow-107.1.1] startup
+[7.249s] [ext: omni.usd.schema.omnigraph-1.0.0] startup
+[7.252s] [ext: omni.usd.schema.omni_sensors-0.0.0] startup
+[7.252s] [ext: omni.anim.navigation.schema-107.3.3] startup
+[7.254s] [ext: omni.inspect-1.0.2] startup
+[7.255s] [ext: omni.kit.notification_manager-1.0.10] startup
+[7.256s] [ext: omni.graph.core-2.184.5] startup
+[7.257s] [ext: isaacsim.core.deprecation_manager-0.2.7] startup
+[7.257s] [ext: omni.usd.schema.physx-107.3.26] startup
+[7.275s] [ext: omni.usd.schema.isaac-3.0.5] startup
+[7.275s] [ext: omni.usd.schema.omniscripting-1.0.0] startup
+[7.277s] [ext: omni.usd.schema.omni_lens_distortion-0.0.0] startup
+[7.277s] [ext: omni.kvdb-107.3.26] startup
+[7.278s] [ext: omni.usdphysics-107.3.26] startup
+[7.279s] [ext: omni.physx.foundation-107.3.26] startup
+[7.280s] [ext: omni.localcache-107.3.26] startup
+[7.280s] [ext: omni.convexdecomposition-107.3.26] startup
+[7.281s] [ext: omni.physx.cooking-107.3.26] startup
+[7.283s] [ext: omni.physx-107.3.26] startup
+[7.287s] [ext: omni.physics-107.3.26] startup
+[7.289s] [ext: omni.kit.usd.layers-2.2.11] startup
+[7.293s] [ext: omni.physics.physx-107.3.26] startup
+2026-07-16T08:25:26Z [7,284ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+[7.293s] [ext: omni.physics.stageupdate-107.3.26] startup
+[7.294s] [ext: omni.kit.numpy.common-0.1.3] startup
+[7.295s] [ext: isaacsim.core.version-2.0.6] startup
+[7.295s] [ext: omni.isaac.dynamic_control-2.0.7] startup
+2026-07-16T08:25:26Z [7,289ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+[7.298s] [ext: isaacsim.storage.native-1.5.1] startup
+[7.299s] [ext: omni.kit.menu.core-1.1.2] startup
+[7.299s] [ext: omni.kit.helper.file_utils-0.1.9] startup
+[7.300s] [ext: omni.usd.metrics.assembler-107.3.1] startup
+[7.303s] [ext: omni.kit.widget.context_menu-1.2.5] startup
+[7.304s] [ext: omni.warp.core-1.8.2] startup
+[7.395s] [ext: omni.usd.metrics.assembler.physics-107.3.26] startup
+[7.396s] [ext: omni.physics.tensors-107.3.26] startup
+[7.398s] [ext: omni.kit.context_menu-1.8.6] startup
+[7.399s] [ext: omni.kit.clipboard-1.0.5] startup
+[7.400s] [ext: isaacsim.core.utils-3.5.1] startup
+[7.401s] [ext: omni.kit.widget.filebrowser-2.12.3] startup
+[7.404s] [ext: omni.kit.widget.options_menu-1.1.6] startup
+[7.405s] [ext: omni.kit.widget.path_field-2.0.11] startup
+[7.405s] [ext: omni.index.libs-380600.8087.0] startup
+[7.405s] [ext: omni.ui.scene-1.11.5] startup
+[7.407s] [ext: omni.kit.widget.options_button-1.0.3] startup
+[7.408s] [ext: omni.kit.widget.browser_bar-2.0.10] startup
+[7.408s] [ext: omni.index-1.0.1] startup
+[7.408s] [ext: omni.hydra.rtx.shadercache.vulkan-1.0.0] startup
+[7.409s] [ext: omni.kit.window.filepicker-2.13.4] startup
+[7.415s] [ext: omni.volume-0.5.2] startup
+[7.417s] [ext: omni.ujitso.client-0.0.0] startup
+[7.417s] [ext: omni.graph.tools-1.79.2] startup
+[7.428s] [ext: omni.graph.image.core-0.6.1] startup
+[7.429s] [ext: omni.hydra.rtx-1.0.0] startup
+2026-07-16T08:25:27Z [7,430ms] [Warning] [omni.log] Source: omni.hydra was already registered.
+[7.446s] [ext: omni.kit.window.file_importer-1.1.18] startup
+[7.448s] [ext: omni.kit.menu.utils-2.0.5] startup
+[7.452s] [ext: omni.graph.image.nodes-1.3.1] startup
+[7.453s] [ext: omni.kit.widget.searchable_combobox-1.0.6] startup
+[7.453s] [ext: omni.kit.hydra_texture-1.4.6] startup
+[7.455s] [ext: omni.kit.material.library-2.0.7] startup
+[7.457s] [ext: omni.hydra.engine.stats-1.0.3] startup
+[7.459s] [ext: omni.kit.viewport.scene_camera_model-1.0.6] startup
+[7.461s] [ext: omni.kit.widget.settings-1.2.6] startup
+[7.462s] [ext: omni.kit.viewport.legacy_gizmos-1.0.19] startup
+[7.463s] [ext: omni.kit.widget.viewport-107.1.3] startup
+[7.464s] [ext: omni.kit.viewport.registry-104.0.6] startup
+[7.465s] [ext: omni.kit.raycast.query-1.1.0] startup
+[7.467s] [ext: omni.physx.tensors-107.3.26] startup
+[7.623s] [ext: omni.kit.window.drop_support-1.0.5] startup
+[7.623s] [ext: omni.kit.primitive.mesh-1.0.17] startup
+[7.624s] [ext: omni.kit.viewport.window-107.2.0] startup
+[7.635s] [ext: omni.kit.window.preferences-1.8.0] startup
+[7.637s] [ext: isaacsim.core.simulation_manager-1.4.4] startup
+[8.434s] [ext: omni.graph.action_core-1.1.7] startup
+[8.435s] [ext: omni.graph-1.141.2] startup
+[8.455s] [ext: omni.kit.viewport.utility-1.1.2] startup
+[8.455s] [ext: omni.kit.viewport.menubar.core-107.2.1] startup
+[8.465s] [ext: isaacsim.core.prims-0.6.1] startup
+[8.478s] [ext: omni.graph.action_nodes-1.50.4] startup
+[8.480s] [ext: omni.kit.stage_template.core-1.1.22] startup
+[8.482s] [ext: omni.syntheticdata-0.6.13] startup
+[8.499s] [ext: omni.graph.nodes-1.170.10] startup
+[8.504s] [ext: omni.graph.action-1.130.0] startup
+[8.506s] [ext: omni.kit.stage_templates-2.0.0] startup
+[8.513s] [ext: omni.kit.widget.filter-1.1.4] startup
+[8.517s] [ext: omni.kit.widget.graph-2.0.0] startup
+[8.528s] [ext: omni.kit.property.adapter.core-1.0.2] startup
+[8.530s] [ext: omni.kit.window.file_exporter-1.0.33] startup
+[8.531s] [ext: omni.kit.widget.searchfield-1.1.8] startup
+[8.532s] [ext: omni.kit.hotkeys.core-1.3.10] startup
+[8.532s] [ext: omni.kit.graph.delegate.default-1.2.3] startup
+[8.533s] [ext: omni.kit.property.adapter.fabric-1.0.3] startup
+[8.534s] [ext: omni.kit.widget.stage-3.1.4] startup
+[8.539s] [ext: omni.kit.property.adapter.usd-1.0.2] startup
+[8.540s] [ext: omni.kit.graph.editor.core-1.5.3] startup
+[8.541s] [ext: omni.kit.widget.material_preview-1.0.16] startup
+[8.542s] [ext: omni.kit.widget.highlight_label-1.0.3] startup
+[8.543s] [ext: omni.kit.window.file-2.0.5] startup
+[8.545s] [ext: omni.kit.window.content_browser_registry-0.0.6] startup
+[8.545s] [ext: omni.kit.window.property-1.12.1] startup
+[8.547s] [ext: omni.kit.window.content_browser-3.1.3] startup
+[8.554s] [ext: omni.kit.graph.usd.commands-1.3.1] startup
+[8.555s] [ext: omni.kit.property.usd-4.5.12] startup
+[8.561s] [ext: omni.graph.ui_nodes-1.50.5] startup
+[8.564s] [ext: omni.videoencoding-0.1.2] startup
+[8.565s] [ext: omni.kit.window.material_graph-1.9.1] startup
+[8.572s] [ext: omni.warp-1.8.2] startup
+[8.576s] [ext: isaacsim.core.api-4.8.0] startup
+[8.602s] [ext: omni.graph.scriptnode-1.50.0] startup
+[8.608s] [ext: isaacsim.test.docstring-1.1.0] startup
+[8.614s] [ext: isaacsim.core.experimental.utils-0.3.0] startup
+[8.627s] [ext: omni.replicator.core-1.12.27] startup
+2026-07-16T08:25:28Z [8,624ms] [Warning] [pxr.Semantics] pxr.Semantics is deprecated - please use Semantics instead
+2026-07-16T08:25:28Z [9,075ms] [Warning] [omni.graph.core.plugin] Found duplicate of category 'Replicator' - was 'Annotators', adding 'Fabric Reader'
+2026-07-16T08:25:28Z [9,075ms] [Warning] [omni.graph.core.plugin] Category 'Replicator' not accepted on node type 'omni.replicator.core.FabricReader' in extension 'omni.replicator.core'
+2026-07-16T08:25:28Z [9,076ms] [Warning] [omni.replicator.core.scripts.extension] No material configuration file, adding configuration to material settings directly.
+[9.087s] [ext: isaacsim.core.experimental.prims-0.8.1] startup
+[9.112s] [ext: omni.kit.window.extensions-1.4.27] startup
+[9.122s] [ext: isaacsim.core.experimental.objects-0.4.0] startup
+[9.136s] [ext: omni.ui_query-1.1.8] startup
+[9.138s] [ext: omni.kit.manipulator.viewport-107.0.1] startup
+[9.140s] [ext: isaacsim.robot.surface_gripper-3.3.1] startup
+[9.150s] [ext: omni.kit.ui_test-1.3.7] startup
+[9.169s] [ext: omni.graph.visualization.nodes-2.1.3] startup
+[9.353s] [ext: isaacsim.robot_motion.lula-4.0.8] startup
+[9.382s] [ext: isaacsim.core.nodes-3.4.3] startup
+[9.393s] [ext: isaacsim.gui.components-1.2.1] startup
+[9.403s] [ext: isaacsim.robot_motion.motion_generation-8.0.26] startup
+[9.422s] [ext: isaacsim.robot.manipulators-3.3.6] startup
+[9.430s] [ext: isaacsim.core.experimental.materials-0.4.0] startup
+[9.438s] [ext: isaacsim.robot.manipulators.examples-1.1.2] startup
+[9.441s] [ext: isaacsim.cortex.framework-1.0.12] startup
+[9.442s] [ext: isaacsim.cortex.behaviors-2.0.14] startup
+[9.445s] [ext: omni.isaac.cortex.sample_behaviors-2.0.5] startup
+2026-07-16T08:25:29Z [9,437ms] [Warning] [omni.isaac.cortex] omni.isaac.cortex has been deprecated in favor of isaacsim.cortex.framework. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,438ms] [Warning] [omni.isaac.cortex.sample_behaviors] omni.isaac.cortex.sample_behaviors has been deprecated in favor of isaacsim.cortex.behaviors. Please update your code accordingly.
+[9.448s] [ext: omni.kit.widget.zoombar-1.0.6] startup
+[9.452s] [ext: isaacsim.gui.content_browser-0.1.11] startup
+[9.455s] [ext: omni.kit.browser.core-2.3.13] startup
+[9.461s] [ext: omni.kit.widget.stage_icons-1.0.8] startup
+[9.463s] [ext: omni.kit.widget.prompt-1.0.7] startup
+[9.464s] [ext: omni.kit.usd.collect-2.4.5] startup
+[9.467s] [ext: omni.kit.browser.folder.core-1.10.9] startup
+[9.472s] [ext: omni.kit.window.stage-2.6.1] startup
+[9.478s] [ext: omni.kit.usdz_export-1.0.9] startup
+[9.483s] [ext: omni.kit.tool.collect-2.2.18] startup
+[9.484s] [ext: omni.kit.menu.stage-1.2.7] startup
+[9.485s] [ext: omni.kit.tool.asset_importer-4.3.2] startup
+[9.488s] [ext: isaacsim.robot.wheeled_robots-4.0.24] startup
+[9.490s] [ext: isaacsim.examples.browser-0.2.1] startup
+[9.494s] [ext: isaacsim.asset.importer.urdf-2.4.30] startup
+[9.921s] [ext: omni.isaac.wheeled_robots-3.0.7] startup
+2026-07-16T08:25:29Z [9,913ms] [Warning] [omni.isaac.wheeled_robots] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,913ms] [Warning] [omni.isaac.wheeled_robots.controllers] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,913ms] [Warning] [omni.isaac.wheeled_robots.controllers.ackermann_controller] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,913ms] [Warning] [omni.isaac.wheeled_robots.controllers.differential_controller] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,913ms] [Warning] [omni.isaac.wheeled_robots.controllers.holonomic_controller] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,913ms] [Warning] [omni.isaac.wheeled_robots.controllers.quintic_path_planner] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,913ms] [Warning] [omni.isaac.wheeled_robots.controllers.stanley_control] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,913ms] [Warning] [omni.isaac.wheeled_robots.controllers.wheel_base_pose_controller] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,913ms] [Warning] [omni.isaac.wheeled_robots.impl] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,914ms] [Warning] [omni.isaac.wheeled_robots.robots] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,914ms] [Warning] [omni.isaac.wheeled_robots.robots.holonomic_robot_usd_setup] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,914ms] [Warning] [omni.isaac.wheeled_robots.robots.wheeled_robot] omni.isaac.wheeled_robots has been deprecated in favor of isaacsim.robot.wheeled_robots. Please update your code accordingly.
+[9.924s] [ext: isaacsim.simulation_app-2.12.2] startup
+[9.926s] [ext: omni.isaac.franka-1.0.7] startup
+2026-07-16T08:25:29Z [9,921ms] [Warning] [omni.isaac.franka] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.franka. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,921ms] [Warning] [omni.isaac.franka.franka] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.franka. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,932ms] [Warning] [omni.isaac.franka.kinematics_solver] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.franka. Please update your code accordingly.
+[9.941s] [ext: omni.isaac.kit-2.0.6] startup
+2026-07-16T08:25:29Z [9,934ms] [Warning] [omni.isaac.kit] omni.isaac.kit has been deprecated in favor of isaacsim.simulation_app. Please update your code accordingly.
+[9.943s] [ext: omni.kit.selection-0.1.6] startup
+[9.944s] [ext: omni.isaac.lula-4.0.6] startup
+2026-07-16T08:25:29Z [9,935ms] [Warning] [omni.isaac.lula] omni.isaac.lula has been deprecated in favor of isaacsim.robot_motion.lula. Please update your code accordingly.
+[9.945s] [ext: isaacsim.robot_motion.lula_test_widget-1.0.12] startup
+[9.946s] [ext: isaacsim.asset.browser-1.3.23] startup
+[9.971s] [ext: omni.kit.viewport.actions-107.0.2] startup
+[9.974s] [ext: isaacsim.gui.menu-2.4.4] startup
+[9.978s] [ext: omni.isaac.manipulators-3.0.7] startup
+2026-07-16T08:25:29Z [9,970ms] [Warning] [omni.isaac.manipulators] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,970ms] [Warning] [omni.isaac.manipulators.controllers] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,970ms] [Warning] [omni.isaac.manipulators.controllers.pick_place_controller] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,970ms] [Warning] [omni.isaac.manipulators.controllers.stacking_controller] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,970ms] [Warning] [omni.isaac.manipulators.grippers] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,970ms] [Warning] [omni.isaac.manipulators.grippers.gripper] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,970ms] [Warning] [omni.isaac.manipulators.grippers.parallel_gripper] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,971ms] [Warning] [omni.isaac.manipulators.grippers.surface_gripper] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,971ms] [Warning] [omni.isaac.manipulators.manipulators] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,972ms] [Warning] [omni.isaac.manipulators.manipulators.single_manipulator] omni.isaac.manipulators has been deprecated in favor of isaacsim.robot.manipulators. Please update your code accordingly.
+[9.981s] [ext: omni.isaac.lula_test_widget-1.0.6] startup
+2026-07-16T08:25:29Z [9,973ms] [Warning] [omni.isaac.lula_test_widget] omni.isaac.lula_test_widget has been deprecated in favor of isaacsim.robot_motion.lula_test_widget. Please update your code accordingly.
+[9.982s] [ext: omni.isaac.asset_browser-1.0.6] startup
+2026-07-16T08:25:29Z [9,974ms] [Warning] [omni.isaac.asset_browser] omni.isaac.asset_browser has been deprecated in favor of isaacsim.asset.browser. Please update your code accordingly.
+[9.983s] [ext: omni.kit.viewport.menubar.display-107.0.3] startup
+[9.987s] [ext: omni.isaac.menu-1.0.6] startup
+2026-07-16T08:25:29Z [9,978ms] [Warning] [omni.isaac.menu] omni.isaac.menu has been deprecated in favor of isaacsim.gui.menu. Please update your code accordingly.
+[9.987s] [ext: omni.isaac.motion_generation-8.0.7] startup
+2026-07-16T08:25:29Z [9,979ms] [Warning] [omni.isaac.motion_generation] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,980ms] [Warning] [omni.isaac.motion_generation.articulation_kinematics_solver] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,980ms] [Warning] [omni.isaac.motion_generation.articulation_motion_policy] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.articulation_trajectory] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.kinematics_interface] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.lula] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.lula.kinematics] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.lula.motion_policies] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.lula.path_planners] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.lula.trajectory_generator] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.motion_policy_controller] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.motion_policy_interface] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.path_planner_visualizer] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.path_planning_interface] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.trajectory] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+2026-07-16T08:25:29Z [9,981ms] [Warning] [omni.isaac.motion_generation.world_interface] omni.isaac.motion_generation has been deprecated in favor of isaacsim.robot_motion.motion_generation. Please update your code accordingly.
+[9.990s] [ext: omni.isaac.assets_check-0.3.13] startup
+2026-07-16T08:25:29Z [9,982ms] [Warning] [omni.isaac.assets_check] omni.isaac.assets_check has been deprecated in favor of isaacsim.asset.browser. Please update your code accordingly.
+[9.991s] [ext: isaacsim.gui.sensors.icon-2.0.3] startup
+[9.997s] [ext: isaacsim.asset.importer.mjcf-2.5.13] startup
+[10.001s] [ext: omni.sensors.nv.common-3.0.0] startup
+[10.006s] [ext: isaacsim.sensors.physics-0.4.3] startup
+[10.087s] [ext: omni.sensors.net-1.0.0] startup
+[10.089s] [ext: omni.isaac.nucleus-1.0.6] startup
+2026-07-16T08:25:29Z [10,081ms] [Warning] [omni.isaac.nucleus] omni.isaac.nucleus has been deprecated in favor of isaacsim.storage.native. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,081ms] [Warning] [omni.isaac.nucleus.nucleus] omni.isaac.nucleus.nucleus has been deprecated in favor of isaacsim.storage.native. Please update your code accordingly.
+[10.090s] [ext: omni.sensors.nv.materials-2.0.0] startup
+[10.093s] [ext: isaacsim.robot.policy.examples-4.1.11] startup
+[10.097s] [ext: omni.sensors.nv.wpm-3.0.0] startup
+[10.099s] [ext: omni.sensors.nv.lidar-3.0.0] startup
+[10.102s] [ext: isaacsim.util.debug_draw-3.1.0] startup
+[10.104s] [ext: omni.sensors.nv.radar-3.0.0] startup
+[10.106s] [ext: omni.sensors.nv.ids-2.0.0] startup
+[10.107s] [ext: isaacsim.core.cloner-1.4.10] startup
+[10.108s] [ext: isaacsim.sensors.physx-2.3.2] startup
+[10.110s] [ext: isaacsim.sensors.rtx-15.8.4] startup
+[10.115s] [ext: isaacsim.sensors.camera-1.3.6] startup
+[10.121s] [ext: omni.isaac.quadruped-3.0.7] startup
+2026-07-16T08:25:29Z [10,114ms] [Warning] [omni.isaac.quadruped] omni.isaac.quadruped has been deprecated in favor of isaacsim.robot.policy.examples. Please update your code accordingly.
+[10.123s] [ext: omni.isaac.cloner-1.0.7] startup
+2026-07-16T08:25:29Z [10,116ms] [Warning] [omni.isaac.cloner] omni.isaac.cloner has been deprecated in favor of isaacsim.core.cloner. Please update your code accordingly.
+[10.127s] [ext: omni.isaac.range_sensor-4.0.6] startup
+2026-07-16T08:25:29Z [10,119ms] [Warning] [omni.isaac.range_sensor] omni.isaac.range_sensor has been deprecated in favor of isaacsim.sensors.physx. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,119ms] [Warning] [omni.isaac.range_sensor.commands] omni.isaac.range_sensor.commands has been deprecated in favor of isaacsim.sensors.physx.commands. Please update your code accordingly.
+[10.128s] [ext: omni.isaac.sensor-13.0.7] startup
+2026-07-16T08:25:29Z [10,121ms] [Warning] [omni.isaac.sensor] omni.isaac.sensor has been deprecated in favor of isaacsim.sensors.camera, isaacsim.sensors.physics, isaacsim.sensors.physx, and isaacsim.sensors.rtx. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,121ms] [Warning] [omni.isaac.sensor.camera] omni.isaac.sensor.camera has been deprecated in favor of isaacsim.sensors.camera.camera. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,122ms] [Warning] [omni.isaac.sensor.camera_view] omni.isaac.sensor.camera_view has been deprecated in favor of isaacsim.sensors.camera.camera_view. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,122ms] [Warning] [omni.isaac.sensor.commands] omni.isaac.sensor.commands has been deprecated in favor of isaacsim.sensors.physics.commands, isaacsim.sensors.physx.commands, and isaacsim.sensors.rtx.commands. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,122ms] [Warning] [omni.isaac.sensor.contact_sensor] omni.isaac.sensor.contact_sensor has been deprecated in favor of isaacsim.sensors.physics.contact_sensor. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,122ms] [Warning] [omni.isaac.sensor.imu_sensor] omni.isaac.sensor.imu_sensor has been deprecated in favor of isaacsim.sensors.physics.imu_sensor. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,122ms] [Warning] [omni.isaac.sensor.lidar_rtx] omni.isaac.sensor.lidar_rtx has been deprecated in favor of isaacsim.sensors.rtx.lidar_rtx. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,122ms] [Warning] [omni.isaac.sensor.rotating_lidar_physX] omni.isaac.sensor.imu_sensor has been deprecated in favor of isaacsim.sensors.physix.rotating_lidar_physX. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,122ms] [Warning] [omni.isaac.sensor.scripts.samples.contact_sensor] omni.isaac.sensor.scripts.samples.contact_sensor has been deprecated in favor of isaacsim.sensors.physics.scripts.samples.contact_sensor. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,122ms] [Warning] [omni.isaac.sensor.scripts.samples.imu_sensor] omni.isaac.sensor.scripts.samples.imu_sensor has been deprecated in favor of isaacsim.sensors.physics.scripts.samples.imu_sensor. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,122ms] [Warning] [omni.isaac.sensor.scripts.samples.lightbeam_sensor] omni.isaac.sensor.scripts.samples.lightbeam_sensor has been deprecated in favor of isaacsim.sensors.physx.scripts.samples.lightbeam_sensor. Please update your code accordingly.
+[10.131s] [ext: omni.kit.menu.create-2.0.1] startup
+[10.133s] [ext: omni.kit.widget.toolbar-2.0.1] startup
+[10.141s] [ext: omni.kit.manipulator.transform-107.0.0] startup
+[10.143s] [ext: omni.isaac.core-4.0.7] startup
+2026-07-16T08:25:29Z [10,135ms] [Warning] [omni.isaac.core.physics_context.physics_context] omni.isaac.core.physics_context.physics_context has been deprecated in favor of isaacsim.core.api.physics_context.physics_context. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,135ms] [Warning] [omni.isaac.core.simulation_context.simulation_context] omni.isaac.core.simulation_context.simulation_context has been deprecated in favor of isaacsim.core.api.simulation_context.simulation_context. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,135ms] [Warning] [omni.isaac.core.world.world] omni.isaac.core.world.world has been deprecated in favor of isaacsim.core.api.world.world. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,135ms] [Warning] [omni.isaac.core] omni.isaac.core has been deprecated in favor of isaacsim.core.api. Please update your code accordingly.
+[10.144s] [ext: omni.kit.scripting-107.3.2] startup
+[10.148s] [ext: omni.kit.manipulator.tool.snap-1.5.13] startup
+[10.150s] [ext: omni.kit.manipulator.selector-1.1.3] startup
+[10.151s] [ext: isaacsim.app.about-2.0.11] startup
+[10.154s] [ext: isaacsim.replicator.behavior-1.1.16] startup
+[10.155s] [ext: omni.kit.viewport.manipulator.transform-107.0.4] startup
+[10.156s] [ext: omni.isaac.window.about-2.0.7] startup
+2026-07-16T08:25:29Z [10,148ms] [Warning] [omni.isaac.window.about] omni.isaac.window.about has been deprecated in favor of isaacsim.app.about. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,148ms] [Warning] [omni.isaac.window.about.about] omni.isaac.window.about.about has been deprecated in favor of isaacsim.app.about.about. Please update your code accordingly.
+[10.157s] [ext: omni.fabric.commands-1.1.6] startup
+[10.159s] [ext: omni.kit.manipulator.prim.core-107.0.8] startup
+[10.163s] [ext: omni.kit.property.audio-1.0.16] startup
+[10.164s] [ext: omni.kit.property.camera-1.0.10] startup
+[10.165s] [ext: omni.kit.property.geometry-2.0.4] startup
+[10.166s] [ext: omni.hydra.scene_api-0.1.2] startup
+[10.169s] [ext: omni.kit.property.light-1.0.12] startup
+[10.188s] [ext: omni.kit.manipulator.prim.fabric-107.0.4] startup
+[10.190s] [ext: omni.kit.manipulator.prim.usd-107.0.3] startup
+[10.191s] [ext: omni.kit.property.material-1.11.9] startup
+[10.194s] [ext: omni.kit.property.render-1.2.1] startup
+[10.195s] [ext: omni.kit.property.transform-1.5.13] startup
+[10.197s] [ext: isaacsim.gui.property-1.1.3] startup
+[10.198s] [ext: omni.kit.manipulator.camera-106.0.4] startup
+[10.200s] [ext: omni.kit.manipulator.prim-107.0.0] startup
+[10.201s] [ext: omni.isaac.surface_gripper-2.0.6] startup
+2026-07-16T08:25:29Z [10,192ms] [Warning] [omni.isaac.surface_gripper] omni.isaac.surface_gripper has been deprecated in favor of isaacsim.robot.surface_gripper. Please update your code accordingly.
+[10.201s] [ext: omni.kit.manipulator.selection-106.0.1] startup
+[10.203s] [ext: omni.kit.property.bundle-1.4.1] startup
+[10.204s] [ext: omni.kit.property.isaac-1.0.6] startup
+2026-07-16T08:25:29Z [10,196ms] [Warning] [omni.kit.property.isaac] omni.kit.property.isaac has been deprecated in favor of isaacsim.gui.property. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,196ms] [Warning] [omni.kit.property.isaac.widgets] omni.kit.property.isaac.widgets has been deprecated in favor of isaacsim.gui.property.widgets. Please update your code accordingly.
+[10.205s] [ext: omni.isaac.universal_robots-1.0.6] startup
+2026-07-16T08:25:29Z [10,196ms] [Warning] [omni.isaac.universal_robots] omni.isaac.universal_robots has been deprecated in favor of isaacsim.robot.manipulators.examples.universal_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,196ms] [Warning] [omni.isaac.universal_robots.kinematics_solver] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.universal_robots. Please update your code accordingly.
+2026-07-16T08:25:29Z [10,197ms] [Warning] [omni.isaac.universal_robots.ur10] omni.isaac.franka has been deprecated in favor of isaacsim.robot.manipulators.examples.universal_robots. Please update your code accordingly.
+[10.206s] [ext: omni.isaac.core_nodes-2.0.6] startup
+2026-07-16T08:25:29Z [10,198ms] [Warning] [omni.isaac.core_nodes] omni.isaac.core_nodes has been deprecated in favor of isaacsim.core.nodes. Please update your code accordingly.
+[10.208s] [ext: omni.kit.viewport.menubar.camera-107.0.6] startup
+[10.212s] [ext: omni.kit.viewport.menubar.lighting-107.3.1] startup
+[10.214s] [ext: isaacsim.replicator.writers-1.0.17] startup
+[10.221s] [ext: omni.kit.viewport.menubar.render-107.0.10] startup
+[10.225s] [ext: omni.kit.viewport.menubar.settings-107.0.3] startup
+[10.230s] [ext: omni.kit.window.console-1.1.4] startup
+[10.232s] [ext: isaacsim.replicator.domain_randomization-1.0.16] startup
+[10.233s] [ext: isaacsim.replicator.examples-1.3.6] startup
+[10.234s] [ext: omni.ocio-0.1.1] startup
+[10.236s] [ext: omni.rtx.window.settings-0.6.19] startup
+[10.245s] [ext: omni.kit.window.status_bar-0.1.9] startup
+[10.249s] [ext: omni.kit.window.toolbar-2.0.0] startup
+[10.252s] [ext: omni.replicator.isaac-2.0.8] startup
+2026-07-16T08:25:29Z [10,243ms] [Warning] [omni.replicator.isaac] omni.replicator.isaac has been deprecated in favor of isaacsim.replicator.domain_randomization, isaacsim.replicator.examples, isaacsim.replicator.writers. Please update your code accordingly.
+[10.252s] [ext: omni.replicator.replicator_yaml-2.0.11] startup
+[10.256s] [ext: omni.rtx.settings.core-0.6.5] startup
+[10.260s] [ext: omni.usd.metrics.assembler.ui-107.3.1] startup
+[10.267s] [ext: omni.isaac.utils-2.0.6] startup
+[10.269s] [ext: semantics.schema.editor-2.0.2] startup
+[10.270s] [ext: omni.kit.ui.actions-1.0.5] startup
+[10.272s] [ext: semantics.schema.property-2.0.1] startup
+[10.273s] [ext: omni.isaac.version-2.0.7] startup
+2026-07-16T08:25:29Z [10,264ms] [Warning] [omni.isaac.version] omni.isaac.version has been deprecated in favor of isaacsim.core.version. Please update your code accordingly.
+[10.273s] [ext: omni.isaac.cortex-1.0.5] startup
+[10.274s] [ext: omni.anim.curve.core-1.3.1] startup
+[10.279s] [ext: isaacsim.core.throttling-2.2.2] startup
+[10.281s] [ext: omni.kit.menu.common-2.0.1] startup
+[10.282s] [ext: isaacsim.exp.base-5.1.0] startup
+[10.283s] [ext: isaacsim.exp.base.python-5.1.0] startup
+[10.283s] Simulation App Starting
+2026-07-16T08:25:31Z [11,785ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+2026-07-16T08:25:31Z [11,878ms] [Warning] [omni.fabric.plugin] Warning: attribute viewportHandle not found for bucket id 9
+
+[14.840s] app ready
+Starting kit application with the following args:  ['/home/user/IsaacLab/_isaac_sim/exts/isaacsim.simulation_app/isaacsim/simulation_app/simulation_app.py', '/home/user/isaacsim/apps/isaacsim.exp.base.python.kit', '--/app/tokens/exe-path=/home/user/IsaacLab/_isaac_sim/kit', '--/persistent/app/viewport/displayOptions=3286', '--/rtx/materialDb/syncLoads=True', '--/rtx/hydra/materialSyncLoads=True', '--/omni.kit.plugin/syncUsdLoads=True', '--/app/renderer/resolution/width=1920', '--/app/renderer/resolution/height=1080', '--/app/window/width=1920', '--/app/window/height=1080', '--/renderer/multiGpu/enabled=True', '--/app/fastShutdown=True', '--/app/installSignalHandlers=0', '--ext-folder', '/home/user/IsaacLab/_isaac_sim/exts', '--ext-folder', '/home/user/IsaacLab/_isaac_sim/apps', '--/physics/cudaDevice=0', '--/plugins/carb.tasking.plugin/threadCount=32', '--/plugins/omni.tbb.globalcontrol/maxThreadCount=32', '--portable', '--no-window', '--/app/window/hideUi=False']
+Passing the following args to the base kit application:  ['--config', '/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/sim_config.yaml', '--input-dir', '/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results', '-o', '/home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/sim_results']
+Warp 1.8.2 initialized:
+   CUDA Toolkit 12.8, Driver 13.0
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA RTX PRO 6000 Blackwell Workstation Edition" (95 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/user/.cache/warp/1.8.2
+Warp DeprecationWarning: The `warp.sim` module is deprecated and will be removed in v1.10. Please transition to using the forthcoming Newton library instead.
+[simulator] Config     : /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/sim_config.yaml
+[simulator] Input dir  : /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/algorithm_results
+[simulator] Output dir : /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/sim_results
+[simulator] Found 52 input file(s)
+  - box_sequence_0.json
+  - box_sequence_1.json
+  - random_spec_000.json
+  - random_spec_001.json
+  - random_spec_002.json
+  - random_spec_003.json
+  - random_spec_004.json
+  - random_spec_005.json
+  - random_spec_006.json
+  - random_spec_007.json
+  - random_spec_008.json
+  - random_spec_009.json
+  - random_spec_010.json
+  - random_spec_011.json
+  - random_spec_012.json
+  - random_spec_013.json
+  - random_spec_014.json
+  - random_spec_015.json
+  - random_spec_016.json
+  - random_spec_017.json
+  - random_spec_018.json
+  - random_spec_019.json
+  - random_spec_020.json
+  - random_spec_021.json
+  - random_spec_022.json
+  - random_spec_023.json
+  - random_spec_024.json
+  - random_spec_025.json
+  - random_spec_026.json
+  - random_spec_027.json
+  - random_spec_028.json
+  - random_spec_029.json
+  - random_spec_030.json
+  - random_spec_031.json
+  - random_spec_032.json
+  - random_spec_033.json
+  - random_spec_034.json
+  - random_spec_035.json
+  - random_spec_036.json
+  - random_spec_037.json
+  - random_spec_038.json
+  - random_spec_039.json
+  - random_spec_040.json
+  - random_spec_041.json
+  - random_spec_042.json
+  - random_spec_043.json
+  - random_spec_044.json
+  - random_spec_045.json
+  - random_spec_046.json
+  - random_spec_047.json
+  - random_spec_048.json
+  - random_spec_049.json
+[simulator] drop_offset=0.02m  settle_steps(max)=10  settle_vel=0.05m/s  final_steps=100  step_delay=0.0s
+[simulator] auto_start : True
+[simulator] auto_start=True -> start immediately
+
+[simulator] ══ Processing: box_sequence_0.json ══
+[simulator] plan=98  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 22.9s)
+[evaluator] [SUCCESS]  ok=98/98  stacking=70.9% [70.9%]  collapse=0  oob=0  drop=0  buffer=0  score=90.9 (stacking=70.9 + buffer_bonus=20)
+
+[simulator] ══ Processing: box_sequence_1.json ══
+[simulator] plan=77  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.0s)
+[evaluator] [SUCCESS]  ok=77/77  stacking=64.7% [64.7%]  collapse=0  oob=0  drop=0  buffer=0  score=84.7 (stacking=64.7 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_000.json ══
+[simulator] plan=80  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 8.7s)
+[evaluator] [SUCCESS]  ok=80/80  stacking=64.9% [64.9%]  collapse=0  oob=0  drop=0  buffer=0  score=84.9 (stacking=64.9 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_001.json ══
+[simulator] plan=91  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.1s)
+[evaluator] [SUCCESS]  ok=91/91  stacking=70.6% [70.6%]  collapse=0  oob=0  drop=0  buffer=0  score=90.6 (stacking=70.6 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_002.json ══
+[simulator] plan=90  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.8s)
+[evaluator] [SUCCESS]  ok=90/90  stacking=67.6% [67.6%]  collapse=0  oob=0  drop=0  buffer=0  score=87.6 (stacking=67.6 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_003.json ══
+[simulator] plan=90  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.1s)
+[evaluator] [SUCCESS]  ok=90/90  stacking=70.8% [70.8%]  collapse=0  oob=0  drop=0  buffer=0  score=90.8 (stacking=70.8 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_004.json ══
+[simulator] plan=93  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.4s)
+[evaluator] [SUCCESS]  ok=93/93  stacking=70.4% [70.4%]  collapse=0  oob=0  drop=0  buffer=0  score=90.4 (stacking=70.4 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_005.json ══
+[simulator] plan=83  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.0s)
+[evaluator] [SUCCESS]  ok=83/83  stacking=64.2% [64.2%]  collapse=0  oob=0  drop=0  buffer=0  score=84.2 (stacking=64.2 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_006.json ══
+[simulator] plan=84  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.2s)
+[evaluator] [SUCCESS]  ok=84/84  stacking=68.1% [68.1%]  collapse=0  oob=0  drop=0  buffer=0  score=88.1 (stacking=68.1 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_007.json ══
+[simulator] plan=90  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.1s)
+[evaluator] [SUCCESS]  ok=90/90  stacking=70.6% [70.6%]  collapse=0  oob=0  drop=0  buffer=0  score=90.6 (stacking=70.6 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_008.json ══
+[simulator] plan=85  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.5s)
+[evaluator] [SUCCESS]  ok=85/85  stacking=63.5% [63.5%]  collapse=0  oob=0  drop=0  buffer=0  score=83.5 (stacking=63.5 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_009.json ══
+[simulator] plan=95  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.4s)
+[evaluator] [SUCCESS]  ok=95/95  stacking=70.9% [70.9%]  collapse=0  oob=0  drop=0  buffer=0  score=90.9 (stacking=70.9 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_010.json ══
+[simulator] plan=84  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.5s)
+[evaluator] [SUCCESS]  ok=84/84  stacking=66.3% [66.3%]  collapse=0  oob=0  drop=0  buffer=0  score=86.3 (stacking=66.3 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_011.json ══
+[simulator] plan=77  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 9.4s)
+[evaluator] [SUCCESS]  ok=77/77  stacking=58.9% [58.9%]  collapse=0  oob=0  drop=0  buffer=0  score=78.9 (stacking=58.9 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_012.json ══
+[simulator] plan=90  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.0s)
+[evaluator] [SUCCESS]  ok=90/90  stacking=70.7% [70.7%]  collapse=0  oob=0  drop=0  buffer=0  score=90.7 (stacking=70.7 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_013.json ══
+[simulator] plan=94  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.6s)
+[evaluator] [SUCCESS]  ok=94/94  stacking=74.2% [74.2%]  collapse=0  oob=0  drop=0  buffer=0  score=94.2 (stacking=74.2 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_014.json ══
+[simulator] plan=87  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.7s)
+[evaluator] [SUCCESS]  ok=87/87  stacking=66.0% [66.0%]  collapse=0  oob=0  drop=0  buffer=0  score=86.0 (stacking=66.0 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_015.json ══
+[simulator] plan=89  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.7s)
+[evaluator] [SUCCESS]  ok=89/89  stacking=69.9% [69.9%]  collapse=0  oob=0  drop=0  buffer=0  score=89.9 (stacking=69.9 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_016.json ══
+[simulator] plan=84  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.3s)
+[evaluator] [SUCCESS]  ok=84/84  stacking=64.0% [64.0%]  collapse=0  oob=0  drop=0  buffer=0  score=84.0 (stacking=64.0 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_017.json ══
+[simulator] plan=94  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.4s)
+[evaluator] [SUCCESS]  ok=94/94  stacking=68.7% [68.7%]  collapse=0  oob=0  drop=0  buffer=0  score=88.7 (stacking=68.7 + buffer_bonus=20)
+[17.326s] Simulation App Startup Complete
+2026-07-16T08:26:01Z [41,662ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:26:12Z [53,205ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:26:22Z [62,572ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:26:34Z [74,426ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:26:45Z [85,984ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:26:57Z [97,772ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:27:09Z [109,792ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:27:20Z [120,415ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:27:30Z [131,220ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:27:42Z [143,113ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:27:53Z [154,203ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:28:05Z [166,241ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:28:17Z [177,484ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:28:27Z [187,594ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:28:39Z [199,428ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:28:51Z [211,890ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:29:02Z [223,257ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:29:14Z [234,585ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:29:25Z [245,671ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:29:37Z [257,917ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+
+[simulator] ══ Processing: random_spec_018.json ══
+[simulator] plan=86  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.5s)
+[evaluator] [SUCCESS]  ok=86/86  stacking=66.7% [66.7%]  collapse=0  oob=0  drop=0  buffer=0  score=86.7 (stacking=66.7 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_019.json ══
+[simulator] plan=84  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.3s)
+[evaluator] [SUCCESS]  ok=84/84  stacking=65.2% [65.2%]  collapse=0  oob=0  drop=0  buffer=0  score=85.2 (stacking=65.2 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_020.json ══
+[simulator] plan=82  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 9.7s)
+[evaluator] [SUCCESS]  ok=82/82  stacking=60.5% [60.5%]  collapse=0  oob=0  drop=0  buffer=0  score=80.5 (stacking=60.5 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_021.json ══
+[simulator] plan=81  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 9.8s)
+[evaluator] [SUCCESS]  ok=81/81  stacking=62.0% [62.0%]  collapse=0  oob=0  drop=0  buffer=0  score=82.0 (stacking=62.0 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_022.json ══
+[simulator] plan=92  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.0s)
+[evaluator] [SUCCESS]  ok=92/92  stacking=68.8% [68.8%]  collapse=0  oob=0  drop=0  buffer=0  score=88.8 (stacking=68.8 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_023.json ══
+[simulator] plan=88  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.7s)
+[evaluator] [SUCCESS]  ok=88/88  stacking=67.2% [67.2%]  collapse=0  oob=0  drop=0  buffer=0  score=87.2 (stacking=67.2 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_024.json ══
+[simulator] plan=88  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.9s)
+[evaluator] [SUCCESS]  ok=88/88  stacking=68.4% [68.4%]  collapse=0  oob=0  drop=0  buffer=0  score=88.4 (stacking=68.4 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_025.json ══
+[simulator] plan=87  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.6s)
+[evaluator] [SUCCESS]  ok=87/87  stacking=64.4% [64.4%]  collapse=0  oob=0  drop=0  buffer=0  score=84.4 (stacking=64.4 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_026.json ══
+[simulator] plan=92  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.3s)
+[evaluator] [SUCCESS]  ok=92/92  stacking=69.9% [69.9%]  collapse=0  oob=0  drop=0  buffer=0  score=89.9 (stacking=69.9 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_027.json ══
+[simulator] plan=81  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 9.9s)
+[evaluator] [SUCCESS]  ok=81/81  stacking=66.6% [66.6%]  collapse=0  oob=0  drop=0  buffer=0  score=86.6 (stacking=66.6 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_028.json ══
+[simulator] plan=94  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.6s)
+[evaluator] [SUCCESS]  ok=94/94  stacking=70.1% [70.1%]  collapse=0  oob=0  drop=0  buffer=0  score=90.1 (stacking=70.1 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_029.json ══
+[simulator] plan=77  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 9.3s)
+[evaluator] [SUCCESS]  ok=77/77  stacking=61.5% [61.5%]  collapse=0  oob=0  drop=0  buffer=0  score=81.5 (stacking=61.5 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_030.json ══
+[simulator] plan=88  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.8s)
+[evaluator] [SUCCESS]  ok=88/88  stacking=71.3% [71.3%]  collapse=0  oob=0  drop=0  buffer=0  score=91.3 (stacking=71.3 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_031.json ══
+[simulator] plan=91  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.0s)
+[evaluator] [SUCCESS]  ok=91/91  stacking=69.2% [69.2%]  collapse=0  oob=0  drop=0  buffer=0  score=89.2 (stacking=69.2 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_032.json ══
+[simulator] plan=91  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 11.2s)
+[evaluator] [SUCCESS]  ok=91/91  stacking=65.6% [65.6%]  collapse=0  oob=0  drop=0  buffer=0  score=85.6 (stacking=65.6 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_033.json ══
+[simulator] plan=86  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.6s)
+[evaluator] [SUCCESS]  ok=86/86  stacking=69.9% [69.9%]  collapse=0  oob=0  drop=0  buffer=0  score=89.9 (stacking=69.9 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_034.json ══
+[simulator] plan=55  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 6.7s)
+[evaluator] [SUCCESS]  ok=55/55  stacking=41.4% [41.4%]  collapse=0  oob=0  drop=0  buffer=0  score=61.4 (stacking=41.4 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_035.json ══
+[simulator] plan=86  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.3s)
+[evaluator] [SUCCESS]  ok=86/86  stacking=63.0% [63.0%]  collapse=0  oob=0  drop=0  buffer=0  score=83.0 (stacking=63.0 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_036.json ══
+[simulator] plan=89  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.6s)
+[evaluator] [SUCCESS]  ok=89/89  stacking=71.8% [71.8%]  collapse=0  oob=0  drop=0  buffer=0  score=91.8 (stacking=71.8 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_037.json ══
+[simulator] plan=86  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.3s)
+[evaluator] [SUCCESS]  ok=86/86  stacking=61.3% [61.3%]  collapse=0  oob=0  drop=0  buffer=0  score=81.3 (stacking=61.3 + buffer_bonus=20)
+2026-07-16T08:29:48Z [268,990ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:29:59Z [280,113ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:30:10Z [290,665ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:30:20Z [301,221ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:30:32Z [313,010ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:30:44Z [324,400ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:30:55Z [335,905ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:31:06Z [347,282ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:31:19Z [359,472ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:31:29Z [370,136ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:31:42Z [382,409ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:31:51Z [392,283ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:32:03Z [403,667ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:32:15Z [415,459ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:32:27Z [427,398ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:32:38Z [438,791ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:32:45Z [446,106ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:32:56Z [457,269ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:33:08Z [468,791ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:33:19Z [479,952ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+
+[simulator] ══ Processing: random_spec_038.json ══
+[simulator] plan=83  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.1s)
+[evaluator] [SUCCESS]  ok=83/83  stacking=68.3% [68.3%]  collapse=0  oob=0  drop=0  buffer=0  score=88.3 (stacking=68.3 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_039.json ══
+[simulator] plan=81  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 9.7s)
+[evaluator] [SUCCESS]  ok=81/81  stacking=66.9% [66.9%]  collapse=0  oob=0  drop=0  buffer=0  score=86.9 (stacking=66.9 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_040.json ══
+[simulator] plan=85  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.2s)
+[evaluator] [SUCCESS]  ok=85/85  stacking=65.8% [65.8%]  collapse=0  oob=0  drop=0  buffer=0  score=85.8 (stacking=65.8 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_041.json ══
+[simulator] plan=87  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.7s)
+[evaluator] [SUCCESS]  ok=87/87  stacking=66.1% [66.1%]  collapse=0  oob=0  drop=0  buffer=0  score=86.1 (stacking=66.1 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_042.json ══
+[simulator] plan=89  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.8s)
+[evaluator] [SUCCESS]  ok=89/89  stacking=67.1% [67.1%]  collapse=0  oob=0  drop=0  buffer=0  score=87.1 (stacking=67.1 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_043.json ══
+[simulator] plan=71  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 8.6s)
+[evaluator] [SUCCESS]  ok=71/71  stacking=53.1% [53.1%]  collapse=0  oob=0  drop=0  buffer=0  score=73.1 (stacking=53.1 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_044.json ══
+[simulator] plan=81  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 9.7s)
+[evaluator] [SUCCESS]  ok=81/81  stacking=65.1% [65.1%]  collapse=0  oob=0  drop=0  buffer=0  score=85.1 (stacking=65.1 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_045.json ══
+[simulator] plan=84  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.2s)
+[evaluator] [SUCCESS]  ok=84/84  stacking=64.7% [64.7%]  collapse=0  oob=0  drop=0  buffer=0  score=84.7 (stacking=64.7 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_046.json ══
+[simulator] plan=85  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.2s)
+[evaluator] [SUCCESS]  ok=85/85  stacking=69.7% [69.7%]  collapse=0  oob=0  drop=0  buffer=0  score=89.7 (stacking=69.7 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_047.json ══
+[simulator] plan=84  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.2s)
+[evaluator] [SUCCESS]  ok=84/84  stacking=65.3% [65.3%]  collapse=0  oob=0  drop=0  buffer=0  score=85.3 (stacking=65.3 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_048.json ══
+[simulator] plan=83  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 10.1s)
+[evaluator] [SUCCESS]  ok=83/83  stacking=64.4% [64.4%]  collapse=0  oob=0  drop=0  buffer=0  score=84.4 (stacking=64.4 + buffer_bonus=20)
+
+[simulator] ══ Processing: random_spec_049.json ══
+[simulator] plan=82  buffer_size=0  source_boxes=250
+[simulator] initial buffer ids = []
+[simulator] Final settle 100 steps …
+[simulator] All steps done  (total 9.2s)
+[evaluator] [SUCCESS]  ok=82/82  stacking=64.2% [64.2%]  collapse=0  oob=0  drop=0  buffer=0  score=84.2 (stacking=64.2 + buffer_bonus=20)
+
+[evaluator] ══ Result ══
+  ✓ box_sequence_0.json  stacking=70.9% [70.9%]  ok=98/98  time=0.0s  buffer=0  score=90.9 (stacking=70.9 + bonus=20)
+  ✓ box_sequence_1.json  stacking=64.7% [64.7%]  ok=77/77  time=0.0s  buffer=0  score=84.7 (stacking=64.7 + bonus=20)
+  ✓ random_spec_000.json  stacking=64.9% [64.9%]  ok=80/80  time=0.0s  buffer=0  score=84.9 (stacking=64.9 + bonus=20)
+  ✓ random_spec_001.json  stacking=70.6% [70.6%]  ok=91/91  time=0.0s  buffer=0  score=90.6 (stacking=70.6 + bonus=20)
+  ✓ random_spec_002.json  stacking=67.6% [67.6%]  ok=90/90  time=0.0s  buffer=0  score=87.6 (stacking=67.6 + bonus=20)
+  ✓ random_spec_003.json  stacking=70.8% [70.8%]  ok=90/90  time=0.0s  buffer=0  score=90.8 (stacking=70.8 + bonus=20)
+  ✓ random_spec_004.json  stacking=70.4% [70.4%]  ok=93/93  time=0.0s  buffer=0  score=90.4 (stacking=70.4 + bonus=20)
+  ✓ random_spec_005.json  stacking=64.2% [64.2%]  ok=83/83  time=0.0s  buffer=0  score=84.2 (stacking=64.2 + bonus=20)
+  ✓ random_spec_006.json  stacking=68.1% [68.1%]  ok=84/84  time=0.0s  buffer=0  score=88.1 (stacking=68.1 + bonus=20)
+  ✓ random_spec_007.json  stacking=70.6% [70.6%]  ok=90/90  time=0.0s  buffer=0  score=90.6 (stacking=70.6 + bonus=20)
+  ✓ random_spec_008.json  stacking=63.5% [63.5%]  ok=85/85  time=0.0s  buffer=0  score=83.5 (stacking=63.5 + bonus=20)
+  ✓ random_spec_009.json  stacking=70.9% [70.9%]  ok=95/95  time=0.0s  buffer=0  score=90.9 (stacking=70.9 + bonus=20)
+  ✓ random_spec_010.json  stacking=66.3% [66.3%]  ok=84/84  time=0.0s  buffer=0  score=86.3 (stacking=66.3 + bonus=20)
+  ✓ random_spec_011.json  stacking=58.9% [58.9%]  ok=77/77  time=0.0s  buffer=0  score=78.9 (stacking=58.9 + bonus=20)
+  ✓ random_spec_012.json  stacking=70.7% [70.7%]  ok=90/90  time=0.0s  buffer=0  score=90.7 (stacking=70.7 + bonus=20)
+  ✓ random_spec_013.json  stacking=74.2% [74.2%]  ok=94/94  time=0.0s  buffer=0  score=94.2 (stacking=74.2 + bonus=20)
+  ✓ random_spec_014.json  stacking=66.0% [66.0%]  ok=87/87  time=0.0s  buffer=0  score=86.0 (stacking=66.0 + bonus=20)
+  ✓ random_spec_015.json  stacking=69.9% [69.9%]  ok=89/89  time=0.0s  buffer=0  score=89.9 (stacking=69.9 + bonus=20)
+  ✓ random_spec_016.json  stacking=64.0% [64.0%]  ok=84/84  time=0.0s  buffer=0  score=84.0 (stacking=64.0 + bonus=20)
+  ✓ random_spec_017.json  stacking=68.7% [68.7%]  ok=94/94  time=0.0s  buffer=0  score=88.7 (stacking=68.7 + bonus=20)
+  ✓ random_spec_018.json  stacking=66.7% [66.7%]  ok=86/86  time=0.0s  buffer=0  score=86.7 (stacking=66.7 + bonus=20)
+  ✓ random_spec_019.json  stacking=65.2% [65.2%]  ok=84/84  time=0.0s  buffer=0  score=85.2 (stacking=65.2 + bonus=20)
+  ✓ random_spec_020.json  stacking=60.5% [60.5%]  ok=82/82  time=0.0s  buffer=0  score=80.5 (stacking=60.5 + bonus=20)
+  ✓ random_spec_021.json  stacking=62.0% [62.0%]  ok=81/81  time=0.0s  buffer=0  score=82.0 (stacking=62.0 + bonus=20)
+  ✓ random_spec_022.json  stacking=68.8% [68.8%]  ok=92/92  time=0.0s  buffer=0  score=88.8 (stacking=68.8 + bonus=20)
+  ✓ random_spec_023.json  stacking=67.2% [67.2%]  ok=88/88  time=0.0s  buffer=0  score=87.2 (stacking=67.2 + bonus=20)
+  ✓ random_spec_024.json  stacking=68.4% [68.4%]  ok=88/88  time=0.0s  buffer=0  score=88.4 (stacking=68.4 + bonus=20)
+  ✓ random_spec_025.json  stacking=64.4% [64.4%]  ok=87/87  time=0.0s  buffer=0  score=84.4 (stacking=64.4 + bonus=20)
+  ✓ random_spec_026.json  stacking=69.9% [69.9%]  ok=92/92  time=0.0s  buffer=0  score=89.9 (stacking=69.9 + bonus=20)
+  ✓ random_spec_027.json  stacking=66.6% [66.6%]  ok=81/81  time=0.0s  buffer=0  score=86.6 (stacking=66.6 + bonus=20)
+  ✓ random_spec_028.json  stacking=70.1% [70.1%]  ok=94/94  time=0.0s  buffer=0  score=90.1 (stacking=70.1 + bonus=20)
+  ✓ random_spec_029.json  stacking=61.5% [61.5%]  ok=77/77  time=0.0s  buffer=0  score=81.5 (stacking=61.5 + bonus=20)
+  ✓ random_spec_030.json  stacking=71.3% [71.3%]  ok=88/88  time=0.0s  buffer=0  score=91.3 (stacking=71.3 + bonus=20)
+  ✓ random_spec_031.json  stacking=69.2% [69.2%]  ok=91/91  time=0.0s  buffer=0  score=89.2 (stacking=69.2 + bonus=20)
+  ✓ random_spec_032.json  stacking=65.6% [65.6%]  ok=91/91  time=0.0s  buffer=0  score=85.6 (stacking=65.6 + bonus=20)
+  ✓ random_spec_033.json  stacking=69.9% [69.9%]  ok=86/86  time=0.0s  buffer=0  score=89.9 (stacking=69.9 + bonus=20)
+  ✓ random_spec_034.json  stacking=41.4% [41.4%]  ok=55/55  time=0.0s  buffer=0  score=61.4 (stacking=41.4 + bonus=20)
+  ✓ random_spec_035.json  stacking=63.0% [63.0%]  ok=86/86  time=0.0s  buffer=0  score=83.0 (stacking=63.0 + bonus=20)
+  ✓ random_spec_036.json  stacking=71.8% [71.8%]  ok=89/89  time=0.0s  buffer=0  score=91.8 (stacking=71.8 + bonus=20)
+  ✓ random_spec_037.json  stacking=61.3% [61.3%]  ok=86/86  time=0.0s  buffer=0  score=81.3 (stacking=61.3 + bonus=20)
+  ✓ random_spec_038.json  stacking=68.3% [68.3%]  ok=83/83  time=0.0s  buffer=0  score=88.3 (stacking=68.3 + bonus=20)
+  ✓ random_spec_039.json  stacking=66.9% [66.9%]  ok=81/81  time=0.0s  buffer=0  score=86.9 (stacking=66.9 + bonus=20)
+  ✓ random_spec_040.json  stacking=65.8% [65.8%]  ok=85/85  time=0.0s  buffer=0  score=85.8 (stacking=65.8 + bonus=20)
+  ✓ random_spec_041.json  stacking=66.1% [66.1%]  ok=87/87  time=0.0s  buffer=0  score=86.1 (stacking=66.1 + bonus=20)
+  ✓ random_spec_042.json  stacking=67.1% [67.1%]  ok=89/89  time=0.0s  buffer=0  score=87.1 (stacking=67.1 + bonus=20)
+  ✓ random_spec_043.json  stacking=53.1% [53.1%]  ok=71/71  time=0.0s  buffer=0  score=73.1 (stacking=53.1 + bonus=20)
+  ✓ random_spec_044.json  stacking=65.1% [65.1%]  ok=81/81  time=0.0s  buffer=0  score=85.1 (stacking=65.1 + bonus=20)
+  ✓ random_spec_045.json  stacking=64.7% [64.7%]  ok=84/84  time=0.0s  buffer=0  score=84.7 (stacking=64.7 + bonus=20)
+  ✓ random_spec_046.json  stacking=69.7% [69.7%]  ok=85/85  time=0.0s  buffer=0  score=89.7 (stacking=69.7 + bonus=20)
+  ✓ random_spec_047.json  stacking=65.3% [65.3%]  ok=84/84  time=0.0s  buffer=0  score=85.3 (stacking=65.3 + bonus=20)
+  ✓ random_spec_048.json  stacking=64.4% [64.4%]  ok=83/83  time=0.0s  buffer=0  score=84.4 (stacking=64.4 + bonus=20)
+  ✓ random_spec_049.json  stacking=64.2% [64.2%]  ok=82/82  time=0.0s  buffer=0  score=84.2 (stacking=64.2 + bonus=20)
+  ───────────────────────────────────────────────────────
+  summary : episodes 52 success / 0 failure / 0 height_overflow
+            avg stacking rate  66.2% [66.2%]
+            avg success rate   100.0%
+            avg score          86.18
+            total processing time 592.3s
+[evaluator] Saved → /home/user/Documents/assignment2_project/artifacts/isaac_best_selection/sun_c1400_env128_workers16_rand52official_gap_fill_v2_lr5e7_cont_parallel_extra/candidate-000900/candidate-000900/sim_results/result.json
+
+[simulator] All files processed.
+2026-07-16T08:33:30Z [490,872ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:33:41Z [501,380ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:33:52Z [512,497ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:34:03Z [524,119ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:34:15Z [535,858ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:34:24Z [545,157ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:34:35Z [555,686ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:34:46Z [566,717ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:34:57Z [577,830ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:34:57Z [577,927ms] [Warning] [carb] Client omni.localcache.plugin has acquired [omni::server::IKeyValueDatabase v0.1] 100 times. Consider accessing this interface with carb::getCachedInterface() (Performance warning)
+2026-07-16T08:35:08Z [588,871ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:35:19Z [599,846ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+2026-07-16T08:35:29Z [609,591ms] [Warning] [omni.physx.tensors.plugin] prim '/World/box_000' was deleted while being used by a shape in a tensor view class. The physics.tensors simulationView was invalidated.
+[609.750s] Simulation App Shutting Down
